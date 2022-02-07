@@ -3,7 +3,7 @@ import Banner from './Components/Banner/Banner';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <h1>Smart Village</h1>
       <Banner/>
     </div>
