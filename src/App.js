@@ -3,7 +3,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <h1>Digital Village</h1>
+      <h2>Digital Village</h2>
     </div>
   );
 }
