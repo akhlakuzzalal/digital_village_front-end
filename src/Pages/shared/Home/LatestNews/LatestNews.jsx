@@ -16,7 +16,7 @@ const LatestNews = () => {
   return (
     <div className="container">
       <div className="md:mx-20 md:my-4">
-        <h1 className="text-center heading_lg font-semibold">Letest News</h1>
+        <h1 className="text-center heading_lg font-semibold">Latest News</h1>
         <div className="md:grid md:grid-cols-3 sm:grid-cols-1 gap-4 px-5 pt-10">
           <div className="md:col-span-2 sm:col-span-1 md:px-20">
             <Swiper
