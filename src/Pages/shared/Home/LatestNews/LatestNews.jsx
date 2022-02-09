@@ -14,7 +14,7 @@ const LatestNews = () => {
   }, []);
   console.log(news);
   return (
-    <div className="container">
+    <div className="container my-20">
       <div className="md:mx-20 md:my-4">
         <h1 className="text-center heading_lg font-semibold">Latest News</h1>
         <div className="md:grid md:grid-cols-3 sm:grid-cols-1 gap-4 px-5 pt-10">
@@ -74,7 +74,7 @@ const LatestNews = () => {
           </div>
           <div className="p-4 flex flex-col justify-center">
             {news.slice(0, 3).map((n) => (
-              <div className="flex news-card items-center rounded-lg shadow-lg mb-4 px-5 py-3">
+              <div className="flex news-card items-center bg-[#eafae7] rounded-lg shadow-lg mb-4 px-5 py-3">
                 <img className="w-3/6 h-fit" src={n.img} alt="" />
                 <p className="ml-5">{n.description.slice(0, 100)}</p>
               </div>
