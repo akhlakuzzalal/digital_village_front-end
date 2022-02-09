@@ -1,9 +1,10 @@
 import './App.css';
+import Home from './Pages/shared/Home/Home';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Digital Village start here</h1>
+    <div>
+      <Home />
     </div>
   );
 }
