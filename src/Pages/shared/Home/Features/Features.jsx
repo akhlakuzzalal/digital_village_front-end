@@ -17,22 +17,22 @@ const Features = () => {
   }, 1500);
 
   return (
-    <div className="flex justify-evenly gap-6 flex-wrap">
+    <div className="flex justify-evenly gap-6 flex-wrap text-center">
       {/* feature 1 */}
       <div
         className={`${
           active === 0 ? scaleUpClasses : active === 1 ? scaleDownClasses : ''
-        } shadow-2xl`}
+        } shadow-2xl w-52`}
       >
         <div className="p-4 bg-slate-200 space-y-3 rounded-lg">
           <div>
             <img
               src={homeIcon}
               alt="home"
-              className={`w-24 ${active === 0 && 'animate-bounce'}`}
+              className={`w-24 mx-auto ${active === 0 && 'animate-bounce'}`}
             />
           </div>
-          <p>Village Market</p>
+          <p>Quality Education</p>
           <div className="w-fit ml-auto">
             <IoIosArrowDroprightCircle size={50} className="text-primary" />
           </div>
@@ -43,17 +43,17 @@ const Features = () => {
       <div
         className={`${
           active === 1 ? scaleUpClasses : active === 2 ? scaleDownClasses : ''
-        } shadow-2xl`}
+        } shadow-2xl w-52`}
       >
         <div className="p-4 bg-slate-200 space-y-3 rounded-lg">
           <div>
             <img
               src={homeIcon}
               alt="home"
-              className={`w-24 ${active === 1 && 'animate-bounce'}`}
+              className={`w-24 mx-auto ${active === 1 && 'animate-bounce'}`}
             />
           </div>
-          <p>Village Market</p>
+          <p>Free Treatment</p>
           <div className="w-fit ml-auto">
             <IoIosArrowDroprightCircle size={50} className="text-primary" />
           </div>
@@ -64,17 +64,17 @@ const Features = () => {
       <div
         className={`${
           active === 2 ? scaleUpClasses : active === 3 ? scaleDownClasses : ''
-        } shadow-2xl`}
+        } shadow-2xl w-52`}
       >
         <div className="p-4 bg-slate-200 space-y-3 rounded-lg">
           <div>
             <img
               src={homeIcon}
               alt="home"
-              className={`w-24 ${active === 2 && 'animate-bounce'}`}
+              className={`w-24 mx-auto ${active === 2 && 'animate-bounce'}`}
             />
           </div>
-          <p>Village Market</p>
+          <p>Development</p>
           <div className="w-fit ml-auto">
             <IoIosArrowDroprightCircle size={50} className="text-primary" />
           </div>
@@ -85,17 +85,17 @@ const Features = () => {
       <div
         className={`${
           active === 3 ? scaleUpClasses : active === 4 ? scaleDownClasses : ''
-        } shadow-2xl`}
+        } shadow-2xl w-52`}
       >
         <div className="p-4 bg-slate-200 space-y-3 rounded-lg">
           <div>
             <img
               src={homeIcon}
               alt="home"
-              className={`w-24 ${active === 3 && 'animate-bounce'}`}
+              className={`w-24 mx-auto ${active === 3 && 'animate-bounce'}`}
             />
           </div>
-          <p>Village Market</p>
+          <p>Information</p>
           <div className="w-fit ml-auto">
             <IoIosArrowDroprightCircle size={50} className="text-primary" />
           </div>

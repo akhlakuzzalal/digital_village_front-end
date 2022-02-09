@@ -6,15 +6,16 @@
 
 @layer base {
   body {
-    @apply bg-[#e2e8f5];
+    @apply bg-[#e2e8f5] overflow-x-hidden scroll-smooth;
   }
+
   p {
     @apply text-base;
   }
 
   /* headings */
   h1 {
-    @apply text-6xl font-bold;
+    @apply text-4xl md:text-6xl font-bold;
   }
 
   h3 {
