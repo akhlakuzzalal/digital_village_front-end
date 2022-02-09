@@ -1,10 +1,10 @@
 import './App.css';
-import LetestNews from './Pages/sharedPage/Home/LatestNews/LatestNews';
+import Home from './Pages/shared/Home/Home';
 
 function App() {
   return (
     <div>
-      <LetestNews></LetestNews>
+      <Home />
     </div>
   );
 }

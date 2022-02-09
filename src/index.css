@@ -4,12 +4,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-[#e2e8f5] overflow-x-hidden scroll-smooth;
+  }
+
+  p {
+    @apply text-base;
+  }
+
+  /* headings */
+  h1 {
+    @apply text-4xl md:text-6xl font-bold;
+  }
+
+  h3 {
+    @apply text-3xl font-bold;
+  }
+
+  h6 {
+    @apply text-xl font-bold;
+  }
+}
+
 @layer components {
   .btn {
     @apply px-12 py-3 text-white text-xl ml-2 rounded-full;
-  }
-  .heading_lg {
-    @apply text-6xl;
   }
   .heading_md {
     @apply text-3xl;

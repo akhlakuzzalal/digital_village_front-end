@@ -4,7 +4,6 @@ import { Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import './LetestNews.css';
 
 const LatestNews = () => {
   const [news, setNews] = useState([]);
@@ -51,7 +50,7 @@ const LatestNews = () => {
             >
               {news.map((n) => (
                 <SwiperSlide key={n.id}>
-                  <div className="rounded-lg news-card w-fit">
+                  <div className="rounded-lg bg-[#eafae7] w-fit">
                     <img
                       className="rounded-t-lg w-100"
                       style={{ height: '280px' }}
@@ -75,7 +74,7 @@ const LatestNews = () => {
           </div>
           <div className="p-4 flex flex-col justify-center">
             {news.slice(0, 3).map((n) => (
-              <div className="flex news-card items-center rounded-lg shadow-news mb-4 px-5 py-3">
+              <div className="flex news-card items-center rounded-lg shadow-lg mb-4 px-5 py-3">
                 <img className="w-3/6 h-fit" src={n.img} alt="" />
                 <p className="ml-5">{n.description.slice(0, 100)}</p>
               </div>
