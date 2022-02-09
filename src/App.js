@@ -1,5 +1,3 @@
-import Footer from '../src/pages/shared/Home/Footer/Footer.jsx';
-
 function App() {
   return (
     <>
@@ -15,7 +13,6 @@ function App() {
         <button className="btn bg-info">info</button>
         <button className="btn bg-warning">warning</button>
       </div>
-      <Footer></Footer>
     </>
   );
 }
