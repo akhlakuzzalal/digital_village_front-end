@@ -37,7 +37,7 @@ const Header = () => {
           {/* left logo */}
           <div className="flex grow md:grow-0 items-center justify-start order-1">
             <img
-              className="w-24 cursor-pointer"
+              className="w-16 cursor-pointer"
               src={logo}
               alt="logo"
             />
