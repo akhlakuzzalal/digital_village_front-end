@@ -1,16 +1,31 @@
 import { Popover, Transition } from '@headlessui/react';
 import React, { Fragment, useState } from 'react';
 import { MdClose, MdEditNotifications, MdMenuOpen } from 'react-icons/md';
-import logo from "./../../../../assets/logo.png"
+import logo from './../../../../assets/logo.png';
 
 const Header = () => {
   const [changeHeader, setChangeHeader] = useState(false);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [headerBgWhite, setHeaderBgWhite] = useState(false);
   //header change function
   const onChangeHeader = () => {
-    if (window.scrollY >= 50) {
+    let scrollTop =
+      window.pageYOff || window.document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop) {
+      if (scrollTop === 0) {
+        setHeaderBgWhite(false);
+      }
       setChangeHeader(true);
+      setLastScrollTop(scrollTop);
+    } else if (scrollTop < lastScrollTop) {
+      if (scrollTop === 0) {
+        setHeaderBgWhite(false);
+      }
+      setChangeHeader(false);
     } else {
       setChangeHeader(false);
+      setLastScrollTop(scrollTop);
+      setHeaderBgWhite(true);
     }
   };
   // Navbar dynamice
@@ -27,20 +42,17 @@ const Header = () => {
   return (
     <>
       <header
-        className={
-          changeHeader
-            ? 'bg-white fixed z-50 top-0 left-0 w-full shadow-md transition duration-500'
-            : 'bg-transparent fixed z-50 top-0 left-0 w-full transition duration-500'
-        }
+        className={`
+          ${
+            changeHeader
+              ? '-mt-32 fixed z-50 top-0 left-0 w-full shadow-md'
+              : 'mt-0 fixed z-50 top-0 left-0 w-full'
+          } ${headerBgWhite ? 'bg-white' : 'bg-transparent'}`}
       >
         <nav className="flex items-center justify-between max-w-screen-xl mx-auto px-6 py-3">
           {/* left logo */}
           <div className="flex grow md:grow-0 items-center justify-start order-1">
-            <img
-              className="w-24 cursor-pointer"
-              src={logo}
-              alt="logo"
-            />
+            <img className="w-16 cursor-pointer" src={logo} alt="logo" />
           </div>
 
           {/* center */}

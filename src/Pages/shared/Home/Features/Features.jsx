@@ -5,7 +5,8 @@ import homeIcon from '../../../../assets/homeIcon.png';
 const Features = () => {
   const [active, setActive] = useState(0);
 
-  let scaleUpClasses = 'transform scale-125 transition-all duration-700';
+  let scaleUpClasses =
+    'transform scale-100 md:scale-125 transition-all duration-700';
   let scaleDownClasses = 'transform scale-100 transition-all duration-700';
 
   setTimeout(() => {
@@ -17,12 +18,12 @@ const Features = () => {
   }, 1500);
 
   return (
-    <div className="flex justify-evenly gap-6 flex-wrap text-center">
+    <div className="flex justify-evenly md:justify-end gap-6 flex-wrap text-center">
       {/* feature 1 */}
       <div
         className={`${
           active === 0 ? scaleUpClasses : active === 1 ? scaleDownClasses : ''
-        } shadow-2xl w-52`}
+        } shadow-2xl w-40`}
       >
         <div className="p-4 bg-slate-200 space-y-3 rounded-lg">
           <div>
@@ -34,7 +35,7 @@ const Features = () => {
           </div>
           <p>Quality Education</p>
           <div className="w-fit ml-auto">
-            <IoIosArrowDroprightCircle size={50} className="text-primary" />
+            <IoIosArrowDroprightCircle size={35} className="text-primary" />
           </div>
         </div>
       </div>
@@ -43,7 +44,7 @@ const Features = () => {
       <div
         className={`${
           active === 1 ? scaleUpClasses : active === 2 ? scaleDownClasses : ''
-        } shadow-2xl w-52`}
+        } shadow-2xl w-40`}
       >
         <div className="p-4 bg-slate-200 space-y-3 rounded-lg">
           <div>
@@ -55,7 +56,7 @@ const Features = () => {
           </div>
           <p>Free Treatment</p>
           <div className="w-fit ml-auto">
-            <IoIosArrowDroprightCircle size={50} className="text-primary" />
+            <IoIosArrowDroprightCircle size={35} className="text-primary" />
           </div>
         </div>
       </div>
@@ -64,7 +65,7 @@ const Features = () => {
       <div
         className={`${
           active === 2 ? scaleUpClasses : active === 3 ? scaleDownClasses : ''
-        } shadow-2xl w-52`}
+        } shadow-2xl w-40`}
       >
         <div className="p-4 bg-slate-200 space-y-3 rounded-lg">
           <div>
@@ -76,7 +77,7 @@ const Features = () => {
           </div>
           <p>Development</p>
           <div className="w-fit ml-auto">
-            <IoIosArrowDroprightCircle size={50} className="text-primary" />
+            <IoIosArrowDroprightCircle size={35} className="text-primary" />
           </div>
         </div>
       </div>
@@ -85,7 +86,7 @@ const Features = () => {
       <div
         className={`${
           active === 3 ? scaleUpClasses : active === 4 ? scaleDownClasses : ''
-        } shadow-2xl w-52`}
+        } shadow-2xl w-40`}
       >
         <div className="p-4 bg-slate-200 space-y-3 rounded-lg">
           <div>
@@ -97,7 +98,7 @@ const Features = () => {
           </div>
           <p>Information</p>
           <div className="w-fit ml-auto">
-            <IoIosArrowDroprightCircle size={50} className="text-primary" />
+            <IoIosArrowDroprightCircle size={35} className="text-primary" />
           </div>
         </div>
       </div>
