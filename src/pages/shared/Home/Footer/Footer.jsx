@@ -1,6 +1,9 @@
 import React from 'react';
-import { FaFacebook } from 'react-icons/fa';
+import { FaFacebook, FaTwitterSquare } from 'react-icons/fa';
+import { GrInstagram } from 'react-icons/gr';
+import AppleStore from '../../../../assets/appstore.png';
 import logo from '../../../../assets/logo.png';
+import playStore from '../../../../assets/playstore.png';
 const Footer = () => {
   return (
     <>
@@ -108,16 +111,30 @@ const Footer = () => {
           </div>
         </div>
         <hr />
-        <div className="flex">
-          <div></div>
-          <div>
+        <div className="lg:flex lg:mx-28 pt-10">
+          <div className="flex">
+            <img className="lg:pr-3" src={playStore} alt="" />
+            <img src={AppleStore} alt="" />
+          </div>
+          <div className="ml-auto">
             <h1 className="text-sm flex items-center">
               {' '}
               &copy All Right Reserved
             </h1>
           </div>
-          <div className="ml-auto">
-            <FaFacebook className="h-6 w-6 " aria-hidden="true" />
+          <div className="ml-auto flex">
+            <FaFacebook
+              className="h-8 w-8 hover:scale-110 hover:text-primary"
+              aria-hidden="true"
+            />
+            <GrInstagram
+              className="h-8 w-8 hover:scale-110 hover:text-primary mx-3"
+              aria-hidden="true"
+            />
+            <FaTwitterSquare
+              className="h-8 w-8 hover:scale-110 hover:text-primary mx-3"
+              aria-hidden="true"
+            />
           </div>
         </div>
       </div>

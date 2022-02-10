@@ -1,7 +1,7 @@
 import { Popover, Transition } from '@headlessui/react';
 import React, { Fragment, useState } from 'react';
 import { MdClose, MdEditNotifications, MdMenuOpen } from 'react-icons/md';
-import logo from "./../../../../assets/logo.png"
+import logo from './../../../../assets/logo.png';
 
 const Header = () => {
   const [changeHeader, setChangeHeader] = useState(false);
@@ -36,11 +36,7 @@ const Header = () => {
         <nav className="flex items-center justify-between max-w-screen-xl mx-auto px-6 py-3">
           {/* left logo */}
           <div className="flex grow md:grow-0 items-center justify-start order-1">
-            <img
-              className="w-24 cursor-pointer"
-              src={logo}
-              alt="logo"
-            />
+            <img className="w-24 cursor-pointer" src={logo} alt="logo" />
           </div>
 
           {/* center */}
