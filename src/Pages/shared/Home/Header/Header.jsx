@@ -52,11 +52,7 @@ const Header = () => {
         <nav className="flex items-center justify-between max-w-screen-xl mx-auto px-6 py-3">
           {/* left logo */}
           <div className="flex grow md:grow-0 items-center justify-start order-1">
-<<<<<<< HEAD
             <img className="w-16 cursor-pointer" src={logo} alt="logo" />
-=======
-            <img className="w-24 cursor-pointer" src={logo} alt="logo" />
->>>>>>> 214dfb707238c7df643c29262df09fa7af1634ef
           </div>
 
           {/* center */}
