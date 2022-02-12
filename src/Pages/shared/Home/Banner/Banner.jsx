@@ -5,7 +5,7 @@ import Features from '../Features/Features';
 const Banner = () => {
   return (
     // calculate using calc then give it the height like: calc(100vh - 'heading height')
-    <div className="min-h-screen space-y-6">
+    <div className="min-h-screen md:h-[calc(100vh-5rem)] pt-28 md:pt-0">
       {/* part 1 */}
       <div className="space-y-6 md:space-y-0 flex flex-wrap">
         {/* banner description */}
@@ -23,10 +23,7 @@ const Banner = () => {
           <img src={banner} alt="village" className="w-full" />
         </div>
       </div>
-      <div>
-        {/* something here */}
-        {/* <div></div> */}
-        {/* features */}
+      <div className="mr-0 md:mr-20 mt-0 md:-mt-16">
         <Features />
       </div>
     </div>
