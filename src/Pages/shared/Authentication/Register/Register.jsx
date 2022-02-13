@@ -56,7 +56,7 @@ const Register = () => {
               />
 
               <input
-                className="bg-primary px-20 py-3 rounded-lg lg:ml-10"
+                className="bg-primary px-20 py-3 rounded-lg lg:ml-10ggit "
                 type="submit"
                 value="Signup with Email"
               />
