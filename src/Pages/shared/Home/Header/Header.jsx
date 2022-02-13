@@ -1,8 +1,8 @@
 import { Popover, Transition } from '@headlessui/react';
 import React, { Fragment, useState } from 'react';
 import { MdClose, MdEditNotifications, MdMenuOpen } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import logo from './../../../../assets/logo.png';
-
 const Header = () => {
   const [changeHeader, setChangeHeader] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
@@ -137,9 +137,11 @@ const Header = () => {
           <>
             <div className="flex items-center justify-end space-x-6">
               {/* <button className="poppins">Sign In</button> */}
-              <button className=" bg-primary px-6 py-3 text-white poppins rounded-full ring-red-300 focus:outline-none focus:ring-4 transform transition duration-700 hover:scale-105">
-                Sign Up
-              </button>
+              <Link to="/signup">
+                <button className=" bg-primary px-6 py-3 text-white poppins rounded-full ring-red-300 focus:outline-none focus:ring-4 transform transition duration-700 hover:scale-105">
+                  Sign Up
+                </button>
+              </Link>
             </div>
           </>
         </div>
