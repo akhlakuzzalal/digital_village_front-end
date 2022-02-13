@@ -1,11 +1,21 @@
 import React from 'react';
-import banner from '../../../../assets/banner.png';
+import Lottie from 'react-lottie';
+import animationData from '../../../../lotties/village.json';
 import Features from '../Features/Features';
 
 const Banner = () => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+    controls: true,
+  };
   return (
     // calculate using calc then give it the height like: calc(100vh - 'heading height')
-    <div className="min-h-screen md:h-[calc(100vh-5rem)] pt-28 md:pt-0">
+    <div className="min-h-screen md:h-[calc(100vh-5rem)] md:pt-0">
       {/* part 1 */}
       <div className="space-y-6 md:space-y-0 flex flex-wrap">
         {/* banner description */}
@@ -20,12 +30,14 @@ const Banner = () => {
         </div>
         {/* banner svg */}
         <div className="w-full md:w-1/2">
-          <img src={banner} alt="village" className="w-full" />
+          {/* <img src={banner} alt="village" className="w-full" /> */}
+          <Lottie options={defaultOptions} height={480} className="w-1/2" />
+          <Features />
         </div>
       </div>
-      <div className="mr-0 md:mr-20 mt-0 md:-mt-16">
+      {/* <div className="mr-0 md:mr-20 mt-0 md:-mt-16">
         <Features />
-      </div>
+      </div> */}
     </div>
   );
 };

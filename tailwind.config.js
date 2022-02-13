@@ -13,7 +13,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      serif: ['Lato', 'sans-serif'],
+      serif: ['Sora', 'sans-serif'],
     },
   },
   plugins: [],

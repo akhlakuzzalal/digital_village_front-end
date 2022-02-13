@@ -5,9 +5,9 @@ import homeIcon from '../../../../assets/homeIcon.png';
 const Features = () => {
   const [active, setActive] = useState(0);
 
-  let scaleUpClasses =
+  const scaleUpClasses =
     'transform scale-100 md:scale-125 transition-all duration-700';
-  let scaleDownClasses = 'transform scale-100 transition-all duration-700';
+  const scaleDownClasses = 'transform scale-100 transition-all duration-700';
 
   setTimeout(() => {
     if (active === 4) {
