@@ -1,8 +1,12 @@
 import React from 'react';
 import Lottie from 'react-lottie';
+import useMediaQuery from '../../../../hooks/useMediaQuery';
 import animationData from '../../../../lotties/village.json';
 
 const Banner = () => {
+  const isTablet = useMediaQuery('(min-width: 656px)');
+  const isDesktop = useMediaQuery('(min-width: 900px)');
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -11,11 +15,15 @@ const Banner = () => {
       preserveAspectRatio: 'xMidYMid slice',
     },
   };
+
   return (
-    <div className="mt-[88px]" style={{ height: 'calc(100vh)' }}>
-      <div className="space-y-6 md:space-y-0 flex flex-wrap">
+    <div
+      className="mt-[88px] mb-36 md:mb-32"
+      style={{ height: 'calc(100vh - 88px)' }}
+    >
+      <div className="flex flex-wrap md:space-y-0">
         {/* banner description */}
-        <div className="w-full md:w-1/2 place-self-center space-y-3 md:space-y-6 text-center md:text-left md:pl-24">
+        <div className="w-full md:w-1/2 place-self-center space-y-3 md:space-y-6 text-center md:text-left md:pl-24 pt-12 mb-3">
           <h1 className="text-[#0e1318]">Digital Village</h1>
           <p className="text-[#3f5a46] w-2/3 mx-auto md:mx-0 md:w-[300px] capitalize">
             Transforming an analog village into a digital one
@@ -25,11 +33,11 @@ const Banner = () => {
           </button>
         </div>
         {/* banner svg */}
-        <div className="w-full md:w-1/2" style={{ pointerEvents: 'none' }}>
+        <div className="w-full md:w-1/2 px-3 pointer-events-none">
           <Lottie
             options={defaultOptions}
             isClickToPauseDisabled={true}
-            height={650}
+            height={isDesktop ? 500 : isTablet ? 400 : 300}
           />
         </div>
       </div>

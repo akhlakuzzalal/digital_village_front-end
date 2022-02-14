@@ -14,7 +14,7 @@ const LatestNews = () => {
   }, []);
   console.log(news);
   return (
-    <div className="container my-20">
+    <div className="container my-20 hidden">
       <div className="md:mx-20 md:my-4">
         <h1 className="text-center heading_lg font-semibold">Latest News</h1>
         <div className="md:grid md:grid-cols-3 sm:grid-cols-1 gap-4 px-5 pt-10">
