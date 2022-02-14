@@ -3,13 +3,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#2f9e11',
-        secondary: '#54b139',
-        success: '#40975f',
-        warning: '#f55767',
-        info: '#2563ff',
-        error: '#ff2238',
-        black: '#de1318',
+        primary: '#925add',
+        secondary: '#C200FB',
+        success: '#66C7F4',
+        danger: '#F5B841',
+        warning: '#FF331F',
+        info: '#66C7F4',
       },
     },
     fontFamily: {

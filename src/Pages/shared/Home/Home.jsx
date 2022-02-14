@@ -1,12 +1,18 @@
 import React from 'react';
-import Profile from '../../User/Profile';
-import Header from '../Home/Header/Header';
+import LatestNews from '../Home/LatestNews/LatestNews';
+import Banner from './Banner/Banner';
+import Features from './Features/Features';
+import Reviews from './Reviews/Reviews';
+import Service from './Service/Service';
 
 const Home = () => {
   return (
     <div>
-      <Header />
-      <Profile></Profile>
+      <Banner />
+      <Features />
+      <Service />
+      <LatestNews />
+      <Reviews />
     </div>
   );
 };
