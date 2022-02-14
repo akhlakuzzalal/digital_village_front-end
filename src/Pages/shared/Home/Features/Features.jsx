@@ -18,14 +18,14 @@ const Features = () => {
   }, 1500);
 
   return (
-    <div className="flex justify-evenly md:justify-end gap-6 flex-wrap text-center">
+    <div className="flex justify-evenly gap-6 flex-wrap text-center">
       {/* feature 1 */}
       <div
         className={`${
           active === 0 ? scaleUpClasses : active === 1 ? scaleDownClasses : ''
         } shadow-2xl w-40`}
       >
-        <div className="p-4 bg-slate-200 space-y-3 rounded-lg">
+        <div className="p-4 space-y-3 rounded-lg">
           <div>
             <img
               src={homeIcon}
@@ -46,7 +46,7 @@ const Features = () => {
           active === 1 ? scaleUpClasses : active === 2 ? scaleDownClasses : ''
         } shadow-2xl w-40`}
       >
-        <div className="p-4 bg-slate-200 space-y-3 rounded-lg">
+        <div className="p-4 space-y-3 rounded-lg">
           <div>
             <img
               src={homeIcon}
