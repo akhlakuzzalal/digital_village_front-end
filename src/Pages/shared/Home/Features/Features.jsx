@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { IoIosArrowDroprightCircle } from 'react-icons/io';
 import homeIcon from '../../../../assets/homeIcon.png';
 
 const Features = () => {
   const [active, setActive] = useState(0);
-  const [number, setNumber] = useState(200);
 
   const scaleUpClasses =
     'transform scale-100 md:scale-125 transition-all duration-700';
@@ -18,12 +17,6 @@ const Features = () => {
     }
   }, 1500);
 
-  useEffect(() => {
-    if (number !== 300) {
-      setTimeout(() => setNumber(number + 1), 10);
-    }
-  }, [number]);
-
   return (
     <div className="flex justify-evenly gap-6 flex-wrap text-center">
       {/* feature 1 */}
@@ -32,7 +25,7 @@ const Features = () => {
           active === 0 ? scaleUpClasses : active === 1 ? scaleDownClasses : ''
         } shadow-2xl w-40`}
       >
-        <div className="p-4 bg-slate-200 space-y-3 rounded-lg">
+        <div className="p-4 space-y-3 rounded-lg">
           <div>
             <img
               src={homeIcon}
@@ -45,7 +38,6 @@ const Features = () => {
             <IoIosArrowDroprightCircle size={35} className="text-primary" />
           </div>
         </div>
-        <p>{number}</p>
       </div>
 
       {/* feature 2 */}
@@ -54,7 +46,7 @@ const Features = () => {
           active === 1 ? scaleUpClasses : active === 2 ? scaleDownClasses : ''
         } shadow-2xl w-40`}
       >
-        <div className="p-4 bg-slate-200 space-y-3 rounded-lg">
+        <div className="p-4 space-y-3 rounded-lg">
           <div>
             <img
               src={homeIcon}

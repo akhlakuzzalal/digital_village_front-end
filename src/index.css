@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-[#e2e8f5] overflow-x-hidden scroll-smooth font-serif;
+    @apply bg-[#fefbff] overflow-x-hidden scroll-smooth font-serif;
   }
 
   p {

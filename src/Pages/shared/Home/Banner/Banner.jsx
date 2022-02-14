@@ -25,10 +25,7 @@ const Banner = () => {
           </button>
         </div>
         {/* banner svg */}
-        <div
-          className="w-full md:w-1/2 -z-50"
-          style={{ pointerEvents: 'none' }}
-        >
+        <div className="w-full md:w-1/2" style={{ pointerEvents: 'none' }}>
           <Lottie
             options={defaultOptions}
             isClickToPauseDisabled={true}

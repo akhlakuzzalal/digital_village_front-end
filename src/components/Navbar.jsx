@@ -1,6 +1,8 @@
 import { Popover, Transition } from '@headlessui/react';
 import React, { Fragment, useState } from 'react';
 import { MdClose, MdEditNotifications, MdMenuOpen } from 'react-icons/md';
+import { NavLink } from 'react-router-dom';
+import { NavHashLink } from 'react-router-hash-link';
 import logo from '../assets/logo.png';
 
 const Navbar = ({ navigation }) => {
@@ -43,14 +45,15 @@ const Navbar = ({ navigation }) => {
           } ${headerBgWhite ? 'bg-white' : 'bg-transparent'}`}
     >
       <nav className="flex items-center justify-between max-w-screen-xl mx-auto px-6 py-3">
-        {/* left logo */}
+        {/* logo */}
         <div className="flex grow md:grow-0 items-center justify-start order-1">
           <img className="w-16 cursor-pointer" src={logo} alt="logo" />
         </div>
 
-        {/* center */}
+        {/* Nav links */}
         <div className="flex items-center justify-center order-4 md:order-2">
           <Popover>
+            {/* mobile menu icon when links hidden */}
             <div className="-mr-2 flex items-center justify-end md:hidden">
               <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                 <span className="sr-only">Open main menu</span>
@@ -74,42 +77,68 @@ const Navbar = ({ navigation }) => {
                 <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                   <div className="px-5 pt-4 flex items-center justify-between">
                     <div className="-mr-2">
-                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500">
+                      {/* mobile menu icon when links shown */}
+                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                         <span className="sr-only">Close main menu</span>
                         <MdClose className="h-6 w-6" aria-hidden="true" />
                       </Popover.Button>
                     </div>
                   </div>
+
+                  {/* nav links */}
                   <div className="px-2 pt-2 pb-3 space-y-1">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50"
-                      >
-                        {item.name}
-                      </a>
-                    ))}
+                    {navigation.map((item) =>
+                      item.name.includes('#') ? (
+                        <NavLink
+                          key={item.name}
+                          to={item.href}
+                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600"
+                        >
+                          {item.name}
+                        </NavLink>
+                      ) : (
+                        <NavHashLink
+                          smooth
+                          key={item.name}
+                          to={item.href}
+                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600"
+                        >
+                          {item.name}
+                        </NavHashLink>
+                      )
+                    )}
                   </div>
                 </div>
               </Popover.Panel>
             </Transition>
-            {/* lg show */}
+
+            {/* on large device this links will be shown */}
             <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="font-medium text-gray-500 hover:text-green-600"
-                >
-                  {item.name}
-                </a>
-              ))}
+              {navigation.map((item) =>
+                item.name.includes('#') ? (
+                  <NavLink
+                    key={item.name}
+                    to={item.href}
+                    className="font-medium text-gray-500 hover:text-green-600"
+                  >
+                    {item.name}
+                  </NavLink>
+                ) : (
+                  <NavHashLink
+                    smooth
+                    key={item.name}
+                    to={item.href}
+                    className="font-medium text-gray-500 hover:text-green-600"
+                  >
+                    {item.name}
+                  </NavHashLink>
+                )
+              )}
             </div>
           </Popover>
         </div>
 
-        {/* right */}
+        {/* Notification and SignIn SignOut button */}
         <div className="flex order-3 mr-6">
           <div className="flex items-center justify-center space-x-3 mx-3">
             <div className="relative flex cursor-pointer">
