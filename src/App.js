@@ -7,6 +7,7 @@ import Contact from './Pages/shared/Contact/Contact.jsx';
 import Footer from './Pages/shared/Home/Footer/Footer.jsx';
 import Header from './Pages/shared/Home/Header/Header.jsx';
 import Home from './Pages/shared/Home/Home';
+import VillageMarket from './Pages/VillageMarket/VillageMarket';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/villegemarket" element={<VillageMarket />} />
         </Routes>
         <Footer />
       </BrowserRouter>
