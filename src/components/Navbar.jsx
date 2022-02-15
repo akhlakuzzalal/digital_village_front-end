@@ -1,7 +1,7 @@
 import { Popover, Transition } from '@headlessui/react';
 import React, { Fragment, useState } from 'react';
 import { MdClose, MdEditNotifications, MdMenuOpen } from 'react-icons/md';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 import logo from '../assets/logo.png';
 
@@ -9,6 +9,10 @@ const Navbar = ({ navigation }) => {
   const [changeHeader, setChangeHeader] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [headerBgWhite, setHeaderBgWhite] = useState(false);
+
+  const navigate = useNavigate();
+
+  const user = true; // will come from firebase
 
   //header change function
   const onChangeHeader = () => {
@@ -30,6 +34,10 @@ const Navbar = ({ navigation }) => {
       setLastScrollTop(scrollTop);
       setHeaderBgWhite(true);
     }
+  };
+
+  const handleLogout = () => {
+    navigate('/');
   };
 
   //change header by scrolling
@@ -92,7 +100,7 @@ const Navbar = ({ navigation }) => {
                         <NavLink
                           key={item.name}
                           to={item.href}
-                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600"
+                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary"
                         >
                           {item.name}
                         </NavLink>
@@ -101,7 +109,7 @@ const Navbar = ({ navigation }) => {
                           smooth
                           key={item.name}
                           to={item.href}
-                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600"
+                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary"
                         >
                           {item.name}
                         </NavHashLink>
@@ -119,7 +127,7 @@ const Navbar = ({ navigation }) => {
                   <NavLink
                     key={item.name}
                     to={item.href}
-                    className="font-medium text-gray-500 hover:text-green-600"
+                    className="font-medium text-gray-500 hover:text-primary"
                   >
                     {item.name}
                   </NavLink>
@@ -128,7 +136,7 @@ const Navbar = ({ navigation }) => {
                     smooth
                     key={item.name}
                     to={item.href}
-                    className="font-medium text-gray-500 hover:text-green-600"
+                    className="font-medium text-gray-500 hover:text-primary"
                   >
                     {item.name}
                   </NavHashLink>
@@ -152,12 +160,21 @@ const Navbar = ({ navigation }) => {
             </div>
           </div>
           <div className="flex items-center justify-end space-x-6">
-            {/* <button className="poppins">Sign In</button> */}
-            <Link to={'/signup'}>
-              <button className=" bg-primary px-6 py-3 text-white poppins rounded-full ring-red-300 focus:outline-none focus:ring-4 transform transition duration-700 hover:scale-105">
-                Sign Up
+            {user ? (
+              <button
+                className="btn bg-success py-3 hover:bg-opacity-80 transition-all duration-300"
+                onClick={() => navigate('/login')}
+              >
+                Sign In
               </button>
-            </Link>
+            ) : (
+              <button
+                className="btn bg-danger py-3 hover:bg-opacity-80 transition-all duration-300"
+                onClick={handleLogout}
+              >
+                logout
+              </button>
+            )}
           </div>
         </div>
       </nav>
