@@ -32,6 +32,7 @@ const Review = () => {
             <AiFillStar />
           </li>
         </ul>
+
         <p className="Neutral-500 md:heading_sm px-0 md:px-8">
           Lorem ipsum dolor sit amet consectetur.
         </p>
