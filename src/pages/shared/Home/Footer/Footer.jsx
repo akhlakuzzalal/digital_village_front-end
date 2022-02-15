@@ -6,73 +6,56 @@ import logo from '../../../../assets/logo.png';
 import playStore from '../../../../assets/playstore.png';
 const Footer = () => {
   return (
-    <>
+    <footer>
       <div
         style={{
-          color: '#000',
           position: 'relative',
           top: '130px',
         }}
-        className=" w-3/4  text-center py-20 bg-gray-100 text-gray-100 mx-auto"
+        className="w-5/6 md:w-3/4 text-center py-20 bg-info bg-opacity-20 text-black mx-auto"
       >
-        <div className=" text-xl font-bold lg:flex lg:px-20 space-y-6">
-          <div className="">
-            SubsCribe to Digital Village
-            <p className="text-sm px-8 font-normal">
-              <i>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus
-                repellendus corporis officiis atque nemo accusantium
-                reprehenderit eligendi minima fuga. Sint.
-              </i>
+        <div className="space-y-6 px-3">
+          {/* subscribe text */}
+          <div className="space-y-6">
+            <h3 className="text-secondary">SubsCribe to Digital Village</h3>
+            <p className="text-sm w-2/3 mx-auto hidden md:block">
+              Need update about Everything of our village. Don't worry we Will
+              reach out to you. Just Subsribe to our weekly Newsletter.
             </p>
           </div>
-          <input
-            placeholder="Your Email"
-            style={{
-              color: 'black',
-              width: '100px',
-              paddingBlock: '20px',
-              paddingInline: '150px',
-            }}
-            type="email"
-          />
-          <button
-            style={{ borderRadius: '0px 10px 0px 10px', color: 'white' }}
-            className="bg-primary py-3 px-10 pr-5"
-          >
-            Subscribe
-          </button>
+          <div className="flex flex-wrap md:flex-nowrap items-center justify-center space-y-3 md:space-y-0">
+            <input
+              placeholder="Your Email"
+              type="email"
+              style={{ borderRadius: '0 0 0 25%' }}
+              className="text-black py-3 px-10 border border-primary outline-none focus:border focus:border-secondary w-full md:w-[300px]"
+            />
+
+            {/* subscribe button */}
+            <button
+              style={{ borderRadius: '0 25% 0 0', color: 'white' }}
+              className="bg-primary py-3 px-10 pr-5"
+            >
+              Subscribe
+            </button>
+          </div>
         </div>
       </div>
 
-      <div
-        style={{
-          backgroundColor: '#b6fcb9',
-          color: '#000',
-          paddingTop: '200px',
-        }}
-        className="p-10  text-gray-200 py-20"
-      >
-        <div className="max-w-7xl mx-auto ">
+      <div className="py-20 px-6 bg-secondary bg-opacity-30 pt-48">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
-            <div style={{ width: '400px' }} className="mb-5 ">
+            <div className="mb-5 ">
               <div className="text-lg mb-3 font-bold">
-                {' '}
                 <img
                   style={{ height: '60px', width: '60px' }}
                   src={logo}
                   alt=""
                 />
-                <h2 className="mt-5"> Digital Village</h2>
+                <h3 className="mt-5">Digital Village</h3>
               </div>
-              <p>
-                <i>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Voluptas dolores laudantium, culpa numquam, recusandae
-                  officiis possimus hic praesentium rerum distinctio voluptates
-                  totam eligendi. Eos delectus quaerat aliquid, tempore enim
-                  molestias.
-                </i>
+              <p className="w-5/6">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               </p>
             </div>
 
@@ -119,7 +102,7 @@ const Footer = () => {
           <div className="ml-auto">
             <h1 className="text-sm flex items-center">
               {' '}
-              &copy All Right Reserved
+              &copy; All Right Reserved
             </h1>
           </div>
           <div className="ml-auto flex">
@@ -138,7 +121,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </>
+    </footer>
   );
 };
 

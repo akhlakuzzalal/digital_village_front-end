@@ -7,14 +7,14 @@ import client1 from '../../../../Images/review.jpg';
 const Review = () => {
   return (
     <div className="w-3/4 static ">
-      <div className="w-16 md:w-28  relative top-9 -right-6  md:top-44 md:right-11 ">
+      <div className="w-16 md:w-28  relative top-9 -right-10  md:top-44 md:right-11 ">
         <img
-          className="w-full rounded-full border-4 border-lime-500"
+          className="w-full rounded-full border-4 border-white"
           src={client1}
           alt=""
         />
       </div>
-      <div className="bg-white border-2 rounded-lg text-center py-9  md:py-16 shadow-lg shadow-lime-500 border-lime-500">
+      <div className="bg-white  border-2 rounded-lg text-center py-9  md:py-16 px-0 md:px-8 border-secondary">
         <ul className="flex justify-center text-yellow-400 heading_sm md:heading_md">
           <li>
             <AiFillStar />
@@ -36,7 +36,7 @@ const Review = () => {
         <p className="Neutral-500 md:heading_sm px-0 md:px-8">
           Lorem ipsum dolor sit amet consectetur.
         </p>
-        <p className="text-lime-500">- CEO ABC</p>
+        <p className="text-white">- CEO ABC</p>
       </div>
     </div>
   );
