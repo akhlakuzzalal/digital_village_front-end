@@ -26,7 +26,7 @@ const useFirebase = () => {
 
   const googleProvider = new GoogleAuthProvider();
 
-  const processSignInWithGoogle = (navigate) => {
+  const processSignInWithGoogle = (navigate, redirect_uri) => {
     setIsLoading(true); // user trying to log with google
 
     return signInWithPopup(auth, googleProvider)
@@ -38,6 +38,8 @@ const useFirebase = () => {
           email: user.email,
           emailVerified: user.emailVerified,
         });
+        navigate(redirect_uri);
+        setIsLoading(false);
       })
       .catch((error) => setAuthError(error.message));
   };
