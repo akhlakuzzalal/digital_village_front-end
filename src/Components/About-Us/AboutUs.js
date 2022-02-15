@@ -2,12 +2,12 @@ import React from 'react';
 
 const AboutUs = () => {
     return (
-        <div class='bg-slate-200'>
+        <div class='bg-slate-200 pb-10'>
             <div>
                 <img src="https://www.digital-village.in/static/dist/images/banners/inner/about-digital-village.png" alt="" />
             </div>
-            <div class="grid grid-cols-3 md:grid-cols-3 sm:grid-cols-1">
-                <div class='container  col-span-2 '>
+            <div class="grid grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3">
+                <div class='container  col-span-2 lg:col-span-2 md:col-span-2 sm:col-span-3'>
                     <h1 class='text-3xl font-bold bg-indigo-500 text-white py-2 mt-5 pl-2 ml-3'>ABOUT</h1>
                     <p class='text-justify px-8 py-2'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem corrupti perferendis quam voluptas adipisci, odit ea vero tempore maiores laborum.</p>
                     <p class='text-justify px-8 py-2'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem corrupti perferendis quam voluptas adipisci, odit ea vero tempore maiores laborum.</p>
@@ -32,7 +32,7 @@ const AboutUs = () => {
                    </div>
                   </div>
               </div>
-              <div class="col-span-1 md:col-span-1 lg:col-span-1 sm:col-span-3">
+              <div class="col-span-1 md:col-span-1  sm:col-span-3">
                   <ul>
                       <li class="text-3xl font-bold bg-amber-600 text-white py-2 mt-5 pl-2 ml-3">Important Links</li>
                       <li class="text-1xl active py-2 my-1 font-bold bg-indigo-500 text-white pl-2 ml-3 ">About</li>
