@@ -2,6 +2,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { AuthProvider } from './context/AuthProvider';
 import Education from './Pages/Education/Education';
+import EventDetails from './Pages/Events/EventDetails/EventDetails';
+import Events from './Pages/Events/Events';
 import About from './Pages/shared/About/About';
 import Login from './Pages/shared/Authentication/Login/Login';
 import Register from './Pages/shared/Authentication/Register/Register';
@@ -25,6 +27,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/e-market" element={<VillageMarket />} />
           <Route path="/education" element={<Education />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/event-Details" element={<EventDetails />} />
         </Routes>
         <Footer />
       </BrowserRouter>
