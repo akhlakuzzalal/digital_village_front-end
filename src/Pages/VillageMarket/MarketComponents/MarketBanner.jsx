@@ -12,7 +12,7 @@ const MarketBanner = () => {
           />
         </div>
         <div className="flex flex-col justify-center items-center">
-          <h3 className="animate-bounce">Welcome to Villege market</h3>
+          <h3 className="animate-bounce">Welcome to Village market</h3>
           <p>You can buy the available product from here</p>
         </div>
         <div className="w-full flex justify-center">

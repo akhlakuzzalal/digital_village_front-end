@@ -23,7 +23,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/villegemarket" element={<VillageMarket />} />
+          <Route path="/e-market" element={<VillageMarket />} />
           <Route path="/education" element={<Education />} />
         </Routes>
         <Footer />
