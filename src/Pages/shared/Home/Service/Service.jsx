@@ -79,10 +79,10 @@ const Service = () => {
   return (
     <section
       id="service"
-      className="space-y-6 md:space-y-0 flex flex-wrap py-8"
+      className="space-y-6 md:space-y-0 flex flex-wrap py-8 mt-16"
     >
-      <div className="w-full md:w-1/2 place-self-center space-y-3 md:space-y-6 text-center md:text-left md:pl-24">
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 place-items-center">
+      <div className="w-full lg:w-1/2 space-y-3 md:space-y-6 text-center md:text-left">
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
           {services.map((service) => (
             <ServiceBoard
               key={service.name}

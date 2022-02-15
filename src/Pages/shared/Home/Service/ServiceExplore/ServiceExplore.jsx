@@ -5,7 +5,7 @@ const ServiceExplore = ({ service: { controlData, image, detail } }) => {
   return (
     <div
       id={controlData}
-      className="w-full md:w-1/2 place-self-center space-y-3 md:space-y-6 text-center md:text-center md:pl-24"
+      className="w-full lg:w-1/2 place-self-center space-y-3 md:space-y-6 text-center md:text-center md:pl-24"
     >
       <div className="flex items-center justify-center">
         <img src={image} alt={controlData} className="w-full md:w-1/2 " />

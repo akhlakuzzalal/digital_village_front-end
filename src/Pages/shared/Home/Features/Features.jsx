@@ -25,7 +25,7 @@ const Features = () => {
       <div
         className={`${
           active === 0 ? scaleUpClasses : active === 1 ? scaleDownClasses : ''
-        } shadow-2xl w-36`}
+        } shadow-2xl w-32 sm:w-36`}
       >
         <div className="p-4 space-y-3 rounded-lg bg-white">
           <div>
@@ -43,7 +43,7 @@ const Features = () => {
       <div
         className={`${
           active === 1 ? scaleUpClasses : active === 2 ? scaleDownClasses : ''
-        } shadow-2xl w-36`}
+        } shadow-2xl w-32 sm:w-36`}
       >
         <div className="p-4 space-y-3 rounded-lg bg-white">
           <div>
@@ -61,7 +61,7 @@ const Features = () => {
       <div
         className={`${
           active === 2 ? scaleUpClasses : active === 3 ? scaleDownClasses : ''
-        } shadow-2xl w-36`}
+        } shadow-2xl w-32 sm:w-36`}
       >
         <div className="p-4 space-y-3 rounded-lg bg-white">
           <div>
@@ -79,7 +79,7 @@ const Features = () => {
       <div
         className={`${
           active === 3 ? scaleUpClasses : active === 4 ? scaleDownClasses : ''
-        } shadow-2xl w-36`}
+        } shadow-2xl w-32 sm:w-36`}
       >
         <div className="p-4 space-y-3 rounded-lg bg-white">
           <div>
