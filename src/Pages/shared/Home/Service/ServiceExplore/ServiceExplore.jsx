@@ -1,7 +1,10 @@
 import React from 'react';
 import { SiAzuredataexplorer } from 'react-icons/si';
+import { useNavigate } from 'react-router-dom';
 
 const ServiceExplore = ({ service: { controlData, image, detail } }) => {
+  const navigate = useNavigate();
+
   return (
     <div
       id={controlData}
@@ -12,7 +15,10 @@ const ServiceExplore = ({ service: { controlData, image, detail } }) => {
       </div>
       <p className="text-ellipsis">{detail}</p>
       <div className="flex items-center justify-center">
-        <button className="btn bg-secondary flex items-center space-x-3">
+        <button
+          className="btn bg-secondary flex items-center space-x-3"
+          onClick={() => navigate(`/${controlData}`)}
+        >
           <SiAzuredataexplorer /> <span>Explore</span>
         </button>
       </div>

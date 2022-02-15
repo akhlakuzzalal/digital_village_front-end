@@ -1,5 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie';
+import { NavHashLink } from 'react-router-hash-link';
 import useMediaQuery from '../../../../hooks/useMediaQuery';
 import animationData from '../../../../lotties/village.json';
 
@@ -25,12 +26,14 @@ const Banner = () => {
         {/* banner description */}
         <div className="w-full md:w-1/2 place-self-center space-y-3 md:space-y-6 text-center md:text-left md:pl-24 pt-12 mb-3">
           <h1 className="text-[#0e1318]">Digital Village</h1>
-          <p className="text-[#3f5a46] w-2/3 mx-auto md:mx-0 md:w-[300px] capitalize">
+          <p className="text-[#3f5a46] w-2/3 mx-auto md:mx-0 md:w-[300px] capitalize pb-3">
             Transforming an analog village into a digital one
           </p>
-          <button className="btn bg-gradient-to-r from-primary via-secondary to-secondary hover:from-primary hover:via-secondary hover:to-primary shadow-xl">
-            Explore
-          </button>
+          <NavHashLink smooth to="/#service">
+            <button className="btn bg-gradient-to-r from-primary via-secondary to-secondary hover:from-primary hover:via-secondary hover:to-primary shadow-xl">
+              Services
+            </button>
+          </NavHashLink>
         </div>
         {/* banner svg */}
         <div className="w-full md:w-1/2 px-3 pointer-events-none">

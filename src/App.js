@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { AuthProvider } from './context/AuthProvider';
+import Education from './Pages/Education/Education';
 import About from './Pages/shared/About/About';
 import Login from './Pages/shared/Authentication/Login/Login';
 import Register from './Pages/shared/Authentication/Register/Register';
@@ -21,6 +22,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/education" element={<Education />} />
         </Routes>
         <Footer />
       </BrowserRouter>

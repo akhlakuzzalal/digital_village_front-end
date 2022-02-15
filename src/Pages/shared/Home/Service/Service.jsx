@@ -9,8 +9,8 @@ import {
 import { MdLocalHospital } from 'react-icons/md';
 import donate from './../../../../assets/donate.png';
 import event from './../../../../assets/event.png';
-import healthcare from './../../../../assets/healthcare.png';
-import learn from './../../../../assets/learn.png';
+import medical from './../../../../assets/healthcare.png';
+import education from './../../../../assets/learn.png';
 import people from './../../../../assets/learn2.png';
 import ServiceBoard from './ServiceBoard/ServiceBoard';
 import ServiceExplore from './ServiceExplore/ServiceExplore';
@@ -19,29 +19,29 @@ const services = [
   {
     icon: <FcGraduationCap className="text-center" size={70} />,
     name: 'Digital Learning',
-    image: learn,
+    image: education,
     detail:
       'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
     desc: 'Digital Village Service!',
-    controlData: 'learn',
+    controlData: 'education',
   },
   {
     icon: <MdLocalHospital className="text-center" size={70} />,
-    name: 'Healthcare',
-    image: healthcare,
+    name: 'Medical',
+    image: medical,
     detail:
       'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
     desc: 'Digital Village Service!',
     controlData: 'healthcare',
   },
   {
-    icon: <FcHome className="text-center" size={70} />,
-    name: 'Village people',
-    image: people,
+    icon: <FcCalendar className="text-center" size={70} />,
+    name: 'Events',
+    image: event,
     detail:
       'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
     desc: 'Digital Village Service!',
-    controlData: 'people',
+    controlData: 'events',
   },
   {
     icon: <FcDonate className="text-center" size={70} />,
@@ -49,8 +49,17 @@ const services = [
     image: donate,
     detail:
       'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
-    desc: 'Digital Village Service!',
+    desc: 'Development proposal',
     controlData: 'donation',
+  },
+  {
+    icon: <FcHome className="text-center" size={70} />,
+    name: 'Development',
+    image: people,
+    detail:
+      'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
+    desc: 'Propose your thoughts here',
+    controlData: 'development',
   },
   {
     icon: <FcShop className="text-center" size={70} />,
@@ -62,19 +71,10 @@ const services = [
     desc: 'Digital Village Service!',
     controlData: 'e-market',
   },
-  {
-    icon: <FcCalendar className="text-center" size={70} />,
-    name: 'Events',
-    image: event,
-    detail:
-      'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
-    desc: 'Digital Village Service!',
-    controlData: 'events',
-  },
 ];
 
 const Service = () => {
-  const [control, setControl] = useState('learn');
+  const [control, setControl] = useState('education');
 
   return (
     <section

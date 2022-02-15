@@ -2,8 +2,8 @@ import React from 'react';
 import { ImCalendar } from 'react-icons/im';
 const NewsCard = ({ n }) => {
   return (
-    <div className="rounded-lg w-fit shadow-xl">
-      <div className="h-[280px] overflow-hidden cursor-pointer">
+    <div className="rounded-2xl w-fit shadow-xl max-w-[400px]">
+      <div className="h-[280px] overflow-hidden cursor-pointer rounded-t-2xl">
         <div
           className="w-full h-full bg-cover bg-no-repeat hover:scale-125 transition-all duration-300"
           style={{ backgroundImage: `url('${n.img}')` }}

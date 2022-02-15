@@ -5,6 +5,7 @@ import 'swiper/css';
 import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import NewsCard from './NewsCard/NewsCard';
+import NewsSideCard from './NewsSideCard/NewsSideCard';
 
 const News = () => {
   const [news, setNews] = useState([]);
@@ -15,33 +16,28 @@ const News = () => {
   }, []);
 
   return (
-    <div className="container my-20">
-      <div className="md:mx-20 md:my-4">
-        <h1 className="text-center heading_lg font-semibold">Latest News</h1>
-        <div className="md:grid md:grid-cols-3 sm:grid-cols-1 gap-4 px-5 pt-10">
-          <div className="md:col-span-2 sm:col-span-1 md:px-20">
+    <div className="container my-20 mx-auto px-4">
+      <div className="flex md:my-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 pt-10">
+          <div className="lg:col-span-2 ">
             <Swiper
-              slidesPerView={2}
+              // slidesPerView={2}
               slidesPerGroup={1}
               autoplay={{
                 delay: 2500,
               }}
               breakpoints={{
-                '@0.00': {
+                640: {
                   slidesPerView: 1,
-                  spaceBetween: 0,
+                  spaceBetween: 10,
                 },
-                '@0.75': {
+                768: {
                   slidesPerView: 2,
-                  spaceBetween: 20,
+                  spaceBetween: 10,
                 },
-                '@1.00': {
+                1024: {
                   slidesPerView: 2,
-                  spaceBetween: 20,
-                },
-                '@1.50': {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
+                  spaceBetween: 10,
                 },
               }}
               loop={true}
@@ -58,17 +54,13 @@ const News = () => {
           </div>
 
           {/* news sidebar */}
-          <div className="p-4 flex flex-col justify-center">
+          <div className="hidden  lg:flex flex-col justify-center">
             {news.slice(0, 3).map((n) => (
-              <div
-                key={n.id}
-                className="flex news-card items-center bg-[#eafae7] rounded-lg shadow-lg mb-4 px-5 py-3"
-              >
-                <img className="w-3/6 h-fit" src={n.img} alt="" />
-                <p className="ml-5">{n.description.slice(0, 100)}</p>
-              </div>
+              <NewsSideCard key={n.id} n={n} />
             ))}
-            <button>See all</button>
+            <button className="text-primary text-lg hover:text-black transition-all duration-500 w-fit mx-auto">
+              Read More
+            </button>
           </div>
         </div>
       </div>
