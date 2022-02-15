@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-[#e2e8f5] overflow-x-hidden scroll-smooth;
+    @apply bg-[#e2e8f5] overflow-x-hidden scroll-smooth font-serif;
   }
 
   p {
