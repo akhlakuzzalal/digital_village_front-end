@@ -6,14 +6,8 @@ const NewsCard = ({ n }) => {
       <div className="h-[280px] overflow-hidden cursor-pointer">
         <div
           className="w-full h-full bg-cover bg-no-repeat hover:scale-125 transition-all duration-300"
-          style={{ backgroundImage: 'url(' + n.img + ')' }}
-        >
-          {/* <img
-          className="rounded-t-lg h-full w-full hover:scale-125 transition-all duration-200 overflow-hidden"
-          src={n.img}
-          alt={n.title}
-        /> */}
-        </div>
+          style={{ backgroundImage: `url('${n.img}')` }}
+        ></div>
       </div>
       <div className="space-y-4 p-4">
         <p className="text-gray-600 flex items-center space-x-2">

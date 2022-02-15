@@ -18,7 +18,7 @@ const Banner = () => {
 
   return (
     <div
-      className="mt-[88px] mb-36 md:mb-32"
+      className="mt-[88px] mb-36 md:mb-24"
       style={{ height: 'calc(100vh - 88px)' }}
     >
       <div className="flex flex-wrap md:space-y-0">
