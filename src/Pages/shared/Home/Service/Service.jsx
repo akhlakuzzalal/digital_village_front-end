@@ -251,7 +251,7 @@ const Service = () => {
           </p>
           <div className="flex items-center justify-center">
             <a
-              href="/"
+              href="/events"
               className="hover:bg-green-400 group flex items-center rounded-md bg-green-500 text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm"
             >
               <svg

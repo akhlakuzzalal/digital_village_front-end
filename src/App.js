@@ -1,12 +1,14 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import About from './Pages/shared/About/About.jsx';
-import Login from './Pages/shared/Authentication/Login/Login.jsx';
-import Register from './Pages/shared/Authentication/Register/Register.jsx';
-import Contact from './Pages/shared/Contact/Contact.jsx';
-import Footer from './Pages/shared/Home/Footer/Footer.jsx';
-import Header from './Pages/shared/Home/Header/Header.jsx';
-import Home from './Pages/shared/Home/Home';
+import EventDetails from './pages/Events/EventDetails/EventDetails';
+import Events from './pages/Events/Events';
+import About from './pages/shared/About/About.jsx';
+import Login from './pages/shared/Authentication/Login/Login.jsx';
+import Register from './pages/shared/Authentication/Register/Register.jsx';
+import Contact from './pages/shared/Contact/Contact.jsx';
+import Footer from './pages/shared/Home/Footer/Footer.jsx';
+import Header from './pages/shared/Home/Header/Header.jsx';
+import Home from './pages/shared/Home/Home';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/event-Details" element={<EventDetails />} />
         </Routes>
         <Footer />
       </BrowserRouter>
