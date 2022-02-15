@@ -4,17 +4,18 @@ import { Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import NewsCard from './NewsCard/NewsCard';
 
-const LatestNews = () => {
+const News = () => {
   const [news, setNews] = useState([]);
   useEffect(() => {
     fetch('./letestNewsFakeData.json')
       .then((res) => res.json())
       .then((data) => setNews(data));
   }, []);
-  console.log(news);
+
   return (
-    <div className="container my-20 hidden">
+    <div className="container my-20">
       <div className="md:mx-20 md:my-4">
         <h1 className="text-center heading_lg font-semibold">Latest News</h1>
         <div className="md:grid md:grid-cols-3 sm:grid-cols-1 gap-4 px-5 pt-10">
@@ -50,28 +51,13 @@ const LatestNews = () => {
             >
               {news.map((n) => (
                 <SwiperSlide key={n.id}>
-                  <div className="rounded-lg bg-[#eafae7] w-fit">
-                    <img
-                      className="rounded-t-lg w-100"
-                      style={{ height: '280px' }}
-                      src={n.img}
-                      alt="village-news"
-                    />
-                    <div className="p-4">
-                      <h3 className="text-center heading_sm font-medium py-4">
-                        {n.title}
-                      </h3>
-                      <p>{n.description.slice(0, 200)}</p>
-                      <div className="flex justify-between pt-3 font-medium">
-                        <p>07/02/2021</p>
-                        <p>By Digital village</p>
-                      </div>
-                    </div>
-                  </div>
+                  <NewsCard n={n} />
                 </SwiperSlide>
               ))}
             </Swiper>
           </div>
+
+          {/* news sidebar */}
           <div className="p-4 flex flex-col justify-center">
             {news.slice(0, 3).map((n) => (
               <div
@@ -90,4 +76,4 @@ const LatestNews = () => {
   );
 };
 
-export default LatestNews;
+export default News;

@@ -14,7 +14,7 @@ const ServiceBoard = ({
       onClick={() => setControl(controlData)}
       className={`${
         control === controlData && 'outline outline-primary'
-      } flex justify-center items-center rounded-md cursor-pointer p-4 shadow-2xl mx-3 min-w-[250px] space-x-3`}
+      } flex justify-center items-center rounded-md cursor-pointer p-4 shadow-lg mx-3 min-w-[250px] space-x-3`}
     >
       <div className="shrink-0">{icon}</div>
       <div className="space-y-2">
@@ -30,7 +30,7 @@ const ServiceBoard = ({
         onClick={() => setControl(controlData)}
         className={`${
           control === controlData && 'outline outline-primary'
-        } flex justify-center items-center rounded-md cursor-pointer p-4 shadow-2xl mx-3 min-w-[250px] space-x-3`}
+        } flex justify-center items-center rounded-md cursor-pointer p-4 shadow-lg mx-3 min-w-[250px] space-x-3`}
       >
         <div className="shrink-0">{icon}</div>
         <div className="space-y-2">
