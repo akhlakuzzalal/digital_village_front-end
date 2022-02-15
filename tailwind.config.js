@@ -5,9 +5,9 @@ module.exports = {
       colors: {
         primary: '#925add',
         secondary: '#C200FB',
-        success: '#66C7F4',
-        danger: '#F5B841',
-        warning: '#FF331F',
+        success: '#10b981',
+        danger: '#FF331F',
+        warning: '#F5B841',
         info: '#66C7F4',
       },
     },
