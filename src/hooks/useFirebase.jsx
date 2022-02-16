@@ -70,7 +70,7 @@ const useFirebase = () => {
         })
           .then(() => {})
           .catch((error) => setAuthError(error.message));
-        navigate('/emailverify');
+        // navigate('/emailverify'); // navigate to the email verify page or homepage and give an alert to verify email
       })
       .catch((error) => {
         setAuthError(error.message);

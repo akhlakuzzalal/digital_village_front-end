@@ -2,7 +2,7 @@ import React from 'react';
 //import icon
 import { AiFillStar } from 'react-icons/ai';
 //import image
-import client1 from '../../../../../Images/review.jpg';
+import client from '../../../../../assets/reviews/review.jpg';
 
 const Review = () => {
   return (
@@ -10,7 +10,7 @@ const Review = () => {
       <div className="w-16 md:w-28  relative top-9 -right-10  md:top-44 md:right-11 ">
         <img
           className="w-full rounded-full border-4 border-white"
-          src={client1}
+          src={client}
           alt=""
         />
       </div>

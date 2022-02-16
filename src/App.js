@@ -2,14 +2,16 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import ScrollToTop from './components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
+import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import Donation from './Pages/Donation/Donation';
 import Education from './Pages/Education/Education';
+import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
 import EMarket from './Pages/EMarket/EMarket';
-import Cart from './Pages/EMarket/MarketComponents/Cart';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import Medical from './Pages/Medical/Medical';
+import Notification from './Pages/Notification/Notification';
 import About from './Pages/shared/About/About';
 import Login from './Pages/shared/Authentication/Login/Login';
 import Register from './Pages/shared/Authentication/Register/Register';
@@ -31,14 +33,16 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/notifications" element={<Notification />} />
             <Route path="/education" element={<Education />} />
             <Route path="/medical" element={<Medical />} />
             <Route path="/events" element={<Events />} />
-            <Route path="/event-Details" element={<EventDetails />} />
+            <Route path="/eventDetails/:id" element={<EventDetails />} />
             <Route path="/donation" element={<Donation />} />
             <Route path="/development" element={<Development />} />
             <Route path="/e-market" element={<EMarket />} />
-            <Route path="/cart" element={<Cart />} />
+            <Route path="/news" element={<AllNews />} />
+            <Route path="/dashboard" element={<TeacherDashboard />} />
           </Routes>
         </ScrollToTop>
         <Footer />

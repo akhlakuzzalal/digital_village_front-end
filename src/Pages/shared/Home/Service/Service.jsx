@@ -7,11 +7,11 @@ import {
   FcShop,
 } from 'react-icons/fc';
 import { MdLocalHospital } from 'react-icons/md';
-import donate from './../../../../assets/donate.png';
-import event from './../../../../assets/event.png';
-import medical from './../../../../assets/healthcare.png';
-import education from './../../../../assets/learn.png';
-import development from './../../../../assets/learn2.png';
+import development from './../../../../assets/services/development.png';
+import donate from './../../../../assets/services/donate.png';
+import education from './../../../../assets/services/education.png';
+import event from './../../../../assets/services/event.png';
+import medical from './../../../../assets/services/medical.png';
 import ServiceBoard from './ServiceBoard/ServiceBoard';
 import ServiceExplore from './ServiceExplore/ServiceExplore';
 
