@@ -27,7 +27,7 @@ const Education = () => {
               </Link>
             </div>
           </Link>
-          <link to="#">
+          <Link to="#">
             <div className=" border-2 border-amber-500  bg-yellow-300 hover:bg-slate-50 rounded-lg text-center py-9  md:py-16   mx-2  flex justify-center items-center  ">
               <div className="bg-white border-2 border-amber-500 rounded-full w-1/2 flex justify-center items-center   ">
                 <h1>
@@ -43,7 +43,7 @@ const Education = () => {
                 </button>
               </Link>
             </div>
-          </link>
+          </Link>
         </div>
         <div className="w-1/2 flex justify-center items-center">
           <img src={bg} alt="" />
