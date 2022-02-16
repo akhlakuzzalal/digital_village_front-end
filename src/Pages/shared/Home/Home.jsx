@@ -1,4 +1,5 @@
 import React from 'react';
+import Comments from './../../../components/Comments/Comments';
 import Banner from './Banner/Banner';
 import Features from './Features/Features';
 import News from './News/News';
@@ -13,6 +14,7 @@ const Home = () => {
       <Service />
       <News />
       <Reviews />
+      <Comments />
     </div>
   );
 };
