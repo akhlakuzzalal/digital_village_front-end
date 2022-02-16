@@ -97,7 +97,7 @@ const ContactUs = () => {
                          <textarea placeholder='Please Write Your Message' class=" w-full ml-5 py-4 mb-2 shadow-2xl" {...register("firstName", { required: true, maxLength: 20 })} />
                     </div>
                     
-                    <input class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 btn ml-10 font-bold rounded-lg w-2/6 px-4 py-2 text-white" type="submit"value="Submit Now"/>
+                    <input class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-pink-500 hover:to-yellow-500 btn ml-10 font-bold rounded-lg w-2/6 px-4 py-2 text-white" type="submit"value="Submit Now"/>
                 </form>
             </div>
         </div>
