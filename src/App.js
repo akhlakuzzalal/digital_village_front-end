@@ -6,6 +6,7 @@ import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import Donation from './Pages/Donation/Donation';
 import Education from './Pages/Education/Education';
+import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
 import EMarket from './Pages/EMarket/EMarket';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
@@ -41,6 +42,7 @@ function App() {
             <Route path="/development" element={<Development />} />
             <Route path="/e-market" element={<EMarket />} />
             <Route path="/news" element={<AllNews />} />
+            <Route path="/dashboard" element={<TeacherDashboard />} />
           </Routes>
         </ScrollToTop>
         <Footer />
