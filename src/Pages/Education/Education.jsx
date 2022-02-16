@@ -2,7 +2,7 @@ import React from 'react';
 import { FaChalkboardTeacher } from 'react-icons/fa';
 import { GiTeacher } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
-import bg from '../../Images/bg.png';
+import study from '../../assets/education/study.png';
 
 const Education = () => {
   return (
@@ -46,7 +46,7 @@ const Education = () => {
           </Link>
         </div>
         <div className="w-1/2 flex justify-center items-center">
-          <img src={bg} alt="" />
+          <img src={study} alt="" />
         </div>
       </div>
     </div>

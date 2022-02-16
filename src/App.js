@@ -10,6 +10,7 @@ import EMarket from './Pages/EMarket/EMarket';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import Medical from './Pages/Medical/Medical';
+import Notification from './Pages/Notification/Notification';
 import About from './Pages/shared/About/About';
 import Login from './Pages/shared/Authentication/Login/Login';
 import Register from './Pages/shared/Authentication/Register/Register';
@@ -31,6 +32,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/notifications" element={<Notification />} />
             <Route path="/education" element={<Education />} />
             <Route path="/medical" element={<Medical />} />
             <Route path="/events" element={<Events />} />
