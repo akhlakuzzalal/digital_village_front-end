@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Medical = () => {
+const Development = () => {
   return (
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
-      this is the start of medical page
+      this is development proposal page
     </div>
   );
 };
 
-export default Medical;
+export default Development;
