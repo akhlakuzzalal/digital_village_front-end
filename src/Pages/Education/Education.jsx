@@ -25,7 +25,7 @@ const Education = () => {
           </Link>
           <Link to="#">
             <div className=" border-2 border-secondary  bg-primary hover:bg-slate-50 rounded-lg text-center py-9  md:py-16   mx-2  flex justify-center items-center  my-2">
-              <div className="bg-white border-2 border-secondary rounded-full w-1/2 flex justify-center items-center w-full md:w-1/2  my-2  ">
+              <div className="bg-white border-2 border-secondary rounded-full flex justify-center items-center w-full md:w-1/2  my-2  ">
                 <h1>
                   <FaChalkboardTeacher />
                 </h1>
