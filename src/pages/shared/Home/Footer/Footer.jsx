@@ -1,9 +1,10 @@
 import React from 'react';
 import { FaFacebook, FaTwitterSquare } from 'react-icons/fa';
 import { GrInstagram } from 'react-icons/gr';
-import AppleStore from '../../../../assets/appstore.png';
+import AppleStore from '../../../../assets/footer/appstore.png';
+import playStore from '../../../../assets/footer/playstore.png';
 import logo from '../../../../assets/logo.png';
-import playStore from '../../../../assets/playstore.png';
+
 const Footer = () => {
   return (
     <footer>
