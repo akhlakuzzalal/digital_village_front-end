@@ -21,7 +21,10 @@ const Notification = () => {
   }, []);
 
   return (
-    <div className="flex justify-center bg-indigo-200 p-2 ">
+    <div
+      className="flex justify-center bg-indigo-200 p-2 mt-[88px]"
+      style={{ minHeight: 'calc(100vh - 700px)' }}
+    >
       {/* notification cards */}
       <div className="w-100 md:w-1/2   ">
         {notification.map((note) => (

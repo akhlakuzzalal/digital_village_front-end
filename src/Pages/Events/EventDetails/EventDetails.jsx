@@ -26,7 +26,6 @@ const EventDetails = () => {
                 <p className="text-sm">6:00 pm - 10:00 pm</p>
               </div>
               <div>
-                {' '}
                 <h5>Community Center</h5>
                 <p className="text-sm py-1">1301 Shoal Creek Blvd,</p>
                 <p className="text-sm">Austin, TX 78701</p>
@@ -43,8 +42,8 @@ const EventDetails = () => {
             {/* map */}
             <div className="mt-20">
               <h1 className="text-xl my-5">Event Location</h1>
-              <div class="mapouter">
-                <div class="gmap_canvas">
+              <div className="mapouter">
+                <div className="gmap_canvas">
                   <iframe
                     title="google map"
                     className="lg:w-[100%] lg:h-[500px]"
