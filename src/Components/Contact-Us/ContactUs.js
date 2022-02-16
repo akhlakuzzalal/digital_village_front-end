@@ -1,4 +1,5 @@
 import React from 'react';
+import "./ContactUs.css";
 import { useForm } from "react-hook-form";
 
 
@@ -10,14 +11,15 @@ const ContactUs = () => {
   
     return (
         <div>
-            <div>
-                <h1 class="text-5xl text-center mt-12 font-bold">Contact Us</h1>
-                <h3 class="text-center font-semibold my-3">Home  / Contact Us</h3>
+            <div class="contactUs-bg">
+                
+                <h1 class="text-5xl text-center text-white pt-16 font-bold">Contact Us</h1>
+                <h3 class="text-center font-semibold my-3 text-2xl text-white ">Home  / Contact Us</h3>
             </div>
             <div class="pr-8">
                 <h3 class="text-center text-2xl font-semibold mt-16 mb-3 text-gray-500">FOLLOW OUR INFO</h3>
                 <h1 class="text-5xl text-center font-bold">Contact information</h1>
-                <h4 class="text-center mt-5  mx-10 container text-1xl">Give us a call or drop by anytime, we endeavour to answer all enquiries within 24 hours on business days.We will be happy to answer your questions.enquiries within 24 hours on business days.We will be happy to answer your questions.</h4>
+                <h4 class="text-center mt-5  mx-10 container text-1xl font-semibold">Give us a call or drop by anytime, we endeavour to answer all enquiries within 24 hours on business days.We will be happy to answer your questions.enquiries within 24 hours on business days.We will be happy to answer your questions.</h4>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-10 Container">
                 {/* <div > 10:00am to 6:00pm Sunday Closed </div>
@@ -74,16 +76,28 @@ const ContactUs = () => {
             <div class="mt-10">
                 <h5 class="text-center text-1xl font-bold mt-16 mb-3 text-gray-600">DON’T HASITATE TO CONTACT WITH US</h5>
                 <h1 class="text-5xl text-center font-bold">Now Very Easy</h1>
-                <h4 class="text-center mt-5  px-10 container text-1xl">Our approach to SEO is uniquely built around what we know works…and what we know doesn’t work. With over 200 verified factors in playworks…and what we know doesn’t work. With over 200 verified factors in play.</h4>
+                <h4 class="text-center mt-5  px-10 container text-1xl font-semibold">Our approach to SEO is uniquely built around what we know works…and what we know doesn’t work. With over 200 verified factors in playworks…and what we know doesn’t work. With over 200 verified factors in play.</h4>
             </div>
 
-            <div class=" w-full bg-black">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <input class="w-3/6 " {...register("firstName", { required: true, maxLength: 20 })} />
-                    <input class="w-3/6 " {...register("firstName", { required: true, maxLength: 20 })} />
-                    <input {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
-                    <input type="number" {...register("age", { min: 18, max: 99 })} />
-                    <input type="submit" />
+            <div class="mt-10 pt-10 container mx-auto px-4 pb-5" >
+                <form class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2" onSubmit={handleSubmit(onSubmit)}>
+                   <div class="mr-2 pl-10 ">
+                        <input class="w-full py-4 mb-4 shadow-2xl" {...register("name", { required: true, maxLength: 20 })} placeholder='Your Name' />
+                   </div>
+                   <div class="mr-2 pl-5">
+                       <input class="w-full py-4 mb-4 shadow-2xl" type="number" {...register("number", { required: true, maxLength: 20 })} placeholder='Your Phone Number' />
+                   </div>
+                   <div class="mr-2 pl-10 ">
+                       <input class="w-full  py-4 mb-4 shadow-2xl"  type="email" {...register("email")} placeholder='Enter Your Email Number' />
+                    </div>
+                   <div class="mr-2 pl-5 ">
+                       <input class="w-full py-4 mb-4 shadow-2xl"  type="email" {...register("email")} placeholder='Write your Subject' />
+                    </div>
+                    <div class="ml-5 col-span-2 ">
+                         <textarea placeholder='Please Write Your Message' class=" w-full ml-5 py-4 mb-2 shadow-2xl" {...register("firstName", { required: true, maxLength: 20 })} />
+                    </div>
+                    
+                    <input class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 btn ml-10 font-bold rounded-lg w-2/6 px-4 py-2 text-white" type="submit"value="Submit Now"/>
                 </form>
             </div>
         </div>
