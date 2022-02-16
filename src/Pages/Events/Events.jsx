@@ -1,10 +1,47 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import event from '../../assets/services/event.png';
+import event from '../../assets/events/events.png';
+import EventCard from './EventCard/EventCard';
+
+const events = [
+  {
+    _id: 1,
+    name: 'Local Artists Showcase',
+    type: 'EXIBITIONS',
+    image: event,
+    date: '2:00 pm - 9:00 pm',
+    place: 'Art Gallery',
+  },
+  {
+    _id: 2,
+    name: 'Local Artists Showcase',
+    type: 'EXIBITIONS',
+    image: event,
+    date: '2:00 pm - 9:00 pm',
+    place: 'Art Gallery',
+  },
+  {
+    _id: 3,
+    name: 'Local Artists Showcase',
+    type: 'EXIBITIONS',
+    image: event,
+    date: '2:00 pm - 9:00 pm',
+    place: 'Art Gallery',
+  },
+  {
+    _id: 4,
+    name: 'Local Artists Showcase',
+    type: 'EXIBITIONS',
+    image: event,
+    date: '2:00 pm - 9:00 pm',
+    place: 'Art Gallery',
+  },
+];
 
 const Events = () => {
   return (
     <div className="Event-Main bg-white py-48 lg:px-32 px-10">
+      {/* event page banner */}
       <div>
         <h1>Events</h1>
         <p className="lg:w-1/2 ">
@@ -13,6 +50,8 @@ const Events = () => {
           corporate events.
         </p>
       </div>
+
+      {/* event page navigation */}
       <div className="pt-10">
         <ul className="flex lg:gap-10 gap-5">
           <p>Icon</p>
@@ -27,140 +66,24 @@ const Events = () => {
           </li>
         </ul>
       </div>
+
+      {/* upcoming events */}
       <div className="mt-14">
         <h1 className="mb-20">Upcoming Events</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <Link to="/event-Details">
-            <div className=" border rounded-xl">
-              <img src={img} alt="" />
-              <div className="flex bg-primary p-10 ">
-                <div className="text-white">
-                  <h1>16</h1>
-                  <p>Feb</p>
-                </div>
-                <div className="pl-10 text-white">
-                  <p>EXIBITIONS</p>
-                  <h3 className="text-lg pb-4 border-y-2">
-                    <Link to="">Local Artists Showcase </Link>{' '}
-                  </h3>
-                  <p>2:00 pm - 9:00 pm</p>
-                  <p>
-                    at <span>Art Gallery</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Link>
-          <Link to="/event-Details">
-            <div className=" border rounded-xl">
-              <img src={img} alt="" />
-              <div className="flex bg-primary p-10 ">
-                <div className="text-white">
-                  <h1>16</h1>
-                  <p>Feb</p>
-                </div>
-                <div className="pl-10 text-white">
-                  <p>EXIBITIONS</p>
-                  <h3 className="text-lg pb-4 border-y-2">
-                    <Link to="">Local Artists Showcase </Link>{' '}
-                  </h3>
-                  <p>2:00 pm - 9:00 pm</p>
-                  <p>
-                    at <span>Art Gallery</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Link>
-          <Link to="/event-Details">
-            <div className=" border rounded-xl">
-              <img src={img} alt="" />
-              <div className="flex bg-primary p-10 ">
-                <div className="text-white">
-                  <h1>16</h1>
-                  <p>Feb</p>
-                </div>
-                <div className="pl-10 text-white">
-                  <p>EXIBITIONS</p>
-                  <h3 className="text-lg pb-4 border-y-2">
-                    <Link to="">Local Artists Showcase </Link>{' '}
-                  </h3>
-                  <p>2:00 pm - 9:00 pm</p>
-                  <p>
-                    at <span>Art Gallery</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Link>
+          {events.map((event) => (
+            <EventCard key={event._id} event={event} />
+          ))}
         </div>
       </div>
+
+      {/* archive events */}
       <div className="mt-32">
         <h1 className="mb-20">Archived Events</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <Link to="/event-Details">
-            <div className=" border rounded-xl">
-              <img src={img} alt="" />
-              <div className="flex bg-primary p-10 ">
-                <div className="text-white">
-                  <h1>16</h1>
-                  <p>Feb</p>
-                </div>
-                <div className="pl-10 text-white">
-                  <p>EXIBITIONS</p>
-                  <h3 className="text-lg pb-4 border-y-2">
-                    <Link to="">Local Artists Showcase </Link>{' '}
-                  </h3>
-                  <p>2:00 pm - 9:00 pm</p>
-                  <p>
-                    at <span>Art Gallery</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Link>
-          <Link to="/event-Details">
-            <div className=" border rounded-xl">
-              <img src={event} alt="event" />
-              <div className="flex bg-primary p-10 ">
-                <div className="text-white">
-                  <h1>16</h1>
-                  <p>Feb</p>
-                </div>
-                <div className="pl-10 text-white">
-                  <p>EXIBITIONS</p>
-                  <h3 className="text-lg pb-4 border-y-2">
-                    <Link to="">Local Artists Showcase </Link>{' '}
-                  </h3>
-                  <p>2:00 pm - 9:00 pm</p>
-                  <p>
-                    at <span>Art Gallery</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Link>
-          <Link to="/event-Details">
-            <div className=" border rounded-xl">
-              <img src={img} alt="" />
-              <div className="flex bg-primary p-10 ">
-                <div className="text-white">
-                  <h1>16</h1>
-                  <p>Feb</p>
-                </div>
-                <div className="pl-10 text-white">
-                  <p>EXIBITIONS</p>
-                  <h3 className="text-lg pb-4 border-y-2">
-                    <Link to="">Local Artists Showcase </Link>{' '}
-                  </h3>
-                  <p>2:00 pm - 9:00 pm</p>
-                  <p>
-                    at <span>Art Gallery</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Link>
+          {events.map((event) => (
+            <EventCard key={event._id} event={event} />
+          ))}
         </div>
       </div>
     </div>

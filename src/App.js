@@ -34,7 +34,7 @@ function App() {
             <Route path="/education" element={<Education />} />
             <Route path="/medical" element={<Medical />} />
             <Route path="/events" element={<Events />} />
-            <Route path="/eventDetails" element={<EventDetails />} />
+            <Route path="/eventDetails/:id" element={<EventDetails />} />
             <Route path="/donation" element={<Donation />} />
             <Route path="/development" element={<Development />} />
             <Route path="/e-market" element={<EMarket />} />
