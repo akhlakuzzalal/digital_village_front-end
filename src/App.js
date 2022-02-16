@@ -6,6 +6,8 @@ import Development from './Pages/Development/Development';
 import Donation from './Pages/Donation/Donation';
 import Education from './Pages/Education/Education';
 import EMarket from './Pages/EMarket/EMarket';
+import Cart from './Pages/EMarket/MarketComponents/Cart';
+import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import Medical from './Pages/Medical/Medical';
 import About from './Pages/shared/About/About';
@@ -32,9 +34,11 @@ function App() {
             <Route path="/education" element={<Education />} />
             <Route path="/medical" element={<Medical />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/event-Details" element={<EventDetails />} />
             <Route path="/donation" element={<Donation />} />
             <Route path="/development" element={<Development />} />
             <Route path="/e-market" element={<EMarket />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </ScrollToTop>
         <Footer />

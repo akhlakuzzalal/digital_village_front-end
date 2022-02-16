@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Categorie = () => {
   return (
-    <div className="my-10 px-12">
+    <div className="my-10 px-6 md:px-12">
       <h6 className="inline border-b-2 border-primary">Shop by categories</h6>
       <Swiper
         slidesPerGroup={1}
@@ -13,8 +13,8 @@ const Categorie = () => {
         }}
         breakpoints={{
           '@0.00': {
-            slidesPerView: 3,
-            spaceBetween: 0,
+            slidesPerView: 2,
+            spaceBetween: 10,
           },
           '@0.75': {
             slidesPerView: 2,
