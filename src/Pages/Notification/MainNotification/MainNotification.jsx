@@ -19,7 +19,7 @@ const MainNotification = () => {
       .then((data) => setNotification(data));
   }, []);
   return (
-    <div className="flex justify-center bg-indigo-200 p-2 ">
+    <div className="flex flex-wrap justify-center bg-indigo-200 p-2 ">
       <div className="w-100 md:w-1/2   ">
         {notification.map((note) => (
           <SingleNotification
@@ -29,7 +29,7 @@ const MainNotification = () => {
           ></SingleNotification>
         ))}
       </div>
-      <div className="w-100 md:w-1/2 p-5 p-2">
+      <div className="w-100 md:w-1/2 ">
         {details.length === 0 ? (
           <div className="min-h-screen">
             <img className="w-full" src={note} alt="" />
