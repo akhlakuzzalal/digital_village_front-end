@@ -4,13 +4,12 @@ import ScrollToTop from './components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
-import Donation from './Pages/Donation/Donation';
+// import Donation from './Pages/Donation/Donation';
 import Education from './Pages/Education/Education';
 import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
 import EMarket from './Pages/EMarket/EMarket';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
-import Medical from './Pages/Medical/Medical';
 import Notification from './Pages/Notification/Notification';
 import About from './Pages/shared/About/About';
 import Login from './Pages/shared/Authentication/Login/Login';
@@ -35,10 +34,10 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/notifications" element={<Notification />} />
             <Route path="/education" element={<Education />} />
-            <Route path="/medical" element={<Medical />} />
+            {/* <Route path="/medical" element={<Medical />} /> */}
             <Route path="/events" element={<Events />} />
             <Route path="/eventDetails/:id" element={<EventDetails />} />
-            <Route path="/donation" element={<Donation />} />
+            {/* <Route path="/donation" element={<Donation />} /> */}
             <Route path="/development" element={<Development />} />
             <Route path="/e-market" element={<EMarket />} />
             <Route path="/news" element={<AllNews />} />

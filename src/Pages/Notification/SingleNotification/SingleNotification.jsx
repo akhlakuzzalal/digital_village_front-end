@@ -13,8 +13,16 @@ const SingleNotification = ({
       onClick={() => handleDetails(id)}
     >
       <h3>{title}</h3>
-      <p>Date: {date}</p>
-      <p>{description.slice(0, 50)}...</p>
+      <p>Date: {date} </p>
+      <span>
+        <button
+          onClick={() => {
+            handleDetails(id);
+          }}
+        >
+          see details...
+        </button>
+      </span>
     </div>
   );
 };

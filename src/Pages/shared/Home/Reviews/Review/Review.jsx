@@ -14,7 +14,7 @@ const Review = () => {
           alt=""
         />
       </div>
-      <div className="bg-white  border-2 rounded-lg text-center py-9  md:py-16 px-0 md:px-8 border-secondary">
+      <div className="bg-white  border-2 rounded-lg text-center py-9  md:py-16 px-0 md:px-8 border-secondary bg-slate-50">
         <ul className="flex justify-center text-yellow-400 heading_sm md:heading_md">
           <li>
             <AiFillStar />
