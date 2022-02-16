@@ -11,7 +11,7 @@ import donate from './../../../../assets/donate.png';
 import event from './../../../../assets/event.png';
 import medical from './../../../../assets/healthcare.png';
 import education from './../../../../assets/learn.png';
-import people from './../../../../assets/learn2.png';
+import development from './../../../../assets/learn2.png';
 import ServiceBoard from './ServiceBoard/ServiceBoard';
 import ServiceExplore from './ServiceExplore/ServiceExplore';
 
@@ -32,7 +32,7 @@ const services = [
     detail:
       'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
     desc: 'Digital Village Service!',
-    controlData: 'healthcare',
+    controlData: 'medical',
   },
   {
     icon: <FcCalendar className="text-center" size={70} />,
@@ -55,7 +55,7 @@ const services = [
   {
     icon: <FcHome className="text-center" size={70} />,
     name: 'Development',
-    image: people,
+    image: development,
     detail:
       'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
     desc: 'Propose your thoughts here',
