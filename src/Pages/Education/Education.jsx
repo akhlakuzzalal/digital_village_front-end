@@ -11,7 +11,7 @@ const Education = () => {
       <div className=" flex  flex-wrap justify-center items-center  ">
         <div className="flex flex-wrap justify-center items-center  w-full md:w-1/2 ">
           <Link to="#">
-            <div className=" border-2 bg-secondary hover:bg-slate-50  rounded-lg text-center py-9  md:py-16  border-primary mx-2  flex justify-center items-center   ">
+            <div className=" border-2 bg-secondary hover:bg-slate-50  rounded-lg text-center py-9  md:py-16  border-primary mx-2  flex justify-center items-center  my-2 ">
               <div className="bg-white border-2  border-primary rounded-full w-full md:w-1/2  my-2 flex justify-center items-center ">
                 <h1>
                   <GiTeacher />
@@ -24,8 +24,8 @@ const Education = () => {
             </div>
           </Link>
           <Link to="#">
-            <div className=" border-2 border-secondary  bg-primary hover:bg-slate-50 rounded-lg text-center py-9  md:py-16   mx-2  flex justify-center items-center  ">
-              <div className="bg-white border-2 border-secondary rounded-full w-1/2 flex justify-center items-center   ">
+            <div className=" border-2 border-secondary  bg-primary hover:bg-slate-50 rounded-lg text-center py-9  md:py-16   mx-2  flex justify-center items-center  my-2">
+              <div className="bg-white border-2 border-secondary rounded-full w-1/2 flex justify-center items-center w-full md:w-1/2  my-2  ">
                 <h1>
                   <FaChalkboardTeacher />
                 </h1>
