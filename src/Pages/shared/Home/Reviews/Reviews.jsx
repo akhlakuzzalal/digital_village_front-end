@@ -6,12 +6,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Review from '../Review/Review';
+import Review from './Review/Review';
 
 const Reviews = () => {
   return (
     <>
-      <h1 className="text-center heading_lg font-semibold">Reviews</h1>
       <Swiper
         slidesPerView={2}
         slidesPerGroup={1}
