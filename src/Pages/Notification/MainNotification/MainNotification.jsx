@@ -19,7 +19,7 @@ const MainNotification = () => {
       .then((data) => setNotification(data));
   }, []);
   return (
-    <div className="flex flex-wrap justify-center bg-indigo-200 p-2 ">
+    <div className="flex flex-wrap justify-center bg-gradient-to-r from-purple-200  to-pink-200 p-2 mt-[88px]">
       <div className="w-100 md:w-1/2   ">
         {notification.map((note) => (
           <SingleNotification
@@ -35,7 +35,7 @@ const MainNotification = () => {
             <img className="w-full" src={note} alt="" />
           </div>
         ) : (
-          <div className=" bg-slate-50 rounded-lg">
+          <div className=" bg-slate-50 border-slate-300  rounded-lg">
             <DetailNotification details={details}></DetailNotification>
           </div>
         )}
