@@ -9,6 +9,7 @@ import Contact from './pages/shared/Contact/Contact.jsx';
 import Footer from './pages/shared/Home/Footer/Footer.jsx';
 import Header from './pages/shared/Home/Header/Header.jsx';
 import Home from './pages/shared/Home/Home';
+import NewsDetails from './pages/shared/Home/LatestNews/NewsDetails';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/events" element={<Events />} />
           <Route path="/event-Details" element={<EventDetails />} />
+          <Route path="/news-Details" element={<NewsDetails />} />
         </Routes>
         <Footer />
       </BrowserRouter>

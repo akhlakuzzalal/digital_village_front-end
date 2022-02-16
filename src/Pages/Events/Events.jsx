@@ -9,7 +9,7 @@ const Events = () => {
       <div className="Event-Main bg-white py-48 lg:px-32 px-10">
         <div>
           <h1>Events</h1>
-          <p className="lg:w-1/2 ">
+          <p className="lg:w-1/2 py-3">
             Event management is the application of project management to the
             creation and development of small and/or large-scale personal or
             corporate events.
