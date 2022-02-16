@@ -9,7 +9,7 @@ const Comments = () => {
         <textarea
           rows="4"
           placeholder="Write your message"
-          className="w-1/2 border-2"
+          className="w-full p-2 md:w-1/2 border-2"
         ></textarea>
         <button
           type="submit"
