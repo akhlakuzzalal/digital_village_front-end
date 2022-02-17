@@ -1,49 +1,53 @@
 import React, { useState } from 'react';
-import AddCourse from './Dashboard/partials/dashboardItem/AddCourse';
-import AddPost from './Dashboard/partials/dashboardItem/AddPost';
-import AddVideo from './Dashboard/partials/dashboardItem/AddVideo';
-import BlogsPostdata from './Dashboard/partials/dashboardItem/BlogsPostdata';
-import ExploreBlogs from './Dashboard/partials/dashboardItem/ExploreBlogs';
-import RealTimeValue from './Dashboard/partials/dashboardItem/RealTimeValue';
-import WelcomeBanner from './Dashboard/partials/dashboardItem/WelcomeBanner';
+import { BsNewspaper } from 'react-icons/bs';
+import { MdOutlineVideoSettings } from 'react-icons/md';
+import { RiDashboard2Line } from 'react-icons/ri';
+import { Outlet, useLocation } from 'react-router-dom';
+import Sidebar from '../../../components/Sidebar';
+import Analytics from './Analytics/Analytics';
 import Header from './Dashboard/partials/Header';
-import Sidebar from './Dashboard/partials/Sidebar';
+const links = [
+  {
+    name: 'My Blogs',
+    icon: <BsNewspaper size={30} />,
+    path: '/teacherDashboard/myblogs',
+  },
+  {
+    name: 'My videos',
+    icon: <MdOutlineVideoSettings size={30} />,
+    path: '/teacherDashboard/myvideos',
+  },
+  {
+    name: 'analytics',
+    icon: <RiDashboard2Line size={30} />,
+    path: '/teacherDashboard/analytics',
+  },
+];
 
 const TeacherDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showText, setShowText] = useState(true);
+
+  const location = useLocation();
+  const initial =
+    location.pathname === '/teacherDashboard' ||
+    location.pathname === '/teacherDashboard/';
+
   return (
-    <div style={{ minHeight: 'calc(100vh - 700px)' }}>
-      <div className="flex h-screen overflow-hidden">
-        {/* Sidebar */}
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+    <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
+      {/* Sidebar */}
+      <Sidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+        showText={showText}
+        setShowText={setShowText}
+        links={links}
+      />
 
-        {/* Content area */}
-        <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-          {/*  Site header */}
-          <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
-          <main>
-            <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-              {/* Welcome banner */}
-              <WelcomeBanner />
-              {/* Cards */}
-              <div className="grid grid-cols-12 gap-6">
-                {/* Add a post */}
-                <AddPost />
-                {/* Add a Video */}
-                <AddVideo />
-                {/* Add a  Course */}
-                <AddCourse />
-                {/* Post data */}
-                <BlogsPostdata />
-                {/* (Real Time Value)*/}
-                <RealTimeValue />
-              </div>
-              {/* ExploreBlogs list */}
-              <ExploreBlogs />
-            </div>
-          </main>
-        </div>
+      {/* contents */}
+      <div className="flex-1">
+        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        {initial ? <Analytics /> : <Outlet />}
       </div>
     </div>
   );

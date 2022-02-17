@@ -1,10 +1,24 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { BsGoogle } from 'react-icons/bs';
+import Lottie from 'react-lottie';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import img from '../../../../assets/banner.png';
 import useAuth from '../../../../hooks/useAuth';
+import useMediaQuery from '../../../../hooks/useMediaQuery';
+import animationData from '../../../../lotties/registration.json';
 const Login = () => {
+  const isTablet = useMediaQuery('(min-width: 656px)');
+  const isDesktop = useMediaQuery('(min-width: 900px)');
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
   const {
     register,
     handleSubmit,
@@ -41,11 +55,8 @@ const Login = () => {
   };
 
   return (
-    <div
-      className="lg:flex md:flex"
-      style={{ minHeight: 'calc(100vh - 700px)' }}
-    >
-      <div className="lg:w-1/2 md:w-1/2 sm:w-auto bg-white">
+    <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
+      <div className="flex-1 px-3">
         <div className="pt-48 mx-10 text-center lg:mx-48 space-y-4 mb-3">
           <h3 className="capitalize">Welcome to digital village</h3>
           <p className="space-x-2">
@@ -58,7 +69,7 @@ const Login = () => {
           {/* google sign in button */}
           <button
             onClick={handleGoogleLogin}
-            className="flex bg-primary hover:bg-opacity-80 rounded-lg py-2 px-10 lg:w-full md:w-96 items-center w-full mx-auto text-white"
+            className="btn bg-primary flex items-center text-sm rounded-lg mx-auto hover:bg-opacity-80 transition-all duration-300 w-full"
           >
             <BsGoogle
               className="h-8 w-8 hover:scale-110 hover:text-secondary mx-3"
@@ -71,8 +82,8 @@ const Login = () => {
         </div>
 
         <form
-          className=" lg:mx-48 mx-10 space-y-6"
           onSubmit={handleSubmit(handleLogin)}
+          className="space-y-6 max-w-[500px] mx-auto"
         >
           {/* email */}
           <input
@@ -91,14 +102,18 @@ const Login = () => {
 
           {/* submit button */}
           <input
-            className="bg-primary hover:bg-opacity-80 px-20 py-3 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
+            className="btn bg-primary rounded-lg w-full cursor-pointer hover:bg-opacity-80  transition-all duration-300"
             type="submit"
             value="Login with Email"
           />
         </form>
       </div>
-      <div className="w-1/2 hidden md:block">
-        <img src={img} alt="" />
+      <div className="hidden md:block w-full md:w-1/2 px-3 pt-24 pointer-events-none">
+        <Lottie
+          options={defaultOptions}
+          isClickToPauseDisabled={true}
+          height={isDesktop ? 500 : isTablet ? 400 : 300}
+        />
       </div>
     </div>
   );
