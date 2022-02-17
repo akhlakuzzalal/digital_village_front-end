@@ -8,6 +8,8 @@ import Development from './Pages/Development/Development';
 import Education from './Pages/Education/Education';
 import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
 import EMarket from './Pages/EMarket/EMarket';
+import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
+import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import Notification from './Pages/Notification/Notification';
@@ -42,6 +44,8 @@ function App() {
             <Route path="/e-market" element={<EMarket />} />
             <Route path="/news" element={<AllNews />} />
             <Route path="/dashboard" element={<TeacherDashboard />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </ScrollToTop>
         <Footer />
