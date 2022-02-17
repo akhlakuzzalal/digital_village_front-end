@@ -10,6 +10,9 @@ import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
 import EMarket from './Pages/EMarket/EMarket';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
+import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorsAppointment';
+import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration';
+import MedicalDashboard from './Pages/Medical/MedicalDashboard';
 import Notification from './Pages/Notification/Notification';
 import About from './Pages/shared/About/About';
 import Login from './Pages/shared/Authentication/Login/Login';
@@ -42,6 +45,16 @@ function App() {
             <Route path="/e-market" element={<EMarket />} />
             <Route path="/news" element={<AllNews />} />
             <Route path="/dashboard" element={<TeacherDashboard />} />
+            <Route path="/medical" element={<MedicalDashboard />}>
+              <Route
+                path="/medical/vaccine"
+                element={<VaccineRegistration />}
+              />
+              <Route
+                path="/medical/appointment"
+                element={<DoctorsAppointment />}
+              />
+            </Route>
           </Routes>
         </ScrollToTop>
         <Footer />
