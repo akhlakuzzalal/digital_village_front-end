@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { MdDoubleArrow } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import { Autoplay } from 'swiper';
 // Import Swiper styles
 import 'swiper/css';
@@ -58,13 +60,17 @@ const LatestNews = () => {
                       alt="village-news"
                     />
                     <div className="p-4">
-                      <h3 className="text-center heading_sm font-medium py-4">
+                      <h3 className=" heading_sm font-medium py-4">
                         {n.title}
                       </h3>
                       <p>{n.description.slice(0, 200)}</p>
                       <div className="flex justify-between pt-3 font-medium">
-                        <p>07/02/2021</p>
-                        <p>By Digital village</p>
+                        <Link to="/news-Details">
+                          <button className="text-primary flex">
+                            Read more
+                            <MdDoubleArrow className="mt-1" />
+                          </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
