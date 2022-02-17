@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import logo from './../../../../assets/logo.png';
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, links }) => {
   const location = useLocation();
@@ -88,7 +89,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, links }) => {
           {/* Logo */}
           <div>
             <NavLink to="/" className="block">
-              <img className="w-16 cursor-pointer mx-auto" src="" alt="logo" />
+              <img
+                className="w-16 cursor-pointer mx-auto"
+                src={logo}
+                alt="logo"
+              />
             </NavLink>
           </div>
         </div>
