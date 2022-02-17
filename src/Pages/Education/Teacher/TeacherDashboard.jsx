@@ -12,7 +12,7 @@ import Sidebar from './Dashboard/partials/Sidebar';
 const TeacherDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
-    <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div style={{ minHeight: 'calc(100vh - 700px)' }}>
       <div className="flex h-screen overflow-hidden">
         {/* Sidebar */}
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />

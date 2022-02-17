@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import Navbar from '../../../../components/Navbar';
 // Navbar dynamic
 const navigation = [
@@ -8,10 +9,10 @@ const navigation = [
   { name: 'Contact', href: '/contact' },
 ];
 const Header = () => {
-  return (
-    <div>
-      <Navbar navigation={navigation} />
-    </div>
+  const location = useLocation();
+  console.log(location.pathname);
+  return location.pathname.includes('/teacherDashboard') ? null : (
+    <Navbar navigation={navigation} />
   );
 };
 

@@ -7,14 +7,8 @@ import logo from '../../../../assets/logo.png';
 
 const Footer = () => {
   return (
-    <footer>
-      <div
-        style={{
-          position: 'relative',
-          top: '130px',
-        }}
-        className="w-5/6 md:w-3/4 text-center py-20 bg-info bg-opacity-20 text-black mx-auto"
-      >
+    <footer className="pt-6">
+      <div className="w-5/6 md:w-3/4 text-center py-20 bg-info bg-opacity-20 text-black mx-auto -mb-32">
         <div className="space-y-6 px-3">
           {/* subscribe text */}
           <div className="space-y-6">
