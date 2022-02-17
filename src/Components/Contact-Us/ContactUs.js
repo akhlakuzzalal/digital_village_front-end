@@ -80,24 +80,24 @@ const ContactUs = () => {
             </div>
 
             <div class="mt-10 pt-10 container mx-auto px-4 pb-5" >
-                <form class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2" onSubmit={handleSubmit(onSubmit)}>
+                <form class="flex flex-col justify-center md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2" onSubmit={handleSubmit(onSubmit)}>
                    <div class="mr-2 pl-10 ">
-                        <input class="w-full py-4 mb-4 shadow-2xl" {...register("name", { required: true, maxLength: 20 })} placeholder='Your Name' />
+                        <input class=" p-4 w-full  mb-4 shadow-2xl" {...register("name", { required: true, maxLength: 20 })} placeholder='Your Name' />
                    </div>
-                   <div class="mr-2 pl-5">
-                       <input class="w-full py-4 mb-4 shadow-2xl" type="number" {...register("number", { required: true, maxLength: 20 })} placeholder='Your Phone Number' />
+                   <div class="mr-2 pl-10">
+                       <input class="p-4 w-full  mb-4 shadow-2xl" type="number" {...register("number", { required: true, maxLength: 20 })} placeholder='Your Phone Number' />
                    </div>
                    <div class="mr-2 pl-10 ">
-                       <input class="w-full  py-4 mb-4 shadow-2xl"  type="email" {...register("email")} placeholder='Enter Your Email Number' />
+                       <input class="w-full  p-4 mb-4 shadow-2xl"  type="email" {...register("email")} placeholder='Enter Your Email Number' />
                     </div>
-                   <div class="mr-2 pl-5 ">
-                       <input class="w-full py-4 mb-4 shadow-2xl"  type="email" {...register("email")} placeholder='Write your Subject' />
+                   <div class="mr-2 pl-10 ">
+                       <input class="w-full p-4 mb-4 shadow-2xl"  type="email" {...register("email")} placeholder='Write your Subject' />
                     </div>
-                    <div class="ml-5 col-span-2 ">
-                         <textarea placeholder='Please Write Your Message' class=" w-full ml-5 py-4 mb-2 shadow-2xl" {...register("firstName", { required: true, maxLength: 20 })} />
+                    <div class=" col-span-2 mx-6 ">
+                         <textarea placeholder='Please Write Your Message' class=" w-full ml-5 p-4 mb-2 shadow-2xl" {...register("firstName", { required: true, maxLength: 20 })} />
                     </div>
                     
-                    <input class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-pink-500 hover:to-yellow-500 btn ml-10 font-bold rounded-lg w-2/6 px-4 py-2 text-white" type="submit"value="Submit Now"/>
+                    <input class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-pink-500 hover:to-yellow-500 btn mx-auto col-span-2 font-bold rounded-lg  px-6 md:w-2/6   py-2 text-white" type="submit"value="Submit Now"/>
                 </form>
             </div>
         </div>

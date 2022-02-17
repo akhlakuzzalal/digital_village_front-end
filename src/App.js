@@ -1,5 +1,6 @@
 import './App.css';
 import AboutUs from './Components/About-Us/AboutUs';
+import About from './Components/About/About';
 import Banner from './Components/Banner/Banner';
 import ContactUs from './Components/Contact-Us/ContactUs';
 
@@ -10,6 +11,7 @@ function App() {
       <Banner /> */}
       {/* <AboutUs/> */}
       <ContactUs/>
+      <About/>
     </div>
   );
 }
