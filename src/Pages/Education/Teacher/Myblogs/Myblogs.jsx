@@ -1,7 +1,15 @@
 import React from 'react';
+import AddCard from '../../../../components/AddCard';
+import ExploreBlogs from '../Dashboard/partials/dashboardItem/ExploreBlogs';
 
 const Myblogs = () => {
-  return <div>this is my blogs page</div>;
+  return (
+    <div>
+      {/* Add a post */}
+      <AddCard name="Add New Blog" path="/teacherDashboard/addblogs" />
+      <ExploreBlogs />
+    </div>
+  );
 };
 
 export default Myblogs;

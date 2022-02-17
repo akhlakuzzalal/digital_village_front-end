@@ -54,7 +54,10 @@ const Navbar = ({ navigation }) => {
     >
       <nav className="flex items-center justify-between max-w-screen-xl mx-auto px-6 py-3">
         {/* logo */}
-        <div className="flex grow md:grow-0 items-center justify-start order-1">
+        <div
+          className="flex grow md:grow-0 items-center justify-start order-1"
+          onClick={() => navigate('/')}
+        >
           <img className="w-16 cursor-pointer" src={logo} alt="logo" />
         </div>
 
@@ -149,7 +152,10 @@ const Navbar = ({ navigation }) => {
         {/* Notification and SignIn SignOut button */}
         <div className="flex order-3 mr-6">
           <div className="flex items-center justify-center space-x-3 mx-3">
-            <div className="relative flex cursor-pointer">
+            <div
+              className="relative flex cursor-pointer"
+              onClick={() => navigate('/notifications')}
+            >
               <span className="bg-primary w-6 h-6 rounded-full flex items-center justify-center text-white poppins absolute -right-1 -top-1">
                 2
               </span>

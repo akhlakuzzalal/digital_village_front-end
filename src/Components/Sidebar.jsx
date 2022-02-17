@@ -1,7 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
-const Sidebar = ({ sidebarOpen, setSidebarOpen, links }) => {
+const Sidebar = ({
+  sidebarOpen,
+  setSidebarOpen,
+  links,
+  showText,
+  setShowText,
+}) => {
   const location = useLocation();
   const { pathname } = location;
 
@@ -28,12 +34,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, links }) => {
     <div
       id="sidebar"
       ref={sidebar}
-      className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-28 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-slate-800 text-white p-4 transition-all duration-200 ease-in-out ${
+      className={`absolute top-0 left-0 lg:sticky min-h-screen flex flex-col z-40 lg:translate-x-0 transform h-screen w-64 lg:w-fit-content lg:sidebar-expanded:!w-fit-content 2xl:!w-fit-content shrink-0  bg-slate-800 text-white p-4 transition-all duration-200 ease-in-out ${
         sidebarOpen ? 'translate-x-0' : '-translate-x-64'
       }`}
     >
       {/* Sidebar header */}
-      <div className="flex justify-between mb-10 pr-3 sm:px-2">
+      <div className="flex justify-between mb-10">
         {/* Close button */}
         <button
           ref={trigger}
@@ -63,7 +69,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, links }) => {
         </div>
       </div>
 
-      {/* Links */}
       <div className="space-y-8">
         {/* Pages group */}
         <div>
@@ -79,143 +84,33 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, links }) => {
             </span>
           </h3>
 
-          {/* we can reuse it -------> */}
-          <ul className="mt-3">
+          {/* Links */}
+          <ul className="mt-3 space-y-6 p-3">
             {/* Dashboard */}
             {links.map((link) => (
               <li
                 key={link.name}
-                className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
+                className={`rounded-sm p-2 ${
                   pathname === link.path && 'bg-slate-900'
                 }`}
               >
                 <NavLink
-                  end
                   to={link.path}
                   className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
                     pathname === link.path && 'hover:text-slate-200'
                   }`}
                 >
-                  <div className="flex items-center">
+                  <div className="flex items-center space-x-2">
                     {link.icon}
-                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      {link.name}
-                    </span>
+                    {showText && (
+                      <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                        {link.name}
+                      </span>
+                    )}
                   </div>
                 </NavLink>
               </li>
             ))}
-
-            {/* Blogs Post */}
-            {/* <li
-                className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
-                  pathname.includes('messages') && 'bg-slate-900'
-                }`}
-              >
-                <NavLink
-                  end
-                  to="/"
-                  className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
-                    pathname.includes('messages') && 'hover:text-slate-200'
-                  }`}
-                >
-                  <div className="flex items-center">
-                    <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path
-                        className={`fill-current text-slate-600 ${
-                          pathname.includes('messages') && 'text-indigo-500'
-                        }`}
-                        d="M14.5 7c4.695 0 8.5 3.184 8.5 7.111 0 1.597-.638 3.067-1.7 4.253V23l-4.108-2.148a10 10 0 01-2.692.37c-4.695 0-8.5-3.184-8.5-7.11C6 10.183 9.805 7 14.5 7z"
-                      />
-                      <path
-                        className={`fill-current text-slate-400 ${
-                          pathname.includes('messages') && 'text-indigo-300'
-                        }`}
-                        d="M11 1C5.477 1 1 4.582 1 9c0 1.797.75 3.45 2 4.785V19l4.833-2.416C8.829 16.85 9.892 17 11 17c5.523 0 10-3.582 10-8s-4.477-8-10-8z"
-                      />
-                    </svg>
-                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      Blogs Post
-                    </span>
-                  </div>
-                </NavLink>
-              </li> */}
-
-            {/* add post */}
-            {/* <li
-                className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
-                  pathname.includes('tasks') && 'bg-slate-900'
-                }`}
-              >
-                <NavLink
-                  end
-                  to="/"
-                  className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
-                    pathname.includes('tasks') && 'hover:text-slate-200'
-                  }`}
-                >
-                  <div className="flex items-center">
-                    <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path
-                        className={`fill-current text-slate-600 ${
-                          pathname.includes('tasks') && 'text-indigo-500'
-                        }`}
-                        d="M8 1v2H3v19h18V3h-5V1h7v23H1V1z"
-                      />
-                      <path
-                        className={`fill-current text-slate-600 ${
-                          pathname.includes('tasks') && 'text-indigo-500'
-                        }`}
-                        d="M1 1h22v23H1z"
-                      />
-                      <path
-                        className={`fill-current text-slate-400 ${
-                          pathname.includes('tasks') && 'text-indigo-300'
-                        }`}
-                        d="M15 10.586L16.414 12 11 17.414 7.586 14 9 12.586l2 2zM5 0h14v4H5z"
-                      />
-                    </svg>
-                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      Add a Post
-                    </span>
-                  </div>
-                </NavLink>
-              </li> */}
-
-            {/* Upload Video */}
-            {/* <li
-                className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
-                  pathname.includes('inbox') && 'bg-slate-900'
-                }`}
-              >
-                <NavLink
-                  end
-                  to="/"
-                  className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
-                    pathname.includes('inbox') && 'hover:text-slate-200'
-                  }`}
-                >
-                  <div className="flex items-center">
-                    <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                      <path
-                        className={`fill-current text-slate-600 ${
-                          pathname.includes('inbox') && 'text-indigo-500'
-                        }`}
-                        d="M16 13v4H8v-4H0l3-9h18l3 9h-8Z"
-                      />
-                      <path
-                        className={`fill-current text-slate-400 ${
-                          pathname.includes('inbox') && 'text-indigo-300'
-                        }`}
-                        d="m23.72 12 .229.686A.984.984 0 0 1 24 13v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1v-8c0-.107.017-.213.051-.314L.28 12H8v4h8v-4H23.72ZM13 0v7h3l-4 5-4-5h3V0h2Z"
-                      />
-                    </svg>
-                    <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                      Upload Video
-                    </span>
-                  </div>
-                </NavLink>
-              </li> */}
           </ul>
         </div>
       </div>
