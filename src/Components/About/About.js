@@ -37,6 +37,83 @@ const About = () => {
                 <img src="" alt="" />
 
             </div>
+            <div className='bg-gray-100 py-5 my-10'>
+               
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mt-10 gap-4'>
+                <div  className="flex flex-col  bg-white rounded-lg mx-auto  md:ml-5  md:flex-row mx-auto    md:max-w-xl     hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                        
+                        <img className=" h-20 w-20 md:h-20 md:w-20 pt-5" src="https://freepngimg.com/thumb/clock/58348-alarm-icon-cartoon-timer-clock-free-photo-png-thumb.png" alt=""/>
+                        
+                        <div className="flex flex-col justify-between p-2 leading-normal">
+                        <h1 className='text-2xl md:text-3xl lg:text-3xl hover:text-blue-600 font-bold'>High-Quality Education</h1>
+                        <p className="mb-3 font-semibold text-gray-700 dark:text-gray-400">Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis. Facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Venenatis cras sed felis eget velit volutpat ac tincidunt</p>
+                        <button className='btn bg-blue-600 py-2 px-6 md:w-2/6  font-bold text-white rounded'><p>View More</p></button>
+                    </div>
+                    </div>
+
+
+                    <div  className="flex flex-col  bg-white rounded-lg mx-auto  md:ml-5  md:flex-row mx-auto    md:max-w-xl     hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                        
+                        <img className=" h-20 w-20 md:h-20 md:w-20 pt-5" src="https://freepngimg.com/thumb/clock/58348-alarm-icon-cartoon-timer-clock-free-photo-png-thumb.png" alt=""/>
+                        
+                        <div className="flex flex-col justify-between p-2 leading- hover:text-blue-600">
+                        <h1 className='text-2xl md:text-3xl lg:text-3xl font-bold'>High-Quality Education</h1>
+                        <p className="mb-3 font-semibold text-gray-700 dark:text-gray-400">Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis. Facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Venenatis cras sed felis eget velit volutpat ac tincidunt</p>
+                        <button className='btn bg-blue-600 py-2 px-6 md:w-2/6  font-bold text-white rounded'><p>View More</p></button>
+                    </div>
+                    </div>
+
+
+                    <div  className="flex flex-col  bg-white rounded-lg mx-auto  md:ml-5  md:flex-row mx-auto    md:max-w-xl     hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                        
+                        <img className=" h-20 w-20 md:h-20 md:w-20 pt-5" src="https://freepngimg.com/thumb/clock/58348-alarm-icon-cartoon-timer-clock-free-photo-png-thumb.png" alt=""/>
+                        
+                        <div className="flex flex-col justify-between p-2 hover:text-blue-600 leading-normal">
+                        <h1 className='text-2xl md:text-3xl lg:text-3xl font-bold hover:text-blue-600'>High-Quality Education</h1>
+                        <p className="mb-3 font-semibold text-gray-700 dark:text-gray-400">Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis. Facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Venenatis cras sed felis eget velit volutpat ac tincidunt</p>
+                        <button className='btn bg-blue-600 py-2 px-6 md:w-2/6  font-bold text-white rounded'><p>View More</p></button>
+                    </div>
+                    </div>
+
+
+                    <div  className="flex flex-col  bg-white rounded-lg mx-auto  md:ml-5  md:flex-row mx-auto    md:max-w-xl     hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                        
+                        <img className=" h-20 w-20 md:h-20 md:w-20 pt-5" src="https://freepngimg.com/thumb/clock/58348-alarm-icon-cartoon-timer-clock-free-photo-png-thumb.png" alt=""/>
+                        
+                        <div className="flex flex-col justify-between p-2 hover:text-blue-600 leading-normal">
+                        <h1 className='text-2xl md:text-3xl lg:text-3xl font-bold'>High-Quality Education</h1>
+                        <p className="mb-3 font-semibold text-gray-700 dark:text-gray-400">Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis. Facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Venenatis cras sed felis eget velit volutpat ac tincidunt</p>
+                        <button className='btn bg-blue-600 py-2 px-6 md:w-2/6  font-bold text-white rounded'><p>View More</p></button>
+                    </div>
+                    </div>
+
+                    
+
+                </div>
+            </div>
+
+            <div className=' py-14'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4'>
+                    <div className='col-span-2 mx-auto'>
+                        <img className=' mx-auto' src="https://wallpaperaccess.com/full/136934.jpg" alt="" />
+                    </div>
+
+                    <div className='mx-auto'>
+                        <img className='3/6 ' src="https://media.istockphoto.com/photos/high-angle-view-asian-chinese-womans-hand-on-mobile-app-for-online-picture-id1300476665?b=1&k=20&m=1300476665&s=170667a&w=0&h=6yLWL7XmKiiMRheXK4E1cdcPOqp54y3Au-mxdbuodyQ=" alt="" />
+                    </div>
+                    <div className='mx-auto'>
+                        <img className='3/6 ' src="https://media.istockphoto.com/photos/high-angle-view-asian-chinese-womans-hand-on-mobile-app-for-online-picture-id1300476665?b=1&k=20&m=1300476665&s=170667a&w=0&h=6yLWL7XmKiiMRheXK4E1cdcPOqp54y3Au-mxdbuodyQ=" alt="" />
+                    </div>
+                    <div className='mx-auto'>
+                        <img className='3/6 ' src="https://media.istockphoto.com/photos/high-angle-view-asian-chinese-womans-hand-on-mobile-app-for-online-picture-id1300476665?b=1&k=20&m=1300476665&s=170667a&w=0&h=6yLWL7XmKiiMRheXK4E1cdcPOqp54y3Au-mxdbuodyQ=" alt="" />
+                    </div>
+                    <div className='mx-auto'>
+                        <img className='3/6' src="https://media.istockphoto.com/photos/high-angle-view-asian-chinese-womans-hand-on-mobile-app-for-online-picture-id1300476665?b=1&k=20&m=1300476665&s=170667a&w=0&h=6yLWL7XmKiiMRheXK4E1cdcPOqp54y3Au-mxdbuodyQ=" alt="" />
+                    </div>
+
+                </div>
+
+            </div>
         </div>
     );
 };
