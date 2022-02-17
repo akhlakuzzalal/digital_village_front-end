@@ -10,7 +10,6 @@ const navigation = [
 ];
 const Header = () => {
   const location = useLocation();
-  console.log(location.pathname);
   return location.pathname.includes('/teacherDashboard') ? null : (
     <Navbar navigation={navigation} />
   );
