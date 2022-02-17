@@ -1,4 +1,6 @@
 import React from 'react';
+import CartTotal from './CartTotal';
+import TableBody from './TableBody';
 
 const Cart = () => {
   const cartProduct = [
@@ -7,18 +9,21 @@ const Cart = () => {
       img: 'https://i.ibb.co/fq1j9w3/grocery-shopping-prev-ui.png',
       categorie: 'Anything',
       price: 210,
+      quantity: 1,
     },
     {
       name: 'Product name',
       img: 'https://i.ibb.co/fq1j9w3/grocery-shopping-prev-ui.png',
       categorie: 'Anything',
       price: 210,
+      quantity: 1,
     },
     {
       name: 'Product name',
       img: 'https://i.ibb.co/fq1j9w3/grocery-shopping-prev-ui.png',
       categorie: 'Anything',
       price: 210,
+      quantity: 1,
     },
   ];
   return (
@@ -31,29 +36,30 @@ const Cart = () => {
           <div class="inline-block py-2 min-w-full sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-md sm:rounded-lg">
               <table class="min-w-full">
-                <thead class="bg-gray-300 dark:bg-gray-700">
+                {/* Table head */}
+                <thead class="bg-gray-300">
                   <tr>
                     <th
                       scope="col"
-                      class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                      class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase"
                     >
                       Name
                     </th>
                     <th
                       scope="col"
-                      class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                      class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase"
                     >
                       Image
                     </th>
                     <th
                       scope="col"
-                      class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                      class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase"
                     >
                       Quantity
                     </th>
                     <th
                       scope="col"
-                      class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                      class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase"
                     >
                       Unit price
                     </th>
@@ -63,31 +69,20 @@ const Cart = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* <!-- Product 1 --> */}
+                  {/* Table body */}
                   {cartProduct.map((data) => (
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                      <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        Apple MacBook Pro 17"
-                      </td>
-                      <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                        <img className="h-20 w-20" src={data.img} alt="" />
-                      </td>
-                      <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                        1
-                      </td>
-                      <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                        $2999
-                      </td>
-                      <td class="py-4 px-6 text-sm font-medium text-right text-danger cursor-pointer whitespace-nowrap">
-                        Remove
-                      </td>
-                    </tr>
+                    <TableBody key={data.id} data={data}></TableBody>
                   ))}
-                  {/* <!-- Product 2 --> */}
                 </tbody>
               </table>
             </div>
           </div>
+        </div>
+      </div>
+      {/* Cart totall */}
+      <div className="w-full flex justify-end mt-10">
+        <div className="w-full md:w-3/6">
+          <CartTotal></CartTotal>
         </div>
       </div>
     </div>

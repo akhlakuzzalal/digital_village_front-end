@@ -9,6 +9,8 @@ import Donations from './Pages/Donations/Donations';
 import Education from './Pages/Education/Education';
 import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
 import EMarket from './Pages/EMarket/EMarket';
+import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
+import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
 import AddEvents from './Pages/Events/AddEvents/AddEvents';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
@@ -58,6 +60,8 @@ function App() {
             </Route>
             <Route path="/donation" element={<Donations />} />
             <Route path="/causedetails/:id" element={<CaseSingle />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </ScrollToTop>
         <Footer />
