@@ -17,7 +17,7 @@ const DoctorsAppointment = () => {
               <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </p>
-
+              <small className="my-.5">(From 10am - 5pm)</small>
               <Link
                 to="#"
                 class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-secondary rounded-lg  "
@@ -48,6 +48,7 @@ const DoctorsAppointment = () => {
               <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </p>
+              <small className="my-.5">(From 10am - 5pm)</small>
               <Link
                 to="#"
                 class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-secondary rounded-lg "
@@ -78,6 +79,7 @@ const DoctorsAppointment = () => {
               <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </p>
+              <small className="my-.5">(From 10am - 5pm)</small>
               <Link
                 to="#"
                 class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-secondary  "
