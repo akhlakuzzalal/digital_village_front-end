@@ -6,10 +6,13 @@ import study from '../../assets/education/study.png';
 
 const Education = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-emerald-200  to-yellow-200 py-5 mt-[88px]">
-      <h1 className="text-center ">Digital Learning</h1>
-      <div className="flex justify-center items-center ">
-        <div className="flex justify-center items-center min-h-screen w-1/2 ">
+    <div
+      className="bg-gradient-to-r from-emerald-200  to-yellow-200 mt-[88px]"
+      style={{ minHeight: 'calc(100vh - 700px)' }}
+    >
+      <h1 className="text-center">Digital Learning</h1>
+      <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center w-1/2">
           <Link to="#">
             <div className=" border-2 bg-lime-400 hover:bg-slate-50  rounded-lg text-center py-9  md:py-16  border-lime-500 mx-2  flex justify-center items-center  ">
               <div className="bg-white border-2  border-lime-500 rounded-full w-1/2 flex justify-center items-center ">
@@ -45,7 +48,7 @@ const Education = () => {
             </div>
           </Link>
         </div>
-        <div className="w-1/2 flex justify-center items-center">
+        <div className="flex justify-center items-center w-1/2">
           <img src={study} alt="" />
         </div>
       </div>

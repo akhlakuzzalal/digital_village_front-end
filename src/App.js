@@ -34,6 +34,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/notifications" element={<Notification />} />
+            {/* education related routes */}
             <Route path="/education" element={<Education />} />
             <Route path="/medical" element={<Medical />} />
             <Route path="/events" element={<Events />} />
