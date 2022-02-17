@@ -22,13 +22,7 @@ const ContactUs = () => {
                 <h4 class="text-center mt-5  mx-10 container text-1xl font-semibold">Give us a call or drop by anytime, we endeavour to answer all enquiries within 24 hours on business days.We will be happy to answer your questions.enquiries within 24 hours on business days.We will be happy to answer your questions.</h4>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-10 Container">
-                {/* <div > 10:00am to 6:00pm Sunday Closed </div>
-                <div > 13005 Greenville Avenue California, TX 70240 </div>
-                <div > +1 000999 0099 info@themerange.net </div>
-                <div >
-                     <h3 class="text-3xl font-semi-bold">Our Socials Links</h3>
-                     <p>Print this page to PDF for the complete set of vectors.</p>
-                 </div> */}
+                
                 <div  class="flex flex-col items-center bg-white rounded-lg pl-10  md:flex-row pl-15     container md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     <div class="bg-gray-100 rounded-full">
                     <img class="object-cover rounded-full h-20 w-20" src="https://freepngimg.com/thumb/clock/58348-alarm-icon-cartoon-timer-clock-free-photo-png-thumb.png" alt=""/>
