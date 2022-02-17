@@ -120,7 +120,7 @@ const Service = () => {
           </p>
           <div class="flex items-center justify-center">
             <a
-              href="/"
+              href="/donate"
               class="hover:bg-green-400 group flex items-center rounded-md bg-green-500 text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm"
             >
               <svg
@@ -132,7 +132,7 @@ const Service = () => {
               >
                 <path d="M10 5a1 1 0 0 1 1 1v3h3a1 1 0 1 1 0 2h-3v3a1 1 0 1 1-2 0v-3H6a1 1 0 1 1 0-2h3V6a1 1 0 0 1 1-1Z" />
               </svg>
-              Digital Learning
+              Donations
             </a>
           </div>
         </div>
