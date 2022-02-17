@@ -8,6 +8,7 @@ import Development from './Pages/Development/Development';
 import Education from './Pages/Education/Education';
 import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
 import EMarket from './Pages/EMarket/EMarket';
+import AddEvents from './Pages/Events/AddEvents/AddEvents';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorsAppointment';
@@ -39,6 +40,7 @@ function App() {
             <Route path="/education" element={<Education />} />
             {/* <Route path="/medical" element={<Medical />} /> */}
             <Route path="/events" element={<Events />} />
+            <Route path="/add-events" element={<AddEvents />} />
             <Route path="/eventDetails/:id" element={<EventDetails />} />
             {/* <Route path="/donation" element={<Donation />} /> */}
             <Route path="/development" element={<Development />} />

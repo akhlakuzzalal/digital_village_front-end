@@ -66,7 +66,6 @@ const LatestNews = () => {
                       <p>{n.description.slice(0, 200)}</p>
                       <div className="flex justify-between pt-3 font-medium">
                         <Link to="/news-Details">
-                          {' '}
                           <button className="text-primary flex">
                             Read more
                             <MdDoubleArrow className="mt-1" />
