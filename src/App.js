@@ -4,7 +4,8 @@ import ScrollToTop from './components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
-// import Donation from './Pages/Donation/Donation';
+import CaseSingle from './Pages/Donations/Causes/CaseSingle';
+import Donations from './Pages/Donations/Donations';
 import Education from './Pages/Education/Education';
 import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
 import EMarket from './Pages/EMarket/EMarket';
@@ -38,11 +39,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/notifications" element={<Notification />} />
             <Route path="/education" element={<Education />} />
-            {/* <Route path="/medical" element={<Medical />} /> */}
             <Route path="/events" element={<Events />} />
             <Route path="/add-events" element={<AddEvents />} />
             <Route path="/eventDetails/:id" element={<EventDetails />} />
-            {/* <Route path="/donation" element={<Donation />} /> */}
             <Route path="/development" element={<Development />} />
             <Route path="/e-market" element={<EMarket />} />
             <Route path="/news" element={<AllNews />} />
@@ -57,6 +56,8 @@ function App() {
                 element={<DoctorsAppointment />}
               />
             </Route>
+            <Route path="/donation" element={<Donations />} />
+            <Route path="/causedetails/:id" element={<CaseSingle />} />
           </Routes>
         </ScrollToTop>
         <Footer />
