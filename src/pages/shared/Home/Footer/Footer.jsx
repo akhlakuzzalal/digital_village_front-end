@@ -1,9 +1,10 @@
 import React from 'react';
 import { FaFacebook, FaTwitterSquare } from 'react-icons/fa';
 import { GrInstagram } from 'react-icons/gr';
-import AppleStore from '../../../../assets/appstore.png';
+import AppleStore from '../../../../assets/footer/appstore.png';
+import playStore from '../../../../assets/footer/playstore.png';
 import logo from '../../../../assets/logo.png';
-import playStore from '../../../../assets/playstore.png';
+
 const Footer = () => {
   return (
     <footer>
@@ -94,16 +95,15 @@ const Footer = () => {
           </div>
         </div>
         <hr />
-        <div className="lg:flex lg:mx-28 pt-10">
-          <div className="flex">
-            <img className="lg:pr-3" src={playStore} alt="" />
-            <img src={AppleStore} alt="" />
+        <div className="lg:flex lg:mx-28 pt-10 space-y-6 lg:space-y-0">
+          <div className="flex flex-wrap gap-3">
+            <img src={playStore} alt="playstore" />
+            <img src={AppleStore} alt="applestore" />
           </div>
           <div className="ml-auto">
-            <h1 className="text-sm flex items-center">
-              {' '}
+            <h3 className="text-sm flex items-center">
               &copy; All Right Reserved
-            </h1>
+            </h3>
           </div>
           <div className="ml-auto flex">
             <FaFacebook
