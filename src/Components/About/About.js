@@ -1,5 +1,5 @@
 import React from 'react';
-import './About.css'
+
 
 const About = () => {
     return (
@@ -92,7 +92,7 @@ const About = () => {
                 </div>
             </div>
 
-            <div className=' py-14'>
+            <div className=' py- bg-gray-100'>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4'>
                     <div className='col-span-2 mx-auto'>
                         <img className=' mx-auto' src="https://wallpaperaccess.com/full/136934.jpg" alt="" />
