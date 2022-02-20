@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import ScrollToTop from './components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
-import PrivateRoute from './hooks/PrivateRoute';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import CaseSingle from './Pages/Donations/Causes/CaseSingle';
@@ -36,6 +35,12 @@ import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
 import NotFound from './Pages/shared/NotFound/NotFound';
 import Profile from './Pages/User/Profile';
+import PrivateRoute from './SecureRoutes/PrivateRoute';
+
+const Roles = {
+  User: 1000,
+  Admin: 5000,
+};
 
 function App() {
   return (
@@ -44,6 +49,7 @@ function App() {
         <Header />
         <ScrollToTop>
           <Routes>
+            {/* ALL PUBLIC ROUTES */}
             <Route path="/" element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
@@ -51,7 +57,11 @@ function App() {
             <Route path="login" element={<Login />} />
 
             {/* ALL PRIVATE ROUTES */}
-            <Route element={<PrivateRoute />}>
+            <Route
+              element={
+                <PrivateRoute allowedRoles={[Roles.User, Roles.Admin]} />
+              }
+            >
               {/* notification route */}
               <Route path="notifications" element={<Notification />} />
 

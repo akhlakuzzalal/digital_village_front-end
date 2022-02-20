@@ -12,7 +12,6 @@ import {
 import { useEffect, useState } from 'react';
 import axios from '../api/axios';
 import initializeAuthentication from '../Firebase/Firebase.init';
-import useLocalStorage from '../hooks/useLocalStorage';
 
 // initialize firebase app
 initializeAuthentication();
@@ -21,8 +20,8 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true); // user using the login functionality
   const [authError, setAuthError] = useState('');
-  const [roles, setRoles] = useLocalStorage('roles', []);
-  const [token, setToken] = useLocalStorage('token', '');
+  const [roles, setRoles] = useState('roles', []);
+  const [token, setToken] = useState('token', '');
 
   const auth = getAuth();
 
@@ -64,7 +63,7 @@ const useFirebase = () => {
 
         setUser(newUser);
 
-        // save user to the database
+        // register user to the database
         // saveUser(name, email);
 
         // send name to firebase after creation
@@ -142,8 +141,6 @@ const useFirebase = () => {
         email,
         password,
       });
-      setToken(response?.data?.accessToken);
-      setRoles(response?.data?.roles);
     } catch (error) {
       console.log(error.message);
     }

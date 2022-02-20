@@ -11,9 +11,7 @@ const getLocalValue = (key, initValue) => {
 
 const useLocalStorage = (key, initValue) => {
   const [data, setData] = useState(
-    JSON.parse(() => {
-      return getLocalValue(key, initValue);
-    })
+    JSON.parse(() => getLocalValue(key, initValue))
   );
 
   useEffect(() => {
