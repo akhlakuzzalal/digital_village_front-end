@@ -12,7 +12,7 @@ const TeacherInfo = () => {
   const navigate = useNavigate();
   return (
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
-      <form className=" space-y-6 mt-10 w-1/2 mx-auto" onSubmit="">
+      <form className=" space-y-6 mt-10 w-2/2 md:w-1/2 lg:w-1/2 mx-auto" onSubmit="">
         {/* email */}
         <input
           className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
@@ -44,7 +44,7 @@ const TeacherInfo = () => {
         {/* submit button */}
         <input
           onClick={() => navigate('/teacherDashboard')}
-          className="bg-primary hover:bg-opacity-80 px-20 py-2 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
+          className="bg-primary hover:bg-opacity-80 px-11 md:px-20 lg:px-20 py-2 rounded-lg  sm:mb-20 md:w-full lg:w-full mx-auto mb-20 cursor-pointer text-white"
           type="submit"
           value="Go to dashboard"
         />
