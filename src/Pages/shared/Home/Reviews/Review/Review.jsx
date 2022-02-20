@@ -13,7 +13,7 @@ const Review = () => {
           alt=""
         />
       </div>
-      <div className="bg-white  border-4 rounded-lg text-center py-9  md:py-16 px-0 md:px-8 border-slate-50">
+      <div className="bg-purple-200  border-4 rounded-lg text-center py-9  md:py-16 px-0 md:px-8 border-slate-50">
         <div className="flex justify-center text-yellow-400 heading_sm md:heading_md">
           <Rating rating={rate.rating} />
         </div>
@@ -21,7 +21,7 @@ const Review = () => {
         <p className="Neutral-500 md:heading_sm px-0 md:px-8">
           Lorem ipsum dolor sit amet consectetur.
         </p>
-        <p className="text-white">- CEO ABC</p>
+        <p className="text-primary">- CEO ABC</p>
       </div>
     </div>
   );
