@@ -1,17 +1,40 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#fefbff] overflow-x-hidden scroll-smooth font-serif;
+  }
+
+  p {
+    @apply text-base;
+  }
+
+  /* headings */
+  h1 {
+    @apply text-4xl md:text-6xl font-bold;
+  }
+
+  h3 {
+    @apply text-3xl font-bold;
+  }
+
+  h6 {
+    @apply text-xl font-bold;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-3 md:px-12 py-3 text-white text-base md:text-xl ml-2 rounded-full;
+  }
+  .heading_md {
+    @apply text-3xl;
+  }
+  .heading_sm {
+    @apply text-xl;
+  }
+}

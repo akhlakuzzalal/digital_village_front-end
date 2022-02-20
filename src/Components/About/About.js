@@ -40,7 +40,7 @@ const About = () => {
             <div className='bg-gray-100 py-5 my-10'>
                
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mt-10 gap-4'>
-                <div  className="flex flex-col  bg-white rounded-lg mx-auto  md:ml-5  md:flex-row mx-auto    md:max-w-xl     hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <div  className="flex flex-col  bg-white rounded-lg mx-auto  md:ml-5  md:flex-row md:max-w-xl     hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                         
                         <img className=" h-20 w-20 md:h-20 md:w-20 pt-5" src="https://cdn-icons.flaticon.com/png/128/3213/premium/3213003.png?token=exp=1645161063~hmac=1c249334d03ba80cce190094b31dfa06" alt=""/>
                         
@@ -52,7 +52,7 @@ const About = () => {
                     </div>
 
 
-                    <div  className="flex flex-col  bg-white rounded-lg mx-auto  md:ml-5  md:flex-row mx-auto    md:max-w-xl     hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <div  className="flex flex-col  bg-white rounded-lg mx-auto  md:ml-5  md:flex-row md:max-w-xl     hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                         
                         <img className=" h-20 w-20 md:h-20 md:w-20 pt-5" src="https://uxwing.com/wp-content/themes/uxwing/download/21-medical-science-lab/medical.png" alt=""/>
                         
@@ -64,7 +64,7 @@ const About = () => {
                     </div>
 
 
-                    <div  className="flex flex-col  bg-white rounded-lg mx-auto  md:ml-5  md:flex-row mx-auto    md:max-w-xl     hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <div  className="flex flex-col  bg-white rounded-lg mx-auto  md:ml-5  md:flex-row md:max-w-xl     hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                         
                         <img className=" h-20 w-20 md:h-20 md:w-20 pt-5" src="https://cdn-icons-png.flaticon.com/512/4357/4357367.png" alt=""/>
                         
@@ -76,7 +76,7 @@ const About = () => {
                     </div>
 
 
-                    <div  className="flex flex-col  bg-white rounded-lg mx-auto  md:ml-5  md:flex-row mx-auto    md:max-w-xl     hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <div  className="flex flex-col  bg-white rounded-lg md:ml-5  md:flex-row mx-auto    md:max-w-xl     hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                         
                         <img className=" h-20 w-20 md:h-20 md:w-20 pt-5" src="https://cdn-icons-png.flaticon.com/128/3349/3349234.png" alt=""/>
                         
@@ -93,7 +93,7 @@ const About = () => {
             </div>
 
             <div className=' py- bg-gray-100'>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 flex my-4 flex-col'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 my-4 flex-col'>
                     <div className='col-span-2 mx-auto'>
                         <img className=' mx-auto' src="https://wallpaperaccess.com/full/136934.jpg" alt="" />
                     </div>
