@@ -168,10 +168,10 @@ const Navbar = ({ navigation }) => {
           <div className="flex items-center justify-end space-x-6">
             {user ? (
               <button
-                className="btn bg-success py-3 hover:bg-opacity-80 transition-all duration-300"
+                className="btn bg-success py-0 md:py-3 lg:py-3 text-xs md:text-xl px-5 hover:bg-opacity-80 transition-all duration-300"
                 onClick={() => navigate('/login')}
               >
-                Sign In
+              Sign In
               </button>
             ) : (
               <button
