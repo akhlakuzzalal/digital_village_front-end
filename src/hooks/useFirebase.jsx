@@ -1,17 +1,18 @@
-import axios from 'axios';
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  getIdToken,
   GoogleAuthProvider,
   onAuthStateChanged,
   sendEmailVerification,
-  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
 } from 'firebase/auth';
 import { useEffect, useState } from 'react';
+import axios from '../api/axios';
 import initializeAuthentication from '../Firebase/Firebase.init';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 // initialize firebase app
 initializeAuthentication();
@@ -20,7 +21,8 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true); // user using the login functionality
   const [authError, setAuthError] = useState('');
-  const [admin, setAdmin] = useState(false);
+  const [roles, setRoles] = useLocalStorage('roles', []);
+  const [token, setToken] = useLocalStorage('token', '');
 
   const auth = getAuth();
 
@@ -32,7 +34,8 @@ const useFirebase = () => {
     return signInWithPopup(auth, googleProvider)
       .then((result) => {
         const { user } = result;
-        saveUser(user.displayName, user.email);
+        // saveUser(user.displayName, user.email);
+
         setUser({
           displayName: user.displayName,
           email: user.email,
@@ -62,7 +65,7 @@ const useFirebase = () => {
         setUser(newUser);
 
         // save user to the database
-        saveUser(name, email);
+        // saveUser(name, email);
 
         // send name to firebase after creation
         updateProfile(auth.currentUser, {
@@ -71,6 +74,7 @@ const useFirebase = () => {
           .then(() => {})
           .catch((error) => setAuthError(error.message));
         // navigate('/emailverify'); // navigate to the email verify page or homepage and give an alert to verify email
+        navigate('/');
       })
       .catch((error) => {
         setAuthError(error.message);
@@ -82,21 +86,22 @@ const useFirebase = () => {
   //USER LOGIN PROCESS
   const processSignIn = (email, password, location, navigate) => {
     setIsLoading(true);
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        const redirect_uri = location?.state?.from || '/';
-        navigate(redirect_uri);
-        setAuthError('');
-      })
-      .catch((error) => setAuthError(error.message))
-      .finally(() => setIsLoading(false));
+    loginToDB(email, password);
+    // return signInWithEmailAndPassword(auth, email, password)
+    //   .then(() => {
+    //     const redirect_uri = location?.state?.from || '/';
+    //     navigate(redirect_uri);
+    //     setAuthError('');
+    //   })
+    //   .catch((error) => setAuthError(error.message))
+    //   .finally(() => setIsLoading(false));
   };
 
   // change the user state
   useEffect(() => {
     const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
+        getIdToken(user).then((idToken) => console.log(idToken));
         setUser(user);
       } else {
         setUser({});
@@ -106,14 +111,14 @@ const useFirebase = () => {
     return () => unsubscribed;
   }, [auth]);
 
-  // find if the user is admin or not
-  useEffect(() => {
-    axios
-      .get(
-        `https://trellas-backend.herokuapp.com/user/isAdmin?email=${user.email}`
-      )
-      .then((response) => setAdmin(response.data.admin));
-  }, [user.email]);
+  // find the user role
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `find the role url?email=${user.email}`
+  //     )
+  //     .then((response) => setRole(response?.data?.admin));
+  // }, [user.email]);
 
   //process user logout
   const logout = () => {
@@ -126,20 +131,31 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
 
-  const saveUser = (displayName, email) => {
-    // save user to the database
-    axios.put('http://localhot:5000/user', {
-      email,
-      displayName,
-    });
+  const registerToDB = (name, email, dateOfBirth, password) => {
+    console.log(name, email, dateOfBirth, password);
+  };
+
+  const loginToDB = async (email, password) => {
+    console.log(email, password);
+    try {
+      const response = await axios.post('auth/login', {
+        email,
+        password,
+      });
+      setToken(response?.data?.accessToken);
+      setRoles(response?.data?.roles);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return {
     user,
-    admin,
     isLoading,
     setIsLoading,
     setAuthError,
+    roles,
+    token,
     authError,
     processSignInWithGoogle,
     processSignUp,

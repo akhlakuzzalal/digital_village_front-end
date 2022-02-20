@@ -37,11 +37,13 @@ const Login = () => {
     authError,
     processSignInWithGoogle,
     setIsLoading,
+    roles,
+    token,
   } = useAuth();
 
-  const handleLogin = ({ email, password }) => {
-    console.log({ email, password });
-    // processSignIn(email, password, location, navigate);
+  const handleLogin = async ({ email, password }) => {
+    await processSignIn(email, password, location, navigate);
+    console.log(roles, token);
     // reset();
   };
 

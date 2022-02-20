@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import ScrollToTop from './components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
+import PrivateRoute from './hooks/PrivateRoute';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import CaseSingle from './Pages/Donations/Causes/CaseSingle';
@@ -46,57 +47,66 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
-            <Route path="home" element={<Home />} />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
-            <Route path="notifications" element={<Notification />} />
-            {/* education related routes */}
-            <Route path="education" element={<Education />} />
-            <Route path="teacherinfo" element={<TeacherInfo />} />
-            <Route path="studentinfo" element={<StudentInfo />} />
-            <Route path="teacherDashboard" element={<TeacherDashboard />}>
-              <Route path="analytics" element={<Analytics />} />
-              <Route path="myblogs" element={<Myblogs />} />
-              <Route path="myvideos" element={<Myvideos />} />
-              <Route path="addblogs" element={<Addblogs />} />
-              <Route path="addvideos" element={<Addvideo />} />
+
+            {/* ALL PRIVATE ROUTES */}
+            <Route element={<PrivateRoute />}>
+              {/* notification route */}
+              <Route path="notifications" element={<Notification />} />
+
+              {/* user routes */}
+              <Route path="profile" element={<Profile />} />
+
+              {/* education related routes */}
+              <Route path="education" element={<Education />} />
+              <Route path="teacherinfo" element={<TeacherInfo />} />
+              <Route path="studentinfo" element={<StudentInfo />} />
+              <Route path="teacherDashboard" element={<TeacherDashboard />}>
+                <Route path="analytics" element={<Analytics />} />
+                <Route path="myblogs" element={<Myblogs />} />
+                <Route path="myvideos" element={<Myvideos />} />
+                <Route path="addblogs" element={<Addblogs />} />
+                <Route path="addvideos" element={<Addvideo />} />
+              </Route>
+              <Route path="/detailvideo/:id" element={<DetailVideo />} />
+
+              {/* medical related routes */}
+              <Route path="/medical" element={<MedicalDashboard />}>
+                <Route
+                  path="/medical/vaccine"
+                  element={<VaccineRegistration />}
+                />
+                <Route
+                  path="/medical/appointment"
+                  element={<DoctorsAppointment />}
+                />
+              </Route>
+
+              {/* event realted routes */}
+              <Route path="events" element={<Events />} />
+              <Route path="eventDetails/:id" element={<EventDetails />} />
+              <Route path="add-events" element={<AddEvents />} />
+              <Route path="eventDetails/:id" element={<EventDetails />} />
+
+              {/* development related routes */}
+              <Route path="development" element={<Development />} />
+
+              {/* e-market related routes */}
+              <Route path="e-market" element={<EMarket />} />
+
+              {/* news related routes */}
+              <Route path="news" element={<AllNews />} />
+
+              {/* donation related routes */}
+              <Route path="donation" element={<Donations />} />
+              <Route path="causedetails/:id" element={<CaseSingle />} />
+
+              {/* village market related routes */}
+              <Route path="cart" element={<Cart />} />
+              <Route path="checkout" element={<Checkout />} />
             </Route>
-            <Route path="/detailvideo/:id" element={<DetailVideo />} />
-
-            {/* medical related routes */}
-            <Route path="/medical" element={<MedicalDashboard />}>
-              <Route
-                path="/medical/vaccine"
-                element={<VaccineRegistration />}
-              />
-              <Route
-                path="/medical/appointment"
-                element={<DoctorsAppointment />}
-              />
-            </Route>
-
-            {/* event realted routes */}
-            <Route path="events" element={<Events />} />
-            <Route path="eventDetails/:id" element={<EventDetails />} />
-            <Route path="development" element={<Development />} />
-            <Route path="e-market" element={<EMarket />} />
-            <Route path="news" element={<AllNews />} />
-
-            {/* user routes */}
-            <Route path="profile" element={<Profile />} />
-
             <Route path="*" element={<NotFound />} />
-            <Route path="/add-events" element={<AddEvents />} />
-            <Route path="/eventDetails/:id" element={<EventDetails />} />
-            <Route path="/development" element={<Development />} />
-            <Route path="/e-market" element={<EMarket />} />
-            <Route path="/news" element={<AllNews />} />
-            <Route path="/dashboard" element={<TeacherDashboard />} />
-
-            <Route path="/donation" element={<Donations />} />
-            <Route path="/causedetails/:id" element={<CaseSingle />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </ScrollToTop>
         <Footer />

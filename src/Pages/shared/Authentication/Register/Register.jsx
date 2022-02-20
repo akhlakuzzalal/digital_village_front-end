@@ -46,7 +46,7 @@ const Register = () => {
   const handleRegister = async ({ firstName, lastName, email, password }) => {
     const name = `${firstName} ${lastName}`;
     console.log({ name, email, password });
-    // const result = await processSignUp(name, email, password, navigate);
+    await processSignUp(name, email, password, navigate);
     // reset();
   };
 
