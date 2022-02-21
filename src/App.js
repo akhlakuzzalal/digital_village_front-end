@@ -10,8 +10,9 @@ import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
 import EMarket from './Pages/EMarket/EMarket';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
-import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorsAppointment';
-import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration';
+import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
+import VaccineInfo from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/VaccineInfo';
+import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
 import Notification from './Pages/Notification/Notification';
 import About from './Pages/shared/About/About';
@@ -55,6 +56,7 @@ function App() {
                 element={<DoctorsAppointment />}
               />
             </Route>
+            <Route path="/pdf" element={<VaccineInfo />} />
           </Routes>
         </ScrollToTop>
         <Footer />

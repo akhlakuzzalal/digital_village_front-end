@@ -13,7 +13,7 @@ const Review = () => {
           alt=""
         />
       </div>
-      <div className="bg-purple-200  border-4 rounded-lg text-center py-9  md:py-16 px-0 md:px-8 border-slate-50">
+      <div className="bg-white shadow-2xl border-4 rounded-lg text-center py-9  md:py-16 px-0 md:px-8 border-slate-50">
         <div className="flex justify-center text-yellow-400 heading_sm md:heading_md">
           <Rating rating={rate.rating} />
         </div>
