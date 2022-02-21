@@ -14,7 +14,7 @@ const MarketBanner = () => {
         </div>
         {/* 2nd column */}
         <div className="flex flex-col col-span-2 md:col-span-1 justify-center items-center">
-          <h3 className="animate-bounce">Welcome to Village market</h3>
+          <h3 className="animate-bounce text-white text-3xl md:text-5xl">Welcome to Village market</h3>
           <p>You can buy the available product from here</p>
         </div>
         {/* 3rd column */}
