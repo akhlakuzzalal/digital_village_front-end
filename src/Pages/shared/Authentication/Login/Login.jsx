@@ -43,7 +43,6 @@ const Login = () => {
 
   const handleLogin = async ({ email, password }) => {
     await processSignIn(email, password, location, navigate);
-    console.log(roles, token);
     // reset();
   };
 

@@ -20,8 +20,8 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true); // user using the login functionality
   const [authError, setAuthError] = useState('');
-  const [roles, setRoles] = useState('roles', []);
-  const [token, setToken] = useState('token', '');
+  const [roles, setRoles] = useState([]);
+  const [token, setToken] = useState('');
 
   const auth = getAuth();
 
@@ -135,12 +135,20 @@ const useFirebase = () => {
   };
 
   const loginToDB = async (email, password) => {
-    console.log(email, password);
     try {
-      const response = await axios.post('auth/login', {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        '/auth/login',
+        {
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      setRoles(response?.data?.roles);
+      setToken(response?.data?.accessToken);
+      console.log(response?.data?.message);
     } catch (error) {
       console.log(error.message);
     }
@@ -153,6 +161,7 @@ const useFirebase = () => {
     setAuthError,
     roles,
     token,
+    setToken,
     authError,
     processSignInWithGoogle,
     processSignUp,

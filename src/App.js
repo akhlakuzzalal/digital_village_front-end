@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import ScrollToTop from './components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
+import AllUsers from './Pages/Admin/AllUsers/AllUsers';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import CaseSingle from './Pages/Donations/Causes/CaseSingle';
@@ -55,6 +56,9 @@ function App() {
             <Route path="contact" element={<Contact />} />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
+
+            {/* testing */}
+            <Route path="allUsers" element={<AllUsers />} />
 
             {/* ALL PRIVATE ROUTES */}
             <Route
