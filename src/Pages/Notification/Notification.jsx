@@ -22,11 +22,11 @@ const Notification = () => {
 
   return (
     <div
-      className="flex justify-center bg-indigo-200 p-2 mt-[88px]"
+      className="flex flex-wrap justify-center p-4 mt-[88px]"
       style={{ minHeight: 'calc(100vh - 700px)' }}
     >
       {/* notification cards */}
-      <div className="w-100 md:w-1/2   ">
+      <div className="w-100 md:w-1/2 space-y-4 flex-1">
         {notification.map((note) => (
           <SingleNotification
             key={note.id}
@@ -44,9 +44,7 @@ const Notification = () => {
             <img className="w-full" src={note} alt="" />
           </div>
         ) : (
-          <div className=" bg-slate-50 rounded-lg">
-            <DetailNotification details={details}></DetailNotification>
-          </div>
+          <DetailNotification details={details}></DetailNotification>
         )}
       </div>
     </div>

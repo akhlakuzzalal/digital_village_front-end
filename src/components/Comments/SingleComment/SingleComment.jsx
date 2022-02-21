@@ -1,5 +1,5 @@
 import React from 'react';
-import client1 from '../../../Images/review.jpg';
+import client from '../../../assets/reviews/review.jpg';
 
 const SingleComment = () => {
   return (
@@ -8,7 +8,7 @@ const SingleComment = () => {
         <div className="w-16 md:w-28">
           <img
             className="w-full rounded-full border-4 border-slate-300"
-            src={client1}
+            src={client}
             alt=""
           />
         </div>
