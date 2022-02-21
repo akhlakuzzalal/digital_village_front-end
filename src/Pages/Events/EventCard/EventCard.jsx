@@ -8,7 +8,7 @@ const EventCard = ({
     <Link to={`/eventDetails/${_id}`}>
       <div className="border rounded-xl">
         <img src={image} alt={name} />
-        <div className="flex bg-primary p-10 ">
+        <div className="flex bg-primary p-4 md:p-10">
           <div className="text-white">
             <h3>{date}</h3>
           </div>

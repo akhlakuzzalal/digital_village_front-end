@@ -16,15 +16,15 @@ const AllUsers = () => {
     let isMounted = true;
     const controller = new AbortController();
 
-    console.log(controller.signal);
     const getUsers = async () => {
       try {
-        const response = await axiosInterceptor.get('/auth/allusers', {
+        const response = await axiosInterceptor.get('/auth/allUsers', {
           signal: controller.signal,
         });
         console.log(response?.data);
         isMounted && setUsers(response.data);
       } catch (error) {
+        console.log('error here');
         console.log(error.message);
         navigate('/login', { state: { from: location }, replace: true });
       }

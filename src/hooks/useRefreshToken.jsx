@@ -2,7 +2,7 @@ import axios from '../api/axios';
 import useAuth from './useAuth';
 
 const useRefreshToken = () => {
-  const { setToken } = useAuth();
+  const { setToken, setRoles } = useAuth();
 
   const refresh = async () => {
     try {
@@ -10,6 +10,7 @@ const useRefreshToken = () => {
         withCredentials: true,
       });
       setToken(response?.data?.accessToken);
+      setRoles(response?.data?.roles);
       return response?.data?.accessToken;
     } catch (error) {
       console.log(error.message);

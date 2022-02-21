@@ -22,6 +22,9 @@ const useFirebase = () => {
   const [authError, setAuthError] = useState('');
   const [roles, setRoles] = useState([]);
   const [token, setToken] = useState('');
+  const [persist, setPersist] = useState(
+    JSON.parse(localStorage.getItem('persist')) || false
+  );
 
   const auth = getAuth();
 
@@ -167,6 +170,8 @@ const useFirebase = () => {
     processSignUp,
     processSignIn,
     logout,
+    persist,
+    setPersist,
   };
 };
 
