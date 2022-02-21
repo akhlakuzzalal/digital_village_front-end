@@ -16,6 +16,7 @@ const EMarket = () => {
   return (
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <Link to="/cart">go to cart</Link>
+      <Link className='ml-4' to="/marketdashboard">go to dashboard</Link>
       {/* Banner */}
       <MarketBanner></MarketBanner>
       {/* Catagories */}
