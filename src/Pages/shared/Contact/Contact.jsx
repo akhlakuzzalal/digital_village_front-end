@@ -120,8 +120,8 @@ const Contact = () => {
         <h5 className="text-center hover:text-blue-600 text-1xl font-bold mt-16 mb-3 text-gray-600">
           DON’T HASITATE TO CONTACT WITH US
         </h5>
-        <h1 className="text-5xl text-center font-bold hover:text-blue-600">Now Very Easy</h1>
-        <h4 className="text-center mt-5  px-10 container text-1xl font-semibold">
+        <h1 className="text-3xl md:text-5xl lg:text-5xl text-center font-bold hover:text-blue-600">Now Very Easy</h1>
+        <h4 className=" mt-5  px-10 container text-1xl font-semibold text-justify">
           Our approach to SEO is uniquely built around what we know works…and
           what we know doesn’t work. With over 200 verified factors in
           playworks…and what we know doesn’t work. With over 200 verified
@@ -131,12 +131,12 @@ const Contact = () => {
 
       <div className="mt-10 pt-10 container mx-auto px-4 pb-5">
         <form
-          className="flex flex-col justify-center md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2"
+          className="flex flex-col justify-center md:grid grid-cols-1 md:grid-cols-2 "
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="mr-2 pl-10 ">
             <input
-              className=" p-4 w-full  mb-4 shadow-2xl"
+              className=" p-4 w-full  mb-4 shadow-2xl outline:"
               {...register('name', { required: true, maxLength: 20 })}
               placeholder="Your Name"
             />

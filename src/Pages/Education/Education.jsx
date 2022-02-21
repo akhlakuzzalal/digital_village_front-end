@@ -11,8 +11,8 @@ const Education = () => {
       style={{ minHeight: 'calc(100vh - 700px)' }}
     >
       <h1 className="text-center text-3xl md:text-6xl lg:text-6xl py-5 hover:text-blue-600">Digital Learning</h1>
-      <div className="flex justify-center items-center">
-        <div className="flex justify-center items-center w-1/2">
+      <div className="flex justify-center items-center flex-wrap">
+        <div className="flex justify-center items-center w-full flex-wrap">
           <Link to="/teacherinfo">
             <div className=" border-2 bg-secondary hover:bg-slate-50  rounded-lg text-center py-9  md:py-16  border-primary mx-2  flex justify-center items-center  my-2 ">
               <div className="bg-white border-2  border-primary rounded-full w-full md:w-1/2  my-2 flex justify-center items-center">
@@ -42,7 +42,7 @@ const Education = () => {
             </div>
           </Link>
         </div>
-        <div className="flex justify-center items-center w-1/2">
+        <div className="flex justify-center items-center w-full">
           <img  src={study} alt="" />
         </div>
       </div>
