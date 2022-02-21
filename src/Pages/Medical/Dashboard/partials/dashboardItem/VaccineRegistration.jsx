@@ -8,7 +8,7 @@ const VaccineRegistration = () => {
       <div className="text-center ">
         <h3 className='text-3xl md:text-5xl py-3 hover:text-blue-600'>Vaccine Registration</h3>
         <div className="flex flex-wrap justify-center items-center m-2">
-          <div class=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc">
+          <div class=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500">
             <Link to="#">
               <img class="rounded-t-lg" src={covax} alt="" />
             </Link>
@@ -44,7 +44,7 @@ const VaccineRegistration = () => {
             </div>
           </div>
 
-          <div class=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc">
+          <div class=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500">
             <Link to="#">
               <img class="rounded-t-lg" src={covax} alt="" />
             </Link>
@@ -80,7 +80,7 @@ const VaccineRegistration = () => {
             </div>
           </div>
 
-          <div class=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc">
+          <div class=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500">
             <Link to="#">
               <img class="rounded-t-lg" src={covax} alt="" />
             </Link>
