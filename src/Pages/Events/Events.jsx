@@ -40,7 +40,7 @@ const events = [
 
 const Events = () => {
   return (
-    <div className="Event-Main bg-white py-36 lg:px-32 px-10">
+    <div className=" bg-white space-y-6 lg:px-36 py-36">
       <div>
         <h1>Events</h1>
         <p className="lg:w-1/2 py-3">
@@ -52,7 +52,7 @@ const Events = () => {
 
       {/* event page navigation */}
       <div className="pt-10">
-        <ul className="flex lg:gap-10 gap-5">
+        <ul className="flex gap-2 md:gap-5 lg:gap-10 ">
           <p>Icon</p>
           <li className="text-primary">
             <Link to="">All</Link>
@@ -79,7 +79,7 @@ const Events = () => {
       {/* archive events */}
       <div className="mt-32">
         <h1 className="mb-20">Archived Events</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {events.map((event) => (
             <EventCard key={event._id} event={event} />
           ))}
