@@ -1,6 +1,6 @@
 import React from 'react';
 import video from '../../../../assets/videos/video2.mp4';
-import AddCard from '../../../../components/AddCard';
+import AddCard from '../../../../Components/AddCard';
 import VideoCard from './VideoCard/VideoCard';
 
 const videos = [

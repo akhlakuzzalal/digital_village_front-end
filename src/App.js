@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import ScrollToTop from './components/ScrollToTop';
+import ScrollToTop from './Components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';

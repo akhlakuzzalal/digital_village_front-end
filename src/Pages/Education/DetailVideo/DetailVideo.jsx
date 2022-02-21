@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import video from '../../../assets/videos/video2.mp4';
-import Comments from '../../../components/Comments/Comments';
+import Comments from '../../../Components/Comments/Comments';
 const videos = [
   {
     _id: 1,
