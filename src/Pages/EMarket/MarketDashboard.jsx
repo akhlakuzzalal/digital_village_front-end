@@ -4,8 +4,8 @@ import { RiDashboard2Line } from 'react-icons/ri';
 import { SiHomebridge } from 'react-icons/si';
 import { Outlet, useLocation } from 'react-router-dom';
 import Sidebar from '../../Components/Sidebar';
-import MyOrder from './Dashboard/partials/dashboardItem/MyOrder';
-import Header from './Dashboard/partials/Header';
+import Header from '../Education/Teacher/Dashboard/partials/Header';
+import MyOrder from './MarketComponents/MyOrder';
 const links = [
   {
     name: 'Market Home',
@@ -24,7 +24,7 @@ const links = [
   },
 ];
 
-const TeacherDashboard = () => {
+const MarketDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showText, setShowText] = useState(true);
 
@@ -53,4 +53,4 @@ const TeacherDashboard = () => {
   );
 };
 
-export default TeacherDashboard;
+export default MarketDashboard;

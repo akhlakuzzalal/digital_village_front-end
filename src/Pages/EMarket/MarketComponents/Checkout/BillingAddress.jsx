@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import useMarketData from '../../MarketContext/useMarketData';
+import useMarketData from '../MarketContext/useMarketData';
 
 const BillingAddress = () => {
   const { showModal, setShowModal } = useMarketData();

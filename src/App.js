@@ -16,10 +16,10 @@ import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
 import Myvideos from './Pages/Education/Teacher/Myvideos/Myvideos';
 import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
 import TeacherInfo from './Pages/Education/Teacher/TeacherInfo';
-import MyOrder from './Pages/EMarket/Dashboard/partials/dashboardItem/MyOrder';
 import EMarket from './Pages/EMarket/EMarket';
 import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
 import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
+import MyOrder from './Pages/EMarket/MarketComponents/MyOrder';
 import MarketDashboard from './Pages/EMarket/MarketDashboard';
 import AddEvents from './Pages/Events/AddEvents/AddEvents';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
@@ -98,8 +98,8 @@ function App() {
             <Route path="/causedetails/:id" element={<CaseSingle />} />
             {/* market routing */}
             <Route path="e-market" element={<EMarket />} />
-            <Route path="marketdashboard" element={<MarketDashboard />} >
-              <Route path="myorder" element={<MyOrder/>} />
+            <Route path="marketdashboard" element={<MarketDashboard />}>
+              <Route path="myorder" element={<MyOrder />} />
             </Route>
             <Route path="checkout" element={<Checkout />} />
             <Route path="cart" element={<Cart />} />

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { NavHashLink } from 'react-router-hash-link';
 import Categorie from './MarketComponents/Categorie';
 import LatestProduct from './MarketComponents/LatestProduct';
 import MarketBanner from './MarketComponents/MarketBanner';
+import MedecineCategories from './MarketComponents/MedecineShop/MedecineCategories';
+import MedecineShopBanner from './MarketComponents/MedecineShop/MedecineShopBanner';
 import Modal from './MarketComponents/ProductDetails';
 import RegularProduct from './MarketComponents/RegularProduct';
 
@@ -16,7 +19,10 @@ const EMarket = () => {
   return (
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <Link to="/cart">go to cart</Link>
-      <Link className='ml-4' to="/marketdashboard">go to dashboard</Link>
+      <Link className="mx-4" to="/marketdashboard">
+        go to dashboard
+      </Link>
+      <NavHashLink to="/e-market/#medecine"> go to medecine</NavHashLink>
       {/* Banner */}
       <MarketBanner></MarketBanner>
       {/* Catagories */}
@@ -47,6 +53,13 @@ const EMarket = () => {
               <RegularProduct key={product.id} product={product} />
             ))}
           </div>
+        </div>
+      </div>
+      {/* Medecine Section */}
+      <div id="medecine" className="mt-20">
+        <MedecineShopBanner />
+        <div className="w-11/12 mx-auto mt-10">
+          <MedecineCategories />
         </div>
       </div>
       <Modal></Modal>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsFillCartPlusFill, BsFillEyeFill } from 'react-icons/bs';
 import swal from 'sweetalert';
-import useMarketData from '../MarketContext/useMarketData';
+import useMarketData from './MarketContext/useMarketData';
 
 const RegularProduct = ({ product }) => {
   const { setShowModal } = useMarketData();
