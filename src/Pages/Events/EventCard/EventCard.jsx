@@ -10,11 +10,11 @@ const EventCard = ({
         <img src={image} alt={name} />
         <div className="flex bg-primary p-10 ">
           <div className="text-white">
-            <h3>{date}</h3>
+            <h3 className='text-xl md:text-2xl'>{date}</h3>
           </div>
           <div className="pl-10 text-white">
-            <p>{type}</p>
-            <h3 className="text-lg pb-4 border-y-2">{name}</h3>
+            <p className='text-xl'>{type}</p>
+            <h3 className=" md:text-lg pb-4 border-y-2">{name}</h3>
             <p>{time}</p>
             <p>
               at <span>{place}</span>

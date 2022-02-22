@@ -57,9 +57,9 @@ const Register = () => {
 
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
-      <div className="flex-1 px-3">
-        <div className="pt-48 md:mx-10 text-center lg:mx-48 space-y-4 mb-3">
-          <h3 className="capitalize">Create an Account</h3>
+      <div className="flex-1 px-4">
+        <div className="pt-24 md:mx-10 text-center lg:mx-48 space-y-4 mb-3">
+          <h3 className=" text-center hover:text-blue-600">Create an Account</h3>
           <p className="space-x-2">
             <span>Already Registered?</span>
             <Link to="/login">
@@ -93,29 +93,38 @@ const Register = () => {
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
               {...register('firstName', { required: true, maxLength: 20 })}
               placeholder="First Name"
+              required
             />
+          
 
             {/* last name */}
+          
             <input
-              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('lastName', { pattern: /^[A-Za-z]+$/i })}
+              className="px-7 py-3 bg-gray-100 outline-none border-2 w-full focus:border-primary transition-all duration-300 rounded-xl"
+              {...register('lastName', {required: true, pattern: /^[A-Za-z]+$/i })}
               placeholder="Last Name"
+              required
+
             />
           </div>
 
           {/* email */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('email')}
+            {...register('email',{required:true,pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })}
             placeholder="Email"
+            type="email"
+            required
           />
 
           {/* password */}
           <input
             type="password"
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('password')}
+            {...register('password',{required:true,minLength:6,maxLength:20})}
             placeholder="Password"
+            type="password"
+            required
           />
 
           <input
