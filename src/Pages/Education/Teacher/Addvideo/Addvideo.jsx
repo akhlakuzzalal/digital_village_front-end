@@ -19,6 +19,7 @@ const Addvideo = () => {
 
   useEffect(() => {
     axios.get('/teacher/allVideo').then((res) => setVideos(res.data));
+    console.log(videos);
   }, []);
 
   return (

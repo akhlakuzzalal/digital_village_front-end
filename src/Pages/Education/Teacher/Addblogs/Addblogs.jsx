@@ -1,13 +1,22 @@
-import React from 'react';
+import parse from 'html-react-parser';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import RichTextEditor from '../../../../components/RichTextEditor';
 
 const Addblogs = () => {
+  const [content, setContent] = useState('');
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
+
+  const handleEditorChange = (e) => {
+    console.log('Content was updated:', e.target.getContent());
+    setContent(e.target.getContent());
+  };
 
   const handlePublishBlogs = (data) => {
     console.log(data);
@@ -27,10 +36,9 @@ const Addblogs = () => {
         />
 
         {/* blog input area */}
-        <textarea
+        <RichTextEditor
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('blogs')}
-          placeholder="Write your blog"
+          handleEditorChange={handleEditorChange}
         />
 
         {/* keyword */}
@@ -48,6 +56,13 @@ const Addblogs = () => {
           value="Publish blogs"
         />
       </form>
+
+      <div>
+        <h1 style={{ background: 'blue', color: 'white' }}>
+          this is text editor return content
+        </h1>
+        {parse(content)}
+      </div>
     </div>
   );
 };
