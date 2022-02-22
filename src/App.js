@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import ScrollToTop from './Components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
+import AllUsers from './Pages/Admin/AllUsers/AllUsers';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import CaseSingle from './Pages/Donations/Causes/CaseSingle';
@@ -36,8 +37,16 @@ import Contact from './Pages/shared/Contact/Contact';
 import Footer from './Pages/shared/Home/Footer/Footer';
 import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
+import NewsDetails from './Pages/shared/Home/LatestNews/NewsDetails';
 import NotFound from './Pages/shared/NotFound/NotFound';
 import Profile from './Pages/User/Profile';
+import PersistLogin from './SecureRoutes/PersistLogin';
+import PrivateRoute from './SecureRoutes/PrivateRoute';
+
+const Roles = {
+  User: 1000,
+  Admin: 5000,
+};
 
 function App() {
   return (
@@ -46,13 +55,32 @@ function App() {
         <Header />
         <ScrollToTop>
           <Routes>
+            {/* ALL PUBLIC ROUTES */}
             <Route path="/" element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
-            <Route path="home" element={<Home />} />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
+
+            {/* testing */}
+            <Route element={<PersistLogin />}>
+              <Route
+                element={
+                  <PrivateRoute allowedRoles={[Roles.User, Roles.Admin]} />
+                }
+              >
+                <Route path="allUsers" element={<AllUsers />} />
+              </Route>
+            </Route>
+
+            {/* ALL PRIVATE ROUTES */}
+
+            {/* notification route */}
             <Route path="notifications" element={<Notification />} />
+
+            {/* user routes */}
+            <Route path="profile" element={<Profile />} />
+
             {/* education related routes */}
             <Route path="education" element={<Education />} />
             <Route path="teacherinfo" element={<TeacherInfo />} />
@@ -81,11 +109,24 @@ function App() {
             {/* event realted routes */}
             <Route path="events" element={<Events />} />
             <Route path="eventDetails/:id" element={<EventDetails />} />
-            <Route path="development" element={<Development />} />
-            <Route path="news" element={<AllNews />} />
+            <Route path="add-events" element={<AddEvents />} />
+            <Route path="eventDetails/:id" element={<EventDetails />} />
 
-            {/* user routes */}
-            <Route path="profile" element={<Profile />} />
+            {/* development related routes */}
+            <Route path="development" element={<Development />} />
+
+            {/* news related routes */}
+            <Route path="news" element={<AllNews />} />
+            <Route path="newsdetails" element={<NewsDetails />} />
+
+            {/* donation related routes */}
+            <Route path="donation" element={<Donations />} />
+            <Route path="causedetails/:id" element={<CaseSingle />} />
+
+            {/* village market related routes */}
+            <Route path="e-market" element={<EMarket />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path="checkout" element={<Checkout />} />
 
             <Route path="*" element={<NotFound />} />
             <Route path="/add-events" element={<AddEvents />} />

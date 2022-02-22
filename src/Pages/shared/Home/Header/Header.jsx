@@ -7,7 +7,9 @@ const navigation = [
   { name: 'Service', href: '/#service' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
+  { name: 'allUser', href: '/allUsers' },
 ];
+
 const Header = () => {
   const location = useLocation();
   return location.pathname.includes('/teacherDashboard') ||

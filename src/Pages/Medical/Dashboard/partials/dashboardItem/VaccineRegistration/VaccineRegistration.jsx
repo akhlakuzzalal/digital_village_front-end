@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import covax from './../../../../../../assets/medical/COVAX.jpg';
+import covax from './../../../../../../assets/medical/covax.jpg';
 
 const VaccineRegistration = () => {
   return (
     <>
       <div className="text-center ">
-        <h3 className='text-3xl md:text-5xl py-3 hover:text-blue-600'>Vaccine Registration</h3>
+        <h3 className="text-3xl md:text-5xl py-3 hover:text-blue-600">
+          Vaccine Registration
+        </h3>
         <div className="flex flex-wrap justify-center items-center m-2">
           <div class=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500">
             <Link to="#">
@@ -115,8 +117,6 @@ const VaccineRegistration = () => {
               </Link>
             </div>
           </div>
-
-          
         </div>
       </div>
     </>
