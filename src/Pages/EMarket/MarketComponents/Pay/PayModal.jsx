@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
-import useMarketData from '../../MarketContext/useMarketData';
+import useMarketData from '../MarketContext/useMarketData';
 import Payment from './Payment';
 
 export default function PayModal() {

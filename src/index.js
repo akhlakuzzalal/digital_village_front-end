@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import './index.css';
-import MarketProvider from './Pages/EMarket/MarketContext/MarketProvider';
 import DonationProvider from './Pages/Donations/DonationContext/DonationProvider';
 import { store } from './redux/store';
 import reportWebVitals from './reportWebVitals';
+import MarketProvider from './Pages/EMarket/MarketComponents/MarketContext/MarketProvider'
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <MarketProvider>
+      <MarketProvider >
         <DonationProvider >
         <App />
         </DonationProvider>

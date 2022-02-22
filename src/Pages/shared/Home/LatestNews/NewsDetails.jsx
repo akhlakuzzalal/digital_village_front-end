@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import img from '../../../../assets/healthcare.png';
+import img from '../../../../assets/events/events.png';
 import Header from '../Header/Header';
 
 const NewsDetails = () => {

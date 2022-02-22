@@ -3,8 +3,8 @@ import { FaEdit, FaPushed, FaTrashAlt } from 'react-icons/fa';
 const SingleBlog = ({ name, img, desc }) => {
   return (
     <div className="bg-white rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between">
-      <div className="absolute top-20 text-sm left-0 z-50 font-primary rounded-lg">
-        <button className="w-90 flex items-center justify-center py-2 px-3 border border-transparent text-sm rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 px-6">
+      <div className="absolute top-20 text-sm left-0 z-20 font-primary rounded-lg">
+        <button className="w-90 flex items-center justify-center py-2 border border-transparent text-sm rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 px-6">
           <FaPushed />
           Puplish
         </button>

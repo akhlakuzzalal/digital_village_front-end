@@ -37,11 +37,12 @@ const Login = () => {
     authError,
     processSignInWithGoogle,
     setIsLoading,
+    roles,
+    token,
   } = useAuth();
 
-  const handleLogin = ({ email, password }) => {
-    console.log({ email, password });
-    // processSignIn(email, password, location, navigate);
+  const handleLogin = async ({ email, password }) => {
+    await processSignIn(email, password, location, navigate);
     // reset();
   };
 
@@ -57,8 +58,8 @@ const Login = () => {
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <div className="flex-1 px-3">
-        <div className="pt-48 mx-10 text-center lg:mx-48 space-y-4 mb-3">
-          <h3 className="capitalize">Welcome to digital village</h3>
+        <div className="pt-36 md:mx-10 text-center lg:mx-48 space-y-4 mb-3">
+          <h3 className="capitalize hover:text-blue-600">Welcome to digital village</h3>
           <p className="space-x-2">
             <span>Don't Have an account?</span>
             <Link to="/register">
@@ -75,7 +76,7 @@ const Login = () => {
               className="h-8 w-8 hover:scale-110 hover:text-secondary mx-3"
               aria-hidden="true"
             />
-            <p className="sm:text-center ">Continue With Google</p>
+            <p className="text-center ">Continue With Google</p>
           </button>
 
           <p>or</p>
@@ -88,16 +89,20 @@ const Login = () => {
           {/* email */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('email')}
+            {...register('email',{required:true,pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })}
             placeholder="Email"
+            type="email"
+            required
           />
 
           {/* password */}
           <input
             type="password"
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('password')}
+            {...register('password',{required:true,minLength:6,maxLength:20})}
             placeholder="Password"
+            type="password"
+            required
           />
 
           {/* submit button */}
@@ -108,7 +113,7 @@ const Login = () => {
           />
         </form>
       </div>
-      <div className="hidden md:block w-full md:w-1/2 px-3 pt-24 pointer-events-none">
+      <div className="hidden md:block w-full md:w-1/2 p-12 mt-24 pointer-events-none">
         <Lottie
           options={defaultOptions}
           isClickToPauseDisabled={true}
