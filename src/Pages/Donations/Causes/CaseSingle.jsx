@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Progress } from 'react-sweet-progress';
 import 'react-sweet-progress/lib/style.css';
-import DonateTap from '../Donate/DonateTap';
+import DonarForm from '../Donate/DonarForm';
 
 // CaseSingle details page
 const CaseSingle = () => {
@@ -14,7 +14,8 @@ const CaseSingle = () => {
       .then((res) => res.json())
       .then((data) => setCauses(data));
   }, [id]);
-  // console.log(id, "siglecuase");
+  
+  console.log(causes.title ,"data title" )
 
   //Progressbar for
   let donationGoal = causes.goal;
@@ -35,7 +36,7 @@ const CaseSingle = () => {
       <div class="container mx-auto flex flex-wrap py-6">
         {/* Posts Section */}
         <section class="w-full md:w-2/3 flex flex-col items-center px-3">
-          <article class="flex flex-col shadow my-4 bg-white rounded-xl p-4 box-border overflow-hidden relative justify-between border-l-4 border-green-400">
+          <div class="flex flex-col shadow my-4 bg-white rounded-xl p-4 box-border overflow-hidden relative justify-between border-l-4 border-green-400">
             <div className="overflow-hidden">
               <img
                 className="transform hover:scale-125 transition duration-700 object-cover h-full w-full"
@@ -97,12 +98,19 @@ const CaseSingle = () => {
                     }}
                   />
                 </div>
-                <p className="text-gray-500 text-sm">{causes?.des}</p>
+                <article>
+                  <p className="text-gray-500 text-sm">{causes?.des}</p>
+                </article>
+                
               </div>
             </div>
-          </article>
+          </div>
 
-          <article class="flex flex-col shadow my-4">
+          <div class="flex flex-col shadow my-4">
+          <p>
+                If you would like to contribute money, click on the{' '}
+                <b>Donation Payment</b> button.
+              </p>
             <div class="bg-white flex flex-col justify-center p-6">
               <p>
                 If you would like to contribute money, click on the{' '}
@@ -114,10 +122,10 @@ const CaseSingle = () => {
                 support than money
               </p>
               {/* start */}
-              <DonateTap></DonateTap>
+              <DonarForm></DonarForm>
               {/* end */}
             </div>
-          </article>
+          </div>
         </section>
 
         {/*Right Sidebar Section  */}
@@ -125,7 +133,7 @@ const CaseSingle = () => {
           <div class="w-full bg-white shadow flex flex-col my-4 p-6">
             <p class="text-xl font-semibold pb-5">About Us</p>
             <p class="pb-2">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+              Digital village is a more service online platform.sit amet, consectetur adipiscing elit. Maecenas
               mattis est eu odio sagittis tristique. Vestibulum ut finibus leo.
               In hac habitasse platea dictumst.
             </p>

@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import './index.css';
 import MarketProvider from './Pages/EMarket/MarketContext/MarketProvider';
+import DonationProvider from './Pages/Donations/DonationContext/DonationProvider';
 import { store } from './redux/store';
 import reportWebVitals from './reportWebVitals';
 
@@ -11,7 +12,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <MarketProvider>
+        <DonationProvider >
         <App />
+        </DonationProvider>
       </MarketProvider>
     </Provider>
   </React.StrictMode>,
