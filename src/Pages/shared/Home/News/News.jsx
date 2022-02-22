@@ -20,6 +20,7 @@ const News = () => {
 
   return (
     <div className="container my-20 mx-auto px-4">
+       <marquee className="animate-bounce text-5xl md:text-7xl font-bold py-4 mt-5  text-blue-600">Digital Village All News</marquee>
       <div className="flex md:my-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 pt-10">
           <div className="lg:col-span-2 ">
