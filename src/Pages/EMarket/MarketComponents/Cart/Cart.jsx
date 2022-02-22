@@ -1,8 +1,18 @@
 import React from 'react';
+import Lottie from 'react-lottie';
+import animationData from '../../../../lotties/cart.json';
 import CartTotal from './CartTotal';
 import TableBody from './TableBody';
 
 const Cart = () => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
   const cartProduct = [
     {
       name: 'Product name',
@@ -80,8 +90,16 @@ const Cart = () => {
         </div>
       </div>
       {/* Cart totall */}
-      <div className="w-full flex justify-end mt-10">
-        <div className="w-full md:w-3/6">
+      <div className="w-full grid grid-cols-2 gap-6 mt-10">
+        <div>
+          <Lottie
+            style={{ width: '50%' }}
+            options={defaultOptions}
+            isClickToPauseDisabled={true}
+            // height={isDesktop ? 300 : isTablet ? 300 : 300}
+          />
+        </div>
+        <div>
           <CartTotal></CartTotal>
         </div>
       </div>

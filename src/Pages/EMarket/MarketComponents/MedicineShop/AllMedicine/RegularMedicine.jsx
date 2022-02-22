@@ -1,9 +1,9 @@
 import React from 'react';
 import { BsFillCartPlusFill, BsFillEyeFill } from 'react-icons/bs';
 import swal from 'sweetalert';
-import useMarketData from './MarketContext/useMarketData';
+import useMarketData from '../../MarketContext/useMarketData';
 
-const RegularProduct = ({ product }) => {
+const RegularMedicine = () => {
   const { setShowModal } = useMarketData();
   const handleAlert = () => {
     swal({
@@ -41,17 +41,19 @@ const RegularProduct = ({ product }) => {
         <div className="w-full flex justify-center ">
           <img
             className="w-4/5 h-40"
-            src={product.image}
+            src="https://emedi.com.bd/wp-content/uploads/2020/09/Napa-Extend-Tablet-665-mg.jpg"
             alt="Sunset in the mountains"
           />
         </div>
         <div className="px-6 py-4">
           <h6 className="text-yellow-500 text-center">$ 120</h6>
-          <div className="font-bold text-xl mb-2 text-center">Product name</div>
+          <div className="font-bold text-xl mb-2 text-center">
+            Medicine name
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default RegularProduct;
+export default RegularMedicine;

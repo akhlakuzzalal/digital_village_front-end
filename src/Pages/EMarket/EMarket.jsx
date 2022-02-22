@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import AddProducts from './Admin/AddProduct/AddProducts';
 import Categorie from './MarketComponents/Categorie';
 import LatestProduct from './MarketComponents/LatestProduct';
 import MarketBanner from './MarketComponents/MarketBanner';
+import AllMedicine from './MarketComponents/MedicineShop/AllMedicine/AllMedicine';
+import MedicineCategories from './MarketComponents/MedicineShop/MedicineCategories';
+import MedicineShopBanner from './MarketComponents/MedicineShop/MedicineShopBanner';
 import Modal from './MarketComponents/ProductDetails';
 import RegularProduct from './MarketComponents/RegularProduct';
 
@@ -15,7 +18,6 @@ const EMarket = () => {
   }, []);
   return (
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
-      <Link to="/cart">go to cart</Link>
       {/* Banner */}
       <MarketBanner></MarketBanner>
       {/* Catagories */}
@@ -48,6 +50,15 @@ const EMarket = () => {
           </div>
         </div>
       </div>
+      {/* Medecine Section */}
+      <div id="medecine" className="mt-20">
+        <MedicineShopBanner />
+        <div className="w-11/12 mx-auto mt-10">
+          <MedicineCategories />
+        </div>
+      </div>
+      <AllMedicine />
+      <AddProducts />
       <Modal></Modal>
     </div>
   );
