@@ -19,7 +19,7 @@ import TeacherInfo from './Pages/Education/Teacher/TeacherInfo';
 import EMarket from './Pages/EMarket/EMarket';
 import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
 import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
-import MyOrder from './Pages/EMarket/MarketComponents/MyOrder';
+import MyOrder from './Pages/EMarket/MarketComponents/DashboardItems/MyOrder';
 import MarketDashboard from './Pages/EMarket/MarketDashboard';
 import AddEvents from './Pages/Events/AddEvents/AddEvents';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';

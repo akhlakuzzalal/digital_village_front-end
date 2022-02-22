@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MedecineCategories = () => {
+const MedicineCategories = () => {
   const categories = [
     {
       id: 1,
@@ -38,4 +38,4 @@ const MedecineCategories = () => {
   );
 };
 
-export default MedecineCategories;
+export default MedicineCategories;

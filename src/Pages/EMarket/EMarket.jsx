@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { NavHashLink } from 'react-router-hash-link';
+import AddProducts from './Admin/AddProduct/AddProducts';
 import Categorie from './MarketComponents/Categorie';
 import LatestProduct from './MarketComponents/LatestProduct';
 import MarketBanner from './MarketComponents/MarketBanner';
-import MedecineCategories from './MarketComponents/MedecineShop/MedecineCategories';
-import MedecineShopBanner from './MarketComponents/MedecineShop/MedecineShopBanner';
+import AllMedicine from './MarketComponents/MedicineShop/AllMedicine/AllMedicine';
+import MedicineCategories from './MarketComponents/MedicineShop/MedicineCategories';
+import MedicineShopBanner from './MarketComponents/MedicineShop/MedicineShopBanner';
 import Modal from './MarketComponents/ProductDetails';
 import RegularProduct from './MarketComponents/RegularProduct';
 
@@ -18,11 +18,6 @@ const EMarket = () => {
   }, []);
   return (
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
-      <Link to="/cart">go to cart</Link>
-      <Link className="mx-4" to="/marketdashboard">
-        go to dashboard
-      </Link>
-      <NavHashLink to="/e-market/#medecine"> go to medecine</NavHashLink>
       {/* Banner */}
       <MarketBanner></MarketBanner>
       {/* Catagories */}
@@ -57,11 +52,13 @@ const EMarket = () => {
       </div>
       {/* Medecine Section */}
       <div id="medecine" className="mt-20">
-        <MedecineShopBanner />
+        <MedicineShopBanner />
         <div className="w-11/12 mx-auto mt-10">
-          <MedecineCategories />
+          <MedicineCategories />
         </div>
       </div>
+      <AllMedicine />
+      <AddProducts />
       <Modal></Modal>
     </div>
   );
