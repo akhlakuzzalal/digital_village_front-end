@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import covax from './../../../../../../assets/medical/covax.jpg';
+import covax from './../../../../../../assets/medical/COVAX.jpg';
 
 const VaccineRegistration = () => {
   return (
