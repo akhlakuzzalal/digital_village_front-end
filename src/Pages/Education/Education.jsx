@@ -6,46 +6,45 @@ import study from '../../assets/education/study.png';
 
 const Education = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-emerald-200  to-yellow-200 py-5 mt-[88px]">
-      <h1 className="text-center ">Digital Learning</h1>
-      <div className="flex justify-center items-center ">
-        <div className="flex justify-center items-center min-h-screen w-1/2 ">
-          <Link to="#">
-            <div className=" border-2 bg-lime-400 hover:bg-slate-50  rounded-lg text-center py-9  md:py-16  border-lime-500 mx-2  flex justify-center items-center  ">
-              <div className="bg-white border-2  border-lime-500 rounded-full w-1/2 flex justify-center items-center ">
+    <div
+      className="bg-gradient-to-r mt-[88px]"
+      style={{ minHeight: 'calc(100vh - 700px)' }}
+    >
+      <h1 className="text-center text-3xl md:text-6xl lg:text-6xl py-5 hover:text-blue-600">
+        Digital Learning
+      </h1>
+      <div className="flex justify-center items-center flex-wrap">
+        <div className="flex justify-center items-center w-full flex-wrap">
+          <Link to="/teacherinfo">
+            <div className=" border-2 bg-secondary hover:bg-slate-50  rounded-lg text-center py-9  md:py-16  border-primary mx-2  flex justify-center items-center  my-2 ">
+              <div className="bg-white border-2  border-primary rounded-full w-full md:w-1/2  my-2 flex justify-center items-center">
                 <h1>
                   <GiTeacher />
                 </h1>
               </div>
 
-              <Link to="#">
-                <button className="">
-                  <h3 className="Neutral-500 md:heading_sm px-0 md:px-8">
-                    Join As A Teacher
-                  </h3>
-                </button>
-              </Link>
+              <h3 className="Neutral-500 md:heading_sm px-0 md:px-8">
+                Join As A Teacher
+              </h3>
             </div>
           </Link>
           <Link to="#">
-            <div className=" border-2 border-amber-500  bg-yellow-300 hover:bg-slate-50 rounded-lg text-center py-9  md:py-16   mx-2  flex justify-center items-center  ">
-              <div className="bg-white border-2 border-amber-500 rounded-full w-1/2 flex justify-center items-center   ">
+            <div className=" border-2 border-slate-200 bg-pink-200   hover:bg-slate-50 rounded-lg text-center py-9  md:py-16   mx-2  flex justify-center items-center  my-2">
+              <div className="bg-white border-2 border-slate-200 rounded-full flex justify-center items-center w-full md:w-1/2  my-2  ">
                 <h1>
                   <FaChalkboardTeacher />
                 </h1>
               </div>
 
-              <Link to="#">
-                <button className="">
-                  <h3 className="Neutral-500 md:heading_sm px-0 md:px-8">
-                    Join As A Teacher
-                  </h3>
-                </button>
-              </Link>
+              <button className="">
+                <h3 className="Neutral-500 md:heading_sm px-0 md:px-8">
+                  Join As A Student
+                </h3>
+              </button>
             </div>
           </Link>
         </div>
-        <div className="w-1/2 flex justify-center items-center">
+        <div className="flex justify-center items-center w-full">
           <img src={study} alt="" />
         </div>
       </div>

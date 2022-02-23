@@ -40,7 +40,7 @@ const Reviews = () => {
         }}
         navigation={true}
         modules={[Autoplay, Navigation]}
-        className="mySwiper w-full  my-10"
+        className="mySwiper w-full bg-slate-50 pb-36  my-10"
       >
         <SwiperSlide className="flex justify-center p-10">
           <Review />
