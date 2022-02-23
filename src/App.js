@@ -4,13 +4,13 @@ import ScrollToTop from './components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
-// import Donation from './Pages/Donation/Donation';
 import Education from './Pages/Education/Education';
 import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
 import EMarket from './Pages/EMarket/EMarket';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
+import Payment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/Payment/Payment';
 import VaccineInfo from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/VaccineInfo';
 import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
@@ -57,6 +57,8 @@ function App() {
               />
             </Route>
             <Route path="/pdf" element={<VaccineInfo />} />
+
+            <Route path="/pay" element={<Payment />} />
           </Routes>
         </ScrollToTop>
         <Footer />

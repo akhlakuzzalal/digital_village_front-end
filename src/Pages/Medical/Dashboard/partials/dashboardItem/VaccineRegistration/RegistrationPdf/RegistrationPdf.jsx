@@ -1,8 +1,5 @@
 import React from 'react';
-
 const RegistrationPdf = (props) => {
-  // console.log(props);
-  // console.log(props.info);
   const { id, name, fatherName, MotherName, birthDate, place } = props.info;
   return (
     <div className="flex justify-center items-center">

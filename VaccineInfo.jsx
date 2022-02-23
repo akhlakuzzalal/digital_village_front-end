@@ -1,7 +1,7 @@
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import React, { useEffect, useState } from 'react';
-import RegistrationPdf from './RegistrationPdf';
+import RegistrationPdf from './src/Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/RegistrationPdf';
 
 const VaccineInfo = () => {
   const [info, setInfo] = useState([]);
