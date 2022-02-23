@@ -11,7 +11,8 @@ import Review from './Review/Review';
 const Reviews = () => {
   return (
     <>
-          <marquee className="animate-pulse border-b-black text-5xl md:text-7xl font-bold py-2 text-blue-600">Digital Village All Review</marquee>
+          
+          <h1 className=" text-5xl md:text-7xl hover:border-y-8  pb-4 text-center mx-auto font-bold py-2 my-8 text-blue-600 hover:text-purple-600 " >Digital Village All Review</h1>
       <Swiper
         slidesPerView={2}
         slidesPerGroup={1}

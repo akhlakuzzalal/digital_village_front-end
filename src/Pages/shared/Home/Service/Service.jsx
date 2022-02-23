@@ -81,7 +81,7 @@ const Service = () => {
       id="service"
       className="space-y-6 md:space-y-0 flex flex-wrap py-8 mt-10"
     >
-            <marquee className="animate-bounce text-5xl md:text-7xl font-bold py-2 my-8 text-blue-600">Digital Village Service</marquee>
+            <h1 className=" text-5xl md:text-7xl hover:border-y-8 pb-4 text-center mx-auto font-bold py-2 my-8 text-blue-600 hover:text-purple-600" >Digital Village Service</h1>
       <div className="w-full lg:w-1/2 space-y-3 md:space-y-6 text-center md:text-left">
         <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
           {services.map((service) => (
