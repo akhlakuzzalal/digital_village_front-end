@@ -1,10 +1,12 @@
 import React from 'react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
-import useMarketData from '../MarketContext/useMarketData';
+import { useDispatch, useSelector } from 'react-redux';
+import { setShowModal } from '../../../../redux/slices/eMarket/eMarketSlicle';
 import Payment from './Payment';
 
 export default function PayModal() {
-  const { setShowModal, showModal } = useMarketData();
+  const showModal = useSelector((state) => state.modal.showModal);
+  const dispatch = useDispatch();
   return (
     <>
       {showModal ? (
@@ -22,7 +24,7 @@ export default function PayModal() {
                   <AiOutlineCloseCircle
                     size={30}
                     className="text-primary"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => dispatch(setShowModal(false))}
                   />
                 </div>
               </div>

@@ -1,10 +1,11 @@
 import React from 'react';
 import { BsFillCartPlusFill, BsFillEyeFill } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
-import useMarketData from './MarketContext/useMarketData';
+import { setShowModal } from '../../../redux/slices/eMarket/eMarketSlicle';
 
 const RegularProduct = ({ product }) => {
-  const { setShowModal } = useMarketData();
+  const dispatch = useDispatch();
   const handleAlert = () => {
     swal({
       title: 'Are you sure?',
@@ -32,7 +33,7 @@ const RegularProduct = ({ product }) => {
             className="mb-3 bg-[#666666] p-1 rounded-sm cursor-pointer"
           />
           <BsFillEyeFill
-            onClick={() => setShowModal(true)}
+            onClick={() => dispatch(setShowModal(true))}
             size={30}
             color={'white'}
             className="mb-3 bg-[#666666] p-1 rounded-sm cursor-pointer"

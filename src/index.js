@@ -3,16 +3,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import './index.css';
-import MarketProvider from './Pages/EMarket/MarketComponents/MarketContext/MarketProvider';
 import { store } from './redux/store';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <MarketProvider>
-        <App />
-      </MarketProvider>
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

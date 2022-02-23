@@ -2,10 +2,13 @@ import React from 'react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { GiSelfLove } from 'react-icons/gi';
 import { MdDoneOutline } from 'react-icons/md';
-import useMarketData from './MarketContext/useMarketData';
+import { useDispatch, useSelector } from 'react-redux';
+import { setShowModal } from '../../../redux/slices/eMarket/eMarketSlicle';
 
 export default function Modal() {
-  const { setShowModal, showModal } = useMarketData();
+  const showModal = useSelector((state) => state.modal.showModal);
+  const dispatch = useDispatch();
+  console.log(showModal);
   return (
     <>
       {showModal ? (
@@ -55,7 +58,7 @@ export default function Modal() {
                   <AiOutlineCloseCircle
                     size={30}
                     className="text-primary"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => dispatch(setShowModal(false))}
                   />
                 </div>
               </div>
