@@ -3,7 +3,7 @@ import { AiOutlineMedicineBox } from 'react-icons/ai';
 import { FaClinicMedical } from 'react-icons/fa';
 import { GiLoveInjection } from 'react-icons/gi';
 import { Outlet, useLocation } from 'react-router-dom';
-import Sidebar from '../../../src/components/Sidebar';
+import Sidebar from '../../../src/Components/Sidebar';
 import WelcomeBanner from './../Medical/Dashboard/partials/dashboardItem/WelcomeBanner';
 import Header from './../shared/Home/Header/Header';
 

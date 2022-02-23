@@ -3,7 +3,7 @@ import { BsNewspaper } from 'react-icons/bs';
 import { MdOutlineVideoSettings } from 'react-icons/md';
 import { RiDashboard2Line } from 'react-icons/ri';
 import { Outlet, useLocation } from 'react-router-dom';
-import Sidebar from '../../../components/Sidebar';
+import Sidebar from '../../../Components/Sidebar';
 import Analytics from './Analytics/Analytics';
 import Header from './Dashboard/partials/Header';
 const links = [

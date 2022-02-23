@@ -1,6 +1,6 @@
 import React from 'react';
 import client from './../../../../../assets/reviews/review.jpg';
-import Rating from './../../../../../components/Rating';
+import Rating from './../../../../../Components/Rating';
 
 const Review = () => {
   const rate = { rating: 4 };
