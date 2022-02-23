@@ -2,7 +2,7 @@ import React from 'react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { GiSelfLove } from 'react-icons/gi';
 import { MdDoneOutline } from 'react-icons/md';
-import useMarketData from '../MarketContext/useMarketData';
+import useMarketData from './MarketContext/useMarketData';
 
 export default function Modal() {
   const { setShowModal, showModal } = useMarketData();

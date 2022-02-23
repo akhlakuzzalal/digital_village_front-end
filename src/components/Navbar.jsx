@@ -4,6 +4,7 @@ import { MdClose, MdEditNotifications, MdMenuOpen } from 'react-icons/md';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 import logo from '../assets/logo.png';
+import useAuth from '../hooks/useAuth';
 
 const Navbar = ({ navigation }) => {
   const [changeHeader, setChangeHeader] = useState(false);
@@ -12,7 +13,7 @@ const Navbar = ({ navigation }) => {
 
   const navigate = useNavigate();
 
-  const user = true; // will come from firebase
+  const { user, logout, roles, token } = useAuth(); // will come from firebase
 
   //header change function
   const onChangeHeader = () => {
@@ -36,7 +37,8 @@ const Navbar = ({ navigation }) => {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await logout();
     navigate('/');
   };
 
@@ -166,12 +168,12 @@ const Navbar = ({ navigation }) => {
             </div>
           </div>
           <div className="flex items-center justify-end space-x-6">
-            {user ? (
+            {!user?.email ? (
               <button
-                className="btn bg-success py-3 hover:bg-opacity-80 transition-all duration-300"
+                className="btn bg-success py-0 md:py-3 lg:py-3 text-xs md:text-xl px-5 hover:bg-opacity-80 transition-all duration-300"
                 onClick={() => navigate('/login')}
               >
-                Sign In
+              Sign In
               </button>
             ) : (
               <button

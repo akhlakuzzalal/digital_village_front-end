@@ -4,10 +4,12 @@ import img from '../../../assets/events/Add events.PNG';
 const AddEvents = () => {
   const {
     register,
-    handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
+
+  const handleSubmit = () => {};
+
   return (
     <>
       <div className="add-events-main my-40 lg:flex  lg:mx-32 md:mx-32 mx-0 border rounded-2xl">
@@ -21,7 +23,7 @@ const AddEvents = () => {
         {/* add event form */}
         <div>
           <h1 className="ml-10 mt-6 text-3xl ">Add Events</h1>
-          <form className=" space-y-6 mx-10 mt-10" onSubmit="">
+          <form className=" space-y-6 mx-10 mt-10" onSubmit={handleSubmit}>
             {/* email */}
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"

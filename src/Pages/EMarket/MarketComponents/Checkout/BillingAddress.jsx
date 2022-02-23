@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import useMarketData from '../../MarketContext/useMarketData';
+import useMarketData from '../MarketContext/useMarketData';
 
 const BillingAddress = () => {
   const { showModal, setShowModal } = useMarketData();
@@ -64,7 +64,7 @@ const BillingAddress = () => {
         </div>
 
         <input
-          className="bg-primary hover:bg-opacity-80 px-20 py-3 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
+          className="bg-primary hover:bg-opacity-80 px-8 md:px-20 py-3 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
           type="submit"
           value="Ready for Payment"
         />

@@ -1,5 +1,5 @@
 import React from 'react';
-import AddCard from '../../../../components/AddCard';
+import AddCard from '../../../../Components/AddCard';
 import ExploreBlogs from '../Dashboard/partials/dashboardItem/ExploreBlogs';
 
 const Myblogs = () => {

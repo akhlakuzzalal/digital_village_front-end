@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Rating from '../../../../../components/Rating';
+import Rating from '../../../../../Components/Rating';
 
 const VideoCard = ({ video: { _id, name, video, date, rating } }) => {
   const navigate = useNavigate();
