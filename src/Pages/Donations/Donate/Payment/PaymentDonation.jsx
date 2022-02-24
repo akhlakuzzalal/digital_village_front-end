@@ -17,6 +17,7 @@ function PaymentDonation({ order }) {
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     if (price) {
+      // fetch('/payment/create-payment-intent', {
       fetch('https://bike-website-server.herokuapp.com/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

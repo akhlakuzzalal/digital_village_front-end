@@ -32,7 +32,7 @@ const CaseSingle = () => {
   return (
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <div className="items-center justify-center ">
-        <h1 className="text-center text-blue-500">Page titlle</h1>
+        <h1 className="text-center text-3xl text-blue-500">Page of {causes?.title}</h1>
       </div>
       <div class="container mx-auto flex flex-wrap py-6">
         {/* Posts Section */}
@@ -63,7 +63,7 @@ const CaseSingle = () => {
                 , Published on April 25th, 2022
               </p>
               {/* card footer  */}
-              <div className="flex items-center justify-between pt-3">
+              <div className="flex flex-col md:flex-row items-center justify-between pt-3 md:space-y-0 space-y-2">
                 <button className="w-100 flex items-center justify-center py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 px-6">
                   RAISED {causes?.fee}
                 </button>
@@ -106,25 +106,17 @@ const CaseSingle = () => {
             </div>
           </div>
 
-          <div class="flex flex-col shadow my-4">
+          <div class="bg-white flex flex-col justify-center items-center w-full shadow my-4 p-6">
+            <div className="py-3">
             <p>
-              If you would like to contribute money, click on the{' '}
-              <b>Donation Payment</b> button.
+              If you would like to contribute money, click on the <b>{'Donation Payment'}</b> button.
             </p>
-            <div class="bg-white flex flex-col justify-center p-6">
-              <p>
-                If you would like to contribute money, click on the{' '}
-                <b>Donation Payment</b> button.
-              </p>
-              <br />
-              <p className="my-4">
-                Click <b>Help Request Donation</b> button if you would like more
-                support than money
-              </p>
-              {/* start */}
-              <DonarForm></DonarForm>
-              {/* end */}
             </div>
+            {/* start */}
+            <DonarForm></DonarForm>
+              {/* end */}
+            
+              
           </div>
         </section>
 
@@ -132,7 +124,7 @@ const CaseSingle = () => {
         <aside class="w-full md:w-1/3 flex flex-col items-center px-3">
           <div class="w-full bg-white shadow flex flex-col my-4 p-6">
             <p class="text-xl font-semibold pb-5">About Us</p>
-            <p class="pb-2">
+            <p class="pb-2 text-gray-700 ">
               Digital village is a more service online platform.sit amet,
               consectetur adipiscing elit. Maecenas mattis est eu odio sagittis
               tristique. Vestibulum ut finibus leo. In hac habitasse platea
@@ -140,7 +132,7 @@ const CaseSingle = () => {
             </p>
             <a
               href="/"
-              class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4"
+              class="w-full bg-primary hover:bg-opacity-80 text-white font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-4"
             >
               Get to know us
             </a>
@@ -149,7 +141,7 @@ const CaseSingle = () => {
           <div class="w-full bg-white shadow flex flex-col my-4 p-6">
             <p class="text-xl font-semibold pb-5">Donation</p>
             <div class="grid grid-cols-1 gap-3 overflow-y-auto h-96">
-              <div class="bg-white w-full flex items-center p-2 rounded-xl shadow border">
+              <div class="hover:bg-slate-100 hover:ring-gray-800  w-full flex items-center p-2 rounded-xl shadow border">
                 {/* Card siderbar */}
                 <div class="flex items-center space-x-4">
                   <img
@@ -175,7 +167,7 @@ const CaseSingle = () => {
                 </div>
               </div>
 
-              <div class="bg-white w-full flex items-center p-2 rounded-xl shadow border">
+              <div class=" hover:bg-slate-100 hover:ring-gray-800 w-full flex items-center p-2 rounded-xl shadow border">
                 <div class="relative flex items-center space-x-4">
                   <img
                     src="https://avatars2.githubusercontent.com/u/1490347?s=460&u=39d7a6b9bc030244e2c509119e5f64eabb2b1727&v=4"
@@ -196,7 +188,7 @@ const CaseSingle = () => {
                   <span class="block h-4 w-4 bg-blue-400 rounded-full bottom-0 right-0"></span>
                 </div>
               </div>
-              <div class="bg-white w-full flex items-center p-2 rounded-xl shadow border">
+              <div class="hover:bg-slate-100 hover:ring-gray-800  w-full flex items-center p-2 rounded-xl shadow border">
                 <div class="flex items-center space-x-4">
                   <img
                     src="https://avatars2.githubusercontent.com/u/1490347?s=460&u=39d7a6b9bc030244e2c509119e5f64eabb2b1727&v=4"
@@ -221,7 +213,7 @@ const CaseSingle = () => {
                 </div>
               </div>
 
-              <div class="bg-white w-full flex items-center p-2 rounded-xl shadow border">
+              <div class="hover:bg-slate-100 hover:ring-gray-800  w-full flex items-center p-2 rounded-xl shadow border">
                 <div class="relative flex items-center space-x-4">
                   <img
                     src="https://avatars2.githubusercontent.com/u/1490347?s=460&u=39d7a6b9bc030244e2c509119e5f64eabb2b1727&v=4"
@@ -245,7 +237,7 @@ const CaseSingle = () => {
             </div>
             <a
               href="/"
-              class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6"
+              class="w-full bg-primary hover:bg-opacity-80  text-white font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-6"
             >
               <i class="fab fa-instagram mr-2"></i>Follow @Digital_Village
             </a>
@@ -301,7 +293,7 @@ const CaseSingle = () => {
             </div>
             <a
               href="/"
-              class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6"
+              class="w-full bg-primary hover:bg-opacity-80 text-white font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-6"
             >
               <i class="fab fa-instagram mr-2"></i> Follow @dgrzyb
             </a>
