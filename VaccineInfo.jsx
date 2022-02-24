@@ -1,9 +1,7 @@
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import React, { useEffect, useState } from 'react';
-import { BsDownload } from 'react-icons/bs';
-import vaccineInfo from './../../../../../../../assets/medical/vaccineinfo.png';
-import RegistrationPdf from './RegistrationPdf';
+import RegistrationPdf from './src/Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/RegistrationPdf';
 
 const VaccineInfo = () => {
   const [info, setInfo] = useState([]);
@@ -16,7 +14,7 @@ const VaccineInfo = () => {
   console.log(info);
   const generatePDF = (singleInfo) => {
     // initialize jsPDF
-
+    // initialize jsPDF
     const doc = new jsPDF();
 
     // // define the columns we want and their titles
@@ -36,37 +34,32 @@ const VaccineInfo = () => {
 
     // we use a date string to generate our filename.
     const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
+    doc.text(20, 10, `YOUR INFORMATION:`);
 
-    doc.text(20, 30, `YOUR INFORMATION:`);
+    doc.text(20, 20, `Your ID: ${data[0]}`);
 
-    doc.text(20, 40, `Name: ${data[1]}`);
-    doc.text(20, 50, `Father's Name: ${data[2]}`);
-    doc.text(20, 60, `Mother's Name: ${data[3]}`);
-    doc.text(20, 70, `Birth date: ${data[4]}`);
-    doc.text(20, 80, `NID: ${data[5]}`);
-    doc.text(20, 90, `Place: ${data[6]}`);
+    doc.text(20, 30, `Name: ${data[1]}`);
+    doc.text(20, 40, `Father's Name: ${data[2]}`);
+    doc.text(20, 50, `Mother's Name: ${data[3]}`);
+    doc.text(20, 60, `Birth date: ${data[4]}`);
+    doc.text(20, 70, `Place: ${data[6]}`);
 
     // we define the name of our PDF file.
     doc.save(`report_${dateStr}.pdf`);
   };
 
   return (
-    <div className="mt-20  flex justify-center items-center">
-      <div className=" w-1/2 p-3">
-        <h3 className=" text-center text-primary">YOUR INFORMATION</h3>
+    <div>
+      <div className="  mt-20 p-3">
         <RegistrationPdf info={info} />
-        <div className="flex justify-center ">
+        <div className="mt-5 flex justify-center ">
           <button
-            className="border-2  bg-primary text-white py-2 px-5 "
+            className="border-2 bg-primary text-white py-2 px-5"
             onClick={() => generatePDF(info)}
           >
-            Download <BsDownload style={{ display: 'inline' }} />
+            Generate pdf
           </button>
         </div>
-      </div>
-      <div className="w-1/2">
-        {' '}
-        <img className="w-2/3" src={vaccineInfo} alt="" />{' '}
       </div>
     </div>
   );
