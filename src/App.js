@@ -12,8 +12,8 @@ import DetailVideo from './Pages/Education/DetailVideo/DetailVideo';
 import Education from './Pages/Education/Education';
 import StudentInfo from './Pages/Education/Student/StudentInfo';
 import Addblogs from './Pages/Education/Teacher/Addblogs/Addblogs';
+import AddVideo from './Pages/Education/Teacher/Addvideo/Addvideo';
 import Analytics from './Pages/Education/Teacher/Analytics/Analytics';
-import AddVideo from './Pages/Education/Teacher/Dashboard/partials/dashboardItem/AddVideo';
 import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
 import Myvideos from './Pages/Education/Teacher/Myvideos/Myvideos';
 import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
@@ -53,7 +53,7 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Header />
-        <ScrollToTop>
+        <ScrollToTop >
           <Routes>
             {/* ALL PUBLIC ROUTES */}
             <Route path="/" element={<Home />} />
