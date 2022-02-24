@@ -40,7 +40,7 @@ const DonarForm = () => {
           placeholder="Email"
         />
         {/* Message */}
-        <input
+        <textarea
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
           {...register('message')}
           placeholder="Message"
