@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import AddProducts from './Admin/AddProduct/AddProducts';
 import Categorie from './MarketComponents/Categorie';
 import LatestProduct from './MarketComponents/LatestProduct';
 import MarketBanner from './MarketComponents/MarketBanner';
@@ -58,7 +57,6 @@ const EMarket = () => {
         </div>
       </div>
       <AllMedicine />
-      <AddProducts />
       <Modal></Modal>
     </div>
   );
