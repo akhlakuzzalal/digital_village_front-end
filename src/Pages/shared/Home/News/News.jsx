@@ -20,8 +20,9 @@ const News = () => {
 
   return (
     <div className="container my-20 mx-auto px-4">
-      
-       <h1 className=" text-5xl md:text-7xl hover:border-y-8 pb-4 text-center  font-bold py-2 my-8 text-blue-600 hover:text-purple-600" >Digital Village All News</h1>
+      <h1 className=" text-5xl md:text-7xl pb-4 text-center font-bold py-2 my-8  text-primary">
+        Latest News
+      </h1>
       <div className="flex md:my-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 pt-10">
           <div className="lg:col-span-2 ">
