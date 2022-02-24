@@ -1,9 +1,43 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
+import emailjs from '@emailjs/browser';
+import swal from 'sweetalert';
+
 
 const Contact = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm({
+    defaultValues: { yes_i_understand: false }
+  });
+
+
+  const sendEmail = (formData) => {
+    console.log(formData)
+    
+    emailjs
+      .send("service_nbv08xi", "template_qw32pvu", formData, "user_NT0NiFlR59zCf04Pr6LZF")
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+      swal("Successfully!", "!Your Message Send", "success")
+    reset();
+  };
+
+
+  // const sendEmail = (e) => {
+  //           e.preventDefault();
+        
+  //         };
 
   return (
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
@@ -132,13 +166,14 @@ const Contact = () => {
       <div className="mt-10 pt-10 container mx-auto px-4 pb-5">
         <form
           className="flex flex-col justify-center md:grid grid-cols-1 md:grid-cols-2 "
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(sendEmail)}
         >
           <div className="mr-2 pl-10 ">
             <input
               className=" p-4 w-full  mb-4 shadow-2xl outline:"
               {...register('name', { required: true, maxLength: 20 })}
               placeholder="Your Name"
+              name="name"
             />
           </div>
           <div className="mr-2 pl-10">
@@ -147,6 +182,7 @@ const Contact = () => {
               type="number"
               {...register('number', { required: true, maxLength: 20 })}
               placeholder="Your Phone Number"
+              name="number"
             />
           </div>
           <div className="mr-2 pl-10 ">
@@ -155,28 +191,31 @@ const Contact = () => {
               type="email"
               {...register('email')}
               placeholder="Enter Your Email Number"
+              name='email'
             />
           </div>
           <div className="mr-2 pl-10 ">
             <input
               className="w-full p-4 mb-4 shadow-2xl"
-              type="email"
-              {...register('email')}
+              type="text"
+              {...register('subject')}
               placeholder="Write your Subject"
+              name="subject"
             />
           </div>
           <div className=" col-span-2 mx-6 ">
             <textarea
               placeholder="Please Write Your Message"
               className=" w-full ml-5 p-4 mb-2 shadow-2xl"
-              {...register('firstName', { required: true, maxLength: 20 })}
+              {...register('message', { required: true, maxLength: 20 })}
+              name="message"
             />
           </div>
 
           <input
             className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-pink-500 hover:to-yellow-500 btn mx-auto col-span-2 font-bold rounded-lg  px-6 md:w-2/6   py-2 text-white"
             type="submit"
-            value="Submit Now"
+            value="SEND MESSAGE"
           />
         </form>
       </div>
