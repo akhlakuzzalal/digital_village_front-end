@@ -13,7 +13,7 @@ const RegistrationPdf = (props) => {
           <p> Mother's Name: {MotherName}</p>
           <p>Birth Date: {birthDate} </p>
           <p>NID: {nidNo}</p>
-          <p> Place: {place} </p>
+          <small> Place: {place} </small>
         </div>
       )}
     </div>
