@@ -1,13 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { setShowModal } from '../../../../redux/slices/eMarket/eMarketSlicle';
+import { setShowModal } from '../../../redux/slices/eMarket/eMarketSlicle';
 
-const BillingAddress = () => {
+const DonarForm = () => {
   const showModal = useSelector((state) => state.modal.showModal);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
-  const handleRegister = async ({ firstName, lastName, email, password }) => {
+  const handleRegister = async ({ firstName, lastName, email, password ,message}) => {
     const name = `${firstName} ${lastName}`;
     console.log({ name, email, password });
     dispatch(setShowModal(true));
@@ -15,7 +15,6 @@ const BillingAddress = () => {
   console.log(showModal);
   return (
     <div>
-      <h6 className="mb-6">Billing Address</h6>
       <form onSubmit={handleSubmit(handleRegister)} className="space-y-6">
         {/* name */}
         <div className="flex gap-4">
@@ -40,14 +39,18 @@ const BillingAddress = () => {
           {...register('email')}
           placeholder="Email"
         />
-
+        {/* Message */}
+        <textarea
+          className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+          {...register('message')}
+          placeholder="Message"
+        />
         {/* Address */}
         <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
           {...register('address')}
           placeholder="Address"
         />
-
         {/* house no and zip code */}
         <div className="flex gap-4">
           {/* House no */}
@@ -66,13 +69,13 @@ const BillingAddress = () => {
         </div>
 
         <input
-          className="bg-primary hover:bg-opacity-80 px-8 md:px-20 py-3 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
+          className="bg-primary hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
           type="submit"
-          value="Ready for Payment"
+          value="Ready for Donation Payment"
         />
       </form>
     </div>
   );
 };
 
-export default BillingAddress;
+export default DonarForm;

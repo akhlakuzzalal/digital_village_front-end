@@ -2,7 +2,7 @@ import React from 'react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShowModal } from '../../../../redux/slices/eMarket/eMarketSlicle';
-import Payment from './Payment';
+import PaymentDonation from './PaymentDonation';
 
 export default function PayModal() {
   const showModal = useSelector((state) => state.modal.showModal);
@@ -17,7 +17,7 @@ export default function PayModal() {
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <Payment order={{ price: 120, id: 1 }}></Payment>
+                  <PaymentDonation order={{ price: 120, id: 1 }} />
                 </div>
                 {/* close button for modal */}
                 <div className="absolute top-0 right-0 cursor-pointer">

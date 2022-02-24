@@ -1,8 +1,8 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React, { useEffect, useState } from 'react';
-import CheckoutForm from './CheckoutForm';
-import './payment.css';
+import CheckoutDonateForm from './CheckoutDonateForm';
+import './StylePayment.css';
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
@@ -11,13 +11,14 @@ const stripePromise = loadStripe(
   'pk_test_51JygH5GVNFdSlIWRfeUCO0c8Uc8oedk6gpNzRNkbP6wQvFCJwQ9tqEQaY6eOSPQzNDQJeQbGmFjDP0ym4E2pkBOJ00ltgQmsu7'
 );
 
-function Payment({ order }) {
+function PaymentDonation({ order }) {
   const { price, _id } = order;
   const [clientSecret, setClientSecret] = useState('');
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     if (price) {
-      fetch('/payment/create-payment-intent', {
+      // fetch('/payment/create-payment-intent', {
+      fetch('https://bike-website-server.herokuapp.com/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ price }),
@@ -39,7 +40,7 @@ function Payment({ order }) {
     <div>
       {clientSecret ? (
         <Elements stripe={stripePromise} options={options}>
-          <CheckoutForm _id={_id} price={price} />
+          <CheckoutDonateForm _id={_id} price={price} />
         </Elements>
       ) : (
         <>
@@ -49,4 +50,4 @@ function Payment({ order }) {
     </div>
   );
 }
-export default Payment;
+export default PaymentDonation;

@@ -39,7 +39,7 @@ const AddEvents = () => {
               type="Date"
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
               {...register('date')}
-              placeholder="title"
+              placeholder="date"
             />
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"

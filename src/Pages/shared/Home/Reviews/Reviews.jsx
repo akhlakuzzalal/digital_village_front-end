@@ -11,6 +11,9 @@ import Review from './Review/Review';
 const Reviews = () => {
   return (
     <>
+      <h1 className=" text-5xl md:text-7xl pb-4 text-center font-bold py-2 my-8  text-primary">
+        Reviews
+      </h1>
       <Swiper
         slidesPerView={2}
         slidesPerGroup={1}
