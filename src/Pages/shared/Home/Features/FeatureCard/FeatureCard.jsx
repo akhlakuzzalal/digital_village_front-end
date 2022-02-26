@@ -1,7 +1,6 @@
 import React from 'react';
 
 const FeatureCard = ({ active, feature: { name, img, currentActive } }) => {
-  console.log(active);
   const scaleUpClasses =
     'transform scale-100 md:scale-125 transition-all duration-700';
   const scaleDownClasses = 'transform scale-100 transition-all duration-700';

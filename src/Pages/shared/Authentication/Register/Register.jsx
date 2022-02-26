@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../../hooks/useAuth';
 import useMediaQuery from '../../../../hooks/useMediaQuery';
 import animationData from '../../../../lotties/registration.json';
+
 const Register = () => {
   const isTablet = useMediaQuery('(min-width: 656px)');
   const isDesktop = useMediaQuery('(min-width: 900px)');
@@ -43,10 +44,16 @@ const Register = () => {
     processSignInWithGoogle(navigate, redirect_uri);
   };
 
-  const handleRegister = async ({ firstName, lastName, email, password }) => {
+  const handleRegister = async ({
+    firstName,
+    lastName,
+    dateOfBirth,
+    email,
+    password,
+  }) => {
     const name = `${firstName} ${lastName}`;
-    console.log({ name, email, password });
-    await processSignUp(name, email, password, navigate);
+    console.log({ name, email, password, dateOfBirth });
+    // await processSignUp(name, email, password, navigate);
     // reset();
   };
 
@@ -56,7 +63,10 @@ const Register = () => {
   };
 
   return (
-    <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div
+      className="flex items-center justify-center"
+      style={{ minHeight: 'calc(100vh - 700px)' }}
+    >
       <div className="flex-1 px-4">
         <div className="pt-24 md:mx-10 text-center lg:mx-48 space-y-4 mb-3">
           <h3 className=" text-center ">Create an Account</h3>
@@ -97,12 +107,12 @@ const Register = () => {
             />
 
             {/* last name */}
-
             <input
               className="px-7 py-3 bg-gray-100 outline-none border-2 w-full focus:border-primary transition-all duration-300 rounded-xl"
               {...register('lastName', {
                 required: true,
-                pattern: /^[A-Za-z]+$/i,
+                pattern: /^[A-Za-z\d]+$/i,
+                maxLength: 20,
               })}
               placeholder="Last Name"
               required
@@ -122,6 +132,18 @@ const Register = () => {
             required
           />
 
+          {/* date of birth */}
+          <div className="space-y-6 text-center">
+            <p className="capitalize font-bold text-info">Your Date of Birth</p>
+            <input
+              type="date"
+              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('dateOfBirth', {
+                required: true,
+              })}
+            />
+          </div>
+
           {/* password */}
           <input
             type="password"
@@ -132,7 +154,6 @@ const Register = () => {
               maxLength: 20,
             })}
             placeholder="Password"
-            type="password"
             required
           />
 
@@ -143,12 +164,15 @@ const Register = () => {
           />
         </form>
       </div>
+
       <div className="hidden md:block w-full md:w-1/2 px-3 pt-24 pointer-events-none">
-        <Lottie
-          options={defaultOptions}
-          isClickToPauseDisabled={true}
-          height={isDesktop ? 500 : isTablet ? 400 : 300}
-        />
+        <div className="w-fit mx-auto">
+          <Lottie
+            options={defaultOptions}
+            isClickToPauseDisabled={true}
+            height={isDesktop ? 500 : isTablet ? 400 : 300}
+          />
+        </div>
       </div>
     </div>
   );
