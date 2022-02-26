@@ -1,22 +1,15 @@
 import React from 'react';
 import { BsFillCartPlusFill, BsFillEyeFill } from 'react-icons/bs';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setShowModal } from '../../../redux/slices/eMarket/modalSlicle';
-import AddToCart from './AddToCart';
 
-const RegularProduct = ({ product }) => {
+const RegularProduct = ({ product, handleAddToCart }) => {
   const { name, img, price, id } = product;
-  const dispatch = useDispatch();
-  const handleAddCart = () => {
-    dispatch(setShowModal(true));
-  };
   return (
     <div>
       <div className="group relative max-w-sm rounded-xl overflow-hidden shadow-md hover:scale-105 duration-500">
         <div className="absolute invisible  top-2/4 left-2 group-hover:visible transition-all ease-in duration-100">
           <BsFillCartPlusFill
-            onClick={handleAddCart}
+            onClick={() => handleAddToCart(product)}
             size={30}
             color={'white'}
             className="mb-3 bg-[#666666] p-1 rounded-sm cursor-pointer"
@@ -37,7 +30,6 @@ const RegularProduct = ({ product }) => {
           <div className="font-bold text-xl mb-2 text-center">{name}</div>
         </div>
       </div>
-      <AddToCart product={product} />
     </div>
   );
 };
