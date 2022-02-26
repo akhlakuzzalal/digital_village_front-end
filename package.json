@@ -30,6 +30,7 @@
     "react-transition-group": "^4.4.2",
     "recharts": "^2.1.9",
     "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.4.4",
     "swiper": "^8.0.3",
     "web-vitals": "^2.1.4"
   },
