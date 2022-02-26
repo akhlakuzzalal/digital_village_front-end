@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import { setShowModal } from '../../../../redux/slices/eMarket/eMarketSlicle';
+import { setShowModal } from '../../../../redux/slices/eMarket/modalSlicle';
 import PaymentDonation from './PaymentDonation';
 
 export default function PayModal() {

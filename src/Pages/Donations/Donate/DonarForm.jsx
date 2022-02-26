@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { setShowModal } from '../../../redux/slices/eMarket/eMarketSlicle';
+import { setShowModal } from '../../../redux/slices/eMarket/modalSlicle';
 
 const DonarForm = () => {
   const showModal = useSelector((state) => state.market.modal.showModal);

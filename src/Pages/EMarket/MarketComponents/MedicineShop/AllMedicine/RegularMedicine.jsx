@@ -2,7 +2,7 @@ import React from 'react';
 import { BsFillCartPlusFill, BsFillEyeFill } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
-import { setShowModal } from '../../../../../redux/slices/eMarket/eMarketSlicle';
+import { setShowModal } from '../../../../../redux/slices/eMarket/modalSlicle';
 
 const RegularMedicine = () => {
   const dispatch = useDispatch();

@@ -1,104 +1,182 @@
 import React from 'react';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
-import { GiSelfLove } from 'react-icons/gi';
-import { MdDoneOutline } from 'react-icons/md';
-import { useDispatch, useSelector } from 'react-redux';
-import swal from 'sweetalert';
-import { setCart } from '../../../redux/slices/eMarket/cartSlice';
-import { setShowModal } from '../../../redux/slices/eMarket/eMarketSlicle';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import Rating from '../../../Components/Rating';
 
-export default function Modal() {
-  // allert confirm
-  const handleAlert = () => {
-    swal({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Your work has been saved',
-      showConfirmButton: false,
-      timer: 2000,
-    });
-  };
-  // redux state
-  const showModal = useSelector((state) => state.market.modal.showModal);
-  const dispatch = useDispatch();
-  // terms for set different id
-  const allcartItems = useSelector((state) => state.market.cart.cart);
-  const lastCartItemId = allcartItems.length;
-  const newId = lastCartItemId + 1;
-  // add a product in cart
-  const handleAddCart = () => {
-    const cartItem = {
-      id: newId,
-      name: 'Product name',
-      quantity: 1,
-      img: 'https://bsmedia.business-standard.com/_media/bs/img/article/2017-11/18/full/1511012328-1605.jpg',
-      price: 230,
-    };
-    dispatch(setCart(cartItem));
-    handleAlert();
-    dispatch(setShowModal(false));
-  };
+const ProductDetails = () => {
+  const { id } = useParams();
+  const products = useSelector((state) => state.market.products.products);
+  const product = products.find((p) => p.id === parseInt(id));
+  const { name, price, brand, img, description, rating } = product;
+
   return (
-    <>
-      {showModal ? (
-        <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                {/*body*/}
-                <div className="relative p-6 flex-auto">
-                  <div className="grid grid-cols-1 md:grid-cols-2">
-                    <img
-                      className="w-full h-4/5"
-                      src="https://www.techlandbd.com/image/cache/catalog/Headphone-Headset/w820bt%20black/edifier-w820bt-headphone-price-in-bd-black-500x500.jpg"
-                      alt=""
-                    />
-                    <div>
-                      <h3>Lorem, ipsum dolor.</h3>
-                      <p>Our price</p>
-                      <h6 className="text-amber-500 font-semibold">$ 300</h6>
-                      <h6 className="mt-6">Details</h6>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Amet quasi dolorem qui incidunt, velit illum eaque non
-                        veritatis inventore rem.
-                      </p>
-                      <div className="flex justify-around items-center mt-6">
-                        <button
-                          className="px-8 py-2 bg-secondary rounded-full"
-                          onClick={handleAddCart}
-                        >
-                          Add to cart
-                        </button>
-                        <GiSelfLove
-                          className="cursor-pointer"
-                          size={25}
-                          color={'#c200fb'}
-                        />
-                      </div>
-                      <div className="border-y-[1px] mt-6 border-gray-500">
-                        <p className="text-green-700 flex items-center">
-                          <MdDoneOutline /> In stock
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* close button for modal */}
-                <div className="absolute top-0 right-0 cursor-pointer">
-                  <AiOutlineCloseCircle
-                    size={30}
-                    className="text-primary"
-                    onClick={() => dispatch(setShowModal(false))}
-                  />
-                </div>
+    <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
+      <div className="w-10/12 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {/* image of the product */}
+          <img src={img} alt="" />
+          {/* Product description */}
+          <div className="flex flex-col justify-around">
+            <div>
+              <h3 className="text-primary ">{name}</h3>
+              <p>Brand: {brand}</p>
+            </div>
+            <h3 className="text-green-600">$ {price}</h3>
+            <p className="text-gray-600">{description}</p>
+            <button className="btn bg-primary px-4 py-2">Add to cart</button>
+          </div>
+        </div>
+      </div>
+      {/* Rating & Review of a product */}
+      <div className="w-10/12 mx-auto mt-6">
+        <h6 className="mb-10">Ratings and reviews of {name}</h6>
+        {/* Rating */}
+        <h6 className="mt-6 ml-0 md:ml-10 inline border-b-2 border-gray-700">
+          Rating
+        </h6>
+        <div className="grid grid-cols-1 md:grid-cols-5 mt-6">
+          <div className="col-span-2 flex flex-col items-center justify-center">
+            <h1>
+              {rating}/ <span className="text-gray-600">5</span>{' '}
+            </h1>
+            <div className="flex">
+              <Rating rating={rating} size={35} />
+            </div>
+            <p>120 people review this</p>
+          </div>
+          {/* start base rating parsenatge */}
+          <div className="col-span-3">
+            {/* 5 start */}
+            <div className="flex items-center">
+              <h6>5</h6>
+              <Rating rating={1} size={30} />
+              <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 ml-4">
+                <div
+                  className="bg-blue-600 h-2.5 rounded-full"
+                  style={{ width: '70%' }}
+                ></div>
               </div>
+              <h6 className="">70%</h6>
+            </div>
+            {/* 4 start */}
+            <div className="flex items-center">
+              <h6>4</h6>
+              <Rating rating={1} size={30} />
+              <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 ml-4">
+                <div
+                  className="bg-blue-600 h-2.5 rounded-full"
+                  style={{ width: '55%' }}
+                ></div>
+              </div>
+              <h6 className="">55%</h6>
+            </div>
+            {/* 3 star */}
+            <div className="flex items-center">
+              <h6>3</h6>
+              <Rating rating={1} size={30} />
+              <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 ml-4">
+                <div
+                  className="bg-blue-600 h-2.5 rounded-full"
+                  style={{ width: '45%' }}
+                ></div>
+              </div>
+              <h6 className="">45%</h6>
+            </div>
+            {/* 2 start */}
+            <div className="flex items-center">
+              <h6>2</h6>
+              <Rating rating={1} size={30} />
+              <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 ml-4">
+                <div
+                  className="bg-blue-600 h-2.5 rounded-full"
+                  style={{ width: '15%' }}
+                ></div>
+              </div>
+              <h6 className="">15%</h6>
+            </div>
+            {/* 1 start */}
+            <div className="flex items-center">
+              <h6>5</h6>
+              <Rating rating={1} size={30} />
+              <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 ml-4">
+                <div
+                  className="bg-blue-600 h-2.5 rounded-full"
+                  style={{ width: '5%' }}
+                ></div>
+              </div>
+              <h6 className="">5%</h6>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-        </>
-      ) : null}
-    </>
+        </div>
+        {/* Review */}
+        <div className="mt-10">
+          <h6 className="ml-0 md:ml-10 mb-6 inline border-b-2 border-gray-700">
+            Reviews
+          </h6>
+          {/* single review */}
+          <div className="md:w-11/12 mx-auto shadow-md px-10 py-5 rounded-lg mb-6">
+            <div className="flex justify-between">
+              <h6>User name</h6>
+              <p>12/02/2021</p>
+            </div>
+            <div className="flex items-center">
+              <h6>5</h6>
+              <Rating rating={1} />
+            </div>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est
+              corrupti necessitatibus inventore asperiores consequatur
+              perspiciatis facilis ad omnis ipsam, eos rem non porro dicta
+              dolore! Soluta veritatis eveniet quisquam magnam sapiente
+              perferendis, amet sed illo expedita, quia autem et perspiciatis
+              error reprehenderit, laborum corporis. Inventore, deserunt! Ullam
+              id architecto cupiditate!
+            </p>
+          </div>
+          {/* single review */}
+          <div className="md:w-11/12 mx-auto shadow-md px-10 py-5 rounded-lg mb-6">
+            <div className="flex justify-between">
+              <h6>User name</h6>
+              <p>12/02/2021</p>
+            </div>
+            <div className="flex items-center">
+              <h6>4</h6>
+              <Rating rating={1} />
+            </div>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est
+              corrupti necessitatibus inventore asperiores consequatur
+              perspiciatis facilis ad omnis ipsam, eos rem non porro dicta
+              dolore! Soluta veritatis eveniet quisquam magnam sapiente
+              perferendis, amet sed illo expedita, quia autem et perspiciatis
+              error reprehenderit, laborum corporis. Inventore, deserunt! Ullam
+              id architecto cupiditate!
+            </p>
+          </div>
+          {/* single review */}
+          <div className="md:w-11/12 mx-auto shadow-md px-10 py-5 rounded-lg mb-6">
+            <div className="flex justify-between">
+              <h6>User name</h6>
+              <p>12/02/2021</p>
+            </div>
+            <div className="flex items-center">
+              <h6>3</h6>
+              <Rating rating={1} />
+            </div>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est
+              corrupti necessitatibus inventore asperiores consequatur
+              perspiciatis facilis ad omnis ipsam, eos rem non porro dicta
+              dolore! Soluta veritatis eveniet quisquam magnam sapiente
+              perferendis, amet sed illo expedita, quia autem et perspiciatis
+              error reprehenderit, laborum corporis. Inventore, deserunt! Ullam
+              id architecto cupiditate!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-}
+};
+
+export default ProductDetails;

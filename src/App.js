@@ -27,6 +27,7 @@ import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
 import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
 import MyOrder from './Pages/EMarket/MarketComponents/DashboardItems/MyOrder';
 import MedicineShop from './Pages/EMarket/MarketComponents/MedicineShop/MedicineShop';
+import ProductDetails from './Pages/EMarket/MarketComponents/ProductDetails';
 import MarketDashboard from './Pages/EMarket/MarketDashboard';
 import AddEvents from './Pages/Events/AddEvents/AddEvents';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
@@ -126,6 +127,7 @@ function App() {
             <Route path="e-market" element={<EMarket />} />
             <Route path="cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
+            <Route path="productdetails/:id" element={<ProductDetails />} />
             <Route path="medicinestore" element={<MedicineShop />} />
             <Route path="marketdashboard" element={<MarketDashboard />}>
               <Route path="myorder" element={<MyOrder />} />

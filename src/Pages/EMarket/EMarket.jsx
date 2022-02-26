@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setProducts } from '../../redux/slices/eMarket/productsSlice';
 import Categorie from './MarketComponents/Categorie';
 import LatestProduct from './MarketComponents/LatestProduct';
 import MarketBanner from './MarketComponents/MarketBanner';
-import Modal from './MarketComponents/ProductDetails';
 import RegularProduct from './MarketComponents/RegularProduct';
 
 const EMarket = () => {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.market.products.products);
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
+    // if (products.length < 1) {
+    fetch('./marketFakeData.json')
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => dispatch(setProducts(data)));
+    // }
   }, []);
   return (
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
@@ -25,7 +29,7 @@ const EMarket = () => {
           <h6 className="inline border-b-2 border-primary">Latest product</h6>
           {products.length > 0 && (
             <LatestProduct
-              lastProduct={products[products.length - 1]}
+              lastProduct={products[products?.length - 1]}
             ></LatestProduct>
           )}
         </div>
@@ -40,14 +44,12 @@ const EMarket = () => {
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 my-6">
-            {products.slice(0, 8).map((product) => (
+            {products?.slice(0, 8).map((product) => (
               <RegularProduct key={product.id} product={product} />
             ))}
           </div>
         </div>
       </div>
-      {/* Medecine Section */}
-      <Modal></Modal>
     </div>
   );
 };
