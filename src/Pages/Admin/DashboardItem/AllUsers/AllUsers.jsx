@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import useAxiosInterceptor from '../../../hooks/useAxiosInterceptor';
-import useRefreshToken from '../../../hooks/useRefreshToken';
+import useAxiosInterceptor from '../../../../hooks/useAxiosInterceptor';
+import useRefreshToken from '../../../../hooks/useRefreshToken';
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
