@@ -33,7 +33,7 @@ const Banner = () => {
         {/* banner description */}
         <div className="w-full md:w-1/2 place-self-center text-center ">
           <h1>Digital Village</h1>
-          <p className="pb-3 w-4/6 mx-auto text-sm font-extralight mt-3">
+          <p className="pb-3 w-4/6 mx-auto text-sm font-extralight mt-3 text-gray-600">
             We the village administration provide quality services through this
             platform. Every villagers can fit their needs by utilizing the
             facilities we provide.

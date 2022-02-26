@@ -12,7 +12,7 @@ const EventDetails = () => {
         <div className="lg:col-span-2">
           <div>
             <img src={img} alt="" />
-            <h1 className="mt-20 hover:text-blue-600">Music Talent Show</h1>
+            <h1 className="mt-20 ">Music Talent Show</h1>
           </div>
           <div className="mt-20">
             <h4 className="mb-7">Next Upcoming date</h4>

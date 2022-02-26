@@ -1,26 +1,28 @@
-import React, { useRef } from 'react';
-import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
 
-
 const Contact = () => {
-
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors }
+    formState: { errors },
   } = useForm({
-    defaultValues: { yes_i_understand: false }
+    defaultValues: { yes_i_understand: false },
   });
 
-
   const sendEmail = (formData) => {
-    console.log(formData)
-    
+    console.log(formData);
+
     emailjs
-      .send("service_nbv08xi", "template_qw32pvu", formData, "user_NT0NiFlR59zCf04Pr6LZF")
+      .send(
+        'service_nbv08xi',
+        'template_qw32pvu',
+        formData,
+        'user_NT0NiFlR59zCf04Pr6LZF'
+      )
       .then(
         (result) => {
           console.log(result.text);
@@ -29,14 +31,13 @@ const Contact = () => {
           console.log(error.text);
         }
       );
-      swal("Successfully!", "!Your Message Send", "success")
+    swal('Successfully!', '!Your Message Send', 'success');
     reset();
   };
 
-
   // const sendEmail = (e) => {
   //           e.preventDefault();
-        
+
   //         };
 
   return (
@@ -58,7 +59,9 @@ const Contact = () => {
         <h3 className="text-center ml-2 md:ml-0 lg:ml-0 text-2xl font-semibold mt-16 mb-3 text-gray-500 hover:text-red-500">
           FOLLOW OUR INFO
         </h3>
-        <h1 className="text-3xl md:text-5xl lg:text-5xl text-center font-bold ml-4 md:ml-0 lg:ml-0 hover:text-blue-600">Contact information</h1>
+        <h1 className="text-3xl md:text-5xl lg:text-5xl text-center font-bold ml-4 md:ml-0 lg:ml-0 ">
+          Contact information
+        </h1>
         <h4 className="text-justify md:text-center lg:text-center mt-5 ml-4 container text-1xl font-semibold">
           Give us a call or drop by anytime, we endeavour to answer all
           enquiries within 24 hours on business days.We will be happy to answer
@@ -76,7 +79,7 @@ const Contact = () => {
             />
           </div>
           <div className="flex flex-col justify-between mr-7 leading-normal py-10">
-            <p className="mb-3 font-semibold hover:text-blue-600 text-gray-700 dark:text-gray-400">
+            <p className="mb-3 font-semibold  text-gray-700 dark:text-gray-400">
               10:00am to 6:00pm
             </p>
             <p className="mb-3 font-semibold hover:text-red-600 dark:text-gray-400mb-3 text-gray-700 dark:text-gray-400">
@@ -92,7 +95,7 @@ const Contact = () => {
             alt=""
           />
           <div className="flex flex-col justify-between p-4 leading-normal">
-            <p className="mb-3 mr-3 md:mr-0 lg:mr-0 font-semibold hover:text-blue-600 text-gray-700 dark:text-gray-400">
+            <p className="mb-3 mr-3 md:mr-0 lg:mr-0 font-semibold  text-gray-700 dark:text-gray-400">
               13005 Greenville Avenue
             </p>
             <p className="mb-3 font-semibold hover:text-red-600 text-gray-700 dark:text-gray-400">
@@ -108,7 +111,7 @@ const Contact = () => {
             alt=""
           />
           <div className="flex flex-col justify-between p-4 leading-normal">
-            <p className="mb-3 font-semibold hover:text-blue-600 text-gray-700 dark:text-gray-400">
+            <p className="mb-3 font-semibold  text-gray-700 dark:text-gray-400">
               +1 000999 0099
             </p>
             <p className="mb-3 font-semibold hover:text-red-600 text-gray-700 dark:text-gray-400">
@@ -151,10 +154,12 @@ const Contact = () => {
         </div>
       </div>
       <div className="mt-10">
-        <h5 className="text-center hover:text-blue-600 text-1xl font-bold mt-16 mb-3 text-gray-600">
+        <h5 className="text-center  text-1xl font-bold mt-16 mb-3 text-gray-600">
           DON’T HASITATE TO CONTACT WITH US
         </h5>
-        <h1 className="text-3xl md:text-5xl lg:text-5xl text-center font-bold hover:text-blue-600">Now Very Easy</h1>
+        <h1 className="text-3xl md:text-5xl lg:text-5xl text-center font-bold ">
+          Now Very Easy
+        </h1>
         <h4 className=" mt-5  px-10 container text-1xl font-semibold text-justify">
           Our approach to SEO is uniquely built around what we know works…and
           what we know doesn’t work. With over 200 verified factors in
@@ -191,7 +196,7 @@ const Contact = () => {
               type="email"
               {...register('email')}
               placeholder="Enter Your Email Number"
-              name='email'
+              name="email"
             />
           </div>
           <div className="mr-2 pl-10 ">

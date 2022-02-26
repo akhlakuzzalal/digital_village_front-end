@@ -59,7 +59,7 @@ const Register = () => {
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <div className="flex-1 px-4">
         <div className="pt-24 md:mx-10 text-center lg:mx-48 space-y-4 mb-3">
-          <h3 className=" text-center hover:text-blue-600">Create an Account</h3>
+          <h3 className=" text-center ">Create an Account</h3>
           <p className="space-x-2">
             <span>Already Registered?</span>
             <Link to="/login">
@@ -95,23 +95,28 @@ const Register = () => {
               placeholder="First Name"
               required
             />
-          
 
             {/* last name */}
-          
+
             <input
               className="px-7 py-3 bg-gray-100 outline-none border-2 w-full focus:border-primary transition-all duration-300 rounded-xl"
-              {...register('lastName', {required: true, pattern: /^[A-Za-z]+$/i })}
+              {...register('lastName', {
+                required: true,
+                pattern: /^[A-Za-z]+$/i,
+              })}
               placeholder="Last Name"
               required
-
             />
           </div>
 
           {/* email */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('email',{required:true,pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })}
+            {...register('email', {
+              required: true,
+              pattern:
+                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            })}
             placeholder="Email"
             type="email"
             required
@@ -121,7 +126,11 @@ const Register = () => {
           <input
             type="password"
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('password',{required:true,minLength:6,maxLength:20})}
+            {...register('password', {
+              required: true,
+              minLength: 6,
+              maxLength: 20,
+            })}
             placeholder="Password"
             type="password"
             required
