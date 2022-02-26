@@ -3,7 +3,7 @@ import React from 'react';
 const LatestProduct = ({ lastProduct }) => {
   return (
     <div
-      className="mt-6 shadow-2xl rounded-lg overflow-hidden p-4 md:p-0"
+      className="mt-6 shadow-md rounded-lg overflow-hidden p-4 md:p-0"
       style={{ height: '88%' }}
     >
       <div

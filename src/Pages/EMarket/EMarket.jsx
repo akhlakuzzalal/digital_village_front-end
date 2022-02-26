@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Categorie from './MarketComponents/Categorie';
 import LatestProduct from './MarketComponents/LatestProduct';
 import MarketBanner from './MarketComponents/MarketBanner';
-import AllMedicine from './MarketComponents/MedicineShop/AllMedicine/AllMedicine';
-import MedicineCategories from './MarketComponents/MedicineShop/MedicineCategories';
-import MedicineShopBanner from './MarketComponents/MedicineShop/MedicineShopBanner';
 import Modal from './MarketComponents/ProductDetails';
 import RegularProduct from './MarketComponents/RegularProduct';
 
@@ -50,13 +47,6 @@ const EMarket = () => {
         </div>
       </div>
       {/* Medecine Section */}
-      <div id="medecine" className="mt-20">
-        <MedicineShopBanner />
-        <div className="w-11/12 mx-auto mt-10">
-          <MedicineCategories />
-        </div>
-      </div>
-      <AllMedicine />
       <Modal></Modal>
     </div>
   );
