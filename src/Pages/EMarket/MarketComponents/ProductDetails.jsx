@@ -3,12 +3,41 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { GiSelfLove } from 'react-icons/gi';
 import { MdDoneOutline } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
+import swal from 'sweetalert';
+import { setCart } from '../../../redux/slices/eMarket/cartSlice';
 import { setShowModal } from '../../../redux/slices/eMarket/eMarketSlicle';
 
 export default function Modal() {
-  const showModal = useSelector((state) => state.modal.showModal);
+  // allert confirm
+  const handleAlert = () => {
+    swal({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Your work has been saved',
+      showConfirmButton: false,
+      timer: 2000,
+    });
+  };
+  // redux state
+  const showModal = useSelector((state) => state.market.modal.showModal);
   const dispatch = useDispatch();
-  console.log(showModal);
+  // terms for set different id
+  const allcartItems = useSelector((state) => state.market.cart.cart);
+  const lastCartItemId = allcartItems.length;
+  const newId = lastCartItemId + 1;
+  // add a product in cart
+  const handleAddCart = () => {
+    const cartItem = {
+      id: newId,
+      name: 'Product name',
+      quantity: 1,
+      img: 'https://bsmedia.business-standard.com/_media/bs/img/article/2017-11/18/full/1511012328-1605.jpg',
+      price: 230,
+    };
+    dispatch(setCart(cartItem));
+    handleAlert();
+    dispatch(setShowModal(false));
+  };
   return (
     <>
       {showModal ? (
@@ -36,7 +65,10 @@ export default function Modal() {
                         veritatis inventore rem.
                       </p>
                       <div className="flex justify-around items-center mt-6">
-                        <button className="px-8 py-2 bg-secondary rounded-full">
+                        <button
+                          className="px-8 py-2 bg-secondary rounded-full"
+                          onClick={handleAddCart}
+                        >
                           Add to cart
                         </button>
                         <GiSelfLove

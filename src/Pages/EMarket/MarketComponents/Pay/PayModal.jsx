@@ -5,7 +5,7 @@ import { setShowModal } from '../../../../redux/slices/eMarket/eMarketSlicle';
 import Payment from './Payment';
 
 export default function PayModal() {
-  const showModal = useSelector((state) => state.modal.showModal);
+  const showModal = useSelector((state) => state.market.modal.showModal);
   const dispatch = useDispatch();
   return (
     <>

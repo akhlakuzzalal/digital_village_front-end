@@ -1,10 +1,12 @@
 import React from 'react';
 import Lottie from 'react-lottie';
+import { useSelector } from 'react-redux';
 import animationData from '../../../../lotties/cart.json';
 import CartTotal from './CartTotal';
 import TableBody from './TableBody';
 
 const Cart = () => {
+  // options for lottie animation
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -13,29 +15,7 @@ const Cart = () => {
       preserveAspectRatio: 'xMidYMid slice',
     },
   };
-  const cartProduct = [
-    {
-      name: 'Product name',
-      img: 'https://i.ibb.co/fq1j9w3/grocery-shopping-prev-ui.png',
-      categorie: 'Anything',
-      price: 210,
-      quantity: 1,
-    },
-    {
-      name: 'Product name',
-      img: 'https://i.ibb.co/fq1j9w3/grocery-shopping-prev-ui.png',
-      categorie: 'Anything',
-      price: 210,
-      quantity: 1,
-    },
-    {
-      name: 'Product name',
-      img: 'https://i.ibb.co/fq1j9w3/grocery-shopping-prev-ui.png',
-      categorie: 'Anything',
-      price: 210,
-      quantity: 1,
-    },
-  ];
+  const cartProduct = useSelector((state) => state.market.cart.cart);
   return (
     <div
       className="mt-[88px] w-11/12 mx-auto"

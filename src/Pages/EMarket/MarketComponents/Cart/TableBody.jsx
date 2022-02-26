@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import swal from 'sweetalert';
+import { removeFromCart } from '../../../../redux/slices/eMarket/cartSlice';
 
 const TableBody = ({ data }) => {
+  const dispatch = useDispatch();
   let [quantity, setQuantity] = useState(data.quantity);
   const quantityHandler = (method) => {
     switch (method) {
@@ -17,11 +21,28 @@ const TableBody = ({ data }) => {
         quantity = 1;
     }
   };
+  // alert swl for remove items from cart
+  const handleAlert = () => {
+    swal({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this imaginary file!',
+      icon: 'warning',
+
+      buttons: true,
+    }).then((willConfirm) => {
+      if (willConfirm) {
+        dispatch(removeFromCart(data));
+        swal('Confirmed!', {
+          icon: 'success',
+        });
+      }
+    });
+  };
   return (
     <tr class="bg-white border-b dark:bg-gray-800">
       {/* product name */}
       <td class="py-4 px-6 text-sm font-semibold text-gray-900 whitespace-nowrap d">
-        Apple MacBook Pro 17"
+        {data.name}
       </td>
       {/* product image */}
       <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap">
@@ -51,7 +72,7 @@ const TableBody = ({ data }) => {
       </td>
       {/* remove action */}
       <td class="py-4 px-6 text-sm font-medium text-right text-danger cursor-pointer whitespace-nowrap">
-        Remove
+        <button onClick={handleAlert}>Remove</button>
       </td>
     </tr>
   );
