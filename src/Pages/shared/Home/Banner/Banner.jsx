@@ -1,8 +1,10 @@
 import React from 'react';
 import Lottie from 'react-lottie';
 import { NavHashLink } from 'react-router-hash-link';
+import homeBg from '../../../../assets/home_bg.png';
 import useMediaQuery from '../../../../hooks/useMediaQuery';
 import animationData from '../../../../lotties/village.json';
+import Features from '../Features/Features';
 
 const Banner = () => {
   const isTablet = useMediaQuery('(min-width: 656px)');
@@ -19,14 +21,17 @@ const Banner = () => {
 
   return (
     <div
-      className="mt-[88px] mb-36 md:mb-24"
-      style={{ height: 'calc(100vh - 88px)' }}
+      className="mt-[88px] mb-36 md:mb-24 bg-no-repeat bg-left-top"
+      style={{
+        height: 'calc(100vh - 88px)',
+        backgroundImage: isDesktop ? `url(${homeBg})` : 'none',
+      }}
     >
-      <div className="flex flex-wrap md:space-y-0">
+      <div className="flex flex-wrap items-center md:space-y-0">
         {/* banner description */}
-        <div className="w-full md:w-1/2 place-self-center space-y-3 md:space-y-6 text-center md:text-left md:pl-24 pt-12 mb-3">
-          <h1 className="text-[#0e1318]">Digital Village</h1>
-          <p className="text-[#3f5a46] w-2/3 mx-auto md:mx-0 md:w-[300px] capitalize pb-3">
+        <div className="w-full md:w-1/2 place-self-center md:space-y-6 text-center ">
+          <h1 className="">Digital Village</h1>
+          <p className="pb-3 w-5/6 mx-auto">
             Transforming an analog village into a digital one
           </p>
           <NavHashLink smooth to="/#service">
@@ -36,14 +41,17 @@ const Banner = () => {
           </NavHashLink>
         </div>
         {/* banner svg */}
-        <div className="w-full md:w-1/2 px-3 pointer-events-none">
-          <Lottie
-            options={defaultOptions}
-            isClickToPauseDisabled={true}
-            height={isDesktop ? 500 : isTablet ? 400 : 300}
-          />
+        <div className="w-full md:w-1/2 pointer-events-none">
+          <div className="w-fit">
+            <Lottie
+              options={defaultOptions}
+              isClickToPauseDisabled={true}
+              width={isDesktop ? 500 : isTablet ? 400 : 300}
+            />
+          </div>
         </div>
       </div>
+      <Features />
     </div>
   );
 };
