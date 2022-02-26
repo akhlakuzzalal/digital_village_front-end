@@ -5,6 +5,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   sendEmailVerification,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
@@ -50,7 +51,11 @@ const useFirebase = () => {
   };
 
   //REGISTRATION PROCESS OF USER
-  const processSignUp = (name, email, password, navigate) => {
+  const processSignUp = (
+    { name, email, dateOfBirth, password },
+    redirect_uri,
+    navigate
+  ) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
@@ -62,12 +67,12 @@ const useFirebase = () => {
 
         sendEmailVerification(auth.currentUser);
 
-        const newUser = { email, displayName: name, emailVerified };
+        const newUser = { name, email, dateOfBirth, emailVerified };
 
         setUser(newUser);
 
         // register user to the database
-        // saveUser(name, email);
+        registerToDB({ name, email, dateOfBirth, password });
 
         // send name to firebase after creation
         updateProfile(auth.currentUser, {
@@ -75,8 +80,7 @@ const useFirebase = () => {
         })
           .then(() => {})
           .catch((error) => setAuthError(error.message));
-        // navigate('/emailverify'); // navigate to the email verify page or homepage and give an alert to verify email
-        navigate('/');
+        navigate(redirect_uri);
       })
       .catch((error) => {
         setAuthError(error.message);
@@ -88,15 +92,15 @@ const useFirebase = () => {
   //USER LOGIN PROCESS
   const processSignIn = (email, password, location, navigate) => {
     setIsLoading(true);
-    loginToDB(email, password);
-    // return signInWithEmailAndPassword(auth, email, password)
-    //   .then(() => {
-    //     const redirect_uri = location?.state?.from || '/';
-    //     navigate(redirect_uri);
-    //     setAuthError('');
-    //   })
-    //   .catch((error) => setAuthError(error.message))
-    //   .finally(() => setIsLoading(false));
+    return signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        loginToDB(email, password);
+        const redirect_uri = location?.state?.from || '/';
+        navigate(redirect_uri);
+        setAuthError('');
+      })
+      .catch((error) => setAuthError(error.message))
+      .finally(() => setIsLoading(false));
   };
 
   // change the user state
@@ -113,28 +117,31 @@ const useFirebase = () => {
     return () => unsubscribed;
   }, [auth]);
 
-  // find the user role
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `find the role url?email=${user.email}`
-  //     )
-  //     .then((response) => setRole(response?.data?.admin));
-  // }, [user.email]);
-
   //process user logout
   const logout = () => {
     setIsLoading(true);
     return signOut(auth)
-      .then(() => {})
+      .then(() => {
+        // clear all info of the user
+        logoutFromDB();
+        setUser({});
+        setAuthError('');
+        setRoles([]);
+        setToken('');
+      })
       .catch((error) => {
         setAuthError(error.message);
       })
       .finally(() => setIsLoading(false));
   };
 
-  const registerToDB = (name, email, dateOfBirth, password) => {
-    console.log(name, email, dateOfBirth, password);
+  const registerToDB = async (newUser) => {
+    const response = await axios.post('/auth/register', newUser);
+    console.log(response?.data?.roles);
+    console.log(response?.data?.accessToken);
+    setRoles([...roles, response?.data?.roles]);
+    setToken(response?.data?.accessToken);
+    console.log(response?.data);
   };
 
   const loginToDB = async (email, password) => {
@@ -149,12 +156,18 @@ const useFirebase = () => {
           withCredentials: true,
         }
       );
-      setRoles(response?.data?.roles);
+      setRoles([...roles, response?.data?.roles]);
       setToken(response?.data?.accessToken);
       console.log(response?.data?.message);
     } catch (error) {
       console.log(error.message);
     }
+  };
+
+  const logoutFromDB = async () => {
+    const response = await axios.get('/auth/logout');
+
+    console.log(response?.data);
   };
 
   return {

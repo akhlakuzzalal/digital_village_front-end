@@ -37,7 +37,6 @@ import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
 import NotFound from './Pages/shared/NotFound/NotFound';
 import Profile from './Pages/User/Profile';
-import PersistLogin from './SecureRoutes/PersistLogin';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
 
 const Roles = {
@@ -60,14 +59,12 @@ function App() {
             <Route path="login" element={<Login />} />
 
             {/* testing */}
-            <Route element={<PersistLogin />}>
-              <Route
-                element={
-                  <PrivateRoute allowedRoles={[Roles.User, Roles.Admin]} />
-                }
-              >
-                <Route path="allUsers" element={<AllUsers />} />
-              </Route>
+            <Route
+              element={
+                <PrivateRoute allowedRoles={[Roles.User, Roles.Admin]} />
+              }
+            >
+              <Route path="allUsers" element={<AllUsers />} />
             </Route>
 
             {/* ALL PRIVATE ROUTES */}

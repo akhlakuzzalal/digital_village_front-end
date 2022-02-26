@@ -52,9 +52,9 @@ const Register = () => {
     password,
   }) => {
     const name = `${firstName} ${lastName}`;
-    console.log({ name, email, password, dateOfBirth });
-    // await processSignUp(name, email, password, navigate);
-    // reset();
+    const newUser = { name, email, password, dateOfBirth };
+    await processSignUp(newUser, redirect_uri, navigate);
+    reset();
   };
 
   // clear error messages
