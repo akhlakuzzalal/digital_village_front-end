@@ -21,11 +21,11 @@ import EMarket from './Pages/EMarket/EMarket';
 import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
 import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
 import AddEvents from './Pages/Events/AddEvents/AddEvents';
-import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
 import VaccineInfo from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/VaccineInfo';
 import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
+import EventDetails from './Pages/Medical/EventDetails';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
 import Notification from './Pages/Notification/Notification';
 import About from './Pages/shared/About/About';
@@ -108,7 +108,7 @@ function App() {
             <Route path="development" element={<Development />} />
 
             {/* news related routes */}
-            <Route path="news" element={<AllNews />} />
+            <Route path="newsDetails/:id" element={<AllNews />} />
 
             {/* donation related routes */}
             <Route path="donation" element={<Donations />} />

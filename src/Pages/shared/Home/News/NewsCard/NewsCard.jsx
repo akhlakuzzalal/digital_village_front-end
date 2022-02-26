@@ -1,5 +1,6 @@
 import React from 'react';
 import { ImCalendar } from 'react-icons/im';
+import { Link } from 'react-router-dom';
 const NewsCard = ({ n }) => {
   return (
     <div className="rounded-2xl w-fit shadow-xl max-w-[400px]">
@@ -15,9 +16,11 @@ const NewsCard = ({ n }) => {
         </p>
         <h3>{n.title}</h3>
         <p>{n.description.slice(0, 200)} ...</p>
+        <Link to={`/newsDetails/${n.id}`}>
         <button className="text-primary text-lg hover:text-black transition-all duration-500 border-b-2 border-b-primary">
           Read More
         </button>
+        </Link>
       </div>
     </div>
   );
