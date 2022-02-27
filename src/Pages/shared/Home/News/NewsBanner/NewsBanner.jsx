@@ -73,7 +73,7 @@ const NewsBanner = () => {
                 <div className='col-span-2 scale-105 transition duration-700  ease-in-out'>
                     <div className='hover:scale-105 transition duration-700 ease-in-out mx-5' >
                         <p className='absolute bottom-28 px-2 ml-6 font-bold  text-white text-left bg-green-600 '>Latest News</p>
-                        <p className='absolute bottom-2 text-white font-bold text-2xl leading-none text-left px-3 '>What do decisions made at a summit in Glasgow mean for a woman in a village on the front line of climate change?
+                        <p className='absolute bottom-2 text-white font-bold text-xl md:text-2xl leading-none text-left px-3 '>What do decisions made at a summit in Glasgow mean for a woman in a village on the front line of climate change?
                         <br />
                         <span className='text-red-600 text-xl'>1,February,2022</span>
                         </p>
