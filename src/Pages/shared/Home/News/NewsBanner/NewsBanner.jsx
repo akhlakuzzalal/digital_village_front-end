@@ -71,7 +71,7 @@ const NewsBanner = () => {
         <div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-1 mx-1'>
                 <div className=''>
-                    <div className='hover:scale-105 transition duration-700 ease-in-out mx-5' >
+                    <div className='hover:scale-105 cursor-zoom-in transition duration-700 ease-in-out mx-5' >
                         <p className='absolute bottom-32 mb-5 px-2 ml-6 font-bold  text-white text-left bg-green-600 '>Latest News</p>
                         <p className='absolute bottom-2 text-white font-bold text-xl md:text-2xl leading-none text-left px-3 '>What do decisions made at a summit in Glasgow mean for a woman in a village on the front line of climate change?
                         <br />
@@ -86,7 +86,7 @@ const NewsBanner = () => {
 
                 <div className='grid grid-cols-1 gap-2 md:grid-cols-2'>
                 <div className=' '>
-                    <div className='hover:scale-105 transition duration-700 mb-1 ease-in-out'>
+                    <div className='hover:scale-105 cursor-zoom-in transition duration-700 mb-1 ease-in-out'>
                     
                     <p className='absolute bottom-16 px-2 ml-6 font-bold  text-white text-center  bg-purple-600 '>Learning News</p>
                         <p className='absolute bottom-2 text-white font-bold  text-center mt-4 '>Lessons for At-Home Learning from MacArthur’s Digital Learning</p>
@@ -96,7 +96,7 @@ const NewsBanner = () => {
                     </div>
 
                     
-                   <div className='hover:scale-105 transition duration-700 ease-in-out'>
+                   <div className='hover:scale-105 cursor-zoom-in transition duration-700 ease-in-out'>
                     
                     <p className='absolute bottom-16 px-2 ml-6 font-bold  text-white text-center  bg-red-400 '>Medical News</p>
                         <p className='absolute bottom-2 text-white font-bold  text-center mt-4 '>Antacid shows promise addressing Covid symptoms</p>
@@ -109,7 +109,7 @@ const NewsBanner = () => {
 
                 <div className=''>
                   
-                  <div className='hover:scale-105 transition mb-1 duration-700 ease-in-out'>
+                  <div className='hover:scale-105 cursor-zoom-in transition mb-1 duration-700 ease-in-out'>
                     
                     <p className='absolute bottom-16 px-2 ml-6 font-bold  text-white text-center  bg-green-600 '>Events News</p>
                         <p className='absolute bottom-1 text-white font-bold  text-center mt-4 '>ATC Group has a established involvement in the not-for-profit sector</p>
@@ -118,7 +118,7 @@ const NewsBanner = () => {
                         
                     </div>
 
-                    <div className='hover:scale-105 transition duration-700 ease-in-out '>
+                    <div className='hover:scale-105 cursor-zoom-in transition duration-700 ease-in-out '>
                    
                        <p className='absolute bottom-20 px-2 ml-6 font-bold  text-white   bg-blue-600 '>Donation News</p>
                         <p className='absolute bottom-1 text-white line-height-0 font-bold  text-justify px-3 mt-4 '> In 1978, alumni of the Yale Daily News founded Foundation the Donation
