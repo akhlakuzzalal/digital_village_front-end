@@ -5,7 +5,7 @@ import { MdDoneOutline } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import img from '../../assets/events/events.png';
-import Calender from '../../Components/Calender/Calender';
+import Calender from '../../Components/Calender';
 import { setShowModal } from '../../redux/slices/eMarket/modalSlicle';
 
 const EventDetails = () => {
