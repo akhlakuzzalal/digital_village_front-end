@@ -2,7 +2,7 @@ import React from 'react';
 import { BsFillCartPlusFill, BsFillEyeFill } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
-import { setShowModal } from '../../../../../redux/slices/eMarket/eMarketSlicle';
+import { setShowModal } from '../../../../../redux/slices/eMarket/modalSlicle';
 
 const RegularMedicine = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const RegularMedicine = () => {
   };
   return (
     <div>
-      <div className="group relative max-w-sm rounded-xl overflow-hidden shadow-2xl hover:scale-105 duration-500">
+      <div className="group relative max-w-sm rounded-xl overflow-hidden shadow-md hover:scale-105 duration-500">
         <div className="absolute invisible  top-2/4 left-2 group-hover:visible transition-all ease-in duration-100">
           <BsFillCartPlusFill
             onClick={handleAlert}

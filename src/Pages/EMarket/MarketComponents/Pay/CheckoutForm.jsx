@@ -58,7 +58,7 @@ const CheckoutForm = ({ _id, price }) => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `http://localhost:3000/confirmOrder/${_id}`,
+        return_url: `https://digital-village.herokuapp.com/e-market`,
       },
     });
 

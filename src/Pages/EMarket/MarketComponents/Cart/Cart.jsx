@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Lottie from 'react-lottie';
+import { useDispatch, useSelector } from 'react-redux';
 import animationData from '../../../../lotties/cart.json';
+import { countCartTotal } from '../../../../redux/slices/eMarket/cartTotalSlice';
 import CartTotal from './CartTotal';
 import TableBody from './TableBody';
 
 const Cart = () => {
+  const dispatch = useDispatch();
+  const cartProduct = useSelector((state) => state.market.cart.cart);
+
+  // pass cart products price in redux for calculate cartTotal
+  useEffect(() => {
+    dispatch(countCartTotal(cartProduct));
+  }, [cartProduct]);
+  // options for lottie animation
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -13,29 +23,6 @@ const Cart = () => {
       preserveAspectRatio: 'xMidYMid slice',
     },
   };
-  const cartProduct = [
-    {
-      name: 'Product name',
-      img: 'https://i.ibb.co/fq1j9w3/grocery-shopping-prev-ui.png',
-      categorie: 'Anything',
-      price: 210,
-      quantity: 1,
-    },
-    {
-      name: 'Product name',
-      img: 'https://i.ibb.co/fq1j9w3/grocery-shopping-prev-ui.png',
-      categorie: 'Anything',
-      price: 210,
-      quantity: 1,
-    },
-    {
-      name: 'Product name',
-      img: 'https://i.ibb.co/fq1j9w3/grocery-shopping-prev-ui.png',
-      categorie: 'Anything',
-      price: 210,
-      quantity: 1,
-    },
-  ];
   return (
     <div
       className="mt-[88px] w-11/12 mx-auto"
@@ -80,7 +67,7 @@ const Cart = () => {
                 </thead>
                 <tbody>
                   {/* Table body */}
-                  {cartProduct.map((data) => (
+                  {cartProduct?.map((data) => (
                     <TableBody key={data.id} data={data}></TableBody>
                   ))}
                 </tbody>

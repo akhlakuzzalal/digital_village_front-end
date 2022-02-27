@@ -57,7 +57,7 @@ const VaccineInfo = () => {
         <RegistrationPdf info={info} />
         <div className="flex justify-center ">
           <button
-            className="border-2  bg-primary text-white py-2 px-5 "
+            className="border-2 g bg-primary text-white py-2 px-5 "
             onClick={() => generatePDF(info)}
           >
             Download <BsDownload style={{ display: 'inline' }} />
@@ -65,7 +65,6 @@ const VaccineInfo = () => {
         </div>
       </div>
       <div className="w-1/2">
-        {' '}
         <img className="w-2/3" src={vaccineInfo} alt="" />{' '}
       </div>
     </div>
