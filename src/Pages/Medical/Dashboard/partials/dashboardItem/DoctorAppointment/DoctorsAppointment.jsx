@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import AppointmentAvailable from './AppointmentAvailable/AppointmentAvailable';
 import AppointmentHero from './AppointmentHero/AppointmentHero';
-import Calender from './Calender/Calender';
+import CardAppointment from './AppointmentHero/CardAppointment';
+import Schedule from './Schedule/Schedule';
 
 const DoctorsAppointment = () => {
   const [date, setDate] = useState(new Date());
@@ -13,8 +14,10 @@ const DoctorsAppointment = () => {
     <>
       <div>
         <AppointmentHero />
-        <Calender onChange={onChange} />
-        <AppointmentAvailable date={date} />
+        <CardAppointment />
+        <Schedule onChange={onChange} />
+
+        <AppointmentAvailable date={date} z />
       </div>
     </>
   );
