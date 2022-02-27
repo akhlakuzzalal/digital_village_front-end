@@ -1,26 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
-import { removeFromCart } from '../../../../redux/slices/eMarket/cartSlice';
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromCart,
+} from '../../../../redux/slices/eMarket/cartSlice';
 
 const TableBody = ({ data }) => {
   const dispatch = useDispatch();
-  let [quantity, setQuantity] = useState(data.quantity);
-  const quantityHandler = (method) => {
-    switch (method) {
-      case 'increase':
-        setQuantity((quantity += 1));
-        // data.quantity += 1;
-        break;
-      case 'decrease':
-        if (quantity > 1) {
-          setQuantity((quantity -= 1));
-        }
-        break;
-      default:
-        quantity = 1;
-    }
-  };
+
   // alert swl for remove items from cart
   const handleAlert = () => {
     swal({
@@ -31,12 +20,15 @@ const TableBody = ({ data }) => {
       buttons: true,
     }).then((willConfirm) => {
       if (willConfirm) {
-        dispatch(removeFromCart(data));
+        dispatch(removeFromCart(data.id));
         swal('Confirmed!', {
           icon: 'success',
         });
       }
     });
+  };
+  const increase = () => {
+    dispatch(increaseQuantity(data.id));
   };
   return (
     <tr class="bg-white border-b dark:bg-gray-800">
@@ -52,14 +44,14 @@ const TableBody = ({ data }) => {
         {/* increase decrease btn */}
         <div className="flex items-center">
           <button
-            onClick={() => quantityHandler('decrease')}
+            onClick={() => dispatch(decreaseQuantity(data.id))}
             className="inline px-2 text-xl hover:bg-primary hover:text-white h-full rounded-l-lg"
           >
             -
           </button>
-          <p className="inline px-3 ">{quantity}</p>
+          <p className="inline px-3 ">{data.quantity}</p>
           <button
-            onClick={() => quantityHandler('increase')}
+            onClick={increase}
             className="inline px-2 text-xl hover:bg-primary hover:text-white h-full rounded-r-lg"
           >
             +
@@ -68,7 +60,7 @@ const TableBody = ({ data }) => {
       </td>
       {/* price */}
       <td class="py-4 px-6 text-sm text-green-700 font-semibold whitespace-nowrap">
-        $ {data.price}
+        $ {data.quantityBasePrice}
       </td>
       {/* remove action */}
       <td class="py-4 px-6 text-sm font-medium text-right text-danger cursor-pointer whitespace-nowrap">

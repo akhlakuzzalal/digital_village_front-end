@@ -16,7 +16,7 @@ export default function AddToCart({ product }) {
       icon: 'success',
       title: 'Your work has been saved',
       showConfirmButton: false,
-      timer: 2000,
+      timer: 1500,
     });
   };
   // redux state
@@ -29,6 +29,8 @@ export default function AddToCart({ product }) {
       name: name,
       img: img,
       price: price,
+      quantity: 1,
+      quantityBasePrice: price,
     };
     dispatch(setCart(cartItem));
     handleAlert();
