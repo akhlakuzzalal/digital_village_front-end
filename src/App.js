@@ -35,6 +35,7 @@ import Contact from './Pages/shared/Contact/Contact';
 import Footer from './Pages/shared/Home/Footer/Footer';
 import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
+import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import NotFound from './Pages/shared/NotFound/NotFound';
 import Profile from './Pages/User/Profile';
 import PersistLogin from './SecureRoutes/PersistLogin';
@@ -108,7 +109,8 @@ function App() {
             <Route path="development" element={<Development />} />
 
             {/* news related routes */}
-            <Route path="newsDetails/:id" element={<AllNews />} />
+            <Route path="newsDetails/:id" element={<NewsDetails />} />
+            <Route path="allNews" element={<AllNews />} />
 
             {/* donation related routes */}
             <Route path="donation" element={<Donations />} />

@@ -8,7 +8,10 @@ const NewsCard = ({ n }) => {
         <div
           className="w-full h-full bg-cover bg-no-repeat hover:scale-125 transition-all duration-300"
           style={{ backgroundImage: `url('${n.img}')` }}
-        ></div>
+        >
+
+          
+        </div>
       </div>
       <div className="space-y-4 p-4">
         <p className="text-gray-600 flex items-center space-x-2">

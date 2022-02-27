@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import NewsBanner from '../shared/Home/News/NewsBanner/NewsBanner';
-import NewsCard from '../shared/Home/News/NewsCard/NewsCard';
 
 
 
@@ -64,23 +62,45 @@ const news=[
   }
 ]
 
-const AllNews = () => {
+
+
+//https://pacific-journey-19792.herokuapp.com/specific?item=breakFast
+const NewsDetails = () => {
+  const {id}=useParams();
+  // const [news,setNews]=useState([]);
+  // useEffect(() => {
+  //   fetch('./letestNewsFakeData.json')
+  //     .then((res) => res.json())
+  //     .then((data) => setNews(data));
+  // }, []);
+  // console.log(news)
+
+const result=news.filter(data=>data?.id==id)
+console.log(result)
+
   
   return (
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
-        <NewsBanner/>
-        <div className='grid grid-cols-1 gap-4 mx-auto md:mx-10 mt-14 md:grid-cols-4'>
+      
+      <div className=" mx-10 bg-white rounded-lg border hover:bg-gray-100 border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img className="rounded-t-lg w-full mx-auto" src={result[0]?.img} alt="" />
+    </a>
+    <div className="p-5">
+        <a href="#">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{result[0]?.title}</h5>
+        </a>
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{result[0]?.description}  </p>
+        
+        <p>Publish Date:<span className='text-red-600'> {result[0]?.date}</span></p>
+    </div>
 
- {
-     news.map(n=><NewsCard key={n.id} n={n}/>)
- }
+</div>
 
-                
-                
-            </div>
+
 
     </div>
   );
 };
 
-export default AllNews;
+export default NewsDetails;
