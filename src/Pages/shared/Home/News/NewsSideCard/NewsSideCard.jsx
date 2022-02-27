@@ -5,7 +5,7 @@ const NewsSideCard = ({ n }) => {
   return (
     <div
       key={n.id}
-      className="flex items-center rounded-lg shadow-xl mb-4 px-3 py-3 space-x-6 bg-secondary bg-opacity-10"
+      className="flex items-center rounded-lg shadow-xl mb-4 px-3 py-3 space-x-6 bg-black bg-opacity-20"
     >
       {/* image */}
       <div className="w-1/2 h-[100px] overflow-hidden cursor-pointer">
