@@ -1,7 +1,6 @@
 import React from 'react';
 const RegistrationPdf = (props) => {
-  const { id, name, fatherName, MotherName, birthDate, nidNo, place } =
-    props.info;
+  const { name, fatherName, MotherName, birthDate, nidNo, place } = props.info;
   return (
     <div className="flex justify-center items-center my-5 ">
       {props.length === 0 ? (

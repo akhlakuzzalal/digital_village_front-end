@@ -24,8 +24,9 @@ import AddEvents from './Pages/Events/AddEvents/AddEvents';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
-import VaccineInfo from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/VaccineInfo';
-import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
+import VaccineInfo from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/Payment/VaccineRegistration/RegistrationPdf/VaccineInfo';
+import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/Payment/VaccineRegistration/VaccineRegistration';
+import UserAppointments from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/UserAppointments/UserAppointments';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
 import Notification from './Pages/Notification/Notification';
 import About from './Pages/shared/About/About';
@@ -118,7 +119,7 @@ function App() {
             <Route path="e-market" element={<EMarket />} />
             <Route path="cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
-
+            <Route path="userAppointments" element={<UserAppointments />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </ScrollToTop>

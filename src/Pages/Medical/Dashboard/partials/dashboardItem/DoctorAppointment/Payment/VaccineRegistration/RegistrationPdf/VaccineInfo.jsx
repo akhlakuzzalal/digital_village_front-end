@@ -2,7 +2,7 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import React, { useEffect, useState } from 'react';
 import { BsDownload } from 'react-icons/bs';
-import vaccineInfo from './../../../../../../../assets/medical/vaccineinfo.png';
+import vaccineInfo from './../../../../../../../../../assets/medical/vaccineinfo.png';
 import RegistrationPdf from './RegistrationPdf';
 
 const VaccineInfo = () => {
