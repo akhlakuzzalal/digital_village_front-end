@@ -48,7 +48,6 @@ import Home from './Pages/shared/Home/Home';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import NotFound from './Pages/shared/NotFound/NotFound';
 import Profile from './Pages/User/Profile';
-import PersistLogin from './SecureRoutes/PersistLogin';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
 const Roles = {
   User: 1000,
@@ -70,14 +69,12 @@ function App() {
             <Route path="login" element={<Login />} />
 
             {/* testing */}
-            <Route element={<PersistLogin />}>
-              <Route
-                element={
-                  <PrivateRoute allowedRoles={[Roles.User, Roles.Admin]} />
-                }
-              >
-                <Route path="allUsers" element={<AllUsers />} />
-              </Route>
+            <Route
+              element={
+                <PrivateRoute allowedRoles={[Roles.User, Roles.Admin]} />
+              }
+            >
+              <Route path="allUsers" element={<AllUsers />} />
             </Route>
 
             {/* ALL PRIVATE ROUTES */}

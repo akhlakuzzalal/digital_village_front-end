@@ -6,9 +6,7 @@ const VaccineRegistration = () => {
   return (
     <>
       <div className="text-center ">
-        <h3 className="text-3xl md:text-5xl py-3 hover:text-blue-600">
-          Vaccine Registration
-        </h3>
+        <h3 className="text-3xl md:text-5xl py-3 ">Vaccine Registration</h3>
         <div className="flex flex-wrap justify-center items-center m-2">
           <div class=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500">
             <Link to="#">
@@ -16,11 +14,11 @@ const VaccineRegistration = () => {
             </Link>
             <div class="p-5">
               <Link to="#">
-                <h5 class="mb-2 text-1xl md:text-2xl hover:text-blue-600 font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 class="mb-2 text-1xl md:text-2xl  font-bold tracking-tight text-gray-900 dark:text-white">
                   Covid-19 Vaccine
                 </h5>
               </Link>
-              <p class="mb-3 text-center hover:text-blue-600 hover:text-justify font-normal text-gray-700 dark:text-gray-400">
+              <p class="mb-3 text-center  hover:text-justify font-normal text-gray-700 dark:text-gray-400">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Quisquam adipisci voluptatum deleniti iure natus porro obcaecati
                 tempore unde quos facilis!
@@ -52,11 +50,11 @@ const VaccineRegistration = () => {
             </Link>
             <div class="p-5">
               <Link to="#">
-                <h5 class="mb-2 text-1xl md:text-2xl hover:text-blue-600 font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 class="mb-2 text-1xl md:text-2xl  font-bold tracking-tight text-gray-900 dark:text-white">
                   Covid-19 Vaccine
                 </h5>
               </Link>
-              <p class="mb-3 text-center hover:text-blue-600 hover:text-justify font-normal text-gray-700 dark:text-gray-400">
+              <p class="mb-3 text-center  hover:text-justify font-normal text-gray-700 dark:text-gray-400">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Quisquam adipisci voluptatum deleniti iure natus porro obcaecati
                 tempore unde quos facilis!
@@ -88,11 +86,11 @@ const VaccineRegistration = () => {
             </Link>
             <div class="p-5">
               <Link to="#">
-                <h5 class="mb-2 text-1xl md:text-2xl hover:text-blue-600 font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 class="mb-2 text-1xl md:text-2xl  font-bold tracking-tight text-gray-900 dark:text-white">
                   Covid-19 Vaccine
                 </h5>
               </Link>
-              <p class="mb-3 text-center hover:text-blue-600 hover:text-justify font-normal text-gray-700 dark:text-gray-400">
+              <p class="mb-3 text-center  hover:text-justify font-normal text-gray-700 dark:text-gray-400">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Quisquam adipisci voluptatum deleniti iure natus porro obcaecati
                 tempore unde quos facilis!

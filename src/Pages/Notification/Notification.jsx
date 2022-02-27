@@ -1,23 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllNotifications } from '../../redux/slices/notification/notificationSlice';
 import note from './../../assets/notification/notification.png';
 import DetailNotification from './DetailNotification/DetailNotification';
 import SingleNotification from './SingleNotification/SingleNotification';
 
 const Notification = () => {
-  const [notification, setNotification] = useState([]);
-  const [details, setDetails] = useState([]);
-  const [active, setActive] = useState(0);
+  const notifications = useSelector(
+    (state) => state.notifications.notifications
+  );
 
-  const handleDetails = (id) => {
-    const newData = notification[id - 1];
-    setDetails(newData);
-    setActive(id);
-  };
+  // get the currently selected notifcation from redux store
+  const selectedNotification = useSelector(
+    (state) => state.notifications.selectedNotification
+  );
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch('./fakeNotifications.json')
-      .then((res) => res.json())
-      .then((data) => setNotification(data));
+    dispatch(fetchAllNotifications());
   }, []);
 
   return (
@@ -27,24 +28,24 @@ const Notification = () => {
     >
       {/* notification cards */}
       <div className="w-100 md:w-1/2 space-y-4 flex-1">
-        {notification.map((note) => (
+        {notifications.map((notification, i) => (
           <SingleNotification
-            key={note.id}
-            active={active}
-            note={note}
-            handleDetails={handleDetails}
+            key={notification._id}
+            notification={notification}
           ></SingleNotification>
         ))}
       </div>
 
       {/* notification details */}
       <div className="w-100 md:w-1/2 p-2">
-        {details.length === 0 ? (
+        {Object.keys(selectedNotification).length === 0 ? (
           <div className="min-h-screen">
             <img className="w-full" src={note} alt="" />
           </div>
         ) : (
-          <DetailNotification details={details}></DetailNotification>
+          <DetailNotification
+            selectedNotification={selectedNotification}
+          ></DetailNotification>
         )}
       </div>
     </div>

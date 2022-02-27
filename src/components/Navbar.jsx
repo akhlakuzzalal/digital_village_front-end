@@ -13,7 +13,7 @@ const Navbar = ({ navigation }) => {
 
   const navigate = useNavigate();
 
-  const { user, logout, roles, token } = useAuth(); // will come from firebase
+  const { user, logout } = useAuth(); // will come from firebase
 
   //header change function
   const onChangeHeader = () => {
