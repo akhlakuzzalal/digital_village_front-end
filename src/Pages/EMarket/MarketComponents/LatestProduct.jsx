@@ -1,18 +1,10 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { setCart } from '../../../redux/slices/eMarket/cartSlice';
-import handleCart from './Cart/handleCart';
+import useCart from './Cart/useCart';
 
 const LatestProduct = ({ lastProduct }) => {
-  const dispatch = useDispatch();
   const { name, id, img, price } = lastProduct;
   // Product add to cart
-  const { handleAlert, handleAddCart } = handleCart();
-  const AddCart = () => {
-    const cartItem = handleAddCart(id, name, img, price);
-    dispatch(setCart(cartItem));
-    handleAlert();
-  };
+  const { handleAddCart } = useCart();
   return (
     <div
       className="mt-6 shadow-md rounded-lg overflow-hidden p-4 md:p-0"
@@ -29,7 +21,7 @@ const LatestProduct = ({ lastProduct }) => {
       </div>
       <div className="w-full flex justify-center mt-6">
         <button
-          onClick={AddCart}
+          onClick={() => handleAddCart(id, name, img, price)}
           className="px-8 rounded-full py-2 bg-secondary"
         >
           Add to Cart

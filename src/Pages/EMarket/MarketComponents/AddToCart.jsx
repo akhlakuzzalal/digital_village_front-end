@@ -3,24 +3,16 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { GiSelfLove } from 'react-icons/gi';
 import { MdDoneOutline } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCart } from '../../../redux/slices/eMarket/cartSlice';
 import { setShowModal } from '../../../redux/slices/eMarket/modalSlicle';
-import handleCart from './Cart/handleCart';
+import useCart from './Cart/useCart';
 
 export default function AddToCart({ product }) {
   const { name, id, img, price, description } = product;
-  // allert confirm
-  const { handleAlert, handleAddCart } = handleCart();
+  // add a product in cart
+  const { handleAddCart } = useCart();
   // redux state
   const showModal = useSelector((state) => state.market.modal.showModal);
   const dispatch = useDispatch();
-  // add a product in cart
-  const AddCart = () => {
-    const cartItem = handleAddCart(id, name, img, price);
-    dispatch(setCart(cartItem));
-    handleAlert();
-    dispatch(setShowModal(false));
-  };
   return (
     <>
       {showModal ? (
@@ -44,7 +36,7 @@ export default function AddToCart({ product }) {
                       <div className="flex justify-around items-center mt-6">
                         <button
                           className="px-8 py-2 bg-secondary rounded-full"
-                          onClick={AddCart}
+                          onClick={() => handleAddCart(id, name, img, price)}
                         >
                           Add to cart
                         </button>
