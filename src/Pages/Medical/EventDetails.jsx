@@ -4,9 +4,9 @@ import { GiSelfLove } from 'react-icons/gi';
 import { MdDoneOutline } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import img from '../../../assets/market.png';
-import Calender from '../../../Components/Calender/Calender';
-import { setShowModal } from '../../../redux/slices/eMarket/modalSlicle';
+import img from '../../assets/events/events.png';
+import Calender from '../../Components/Calender/Calender';
+import { setShowModal } from '../../redux/slices/eMarket/modalSlicle';
 
 const EventDetails = () => {
   const dispatch = useDispatch();
