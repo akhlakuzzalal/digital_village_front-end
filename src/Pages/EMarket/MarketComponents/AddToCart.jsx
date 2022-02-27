@@ -3,35 +3,20 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { GiSelfLove } from 'react-icons/gi';
 import { MdDoneOutline } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import swal from 'sweetalert';
 import { setCart } from '../../../redux/slices/eMarket/cartSlice';
 import { setShowModal } from '../../../redux/slices/eMarket/modalSlicle';
+import handleCart from './Cart/handleCart';
 
 export default function AddToCart({ product }) {
   const { name, id, img, price, description } = product;
   // allert confirm
-  const handleAlert = () => {
-    swal({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Your work has been saved',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  };
+  const { handleAlert, handleAddCart } = handleCart();
   // redux state
   const showModal = useSelector((state) => state.market.modal.showModal);
   const dispatch = useDispatch();
   // add a product in cart
-  const handleAddCart = () => {
-    const cartItem = {
-      id: id,
-      name: name,
-      img: img,
-      price: price,
-      quantity: 1,
-      quantityBasePrice: price,
-    };
+  const AddCart = () => {
+    const cartItem = handleAddCart(id, name, img, price);
     dispatch(setCart(cartItem));
     handleAlert();
     dispatch(setShowModal(false));
@@ -59,7 +44,7 @@ export default function AddToCart({ product }) {
                       <div className="flex justify-around items-center mt-6">
                         <button
                           className="px-8 py-2 bg-secondary rounded-full"
-                          onClick={handleAddCart}
+                          onClick={AddCart}
                         >
                           Add to cart
                         </button>

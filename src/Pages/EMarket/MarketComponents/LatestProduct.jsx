@@ -1,28 +1,17 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import swal from 'sweetalert';
 import { setCart } from '../../../redux/slices/eMarket/cartSlice';
+import handleCart from './Cart/handleCart';
 
 const LatestProduct = ({ lastProduct }) => {
   const dispatch = useDispatch();
   const { name, id, img, price } = lastProduct;
-  const handleAddCart = () => {
-    const cartItem = {
-      id: id,
-      name: name,
-      img: img,
-      price: price,
-      quantity: 1,
-      quantityBasePrice: price,
-    };
+  // Product add to cart
+  const { handleAlert, handleAddCart } = handleCart();
+  const AddCart = () => {
+    const cartItem = handleAddCart(id, name, img, price);
     dispatch(setCart(cartItem));
-    swal({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Your work has been saved',
-      showConfirmButton: false,
-      timer: 1500,
-    });
+    handleAlert();
   };
   return (
     <div
@@ -40,7 +29,7 @@ const LatestProduct = ({ lastProduct }) => {
       </div>
       <div className="w-full flex justify-center mt-6">
         <button
-          onClick={handleAddCart}
+          onClick={AddCart}
           className="px-8 rounded-full py-2 bg-secondary"
         >
           Add to Cart
