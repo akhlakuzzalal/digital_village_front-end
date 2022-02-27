@@ -1,10 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
-import modalSlice from './slices/eMarket/eMarketSlicle';
+import modalReducer from './slices/eMarket/eMarketSlicle';
+import notificationReducer from './slices/notification/notificationSlice';
 import reviewReducer from './slices/review/reviewSlice';
 
 export const store = configureStore({
   reducer: {
     reviews: reviewReducer,
-    modal: modalSlice,
+    modal: modalReducer,
+    notifications: notificationReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        // Ignore these action types
+        ignoredActions: ['detectStateChange'],
+      },
+    }),
 });

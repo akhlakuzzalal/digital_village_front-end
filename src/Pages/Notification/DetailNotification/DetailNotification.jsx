@@ -1,6 +1,8 @@
 import React from 'react';
 
-const DetailNotification = ({ details: { title, date, description } }) => {
+const DetailNotification = ({
+  activeNotification: { title, date, description },
+}) => {
   return (
     <div className="bg-slate-100 rounded-lg p-6 shadow-xl h-full">
       <h3>{title}</h3>
