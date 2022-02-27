@@ -26,6 +26,7 @@ import MarketDashboard from './Pages/EMarket/MarketDashboard';
 import AddEvents from './Pages/Events/AddEvents/AddEvents';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
+import ManageEvents from './Pages/Events/ManageEvents/ManageEvents';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
 import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
@@ -111,6 +112,7 @@ function App() {
             <Route path="eventDetails/:id" element={<EventDetails />} />
             <Route path="add-events" element={<AddEvents />} />
             <Route path="eventDetails/:id" element={<EventDetails />} />
+            <Route path="manageEvents" element={<ManageEvents />} />
 
             {/* development related routes */}
             <Route path="development" element={<Development />} />
