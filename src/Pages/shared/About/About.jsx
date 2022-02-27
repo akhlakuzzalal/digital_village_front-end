@@ -2,7 +2,7 @@ import React from 'react';
 import { GiHumanPyramid, GiTeacher } from 'react-icons/gi';
 import { IoMdArrowDropdownCircle } from 'react-icons/io';
 import { MdOutlineDoubleArrow } from 'react-icons/md';
-import img from '../../../assets/events/Add events.PNG';
+import img from '../../../assets/events/who we are.jpg';
 const About = () => {
   return (
     <div className="main">
