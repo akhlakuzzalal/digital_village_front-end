@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
+import { GiSelfLove } from 'react-icons/gi';
+import { MdDoneOutline } from 'react-icons/md';
 import { Link, useParams } from 'react-router-dom';
 import img from '../../../assets/market.png';
 import Calender from '../../../Components/Calender/Calender';
+import useMarketData from '../../EMarket/MarketComponents/MarketContext/useMarketData';
+
 const EventDetails = () => {
+  const { setShowModal, showModal } = useMarketData();
   const { id } = useParams();
+
+  const [allEvent, setAllEvent] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/event/allEvent')
+      .then((res) => res.json())
+      .then((data) => {
+        setAllEvent(data);
+        console.log(data);
+      });
+  }, []);
+  const eventItem = allEvent?.filter((pd) => pd._id === id);
+
   return (
     <div className="event-details-main py-48 px-5 lg:px-20">
       <p>this is the details of event {id}</p>
@@ -11,8 +30,8 @@ const EventDetails = () => {
         {/* left side */}
         <div className="lg:col-span-2">
           <div>
-            <img src={img} alt="" />
-            <h1 className="mt-20 hover:text-blue-600">Music Talent Show</h1>
+            <img src={eventItem[0]?.image} alt="" />
+            <h1 className="mt-20 hover:text-blue-600">{eventItem[0]?.title}</h1>
           </div>
           <div className="mt-20">
             <h4 className="mb-7">Next Upcoming date</h4>
@@ -121,79 +140,65 @@ const EventDetails = () => {
         </div>
       </div>
 
-      <button
-        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        type="button"
-        data-modal-toggle="defaultModal"
-      >
-        Toggle modal
-      </button>
-
-      <div
-        id="defaultModal"
-        aria-hidden="true"
-        class="hidden overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 justify-center items-center h-modal md:h-full md:inset-0"
-      >
-        <div class="relative px-4 w-full max-w-2xl h-full md:h-auto">
-          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <div class="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600">
-              <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">
-                Terms of Service
-              </h3>
-              <button
-                type="button"
-                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                data-modal-toggle="defaultModal"
-              >
-                <svg
-                  class="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </button>
+      {/* modal */}
+      <>
+        {showModal ? (
+          <>
+            <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+              <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                {/*content*/}
+                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                  {/*body*/}
+                  <div className="relative p-6 flex-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2">
+                      <img
+                        className="w-full h-4/5"
+                        src="https://www.techlandbd.com/image/cache/catalog/Headphone-Headset/w820bt%20black/edifier-w820bt-headphone-price-in-bd-black-500x500.jpg"
+                        alt=""
+                      />
+                      <div>
+                        <h3>Lorem, ipsum dolor.</h3>
+                        <p>Our price</p>
+                        <h6 className="text-amber-500 font-semibold">$ 300</h6>
+                        <h6 className="mt-6">Details</h6>
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Amet quasi dolorem qui incidunt, velit illum
+                          eaque non veritatis inventore rem.
+                        </p>
+                        <div className="flex justify-around items-center mt-6">
+                          <button className="px-8 py-2 bg-secondary rounded-full">
+                            Add to cart
+                          </button>
+                          <GiSelfLove
+                            className="cursor-pointer"
+                            size={25}
+                            color={'#c200fb'}
+                          />
+                        </div>
+                        <div className="border-y-[1px] mt-6 border-gray-500">
+                          <p className="text-green-700 flex items-center">
+                            <MdDoneOutline /> In stock
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* close button for modal */}
+                  <div className="absolute top-0 right-0 cursor-pointer">
+                    <AiOutlineCloseCircle
+                      size={30}
+                      className="text-primary"
+                      onClick={() => setShowModal(false)}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <div class="p-6 space-y-6">
-              <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                With less than a month to go before the European Union enacts
-                new consumer privacy laws for its citizens, companies around the
-                world are updating their terms of service agreements to comply.
-              </p>
-              <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                The European Union’s General Data Protection Regulation
-                (G.D.P.R.) goes into effect on May 25 and is meant to ensure a
-                common set of data rights in the European Union. It requires
-                organizations to notify users as soon as possible of high-risk
-                data breaches that could personally affect them.
-              </p>
-            </div>
-
-            <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-              <button
-                data-modal-toggle="defaultModal"
-                type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                I accept
-              </button>
-              <button
-                data-modal-toggle="defaultModal"
-                type="button"
-                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600"
-              >
-                Decline
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          </>
+        ) : null}
+      </>
     </div>
   );
 };
