@@ -1,13 +1,19 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { setShowModal } from '../../../redux/slices/eMarket/eMarketSlicle';
+import { setShowModal } from '../../../redux/slices/eMarket/modalSlicle';
 
 const DonarForm = () => {
-  const showModal = useSelector((state) => state.modal.showModal);
+  const showModal = useSelector((state) => state.market.modal.showModal);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
-  const handleRegister = async ({ firstName, lastName, email, password ,message}) => {
+  const handleRegister = async ({
+    firstName,
+    lastName,
+    email,
+    password,
+    message,
+  }) => {
     const name = `${firstName} ${lastName}`;
     console.log({ name, email, password });
     dispatch(setShowModal(true));

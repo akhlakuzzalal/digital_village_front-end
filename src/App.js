@@ -2,7 +2,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import ScrollToTop from './Components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
-import AllUsers from './Pages/Admin/AllUsers/AllUsers';
+import AdminDashboard from './Pages/Admin/AdminDashboard';
+import AllUsers from './Pages/Admin/DashboardItem/AllUsers/AllUsers';
+import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage';
+import Donation from './Pages/Admin/DashboardItem/Donation/Donation';
+import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
+import MarketManagement from './Pages/Admin/DashboardItem/Market/MarketManagement';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import CaseSingle from './Pages/Donations/Causes/CaseSingle';
@@ -20,6 +25,10 @@ import TeacherInfo from './Pages/Education/Teacher/TeacherInfo';
 import EMarket from './Pages/EMarket/EMarket';
 import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
 import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
+import MyOrder from './Pages/EMarket/MarketComponents/DashboardItems/MyOrder';
+import MedicineShop from './Pages/EMarket/MarketComponents/MedicineShop/MedicineShop';
+import ProductDetails from './Pages/EMarket/MarketComponents/ProductDetails';
+import MarketDashboard from './Pages/EMarket/MarketDashboard';
 import AddEvents from './Pages/Events/AddEvents/AddEvents';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
@@ -118,8 +127,21 @@ function App() {
             <Route path="e-market" element={<EMarket />} />
             <Route path="cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
+            <Route path="productdetails/:id" element={<ProductDetails />} />
+            <Route path="medicinestore" element={<MedicineShop />} />
+            <Route path="marketdashboard" element={<MarketDashboard />}>
+              <Route path="myorder" element={<MyOrder />} />
+            </Route>
 
             <Route path="*" element={<NotFound />} />
+            {/* Admin dashboard routes */}
+            <Route path="admindashboard" element={<AdminDashboard />}>
+              <Route path="allusers" element={<AllUsers />} />
+              <Route path="events" element={<Eventmanagement />} />
+              <Route path="donation" element={<Donation />} />
+              <Route path="development" element={<DevelopmentManage />} />
+              <Route path="market" element={<MarketManagement />} />
+            </Route>
           </Routes>
         </ScrollToTop>
         <Footer />

@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setShowModal } from '../../redux/slices/eMarket/modalSlicle';
+import { setProducts } from '../../redux/slices/eMarket/productsSlice';
+import AddToCart from './MarketComponents/AddToCart';
 import Categorie from './MarketComponents/Categorie';
 import LatestProduct from './MarketComponents/LatestProduct';
 import MarketBanner from './MarketComponents/MarketBanner';
-import AllMedicine from './MarketComponents/MedicineShop/AllMedicine/AllMedicine';
-import MedicineCategories from './MarketComponents/MedicineShop/MedicineCategories';
-import MedicineShopBanner from './MarketComponents/MedicineShop/MedicineShopBanner';
-import Modal from './MarketComponents/ProductDetails';
 import RegularProduct from './MarketComponents/RegularProduct';
 
 const EMarket = () => {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const [product, setProduct] = useState({});
+  const handleAddToCart = (product) => {
+    setProduct(product);
+    dispatch(setShowModal(true));
+  };
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
+    fetch('./marketFakeData.json')
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        dispatch(setProducts(data));
+      });
   }, []);
+  const products = useSelector((state) => state.market.products.products);
   return (
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       {/* Banner */}
@@ -44,20 +52,16 @@ const EMarket = () => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 my-6">
             {products.slice(0, 8).map((product) => (
-              <RegularProduct key={product.id} product={product} />
+              <RegularProduct
+                key={product.id}
+                product={product}
+                handleAddToCart={handleAddToCart}
+              />
             ))}
           </div>
         </div>
       </div>
-      {/* Medecine Section */}
-      <div id="medecine" className="mt-20">
-        <MedicineShopBanner />
-        <div className="w-11/12 mx-auto mt-10">
-          <MedicineCategories />
-        </div>
-      </div>
-      <AllMedicine />
-      <Modal></Modal>
+      <AddToCart product={product} />
     </div>
   );
 };
