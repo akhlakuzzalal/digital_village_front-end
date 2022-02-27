@@ -23,6 +23,11 @@ const links = [
     icon: <AiOutlineMedicineBox size={30} />,
     path: '/medical/appointment',
   },
+  {
+    name: 'User Appointment',
+    icon: <AiOutlineMedicineBox size={30} />,
+    path: '/medical/userAppointments',
+  },
 ];
 
 const MedicalDashboard = () => {

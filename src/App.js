@@ -33,6 +33,7 @@ import AddEvents from './Pages/Events/AddEvents/AddEvents';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
+import UserAppointments from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/UserAppointments/UserAppointments';
 import VaccineInfo from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/VaccineInfo';
 import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
@@ -48,7 +49,6 @@ import NotFound from './Pages/shared/NotFound/NotFound';
 import Profile from './Pages/User/Profile';
 import PersistLogin from './SecureRoutes/PersistLogin';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
-
 const Roles = {
   User: 1000,
   Admin: 5000,
@@ -104,6 +104,7 @@ function App() {
             <Route path="medical" element={<MedicalDashboard />}>
               <Route path="vaccine" element={<VaccineRegistration />} />
               <Route path="appointment" element={<DoctorsAppointment />} />
+              <Route path="userAppointments" element={<UserAppointments />} />
               <Route path="pdf" element={<VaccineInfo />} />
             </Route>
 
