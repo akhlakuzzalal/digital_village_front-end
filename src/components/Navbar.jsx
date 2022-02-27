@@ -13,7 +13,7 @@ const Navbar = ({ navigation }) => {
 
   const navigate = useNavigate();
 
-  const { user, logout, roles, token } = useAuth(); // will come from firebase
+  const { user, logout } = useAuth(); // will come from firebase
 
   //header change function
   const onChangeHeader = () => {
@@ -173,7 +173,7 @@ const Navbar = ({ navigation }) => {
                 className="btn bg-success py-0 md:py-3 lg:py-3 text-xs md:text-xl px-5 hover:bg-opacity-80 transition-all duration-300"
                 onClick={() => navigate('/login')}
               >
-              Sign In
+                Sign In
               </button>
             ) : (
               <button

@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { axiosPrivate } from '../api/axios';
-import useAuth from './useAuth';
 import useRefreshToken from './useRefreshToken';
 
 const useAxiosInterceptor = () => {
   const refresh = useRefreshToken();
-  const { token } = useAuth();
+  const token = useSelector((state) => state.user.token);
 
   useEffect(() => {
     const requestInterceptor = axiosPrivate.interceptors.request.use(

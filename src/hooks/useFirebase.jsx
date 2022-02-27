@@ -11,8 +11,10 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { useEffect, useState } from 'react';
-import axios from '../api/axios';
+import { useDispatch, useSelector } from 'react-redux';
+import axios, { axiosPrivate } from '../api/axios';
 import initializeAuthentication from '../Firebase/Firebase.init';
+import { setRoles, setToken } from '../redux/slices/user/userSlice';
 
 // initialize firebase app
 initializeAuthentication();
@@ -21,11 +23,10 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true); // user using the login functionality
   const [authError, setAuthError] = useState('');
-  const [roles, setRoles] = useState([]);
-  const [token, setToken] = useState('');
-  const [persist, setPersist] = useState(
-    JSON.parse(localStorage.getItem('persist')) || false
-  );
+  const roles = useSelector((state) => state.user.roles);
+  const token = useSelector((state) => state.user.token);
+
+  const dispatch = useDispatch();
 
   const auth = getAuth();
 
@@ -126,8 +127,8 @@ const useFirebase = () => {
         logoutFromDB();
         setUser({});
         setAuthError('');
-        setRoles([]);
-        setToken('');
+        dispatch(setRoles([]));
+        dispatch(setToken(''));
       })
       .catch((error) => {
         setAuthError(error.message);
@@ -137,10 +138,8 @@ const useFirebase = () => {
 
   const registerToDB = async (newUser) => {
     const response = await axios.post('/auth/register', newUser);
-    console.log(response?.data?.roles);
-    console.log(response?.data?.accessToken);
-    setRoles([...roles, response?.data?.roles]);
-    setToken(response?.data?.accessToken);
+    dispatch(setRoles([...roles, response?.data?.roles]));
+    dispatch(setToken(response?.data?.accessToken));
     console.log(response?.data);
   };
 
@@ -156,8 +155,8 @@ const useFirebase = () => {
           withCredentials: true,
         }
       );
-      setRoles([...roles, response?.data?.roles]);
-      setToken(response?.data?.accessToken);
+      dispatch(setRoles([...roles, response?.data?.roles]));
+      dispatch(setToken(response?.data?.accessToken));
       console.log(response?.data?.message);
     } catch (error) {
       console.log(error.message);
@@ -165,7 +164,7 @@ const useFirebase = () => {
   };
 
   const logoutFromDB = async () => {
-    const response = await axios.get('/auth/logout');
+    const response = await axiosPrivate.get('/auth/logout');
 
     console.log(response?.data);
   };
@@ -176,6 +175,7 @@ const useFirebase = () => {
     setIsLoading,
     setAuthError,
     roles,
+    setRoles,
     token,
     setToken,
     authError,
@@ -183,8 +183,6 @@ const useFirebase = () => {
     processSignUp,
     processSignIn,
     logout,
-    persist,
-    setPersist,
   };
 };
 

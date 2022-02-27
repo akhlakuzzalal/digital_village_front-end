@@ -65,7 +65,6 @@ const VaccineInfo = () => {
         </div>
       </div>
       <div className="w-1/2">
-        {' '}
         <img className="w-2/3" src={vaccineInfo} alt="" />{' '}
       </div>
     </div>

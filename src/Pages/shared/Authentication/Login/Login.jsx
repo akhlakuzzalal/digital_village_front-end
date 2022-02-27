@@ -37,8 +37,6 @@ const Login = () => {
     authError,
     processSignInWithGoogle,
     setIsLoading,
-    roles,
-    token,
   } = useAuth();
 
   const handleLogin = async ({ email, password }) => {
@@ -121,12 +119,15 @@ const Login = () => {
           />
         </form>
       </div>
-      <div className="hidden md:block w-full md:w-1/2 p-12 mt-24 pointer-events-none">
-        <Lottie
-          options={defaultOptions}
-          isClickToPauseDisabled={true}
-          height={isDesktop ? 500 : isTablet ? 400 : 300}
-        />
+
+      <div className="hidden md:block w-full md:w-1/2 px-3 pt-24 pointer-events-none">
+        <div className="w-fit mx-auto">
+          <Lottie
+            options={defaultOptions}
+            isClickToPauseDisabled={true}
+            height={isDesktop ? 500 : isTablet ? 400 : 300}
+          />
+        </div>
       </div>
     </div>
   );
