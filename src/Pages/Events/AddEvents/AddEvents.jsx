@@ -1,29 +1,19 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import Swal from 'sweetalert2';
+import { useDispatch } from 'react-redux';
 import img from '../../../assets/events/Add events.PNG';
+import { addAnEvent } from '../../../redux/slices/event/eventSlice';
 const AddEvents = () => {
   const {
     register,
     formState: { errors },
     reset,
+    handleSubmit,
   } = useForm();
-
-  const handleSubmit = (data) => {
-    console.log(data);
-    fetch('https://polar-springs-14002.herokuapp.com/services', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          Swal.fire('Good job!', 'Added Successfully', 'success');
-          reset();
-        }
-      });
+  const dispatch = useDispatch();
+  const handleAddEvent = (data) => {
+    dispatch(addAnEvent(data));
+    alert('successfully added');
   };
 
   return (
@@ -39,7 +29,10 @@ const AddEvents = () => {
         {/* add event form */}
         <div>
           <h1 className="ml-10 mt-6 text-3xl ">Add Events</h1>
-          <form className=" space-y-6 mx-10 mt-10" onSubmit={handleSubmit}>
+          <form
+            className=" space-y-6 mx-10 mt-10"
+            onSubmit={handleSubmit(handleAddEvent)}
+          >
             {/* email */}
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"

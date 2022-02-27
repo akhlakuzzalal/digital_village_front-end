@@ -1,62 +1,58 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import event from '../../assets/events/events.png';
+import {
+  fetchArchivedEvents,
+  fetchUpcomingEvents,
+} from '../../redux/slices/event/eventSlice';
 import EventCard from './EventCard/EventCard';
 
-const events = [
-  {
-    _id: 1,
-    name: 'Local Artists Showcase',
-    type: 'EXIBITIONS',
-    image: event,
-    date: '2:00 pm - 9:00 pm',
-    place: 'Art Gallery',
-  },
-  {
-    _id: 2,
-    name: 'Local Artists Showcase',
-    type: 'EXIBITIONS',
-    image: event,
-    date: '2:00 pm - 9:00 pm',
-    place: 'Art Gallery',
-  },
-  {
-    _id: 3,
-    name: 'Local Artists Showcase',
-    type: 'EXIBITIONS',
-    image: event,
-    date: '2:00 pm - 9:00 pm',
-    place: 'Art Gallery',
-  },
-  {
-    _id: 4,
-    name: 'Local Artists Showcase',
-    type: 'EXIBITIONS',
-    image: event,
-    date: '2:00 pm - 9:00 pm',
-    place: 'Art Gallery',
-  },
-];
+// const events = [
+//   {
+//     _id: 1,
+//     name: 'Local Artists Showcase',
+//     type: 'EXIBITIONS',
+//     image: event,
+//     date: '2:00 pm - 9:00 pm',
+//     place: 'Art Gallery',
+//   },
+//   {
+//     _id: 2,
+//     name: 'Local Artists Showcase',
+//     type: 'EXIBITIONS',
+//     image: event,
+//     date: '2:00 pm - 9:00 pm',
+//     place: 'Art Gallery',
+//   },
+//   {
+//     _id: 3,
+//     name: 'Local Artists Showcase',
+//     type: 'EXIBITIONS',
+//     image: event,
+//     date: '2:00 pm - 9:00 pm',
+//     place: 'Art Gallery',
+//   },
+//   {
+//     _id: 4,
+//     name: 'Local Artists Showcase',
+//     type: 'EXIBITIONS',
+//     image: event,
+//     date: '2:00 pm - 9:00 pm',
+//     place: 'Art Gallery',
+//   },
+// ];
 
 const Events = () => {
-  const [upcomingEvents, setUpcomingEvents] = useState([]);
-  const [archivedEvents, setArchivedEvents] = useState([]);
+  const upcomingEvents = useSelector((state) => state.events.upcomingEvents);
+  const archivedEvents = useSelector((state) => state.events.archivedEvents);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUpcomingEvents());
+  }, []);
 
   useEffect(() => {
-    fetch('http://localhost:5000/event/upcomingEvents')
-      .then((response) => response.json())
-      .then((data) => {
-        setUpcomingEvents(data);
-        console.log(data);
-      });
-  }, []);
-  useEffect(() => {
-    fetch('http://localhost:5000/event/archivedEvents')
-      .then((response) => response.json())
-      .then((data) => {
-        setArchivedEvents(data);
-        console.log(data);
-      });
+    dispatch(fetchArchivedEvents());
   }, []);
 
   return (

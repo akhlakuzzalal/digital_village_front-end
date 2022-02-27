@@ -1,31 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { GiSelfLove } from 'react-icons/gi';
 import { MdDoneOutline } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import img from '../../../assets/market.png';
 import Calender from '../../../Components/Calender/Calender';
+import { fetchAllEvent } from '../../../redux/slices/event/eventSlice';
 import useMarketData from '../../EMarket/MarketComponents/MarketContext/useMarketData';
 
 const EventDetails = () => {
   const { setShowModal, showModal } = useMarketData();
   const { id } = useParams();
 
-  const [allEvent, setAllEvent] = useState([]);
+  // const [allEvent, setAllEvent] = useState([]);
 
+  const allEvent = useSelector((state) => state.events.allEvents);
+
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/event/allEvent')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setAllEvent(data);
+  //       console.log(data);
+  //     });
+
+  // }, []);
+  const dispatch = useDispatch();
   useEffect(() => {
-    fetch('http://localhost:5000/event/allEvent')
-      .then((res) => res.json())
-      .then((data) => {
-        setAllEvent(data);
-        console.log(data);
-      });
+    dispatch(fetchAllEvent());
   }, []);
   const eventItem = allEvent?.filter((pd) => pd._id === id);
 
   return (
     <div className="event-details-main py-48 px-5 lg:px-20">
-      <p>this is the details of event {id}</p>
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 ">
         {/* left side */}
         <div className="lg:col-span-2">
@@ -65,7 +73,7 @@ const EventDetails = () => {
                 <div className="gmap_canvas">
                   <iframe
                     title="google map"
-                    className="lg:w-[100%] lg:h-[500px]"
+                    className="lg:w-[100%] lg:h-[500px] md:w-[100%] w-[100%] md:h-[400px] h-[200px]"
                     id="gmap_canvas"
                     src="https://maps.google.com/maps?q=bashundhara&t=&z=13&ie=UTF8&iwloc=&output=embed"
                     frameborder="0"
@@ -83,7 +91,7 @@ const EventDetails = () => {
         <div className="right-main ">
           <div className="lg:ml-36">
             <h4 className="my-5 text-xl">Calender</h4>
-            <Calender></Calender>
+            <Calender className="w-full lg:w-0 md:w-full"></Calender>
 
             <p className="my-4 text-primary">
               <Link to="/events">More Events</Link>
