@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllNotifications } from '../../redux/slices/notification/notificationSlice';
 import note from './../../assets/notification/notification.png';
@@ -9,17 +9,13 @@ const Notification = () => {
   const notifications = useSelector(
     (state) => state.notifications.notifications
   );
-  const [activeNotification, setActiveNotification] = useState({});
+
+  // get the currently selected notifcation from redux store
+  const selectedNotification = useSelector(
+    (state) => state.notifications.selectedNotification
+  );
 
   const dispatch = useDispatch();
-
-  const handleActiveNotification = (id) => {
-    const selectedNotificaion = notifications.filter(
-      (notification) => notification._id === id
-    );
-    console.log(...selectedNotificaion);
-    setActiveNotification(...selectedNotificaion);
-  };
 
   useEffect(() => {
     dispatch(fetchAllNotifications());
@@ -32,24 +28,23 @@ const Notification = () => {
     >
       {/* notification cards */}
       <div className="w-100 md:w-1/2 space-y-4 flex-1">
-        {notifications.map((note, i) => (
+        {notifications.map((notification, i) => (
           <SingleNotification
-            key={note._id}
-            note={note}
-            handleDetails={handleActiveNotification}
+            key={notification._id}
+            notification={notification}
           ></SingleNotification>
         ))}
       </div>
 
       {/* notification details */}
       <div className="w-100 md:w-1/2 p-2">
-        {activeNotification.length === 0 ? (
+        {Object.keys(selectedNotification).length === 0 ? (
           <div className="min-h-screen">
             <img className="w-full" src={note} alt="" />
           </div>
         ) : (
           <DetailNotification
-            activeNotification={activeNotification}
+            selectedNotification={selectedNotification}
           ></DetailNotification>
         )}
       </div>

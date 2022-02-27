@@ -16,13 +16,23 @@ const notificationSlice = createSlice({
   name: 'notifications',
   initialState: {
     notifications: [],
+    selectedNotification: {},
   },
-  reducers: {},
+  reducers: {
+    setSelectedNotification: (state, { payload }) => {
+      const [selected] = state.notifications.filter(
+        (notification) => notification._id === payload
+      );
+      state.selectedNotification = selected;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchAllNotifications.fulfilled, (state, { payload }) => {
       state.notifications = payload;
     });
   },
 });
+
+export const { setSelectedNotification } = notificationSlice.actions;
 
 export default notificationSlice.reducer;
