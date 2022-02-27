@@ -1,3 +1,4 @@
+import emailjs from '@emailjs/browser';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
@@ -174,7 +175,7 @@ const Contact = () => {
         </div>
         <form
           className=" md:grid grid-cols-1 md:grid-cols-2 gap-5 mt-16 mx-10 lg:mx-0"
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit()}
         >
           <input
             className=" w-full  bg-gray-100 px-20 py-5 rounded mb-5 lg:mb-0"

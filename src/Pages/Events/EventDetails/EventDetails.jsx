@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { GiSelfLove } from 'react-icons/gi';
 import { MdDoneOutline } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import img from '../../../assets/market.png';
 import Calender from '../../../Components/Calender/Calender';
-import useMarketData from '../../EMarket/MarketComponents/MarketContext/useMarketData';
+import { setShowModal } from '../../../redux/slices/eMarket/modalSlicle';
 
 const EventDetails = () => {
-  const { setShowModal, showModal } = useMarketData();
+  const dispatch = useDispatch();
+  const showModal = useSelector((state) => state.market.modal.showModal);
   const { id } = useParams();
 
   const [allEvent, setAllEvent] = useState([]);
@@ -189,7 +191,7 @@ const EventDetails = () => {
                     <AiOutlineCloseCircle
                       size={30}
                       className="text-primary"
-                      onClick={() => setShowModal(false)}
+                      onClick={() => dispatch(setShowModal(false))}
                     />
                   </div>
                 </div>
