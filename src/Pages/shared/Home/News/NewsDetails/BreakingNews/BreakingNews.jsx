@@ -31,21 +31,21 @@ const BreakingNews = () => {
                 <h1 className='text-4xl mx-auto text-center md:text-l mb-10'>DAILY FEED</h1>
                 <hr className='border-b-8 mb-8' />
                 <ul>
-                    <div className='border my-4 px-2'>
+                    <div className='border my-6 px-2 hover:bg-gray-100 hover:opacity-80'>
                     <li><h4 className='font-bolder text-xl text-left mb-2 hover:text-blue-600'>LIVERPOOL TOPS HOFFENHEIM IN FIRST LEG OF CHAMPIONS PLAYOFF</h4></li>
                     <li><span>The Impact of Family Structure on the Health of Children: Effects of Divorce</span></li>
                     </div>
 
-                    <div className='border my-4 px-2'>
+                    <div className='border my-6 px-2 hover:bg-gray-100 hover:opacity-80'>
                     <li><h4 className='font-bolder text-xl text-left mb-2 hover:text-blue-600'>LIVERPOOL TOPS HOFFENHEIM IN FIRST LEG OF CHAMPIONS PLAYOFF</h4></li>
                     <li><span>The Impact of Family Structure on the Health of Children: Effects of Divorce</span></li>
                     </div>
 
-                    <div className='border my-4 px-2'>
+                    <div className='border my-6 px-2 hover:bg-gray-100 hover:opacity-80'>
                     <li><h4 className='font-bolder text-xl text-left mb-2 hover:text-blue-600'>LIVERPOOL TOPS HOFFENHEIM IN FIRST LEG OF CHAMPIONS PLAYOFF</h4></li>
                     <li><span>The Impact of Family Structure on the Health of Children: Effects of Divorce</span></li>
                     </div>
-                    <div className='border my-4 px-2'>
+                    <div className='border my-6 px-2 hover:bg-gray-100 hover:opacity-80'>
                     <li><h4 className='font-bolder text-xl text-left mb-2 hover:text-blue-600'>LIVERPOOL TOPS HOFFENHEIM IN FIRST LEG OF CHAMPIONS PLAYOFF</h4></li>
                     <li><span>The Impact of Family Structure on the Health of Children: Effects of Divorce</span></li>
                     </div>
