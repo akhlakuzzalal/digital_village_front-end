@@ -7,13 +7,14 @@ const navigation = [
   { name: 'Service', href: '/#service' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
-  { name: 'allUser', href: '/allUsers' },
+  { name: 'Admin', href: '/admindashboard' },
 ];
 
 const Header = () => {
   const location = useLocation();
   return location.pathname.includes('/teacherDashboard') ||
     location.pathname.includes('/medical') ||
+    location.pathname.includes('admindashboard') ||
     location.pathname.includes('/marketdashboard') ? null : (
     <Navbar navigation={navigation} />
   );

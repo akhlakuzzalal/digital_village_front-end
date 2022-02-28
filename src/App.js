@@ -2,7 +2,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import ScrollToTop from './Components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
-import AllUsers from './Pages/Admin/AllUsers/AllUsers';
+import AdminDashboard from './Pages/Admin/AdminDashboard';
+import AllUsers from './Pages/Admin/DashboardItem/AllUsers/AllUsers';
+import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage';
+import Donation from './Pages/Admin/DashboardItem/Donation/Donation';
+import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
+import MarketManagement from './Pages/Admin/DashboardItem/Market/MarketManagement';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import CaseSingle from './Pages/Donations/Causes/CaseSingle';
@@ -20,12 +25,17 @@ import TeacherInfo from './Pages/Education/Teacher/TeacherInfo';
 import EMarket from './Pages/EMarket/EMarket';
 import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
 import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
+import MyOrder from './Pages/EMarket/MarketComponents/DashboardItems/MyOrder';
+import MedicineShop from './Pages/EMarket/MarketComponents/MedicineShop/MedicineShop';
+import ProductDetails from './Pages/EMarket/MarketComponents/ProductDetails';
+import MarketDashboard from './Pages/EMarket/MarketDashboard';
 import AddEvents from './Pages/Events/AddEvents/AddEvents';
-import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
+import UserAppointments from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/UserAppointments/UserAppointments';
 import VaccineInfo from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/VaccineInfo';
 import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
+import EventDetails from './Pages/Medical/EventDetails';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
 import Notification from './Pages/Notification/Notification';
 import About from './Pages/shared/About/About';
@@ -35,10 +45,10 @@ import Contact from './Pages/shared/Contact/Contact';
 import Footer from './Pages/shared/Home/Footer/Footer';
 import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
+import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import NotFound from './Pages/shared/NotFound/NotFound';
 import Profile from './Pages/User/Profile';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
-
 const Roles = {
   User: 1000,
   Admin: 5000,
@@ -92,6 +102,7 @@ function App() {
             <Route path="medical" element={<MedicalDashboard />}>
               <Route path="vaccine" element={<VaccineRegistration />} />
               <Route path="appointment" element={<DoctorsAppointment />} />
+              <Route path="userAppointments" element={<UserAppointments />} />
               <Route path="pdf" element={<VaccineInfo />} />
             </Route>
 
@@ -105,7 +116,8 @@ function App() {
             <Route path="development" element={<Development />} />
 
             {/* news related routes */}
-            <Route path="news" element={<AllNews />} />
+            <Route path="newsDetails/:id" element={<NewsDetails />} />
+            <Route path="allNews" element={<AllNews />} />
 
             {/* donation related routes */}
             <Route path="donation" element={<Donations />} />
@@ -115,8 +127,21 @@ function App() {
             <Route path="e-market" element={<EMarket />} />
             <Route path="cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
+            <Route path="productdetails/:id" element={<ProductDetails />} />
+            <Route path="medicinestore" element={<MedicineShop />} />
+            <Route path="marketdashboard" element={<MarketDashboard />}>
+              <Route path="myorder" element={<MyOrder />} />
+            </Route>
 
             <Route path="*" element={<NotFound />} />
+            {/* Admin dashboard routes */}
+            <Route path="admindashboard" element={<AdminDashboard />}>
+              <Route path="allusers" element={<AllUsers />} />
+              <Route path="events" element={<Eventmanagement />} />
+              <Route path="donation" element={<Donation />} />
+              <Route path="development" element={<DevelopmentManage />} />
+              <Route path="market" element={<MarketManagement />} />
+            </Route>
           </Routes>
         </ScrollToTop>
         <Footer />

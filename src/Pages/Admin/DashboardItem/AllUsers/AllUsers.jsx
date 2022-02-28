@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import useAxiosInterceptor from '../../../hooks/useAxiosInterceptor';
+import useAxiosInterceptor from '../../../../hooks/useAxiosInterceptor';
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);

@@ -50,8 +50,8 @@ const Navbar = ({ navigation }) => {
       className={`
           ${
             changeHeader
-              ? '-mt-32 fixed z-50 top-0 left-0 w-full shadow-md'
-              : 'mt-0 fixed z-50 top-0 left-0 w-full'
+              ? '-mt-32 fixed z-50 top-0 left-0 w-full  shadow-md'
+              : 'mt-0 fixed z-50 top-0 left-0 w-full h-[100px]'
           } ${headerBgWhite ? 'bg-white' : 'bg-transparent'}`}
     >
       <nav className="flex items-center justify-between max-w-screen-xl mx-auto px-6 py-3">

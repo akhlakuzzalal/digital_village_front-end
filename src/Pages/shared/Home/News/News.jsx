@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { Autoplay } from 'swiper';
 // Import Swiper styles
 import 'swiper/css';
@@ -64,12 +64,8 @@ const News = () => {
             {news.slice(0, 3).map((n) => (
               <NewsSideCard key={n.id} n={n} />
             ))}
-            <button
-              className="text-primary text-lg hover:text-black transition-all duration-500 w-fit mx-auto"
-              onClick={() => navigate('/news')}
-            >
-              Read More
-            </button>
+            
+            
           </div>
         </div>
       </div>
