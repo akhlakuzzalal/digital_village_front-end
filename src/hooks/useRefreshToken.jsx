@@ -1,17 +1,18 @@
-import axios from '../api/axios';
-import useAuth from './useAuth';
+import { useDispatch, useSelector } from 'react-redux';
+import { axiosPrivate } from '../api/axios';
+import { setRoles, setToken } from '../redux/slices/user/userSlice';
 
 const useRefreshToken = () => {
-  const { setToken, setRoles } = useAuth();
+  const roles = useSelector((state) => state.user.roles);
+  const dispatch = useDispatch();
 
   const refresh = async () => {
     try {
-      const response = await axios.get('/auth/refresh', {
+      const response = await axiosPrivate.get('/auth/refresh', {
         withCredentials: true,
       });
-      setToken(response?.data?.accessToken);
-      setRoles(response?.data?.roles);
-      return response?.data?.accessToken;
+      dispatch(setRoles([...roles, response?.data?.roles]));
+      dispatch(setToken(response?.data?.accessToken));
     } catch (error) {
       console.log(error.message);
     }

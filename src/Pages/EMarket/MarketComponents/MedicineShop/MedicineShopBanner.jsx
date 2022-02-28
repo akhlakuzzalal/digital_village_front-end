@@ -1,5 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie';
+import { Link } from 'react-router-dom';
 import animationData from '../../../../lotties/medicine.json';
 
 const MedicineShopBanner = () => {
@@ -23,9 +24,16 @@ const MedicineShopBanner = () => {
             alt=""
           />
         </div>
-        <div className="flex flex-col justify-center items-center w-11/12 mx-auto">
+        <div className="relative flex flex-col justify-center items-center w-11/12 mx-auto">
+          <div className="absolute top-0 mt-6 text-black font-semibold">
+            <Link to="/cart">Cart</Link>
+            <Link className="mx-4" to="/marketdashboard">
+              Dashboard
+            </Link>
+            <Link to="/e-market">Village market</Link>
+          </div>
           <h4 className="font-bold text-2xl">
-            All the necessary medicine is here now
+            All necessary medicine is here now
           </h4>
           <p>Buy personal and protective eqipment easily</p>
         </div>

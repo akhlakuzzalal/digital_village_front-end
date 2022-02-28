@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import ScrollToTop from './Components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
-import AllUsers from './Pages/Admin/AllUsers/AllUsers';
+import AllUsers from './Pages/Admin/DashboardItem/AllUsers/AllUsers';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import CaseSingle from './Pages/Donations/Causes/CaseSingle';
@@ -21,12 +21,12 @@ import EMarket from './Pages/EMarket/EMarket';
 import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
 import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
 import AddEvents from './Pages/Events/AddEvents/AddEvents';
-import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
 import UserAppointments from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/UserAppointments/UserAppointments';
 import VaccineInfo from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/VaccineInfo';
 import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
+import EventDetails from './Pages/Medical/EventDetails';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
 import Notification from './Pages/Notification/Notification';
 import About from './Pages/shared/About/About';
@@ -40,6 +40,7 @@ import NotFound from './Pages/shared/NotFound/NotFound';
 import Profile from './Pages/User/Profile';
 import PersistLogin from './SecureRoutes/PersistLogin';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
+
 const Roles = {
   User: 1000,
   Admin: 5000,
@@ -103,7 +104,6 @@ function App() {
             <Route path="events" element={<Events />} />
             <Route path="eventDetails/:id" element={<EventDetails />} />
             <Route path="add-events" element={<AddEvents />} />
-            <Route path="eventDetails/:id" element={<EventDetails />} />
 
             {/* development related routes */}
             <Route path="development" element={<Development />} />
@@ -119,7 +119,6 @@ function App() {
             <Route path="e-market" element={<EMarket />} />
             <Route path="cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
-             
 
             <Route path="*" element={<NotFound />} />
           </Routes>

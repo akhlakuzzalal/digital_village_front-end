@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NewsSideCard = ({ n }) => {
   return (
@@ -18,6 +19,11 @@ const NewsSideCard = ({ n }) => {
       <div className="flex flex-col space-y-3">
         <p>{n.title}</p>
         <p>{n.description.slice(0, 30)}...</p>
+        <Link to={`/newsDetails/${n.id}`}>
+        <button className="text-primary text-lg hover:text-black transition-all duration-500 border-b-2 border-b-primary">
+          Read More
+        </button>
+        </Link>
       </div>
     </div>
   );
