@@ -29,15 +29,14 @@ const Appointment = () => {
         </Link>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
           Any types of routine checkups and screening tests, give you flu and
-          immunization shots, and manage diabetes and other ongoing medical
-          conditions.
+          immunization shots.
         </p>
         <p>Space: 20</p>
         <p className="my-.5">(From 10 am to 5 pm) </p>
         <p>Cost : $25 </p>
         <Link
           to="#"
-          class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-primary rounded-lg "
+          class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-black rounded-lg "
         >
           <button onClick={handleAlert}>Book Appointment</button>
         </Link>
