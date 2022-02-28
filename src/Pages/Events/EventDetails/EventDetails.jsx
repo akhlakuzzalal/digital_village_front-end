@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import img from '../../../assets/market.png';
-import Calender from '../../../Components/Calender/Calender';
+import Calender from '../../../Components/Calender';
 const EventDetails = () => {
   const { id } = useParams();
   return (

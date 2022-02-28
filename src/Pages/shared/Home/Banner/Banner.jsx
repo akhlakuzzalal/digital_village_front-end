@@ -2,6 +2,7 @@ import React from 'react';
 import Lottie from 'react-lottie';
 import { NavHashLink } from 'react-router-hash-link';
 import homeBg from '../../../../assets/home_bg.png';
+import Dropdown from '../../../../Components/Dropdown';
 import useMediaQuery from '../../../../hooks/useMediaQuery';
 import animationData from '../../../../lotties/village.json';
 import Features from '../Features/Features';
@@ -38,11 +39,14 @@ const Banner = () => {
             platform. Every villagers can fit their needs by utilizing the
             facilities we provide.
           </p>
-          <NavHashLink smooth to="/#service">
-            <button className="btn bg-gradient-to-r from-primary via-secondary to-secondary hover:from-primary hover:via-secondary hover:to-primary shadow-xl">
-              Services
-            </button>
-          </NavHashLink>
+          <div className="flex justify-center items-start">
+            <Dropdown />
+            <NavHashLink smooth to="/#service">
+              <button className="btn bg-gradient-to-r from-primary via-secondary to-secondary hover:from-primary hover:via-secondary hover:to-primary shadow-xl">
+                Go
+              </button>
+            </NavHashLink>
+          </div>
         </div>
         {/* banner svg */}
         <div className="w-full md:w-1/2 pointer-events-none">

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../../../api/axios';
+import DropzoneComponent from './DropZoneComponent/DropZoneComponent';
 
 const Addvideo = () => {
-  const [file, setFile] = useState('');
+  const [file, setFile] = useState({});
   const [videos, setVideos] = useState([]);
 
   const fileChange = (e) => {
@@ -12,6 +13,8 @@ const Addvideo = () => {
   const handleUpload = async () => {
     const formData = new FormData();
     formData.append('file', file);
+
+    console.log(file);
 
     await axios.post('/teacher/uploadVideo', formData);
     axios.get('/teacher/allVideo').then((res) => setVideos(res.data));
@@ -41,6 +44,8 @@ const Addvideo = () => {
           />
         ))}
       </div>
+
+      <DropzoneComponent />
     </div>
   );
 };
