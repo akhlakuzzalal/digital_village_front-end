@@ -2,7 +2,6 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import axios from '../../../api/axios';
 
 const RegisterTeacher = () => {
   const user = useSelector((state) => state.user.user);
@@ -18,8 +17,10 @@ const RegisterTeacher = () => {
 
   const handleTeacherRegistration = async (data) => {
     const newTeacher = { ...data, isVerified: false };
-    const response = await axios.post('/teacher/addTeacher', newTeacher);
-    console.log(response?.data);
+    // const response = await axios.post('/teacher/addTeacher', newTeacher);
+    // console.log(response?.data);
+
+    navigate('/teacher');
     // after getting response from the teacher give him a message that he need to wait for verification.
 
     // also set the roles in redux store after verifying from admin dashboard

@@ -6,7 +6,7 @@ const Myblogs = () => {
   return (
     <div>
       {/* Add a post */}
-      <AddCard name="Add New Blog" path="/teacherDashboard/addblogs" />
+      <AddCard name="Add New Blog" path="/teacher/addblogs" />
       <ExploreBlogs />
     </div>
   );

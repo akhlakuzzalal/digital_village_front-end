@@ -21,7 +21,7 @@ import Analytics from './Pages/Education/Teacher/Analytics/Analytics';
 import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
 import Myvideos from './Pages/Education/Teacher/Myvideos/Myvideos';
 import RegisterTeacher from './Pages/Education/Teacher/RegisterTeacher';
-import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
+import Teacher from './Pages/Education/Teacher/Teacher';
 import EMarket from './Pages/EMarket/EMarket';
 import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
 import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
@@ -49,6 +49,7 @@ import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import NotFound from './Pages/shared/NotFound/NotFound';
 import Profile from './Pages/User/Profile';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
+
 const Roles = {
   User: 1000,
   Admin: 5000,
@@ -89,7 +90,7 @@ function App() {
             <Route path="education" element={<Education />} />
             <Route path="registerTeacher" element={<RegisterTeacher />} />
             <Route path="studentinfo" element={<StudentInfo />} />
-            <Route path="teacherDashboard" element={<TeacherDashboard />}>
+            <Route path="teacher" element={<Teacher />}>
               <Route path="analytics" element={<Analytics />} />
               <Route path="myblogs" element={<Myblogs />} />
               <Route path="myvideos" element={<Myvideos />} />

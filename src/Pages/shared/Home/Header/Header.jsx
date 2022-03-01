@@ -12,7 +12,7 @@ const navigation = [
 
 const Header = () => {
   const location = useLocation();
-  return location.pathname.includes('/teacherDashboard') ||
+  return location.pathname.includes('/teacher') ||
     location.pathname.includes('/medical') ||
     location.pathname.includes('admindashboard') ||
     location.pathname.includes('/marketdashboard') ? null : (

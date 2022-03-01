@@ -37,7 +37,7 @@ const videos = [
 const Myvideos = () => {
   return (
     <div>
-      <AddCard name="Add New video" path="/teacherDashboard/addvideos" />
+      <AddCard name="Add New video" path="/teacher/addvideos" />
       <div className="flex flex-wrap gap-4 justify-evenly p-6">
         {videos.map((video) => (
           <VideoCard key={video._id} video={video} />

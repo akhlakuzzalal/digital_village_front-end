@@ -88,27 +88,44 @@ const Sidebar = ({
           <ul className="mt-3 space-y-6 p-3">
             {/* Dashboard */}
             {links.map((link) => (
-              <li
-                key={link.name}
-                className={`rounded-sm p-2 ${
-                  pathname === link.path && 'bg-slate-900'
-                }`}
-              >
-                <NavLink
-                  to={link.path}
-                  className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
-                    pathname === link.path && 'hover:text-slate-200'
+              <li key={link.name}>
+                <div
+                  className={`rounded-sm p-2 ${
+                    pathname === link.path && 'bg-slate-900'
                   }`}
                 >
-                  <div className="flex items-center space-x-2">
-                    {link.icon}
-                    {showText && (
-                      <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                        {link.name}
-                      </span>
-                    )}
-                  </div>
-                </NavLink>
+                  <NavLink
+                    to={link.path}
+                    className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
+                      pathname === link.path && 'hover:text-slate-200'
+                    }`}
+                  >
+                    <div className="flex items-center space-x-2">
+                      {link.icon}
+                      {showText && (
+                        <div className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                          <div>{link.name}</div>
+                        </div>
+                      )}
+                    </div>
+                  </NavLink>
+                </div>
+                {/* nested menu */}
+                <div className="ml-4 space-y-3 my-3">
+                  {link?.nestedPath &&
+                    link?.nestedPath.map((l) => (
+                      <NavLink
+                        to={l.path}
+                        key={l.path}
+                        className={`text-slate-200 hover:text-white truncate transition duration-150 flex items-center space-x-3 ${
+                          pathname === l.path && 'hover:text-slate-200'
+                        }`}
+                      >
+                        {l.icon}
+                        <span>{l.name}</span>
+                      </NavLink>
+                    ))}
+                </div>
               </li>
             ))}
           </ul>

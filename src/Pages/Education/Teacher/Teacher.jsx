@@ -6,32 +6,49 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Sidebar from '../../../Components/Sidebar';
 import Analytics from './Analytics/Analytics';
 import Header from './Dashboard/partials/Header';
+
 const links = [
   {
     name: 'My Blogs',
     icon: <BsNewspaper size={30} />,
-    path: '/teacherDashboard/myblogs',
+    path: '/teacher/myblogs',
+    nestedPath: [
+      {
+        name: 'nested 1',
+        icon: <RiDashboard2Line size={30} />,
+        path: '/teacher/myvideos',
+      },
+      {
+        name: 'nested 2',
+        icon: <RiDashboard2Line size={30} />,
+        path: '/#',
+      },
+    ],
+  },
+  {
+    name: 'Add Blogs',
+    icon: <BsNewspaper size={30} />,
+    path: '/teacher/addBlogs',
   },
   {
     name: 'My videos',
     icon: <MdOutlineVideoSettings size={30} />,
-    path: '/teacherDashboard/myvideos',
+    path: '/teacher/myvideos',
   },
   {
     name: 'analytics',
     icon: <RiDashboard2Line size={30} />,
-    path: '/teacherDashboard/analytics',
+    path: '/teacher/analytics',
   },
 ];
 
-const TeacherDashboard = () => {
+const Teacher = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showText, setShowText] = useState(true);
 
   const location = useLocation();
   const initial =
-    location.pathname === '/teacherDashboard' ||
-    location.pathname === '/teacherDashboard/';
+    location.pathname === '/teacher' || location.pathname === '/teacher/';
 
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
@@ -53,4 +70,4 @@ const TeacherDashboard = () => {
   );
 };
 
-export default TeacherDashboard;
+export default Teacher;

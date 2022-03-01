@@ -22,7 +22,6 @@ const AllUsers = () => {
         console.log(response?.data);
         isMounted && setUsers(response.data);
       } catch (error) {
-        console.log('error here');
         console.log(error.message);
         navigate('/login', { state: { from: location }, replace: true });
       }
