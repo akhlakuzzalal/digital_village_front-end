@@ -15,7 +15,7 @@ const userSlice = createSlice({
       state.token = payload;
     },
     setUser: (state, { payload }) => {
-      state.token = payload;
+      state.user = payload;
     },
   },
 });

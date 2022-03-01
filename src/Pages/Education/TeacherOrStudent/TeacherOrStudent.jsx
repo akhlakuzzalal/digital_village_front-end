@@ -13,11 +13,11 @@ const TeacherOrStudent = () => {
       </h1>
       <div className="flex justify-center items-center flex-wrap">
         <div className="flex flex-col justify-center items-center w-1/2 flex-wrap space-y-9">
-          <Link to="/teacherinfo">
-            <DecidingCard icon={<GiTeacher />} name="Teacher" />
+          <Link to="/registerTeacher">
+            <DecidingCard icon={<GiTeacher />} name="Teach" />
           </Link>
           <Link to="/student">
-            <DecidingCard icon={<FaChalkboardTeacher />} name="Student" />
+            <DecidingCard icon={<FaChalkboardTeacher />} name="Learn" />
           </Link>
         </div>
         <div className="flex justify-center items-center w-1/2">

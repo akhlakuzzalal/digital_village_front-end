@@ -20,8 +20,8 @@ import Addvideo from './Pages/Education/Teacher/Addvideo/Addvideo';
 import Analytics from './Pages/Education/Teacher/Analytics/Analytics';
 import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
 import Myvideos from './Pages/Education/Teacher/Myvideos/Myvideos';
+import RegisterTeacher from './Pages/Education/Teacher/RegisterTeacher';
 import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
-import TeacherInfo from './Pages/Education/Teacher/TeacherInfo';
 import EMarket from './Pages/EMarket/EMarket';
 import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
 import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
@@ -87,7 +87,7 @@ function App() {
 
             {/* education related routes */}
             <Route path="education" element={<Education />} />
-            <Route path="teacherinfo" element={<TeacherInfo />} />
+            <Route path="registerTeacher" element={<RegisterTeacher />} />
             <Route path="studentinfo" element={<StudentInfo />} />
             <Route path="teacherDashboard" element={<TeacherDashboard />}>
               <Route path="analytics" element={<Analytics />} />
