@@ -33,7 +33,7 @@ const AllUsers = () => {
       isMounted = false;
       controller.abort();
     };
-  }, [axiosInterceptor]);
+  }, []);
 
   return (
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
