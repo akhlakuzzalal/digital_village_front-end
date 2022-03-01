@@ -32,20 +32,27 @@ const useFirebase = () => {
 
   const googleProvider = new GoogleAuthProvider();
 
-  const processSignInWithGoogle = (navigate, redirect_uri) => {
+  const processSignInWithGoogle = (navigate) => {
     setIsLoading(true); // user trying to log with google
 
     return signInWithPopup(auth, googleProvider)
       .then((result) => {
         const { user } = result;
-        // saveUser(user.displayName, user.email);
 
-        setUser({
-          displayName: user.displayName,
+        // REGISTER USER IN DATABASE
+        registerToDB({
+          name: user.displayName,
           email: user.email,
+          dateOfBirth: 'unknown',
+          password: 'noneedofpassword',
+        });
+        setUser({
+          name: user.displayName,
+          email: user.email,
+          dateOfBirth: 'unknown',
           emailVerified: user.emailVerified,
         });
-        navigate(redirect_uri);
+        navigate('/');
         setIsLoading(false);
       })
       .catch((error) => setAuthError(error.message));
