@@ -1,9 +1,44 @@
+import emailjs from '@emailjs/browser';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import swal from 'sweetalert';
 import img from '../../../assets/events/contact.jpg';
 const Contact = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: { yes_i_understand: false },
+  });
+
+  const sendEmail = (formData) => {
+    console.log(formData);
+
+    emailjs
+      .send(
+        'service_nbv08xi',
+        'template_qw32pvu',
+        formData,
+        'user_NT0NiFlR59zCf04Pr6LZF'
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    swal('Successfully!', '!Your Message Send', 'success');
+    reset();
+  };
+
+  // const sendEmail = (e) => {
+  //           e.preventDefault();
+
+  //         };
 
   return (
     <div className="">
@@ -140,7 +175,7 @@ const Contact = () => {
         </div>
         <form
           className=" md:grid grid-cols-1 md:grid-cols-2 gap-5 mt-16 mx-10 lg:mx-0"
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit()}
         >
           <input
             className=" w-full  bg-gray-100 px-20 py-5 rounded mb-5 lg:mb-0"
@@ -180,7 +215,7 @@ const Contact = () => {
           <input
             className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-pink-500 hover:to-yellow-500 btn mx-auto col-span-2 font-bold rounded-lg  px-6 md:w-2/6   py-2 text-white ml-20 lg:ml-0"
             type="submit"
-            value="Submit Now"
+            value="SEND MESSAGE"
           />
         </form>
       </div>

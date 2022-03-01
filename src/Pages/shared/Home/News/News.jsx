@@ -19,9 +19,13 @@ const News = () => {
   }, []);
 
   return (
-    <div className="container my-20 mx-auto px-4">
+    <div className="container my-20 mx-auto px-4 ">
+      <p className="text-center">Our News</p>
+      <h1 className=" text-2xl   text-center font-bold py-2   text-primary">
+        Latest News
+      </h1>
       <div className="flex md:my-4">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 pt-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 pt-10  pb-10">
           <div className="lg:col-span-2 ">
             <Swiper
               // slidesPerView={2}
@@ -57,16 +61,10 @@ const News = () => {
           </div>
 
           {/* news sidebar */}
-          <div className="hidden  lg:flex flex-col justify-center">
+          <div className="hidden  lg:flex flex-col justify-center rounded shadow-lg bg-gray-50 pb-5 spacey-10 lg:h-[560px] ">
             {news.slice(0, 3).map((n) => (
               <NewsSideCard key={n.id} n={n} />
             ))}
-            <button
-              className="text-primary text-lg hover:text-black transition-all duration-500 w-fit mx-auto"
-              onClick={() => navigate('/news')}
-            >
-              Read More
-            </button>
           </div>
         </div>
       </div>

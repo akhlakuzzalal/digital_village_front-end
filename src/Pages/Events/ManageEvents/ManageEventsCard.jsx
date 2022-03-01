@@ -1,8 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteAnEvent } from '../../../redux/slices/event/eventSlice';
 
 const ManageEventsCard = ({
   event: { _id, title, type, image, date, time, place },
 }) => {
+  const dispatch = useDispatch();
+  const handleDelete = () => {
+    dispatch(deleteAnEvent(_id));
+  };
   return (
     <div className="border rounded-xl">
       <img src={image} alt={title} />
@@ -20,7 +26,7 @@ const ManageEventsCard = ({
             </p>
           </div>
         </div>
-        <button>Delete</button>
+        <button onClick={() => handleDelete()}>Delete</button>
       </div>
     </div>
   );

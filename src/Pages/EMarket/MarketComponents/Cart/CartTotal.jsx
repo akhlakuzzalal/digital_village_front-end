@@ -1,26 +1,29 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const CartTotal = () => {
+  const cartTotal = useSelector((state) => state.market.total.cartTotal);
+  const { subTotal, shipping, tax, total } = cartTotal;
   return (
     <div>
       <h3 className="inline border-b-2 border-primary">Cart Total</h3>
       <div className="mt-6">
         <div className="flex justify-between items-center py-3 bg-slate-300 px-3 rounded-t-xl">
           <p>Subtotal</p>
-          <p>$ 120</p>
+          <p>$ {subTotal}</p>
         </div>
         <div className="flex justify-between items-center py-3 bg-slate-100 px-3">
           <p>Shipping</p>
-          <p>$ 120</p>
+          <p>$ {shipping}</p>
         </div>
         <div className="flex justify-between items-center py-3 bg-slate-300 px-3">
           <p>Tax</p>
-          <p>$ 120</p>
+          <p>$ {tax}</p>
         </div>
         <div className="flex justify-between items-center py-3 bg-slate-100 px-3 rounded-b-xl">
           <p>Total</p>
-          <p>$ 120</p>
+          <p>$ {total}</p>
         </div>
       </div>
       <Link to="/checkout">

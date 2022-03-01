@@ -10,7 +10,17 @@ import Review from './Review/Review';
 
 const Reviews = () => {
   return (
-    <>
+    <div className="bg-gray-50">
+      <div className="pt-[100px]">
+        <p className="text-center">TESTIMONIALS</p>
+        <h1 className=" text-2xl  text-center font-bold py-2   text-primary">
+          WHAT PEOPLE SAY ABOUT US
+        </h1>
+        <p className="px-[100px] text-center">
+          Lorem Ipsum has been the industry's standard dummy text ever since the
+          1500s, when an unknown printer took
+        </p>
+      </div>
       <Swiper
         slidesPerView={2}
         slidesPerGroup={1}
@@ -40,12 +50,12 @@ const Reviews = () => {
         }}
         navigation={true}
         modules={[Autoplay, Navigation]}
-        className="mySwiper w-full bg-slate-50 pb-36  my-10"
+        className="mySwiper w-full bg-slate-50 pb-36  "
       >
-        <SwiperSlide className="flex justify-center p-10">
+        <SwiperSlide className="flex justify-center p-10 ">
           <Review />
         </SwiperSlide>
-        <SwiperSlide className="flex justify-center p-10">
+        <SwiperSlide className="flex justify-center p-10 ">
           <Review />
         </SwiperSlide>
         <SwiperSlide className="flex justify-center p-10">
@@ -64,7 +74,7 @@ const Reviews = () => {
           <Review />
         </SwiperSlide>
       </Swiper>
-    </>
+    </div>
   );
 };
 

@@ -25,10 +25,10 @@ export const addAnEvent = createAsyncThunk(
 // delete event
 export const deleteAnEvent = createAsyncThunk(
   'events/deleteAnEvent',
-  async (event) => {
+  async (id) => {
     const response = await axios
-      .post('/event/deleteEvent', event)
-      .then((response) => response.data);
+      .delete(`/event/deleteEvent/?id=${id}`)
+      .then((response) => response.data._id);
     return response;
   }
 );
@@ -80,7 +80,7 @@ const eventSlice = createSlice({
     });
     builder.addCase(deleteAnEvent.fulfilled, (state, { payload }) => {
       console.log('delete', payload);
-      state.allEvents.push(payload);
+      state.allEvents.filter((event) => event._id !== payload);
     });
   },
 });
