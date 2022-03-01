@@ -7,9 +7,9 @@ const DonarForm = () => {
   const showModal = useSelector((state) => state.modal.showModal);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
-  const handleRegister = async ({ firstName, lastName, email, password ,message}) => {
+  const handleRegister = async ({ firstName, lastName, email, amount , message},address) => {
     const name = `${firstName} ${lastName}`;
-    console.log({ name, email, password });
+    console.log({ name, email, address ,message,amount});
     dispatch(setShowModal(true));
   };
   console.log(showModal);
@@ -67,12 +67,23 @@ const DonarForm = () => {
             placeholder="Post code"
           />
         </div>
+        <div className="flex items-center justify-center">
+           {/* Address */}
+        <input
+          className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
+          {...register('amount' ,{ required: true, maxLength: 4})}
+          type="number"
+          defaultValues={50}
+          placeholder="Amount"
+        />
+        </div>
 
         <input
           className="bg-primary hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
           type="submit"
           value="Ready for Donation Payment"
         />
+       
       </form>
     </div>
   );

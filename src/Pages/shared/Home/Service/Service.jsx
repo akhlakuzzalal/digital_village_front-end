@@ -49,7 +49,7 @@ const services = [
     image: donate,
     detail:
       'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
-    desc: 'Development proposal',
+    desc: 'Donate available Get Help Request',
     controlData: 'donation',
   },
   {

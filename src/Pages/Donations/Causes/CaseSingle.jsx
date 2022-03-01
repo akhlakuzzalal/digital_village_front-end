@@ -4,6 +4,7 @@ import { Progress } from 'react-sweet-progress';
 import 'react-sweet-progress/lib/style.css';
 import DonarForm from '../Donate/DonarForm';
 import PayModal from '../Donate/Payment/PayModal';
+import PageSection from '../DonateItems/PageSection/PageSection';
 
 // CaseSingle details page
 const CaseSingle = () => {
@@ -30,14 +31,14 @@ const CaseSingle = () => {
 
   let percent = percentage(donationTotal, donationGoal);
   return (
+    <>
+    
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
-      <div className="items-center justify-center ">
-        <h1 className="text-center text-3xl text-blue-500">Page of {causes?.title}</h1>
-      </div>
+      <PageSection />
       <div class="container mx-auto flex flex-wrap py-6">
         {/* Posts Section */}
         <section class="w-full md:w-2/3 flex flex-col items-center px-3">
-          <div class="flex flex-col shadow my-4 bg-white rounded-xl p-4 box-border overflow-hidden relative justify-between border-l-4 border-green-400">
+          <div class="flex flex-col shadow my-4 rounded-xl p-4 box-border overflow-hidden relative justify-between border-r-4 border-l-4">
             <div className="overflow-hidden">
               <img
                 className="transform hover:scale-125 transition duration-700 object-cover h-full w-full"
@@ -302,6 +303,8 @@ const CaseSingle = () => {
       </div>
       <PayModal />
     </div>
+    </>
+    
   );
 };
 
