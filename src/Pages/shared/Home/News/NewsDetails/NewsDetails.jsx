@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import NewsCard from '../NewsCard/NewsCard';
+import Reply from '../ReplyFrom/Reply';
 
 
 
@@ -89,7 +90,7 @@ console.log(result)
   
   return (
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
-     <div className='grid grid-cols-1 md:grid-cols-4 mx-10'>
+     <div className='grid grid-cols-1 md:grid-cols-4 mx-auto md:mx-10'>
         
       <div className=" col-span-3 mx-10 bg-white rounded-lg  pb-10    dark:bg-gray-800 dark:border-gray-700">
         <h3 className=' py-5'>{result[0]?.title}</h3>
@@ -110,11 +111,7 @@ console.log(result)
     </div>
 
     <div className='grid md:grid-cols-2 mt-5 border-b-4 border-gray-400 pb-10 '>
-        {/* <div>
-          <span className="text-gray-400">PREVIOUS POST</span>
-          <h4>{news[2]?.title}</h4>
-        </div> */}
-
+     
         <div className='border-r-2 border-gray-400 mr-5'>
           <h5 className='my-3 text-gray-400 hover:text-blue-600'>PREVIOUS POST</h5>
           <h3 className='text-xl hover:opacity-70'>{news[3]?.title}</h3>
@@ -124,6 +121,11 @@ console.log(result)
           <h3 className='text-xl hover:opacity-70'>{news[3]?.title}</h3>
         </div>
         
+    </div>
+
+    <div>
+    <h3 className='my-10 text-white bg-red-600 w-60 p-1'>Leave a Reply</h3>
+    <Reply/>
     </div>
 
 
