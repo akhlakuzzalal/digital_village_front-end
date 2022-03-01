@@ -2,7 +2,7 @@ import React from 'react';
 const PageSection = () => {
 
     return (
-    <div class="w-full  bg-gray-700  bg-no-repeat" style={{
+    <div class="w-full  bg-gray-400  bg-no-repeat" style={{
         backgroundBlendMode: 'multiply',
         backgroundPosition: 'center center',
         backgroundImage: 'url(https://i.ytimg.com/vi/BCcMhStc0PY/maxresdefault.jpg)'

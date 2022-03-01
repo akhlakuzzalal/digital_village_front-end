@@ -1,16 +1,23 @@
-
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import CauseCard from './CauseCard';
+import { useDispatch, useSelector, } from 'react-redux';
+import { setCauses } from '../../../redux/slices/Donations/donationSlice';
 
 const Causes = () => {
-    const [causes, setCauses] = useState([]);
+    const dispatch = useDispatch();
+    const causes = useSelector(state=>state.donation.causes);
+    // console.log(causes);
 
     useEffect(() => {
         fetch('https://cryptic-everglades-35803.herokuapp.com/services')
             .then(res => res.json())
-            .then(data => setCauses(data))
-            
-    }, [])
+            .then(data => {
+                console.log(data);
+                dispatch(setCauses(data))})
+
+    }, []);
+
+
     return (
         <section id='donatecard' className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
         <div className="flex flex-col col-span-2 md:col-span-1 justify-center items-center py-7">

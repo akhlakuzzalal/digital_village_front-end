@@ -31,14 +31,14 @@ const DonateBanner = () => {
             <p className="text-[#3f5a46] mx-auto md:mx-0 md:w-[420px] capitalize pb-3">
             Charitable giving is the act of giving money,Help to those in need, as a humanitarian act
             </p>
-            <NavHashLink smooth to="/#donatecard">
+            <NavHashLink smooth to="/#">
                 <button className="btn bg-gradient-to-r from-primary via-secondary to-secondary hover:from-primary hover:via-secondary hover:to-primary shadow-xl">
                 Donate Now
                 </button>
             </NavHashLink>
             </div>
             {/* banner svg */}
-            <div className="w-full md:w-1/2 px-3 pointer-events-none">
+            <div className="w-full md:w-1/2 px-3">
             <Lottie
                 options={defaultOptions}
                 width={350}

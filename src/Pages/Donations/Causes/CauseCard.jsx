@@ -47,9 +47,9 @@ const CauseCard = (props) => {
         </div>
         {/* card footer  */}
         <div className="flex items-center justify-between pt-3">
-            <button className="w-100 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-r-indigo-500"><FaHandsHelping className='text-2xl text-red-400'/>RAISED {fee}</button>
+            <button className="w-100 space-x-1 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-r-indigo-500"><FaHandsHelping className='text-2xl text-red-400'/><p>RAISED {fee}</p></button>
             
-            <button className="w-100 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-l-indigo-500"><FaDonate className='text-2xl text-red-400'></FaDonate> GOAL {goal}</button>
+            <button className="w-100  space-x-1 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-l-indigo-500"><FaDonate className='text-2xl text-red-400'></FaDonate><p> GOAL  {goal}</p></button>
             
         </div>
         <div class="py-5">
@@ -89,8 +89,8 @@ const CauseCard = (props) => {
         </div>
         {/* Button */}
         <div className="flex items-center justify-between pt-3">
-            <button className="w-100 flex items-center justify-center pl-5 pr-5 bg-transparent border-1 border-red-500 text-red-500 text-lg rounded-lg"><FaHeart className='text-2xl text-red-400'/> 250</button>
-            <button className="w-100 flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md btn bg-gradient-to-r from-primary via-secondary to-secondary hover:from-primary hover:via-secondary hover:to-primary shadow-xl"onClick={handleDonate}><FcDonate className='text-2xl'></FcDonate> Donate</button>
+            <button className="w-100 flex items-center justify-center px-3 bg-transparent border-1 border-red-500 text-red-500 text-lg rounded-lg"><FaHeart className='text-2xl text-red-400'/> 250 Donar</button>
+            <button className="w-100 flex items-center justify-center py-2 px-3 border border-transparent text-sm font-medium rounded-md btn bg-gradient-to-r from-primary via-secondary to-secondary hover:from-primary hover:via-secondary hover:to-primary shadow-xl"onClick={handleDonate}><FcDonate className='text-2xl'></FcDonate> Donate</button>
         </div>
     </div>
     );
