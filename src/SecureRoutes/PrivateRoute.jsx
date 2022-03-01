@@ -5,7 +5,10 @@ import useAuth from '../hooks/useAuth';
 const PrivateRoute = ({ allowedRoles }) => {
   const { user, roles } = useAuth();
   const location = useLocation();
-  return roles?.find((role) => allowedRoles?.includes(role)) ? (
+
+  const rolesArray = roles.map((role) => Object.values(role)).flat();
+
+  return rolesArray?.find((role) => allowedRoles?.includes(role)) ? (
     <Outlet />
   ) : user?.email ? (
     <Navigate to="/unauthorized" state={{ from: location }} replace />

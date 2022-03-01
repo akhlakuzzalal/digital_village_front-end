@@ -28,7 +28,7 @@ const MedicineCategories = () => {
       {categories.map((categorie) => (
         <div
           key={categorie.id}
-          className="flex items-center shadow-2xl p-4 rounded-lg"
+          className="flex items-center shadow-md p-4 rounded-lg"
         >
           <h6>{categorie.name}</h6>
           <img className="w-3/6" src={categorie.img} alt="" />

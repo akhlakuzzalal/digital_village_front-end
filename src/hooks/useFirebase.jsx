@@ -5,13 +5,16 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   sendEmailVerification,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
 } from 'firebase/auth';
 import { useEffect, useState } from 'react';
-import axios from '../api/axios';
+import { useDispatch, useSelector } from 'react-redux';
+import axios, { axiosPrivate } from '../api/axios';
 import initializeAuthentication from '../Firebase/Firebase.init';
+import { setRoles, setToken } from '../redux/slices/user/userSlice';
 
 // initialize firebase app
 initializeAuthentication();
@@ -20,11 +23,10 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true); // user using the login functionality
   const [authError, setAuthError] = useState('');
-  const [roles, setRoles] = useState([]);
-  const [token, setToken] = useState('');
-  const [persist, setPersist] = useState(
-    JSON.parse(localStorage.getItem('persist')) || false
-  );
+  const roles = useSelector((state) => state.user.roles);
+  const token = useSelector((state) => state.user.token);
+
+  const dispatch = useDispatch();
 
   const auth = getAuth();
 
@@ -50,7 +52,11 @@ const useFirebase = () => {
   };
 
   //REGISTRATION PROCESS OF USER
-  const processSignUp = (name, email, password, navigate) => {
+  const processSignUp = (
+    { name, email, dateOfBirth, password },
+    redirect_uri,
+    navigate
+  ) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
@@ -62,12 +68,12 @@ const useFirebase = () => {
 
         sendEmailVerification(auth.currentUser);
 
-        const newUser = { email, displayName: name, emailVerified };
+        const newUser = { name, email, dateOfBirth, emailVerified };
 
         setUser(newUser);
 
         // register user to the database
-        // saveUser(name, email);
+        registerToDB({ name, email, dateOfBirth, password });
 
         // send name to firebase after creation
         updateProfile(auth.currentUser, {
@@ -75,8 +81,7 @@ const useFirebase = () => {
         })
           .then(() => {})
           .catch((error) => setAuthError(error.message));
-        // navigate('/emailverify'); // navigate to the email verify page or homepage and give an alert to verify email
-        navigate('/');
+        navigate(redirect_uri);
       })
       .catch((error) => {
         setAuthError(error.message);
@@ -88,15 +93,15 @@ const useFirebase = () => {
   //USER LOGIN PROCESS
   const processSignIn = (email, password, location, navigate) => {
     setIsLoading(true);
-    loginToDB(email, password);
-    // return signInWithEmailAndPassword(auth, email, password)
-    //   .then(() => {
-    //     const redirect_uri = location?.state?.from || '/';
-    //     navigate(redirect_uri);
-    //     setAuthError('');
-    //   })
-    //   .catch((error) => setAuthError(error.message))
-    //   .finally(() => setIsLoading(false));
+    return signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        loginToDB(email, password);
+        const redirect_uri = location?.state?.from || '/';
+        navigate(redirect_uri);
+        setAuthError('');
+      })
+      .catch((error) => setAuthError(error.message))
+      .finally(() => setIsLoading(false));
   };
 
   // change the user state
@@ -113,28 +118,29 @@ const useFirebase = () => {
     return () => unsubscribed;
   }, [auth]);
 
-  // find the user role
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `find the role url?email=${user.email}`
-  //     )
-  //     .then((response) => setRole(response?.data?.admin));
-  // }, [user.email]);
-
   //process user logout
   const logout = () => {
     setIsLoading(true);
     return signOut(auth)
-      .then(() => {})
+      .then(() => {
+        // clear all info of the user
+        logoutFromDB();
+        setUser({});
+        setAuthError('');
+        dispatch(setRoles([]));
+        dispatch(setToken(''));
+      })
       .catch((error) => {
         setAuthError(error.message);
       })
       .finally(() => setIsLoading(false));
   };
 
-  const registerToDB = (name, email, dateOfBirth, password) => {
-    console.log(name, email, dateOfBirth, password);
+  const registerToDB = async (newUser) => {
+    const response = await axios.post('/auth/register', newUser);
+    dispatch(setRoles([...roles, response?.data?.roles]));
+    dispatch(setToken(response?.data?.accessToken));
+    console.log(response?.data);
   };
 
   const loginToDB = async (email, password) => {
@@ -149,12 +155,18 @@ const useFirebase = () => {
           withCredentials: true,
         }
       );
-      setRoles(response?.data?.roles);
-      setToken(response?.data?.accessToken);
+      dispatch(setRoles([...roles, response?.data?.roles]));
+      dispatch(setToken(response?.data?.accessToken));
       console.log(response?.data?.message);
     } catch (error) {
       console.log(error.message);
     }
+  };
+
+  const logoutFromDB = async () => {
+    const response = await axiosPrivate.get('/auth/logout');
+
+    console.log(response?.data);
   };
 
   return {
@@ -163,6 +175,7 @@ const useFirebase = () => {
     setIsLoading,
     setAuthError,
     roles,
+    setRoles,
     token,
     setToken,
     authError,
@@ -170,8 +183,6 @@ const useFirebase = () => {
     processSignUp,
     processSignIn,
     logout,
-    persist,
-    setPersist,
   };
 };
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FaDonate, FaHandsHelping } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import { Progress } from 'react-sweet-progress';
 import 'react-sweet-progress/lib/style.css';
@@ -56,20 +57,19 @@ const CaseSingle = () => {
               <a href="/" class="text-3xl font-bold hover:text-gray-700 pb-4">
                 {causes?.title}
               </a>
-              <p href="/" class="text-sm pb-3">
+              <p href="/" class="text-sm pb-3 text-gray-500">
                 By{' '}
-                <a href="/" class="font-semibold hover:text-gray-800">
+                <a href="/" class="font-semibold text-gray-800 hover:text-gray-800">
                   Digital Village
                 </a>
-                , Published on April 25th, 2022
+                , <span className="text-gray-500 text-sm">Published on April 25th, 2022</span>
               </p>
               {/* card footer  */}
               <div className="flex flex-col md:flex-row items-center justify-between pt-3 md:space-y-0 space-y-2">
-                <button className="w-100 flex items-center justify-center py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 px-6">
+                <button className="w-100 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-r-indigo-500 border-l-indigo-500"><FaHandsHelping className='text-2xl text-red-400'/>
                   RAISED {causes?.fee}
                 </button>
-                <button className="w-100 flex items-center justify-center py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 px-6">
-                  GOAL {causes?.goal}
+                <button className="w-100 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-l-indigo-500 border-r-indigo-500"><FaDonate className='text-2xl text-red-400'></FaDonate>GOAL {causes?.goal}
                 </button>
               </div>
               <div className="flex flex-col space-y-1 my-3">

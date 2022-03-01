@@ -22,7 +22,7 @@ const PopularMedicine = () => {
         >
           {lastMedicine.map((n) => (
             <SwiperSlide key={n.id}>
-              <div className="rounded-lg shadow-2xl w-11/12 mx-auto py-4">
+              <div className="rounded-lg w-11/12 mx-auto py-4">
                 <img
                   className="rounded-t-lg w-100"
                   style={{ height: '280px' }}

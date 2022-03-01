@@ -37,30 +37,30 @@ const Categorie = () => {
           <div className="rounded-lg w-fit flex flex-col justify-center items-center hover:scale-105 duration-300">
             <img
               className="w-full h-40 "
-              src="https://www.techlandbd.com/image/cache/catalog/Headphone-Headset/w820bt%20black/edifier-w820bt-headphone-price-in-bd-black-500x500.jpg"
+              src="https://krishokdotcom.net/wp-content/uploads/2019/12/ata1.jpg"
               alt=""
             />
-            <p>Headphone</p>
+            <p>Flour</p>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="rounded-lg w-fit flex flex-col justify-center items-center hover:scale-105 duration-300">
             <img
               className="w-full h-40 "
-              src="https://primedia.primark.com/s/primark/210197261_ms?locale=en-*,sl-*,*&$product-thumbnail$"
+              src="https://chaldn.com/_mpimage/fresh-fruits?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D61651&q=low&v=1&m=400"
               alt=""
             />
-            <p>Fashion</p>
+            <p>Fruits</p>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="rounded-lg w-fit flex flex-col justify-center items-center hover:scale-105 duration-300">
             <img
               className="w-full h-40 "
-              src="https://m.media-amazon.com/images/I/81nC4u9eYfL._UY445_.jpg"
+              src="https://lh3.googleusercontent.com/skrw8TXUCGmYTw7e5pxj5z0VK7rMuSchKuOyRO5U7bsCnib-VcQm0ud7oET6QMmLh3BXhsX7j9W4w8lK-qCOotuGI1DJ7xCFZg=s1500-pp"
               alt=""
             />
-            <p>Watch</p>
+            <p>Oil</p>
           </div>
         </SwiperSlide>
         <SwiperSlide>

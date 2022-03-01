@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import useAxiosInterceptor from '../../../hooks/useAxiosInterceptor';
-import useRefreshToken from '../../../hooks/useRefreshToken';
+import useAxiosInterceptor from '../../../../hooks/useAxiosInterceptor';
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
-  const refresh = useRefreshToken();
 
   const axiosInterceptor = useAxiosInterceptor();
 
@@ -45,9 +43,6 @@ const AllUsers = () => {
           <li key={user?.name}>{user?.name}</li>
         ))}
       </ul>
-      <button className="btn bg-primary" onClick={() => refresh()}>
-        Refresh
-      </button>
     </div>
   );
 };

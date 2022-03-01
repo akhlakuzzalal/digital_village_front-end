@@ -13,7 +13,7 @@ const Navbar = ({ navigation }) => {
 
   const navigate = useNavigate();
 
-  const { user, logout, roles, token } = useAuth(); // will come from firebase
+  const { user, logout } = useAuth(); // will come from firebase
 
   //header change function
   const onChangeHeader = () => {
@@ -50,8 +50,8 @@ const Navbar = ({ navigation }) => {
       className={`
           ${
             changeHeader
-              ? '-mt-32 fixed z-50 top-0 left-0 w-full shadow-md'
-              : 'mt-0 fixed z-50 top-0 left-0 w-full'
+              ? '-mt-32 fixed z-50 top-0 left-0 w-full  shadow-md'
+              : 'mt-0 fixed z-50 top-0 left-0 w-full h-[100px]'
           } ${headerBgWhite ? 'bg-white' : 'bg-transparent'}`}
     >
       <nav className="flex items-center justify-between max-w-screen-xl mx-auto px-6 py-3">
@@ -173,7 +173,7 @@ const Navbar = ({ navigation }) => {
                 className="btn bg-success py-0 md:py-3 lg:py-3 text-xs md:text-xl px-5 hover:bg-opacity-80 transition-all duration-300"
                 onClick={() => navigate('/login')}
               >
-              Sign In
+                Sign In
               </button>
             ) : (
               <button

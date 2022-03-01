@@ -77,30 +77,35 @@ const Service = () => {
   const [control, setControl] = useState('education');
 
   return (
-    <section
-      id="service"
-      className="space-y-6 md:space-y-0 flex flex-wrap py-8 mt-16"
-    >
-      <div className="w-full lg:w-1/2 space-y-3 md:space-y-6 text-center md:text-left">
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-          {services.map((service) => (
-            <ServiceBoard
-              key={service.name}
-              setControl={setControl}
-              control={control}
-              service={service}
-            ></ServiceBoard>
-          ))}
+    <>
+      <h1 className=" text-5xl md:text-7xl pb-4 text-center mx-auto font-bold py-2 my-8  text-primary">
+        Services
+      </h1>
+      <section
+        id="service"
+        className="space-y-6 md:space-y-0 flex flex-wrap py-8 mt-10"
+      >
+        <div className="w-full lg:w-1/2 space-y-3 md:space-y-6 text-center md:text-left">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+            {services.map((service) => (
+              <ServiceBoard
+                key={service.name}
+                setControl={setControl}
+                control={control}
+                service={service}
+              ></ServiceBoard>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {services.map(
-        (service) =>
-          control === service.controlData && (
-            <ServiceExplore key={service.name} service={service} />
-          )
-      )}
-    </section>
+        {services.map(
+          (service) =>
+            control === service.controlData && (
+              <ServiceExplore key={service.name} service={service} />
+            )
+        )}
+      </section>
+    </>
   );
 };
 

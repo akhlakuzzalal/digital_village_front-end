@@ -10,7 +10,7 @@ const Education = () => {
       className="bg-gradient-to-r mt-[88px]"
       style={{ minHeight: 'calc(100vh - 700px)' }}
     >
-      <h1 className="text-center text-3xl md:text-6xl lg:text-6xl py-5 hover:text-blue-600">
+      <h1 className="text-center text-3xl md:text-6xl lg:text-6xl py-5 ">
         Digital Learning
       </h1>
       <div className="flex justify-center items-center flex-wrap">
