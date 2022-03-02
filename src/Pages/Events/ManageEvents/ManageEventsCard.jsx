@@ -1,4 +1,5 @@
 import React from 'react';
+import { MdDoubleArrow } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
 import { deleteAnEvent } from '../../../redux/slices/event/eventSlice';
@@ -47,7 +48,7 @@ const ManageEventsCard = ({
           className="lg:mx-[100px] md:mx-[40px] text-primary mb-5"
           onClick={() => handleAlert(_id)}
         >
-          Delete
+          Delete <MdDoubleArrow />
         </button>
       </div>
     </div>
