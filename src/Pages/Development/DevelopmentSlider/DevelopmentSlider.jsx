@@ -120,6 +120,26 @@ const DevelopmentSlider = ({n}) => {
                           </h3>
 
                           <p className='px-5'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit at eaque nihil impedit quasi, odio a animi minima exercitationem id debitis quas iste!  </p>
+
+                          <div className='grid grid-cols-2'>
+                          <div className='flex'>
+                              <img className='w-10 h-10 mx-2 my-auto mr-5' src="https://icon2.cleanpng.com/20180426/rvq/kisspng-computer-icons-download-setting-icon-5ae152c8c78b41.3187121115247162328173.jpg" alt="" />
+                             
+                              <div>
+                              <h3>110 <br />
+                              <span className='text-sm text-yellow-400'>Project</span> </h3>
+                              </div>
+                            </div>
+                            <div className='flex'>
+                              <img className='w-10 h-10 mr-5 my-auto' src="https://p.kindpng.com/picc/s/153-1538896_community-icon-transparent-background-png-download-transparent-transparent.pngg" alt="" />
+                             
+                              <div>
+                              <h3>90 <br />
+                              <span className='text-sm text-yellow-400 '>Clients</span> </h3>
+                              </div>
+                            </div>
+
+                          </div>
                          
                           <button className="text-yellow-400 text-lg mt-24 px-5 mx-5 hover:text-white hover:rounded-xl transition-all duration-500 border-2 p-2 border-white hover:bg-primary hover:border-0  ">
                           More Project ...
