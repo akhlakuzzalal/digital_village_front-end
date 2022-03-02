@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Calender from './../Calender/Calender';
 import UserAppointment from './UserAppointment';
 
 const UserAppointments = () => {
+  const [date, setDate] = useState(new Date());
+  const onChange = (date) => {
+    console.log(date.toString());
+    setDate(date);
+  };
   return (
     <>
       <h3 className="text-center my-8">Your appointments</h3>
       <div className="flex justify-center items-center">
         <div className="w-full md:W-1/2 flex justify-center items-center">
-          <Calender style={{width:"100%"}}/>
+          <Calender onChange={onChange} />
         </div>
         <div className="w-full md:W-1/2 flex justify-center items-center">
-          <UserAppointment />
+          <UserAppointment date={date} />
         </div>
       </div>
     </>

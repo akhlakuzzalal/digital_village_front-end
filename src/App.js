@@ -21,12 +21,13 @@ import EMarket from './Pages/EMarket/EMarket';
 import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
 import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
 import AddEvents from './Pages/Events/AddEvents/AddEvents';
+import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
 import UserAppointments from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/UserAppointments/UserAppointments';
+import RegForm from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegForm/RegForm';
 import VaccineInfo from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/VaccineInfo';
 import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
-import EventDetails from './Pages/Medical/EventDetails';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
 import Notification from './Pages/Notification/Notification';
 import About from './Pages/shared/About/About';
@@ -96,6 +97,7 @@ function App() {
             <Route path="medical" element={<MedicalDashboard />}>
               <Route path="vaccine" element={<VaccineRegistration />} />
               <Route path="appointment" element={<DoctorsAppointment />} />
+              <Route path="regForm" element={<RegForm />} />
               <Route path="userAppointments" element={<UserAppointments />} />
               <Route path="pdf" element={<VaccineInfo />} />
             </Route>
