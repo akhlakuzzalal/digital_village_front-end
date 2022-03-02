@@ -49,6 +49,7 @@ import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import NotFound from './Pages/shared/NotFound/NotFound';
 import Profile from './Pages/User/Profile';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
+
 const Roles = {
   User: 1000,
   Admin: 5000,
@@ -110,7 +111,6 @@ function App() {
             <Route path="events" element={<Events />} />
             <Route path="eventDetails/:id" element={<EventDetails />} />
             <Route path="add-events" element={<AddEvents />} />
-            <Route path="eventDetails/:id" element={<EventDetails />} />
 
             {/* development related routes */}
             <Route path="development" element={<Development />} />

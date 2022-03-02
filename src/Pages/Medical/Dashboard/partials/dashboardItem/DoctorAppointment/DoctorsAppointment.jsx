@@ -17,7 +17,7 @@ const DoctorsAppointment = () => {
         <CardAppointment />
         <Schedule onChange={onChange} />
 
-        <AppointmentAvailable date={date} z />
+        <AppointmentAvailable date={date} />
       </div>
     </>
   );
