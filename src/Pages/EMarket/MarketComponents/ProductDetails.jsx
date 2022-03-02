@@ -6,7 +6,7 @@ import Rating from '../../../Components/Rating';
 const ProductDetails = () => {
   const { id } = useParams();
   const products = useSelector((state) => state.market.products.products);
-  const product = products.find((p) => p.id === parseInt(id));
+  const product = products.find((p) => p._id === id);
   const { name, price, brand, img, description, rating } = product;
 
   return (
