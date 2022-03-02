@@ -70,7 +70,7 @@ const NewsBanner = () => {
     return (
         <div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-1 mx-1'>
-                <div className=''>
+                <div className='relative'>
                     <div className='hover:scale-105 cursor-zoom-in transition duration-700 ease-in-out mx-5' >
                         <p className='absolute bottom-32 mb-5 px-2 ml-6 font-bold  text-white text-left bg-green-600 '>Latest News</p>
                         <p className='absolute bottom-2 text-white font-bold text-xl md:text-2xl leading-none text-left px-3 '>What do decisions made at a summit in Glasgow mean for a woman in a village on the front line of climate change?
@@ -85,7 +85,7 @@ const NewsBanner = () => {
 
 
                 <div className='grid grid-cols-1 gap-2 md:grid-cols-2'>
-                <div className=' '>
+                <div className=' relative'>
                     <div className='hover:scale-105 cursor-zoom-in transition duration-700 mb-1 ease-in-out'>
                     
                     <p className='absolute bottom-16 px-2 ml-6 font-bold  text-white text-center  bg-purple-600 '>Learning News</p>
@@ -107,7 +107,7 @@ const NewsBanner = () => {
 
                 </div>
 
-                <div className=''>
+                <div className='relative'>
                   
                   <div className='hover:scale-105 cursor-zoom-in transition mb-1 duration-700 ease-in-out'>
                     

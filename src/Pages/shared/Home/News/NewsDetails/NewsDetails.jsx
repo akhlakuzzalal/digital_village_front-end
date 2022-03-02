@@ -124,7 +124,7 @@ console.log(result)
     </div>
 
     <div>
-    <h3 className='my-10 text-white bg-red-600 w-60 p-1'>Leave a Reply</h3>
+    
     <Reply/>
     </div>
 

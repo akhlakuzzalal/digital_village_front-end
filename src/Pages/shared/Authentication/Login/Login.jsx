@@ -97,7 +97,7 @@ const Login = () => {
             })}
             placeholder="Email"
             type="email"
-            required
+          
           />
           {errors.email && (
               <p className="text-error mb-2">{errors.email.message}</p>
