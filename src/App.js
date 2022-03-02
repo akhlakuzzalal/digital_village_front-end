@@ -3,7 +3,7 @@ import './App.css';
 import ScrollToTop from './Components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
 import AdminDashboard from './Pages/Admin/AdminDashboard';
-import AllUsers from './Pages/Admin/DashboardItem/AllUsers/AllUsers';
+import AllUsers from './Pages/Admin/AllUsers/AllUsers';
 import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage';
 import Donation from './Pages/Admin/DashboardItem/Donation/Donation';
 import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
@@ -14,14 +14,17 @@ import CaseSingle from './Pages/Donations/Causes/CaseSingle';
 import Donations from './Pages/Donations/Donations';
 import DetailVideo from './Pages/Education/DetailVideo/DetailVideo';
 import Education from './Pages/Education/Education';
-import StudentInfo from './Pages/Education/Student/StudentInfo';
-import Addblogs from './Pages/Education/Teacher/Addblogs/Addblogs';
-import Addvideo from './Pages/Education/Teacher/Addvideo/Addvideo';
+import FavouriteBlogs from './Pages/Education/Student/FavouriteBlogs/FavouriteBlogs';
+import FavouriteVideos from './Pages/Education/Student/FavouriteVideos/FavouriteVideos';
+import Student from './Pages/Education/Student/Student';
+import StudentDashboard from './Pages/Education/Student/studentDashboard/StudentDashboard';
 import Analytics from './Pages/Education/Teacher/Analytics/Analytics';
 import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
 import Myvideos from './Pages/Education/Teacher/Myvideos/Myvideos';
-import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
-import TeacherInfo from './Pages/Education/Teacher/TeacherInfo';
+import PublishBlog from './Pages/Education/Teacher/PublishBlog/PublishBlog';
+import PublishVideo from './Pages/Education/Teacher/PublishVideo/PublishVideo';
+import RegisterTeacher from './Pages/Education/Teacher/RegisterTeacher';
+import Teacher from './Pages/Education/Teacher/Teacher';
 import EMarket from './Pages/EMarket/EMarket';
 import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
 import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
@@ -96,14 +99,22 @@ function App() {
 
             {/* education related routes */}
             <Route path="education" element={<Education />} />
-            <Route path="teacherinfo" element={<TeacherInfo />} />
-            <Route path="studentinfo" element={<StudentInfo />} />
-            <Route path="teacherDashboard" element={<TeacherDashboard />}>
-              <Route path="analytics" element={<Analytics />} />
+            <Route path="registerTeacher" element={<RegisterTeacher />} />
+            {/* routes for teacher */}
+            <Route path="teacher" element={<Teacher />}>
               <Route path="myblogs" element={<Myblogs />} />
               <Route path="myvideos" element={<Myvideos />} />
-              <Route path="addblogs" element={<Addblogs />} />
-              <Route path="addvideos" element={<Addvideo />} />
+              <Route path="publishBlog" element={<PublishBlog />} />
+              <Route path="publishVideo" element={<PublishVideo />} />
+              <Route path="analytics" element={<Analytics />} />
+            </Route>
+
+            {/* routes for student */}
+            <Route path="student" element={<Student />}>
+              <Route path="dashboard" element={<StudentDashboard />} />
+              <Route path="favouriteBlogs" element={<FavouriteBlogs />} />
+              <Route path="favouriteVideos" element={<FavouriteVideos />} />
+              <Route path="analytics" element={<Analytics />} />
             </Route>
             <Route path="detailvideo/:id" element={<DetailVideo />} />
 
@@ -157,7 +168,7 @@ function App() {
 
             <Route path="*" element={<NotFound />} />
             {/* Admin dashboard routes */}
-            <Route path="admindashboard" element={<AdminDashboard />}>
+            <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
               <Route path="donation" element={<Donation />} />

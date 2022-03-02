@@ -17,6 +17,7 @@ const useAxiosInterceptor = () => {
       },
       (err) => Promise.reject(err)
     );
+
     const responseInterceptor = axiosPrivate.interceptors.response.use(
       (response) => response,
       async (err) => {
@@ -35,6 +36,7 @@ const useAxiosInterceptor = () => {
       axiosPrivate.interceptors.response.eject(responseInterceptor);
     };
   }, [token, refresh]);
+
   return axiosPrivate;
 };
 

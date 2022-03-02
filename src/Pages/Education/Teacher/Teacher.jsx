@@ -3,35 +3,57 @@ import { BsNewspaper } from 'react-icons/bs';
 import { MdOutlineVideoSettings } from 'react-icons/md';
 import { RiDashboard2Line } from 'react-icons/ri';
 import { Outlet, useLocation } from 'react-router-dom';
+import DashboardHeader from '../../../Components/DashboardHeader';
 import Sidebar from '../../../Components/Sidebar';
 import Analytics from './Analytics/Analytics';
-import Header from './Dashboard/partials/Header';
+
 const links = [
   {
     name: 'My Blogs',
     icon: <BsNewspaper size={30} />,
-    path: '/teacherDashboard/myblogs',
+    path: '/teacher/myblogs',
+    nestedPath: [
+      {
+        name: 'nested 1',
+        icon: <RiDashboard2Line size={30} />,
+        path: '/teacher/myvideos',
+      },
+      {
+        name: 'nested 2',
+        icon: <RiDashboard2Line size={30} />,
+        path: '/#',
+      },
+    ],
+  },
+  {
+    name: 'Publish Blog',
+    icon: <BsNewspaper size={30} />,
+    path: '/teacher/publishBlog',
+  },
+  {
+    name: 'Publish video',
+    icon: <BsNewspaper size={30} />,
+    path: '/teacher/publishVideo',
   },
   {
     name: 'My videos',
     icon: <MdOutlineVideoSettings size={30} />,
-    path: '/teacherDashboard/myvideos',
+    path: '/teacher/myvideos',
   },
   {
     name: 'analytics',
     icon: <RiDashboard2Line size={30} />,
-    path: '/teacherDashboard/analytics',
+    path: '/teacher/analytics',
   },
 ];
 
-const TeacherDashboard = () => {
+const Teacher = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showText, setShowText] = useState(true);
 
   const location = useLocation();
   const initial =
-    location.pathname === '/teacherDashboard' ||
-    location.pathname === '/teacherDashboard/';
+    location.pathname === '/teacher' || location.pathname === '/teacher/';
 
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
@@ -46,11 +68,14 @@ const TeacherDashboard = () => {
 
       {/* contents */}
       <div className="flex-1">
-        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <DashboardHeader
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+        />
         {initial ? <Analytics /> : <Outlet />}
       </div>
     </div>
   );
 };
 
-export default TeacherDashboard;
+export default Teacher;
