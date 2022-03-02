@@ -3,7 +3,7 @@ import './App.css';
 import ScrollToTop from './Components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
 import AdminDashboard from './Pages/Admin/AdminDashboard';
-import AllUsers from './Pages/Admin/DashboardItem/AllUsers/AllUsers';
+import AllUsers from './Pages/Admin/AllUsers/AllUsers';
 import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage';
 import Donation from './Pages/Admin/DashboardItem/Donation/Donation';
 import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
@@ -147,7 +147,7 @@ function App() {
 
             <Route path="*" element={<NotFound />} />
             {/* Admin dashboard routes */}
-            <Route path="admindashboard" element={<AdminDashboard />}>
+            <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
               <Route path="donation" element={<Donation />} />
