@@ -45,10 +45,10 @@ const ManageEventsCard = ({
           </div>
         </div>
         <button
-          className="lg:mx-[100px] md:mx-[40px] text-primary mb-5"
+          className="lg:mx-[100px] md:mx-[40px] text-primary mb-5 flex"
           onClick={() => handleAlert(_id)}
         >
-          Delete <MdDoubleArrow />
+          Delete <MdDoubleArrow className="w-full mt-1" />
         </button>
       </div>
     </div>
