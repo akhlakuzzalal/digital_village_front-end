@@ -1,28 +1,61 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const reviews = [
-  {
-    name: 'review 1',
-    rate: 3,
-    comment: 'this is a good website',
-  },
-  {
-    name: 'review 2',
-    rate: 3,
-    comment: 'this is a good website',
-  },
-];
+// create the thunk
+export const fetchAllReview = createAsyncThunk(
+  'reviews/fetchAllReview',
+  async () => {
+    const response = await axios
+      .get('/review/allReview')
+      .then((response) => response.data);
+    return response;
+  }
+);
+
+// add event
+export const addAReview = createAsyncThunk(
+  'reviews/postAReview',
+  async (event) => {
+    const response = await axios
+      .post('/review/addReview', event)
+      .then((response) => response.data);
+    return response;
+  }
+);
+// delete event
+export const deleteAReview = createAsyncThunk(
+  'reviews/deleteAReview',
+  async (id) => {
+    const response = await axios
+      .delete(`/review/deleteReview/?id=${id}`)
+      .then((response) => response.data._id);
+    return response;
+  }
+);
 
 const reviewSlice = createSlice({
   name: 'reviews',
   initialState: {
-    reviews: reviews,
+    allReviews: [],
   },
-  reducers: {
-    addReview: (state, { payload }) => {
-      state.reviews.push(payload);
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchAllReview.fulfilled, (state, { payload }) => {
+      console.log('allReview', payload);
+      state.allReviews = payload;
+    });
+
+    //add event
+    builder.addCase(addAReview.fulfilled, (state, { payload }) => {
+      console.log('add', payload);
+      state.allReviews.push(payload);
+    });
+    builder.addCase(deleteAReview.fulfilled, (state, { payload }) => {
+      console.log('delete', payload);
+      state.allReviews.filter((event) => event._id !== payload);
+    });
   },
 });
+export const { setSelectedReview } = reviewSlice.actions;
 
 export default reviewSlice.reducer;

@@ -1,22 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import img from '../../assets/events/events.png';
 import Calender from '../../Components/Calender';
-import { fetchAllEvent } from '../../redux/slices/event/eventSlice';
+import {
+  fetchAllEvent,
+  fetchUpcomingEvents,
+} from '../../redux/slices/event/eventSlice';
 
 const EventDetails = () => {
-  const [modal, setModal] = useState('modal');
-  function openModal(modalId) {
-    modal = document.getElementById(modalId);
-    modal.classList.remove('hidden');
-  }
-
-  function closeModal() {
-    modal = document.getElementById('modal');
-    modal.classList.add('hidden');
-  }
-
   const { id } = useParams();
 
   // const [allEvent, setAllEvent] = useState([]);
@@ -29,6 +20,12 @@ const EventDetails = () => {
     dispatch(fetchAllEvent());
   }, []);
   const eventItem = allEvent?.filter((pd) => pd._id === id);
+  // upcomming events
+  const upcomingEvents = useSelector((state) => state.events.upcomingEvents);
+  useEffect(() => {
+    dispatch(fetchUpcomingEvents());
+  }, []);
+  const upcomingEventsData = upcomingEvents.slice(1, 5);
 
   return (
     <div className="event-details-main py-48 px-5 lg:px-20">
@@ -92,55 +89,38 @@ const EventDetails = () => {
           <div className="upcoming events lg:ml-36">
             <div className="mt-14">
               <h4 className="mb-7 text-xl">Upcoming Events</h4>
-              <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1">
-                <Link to="/event-Details">
-                  {' '}
-                  <div className="  rounded-xl">
-                    <img src={img} alt="" />
-                    <div className="  py-10 ">
-                      <div className="">
-                        <h3 className="text-lg pb-4 border-y-2">
-                          <Link to="">Local Artists Showcase </Link>{' '}
-                        </h3>
-                        <h4>16 february</h4>
-                      </div>
-                      <div className=" ">
-                        <p>2:00 pm - 9:00 pm</p>
-                        <p>
-                          at <span>Art Gallery</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-                <Link to="/event-Details">
-                  {' '}
-                  <div className="  rounded-xl">
-                    <img src={img} alt="" />
-                    <div className="  py-10 ">
-                      <div className="">
-                        <h3 className="text-lg pb-4 border-y-2">
-                          <Link to="">Local Artists Showcase </Link>{' '}
-                        </h3>
-                        <h4>16 february</h4>
-                      </div>
-                      <div className=" ">
-                        <p>2:00 pm - 9:00 pm</p>
-                        <p>
-                          at <span>Art Gallery</span>
-                        </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 space-y-4">
+                {upcomingEventsData?.map((upcomingEvent) => (
+                  <Link to={`/eventDetails/${upcomingEvent._id}`}>
+                    {' '}
+                    <div className="  rounded-xl border space-y-2">
+                      <img
+                        className=" w-full"
+                        src={upcomingEvent.image}
+                        alt=""
+                      />
+                      <h4 className="ml-4">{upcomingEvent.date}</h4>
+                      <div className="  py-3 px-4">
+                        <div className="">
+                          <h3 className="text-lg pb-2 ">
+                            <Link to="">{upcomingEvent.title} </Link>{' '}
+                          </h3>
+                        </div>
+                        <div className=" ">
+                          <p>{upcomingEvent.time}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Link to="">
+      <Link to={`/event-booking/${eventItem[0]?._id}`}>
         <button className="mt-20 bg-purple-300 py-5 px-10">
-          {' '}
           Book This Event
         </button>
       </Link>
