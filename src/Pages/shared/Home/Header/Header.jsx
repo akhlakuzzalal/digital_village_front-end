@@ -8,6 +8,7 @@ const navigation = [
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
   { name: 'Admin', href: '/admindashboard' },
+  { name: 'User', href: '/userdashboard' },
 ];
 
 const Header = () => {

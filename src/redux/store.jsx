@@ -4,6 +4,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { marketAllReducers } from './slices/eMarket/marketAllReducers';
 import notificationReducer from './slices/notification/notificationSlice';
+import PayModalSlice from './slices/payModal/PayModalSlice';
 import reviewReducer from './slices/review/reviewSlice';
 import userReducer from './slices/user/userSlice';
 
@@ -12,6 +13,7 @@ const reducers = combineReducers({
   notifications: notificationReducer,
   user: userReducer,
   market: marketAllReducers,
+  pay: PayModalSlice,
 });
 
 const persistConfig = {

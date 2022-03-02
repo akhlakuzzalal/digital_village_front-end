@@ -1,5 +1,5 @@
 import React from 'react';
-import PayModal from '../Pay/PayModal';
+import PayModal from '../../../../Components/Pay/PayModal';
 import BillingAddress from './BillingAddress';
 import CustomerOrder from './CustomerOrder';
 
@@ -17,7 +17,7 @@ const Checkout = () => {
           <CustomerOrder></CustomerOrder>
         </div>
       </div>
-      <PayModal></PayModal>
+      <PayModal price={120} id={2} returnPage={'e-market'}></PayModal>
     </div>
   );
 };

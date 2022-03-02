@@ -5,7 +5,7 @@ import {
 } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 
-const CheckoutForm = ({ _id, price }) => {
+const CheckoutForm = ({ returnPage }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -58,7 +58,7 @@ const CheckoutForm = ({ _id, price }) => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `https://digital-village.herokuapp.com/e-market`,
+        return_url: `https://digital-village.herokuapp.com/${returnPage}`,
       },
     });
 
