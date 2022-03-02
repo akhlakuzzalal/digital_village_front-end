@@ -11,8 +11,8 @@ const TeacherOrStudent = () => {
       <h1 className="text-center text-3xl md:text-6xl lg:text-6xl py-5 ">
         Choose Your Path
       </h1>
-      <div className="flex justify-center items-center flex-wrap">
-        <div className="flex flex-col justify-center items-center w-1/2 flex-wrap space-y-9">
+      <div className="md:flex justify-center items-center  flex-wrap">
+        <div className="flex flex-col justify-center items-center md:w-1/2 flex-wrap space-y-9">
           <Link to="/registerTeacher">
             <DecidingCard icon={<GiTeacher />} name="Teach" />
           </Link>
@@ -20,7 +20,7 @@ const TeacherOrStudent = () => {
             <DecidingCard icon={<FaChalkboardTeacher />} name="Learn" />
           </Link>
         </div>
-        <div className="flex justify-center items-center w-1/2">
+        <div className="flex justify-center items-center md:w-1/2">
           <img src={study} alt="" />
         </div>
       </div>

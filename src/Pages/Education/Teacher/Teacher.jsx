@@ -3,9 +3,9 @@ import { BsNewspaper } from 'react-icons/bs';
 import { MdOutlineVideoSettings } from 'react-icons/md';
 import { RiDashboard2Line } from 'react-icons/ri';
 import { Outlet, useLocation } from 'react-router-dom';
+import DashboardHeader from '../../../Components/DashboardHeader';
 import Sidebar from '../../../Components/Sidebar';
 import Analytics from './Analytics/Analytics';
-import Header from './Dashboard/partials/Header';
 
 const links = [
   {
@@ -68,7 +68,10 @@ const Teacher = () => {
 
       {/* contents */}
       <div className="flex-1">
-        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <DashboardHeader
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+        />
         {initial ? <Analytics /> : <Outlet />}
       </div>
     </div>

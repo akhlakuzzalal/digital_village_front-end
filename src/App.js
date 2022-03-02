@@ -14,7 +14,10 @@ import CaseSingle from './Pages/Donations/Causes/CaseSingle';
 import Donations from './Pages/Donations/Donations';
 import DetailVideo from './Pages/Education/DetailVideo/DetailVideo';
 import Education from './Pages/Education/Education';
-import StudentInfo from './Pages/Education/Student/StudentInfo';
+import FavouriteBlogs from './Pages/Education/Student/FavouriteBlogs/FavouriteBlogs';
+import FavouriteVideos from './Pages/Education/Student/FavouriteVideos/FavouriteVideos';
+import Student from './Pages/Education/Student/Student';
+import StudentDashboard from './Pages/Education/Student/studentDashboard/StudentDashboard';
 import Analytics from './Pages/Education/Teacher/Analytics/Analytics';
 import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
 import Myvideos from './Pages/Education/Teacher/Myvideos/Myvideos';
@@ -89,13 +92,21 @@ function App() {
             {/* education related routes */}
             <Route path="education" element={<Education />} />
             <Route path="registerTeacher" element={<RegisterTeacher />} />
-            <Route path="studentinfo" element={<StudentInfo />} />
+            {/* routes for teacher */}
             <Route path="teacher" element={<Teacher />}>
-              <Route path="analytics" element={<Analytics />} />
               <Route path="myblogs" element={<Myblogs />} />
               <Route path="myvideos" element={<Myvideos />} />
               <Route path="publishBlog" element={<PublishBlog />} />
               <Route path="publishVideo" element={<PublishVideo />} />
+              <Route path="analytics" element={<Analytics />} />
+            </Route>
+
+            {/* routes for student */}
+            <Route path="student" element={<Student />}>
+              <Route path="dashboard" element={<StudentDashboard />} />
+              <Route path="favouriteBlogs" element={<FavouriteBlogs />} />
+              <Route path="favouriteVideos" element={<FavouriteVideos />} />
+              <Route path="analytics" element={<Analytics />} />
             </Route>
             <Route path="detailvideo/:id" element={<DetailVideo />} />
 
