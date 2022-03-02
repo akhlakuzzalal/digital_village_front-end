@@ -47,7 +47,8 @@ import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import NotFound from './Pages/shared/NotFound/NotFound';
-import Profile from './Pages/User/Profile';
+import Profile from './Pages/User/DashboardComponent/Profile';
+import UserDashboard from './Pages/User/UserDashboard';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
 const Roles = {
   User: 1000,
@@ -83,7 +84,9 @@ function App() {
             <Route path="notifications" element={<Notification />} />
 
             {/* user routes */}
-            <Route path="profile" element={<Profile />} />
+            <Route path="userdashboard" element={<UserDashboard />}>
+              <Route path="profile" element={<Profile />} />
+            </Route>
 
             {/* education related routes */}
             <Route path="education" element={<Education />} />
