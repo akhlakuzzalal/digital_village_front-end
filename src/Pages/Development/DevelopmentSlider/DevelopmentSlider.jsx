@@ -81,7 +81,7 @@ const DevelopmentSlider = ({n}) => {
                           >
                             {developments.map((n) => (
                               <SwiperSlide key={n.id}>
-                          <div  className=' border-2 w-96'>
+                          <div  className=' w-96 shadow-2xl'>
                           <div className="  cursor-pointer ">
                               
                               <div className=''>
@@ -114,7 +114,7 @@ const DevelopmentSlider = ({n}) => {
                               
 
                           </div>
-                          <div className="space-y-4 md:p-4 text-white bg-gray-800 h-full py-10 ">
+                          <div className="space-y-4 md:p-4 text-white bg-gray-800 h-full py-10 shadow-2xl ">
                           <h3 className="text-yellow-400  flex items-center space-x-2 md:px-5">
                           FEATURED WEEK PROJECTS
                           </h3>
@@ -213,7 +213,7 @@ const DevelopmentSlider = ({n}) => {
                           >
                             {developments.map((n) => (
                               <SwiperSlide key={n.id}>
-                          <div  className=' border-2'>
+                          <div  className='  rounded'>
                           <div className="  cursor-pointer ">
                               
                               <div className=''>
