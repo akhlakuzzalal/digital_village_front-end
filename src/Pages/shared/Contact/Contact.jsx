@@ -175,7 +175,7 @@ const Contact = () => {
         </div>
         <form
           className=" md:grid grid-cols-1 md:grid-cols-2 gap-5 mt-16 mx-10 lg:mx-0"
-          onSubmit={handleSubmit()}
+          onSubmit={handleSubmit(sendEmail)}
         >
           <input
             className=" w-full  bg-gray-100 px-20 py-5 rounded mb-5 lg:mb-0"

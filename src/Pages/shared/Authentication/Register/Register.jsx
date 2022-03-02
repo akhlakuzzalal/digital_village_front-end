@@ -124,13 +124,20 @@ const Register = () => {
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
             {...register('email', {
               required: true,
-              pattern:
-                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              pattern: {
+                value:
+                  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                message: 'Please provide correct email address.',
+              },
             })}
             placeholder="Email"
             type="email"
             required
           />
+
+           {errors.email && (
+              <p className="text-error mb-2">{errors.email.message}</p>
+            )}
 
           {/* date of birth */}
           <div className="space-y-6 text-center">
