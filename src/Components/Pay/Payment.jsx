@@ -11,8 +11,7 @@ const stripePromise = loadStripe(
   'pk_test_51JygH5GVNFdSlIWRfeUCO0c8Uc8oedk6gpNzRNkbP6wQvFCJwQ9tqEQaY6eOSPQzNDQJeQbGmFjDP0ym4E2pkBOJ00ltgQmsu7'
 );
 
-function Payment({ order }) {
-  const { price, _id } = order;
+function Payment({ price, id, returnPage }) {
   const [clientSecret, setClientSecret] = useState('');
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
@@ -39,7 +38,7 @@ function Payment({ order }) {
     <div>
       {clientSecret ? (
         <Elements stripe={stripePromise} options={options}>
-          <CheckoutForm _id={_id} price={price} />
+          <CheckoutForm returnPage={returnPage} />
         </Elements>
       ) : (
         <>
