@@ -15,11 +15,11 @@ import Donations from './Pages/Donations/Donations';
 import DetailVideo from './Pages/Education/DetailVideo/DetailVideo';
 import Education from './Pages/Education/Education';
 import StudentInfo from './Pages/Education/Student/StudentInfo';
-import Addblogs from './Pages/Education/Teacher/Addblogs/Addblogs';
-import Addvideo from './Pages/Education/Teacher/Addvideo/Addvideo';
 import Analytics from './Pages/Education/Teacher/Analytics/Analytics';
 import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
 import Myvideos from './Pages/Education/Teacher/Myvideos/Myvideos';
+import PublishBlog from './Pages/Education/Teacher/PublishBlog/PublishBlog';
+import PublishVideo from './Pages/Education/Teacher/PublishVideo/PublishVideo';
 import RegisterTeacher from './Pages/Education/Teacher/RegisterTeacher';
 import Teacher from './Pages/Education/Teacher/Teacher';
 import EMarket from './Pages/EMarket/EMarket';
@@ -94,8 +94,8 @@ function App() {
               <Route path="analytics" element={<Analytics />} />
               <Route path="myblogs" element={<Myblogs />} />
               <Route path="myvideos" element={<Myvideos />} />
-              <Route path="addblogs" element={<Addblogs />} />
-              <Route path="addvideos" element={<Addvideo />} />
+              <Route path="publishBlog" element={<PublishBlog />} />
+              <Route path="publishVideo" element={<PublishVideo />} />
             </Route>
             <Route path="detailvideo/:id" element={<DetailVideo />} />
 

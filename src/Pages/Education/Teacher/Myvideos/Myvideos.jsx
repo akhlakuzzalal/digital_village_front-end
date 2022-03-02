@@ -1,6 +1,5 @@
 import React from 'react';
 import video from '../../../../assets/videos/video2.mp4';
-import AddCard from '../../../../Components/AddCard';
 import VideoCard from './VideoCard/VideoCard';
 
 const videos = [
@@ -37,7 +36,6 @@ const videos = [
 const Myvideos = () => {
   return (
     <div>
-      <AddCard name="Add New video" path="/teacher/addvideos" />
       <div className="flex flex-wrap gap-4 justify-evenly p-6">
         {videos.map((video) => (
           <VideoCard key={video._id} video={video} />

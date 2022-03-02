@@ -4,8 +4,8 @@ import { BsCalendar2EventFill } from 'react-icons/bs';
 import { FaConnectdevelop, FaShopify, FaUsers } from 'react-icons/fa';
 import { Outlet, useLocation } from 'react-router-dom';
 import Sidebar from '../../Components/Sidebar';
+import WelcomeBanner from '../../Components/WelcomeBanner';
 import Header from '../Education/Teacher/Dashboard/partials/Header';
-import WelcomeBanner from './DashboardItem/WelcomeBanner';
 const links = [
   {
     name: 'All Users',

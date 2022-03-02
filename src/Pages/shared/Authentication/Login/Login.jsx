@@ -107,7 +107,6 @@ const Login = () => {
               maxLength: 20,
             })}
             placeholder="Password"
-            type="password"
             required
           />
 

@@ -26,9 +26,14 @@ const links = [
     ],
   },
   {
-    name: 'Add Blogs',
+    name: 'Publish Blog',
     icon: <BsNewspaper size={30} />,
-    path: '/teacher/addBlogs',
+    path: '/teacher/publishBlog',
+  },
+  {
+    name: 'Publish video',
+    icon: <BsNewspaper size={30} />,
+    path: '/teacher/publishVideo',
   },
   {
     name: 'My videos',
