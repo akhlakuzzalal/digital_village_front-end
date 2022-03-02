@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { marketAllReducers } from './slices/eMarket/marketAllReducers';
+import eventReducer from './slices/event/eventSlice';
 import notificationReducer from './slices/notification/notificationSlice';
 import PayModalSlice from './slices/payModal/PayModalSlice';
 import reviewReducer from './slices/review/reviewSlice';
@@ -14,6 +15,7 @@ const reducers = combineReducers({
   user: userReducer,
   market: marketAllReducers,
   pay: PayModalSlice,
+  events: eventReducer,
 });
 
 const persistConfig = {
