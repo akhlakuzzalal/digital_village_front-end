@@ -24,7 +24,7 @@ const VaccineRegistration = () => {
                 tempore unde quos facilis!
               </p>
               <Link
-                to="/medical/pdf"
+                to="/medical/regForm"
                 class="inline-flex items-center py-2 px-3 text-sm hover:bg-blue-600 hover:rounded-lg  font-medium text-center text-white bg-secondary "
               >
                 Registration
@@ -60,7 +60,7 @@ const VaccineRegistration = () => {
                 tempore unde quos facilis!
               </p>
               <Link
-                to="/medical/pdf"
+                to="/medical/regForm"
                 class="inline-flex items-center py-2 px-3 text-sm hover:bg-blue-600 hover:rounded-lg  font-medium text-center text-white bg-secondary "
               >
                 Registration
@@ -96,7 +96,7 @@ const VaccineRegistration = () => {
                 tempore unde quos facilis!
               </p>
               <Link
-                to="/medical/pdf"
+                to="/medical/regForm"
                 class="inline-flex items-center py-2 px-3 text-sm hover:bg-blue-600 hover:rounded-lg  font-medium text-center text-white bg-secondary "
               >
                 Registration

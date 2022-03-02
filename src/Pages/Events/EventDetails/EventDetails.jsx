@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import Calender from '../../Components/Calender';
 import {
   fetchAllEvent,
   fetchUpcomingEvents,
-} from '../../redux/slices/event/eventSlice';
+} from '../../../redux/slices/event/eventSlice';
+import Calender from '../../Medical/Dashboard/partials/dashboardItem/DoctorAppointment/Calender/Calender';
 
 const EventDetails = () => {
   const { id } = useParams();
