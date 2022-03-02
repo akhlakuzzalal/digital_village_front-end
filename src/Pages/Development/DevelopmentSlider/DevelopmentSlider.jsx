@@ -131,7 +131,7 @@ const DevelopmentSlider = ({n}) => {
                               </div>
                             </div>
                             <div className='flex'>
-                              <img className='w-10 h-10 mr-5 my-auto' src="https://p.kindpng.com/picc/s/153-1538896_community-icon-transparent-background-png-download-transparent-transparent.pngg" alt="" />
+                              <img className='w-10 h-10 mr-5 my-auto' src="https://www.pinclipart.com/picdir/middle/542-5427453_client-icon-clipart-clipart-royalty-free-library-client.png" alt="" />
                              
                               <div>
                               <h3>90 <br />
