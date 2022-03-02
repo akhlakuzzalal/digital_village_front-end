@@ -1,7 +1,7 @@
 import React from 'react';
-import BlogsPostdata from '../Dashboard/partials/dashboardItem/BlogsPostdata';
-import RealTimeValue from '../Dashboard/partials/dashboardItem/RealTimeValue';
-import WelcomeBanner from '../Dashboard/partials/dashboardItem/WelcomeBanner';
+import WelcomeBanner from '../../../../Components/WelcomeBanner';
+import BlogsPostdata from './BlogsPostData/BlogsPostdata';
+import RealTimeValue from './RealTimeValue/RealTimeValue';
 
 const Analytics = () => {
   return (

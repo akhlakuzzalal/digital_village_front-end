@@ -1,6 +1,7 @@
 import { Popover, Transition } from '@headlessui/react';
 import React, { Fragment, useState } from 'react';
 import { MdClose, MdEditNotifications, MdMenuOpen } from 'react-icons/md';
+import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 import logo from '../assets/logo.png';
@@ -13,7 +14,8 @@ const Navbar = ({ navigation }) => {
 
   const navigate = useNavigate();
 
-  const { user, logout } = useAuth(); // will come from firebase
+  const { logout } = useAuth(); // will come from firebase
+  const user = useSelector((state) => state.user.user);
 
   //header change function
   const onChangeHeader = () => {

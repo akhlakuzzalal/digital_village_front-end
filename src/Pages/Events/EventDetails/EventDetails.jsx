@@ -1,43 +1,58 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import calender from '../../../assets/events/calendar.png';
-import img from '../../../assets/market.png';
+import {
+  fetchAllEvent,
+  fetchUpcomingEvents,
+} from '../../../redux/slices/event/eventSlice';
+import Calender from '../../Medical/Dashboard/partials/dashboardItem/DoctorAppointment/Calender/Calender';
+
 const EventDetails = () => {
   const { id } = useParams();
+
+  // const [allEvent, setAllEvent] = useState([]);
+
+  const allEvent = useSelector((state) => state.events.allEvents);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllEvent());
+  }, []);
+  const eventItem = allEvent?.filter((pd) => pd._id === id);
+  // upcomming events
+  const upcomingEvents = useSelector((state) => state.events.upcomingEvents);
+  useEffect(() => {
+    dispatch(fetchUpcomingEvents());
+  }, []);
+  const upcomingEventsData = upcomingEvents.slice(1, 5);
+
   return (
     <div className="event-details-main py-48 px-5 lg:px-20">
-      <p>this is the details of event {id}</p>
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 ">
         {/* left side */}
         <div className="lg:col-span-2">
           <div>
-            <img src={img} alt="" />
-            <h1 className="mt-20">Music Talent Show</h1>
+            <img className="w-full" src={eventItem[0]?.image} alt="" />
+            <h1 className="mt-20 hover:text-blue-600">{eventItem[0]?.title}</h1>
           </div>
           <div className="mt-20">
-            <h4 className="mb-7">Next Upcoming date</h4>
             <div className="bg-gray-100 p-7 border-l-4 flex items-center gap-6 lg:gap-20 px-5 lg:px-32">
               <div>
                 <p>Dtae</p>
-                <h3 className="text-xl">April 16,2022</h3>
+                <h3 className="text-xl">{eventItem[0]?.date}</h3>
               </div>
               <div>
                 <p>Time</p>
-                <p className="text-sm">6:00 pm - 10:00 pm</p>
+                <p className="text-sm">{eventItem[0]?.time}</p>
               </div>
               <div>
                 <h5>Community Center</h5>
-                <p className="text-sm py-1">1301 Shoal Creek Blvd,</p>
-                <p className="text-sm">Austin, TX 78701</p>
+
+                <p className="text-sm">{eventItem[0]?.place}</p>
               </div>
             </div>
-            <p className="my-5">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Quibusdam omnis sapiente et accusantium voluptas ab dolore,
-              laudantium doloremque quaerat fugit, saepe eaque voluptatibus
-              dolor similique numquam commodi fuga labore aliquam. Lorem ipsum
-              dolor sit amet consectetur adipisicing elit. Impedit, deleniti?
-            </p>
+            <p className="my-5">{eventItem[0]?.description}</p>
 
             {/* map */}
             <div className="mt-20">
@@ -46,7 +61,7 @@ const EventDetails = () => {
                 <div className="gmap_canvas">
                   <iframe
                     title="google map"
-                    className="lg:w-[100%] lg:h-[500px]"
+                    className="lg:w-[100%] lg:h-[500px] md:w-[100%] w-[100%] md:h-[400px] h-[200px]"
                     id="gmap_canvas"
                     src="https://maps.google.com/maps?q=bashundhara&t=&z=13&ie=UTF8&iwloc=&output=embed"
                     frameborder="0"
@@ -64,7 +79,7 @@ const EventDetails = () => {
         <div className="right-main ">
           <div className="lg:ml-36">
             <h4 className="my-5 text-xl">Calender</h4>
-            <img src={calender} alt="" />
+            <Calender className="w-full lg:w-0 md:w-full"></Calender>
 
             <p className="my-4 text-primary">
               <Link to="/events">More Events</Link>
@@ -74,52 +89,41 @@ const EventDetails = () => {
           <div className="upcoming events lg:ml-36">
             <div className="mt-14">
               <h4 className="mb-7 text-xl">Upcoming Events</h4>
-              <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1">
-                <Link to="/event-Details">
-                  {' '}
-                  <div className="  rounded-xl">
-                    <img src={img} alt="" />
-                    <div className="  py-10 ">
-                      <div className="">
-                        <h3 className="text-lg pb-4 border-y-2">
-                          <Link to="">Local Artists Showcase </Link>{' '}
-                        </h3>
-                        <h4>16 february</h4>
-                      </div>
-                      <div className=" ">
-                        <p>2:00 pm - 9:00 pm</p>
-                        <p>
-                          at <span>Art Gallery</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-                <Link to="/event-Details">
-                  {' '}
-                  <div className="  rounded-xl">
-                    <img src={img} alt="" />
-                    <div className="  py-10 ">
-                      <div className="">
-                        <h3 className="text-lg pb-4 border-y-2">
-                          <Link to="">Local Artists Showcase </Link>{' '}
-                        </h3>
-                        <h4>16 february</h4>
-                      </div>
-                      <div className=" ">
-                        <p>2:00 pm - 9:00 pm</p>
-                        <p>
-                          at <span>Art Gallery</span>
-                        </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 space-y-4">
+                {upcomingEventsData?.map((upcomingEvent) => (
+                  <Link to={`/eventDetails/${upcomingEvent._id}`}>
+                    {' '}
+                    <div className="  rounded-xl border space-y-2">
+                      <img
+                        className=" w-full"
+                        src={upcomingEvent.image}
+                        alt=""
+                      />
+                      <h4 className="ml-4">{upcomingEvent.date}</h4>
+                      <div className="  py-3 px-4">
+                        <div className="">
+                          <h3 className="text-lg pb-2 ">
+                            <Link to="">{upcomingEvent.title} </Link>{' '}
+                          </h3>
+                        </div>
+                        <div className=" ">
+                          <p>{upcomingEvent.time}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
+      <Link to={`/event-booking/${eventItem[0]?._id}`}>
+        <button className="mt-20 bg-purple-300 py-5 px-10">
+          Book This Event
+        </button>
+      </Link>
     </div>
   );
 };

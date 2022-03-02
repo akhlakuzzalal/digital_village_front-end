@@ -21,8 +21,8 @@ const services = [
     name: 'Digital Learning',
     image: education,
     detail:
-      'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
-    desc: 'Digital Village Service!',
+      'Digital Learning is a service provided by us to improve the literacy rate of our village. We offers full free and quality education.',
+    desc: 'Free and Quality education',
     controlData: 'education',
   },
   {
@@ -49,7 +49,7 @@ const services = [
     image: donate,
     detail:
       'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
-    desc: 'Development proposal',
+    desc: 'Donate available Get Help Request',
     controlData: 'donation',
   },
   {

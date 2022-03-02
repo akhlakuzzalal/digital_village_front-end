@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShowModal } from '../../redux/slices/eMarket/modalSlicle';
-import { setProducts } from '../../redux/slices/eMarket/productsSlice';
+import { fetchAllProducts } from '../../redux/slices/eMarket/productsSlice';
 import AddToCart from './MarketComponents/AddToCart';
 import Categorie from './MarketComponents/Categorie';
 import LatestProduct from './MarketComponents/LatestProduct';
@@ -11,18 +11,15 @@ import RegularProduct from './MarketComponents/RegularProduct';
 const EMarket = () => {
   const dispatch = useDispatch();
   const [product, setProduct] = useState({});
+  // single product for add  cart confirmation pop up
   const handleAddToCart = (product) => {
     setProduct(product);
     dispatch(setShowModal(true));
   };
-  useEffect(() => {
-    fetch('./marketFakeData.json')
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch(setProducts(data));
-      });
-  }, []);
   const products = useSelector((state) => state.market.products.products);
+  useEffect(() => {
+    dispatch(fetchAllProducts());
+  }, []);
   return (
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       {/* Banner */}
@@ -34,9 +31,9 @@ const EMarket = () => {
         {/* Latest Product */}
         <div className="col-span-6 md:col-span-2 h-min md:h-full">
           <h6 className="inline border-b-2 border-primary">Latest product</h6>
-          {products.length > 0 && (
+          {products?.length > 0 && (
             <LatestProduct
-              lastProduct={products[products.length - 1]}
+              lastProduct={products[products?.length - 1]}
             ></LatestProduct>
           )}
         </div>
@@ -51,9 +48,9 @@ const EMarket = () => {
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 my-6">
-            {products.slice(0, 8).map((product) => (
+            {products?.slice(0, 8).map((product) => (
               <RegularProduct
-                key={product.id}
+                key={product._id}
                 product={product}
                 handleAddToCart={handleAddToCart}
               />

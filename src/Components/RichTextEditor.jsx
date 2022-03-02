@@ -1,10 +1,10 @@
 import { Editor } from '@tinymce/tinymce-react';
 
-const RichTextEditor = ({ handleEditorChange }) => {
+const RichTextEditor = ({ handleEditorChange, message }) => {
   return (
     <Editor
       apiKey={process.env.REACT_APP_EDITOR_API_KEY}
-      initialValue="<p>Write here</p>"
+      initialValue={`<p>${message}</p>`}
       init={{
         height: 500,
         menubar: true,

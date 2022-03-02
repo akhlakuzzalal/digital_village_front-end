@@ -1,9 +1,11 @@
 import React from 'react';
 import Lottie from 'react-lottie';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import animationData from '../../../lotties/market-banner.json';
 
 const MarketBanner = () => {
+  const cart = useSelector((state) => state.market.cart.cart);
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -31,7 +33,14 @@ const MarketBanner = () => {
         {/* 2nd column */}
         <div className="flex relative flex-col col-span-2 md:col-span-1 justify-center items-center">
           <div className="absolute top-0 mt-6 text-black font-semibold">
-            <Link to="/cart">Cart</Link>
+            <Link to="/cart">
+              <p className="relative inline">
+                Cart{' '}
+                <small className="absolute -top-2 -right-2 font-extrabold text-red-700">
+                  {cart.length}
+                </small>
+              </p>
+            </Link>
             <Link className="mx-4" to="/marketdashboard">
               Dashboard
             </Link>

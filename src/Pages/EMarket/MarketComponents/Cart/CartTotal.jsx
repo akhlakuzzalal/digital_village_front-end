@@ -26,11 +26,15 @@ const CartTotal = () => {
           <p>$ {total}</p>
         </div>
       </div>
-      <Link to="/checkout">
-        <button className="px-4 py-2 text-white bg-secondary rounded-full mt-6">
-          Proceed to checkout
-        </button>
-      </Link>
+      {subTotal !== 0 && (
+        <Link to="/checkout">
+          <button
+            className={`px-4 py-2 text-white bg-secondary rounded-full mt-6 $`}
+          >
+            Proceed to checkout
+          </button>
+        </Link>
+      )}
     </div>
   );
 };

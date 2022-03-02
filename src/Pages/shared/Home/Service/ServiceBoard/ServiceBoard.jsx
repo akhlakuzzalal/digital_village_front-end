@@ -21,7 +21,7 @@ const ServiceBoard = ({
         {/* name */}
         <div className="text-xl font-medium">{name}</div>
         {/* desc */}
-        <p className="text-slate-500 text-sm">{desc}</p>
+        <p className="text-slate-500 text-sm capitalize">{desc}</p>
       </div>
     </div>
   ) : (

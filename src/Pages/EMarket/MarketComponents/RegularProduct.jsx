@@ -3,7 +3,7 @@ import { BsFillCartPlusFill, BsFillEyeFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
 const RegularProduct = ({ product, handleAddToCart }) => {
-  const { name, img, price, id } = product;
+  const { name, img, price, _id } = product;
   return (
     <div>
       <div className="group relative max-w-sm rounded-xl overflow-hidden shadow-md hover:scale-105 duration-500">
@@ -14,7 +14,7 @@ const RegularProduct = ({ product, handleAddToCart }) => {
             color={'white'}
             className="mb-3 bg-[#666666] p-1 rounded-sm cursor-pointer"
           />
-          <Link to={`/productdetails/${id}`}>
+          <Link to={`/productdetails/${_id}`}>
             <BsFillEyeFill
               size={30}
               color={'white'}

@@ -1,7 +1,6 @@
 import {
   createUserWithEmailAndPassword,
   getAuth,
-  getIdToken,
   GoogleAuthProvider,
   onAuthStateChanged,
   sendEmailVerification,
@@ -14,13 +13,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios, { axiosPrivate } from '../api/axios';
 import initializeAuthentication from '../Firebase/Firebase.init';
-import { setRoles, setToken } from '../redux/slices/user/userSlice';
+import { setRoles, setToken, setUser } from '../redux/slices/user/userSlice';
 
 // initialize firebase app
 initializeAuthentication();
 
 const useFirebase = () => {
-  const [user, setUser] = useState({});
+  const user = useSelector((state) => state.user.user);
   const [isLoading, setIsLoading] = useState(true); // user using the login functionality
   const [authError, setAuthError] = useState('');
   const roles = useSelector((state) => state.user.roles);
@@ -32,20 +31,30 @@ const useFirebase = () => {
 
   const googleProvider = new GoogleAuthProvider();
 
-  const processSignInWithGoogle = (navigate, redirect_uri) => {
+  const processSignInWithGoogle = (navigate) => {
     setIsLoading(true); // user trying to log with google
 
     return signInWithPopup(auth, googleProvider)
       .then((result) => {
         const { user } = result;
-        // saveUser(user.displayName, user.email);
 
-        setUser({
-          displayName: user.displayName,
+        const newUser = {
+          name: user.displayName,
           email: user.email,
+          dateOfBirth: 'unknown',
           emailVerified: user.emailVerified,
+        };
+
+        // REGISTER USER IN DATABASE
+        registerToDB({
+          name: user.displayName,
+          email: user.email,
+          dateOfBirth: 'unknown',
+          password: 'noneedofpassword',
         });
-        navigate(redirect_uri);
+
+        dispatch(setUser(newUser));
+        navigate('/');
         setIsLoading(false);
       })
       .catch((error) => setAuthError(error.message));
@@ -70,7 +79,7 @@ const useFirebase = () => {
 
         const newUser = { name, email, dateOfBirth, emailVerified };
 
-        setUser(newUser);
+        dispatch(setUser(newUser));
 
         // register user to the database
         registerToDB({ name, email, dateOfBirth, password });
@@ -106,12 +115,17 @@ const useFirebase = () => {
 
   // change the user state
   useEffect(() => {
-    const unsubscribed = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        getIdToken(user).then((idToken) => console.log(idToken));
-        setUser(user);
+    const unsubscribed = onAuthStateChanged(auth, (authUser) => {
+      if (authUser) {
+        const newUser = {
+          name: authUser?.displayName,
+          email: authUser?.email,
+          dateOfBirth: user?.dateOfBirth || 'unknown',
+          emailVerified: authUser?.emailVerified,
+        };
+        dispatch(setUser(newUser));
       } else {
-        setUser({});
+        dispatch(setUser({}));
       }
       setIsLoading(false); // as the user state changed so we are not in loading state
     });
@@ -125,7 +139,7 @@ const useFirebase = () => {
       .then(() => {
         // clear all info of the user
         logoutFromDB();
-        setUser({});
+        dispatch(setUser({}));
         setAuthError('');
         dispatch(setRoles([]));
         dispatch(setToken(''));
@@ -165,7 +179,6 @@ const useFirebase = () => {
 
   const logoutFromDB = async () => {
     const response = await axiosPrivate.get('/auth/logout');
-
     console.log(response?.data);
   };
 

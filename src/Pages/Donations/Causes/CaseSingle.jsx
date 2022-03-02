@@ -1,26 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { FaDonate, FaHandsHelping } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Progress } from 'react-sweet-progress';
 import 'react-sweet-progress/lib/style.css';
 import DonarForm from '../Donate/DonarForm';
 import PayModal from '../Donate/Payment/PayModal';
+import PageSection from '../DonateItems/PageSection/PageSection';
 
 // CaseSingle details page
 const CaseSingle = () => {
-  const [causes, setCauses] = useState({});
   const { id } = useParams();
-
-  useEffect(() => {
-    fetch(`https://cryptic-everglades-35803.herokuapp.com/service/${id}`)
-      .then((res) => res.json())
-      .then((data) => setCauses(data));
-  }, [id]);
-
-  console.log(causes.title, 'data title');
-
+  const causes = useSelector(state=>state.donation.causes);
+  const cause = causes.find((c)=> c._id === id)
   //Progressbar for
-  let donationGoal = causes.goal;
-  let donationTotal = causes.fee;
+  let donationGoal = cause.goal;
+  let donationTotal = cause.fee;
 
   const percentage = (donationTotal, donationGoal) => {
     return (donationTotal / donationGoal) * 100 > 100
@@ -30,19 +25,18 @@ const CaseSingle = () => {
 
   let percent = percentage(donationTotal, donationGoal);
   return (
-    <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
-      <div className="items-center justify-center ">
-        <h1 className="text-center text-3xl text-blue-500">Page of {causes?.title}</h1>
-      </div>
+    <>
+    <div id='donate' className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
+      <PageSection />
       <div class="container mx-auto flex flex-wrap py-6">
         {/* Posts Section */}
         <section class="w-full md:w-2/3 flex flex-col items-center px-3">
-          <div class="flex flex-col shadow my-4 bg-white rounded-xl p-4 box-border overflow-hidden relative justify-between border-l-4 border-green-400">
+          <div class="flex flex-col shadow my-4 rounded-xl p-4 box-border overflow-hidden relative justify-between border-r-4 border-l-4">
             <div className="overflow-hidden">
               <img
                 className="transform hover:scale-125 transition duration-700 object-cover h-full w-full"
-                src={causes.image}
-                alt={causes?.title}
+                src={cause.image}
+                alt={cause?.title}
               />
             </div>
             <div class="bg-white flex flex-col justify-start p-6">
@@ -50,25 +44,24 @@ const CaseSingle = () => {
                 href="/"
                 class="text-blue-700 text-sm font-bold uppercase pb-4"
               >
-                {causes?.category}
+                {cause?.category}
               </a>
               <a href="/" class="text-3xl font-bold hover:text-gray-700 pb-4">
-                {causes?.title}
+                {cause?.title}
               </a>
-              <p href="/" class="text-sm pb-3">
+              <p href="/" class="text-sm pb-3 text-gray-500">
                 By{' '}
-                <a href="/" class="font-semibold hover:text-gray-800">
+                <a href="/" class="font-semibold text-gray-800 hover:text-gray-800">
                   Digital Village
                 </a>
-                , Published on April 25th, 2022
+                , <span className="text-gray-500 text-sm">Published on April 25th, 2022</span>
               </p>
               {/* card footer  */}
               <div className="flex flex-col md:flex-row items-center justify-between pt-3 md:space-y-0 space-y-2">
-                <button className="w-100 flex items-center justify-center py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 px-6">
-                  RAISED {causes?.fee}
+                <button className="w-100 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-r-indigo-500 border-l-indigo-500"><FaHandsHelping className='text-2xl text-red-400'/>
+                  RAISED {cause?.fee}
                 </button>
-                <button className="w-100 flex items-center justify-center py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 px-6">
-                  GOAL {causes?.goal}
+                <button className="w-100 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-l-indigo-500 border-r-indigo-500"><FaDonate className='text-2xl text-red-400'></FaDonate>GOAL {cause?.goal}
                 </button>
               </div>
               <div className="flex flex-col space-y-1 my-3">
@@ -100,7 +93,7 @@ const CaseSingle = () => {
                   />
                 </div>
                 <article>
-                  <p className="text-gray-500 text-sm">{causes?.des}</p>
+                  <p className="text-gray-500 text-sm">{cause?.des}</p>
                 </article>
               </div>
             </div>
@@ -114,12 +107,9 @@ const CaseSingle = () => {
             </div>
             {/* start */}
             <DonarForm></DonarForm>
-              {/* end */}
-            
-              
+              {/* end */}   
           </div>
         </section>
-
         {/*Right Sidebar Section  */}
         <aside class="w-full md:w-1/3 flex flex-col items-center px-3">
           <div class="w-full bg-white shadow flex flex-col my-4 p-6">
@@ -302,6 +292,8 @@ const CaseSingle = () => {
       </div>
       <PayModal />
     </div>
+    </>
+    
   );
 };
 

@@ -2,27 +2,44 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import ScrollToTop from './Components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
-import AllUsers from './Pages/Admin/DashboardItem/AllUsers/AllUsers';
+import AdminDashboard from './Pages/Admin/AdminDashboard';
+import AllUsers from './Pages/Admin/AllUsers/AllUsers';
+import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage';
+import Donation from './Pages/Admin/DashboardItem/Donation/Donation';
+import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
+import MarketManagement from './Pages/Admin/DashboardItem/Market/MarketManagement';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import CaseSingle from './Pages/Donations/Causes/CaseSingle';
 import Donations from './Pages/Donations/Donations';
 import DetailVideo from './Pages/Education/DetailVideo/DetailVideo';
 import Education from './Pages/Education/Education';
-import StudentInfo from './Pages/Education/Student/StudentInfo';
-import Addblogs from './Pages/Education/Teacher/Addblogs/Addblogs';
-import Addvideo from './Pages/Education/Teacher/Addvideo/Addvideo';
+import FavouriteBlogs from './Pages/Education/Student/FavouriteBlogs/FavouriteBlogs';
+import FavouriteVideos from './Pages/Education/Student/FavouriteVideos/FavouriteVideos';
+import Student from './Pages/Education/Student/Student';
+import StudentDashboard from './Pages/Education/Student/studentDashboard/StudentDashboard';
 import Analytics from './Pages/Education/Teacher/Analytics/Analytics';
 import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
 import Myvideos from './Pages/Education/Teacher/Myvideos/Myvideos';
-import TeacherDashboard from './Pages/Education/Teacher/TeacherDashboard';
-import TeacherInfo from './Pages/Education/Teacher/TeacherInfo';
+import PublishBlog from './Pages/Education/Teacher/PublishBlog/PublishBlog';
+import PublishVideo from './Pages/Education/Teacher/PublishVideo/PublishVideo';
+import RegisterTeacher from './Pages/Education/Teacher/RegisterTeacher';
+import Teacher from './Pages/Education/Teacher/Teacher';
 import EMarket from './Pages/EMarket/EMarket';
 import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
 import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
+import MyOrder from './Pages/EMarket/MarketComponents/DashboardItems/MyOrder';
+import MedicineShop from './Pages/EMarket/MarketComponents/MedicineShop/MedicineShop';
+import ProductDetails from './Pages/EMarket/MarketComponents/ProductDetails';
+import MarketDashboard from './Pages/EMarket/MarketDashboard';
 import AddEvents from './Pages/Events/AddEvents/AddEvents';
+import AllEvents from './Pages/Events/AllEvents/AllEvents';
+import ArchivedEvents from './Pages/Events/ArchivedEvents/ArchivedEvents';
+import EventBooking from './Pages/Events/EventBooking/EventBooking';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
+import ManageEvents from './Pages/Events/ManageEvents/ManageEvents';
+import UpcomingEvents from './Pages/Events/UpcomingEvents/UpcomingEvents';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
 import UserAppointments from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/UserAppointments/UserAppointments';
 import RegForm from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegForm/RegForm';
@@ -37,9 +54,10 @@ import Contact from './Pages/shared/Contact/Contact';
 import Footer from './Pages/shared/Home/Footer/Footer';
 import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
+import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import NotFound from './Pages/shared/NotFound/NotFound';
-import Profile from './Pages/User/Profile';
-import PersistLogin from './SecureRoutes/PersistLogin';
+import Profile from './Pages/User/DashboardComponent/Profile';
+import UserDashboard from './Pages/User/UserDashboard';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
 
 const Roles = {
@@ -62,14 +80,12 @@ function App() {
             <Route path="login" element={<Login />} />
 
             {/* testing */}
-            <Route element={<PersistLogin />}>
-              <Route
-                element={
-                  <PrivateRoute allowedRoles={[Roles.User, Roles.Admin]} />
-                }
-              >
-                <Route path="allUsers" element={<AllUsers />} />
-              </Route>
+            <Route
+              element={
+                <PrivateRoute allowedRoles={[Roles.User, Roles.Admin]} />
+              }
+            >
+              <Route path="allUsers" element={<AllUsers />} />
             </Route>
 
             {/* ALL PRIVATE ROUTES */}
@@ -78,18 +94,28 @@ function App() {
             <Route path="notifications" element={<Notification />} />
 
             {/* user routes */}
-            <Route path="profile" element={<Profile />} />
+            <Route path="userdashboard" element={<UserDashboard />}>
+              <Route path="profile" element={<Profile />} />
+            </Route>
 
             {/* education related routes */}
             <Route path="education" element={<Education />} />
-            <Route path="teacherinfo" element={<TeacherInfo />} />
-            <Route path="studentinfo" element={<StudentInfo />} />
-            <Route path="teacherDashboard" element={<TeacherDashboard />}>
-              <Route path="analytics" element={<Analytics />} />
+            <Route path="registerTeacher" element={<RegisterTeacher />} />
+            {/* routes for teacher */}
+            <Route path="teacher" element={<Teacher />}>
               <Route path="myblogs" element={<Myblogs />} />
               <Route path="myvideos" element={<Myvideos />} />
-              <Route path="addblogs" element={<Addblogs />} />
-              <Route path="addvideos" element={<Addvideo />} />
+              <Route path="publishBlog" element={<PublishBlog />} />
+              <Route path="publishVideo" element={<PublishVideo />} />
+              <Route path="analytics" element={<Analytics />} />
+            </Route>
+
+            {/* routes for student */}
+            <Route path="student" element={<Student />}>
+              <Route path="dashboard" element={<StudentDashboard />} />
+              <Route path="favouriteBlogs" element={<FavouriteBlogs />} />
+              <Route path="favouriteVideos" element={<FavouriteVideos />} />
+              <Route path="analytics" element={<Analytics />} />
             </Route>
             <Route path="detailvideo/:id" element={<DetailVideo />} />
 
@@ -103,15 +129,30 @@ function App() {
             </Route>
 
             {/* event realted routes */}
-            <Route path="events" element={<Events />} />
-            <Route path="eventDetails/:id" element={<EventDetails />} />
+            <Route path="events" element={<Events />}>
+              <Route path="all-events" element={<AllEvents />} />
+              <Route path="upcoming-events" element={<UpcomingEvents />} />
+              <Route path="archived-events" element={<ArchivedEvents />} />
+            </Route>
+            <Route>
+              <Route
+                path="/event-booking/:eventBookingId"
+                element={<EventBooking />}
+              />
+            </Route>
+
+            {/* next */}
+            {/* <Route path="eventDetails/:id" element={<EventDetails />} /> */}
             <Route path="add-events" element={<AddEvents />} />
+            <Route path="eventDetails/:id" element={<EventDetails />} />
+            <Route path="manageEvents" element={<ManageEvents />} />
 
             {/* development related routes */}
             <Route path="development" element={<Development />} />
 
             {/* news related routes */}
-            <Route path="news" element={<AllNews />} />
+            <Route path="newsDetails/:id" element={<NewsDetails />} />
+            <Route path="allNews" element={<AllNews />} />
 
             {/* donation related routes */}
             <Route path="donation" element={<Donations />} />
@@ -121,8 +162,21 @@ function App() {
             <Route path="e-market" element={<EMarket />} />
             <Route path="cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
+            <Route path="productdetails/:id" element={<ProductDetails />} />
+            <Route path="medicinestore" element={<MedicineShop />} />
+            <Route path="marketdashboard" element={<MarketDashboard />}>
+              <Route path="myorder" element={<MyOrder />} />
+            </Route>
 
             <Route path="*" element={<NotFound />} />
+            {/* Admin dashboard routes */}
+            <Route path="admin" element={<AdminDashboard />}>
+              <Route path="allusers" element={<AllUsers />} />
+              <Route path="events" element={<Eventmanagement />} />
+              <Route path="donation" element={<Donation />} />
+              <Route path="development" element={<DevelopmentManage />} />
+              <Route path="market" element={<MarketManagement />} />
+            </Route>
           </Routes>
         </ScrollToTop>
         <Footer />
