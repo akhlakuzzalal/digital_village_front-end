@@ -13,7 +13,7 @@ const News = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('./letestNewsFakeData.json')
+    fetch('http://localhost:5000/news/allNews')
       .then((res) => res.json())
       .then((data) => setNews(data));
   }, []);
@@ -52,7 +52,7 @@ const News = () => {
               className="swiper"
             >
               {news.map((n) => (
-                <SwiperSlide key={n.id}>
+                <SwiperSlide key={n._id}>
                   <NewsCard n={n} />
                 </SwiperSlide>
               ))}
@@ -61,8 +61,8 @@ const News = () => {
 
           {/* news sidebar */}
           <div className="hidden  lg:flex flex-col justify-center">
-            {news.slice(0, 3).map((n) => (
-              <NewsSideCard key={n.id} n={n} />
+            {news.slice(0,3).map((n) => (
+              <NewsSideCard key={n._id} n={n} />
             ))}
             
             
