@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { FaDonate, FaHandsHelping } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -15,7 +15,7 @@ const CaseSingle = () => {
   const cause = causes.find((c)=> c._id === id)
   //Progressbar for
   let donationGoal = cause.goal;
-  let donationTotal = cause.fee;
+  let donationTotal = cause.raised;
 
   const percentage = (donationTotal, donationGoal) => {
     return (donationTotal / donationGoal) * 100 > 100
@@ -59,7 +59,7 @@ const CaseSingle = () => {
               {/* card footer  */}
               <div className="flex flex-col md:flex-row items-center justify-between pt-3 md:space-y-0 space-y-2">
                 <button className="w-100 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-r-indigo-500 border-l-indigo-500"><FaHandsHelping className='text-2xl text-red-400'/>
-                  RAISED {cause?.fee}
+                  RAISED {cause?.raised}
                 </button>
                 <button className="w-100 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-l-indigo-500 border-r-indigo-500"><FaDonate className='text-2xl text-red-400'></FaDonate>GOAL {cause?.goal}
                 </button>
@@ -93,7 +93,7 @@ const CaseSingle = () => {
                   />
                 </div>
                 <article>
-                  <p className="text-gray-500 text-sm">{cause?.des}</p>
+                  <p className="text-gray-500 text-sm">{cause?.description}</p>
                 </article>
               </div>
             </div>
@@ -121,7 +121,7 @@ const CaseSingle = () => {
               dictumst.
             </p>
             <a
-              href="/"
+              href="/about"
               class="w-full bg-primary hover:bg-opacity-80 text-white font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-4"
             >
               Get to know us
