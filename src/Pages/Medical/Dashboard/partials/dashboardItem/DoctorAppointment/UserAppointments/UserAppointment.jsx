@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const UserAppointment = ({ date }) => {
+  const user = useSelector((state) => state.user.user);
   const [appointment, setAppointment] = useState([]);
-  const email = 'user5@gmail.com';
+  const email = user.email;
 
   useEffect(() => {
     const url = `http://localhost:5000/appointment/findUserAppointment?email=${email}&date=${date}`;
@@ -13,7 +15,7 @@ const UserAppointment = ({ date }) => {
   console.log(appointment);
   return (
     <div class="flex flex-col">
-      <h4>your Total Appointment{appointment.length}</h4>
+      <h4> Total Appointments:{appointment.length}</h4>
       <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block py-2 min-w-full sm:px-6 lg:px-8">
           <div class="overflow-hidden shadow-md sm:rounded-lg">
