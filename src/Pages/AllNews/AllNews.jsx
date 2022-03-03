@@ -75,7 +75,7 @@ const AllNews = () => {
   if (news.length === 0) return <p>no news</p>;
 
   return (
-    <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <NewsBanner />
       <BreakingNews />
       <div className="grid grid-cols-1 gap-4 mx-auto md:mx-10 mt-14 md:grid-cols-4">

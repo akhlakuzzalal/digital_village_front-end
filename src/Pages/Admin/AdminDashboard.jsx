@@ -30,6 +30,16 @@ const links = [
         icon: <FaUsers size={30} />,
         path: '/admin',
       },
+      {
+        name: 'All Users',
+        icon: <FaUsers size={30} />,
+        path: '/admin',
+      },
+      {
+        name: 'All Users',
+        icon: <FaUsers size={30} />,
+        path: '/admin',
+      },
     ],
   },
   {
@@ -37,6 +47,21 @@ const links = [
     icon: <BsCalendar2EventFill size={30} />,
     path: '/admin/events',
     nestedPath: [
+      {
+        name: 'Add Event',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/add-events',
+      },
+      {
+        name: 'Add Event',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/add-events',
+      },
+      {
+        name: 'Add Event',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/add-events',
+      },
       {
         name: 'Add Event',
         icon: <BsCalendar2EventFill size={30} />,

@@ -1,10 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
-import { setShowModal } from '../../../redux/slices/eMarket/modalSlicle';
+import { useDispatch } from 'react-redux';
+import PayModal from '../../../Components/Pay/PayModal';
+import { setPayModal } from '../../../redux/slices/payModal/PayModalSlice';
 
 const DonarForm = () => {
-  const showModal = useSelector((state) => state.market.modal.showModal);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const handleRegister = async ({
@@ -13,13 +13,12 @@ const DonarForm = () => {
     email,
     amount,
     message,
-    address
+    address,
   }) => {
     const name = `${firstName} ${lastName}`;
-    console.log({ name, email, address ,message,amount});
-    dispatch(setShowModal(true));
+    console.log({ name, email, address, message, amount });
+    dispatch(setPayModal(true));
   };
-  console.log(showModal);
   return (
     <div>
       <form onSubmit={handleSubmit(handleRegister)} className="space-y-6">
@@ -75,14 +74,14 @@ const DonarForm = () => {
           />
         </div>
         <div className="flex items-center justify-center">
-           {/* Address */}
-        <input
-          className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
-          {...register('amount' ,{ required: true, maxLength: 4})}
-          type="number"
-          defaultValues={50}
-          placeholder="Amount"
-        />
+          {/* Address */}
+          <input
+            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
+            {...register('amount', { required: true, maxLength: 4 })}
+            type="number"
+            defaultValues={50}
+            placeholder="Amount"
+          />
         </div>
 
         <input
@@ -90,8 +89,8 @@ const DonarForm = () => {
           type="submit"
           value="Ready for Donation Payment"
         />
-       
       </form>
+      <PayModal price={120} id={2} returnPage={'donation'} />
     </div>
   );
 };

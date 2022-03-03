@@ -60,7 +60,7 @@ const BlogDetails = () => {
   const mainBlog = blog[0];
   return (
     <div
-      className="mt-[88px] flex"
+      className="mt-[80px] flex"
       style={{ minHeight: 'calc(100vh - 700px)' }}
     >
       <div className="col-span-5 w-4/5 space-y-6">

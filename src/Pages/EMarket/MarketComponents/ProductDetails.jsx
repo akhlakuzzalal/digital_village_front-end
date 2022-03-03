@@ -12,7 +12,7 @@ const ProductDetails = () => {
   const { name, price, brand, img, description, rating } = product;
 
   return (
-    <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <div className="w-10/12 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* image of the product */}
