@@ -35,6 +35,19 @@ const links = [
     name: 'Events',
     icon: <BsCalendar2EventFill size={30} />,
     path: '/admin/events',
+    nestedPath: [
+      {
+        name: 'Add Event',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/add-events',
+      },
+    ],
+  },
+
+  {
+    name: 'Add Review',
+    icon: <BsCalendar2EventFill size={30} />,
+    path: '/admin/add-review',
   },
   {
     name: 'Donation',

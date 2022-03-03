@@ -55,6 +55,7 @@ import Footer from './Pages/shared/Home/Footer/Footer';
 import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
+import AddReview from './Pages/shared/Home/Reviews/AddReview/AddReview';
 import NotFound from './Pages/shared/NotFound/NotFound';
 import Profile from './Pages/User/DashboardComponent/Profile';
 import UserDashboard from './Pages/User/UserDashboard';
@@ -143,7 +144,7 @@ function App() {
 
             {/* next */}
             {/* <Route path="eventDetails/:id" element={<EventDetails />} /> */}
-            <Route path="add-events" element={<AddEvents />} />
+
             <Route path="eventDetails/:id" element={<EventDetails />} />
             <Route path="manageEvents" element={<ManageEvents />} />
 
@@ -176,6 +177,8 @@ function App() {
               <Route path="donation" element={<Donation />} />
               <Route path="development" element={<DevelopmentManage />} />
               <Route path="market" element={<MarketManagement />} />
+              <Route path="add-events" element={<AddEvents />} />
+              <Route path="add-review" element={<AddReview />} />
             </Route>
           </Routes>
         </ScrollToTop>

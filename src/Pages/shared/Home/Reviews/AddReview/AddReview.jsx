@@ -23,14 +23,14 @@ const AddReview = () => {
       <div className="add-events-main my-40 lg:flex  lg:mx-32 md:mx-32 mx-0 border rounded-2xl">
         <div>
           <img
-            className="lg:h-[780px] md:h-[580px] lg:w-[1000px] md:w-[1000px] w-[100%] h-[300px]"
+            className="lg:h-[580px] md:h-[580px] lg:w-[1000px] md:w-[1000px] w-[100%] h-[100px]"
             src={img}
             alt=""
           />
         </div>
         {/* add event form */}
         <div>
-          <h1 className="ml-10 mt-6 text-3xl ">Add Events</h1>
+          <h1 className="ml-10 mt-6 text-3xl ">Add Review</h1>
           <form
             className=" space-y-6 mx-10 mt-10"
             onSubmit={handleSubmit(handleAddReview)}
