@@ -52,7 +52,7 @@ const Teacher = () => {
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <Navbar navigation={navigation} />
       <NewSidebar links={links} />
-      <div className="mt-[88px] flex-1">
+      <div className="mt-[88px] flex-1 ml-14">
         <Outlet />
       </div>
     </div>
