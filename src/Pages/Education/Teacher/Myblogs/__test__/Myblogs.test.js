@@ -21,3 +21,35 @@ it("'Digital Marketing' should be available", () => {
 
   expect(isAvailable).toBeInTheDocument();
 });
+
+// import { render, screen } from '@testing-library/react';
+// import userEvent from '@testing-library/user-event';
+// import { Provider } from 'react-redux';
+// import { BrowserRouter } from 'react-router-dom';
+// import { PersistGate } from 'redux-persist/lib/integration/react';
+// import { AuthProvider } from '../../../../context/AuthProvider';
+// import { persistor, store } from '../../../../redux/store';
+// import RegisterTeacher from '../RegisterTeacher';
+
+// const MockRegisterTeacher = () => (
+//   <Provider store={store}>
+//     <PersistGate loading={null} persistor={persistor}>
+//       <AuthProvider>
+//         <BrowserRouter>
+//           <RegisterTeacher />
+//         </BrowserRouter>
+//       </AuthProvider>
+//     </PersistGate>
+//   </Provider>
+// );
+
+// it('should be able to type an email', () => {
+//   render(<MockRegisterTeacher />, () => {
+//     const emailInputElement = screen.getByRole('textbox', {
+//       type: /email/i,
+//     });
+
+//     userEvent.type(emailInputElement, 'user1@gmail.com');
+//     expect(emailInputElement.value).toBe('user1@gmail.com');
+//   });
+// });

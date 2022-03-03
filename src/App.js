@@ -12,6 +12,7 @@ import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import CaseSingle from './Pages/Donations/Causes/CaseSingle';
 import Donations from './Pages/Donations/Donations';
+import BlogDetails from './Pages/Education/BlogDetails/BlogDetails';
 import DetailVideo from './Pages/Education/DetailVideo/DetailVideo';
 import Education from './Pages/Education/Education';
 import AllBlogs from './Pages/Education/Student/AllBlogs/AllBlogs';
@@ -122,6 +123,7 @@ function App() {
               <Route path="analytics" element={<Analytics />} />
             </Route>
             <Route path="detailvideo/:id" element={<DetailVideo />} />
+            <Route path="blogDetails/:id" element={<BlogDetails />} />
 
             {/* medical related routes */}
             <Route path="medical" element={<MedicalDashboard />}>

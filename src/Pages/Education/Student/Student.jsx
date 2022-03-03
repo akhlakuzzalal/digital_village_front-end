@@ -4,7 +4,6 @@ import { FaBloggerB } from 'react-icons/fa';
 import { IoIosHome } from 'react-icons/io';
 import { RiDashboard2Line, RiVideoFill } from 'react-icons/ri';
 import { Outlet, useLocation } from 'react-router-dom';
-import Navbar from '../../../Components/Navbar';
 import NewSidebar from '../../../Components/Sidebar/NewSidebar';
 import StudentHome from './StudentHome/StudentHome';
 
@@ -55,7 +54,6 @@ const Student = () => {
 
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
-      <Navbar navigation={navigation} />
       <NewSidebar links={links} />
       <div className="mt-[88px] flex-1 ml-20">
         {location?.pathname === '/student' ||

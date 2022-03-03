@@ -5,6 +5,7 @@ import { SiGoogleanalytics } from 'react-icons/si';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../../Components/Navbar';
 import NewSidebar from '../../../Components/Sidebar/NewSidebar';
+import Analytics from './Analytics/Analytics';
 
 const links = [
   {
@@ -46,7 +47,7 @@ const navigation = [
 
 const Teacher = () => {
   const location = useLocation();
-  const initial =
+  const isHomePage =
     location.pathname === '/teacher' || location.pathname === '/teacher/';
 
   return (
@@ -54,7 +55,7 @@ const Teacher = () => {
       <Navbar navigation={navigation} />
       <NewSidebar links={links} />
       <div className="mt-[88px] flex-1 ml-14">
-        <Outlet />
+        {isHomePage ? <Analytics /> : <Outlet />}
       </div>
     </div>
   );

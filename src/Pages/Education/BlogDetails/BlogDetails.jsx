@@ -1,6 +1,6 @@
 import React from 'react';
-import Search from '../Search/Search';
-import BlogCard from './BlogCard/BlogCard';
+import { useParams } from 'react-router-dom';
+import Comments from '../../../Components/Comments/Comments';
 
 const blogs = [
   {
@@ -53,18 +53,42 @@ const blogs = [
   },
 ];
 
-const AllBlogs = () => {
+const BlogDetails = () => {
+  const { id } = useParams();
+
+  const blog = blogs.filter((blog) => blog?._id === id);
+  const mainBlog = blog[0];
   return (
-    <div className="space-y-6">
-      <Search />
-      <h3 className="text-center py-6">Available Blogs</h3>
-      <article className="flex flex-wrap justify-evenly items-center gap-6">
-        {blogs.map((blog) => (
-          <BlogCard key={blog._id} blog={blog} />
-        ))}
-      </article>
+    <div
+      className="mt-[88px] flex"
+      style={{ minHeight: 'calc(100vh - 700px)' }}
+    >
+      <div className="col-span-5 w-4/5 space-y-6">
+        <div>
+          <img
+            src={mainBlog?.bannerImg?.path}
+            alt={mainBlog?.title}
+            className="w-full"
+          />
+        </div>
+        <div>Authored by {mainBlog?.author}</div>
+        <div>author Email: {mainBlog?.email}</div>
+        <div className="flex gap-4 items-center">
+          {mainBlog?.tags.map((tag) => (
+            <div key={tag}>#{tag}</div>
+          ))}
+        </div>
+        <div>{mainBlog?.content}</div>
+        <div>
+          <Comments />
+        </div>
+      </div>
+      <div className=" bg-warning flex-1">
+        <div>featured blogs</div>
+        <div>featured videos</div>
+      </div>
     </div>
   );
 };
 
-export default AllBlogs;
+export default BlogDetails;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { BsGoogle } from 'react-icons/bs';
-// import Lottie from 'react-lottie';
+import Lottie from 'react-lottie';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../../hooks/useAuth';
 import useMediaQuery from '../../../../hooks/useMediaQuery';
@@ -41,7 +41,7 @@ const Login = () => {
 
   const handleLogin = async ({ email, password }) => {
     await processSignIn(email, password, location, navigate);
-    // reset();
+    reset();
   };
 
   const handleGoogleLogin = () => {
@@ -126,11 +126,11 @@ const Login = () => {
 
       <div className="hidden md:block w-full md:w-1/2 px-3 pt-24 pointer-events-none">
         <div className="w-fit mx-auto">
-          {/* <Lottie
+          <Lottie
             options={defaultOptions}
             isClickToPauseDisabled={true}
             height={isDesktop ? 500 : isTablet ? 400 : 300}
-          /> */}
+          />
         </div>
       </div>
     </div>

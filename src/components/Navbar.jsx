@@ -40,7 +40,9 @@ const Navbar = ({ navigation }) => {
   };
 
   const handleLogout = async () => {
+    console.log(user);
     await logout();
+    console.log(user);
     navigate('/');
   };
 
