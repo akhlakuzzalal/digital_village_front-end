@@ -83,7 +83,7 @@ console.log(result)
 <div className='mx-5 border-l-4 pl-8 pt-5'>
   
     <p className='text-gray-400 hover:text-blue-600'>LATEST ARTICLES</p>
-    {news.map(data=><li className='text-sm p-2 my-3 border hover:bg-gray-100 hover:opacity-90'>The Impact of Family Structure on the Health of Children: Effects of Divorce</li>)}
+    {news.map(data=><li className='text-sm p-2 my-3 border hover:bg-gray-100 hover:opacity-90 hover:text-blue-600'>{data.title}</li>)}
 
 
    <div className='grid grid-cols-1 my-10'>

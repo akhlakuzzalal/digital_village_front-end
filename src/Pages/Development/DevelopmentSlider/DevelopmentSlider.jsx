@@ -81,7 +81,7 @@ const DevelopmentSlider = ({n}) => {
                           >
                             {developments.map((n) => (
                               <SwiperSlide key={n.id}>
-                          <div  className=' w-96 shadow-2xl'>
+                          <div  className=' md:w-96 shadow-2xl'>
                           <div className="  cursor-pointer ">
                               
                               <div className=''>
