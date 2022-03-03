@@ -1,9 +1,13 @@
 import React from 'react';
-
+import img from '../../../../assets/faq/faq.png';
 const Faq = () => {
   return (
-    <div>
+    <div className="lg:flex lg:mx-20  mx-2 space-x-5 py-40">
+      <div>
+        <img className="lg:w-[800px] lg:h-[600px] h-[350px]" src={img} alt="" />
+      </div>
       <div
+        className="pt-[120px] border lg:px-20 px-10"
         id="accordion-flush"
         data-accordion="collapse"
         data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
@@ -17,7 +21,7 @@ const Faq = () => {
             aria-expanded="true"
             aria-controls="accordion-flush-body-1"
           >
-            <span>What is Flowbite?</span>
+            <span>How i can become a donner in digital village?</span>
             <svg
               data-accordion-icon=""
               class="w-6 h-6 rotate-180 shrink-0"
@@ -64,7 +68,7 @@ const Faq = () => {
             aria-expanded="false"
             aria-controls="accordion-flush-body-2"
           >
-            <span>Is there a Figma file available?</span>
+            <span>Is the?</span>
             <svg
               data-accordion-icon=""
               class="w-6 h-6 shrink-0"
