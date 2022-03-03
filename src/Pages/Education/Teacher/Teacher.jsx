@@ -1,35 +1,36 @@
 import React from 'react';
-import { BsNewspaper } from 'react-icons/bs';
-import { MdOutlineVideoSettings } from 'react-icons/md';
-import { RiDashboard2Line } from 'react-icons/ri';
+import { BsNewspaper, BsPencilSquare } from 'react-icons/bs';
+import { MdOndemandVideo, MdVideoSettings } from 'react-icons/md';
+import { SiGoogleanalytics } from 'react-icons/si';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../../Components/Navbar';
 import NewSidebar from '../../../Components/Sidebar/NewSidebar';
 
 const links = [
   {
-    name: 'My Blogs',
-    icon: <BsNewspaper size={30} />,
-    path: '/teacher/myblogs',
-  },
-  {
     name: 'Publish Blog',
-    icon: <BsNewspaper size={30} />,
+    icon: <BsPencilSquare size={30} />,
     path: '/teacher/publishBlog',
   },
   {
     name: 'Publish video',
-    icon: <BsNewspaper size={30} />,
+    icon: <MdVideoSettings size={30} />,
     path: '/teacher/publishVideo',
   },
   {
+    name: 'My Blogs',
+    icon: <BsNewspaper size={30} />,
+    path: '/teacher/myblogs',
+  },
+
+  {
     name: 'My videos',
-    icon: <MdOutlineVideoSettings size={30} />,
+    icon: <MdOndemandVideo size={30} />,
     path: '/teacher/myvideos',
   },
   {
     name: 'analytics',
-    icon: <RiDashboard2Line size={30} />,
+    icon: <SiGoogleanalytics size={30} />,
     path: '/teacher/analytics',
   },
 ];
