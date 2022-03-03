@@ -284,9 +284,7 @@ const CaseSingle = () => {
             <a
               href="/"
               class="w-full bg-primary hover:bg-opacity-80 text-white font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-6"
-            >
-              <i class="fab fa-instagram mr-2"></i> Follow @dgrzyb
-            </a>
+            >Follow @digital-village</a>
           </div>
         </aside>
       </div>
