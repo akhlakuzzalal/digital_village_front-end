@@ -35,12 +35,18 @@ import MedicineShop from './Pages/EMarket/MarketComponents/MedicineShop/Medicine
 import ProductDetails from './Pages/EMarket/MarketComponents/ProductDetails';
 import MarketDashboard from './Pages/EMarket/MarketDashboard';
 import AddEvents from './Pages/Events/AddEvents/AddEvents';
+import AllEvents from './Pages/Events/AllEvents/AllEvents';
+import ArchivedEvents from './Pages/Events/ArchivedEvents/ArchivedEvents';
+import EventBooking from './Pages/Events/EventBooking/EventBooking';
+import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
+import ManageEvents from './Pages/Events/ManageEvents/ManageEvents';
+import UpcomingEvents from './Pages/Events/UpcomingEvents/UpcomingEvents';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
 import UserAppointments from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/UserAppointments/UserAppointments';
+import RegForm from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegForm/RegForm';
 import VaccineInfo from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/VaccineInfo';
 import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
-import EventDetails from './Pages/Medical/EventDetails';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
 import Notification from './Pages/Notification/Notification';
 import About from './Pages/shared/About/About';
@@ -52,7 +58,8 @@ import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import NotFound from './Pages/shared/NotFound/NotFound';
-import Profile from './Pages/User/Profile';
+import Profile from './Pages/User/DashboardComponent/Profile';
+import UserDashboard from './Pages/User/UserDashboard';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
 
 const Roles = {
@@ -89,7 +96,9 @@ function App() {
             <Route path="notifications" element={<Notification />} />
 
             {/* user routes */}
-            <Route path="profile" element={<Profile />} />
+            <Route path="userdashboard" element={<UserDashboard />}>
+              <Route path="profile" element={<Profile />} />
+            </Route>
 
             {/* education related routes */}
             <Route path="education" element={<Education />} />
@@ -118,15 +127,29 @@ function App() {
             <Route path="medical" element={<MedicalDashboard />}>
               <Route path="vaccine" element={<VaccineRegistration />} />
               <Route path="appointment" element={<DoctorsAppointment />} />
+              <Route path="regForm" element={<RegForm />} />
               <Route path="userAppointments" element={<UserAppointments />} />
               <Route path="pdf" element={<VaccineInfo />} />
             </Route>
 
             {/* event realted routes */}
-            <Route path="events" element={<Events />} />
-            <Route path="eventDetails/:id" element={<EventDetails />} />
+            <Route path="events" element={<Events />}>
+              <Route path="all-events" element={<AllEvents />} />
+              <Route path="upcoming-events" element={<UpcomingEvents />} />
+              <Route path="archived-events" element={<ArchivedEvents />} />
+            </Route>
+            <Route>
+              <Route
+                path="/event-booking/:eventBookingId"
+                element={<EventBooking />}
+              />
+            </Route>
+
+            {/* next */}
+            {/* <Route path="eventDetails/:id" element={<EventDetails />} /> */}
             <Route path="add-events" element={<AddEvents />} />
             <Route path="eventDetails/:id" element={<EventDetails />} />
+            <Route path="manageEvents" element={<ManageEvents />} />
 
             {/* development related routes */}
             <Route path="development" element={<Development />} />

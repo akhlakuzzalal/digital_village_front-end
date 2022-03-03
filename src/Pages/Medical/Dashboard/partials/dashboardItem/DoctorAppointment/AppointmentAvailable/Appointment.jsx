@@ -1,21 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 
-const Appointment = () => {
+const Appointment = (props) => {
+  console.log(props);
+  console.log(props.appointment);
+
+  const { id, Service, email, description, time, Cost } = props.appointment;
+  const navigate = useNavigate();
+  const redirect_uri = '/medical/userAppointments';
+
   const handleAlert = () => {
     swal({
-      title: 'Are you sure?',
+      title: 'want to proceed?',
       // text: 'Once deleted, you will not be able to recover this imaginary file!',
       icon: 'warning',
 
       buttons: true,
     }).then((willConfirm) => {
       if (willConfirm) {
-        console.log('ok');
-        swal('Confirmed!', {
-          icon: 'success',
-        });
+        navigate(redirect_uri);
       }
     });
   };
@@ -24,20 +28,18 @@ const Appointment = () => {
       <div class="p-5">
         <Link to="#">
           <h5 class="mb-2 text-2xl font-bold tracking-tight hover:text-blue-600 text-gray-900 dark:text-white">
-            Family Physicians
+            {Service}
           </h5>
         </Link>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          Any types of routine checkups and screening tests, give you flu and
-          immunization shots, and manage diabetes and other ongoing medical
-          conditions.
+          {description}
         </p>
-        <p>Space: 20</p>
-        <p className="my-.5">(From 10 am to 5 pm) </p>
-        <p>Cost : $25 </p>
+
+        <p className="my-.5">(from {time}) </p>
+        <p>Cost : {Cost} </p>
         <Link
           to="#"
-          class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-primary rounded-lg "
+          class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-black rounded-lg "
         >
           <button onClick={handleAlert}>Book Appointment</button>
         </Link>

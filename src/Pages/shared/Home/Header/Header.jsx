@@ -8,7 +8,8 @@ const navigation = [
   { name: 'Service', href: '/#service' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
-  { name: 'Admin', href: '/admin' },
+  { name: 'Admin', href: '/admindashboard' },
+  { name: 'User', href: '/userdashboard' },
 ];
 
 const Header = () => {
@@ -16,6 +17,7 @@ const Header = () => {
   return location.pathname.includes('/teacher') ||
     location.pathname.includes('/medical') ||
     location.pathname.includes('admin') ||
+    location.pathname.includes('userdashboard') ||
     location.pathname.includes('/marketdashboard') ? null : (
     <Navbar navigation={navigation} />
   );
