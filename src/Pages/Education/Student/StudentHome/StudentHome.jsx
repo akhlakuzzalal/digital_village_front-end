@@ -109,7 +109,7 @@ const StudentHome = () => {
       <Banner />
 
       {/* top blogs */}
-      <h3>Top Categories</h3>
+      <h3 className="py-6">Top Categories</h3>
 
       <Categories />
 
@@ -121,8 +121,8 @@ const StudentHome = () => {
         ))}
       </div>
 
-      <h3>Top Videos</h3>
-      <div className="flex flex-wrap gap-4 justify-evenly p-6">
+      <h3 className="py-6">Top Videos</h3>
+      <div className="flex flex-wrap items-center gap-6">
         {videos.map((video) => (
           <VideoCard key={video._id} video={video} />
         ))}

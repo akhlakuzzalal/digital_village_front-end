@@ -1,4 +1,5 @@
 import React from 'react';
+import Search from '../Search/Search';
 import BlogCard from './BlogCard/BlogCard';
 
 const blogs = [
@@ -70,10 +71,14 @@ const blogs = [
 
 const AllBlogs = () => {
   return (
-    <div className="flex flex-wrap justify-evenly items-center gap-6">
-      {blogs.map((blog) => (
-        <BlogCard key={blog._id} blog={blog} />
-      ))}
+    <div className="space-y-6">
+      <Search />
+      <h3 className="text-center py-6">Available Blogs</h3>
+      <div className="flex flex-wrap justify-evenly items-center gap-6">
+        {blogs.map((blog) => (
+          <BlogCard key={blog._id} blog={blog} />
+        ))}
+      </div>
     </div>
   );
 };
