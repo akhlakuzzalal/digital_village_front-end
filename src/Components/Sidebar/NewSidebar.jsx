@@ -7,7 +7,7 @@ const NewSidebar = ({ links }) => {
 
   return (
     <div
-      className={`bg-slate-900 text-white mt-[88px] absolute z-50 ${
+      className={`bg-slate-900 text-white mt-[88px] fixed z-50 ${
         showText && 'min-w-[200px]'
       }`}
       style={{ height: 'calc(100vh - 88px)' }}
