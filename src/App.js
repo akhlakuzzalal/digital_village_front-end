@@ -40,6 +40,7 @@ import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import ManageEvents from './Pages/Events/ManageEvents/ManageEvents';
 import UpcomingEvents from './Pages/Events/UpcomingEvents/UpcomingEvents';
+import AddAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/AddAppointment';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
 import UserAppointments from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/UserAppointments/UserAppointments';
 import RegForm from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegForm/RegForm';
@@ -176,6 +177,7 @@ function App() {
               <Route path="donation" element={<Donation />} />
               <Route path="development" element={<DevelopmentManage />} />
               <Route path="market" element={<MarketManagement />} />
+              <Route path="medical" element={<AddAppointment />} />
             </Route>
           </Routes>
         </ScrollToTop>
