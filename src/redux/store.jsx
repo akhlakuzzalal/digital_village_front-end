@@ -31,10 +31,7 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: {
-        // Ignore these action types
-        ignoredActions: ['detectStateChange'],
-      },
+      serializableCheck: false,
     }),
 });
 

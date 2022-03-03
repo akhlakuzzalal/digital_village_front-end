@@ -48,6 +48,11 @@
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:5000",
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(swiper)/)"
+    ]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",

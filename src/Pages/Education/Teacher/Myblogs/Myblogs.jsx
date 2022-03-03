@@ -21,37 +21,37 @@ const blogs = [
     img: 'https://leverageedu.com/blog/wp-content/uploads/2020/06/Types-of-Digital-Marketing.png',
   },
   {
-    _id: 1,
+    _id: 4,
     name: 'Microsoft word',
     desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis porro inventore unde voluptatibus autem eius officiis? Nulla, est reprehenderit?',
     img: 'https://www.versionmuseum.com/images/applications/microsoft-word/microsoft-word%5E2015%5Ems-word-logo-new.png',
   },
   {
-    _id: 2,
+    _id: 5,
     name: 'Marchendising',
     desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis porro inventore unde voluptatibus autem eius officiis? Nulla, est reprehenderit?',
     img: 'https://static.fibre2fashion.com/articleresources/images/51/5070/differentiating-edge-merchandising-as-centre-of-excellence.jpg',
   },
   {
-    _id: 3,
+    _id: 6,
     name: 'Digital Marketing',
     desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis porro inventore unde voluptatibus autem eius officiis? Nulla, est reprehenderit?',
     img: 'https://leverageedu.com/blog/wp-content/uploads/2020/06/Types-of-Digital-Marketing.png',
   },
   {
-    _id: 1,
+    _id: 7,
     name: 'Microsoft word',
     desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis porro inventore unde voluptatibus autem eius officiis? Nulla, est reprehenderit?',
     img: 'https://www.versionmuseum.com/images/applications/microsoft-word/microsoft-word%5E2015%5Ems-word-logo-new.png',
   },
   {
-    _id: 2,
+    _id: 8,
     name: 'Marchendising',
     desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis porro inventore unde voluptatibus autem eius officiis? Nulla, est reprehenderit?',
     img: 'https://static.fibre2fashion.com/articleresources/images/51/5070/differentiating-edge-merchandising-as-centre-of-excellence.jpg',
   },
   {
-    _id: 3,
+    _id: 9,
     name: 'Digital Marketing',
     desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis porro inventore unde voluptatibus autem eius officiis? Nulla, est reprehenderit?',
     img: 'https://leverageedu.com/blog/wp-content/uploads/2020/06/Types-of-Digital-Marketing.png',
@@ -60,11 +60,11 @@ const blogs = [
 
 const Myblogs = () => {
   return (
-    <div className="flex flex-wrap justify-evenly items-center gap-6">
+    <article className="flex flex-wrap justify-evenly items-center gap-6">
       {blogs.map((blog) => (
         <BlogCard key={blog._id} blog={blog} />
       ))}
-    </div>
+    </article>
   );
 };
 
