@@ -50,7 +50,7 @@ const developments=[
 
 const DevelopmentSlider = ({n}) => {
     return (
-        <div className='-mt-24'>
+        <div className='md:-mt-24'>
               <div className='grid grid-cols-2 md:grid-cols-3 mx-auto md:mx-80 '>
 
                   <div className=' col-span-2 '>
@@ -81,7 +81,7 @@ const DevelopmentSlider = ({n}) => {
                           >
                             {developments.map((n) => (
                               <SwiperSlide key={n.id}>
-                          <div  className=' border-2 w-96'>
+                          <div  className=' w-96 shadow-2xl'>
                           <div className="  cursor-pointer ">
                               
                               <div className=''>
@@ -114,12 +114,32 @@ const DevelopmentSlider = ({n}) => {
                               
 
                           </div>
-                          <div className="space-y-4 p-4 text-white bg-gray-800 h-96 ">
-                          <h3 className="text-yellow-400  flex items-center space-x-2 px-5">
+                          <div className="space-y-4 md:p-4 text-white bg-gray-800 h-full py-10 shadow-2xl ">
+                          <h3 className="text-yellow-400  flex items-center space-x-2 md:px-5">
                           FEATURED WEEK PROJECTS
                           </h3>
 
-                          <p className='px-5'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit at eaque nihil impedit quasi, odio a animi minima exercitationem id debitis quas iste!  </p>
+                          <p className='px-5'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit at eaque nihil impedit quasi, odio a animi minima exercitationem id,quasi, odioquasi, odio debitis quas iste!  </p>
+
+                          <div className='grid grid-cols-2 '>
+                          <div className='flex'>
+                              <img className='w-10 h-10 mx-2 my-auto mr-5' src="https://icon2.cleanpng.com/20180426/rvq/kisspng-computer-icons-download-setting-icon-5ae152c8c78b41.3187121115247162328173.jpg" alt="" />
+                             
+                              <div>
+                              <h3>110 <br />
+                              <span className='text-sm text-yellow-400'>Project</span> </h3>
+                              </div>
+                            </div>
+                            <div className='flex'>
+                              <img className='w-10 h-10 mr-5 my-auto' src="https://www.pinclipart.com/picdir/middle/542-5427453_client-icon-clipart-clipart-royalty-free-library-client.png" alt="" />
+                             
+                              <div>
+                              <h3>90 <br />
+                              <span className='text-sm text-yellow-400 '>Clients</span> </h3>
+                              </div>
+                            </div>
+
+                          </div>
                          
                           <button className="text-yellow-400 text-lg mt-24 px-5 mx-5 hover:text-white hover:rounded-xl transition-all duration-500 border-2 p-2 border-white hover:bg-primary hover:border-0  ">
                           More Project ...
@@ -133,16 +153,16 @@ const DevelopmentSlider = ({n}) => {
           
               </div>
 
-          <div className='grid grid-cols-3 mx-auto md:mx-80 my-10'>
+          <div className='grid grid-cols-1 md:grid-cols-3 mx-auto md:mx-80 my-10'>
             
-              <div className='col-span-2 mr-5 '>
+              <div className='md:col-span-2 md:mr-5 mx-2'>
                  <h3 className='my-2'>SERVICE AND RENTAL TRANSFORMATIONS</h3>
                  <p className='py-5'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum laudantium ab aspernatur voluptatibus fuga sit, consequatur neque pariatur, iure suscipit tempora sed quibusdam aliquam cupiditate eaque quos doloribus dolore nulla ex. Ex quasi dolore minus fugit quibusdam quia velit !</p>
 
                  <button className='p-2 bg-gray-200 text-primary'><a href="https://drive.google.com/u/1/uc?id=14vK9v0vP6pucv8RcMAUFlhvVr3Mv2Q21&export=download" target="_blank">Download Brochure</a></button>
               </div>
 
-              <div className='ml-5'>
+              <div className='md:ml-5 mx-2 '>
                 <ul>
                   <li>Full opariting system 24/7 active</li>
                   <li>Based in London, United Kingdom</li>
@@ -156,16 +176,16 @@ const DevelopmentSlider = ({n}) => {
             
           </div>
 
-          <div className='mx-80 grid grid-cols-2 my-auto md:my-24 '>
+          <div className='md:mx-80 grid grid-cols-1 md:grid-cols-2 my-auto md:my-24 '>
           <h3>LAST PROJECTS</h3>
-          <p className='border-l-4 pl-5'>Large-scale construction requires collaboration across multiple disciplines. A project manager normally manages the job and a architect .</p>
+          <p className='md:border-l-4 md:pl-5'>Large-scale construction requires collaboration across multiple disciplines. A project manager normally manages the job and a architect .</p>
             
           </div>
 
               {/* Project Slider */}
 
-                <div className='grid grid-cols-1 md:grid-cols-3 mx-80'>
-                  <div className='col-span-3'>
+                <div className='grid grid-cols-1 md:grid-cols-3 md:mx-80'>
+                  <div className='md:col-span-3'>
                   <Swiper
                             // slidesPerView={2}
                             slidesPerGroup={1}
@@ -193,11 +213,11 @@ const DevelopmentSlider = ({n}) => {
                           >
                             {developments.map((n) => (
                               <SwiperSlide key={n.id}>
-                          <div  className=' border-2'>
+                          <div  className='  rounded'>
                           <div className="  cursor-pointer ">
                               
                               <div className=''>
-                              <img className='w-full h-64 ' src={n?.img} alt="" />
+                              <img className='w-full md:h-64 ' src={n?.img} alt="" />
                               </div>
 
                           </div>
