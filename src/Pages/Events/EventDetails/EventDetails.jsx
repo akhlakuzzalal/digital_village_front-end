@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2/src/sweetalert2.js';
+import axios from '../../../../src/api/axios';
 import {
   fetchAllEvent,
   fetchUpcomingEvents,
 } from '../../../redux/slices/event/eventSlice';
 import Calender from '../../Medical/Dashboard/partials/dashboardItem/DoctorAppointment/Calender/Calender';
-
 const EventDetails = () => {
+  const user = useSelector((state) => state.user.user);
   const { id } = useParams();
 
   // const [allEvent, setAllEvent] = useState([]);
@@ -26,6 +28,15 @@ const EventDetails = () => {
     dispatch(fetchUpcomingEvents());
   }, []);
   const upcomingEventsData = upcomingEvents.slice(1, 5);
+
+  //to book events
+  const handleBookEvent = () => {
+    // const url = `/event/participant?id=${eventItem[0]?._id}&email=${user.email}`
+    axios.put(`/event/participant?id=${eventItem[0]?._id}&email=${user.email}`);
+    Swal.fire('Good job!', 'You clicked the button!', 'success');
+  };
+
+  // http://localhost:5000/event/participant?id=61793a64f536b7c2cd793&email=sabbirrrrr0911
 
   return (
     <div className="event-details-main py-48 px-5 lg:px-20">
@@ -119,11 +130,13 @@ const EventDetails = () => {
           </div>
         </div>
       </div>
-      <Link to={`/event-booking/${eventItem[0]?._id}`}>
-        <button className="mt-20 bg-purple-300 py-5 px-10">
-          Book This Event
-        </button>
-      </Link>
+
+      <button
+        onClick={handleBookEvent}
+        className="mt-20 bg-purple-300 py-5 px-10"
+      >
+        Book This Event
+      </button>
     </div>
   );
 };
