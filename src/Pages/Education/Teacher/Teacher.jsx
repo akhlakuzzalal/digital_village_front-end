@@ -1,29 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BsNewspaper } from 'react-icons/bs';
 import { MdOutlineVideoSettings } from 'react-icons/md';
 import { RiDashboard2Line } from 'react-icons/ri';
 import { Outlet, useLocation } from 'react-router-dom';
-import DashboardHeader from '../../../Components/DashboardHeader';
-import Sidebar from '../../../Components/Sidebar';
-import Analytics from './Analytics/Analytics';
+import Navbar from '../../../Components/Navbar';
+import NewSidebar from '../../../Components/Sidebar/NewSidebar';
 
 const links = [
   {
     name: 'My Blogs',
     icon: <BsNewspaper size={30} />,
     path: '/teacher/myblogs',
-    nestedPath: [
-      {
-        name: 'nested 1',
-        icon: <RiDashboard2Line size={30} />,
-        path: '/teacher/myvideos',
-      },
-      {
-        name: 'nested 2',
-        icon: <RiDashboard2Line size={30} />,
-        path: '/#',
-      },
-    ],
   },
   {
     name: 'Publish Blog',
@@ -47,32 +34,26 @@ const links = [
   },
 ];
 
-const Teacher = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [showText, setShowText] = useState(true);
+// Navbar dynamic
+const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'Service', href: '/#service' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+  { name: 'Admin', href: '/admin' },
+];
 
+const Teacher = () => {
   const location = useLocation();
   const initial =
     location.pathname === '/teacher' || location.pathname === '/teacher/';
 
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
-      {/* Sidebar */}
-      <Sidebar
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-        showText={showText}
-        setShowText={setShowText}
-        links={links}
-      />
-
-      {/* contents */}
-      <div className="flex-1">
-        <DashboardHeader
-          sidebarOpen={sidebarOpen}
-          setSidebarOpen={setSidebarOpen}
-        />
-        {initial ? <Analytics /> : <Outlet />}
+      <Navbar navigation={navigation} />
+      <NewSidebar links={links} />
+      <div className="mt-[88px] flex-1">
+        <Outlet />
       </div>
     </div>
   );

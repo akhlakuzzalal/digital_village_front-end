@@ -60,7 +60,7 @@ const blogs = [
 
 const Myblogs = () => {
   return (
-    <div className="flex flex-wrap gap-6">
+    <div className="flex flex-wrap justify-evenly items-center gap-6">
       {blogs.map((blog) => (
         <BlogCard key={blog._id} blog={blog} />
       ))}
