@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const UserAppointment = ({ date }) => {
+  const user = useSelector((state) => state.user.user);
   const [appointment, setAppointment] = useState([]);
-  const email = 'user5@gmail.com';
+  const email = user.email;
 
   useEffect(() => {
     const url = `http://localhost:5000/appointment/findUserAppointment?email=${email}&date=${date}`;
