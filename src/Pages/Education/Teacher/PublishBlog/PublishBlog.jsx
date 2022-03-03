@@ -53,7 +53,7 @@ const PublishBlog = () => {
         onSubmit={handleSubmit(handlePublishBlogs)}
         className="space-y-6 mx-auto"
       >
-        <div className="flex items-center justify-evenly">
+        <div className="flex flex-wrap items-center justify-evenly">
           <div className="space-y-6">
             {/* title of the blog */}
             <input

@@ -11,6 +11,7 @@ const AddEvents = () => {
     handleSubmit,
   } = useForm();
   const dispatch = useDispatch();
+
   const handleAddEvent = (data) => {
     dispatch(addAnEvent(data));
     alert('successfully added');

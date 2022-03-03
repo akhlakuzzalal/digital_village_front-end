@@ -12,12 +12,15 @@ import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import CaseSingle from './Pages/Donations/Causes/CaseSingle';
 import Donations from './Pages/Donations/Donations';
+import BlogDetails from './Pages/Education/BlogDetails/BlogDetails';
 import DetailVideo from './Pages/Education/DetailVideo/DetailVideo';
 import Education from './Pages/Education/Education';
+import AllBlogs from './Pages/Education/Student/AllBlogs/AllBlogs';
+import AllVideos from './Pages/Education/Student/AllVideos/AllVideos';
 import FavouriteBlogs from './Pages/Education/Student/FavouriteBlogs/FavouriteBlogs';
 import FavouriteVideos from './Pages/Education/Student/FavouriteVideos/FavouriteVideos';
 import Student from './Pages/Education/Student/Student';
-import StudentDashboard from './Pages/Education/Student/studentDashboard/StudentDashboard';
+import StudentHome from './Pages/Education/Student/StudentHome/StudentHome';
 import Analytics from './Pages/Education/Teacher/Analytics/Analytics';
 import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
 import Myvideos from './Pages/Education/Teacher/Myvideos/Myvideos';
@@ -112,12 +115,15 @@ function App() {
 
             {/* routes for student */}
             <Route path="student" element={<Student />}>
-              <Route path="dashboard" element={<StudentDashboard />} />
+              <Route path="home" element={<StudentHome />} />
+              <Route path="allBlogs" element={<AllBlogs />} />
+              <Route path="allVideos" element={<AllVideos />} />
               <Route path="favouriteBlogs" element={<FavouriteBlogs />} />
               <Route path="favouriteVideos" element={<FavouriteVideos />} />
               <Route path="analytics" element={<Analytics />} />
             </Route>
             <Route path="detailvideo/:id" element={<DetailVideo />} />
+            <Route path="blogDetails/:id" element={<BlogDetails />} />
 
             {/* medical related routes */}
             <Route path="medical" element={<MedicalDashboard />}>

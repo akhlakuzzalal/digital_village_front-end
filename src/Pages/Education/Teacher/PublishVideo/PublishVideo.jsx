@@ -38,7 +38,7 @@ const PublishVideo = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-full space-y-6">
+    <div className="flex flex-col items-center justify-center space-y-6 px-3">
       <h1>Publish your video now</h1>
       <form
         onSubmit={handleSubmit(handlePublishVideo)}
@@ -48,16 +48,12 @@ const PublishVideo = () => {
         <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
           {...register('title', { required: true })}
-          placeholder="Title of your blog"
+          placeholder="Title for your video"
         />
 
         {/* file upload */}
         <div>
-          <FileUpload
-            onDrop={onDrop}
-            file={file}
-            message="Upload a banner for your blog"
-          />
+          <FileUpload onDrop={onDrop} file={file} message="Upload Your video" />
         </div>
 
         {/* description of your video */}
@@ -79,7 +75,7 @@ const PublishVideo = () => {
         <input
           className="btn bg-primary rounded-lg w-full cursor-pointer hover:bg-opacity-80  transition-all duration-300"
           type="submit"
-          value="Publish blogs"
+          value="Publish"
         />
       </form>
     </div>

@@ -28,6 +28,9 @@ const RegisterTeacher = () => {
 
   return (
     <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
+      <h3 className="text-center mt-3">
+        Please fill up the form to be a part of our mission
+      </h3>
       <form
         className=" space-y-6 mt-10 w-2/2 md:w-1/2  mx-auto"
         onSubmit={handleSubmit(handleTeacherRegistration)}
