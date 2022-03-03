@@ -56,7 +56,7 @@ import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import NotFound from './Pages/shared/NotFound/NotFound';
-import Profile from './Pages/User/DashboardComponent/Profile';
+import Profile from './Pages/User/DashboardComponent/Profile/Profile';
 import UserDashboard from './Pages/User/UserDashboard';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
 
