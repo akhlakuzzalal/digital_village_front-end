@@ -18,9 +18,11 @@ const NewsSideCard = ({ n }) => {
           <div className="flex flex-col space-y-3">
             <p>{n.title.slice(0.20)}...</p>
             <p>{n.description.slice(0,30)}...</p>
-            <button className="text-primary text-lg hover:text-black transition-all duration-500 border-b-2 border-b-primary">
-              Read More
-            </button>
+            <Link to={`/newsDetails/${n._id}`}>
+        <button className="text-primary text-lg hover:text-black transition-all duration-500 border-b-2 border-b-primary">
+          Read More
+        </button>
+        </Link>
             
           </div>
         </div>
