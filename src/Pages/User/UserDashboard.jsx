@@ -5,7 +5,7 @@ import { SiHomebridge } from 'react-icons/si';
 import { Outlet, useLocation } from 'react-router-dom';
 import Sidebar from '../../Components/Sidebar';
 import Header from '../Education/Teacher/Dashboard/partials/Header';
-import Profile from './DashboardComponent/Profile';
+import Profile from './DashboardComponent/Profile/Profile';
 const links = [
   {
     name: 'Profile',

@@ -41,7 +41,7 @@ const Register = () => {
   const redirect_uri = location?.state?.form || '/';
 
   const handleGoogleRegister = () => {
-    processSignInWithGoogle(navigate, redirect_uri);
+    processSignInWithGoogle(navigate);
   };
 
   const handleRegister = async ({
@@ -135,9 +135,9 @@ const Register = () => {
             required
           />
 
-           {errors.email && (
-              <p className="text-error mb-2">{errors.email.message}</p>
-            )}
+          {errors.email && (
+            <p className="text-error mb-2">{errors.email.message}</p>
+          )}
 
           {/* date of birth */}
           <div className="space-y-6 text-center">

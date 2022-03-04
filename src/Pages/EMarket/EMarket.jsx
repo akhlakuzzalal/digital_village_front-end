@@ -21,7 +21,7 @@ const EMarket = () => {
     dispatch(fetchAllProducts());
   }, []);
   return (
-    <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       {/* Banner */}
       <MarketBanner></MarketBanner>
       {/* Catagories */}

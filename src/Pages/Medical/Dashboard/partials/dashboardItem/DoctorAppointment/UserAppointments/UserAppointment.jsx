@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import PayModal from '../../../../../../../Components/Pay/PayModal';
+import { setPayModal } from '../../../../../../../redux/slices/payModal/PayModalSlice';
 
 const UserAppointment = ({ date }) => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const [appointment, setAppointment] = useState([]);
   const email = user.email;
@@ -61,7 +64,10 @@ const UserAppointment = ({ date }) => {
                       {row.price}
                     </td>
                     <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                      <button className="bg-black border-1 rounded-md text-white py-1 px-4">
+                      <button
+                        onClick={() => dispatch(setPayModal(true))}
+                        className="bg-black border-1 rounded-md text-white py-1 px-4"
+                      >
                         Pay
                       </button>
                     </td>
@@ -72,6 +78,7 @@ const UserAppointment = ({ date }) => {
           </div>
         </div>
       </div>
+      <PayModal price={200} id={34} returnPage={'medical/appointment'} />
     </div>
   );
 };

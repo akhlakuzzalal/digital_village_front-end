@@ -6,11 +6,13 @@ import { deleteAnEvent } from '../../../redux/slices/event/eventSlice';
 
 const ManageEventsCard = ({
   event: { _id, title, type, image, date, time, place },
+  setDeleteEvent,
 }) => {
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
-    dispatch(deleteAnEvent(_id));
+  const handleDelete = async () => {
+    const response = await dispatch(deleteAnEvent(_id));
+    setDeleteEvent(response?.payload?.deletedCount);
   };
 
   const handleAlert = () => {
@@ -30,7 +32,7 @@ const ManageEventsCard = ({
     });
   };
   return (
-    <div className="border rounded-xl border">
+    <div className="border rounded-xl">
       <img src={image} alt={title} />
       <div className="">
         <div className=" p-4 md:p-10">

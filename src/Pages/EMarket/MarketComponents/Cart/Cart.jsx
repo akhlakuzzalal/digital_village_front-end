@@ -25,7 +25,7 @@ const Cart = () => {
   };
   return (
     <div
-      className="mt-[88px] w-11/12 mx-auto"
+      className="mt-[80px] w-11/12 mx-auto"
       style={{ minHeight: 'calc(100vh - 700px)' }}
     >
       <div className="flex flex-col">

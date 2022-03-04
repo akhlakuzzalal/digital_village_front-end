@@ -12,12 +12,15 @@ import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import CaseSingle from './Pages/Donations/Causes/CaseSingle';
 import Donations from './Pages/Donations/Donations';
+import BlogDetails from './Pages/Education/BlogDetails/BlogDetails';
 import DetailVideo from './Pages/Education/DetailVideo/DetailVideo';
 import Education from './Pages/Education/Education';
+import AllBlogs from './Pages/Education/Student/AllBlogs/AllBlogs';
+import AllVideos from './Pages/Education/Student/AllVideos/AllVideos';
 import FavouriteBlogs from './Pages/Education/Student/FavouriteBlogs/FavouriteBlogs';
 import FavouriteVideos from './Pages/Education/Student/FavouriteVideos/FavouriteVideos';
 import Student from './Pages/Education/Student/Student';
-import StudentDashboard from './Pages/Education/Student/studentDashboard/StudentDashboard';
+import StudentHome from './Pages/Education/Student/StudentHome/StudentHome';
 import Analytics from './Pages/Education/Teacher/Analytics/Analytics';
 import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
 import Myvideos from './Pages/Education/Teacher/Myvideos/Myvideos';
@@ -56,8 +59,9 @@ import Footer from './Pages/shared/Home/Footer/Footer';
 import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
+import AddReview from './Pages/shared/Home/Reviews/AddReview/AddReview';
 import NotFound from './Pages/shared/NotFound/NotFound';
-import Profile from './Pages/User/DashboardComponent/Profile';
+import Profile from './Pages/User/DashboardComponent/Profile/Profile';
 import UserDashboard from './Pages/User/UserDashboard';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
 
@@ -113,12 +117,15 @@ function App() {
 
             {/* routes for student */}
             <Route path="student" element={<Student />}>
-              <Route path="dashboard" element={<StudentDashboard />} />
+              <Route path="home" element={<StudentHome />} />
+              <Route path="allBlogs" element={<AllBlogs />} />
+              <Route path="allVideos" element={<AllVideos />} />
               <Route path="favouriteBlogs" element={<FavouriteBlogs />} />
               <Route path="favouriteVideos" element={<FavouriteVideos />} />
               <Route path="analytics" element={<Analytics />} />
             </Route>
             <Route path="detailvideo/:id" element={<DetailVideo />} />
+            <Route path="blogDetails/:id" element={<BlogDetails />} />
 
             {/* medical related routes */}
             <Route path="medical" element={<MedicalDashboard />}>
@@ -144,9 +151,8 @@ function App() {
 
             {/* next */}
             {/* <Route path="eventDetails/:id" element={<EventDetails />} /> */}
-            <Route path="add-events" element={<AddEvents />} />
+
             <Route path="eventDetails/:id" element={<EventDetails />} />
-            <Route path="manageEvents" element={<ManageEvents />} />
 
             {/* development related routes */}
             <Route path="development" element={<Development />} />
@@ -174,9 +180,12 @@ function App() {
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
+              <Route path="manageEvents" element={<ManageEvents />} />
               <Route path="donation" element={<Donation />} />
               <Route path="development" element={<DevelopmentManage />} />
               <Route path="market" element={<MarketManagement />} />
+              <Route path="add-events" element={<AddEvents />} />
+              <Route path="add-review" element={<AddReview />} />
               <Route path="medical" element={<AddAppointment />} />
             </Route>
           </Routes>

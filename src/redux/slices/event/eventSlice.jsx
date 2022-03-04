@@ -28,7 +28,7 @@ export const deleteAnEvent = createAsyncThunk(
   async (id) => {
     const response = await axios
       .delete(`/event/deleteEvent/?id=${id}`)
-      .then((response) => response.data._id);
+      .then((response) => response.data);
     return response;
   }
 );
@@ -62,24 +62,19 @@ const eventSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchAllEvent.fulfilled, (state, { payload }) => {
-      console.log('allEvent', payload);
       state.allEvents = payload;
     });
     builder.addCase(fetchUpcomingEvents.fulfilled, (state, { payload }) => {
-      console.log('upcoming events', payload);
       state.upcomingEvents = payload;
     });
     builder.addCase(fetchArchivedEvents.fulfilled, (state, { payload }) => {
-      console.log('archived events', payload);
       state.archivedEvents = payload;
     });
     //add event
     builder.addCase(addAnEvent.fulfilled, (state, { payload }) => {
-      console.log('add', payload);
       state.allEvents.push(payload);
     });
     builder.addCase(deleteAnEvent.fulfilled, (state, { payload }) => {
-      console.log('delete', payload);
       state.allEvents.filter((event) => event._id !== payload);
     });
   },

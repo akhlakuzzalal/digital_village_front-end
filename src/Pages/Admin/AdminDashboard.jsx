@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BiDonateHeart } from 'react-icons/bi';
 import { BsCalendar2EventFill } from 'react-icons/bs';
 import { FaConnectdevelop, FaShopify, FaUsers } from 'react-icons/fa';
 import { Outlet, useLocation } from 'react-router-dom';
+import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
 // import Sidebar from '../../Components/Sidebar';
 // import WelcomeBanner from '../../Components/WelcomeBanner';
@@ -19,22 +20,30 @@ const links = [
         icon: <FaUsers size={30} />,
         path: '/admin',
       },
-      {
-        name: 'All Users',
-        icon: <FaUsers size={30} />,
-        path: '/admin',
-      },
-      {
-        name: 'All Users',
-        icon: <FaUsers size={30} />,
-        path: '/admin',
-      },
     ],
   },
   {
     name: 'Events',
     icon: <BsCalendar2EventFill size={30} />,
     path: '/admin/events',
+    nestedPath: [
+      {
+        name: 'Add Event',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/add-events',
+      },
+      {
+        name: 'Delete Event',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/manageEvents',
+      },
+    ],
+  },
+
+  {
+    name: 'Add Review',
+    icon: <BsCalendar2EventFill size={30} />,
+    path: '/admin/add-review',
   },
   {
     name: 'Donation',
@@ -53,10 +62,15 @@ const links = [
   },
 ];
 
-const AdminDashboard = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [showText, setShowText] = useState(true);
+const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'Service', href: '/#service' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+  { name: 'Admin', href: '/admin' },
+];
 
+const AdminDashboard = () => {
   const location = useLocation();
   const initial =
     location.pathname === '/admindashboard' ||
@@ -64,21 +78,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
-      {/* Sidebar */}
-      {/* <Sidebar
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-        showText={showText}
-        setShowText={setShowText}
-        links={links}
-      /> */}
-
-      {/* contents */}
-      {/* <div className="flex-1">
-        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        {initial ? <WelcomeBanner /> : <Outlet />}
-      </div> */}
-
+      <Navbar navigation={navigation} />
       <NewSidebar links={links} />
       <Outlet />
     </div>

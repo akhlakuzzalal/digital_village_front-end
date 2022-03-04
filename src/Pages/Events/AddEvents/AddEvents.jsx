@@ -11,6 +11,7 @@ const AddEvents = () => {
     handleSubmit,
   } = useForm();
   const dispatch = useDispatch();
+
   const handleAddEvent = (data) => {
     dispatch(addAnEvent(data));
     alert('successfully added');
@@ -92,3 +93,14 @@ const AddEvents = () => {
 export default AddEvents;
 
 // https://i.ibb.co/37FHs2H/Cap.png
+//<a href="https://imgbb.com/"><img src="https://i.ibb.co/dLKtQ2z/ta-W8-Os-Lp-400x400.jpg" alt="ta-W8-Os-Lp-400x400" border="0"></a>
+
+//<a href="https://ibb.co/zV897mc"><img src="https://i.ibb.co/r2b8cQP/trade-fair.jpg" alt="trade-fair" border="0"></a>
+
+//<a href="https://ibb.co/BqKQW8x"><img src="https://i.ibb.co/WgpM8Sw/children-listening-in-computer-class.jpg" alt="children-listening-in-computer-class" border="0"></a>
+
+//<a href="https://imgbb.com/"><img src="https://i.ibb.co/sFGrp51/cricket.jpg" alt="cricket" border="0"></a>
+
+//<a href="https://ibb.co/16v8rX7"><img src="https://i.ibb.co/ZmLWBgG/tree.jpg" alt="tree" border="0"></a>
+
+//<a href="https://imgbb.com/"><img src="https://i.ibb.co/mF6t5dJ/main.jpg" alt="main" border="0"></a>

@@ -1,78 +1,61 @@
-import React, { useState } from 'react';
-import { BsNewspaper } from 'react-icons/bs';
-import { MdOutlineVideoSettings } from 'react-icons/md';
-import { RiDashboard2Line } from 'react-icons/ri';
+import React from 'react';
+import { BsNewspaper, BsPencilSquare } from 'react-icons/bs';
+import { MdOndemandVideo, MdVideoSettings } from 'react-icons/md';
+import { SiGoogleanalytics } from 'react-icons/si';
 import { Outlet, useLocation } from 'react-router-dom';
-import DashboardHeader from '../../../Components/DashboardHeader';
-import Sidebar from '../../../Components/Sidebar';
+import Navbar from '../../../Components/Navbar';
+import NewSidebar from '../../../Components/Sidebar/NewSidebar';
 import Analytics from './Analytics/Analytics';
 
 const links = [
   {
-    name: 'My Blogs',
-    icon: <BsNewspaper size={30} />,
-    path: '/teacher/myblogs',
-    nestedPath: [
-      {
-        name: 'nested 1',
-        icon: <RiDashboard2Line size={30} />,
-        path: '/teacher/myvideos',
-      },
-      {
-        name: 'nested 2',
-        icon: <RiDashboard2Line size={30} />,
-        path: '/#',
-      },
-    ],
-  },
-  {
     name: 'Publish Blog',
-    icon: <BsNewspaper size={30} />,
+    icon: <BsPencilSquare size={30} />,
     path: '/teacher/publishBlog',
   },
   {
     name: 'Publish video',
-    icon: <BsNewspaper size={30} />,
+    icon: <MdVideoSettings size={30} />,
     path: '/teacher/publishVideo',
   },
   {
+    name: 'My Blogs',
+    icon: <BsNewspaper size={30} />,
+    path: '/teacher/myblogs',
+  },
+
+  {
     name: 'My videos',
-    icon: <MdOutlineVideoSettings size={30} />,
+    icon: <MdOndemandVideo size={30} />,
     path: '/teacher/myvideos',
   },
   {
     name: 'analytics',
-    icon: <RiDashboard2Line size={30} />,
+    icon: <SiGoogleanalytics size={30} />,
     path: '/teacher/analytics',
   },
 ];
 
-const Teacher = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [showText, setShowText] = useState(true);
+// Navbar dynamic
+const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'Service', href: '/#service' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+  { name: 'Admin', href: '/admin' },
+];
 
+const Teacher = () => {
   const location = useLocation();
-  const initial =
+  const isHomePage =
     location.pathname === '/teacher' || location.pathname === '/teacher/';
 
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
-      {/* Sidebar */}
-      <Sidebar
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-        showText={showText}
-        setShowText={setShowText}
-        links={links}
-      />
-
-      {/* contents */}
-      <div className="flex-1">
-        <DashboardHeader
-          sidebarOpen={sidebarOpen}
-          setSidebarOpen={setSidebarOpen}
-        />
-        {initial ? <Analytics /> : <Outlet />}
+      <Navbar navigation={navigation} />
+      <NewSidebar links={links} />
+      <div className="mt-[80px] flex-1 ml-14">
+        {isHomePage ? <Analytics /> : <Outlet />}
       </div>
     </div>
   );

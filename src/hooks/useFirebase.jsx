@@ -109,7 +109,10 @@ const useFirebase = () => {
         navigate(redirect_uri);
         setAuthError('');
       })
-      .catch((error) => setAuthError(error.message))
+      .catch((error) => {
+        setAuthError(error.message);
+        console.log(error);
+      })
       .finally(() => setIsLoading(false));
   };
 
@@ -133,21 +136,22 @@ const useFirebase = () => {
   }, [auth]);
 
   //process user logout
-  const logout = () => {
+  const logout = async () => {
     setIsLoading(true);
-    return signOut(auth)
-      .then(() => {
-        // clear all info of the user
-        logoutFromDB();
-        dispatch(setUser({}));
-        setAuthError('');
-        dispatch(setRoles([]));
-        dispatch(setToken(''));
-      })
-      .catch((error) => {
-        setAuthError(error.message);
-      })
-      .finally(() => setIsLoading(false));
+    try {
+      await signOut(auth);
+      console.log('clicked 2');
+      logoutFromDB();
+      dispatch(setUser({}));
+      setAuthError('');
+      dispatch(setRoles([]));
+      dispatch(setToken(''));
+    } catch (error) {
+      console.log(error);
+      setAuthError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const registerToDB = async (newUser) => {
