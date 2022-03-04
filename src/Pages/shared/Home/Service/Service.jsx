@@ -78,9 +78,9 @@ const Service = () => {
 
   return (
     <>
-      <h1 className=" text-5xl md:text-7xl pb-4 text-center mx-auto font-bold py-2 my-8  text-primary">
+      {/* <h1 className=" text-5xl md:text-7xl pb-4 text-center mx-auto font-bold py-2 my-8  text-primary">
         Services
-      </h1>
+      </h1> */}
       <section
         id="service"
         className="space-y-6 md:space-y-0 flex flex-wrap py-8 mt-10"

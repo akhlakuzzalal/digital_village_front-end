@@ -1,6 +1,7 @@
 import React from 'react';
 const RegistrationPdf = (props) => {
-  const { name, fatherName, MotherName, birthDate, nidNo, place } = props.info;
+  const { name, email, fatherName, motherName, date, nid, mobile, address } =
+    props.info;
   return (
     <div className="flex justify-center items-center my-5 ">
       {props.length === 0 ? (
@@ -8,11 +9,13 @@ const RegistrationPdf = (props) => {
       ) : (
         <div className="w-2/3   flex-col justify-start items-center">
           <h3>Name : {name}</h3>
+          <p>Email: {email}</p>
           <p> Father's Name: {fatherName}</p>
-          <p> Mother's Name: {MotherName}</p>
-          <p>Birth Date: {birthDate} </p>
-          <p>NID: {nidNo}</p>
-          <small> Place: {place} </small>
+          <p> Mother's Name: {motherName}</p>
+          <p>Birth Date: {date} </p>
+          <p>NID: {nid}</p>
+          <p>Contact: {mobile}</p>
+          <p> Address: {address} </p>
         </div>
       )}
     </div>

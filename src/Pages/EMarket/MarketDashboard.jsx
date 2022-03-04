@@ -3,7 +3,7 @@ import { MdOutlineProductionQuantityLimits } from 'react-icons/md';
 import { RiDashboard2Line } from 'react-icons/ri';
 import { SiHomebridge } from 'react-icons/si';
 import { Outlet, useLocation } from 'react-router-dom';
-import Sidebar from '../../Components/Sidebar';
+import NewSidebar from '../../Components/Sidebar/NewSidebar';
 import Header from '../Education/Teacher/Dashboard/partials/Header';
 import MyOrder from './MarketComponents/DashboardItems/MyOrder';
 const links = [
@@ -36,7 +36,7 @@ const MarketDashboard = () => {
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
       {/* Sidebar */}
-      <Sidebar
+      <NewSidebar
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
         showText={showText}

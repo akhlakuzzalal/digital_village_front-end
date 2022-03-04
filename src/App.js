@@ -43,6 +43,7 @@ import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import ManageEvents from './Pages/Events/ManageEvents/ManageEvents';
 import UpcomingEvents from './Pages/Events/UpcomingEvents/UpcomingEvents';
+import AddAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/AddAppointment';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
 import UserAppointments from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/UserAppointments/UserAppointments';
 import RegForm from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegForm/RegForm';
@@ -58,8 +59,9 @@ import Footer from './Pages/shared/Home/Footer/Footer';
 import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
+import AddReview from './Pages/shared/Home/Reviews/AddReview/AddReview';
 import NotFound from './Pages/shared/NotFound/NotFound';
-import Profile from './Pages/User/DashboardComponent/Profile';
+import Profile from './Pages/User/DashboardComponent/Profile/Profile';
 import UserDashboard from './Pages/User/UserDashboard';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
 
@@ -149,7 +151,7 @@ function App() {
 
             {/* next */}
             {/* <Route path="eventDetails/:id" element={<EventDetails />} /> */}
-            <Route path="add-events" element={<AddEvents />} />
+
             <Route path="eventDetails/:id" element={<EventDetails />} />
             <Route path="manageEvents" element={<ManageEvents />} />
 
@@ -182,6 +184,9 @@ function App() {
               <Route path="donation" element={<Donation />} />
               <Route path="development" element={<DevelopmentManage />} />
               <Route path="market" element={<MarketManagement />} />
+              <Route path="add-events" element={<AddEvents />} />
+              <Route path="add-review" element={<AddReview />} />
+              <Route path="medical" element={<AddAppointment />} />
             </Route>
           </Routes>
         </ScrollToTop>

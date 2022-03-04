@@ -5,7 +5,7 @@ import MedicineShopBanner from './MedicineShopBanner';
 
 const MedicineShop = () => {
   return (
-    <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <div id="medecine" className="mt-20">
         <MedicineShopBanner />
         <div className="w-11/12 mx-auto mt-10">

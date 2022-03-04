@@ -10,7 +10,7 @@ const UserAppointments = () => {
   };
   return (
     <>
-      <h3 className="text-center my-8">Your appointments</h3>
+      <h3 className="text-center text-primary my-8">Your appointments</h3>
       <div className="flex justify-center items-center">
         <div className="w-full md:W-1/2 flex justify-center items-center">
           <Calender onChange={onChange} />

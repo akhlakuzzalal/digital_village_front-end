@@ -1,60 +1,62 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
-import img from '../../../../../../../assets/events/Add events.PNG';
 const RegForm = () => {
+  const user = useSelector((state) => state.user.user);
+
   const {
-    register,
     formState: { errors },
-    reset,
+    register,
+    handleSubmit,
   } = useForm();
+  const email = user.email;
   const navigate = useNavigate();
   const redirect_uri = '/medical/pdf';
-  const handleSubmit = (data) => {
-    swal({
-      title: 'want to proceed?',
-      // text: 'Once deleted, you will not be able to recover this imaginary file!',
-      icon: 'warning',
 
-      buttons: true,
-    }).then((willConfirm) => {
-      if (willConfirm) {
-        navigate(redirect_uri);
-      }
-    });
-    // console.log(data);
-    // fetch('https://polar-springs-14002.herokuapp.com/services', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     if (data.insertedId) {
-    //       Swal.fire('Good job!', 'Added Successfully', 'success');
-    //       reset();
+  const onSubmit = (data) => {
+    fetch('http://localhost:5000/vaccine/addInfo', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        swal({
+          title: 'Want to proceed?',
+          // text: 'Once deleted, you will not be able to recover this imaginary file!',
+          icon: 'warning',
 
-    //     }
-    //   });
+          buttons: true,
+        }).then((willConfirm) => {
+          if (willConfirm) {
+            console.log('ok');
+            swal('Registration Done', {
+              icon: 'success',
+            });
+          }
+        });
+      });
+    navigate(redirect_uri);
   };
 
+  
   return (
     <>
       <div className="add-events-main my-40 lg:flex  lg:mx-32 md:mx-32 mx-0 border rounded-2xl">
         <div>
-          <img
-            className="lg:h-[780px] md:h-[580px] lg:w-[1000px] md:w-[1000px] w-[100%] h-[300px]"
-            src={img}
-            alt=""
-          />
-        </div>
-        {/* add event form */}
-        <div>
           <h1 className="ml-10 mt-6 text-3xl ">Give Your Information</h1>
-          <form className=" space-y-6 mx-10 mt-10" onSubmit={handleSubmit}>
+          <form
+            className=" space-y-6 mx-10 mt-10"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             {/* email */}
+            <input
+              className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
+              {...register('email')}
+              value={email}
+            />
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
               {...register('name')}
@@ -74,17 +76,22 @@ const RegForm = () => {
               type="Date"
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
               {...register('date')}
-              placeholder="date"
+              placeholder="Birth date"
             />
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-              {...register('NID number')}
+              {...register('nid')}
               placeholder="Your NID Number"
+            />
+            <input
+              className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('mobile')}
+              placeholder="Contact"
             />
 
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('place')}
+              {...register('address')}
               placeholder="Place"
             />
 

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from '../../../api/axios';
 import { setCauses } from '../../../redux/slices/Donations/donationSlice';
 import CauseCard from './CauseCard';
 
@@ -9,11 +10,7 @@ const Causes = () => {
   // console.log(causes);
 
   useEffect(() => {
-    fetch('https://cryptic-everglades-35803.herokuapp.com/services')
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch(setCauses(data));
-      });
+    axios.get('/donation/cuases').then((res) => dispatch(setCauses(res.data)));
   }, []);
 
   return (
@@ -22,10 +19,10 @@ const Causes = () => {
       className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 py-12"
     >
       <div className="flex flex-col col-span-2 md:col-span-1 justify-center items-center py-7">
-        <h3 className="animate-bounce text-green-500">
-          The Causes We Care About
-        </h3>
-        <p>You can donate the available from here and Get Help Request</p>
+        <h3 className="text-gray-800">The Causes We Care About</h3>
+        <p className="text-gray-600">
+          You can donate the available from here and Get Help Request
+        </p>
       </div>
       <div
         id="donation"

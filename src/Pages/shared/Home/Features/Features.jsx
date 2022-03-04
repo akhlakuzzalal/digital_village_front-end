@@ -46,12 +46,7 @@ const Features = () => {
   }, [active]);
 
   return (
-    <div className="grid grid-cols-2 place-items-center md:flex md:justify-end md:items-center text-center gap-6 lg:-mt-14 md:mr-20 mx-3 text-black">
-      <h3 className="mx-auto capitalize hidden lg:block">
-        All Facilities in one place
-        <br />
-        <small className="text-right block text-sm">- by Digital Village</small>
-      </h3>
+    <div className="grid grid-cols-2 place-items-center md:flex md:justify-start md:items-center text-center gap-6 lg:mt-20 md:ml-20 mx-3 text-black">
       {features.map((feature) => (
         <FeatureCard key={feature._id} feature={feature} active={active} />
       ))}
