@@ -61,11 +61,7 @@ const VaccineInfo = () => {
       <div className=" w-1/2 p-3">
         <h3 className=" text-center text-primary">YOUR INFORMATION</h3>
 
-        {info.length === 0 ? (
-          <p>Loadding...</p>
-        ) : (
-          <RegistrationPdf info={info} />
-        )}
+        <RegistrationPdf info={info} />
 
         <div className="flex justify-center ">
           <button

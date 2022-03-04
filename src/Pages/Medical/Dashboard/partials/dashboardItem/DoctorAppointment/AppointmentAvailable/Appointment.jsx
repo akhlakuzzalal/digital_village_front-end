@@ -2,11 +2,8 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 
-const Appointment = (props) => {
-  console.log(props);
-  console.log(props.appointment);
-
-  const { id, Service, email, description, time, Cost } = props.appointment;
+const Appointment = ({ service, description, time, price }) => {
+ 
   const navigate = useNavigate();
   const redirect_uri = '/medical/userAppointments';
 
@@ -28,7 +25,7 @@ const Appointment = (props) => {
       <div class="p-5">
         <Link to="#">
           <h5 class="mb-2 text-2xl font-bold tracking-tight hover:text-blue-600 text-gray-900 dark:text-white">
-            {Service}
+            {service}
           </h5>
         </Link>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
@@ -36,7 +33,7 @@ const Appointment = (props) => {
         </p>
 
         <p className="my-.5">(from {time}) </p>
-        <p>Cost : {Cost} </p>
+        <p>Cost : {price} </p>
         <Link
           to="#"
           class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-black rounded-lg "
