@@ -29,7 +29,6 @@ export const deleteAnEvent = createAsyncThunk(
     const response = await axios
       .delete(`/event/deleteEvent/?id=${id}`)
       .then((response) => response.data);
-    console.log(response);
     return response;
   }
 );

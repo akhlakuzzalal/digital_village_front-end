@@ -12,7 +12,6 @@ const ManageEvents = () => {
     dispatch(fetchAllEvent());
     setDeleteEvent(0);
   }, [deleteEvent]);
-  console.log(deleteEvent);
 
   return (
     <div>
