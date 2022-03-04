@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import required modules
-import { Autoplay, Navigation } from 'swiper';
+import { Autoplay } from 'swiper';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -30,35 +30,28 @@ const Reviews = () => {
       </div>
 
       <Swiper
-        slidesPerView={2}
-        slidesPerGroup={1}
-        spaceBetween={0}
-        centeredSlides={false}
+        slidesPerGroup={2}
         autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
+          delay: 3500,
         }}
         breakpoints={{
-          '@0.00': {
+          640: {
             slidesPerView: 1,
-            spaceBetween: 0,
+            spaceBetween: 10,
           },
-          '@0.75': {
+          768: {
             slidesPerView: 2,
-            spaceBetween: 20,
+            spaceBetween: 10,
           },
-          '@1.00': {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          '@1.50': {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
+          // 1024: {
+          //   slidesPerView: 4,
+          //   spaceBetween: 10,
+          // },
         }}
-        navigation={true}
-        modules={[Autoplay, Navigation]}
-        className="mySwiper w-full bg-slate-50 pb-36  "
+        loop={true}
+        loopFillGroupWithBlank={true}
+        modules={[Autoplay]}
+        className="swiper"
       >
         <SwiperSlide className="flex justify-center p-10 space-x-2 ml-[400px]">
           {allReview?.map((reviews) => (

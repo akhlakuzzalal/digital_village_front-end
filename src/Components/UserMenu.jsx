@@ -95,22 +95,13 @@ const UserMenu = () => {
             <div className="text-xs text-slate-500 italic">Administrator</div>
           </div>
           <ul>
-            <li className="hover:bg-green-500">
-              <Link
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                to="/"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                Profile
-              </Link>
-            </li>
             {user.name && isUser ? (
               <li className="hover:bg-green-500">
                 <Link
                   className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
                   to="/userdashboard"
                 >
-                  User dashboard
+                  Profile
                 </Link>
               </li>
             ) : (
