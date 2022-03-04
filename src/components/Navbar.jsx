@@ -15,7 +15,6 @@ const Navbar = ({ navigation }) => {
   const navigate = useNavigate();
 
   const user = useSelector((state) => state.user.user);
-  const isUser = user?.name?.includes('user');
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   //header change function
