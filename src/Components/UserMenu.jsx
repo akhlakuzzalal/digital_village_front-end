@@ -108,8 +108,7 @@ const UserMenu = () => {
               <li className="hover:bg-green-500">
                 <Link
                   className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                  to="/"
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  to="/userdashboard"
                 >
                   User dashboard
                 </Link>
@@ -118,8 +117,7 @@ const UserMenu = () => {
               <li className="hover:bg-green-500">
                 <Link
                   className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                  to="/"
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  to="/admin"
                 >
                   Admin dashboard
                 </Link>
