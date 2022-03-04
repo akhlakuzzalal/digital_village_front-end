@@ -65,7 +65,7 @@ const DetailVideo = () => {
 
   return (
     <div
-      className="mt-[80px] space-y-6"
+      className="mt-[88px] space-y-6"
       style={{ minHeight: 'calc(100vh - 700px)' }}
     >
       <h1 className="text-center">{video?.title}</h1>
@@ -74,7 +74,9 @@ const DetailVideo = () => {
         src={video?.video?.path}
         controls
       ></video>
-      <Comments />
+      <div className="mx-auto md:w-5/6">
+        <Comments />
+      </div>
     </div>
   );
 };

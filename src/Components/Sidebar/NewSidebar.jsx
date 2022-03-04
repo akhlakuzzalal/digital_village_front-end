@@ -7,7 +7,7 @@ const NewSidebar = ({ links }) => {
 
   return (
     <div
-      className={`bg-slate-900 text-white mt-[80px] z-50 fixed overflow-y-scroll ${
+      className={`bg-slate-900 text-white mt-[80px] z-30 fixed ${
         showText && 'min-w-[200px]'
       }`}
       style={{ height: 'calc(100vh - 88px)' }}

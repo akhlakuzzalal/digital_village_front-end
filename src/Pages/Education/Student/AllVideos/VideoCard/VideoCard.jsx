@@ -3,7 +3,7 @@ import { BsFillPlayCircleFill } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import Rating from '../../../../../Components/Rating';
 
-const VideoCard = ({ video }) => {
+const VideoCard = ({ video, children }) => {
   const navigate = useNavigate();
 
   return (
@@ -20,11 +20,15 @@ const VideoCard = ({ video }) => {
               <Rating rating={video?.rating} />
             </div>
           </div>
+
           <div className="mr-3 group-hover:animate-ping">
             <BsFillPlayCircleFill size={40} className="text-info " />
           </div>
         </div>
-        <p className="px-3">{video?.publishDate}</p>
+      </div>
+      <div className="flex justify-between p-3">
+        <p className="">{video?.publishDate}</p>
+        <div>{children}</div>
       </div>
     </div>
   );
