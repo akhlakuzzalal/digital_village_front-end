@@ -13,14 +13,7 @@ const links = [
   {
     name: 'All Users',
     icon: <FaUsers size={30} />,
-    path: '/admin',
-    nestedPath: [
-      {
-        name: 'All Users',
-        icon: <FaUsers size={30} />,
-        path: '/admin',
-      },
-    ],
+    path: '/admin/allusers',
   },
   {
     name: 'Events',

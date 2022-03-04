@@ -10,6 +10,9 @@ const UserMenu = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
+  const user = useSelector((state) => state.user.user);
+  const isUser = user.name.includes('user');
+
   const trigger = useRef(null);
   const dropdown = useRef(null);
 
@@ -37,8 +40,6 @@ const UserMenu = () => {
     document.addEventListener('keydown', keyHandler);
     return () => document.removeEventListener('keydown', keyHandler);
   });
-
-  const user = useSelector((state) => state.user.user);
 
   // log out
   const handleLogout = async () => {
@@ -103,6 +104,27 @@ const UserMenu = () => {
                 Profile
               </Link>
             </li>
+            {user.name && isUser ? (
+              <li className="hover:bg-green-500">
+                <Link
+                  className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                  to="/"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                >
+                  User dashboard
+                </Link>
+              </li>
+            ) : (
+              <li className="hover:bg-green-500">
+                <Link
+                  className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                  to="/"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                >
+                  Admin dashboard
+                </Link>
+              </li>
+            )}
             <li className="hover:bg-green-500">
               <Link
                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
