@@ -30,7 +30,7 @@ const services = [
     name: 'Medical',
     image: medical,
     detail:
-      'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
+      'Medical services means Medically Necessary services, including, as the context requires, Confinement, treatments, procedures, tests, examinations .',
     desc: 'Digital Village Service!',
     controlData: 'medical',
   },
@@ -39,7 +39,7 @@ const services = [
     name: 'Events',
     image: event,
     detail:
-      'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
+      'Check out some amazing free events in village to take away all the fun experiences. There can be a lot that  might be offering but all the events  make it unique, distinctive and different from others.',
     desc: 'Digital Village Service!',
     controlData: 'events',
   },
@@ -48,7 +48,7 @@ const services = [
     name: 'Donations',
     image: donate,
     detail:
-      'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
+      ' Donation is a gift for charity, humanitarian aid, or to benefit a cause. A donation may take various forms, including money, alms, services, or goods such as clothing, toys, food, or vehicles. ',
     desc: 'Donate available Get Help Request',
     controlData: 'donation',
   },
@@ -57,7 +57,7 @@ const services = [
     name: 'Development',
     image: development,
     detail:
-      'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
+      'Our proud team working hard for the poor village people and improve their life style.we take somme village development work to develop various area ',
     desc: 'Propose your thoughts here',
     controlData: 'development',
   },
