@@ -5,18 +5,21 @@ import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 import logo from '../assets/logo.png';
-import useAuth from '../hooks/useAuth';
 import UserMenu from './UserMenu';
 
 const Navbar = ({ navigation }) => {
+  console.log(navigation);
   const [changeHeader, setChangeHeader] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [headerBgWhite, setHeaderBgWhite] = useState(false);
 
   const navigate = useNavigate();
 
-  const { logout } = useAuth(); // will come from firebase
   const user = useSelector((state) => state.user.user);
+  const isUser = user?.name?.includes('user');
+  // Conditional nav Items filter
+  const userNavigations = navigation?.filter((n) => n.name !== 'Admin');
+  const adminNavigations = navigation?.filter((n) => n.name !== 'User');
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   //header change function
@@ -39,13 +42,6 @@ const Navbar = ({ navigation }) => {
       setLastScrollTop(scrollTop);
       setHeaderBgWhite(true);
     }
-  };
-
-  const handleLogout = async () => {
-    console.log(user);
-    await logout();
-    console.log(user);
-    navigate('/');
   };
 
   //change header by scrolling
@@ -106,7 +102,7 @@ const Navbar = ({ navigation }) => {
                     </div>
                   </div>
 
-                  {/* nav links */}
+                  {/* nav links on small divice */}
                   <div className="px-2 pt-2 pb-3 space-y-1">
                     {navigation.map((item) =>
                       item.name.includes('#') ? (
@@ -135,26 +131,49 @@ const Navbar = ({ navigation }) => {
 
             {/* on large device this links will be shown */}
             <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-              {navigation.map((item) =>
-                item.name.includes('#') ? (
-                  <NavLink
-                    key={item.name}
-                    to={item.href}
-                    className="font-bold text-white text-lg hover:text-primary"
-                  >
-                    {item.name}
-                  </NavLink>
-                ) : (
-                  <NavHashLink
-                    smooth
-                    key={item.name}
-                    to={item.href}
-                    className="font-bold text-white text-lg hover:text-primary"
-                  >
-                    {item.name}
-                  </NavHashLink>
-                )
-              )}
+              {isUser
+                ? userNavigations.map((item) =>
+                    // User navigations
+                    item.name.includes('#') ? (
+                      <NavLink
+                        key={item.name}
+                        to={item.href}
+                        className="font-bold text-white text-lg hover:text-primary"
+                      >
+                        {item.name}
+                      </NavLink>
+                    ) : (
+                      <NavHashLink
+                        smooth
+                        key={item.name}
+                        to={item.href}
+                        className="font-bold text-white text-lg hover:text-primary"
+                      >
+                        {item.name}
+                      </NavHashLink>
+                    )
+                  )
+                : adminNavigations.map((item) =>
+                    // Admin Navigation
+                    item.name.includes('#') ? (
+                      <NavLink
+                        key={item.name}
+                        to={item.href}
+                        className="font-bold text-white text-lg hover:text-primary"
+                      >
+                        {item.name}
+                      </NavLink>
+                    ) : (
+                      <NavHashLink
+                        smooth
+                        key={item.name}
+                        to={item.href}
+                        className="font-bold text-white text-lg hover:text-primary"
+                      >
+                        {item.name}
+                      </NavHashLink>
+                    )
+                  )}
             </div>
           </Popover>
         </div>
