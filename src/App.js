@@ -153,7 +153,6 @@ function App() {
             {/* <Route path="eventDetails/:id" element={<EventDetails />} /> */}
 
             <Route path="eventDetails/:id" element={<EventDetails />} />
-            <Route path="manageEvents" element={<ManageEvents />} />
 
             {/* development related routes */}
             <Route path="development" element={<Development />} />
@@ -181,6 +180,7 @@ function App() {
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
+              <Route path="manageEvents" element={<ManageEvents />} />
               <Route path="donation" element={<Donation />} />
               <Route path="development" element={<DevelopmentManage />} />
               <Route path="market" element={<MarketManagement />} />
