@@ -114,7 +114,7 @@ const DevelopmentSlider = ({n}) => {
                               
 
                           </div>
-                          <div className="space-y-4 md:p-4 text-white bg-gray-800 h-full py-10 shadow-2xl ">
+                          <div className="space-y-4 md:p-4 text-white bg-gray-800 h-full mr-5 py-10 shadow-2xl ">
                           <h3 className="text-yellow-400  flex items-center space-x-2 md:px-5">
                           FEATURED WEEK PROJECTS
                           </h3>
@@ -123,7 +123,7 @@ const DevelopmentSlider = ({n}) => {
 
                           <div className='grid grid-cols-2 '>
                           <div className='flex'>
-                              <img className='w-10 h-10 mx-2 my-auto mr-5' src="https://icon2.cleanpng.com/20180426/rvq/kisspng-computer-icons-download-setting-icon-5ae152c8c78b41.3187121115247162328173.jpg" alt="" />
+                              <img className='w-10 h-10  my-auto mr-5' src="https://icon2.cleanpng.com/20180426/rvq/kisspng-computer-icons-download-setting-icon-5ae152c8c78b41.3187121115247162328173.jpg" alt="" />
                              
                               <div>
                               <h3>110 <br />

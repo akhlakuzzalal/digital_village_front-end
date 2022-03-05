@@ -59,11 +59,11 @@ const Development = () => {
   };
 
   return (
-    <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px) bg-gray-100' }}>
+    <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - ) bg-gray-100' }}>
       <DevelopmentBanner/>
       <DevelopmentAbout/>
       <div>
-        <img className='w-full h-96 ' src="https://storage.icograms.com/usages/headers/construction-site.png" alt="" />
+        <img className='w-full h-auto ' src="https://storage.icograms.com/usages/headers/construction-site.png" alt="" />
        </div>
     </div>
   );

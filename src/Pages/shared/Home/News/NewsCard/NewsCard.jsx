@@ -18,7 +18,7 @@ const NewsCard = ({ n }) => {
           <ImCalendar className="text-primary" /> <span>{n.date}</span>
           <h5 className='text-blue-600 font-bold ml-5'>Time: <span className='text-red-600'>{n.time}</span></h5>
         </p>
-        <h3>{n.title.slice(0,48)}...</h3>
+        <h3 className='md:text-2xl text-xl'>{n.title.slice(0,40)}...</h3>
         <p>{n.description.slice(0,50)} ...</p>
         <Link to={`/newsDetails/${n._id}`}>
         <button className="text-primary text-lg hover:text-black transition-all duration-500 border-b-2 border-b-primary">
