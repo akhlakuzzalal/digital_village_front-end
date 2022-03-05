@@ -2,13 +2,13 @@ import { default as React } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-const Calender = () => {
+const Calender = ({ date }) => {
   return (
     <div>
       <Calendar
         showNavigation={false}
         showNeighboringMonth={false}
-        value={new Date(2022, 2, 21)}
+        value={date}
       />
     </div>
   );

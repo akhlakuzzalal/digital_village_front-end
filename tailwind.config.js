@@ -11,6 +11,7 @@ module.exports = {
         danger: '#FF331F',
         warning: '#F5B841',
         info: '#66C7F4',
+        dark: '#222',
       },
     },
     fontFamily: {
@@ -20,7 +21,12 @@ module.exports = {
   plugins: [
     plugin(({ addVariant, e }) => {
       addVariant('sidebar-expanded', ({ modifySelectors, separator }) => {
-        modifySelectors(({ className }) => `.sidebar-expanded .${e(`sidebar-expanded${separator}${className}`)}`);
+        modifySelectors(
+          ({ className }) =>
+            `.sidebar-expanded .${e(
+              `sidebar-expanded${separator}${className}`
+            )}`
+        );
       });
     }),
   ],

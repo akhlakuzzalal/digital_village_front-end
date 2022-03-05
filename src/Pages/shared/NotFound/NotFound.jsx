@@ -17,7 +17,7 @@ const NotFound = () => {
   };
 
   return (
-    <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <div className="pointer-events-none p-24">
         <Lottie
           options={defaultOptions}

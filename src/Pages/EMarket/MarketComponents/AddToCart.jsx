@@ -7,7 +7,7 @@ import { setShowModal } from '../../../redux/slices/eMarket/modalSlicle';
 import useCart from './Cart/useCart';
 
 export default function AddToCart({ product }) {
-  const { name, id, img, price, description } = product;
+  const { name, _id, img, price, description } = product;
   // add a product in cart
   const { handleAddCart } = useCart();
   // redux state
@@ -36,7 +36,7 @@ export default function AddToCart({ product }) {
                       <div className="flex justify-around items-center mt-6">
                         <button
                           className="px-8 py-2 bg-secondary rounded-full"
-                          onClick={() => handleAddCart(id, name, img, price)}
+                          onClick={() => handleAddCart(_id, name, img, price)}
                         >
                           Add to cart
                         </button>

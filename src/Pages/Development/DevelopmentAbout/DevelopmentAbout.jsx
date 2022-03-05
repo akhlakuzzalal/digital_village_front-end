@@ -51,11 +51,11 @@ const DevelopmentAbout = () => {
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-5 my-12 py-6'>
-                <img className='md:ml-8 md:w-48 border-r-4 md:p-5 m-2 border hover:bg-red-400' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-3B.png" alt="" />
-                <img className='md:ml-8 md:w-48 md:border-r-4 md:p-5 m-2 border hover:bg-red-400' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-2.png" alt="" />
-                <img className='md:ml-8 md:w-48 md:border-r-4 md:p-5 m-2 border hover:bg-red-400' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-4B.png" alt="" />
-                <img className='md:mr-8 md:w-48 md:border-r-4 md:p-5 m-2 border hover:bg-red-400' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-5.png" alt="" />
-                <img className=' md:w-48 md:p-5 md:m-2 border hover:bg-red-400' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-1.png" alt="" />
+                <img className='md:ml-8 md:w-48 border-r-4 md:p-5 m-2 border ' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-3B.png" alt="" />
+                <img className='md:ml-8 md:w-48 md:border-r-4 md:p-5 m-2 border ' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-2.png" alt="" />
+                <img className='md:ml-8 md:w-48 md:border-r-4 md:p-5 m-2 border ' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-4B.png" alt="" />
+                <img className='md:mr-8 md:w-48 md:border-r-4 md:p-5 m-2 border ' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-5.png" alt="" />
+                <img className=' md:w-48 md:p-5 md:m-2 border ' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-1.png" alt="" />
                
             </div>
 
@@ -82,8 +82,8 @@ const DevelopmentAbout = () => {
 
                       {/* About Slider */}
                       <div className='col-span-2'>
-                  <div className=' grid grid-cols-3 '>
-                  <div className='col-span-3'>
+                  <div className=' grid grid-cols-2 '>
+                  <div className='col-span-2'>
                   <Swiper className=""
                             // slidesPerView={2}
                             slidesPerGroup={1}
@@ -123,7 +123,7 @@ const DevelopmentAbout = () => {
                           <h3 className='text-2xl'>{n?.title}</h3>
                           <p className='py-2'>{n.description.slice(0,70)} ...</p>
                           <Link to={`/newsDetails/${n.id}`}>
-                          <button className="text-black text-lg hover:text-white hover:rounded-xl transition-all duration-500 border-2 p-2 border-blue-600 hover:bg-primary hover:border-0  ">
+                          <button className="text-black text-lg hover:text-white hover:rounded-xl transition-all duration-500 border-0 p-2 bg-gray-200  hover:bg-primary hover:border-0  ">
                           View Project...
                           </button>
                           </Link>

@@ -23,7 +23,7 @@ const Notification = () => {
 
   return (
     <div
-      className="flex flex-wrap justify-center p-4 mt-[88px]"
+      className="flex flex-wrap justify-center p-4 mt-[80px]"
       style={{ minHeight: 'calc(100vh - 700px)' }}
     >
       {/* notification cards */}

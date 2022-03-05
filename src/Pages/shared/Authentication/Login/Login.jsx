@@ -41,7 +41,7 @@ const Login = () => {
 
   const handleLogin = async ({ email, password }) => {
     await processSignIn(email, password, location, navigate);
-    // reset();
+    reset();
   };
 
   const handleGoogleLogin = () => {
@@ -97,11 +97,10 @@ const Login = () => {
             })}
             placeholder="Email"
             type="email"
-          
           />
           {errors.email && (
-              <p className="text-error mb-2">{errors.email.message}</p>
-            )}
+            <p className="text-error mb-2">{errors.email.message}</p>
+          )}
 
           {/* password */}
           <input
@@ -113,7 +112,6 @@ const Login = () => {
               maxLength: 20,
             })}
             placeholder="Password"
-            type="password"
             required
           />
 

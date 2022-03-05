@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import school from '../../assets/development/school.jpg';
 import DevelopmentAbout from './DevelopmentAbout/DevelopmentAbout';
 import DevelopmentBanner from './DevelopmentBanner/DevelopmentBanner';
-import DevelopmentCard from './DevelopmentCard/DevelopmentCard';
-import DevelopmentSlider from './DevelopmentSlider/DevelopmentSlider';
 const Development = () => {
   const [proposals, setProposals] = useState([
     {
@@ -59,12 +57,13 @@ const Development = () => {
   };
 
   return (
-    <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - ) bg-gray-100' }}>
-      <DevelopmentBanner/>
-      <DevelopmentAbout/>
-      <div>
-        <img className='w-full h-auto ' src="https://storage.icograms.com/usages/headers/construction-site.png" alt="" />
-       </div>
+    <div
+      className="mt-[80px]"
+      style={{ minHeight: 'calc(100vh - 700px) bg-gray-100' }}
+    >
+      <DevelopmentBanner />
+      <DevelopmentAbout />
+      
     </div>
   );
 };

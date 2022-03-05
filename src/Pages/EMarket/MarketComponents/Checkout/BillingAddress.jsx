@@ -1,18 +1,16 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
-import { setShowModal } from '../../../../redux/slices/eMarket/modalSlicle';
+import { useDispatch } from 'react-redux';
+import { setPayModal } from '../../../../redux/slices/payModal/PayModalSlice';
 
 const BillingAddress = () => {
-  const showModal = useSelector((state) => state.market.modal.showModal);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const handleRegister = async ({ firstName, lastName, email, password }) => {
     const name = `${firstName} ${lastName}`;
     console.log({ name, email, password });
-    dispatch(setShowModal(true));
+    dispatch(setPayModal(true));
   };
-  console.log(showModal);
   return (
     <div>
       <h6 className="mb-6">Billing Address</h6>

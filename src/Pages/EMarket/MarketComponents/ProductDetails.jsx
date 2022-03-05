@@ -2,15 +2,17 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Rating from '../../../Components/Rating';
+import useCart from './Cart/useCart';
 
 const ProductDetails = () => {
+  const { handleAddCart } = useCart();
   const { id } = useParams();
   const products = useSelector((state) => state.market.products.products);
-  const product = products.find((p) => p.id === parseInt(id));
+  const product = products.find((p) => p._id === id);
   const { name, price, brand, img, description, rating } = product;
 
   return (
-    <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <div className="w-10/12 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* image of the product */}
@@ -23,7 +25,12 @@ const ProductDetails = () => {
             </div>
             <h3 className="text-green-600">$ {price}</h3>
             <p className="text-gray-600">{description}</p>
-            <button className="btn bg-primary px-4 py-2">Add to cart</button>
+            <button
+              onClick={() => handleAddCart(id, name, img, price)}
+              className="btn bg-primary px-4 py-2"
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       </div>

@@ -94,7 +94,7 @@ const DevelopmentSlider = ({n}) => {
 
                           <p>{n.description.slice(0,100)} ...</p>
                           <Link to={`/newsDetails/${n.id}`}>
-                          <button className="text-primary text-lg hover:text-white hover:rounded-xl transition-all duration-500 border-2 p-2 border-green-600 hover:bg-primary hover:border-0  ">
+                          <button className="text-primary text-lg hover:text-white hover:rounded-xl transition-all duration-500 border-0 p-2 bg-gray-200 my-2  hover:bg-primary hover:border-0  ">
                           View Service...
                           </button>
                           </Link>
@@ -159,7 +159,7 @@ const DevelopmentSlider = ({n}) => {
                  <h3 className='my-2'>SERVICE AND RENTAL TRANSFORMATIONS</h3>
                  <p className='py-5'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum laudantium ab aspernatur voluptatibus fuga sit, consequatur neque pariatur, iure suscipit tempora sed quibusdam aliquam cupiditate eaque quos doloribus dolore nulla ex. Ex quasi dolore minus fugit quibusdam quia velit !</p>
 
-                 <button className='p-2 bg-gray-200 text-primary'><a href="https://drive.google.com/u/1/uc?id=14vK9v0vP6pucv8RcMAUFlhvVr3Mv2Q21&export=download" target="_blank">Download Brochure</a></button>
+                
               </div>
 
               <div className='md:ml-5 mx-2 '>
