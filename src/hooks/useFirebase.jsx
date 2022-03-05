@@ -3,11 +3,9 @@ import {
   getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
-  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updateProfile,
 } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -61,59 +59,15 @@ const useFirebase = () => {
   };
 
   //REGISTRATION PROCESS OF USER
-  const processSignUp = (
-    { name, email, dateOfBirth, password },
-    redirect_uri,
-    navigate
-  ) => {
+  const processSignUp = ({ email, password }) => {
     setIsLoading(true);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        const {
-          user: { emailVerified },
-        } = result;
-
-        setAuthError('');
-
-        sendEmailVerification(auth.currentUser);
-
-        const newUser = { name, email, dateOfBirth, emailVerified };
-
-        dispatch(setUser(newUser));
-
-        // register user to the database
-        registerToDB({ name, email, dateOfBirth, password });
-
-        // send name to firebase after creation
-        updateProfile(auth.currentUser, {
-          displayName: name,
-        })
-          .then(() => {})
-          .catch((error) => setAuthError(error.message));
-        navigate(redirect_uri);
-      })
-      .catch((error) => {
-        setAuthError(error.message);
-        console.log(error);
-      })
-      .finally(() => setIsLoading(false));
+    return createUserWithEmailAndPassword(auth, email, password);
   };
 
   //USER LOGIN PROCESS
-  const processSignIn = (email, password, location, navigate) => {
+  const processSignIn = (email, password) => {
     setIsLoading(true);
-    return signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        loginToDB(email, password);
-        const redirect_uri = location?.state?.from || '/';
-        navigate(redirect_uri);
-        setAuthError('');
-      })
-      .catch((error) => {
-        setAuthError(error.message);
-        console.log(error);
-      })
-      .finally(() => setIsLoading(false));
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   // change the user state
@@ -191,6 +145,8 @@ const useFirebase = () => {
     isLoading,
     setIsLoading,
     setAuthError,
+    loginToDB,
+    auth,
     roles,
     setRoles,
     token,
@@ -199,6 +155,7 @@ const useFirebase = () => {
     processSignInWithGoogle,
     processSignUp,
     processSignIn,
+    registerToDB,
     logout,
   };
 };

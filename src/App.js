@@ -84,7 +84,7 @@ function App() {
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
 
-            {/* testing */}
+            {/* TESTING */}
             <Route
               element={
                 <PrivateRoute allowedRoles={[Roles.User, Roles.Admin]} />
@@ -92,8 +92,6 @@ function App() {
             >
               <Route path="allUsers" element={<AllUsers />} />
             </Route>
-
-            {/* ALL PRIVATE ROUTES */}
 
             {/* notification route */}
             <Route path="notifications" element={<Notification />} />
@@ -103,9 +101,10 @@ function App() {
               <Route path="profile" element={<Profile />} />
             </Route>
 
-            {/* education related routes */}
+            {/* EDUCATION RELATED ROUTES */}
             <Route path="education" element={<Education />} />
             <Route path="registerTeacher" element={<RegisterTeacher />} />
+
             {/* routes for teacher */}
             <Route path="teacher" element={<Teacher />}>
               <Route path="myblogs" element={<Myblogs />} />
@@ -127,7 +126,7 @@ function App() {
             <Route path="detailvideo/:id" element={<DetailVideo />} />
             <Route path="blogDetails/:id" element={<BlogDetails />} />
 
-            {/* medical related routes */}
+            {/* MEDICAL RELATED ROUTES */}
             <Route path="medical" element={<MedicalDashboard />}>
               <Route path="vaccine" element={<VaccineRegistration />} />
               <Route path="appointment" element={<DoctorsAppointment />} />
@@ -136,7 +135,7 @@ function App() {
               <Route path="pdf" element={<VaccineInfo />} />
             </Route>
 
-            {/* event realted routes */}
+            {/* EVENT RELATED ROUTES */}
             <Route path="events" element={<Events />}>
               <Route path="all-events" element={<AllEvents />} />
               <Route path="upcoming-events" element={<UpcomingEvents />} />
@@ -148,24 +147,20 @@ function App() {
                 element={<EventBooking />}
               />
             </Route>
-
-            {/* next */}
-            {/* <Route path="eventDetails/:id" element={<EventDetails />} /> */}
-
             <Route path="eventDetails/:id" element={<EventDetails />} />
 
-            {/* development related routes */}
+            {/* DEVELOPMENT RELATED ROUTES */}
             <Route path="development" element={<Development />} />
 
-            {/* news related routes */}
+            {/* NEWS RELATED ROUTES */}
             <Route path="newsDetails/:id" element={<NewsDetails />} />
             <Route path="allNews" element={<AllNews />} />
 
-            {/* donation related routes */}
+            {/* DONATION RELATED ROUTES */}
             <Route path="donation" element={<Donations />} />
             <Route path="causedetails/:id" element={<CaseSingle />} />
 
-            {/* village market related routes */}
+            {/* VILLAGE MARKET RELATED ROUTES */}
             <Route path="e-market" element={<EMarket />} />
             <Route path="cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
@@ -175,8 +170,7 @@ function App() {
               <Route path="myorder" element={<MyOrder />} />
             </Route>
 
-            <Route path="*" element={<NotFound />} />
-            {/* Admin dashboard routes */}
+            {/* ADMIN RELATED ROUTES */}
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
@@ -188,6 +182,9 @@ function App() {
               <Route path="add-review" element={<AddReview />} />
               <Route path="medical" element={<AddAppointment />} />
             </Route>
+
+            {/* NOT FOUND ROUTE */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </ScrollToTop>
         <Footer />

@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { BsGoogle } from 'react-icons/bs';
 import Lottie from 'react-lottie';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import useAuth from '../../../../hooks/useAuth';
 import useMediaQuery from '../../../../hooks/useMediaQuery';
 import animationData from '../../../../lotties/registration.json';
@@ -30,6 +31,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const redirect_uri = location?.state?.form || '/';
+  console.log(redirect_uri);
 
   const {
     setAuthError,
@@ -37,11 +39,31 @@ const Login = () => {
     authError,
     processSignInWithGoogle,
     setIsLoading,
+    loginToDB,
   } = useAuth();
 
   const handleLogin = async ({ email, password }) => {
-    await processSignIn(email, password, location, navigate);
-    reset();
+    return processSignIn(email, password)
+      .then(() => {
+        loginToDB(email, password);
+        setAuthError('');
+        swal({
+          text: `You have successfully logged in`,
+          icon: 'success',
+          confirm: 'Go and Explore',
+          closeOnClickOutside: false,
+        }).then(() => navigate(redirect_uri));
+        reset();
+      })
+      .catch((error) => {
+        setAuthError(error.message);
+        swal({
+          text: error.message,
+          icon: 'error',
+        });
+        console.log(error);
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const handleGoogleLogin = () => {
@@ -85,35 +107,50 @@ const Login = () => {
           className="space-y-6 max-w-[500px] mx-auto"
         >
           {/* email */}
-          <input
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('email', {
-              required: true,
-              pattern: {
-                value:
-                  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                message: 'Please provide correct email address.',
-              },
-            })}
-            placeholder="Email"
-            type="email"
-          />
-          {errors.email && (
-            <p className="text-error mb-2">{errors.email.message}</p>
-          )}
+          <div>
+            <input
+              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('email', {
+                required: 'required',
+                pattern: {
+                  value:
+                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                  message: 'Please provide correct email address.',
+                },
+              })}
+              placeholder="Email"
+              type="email"
+            />
+
+            {errors.email && (
+              <p className="text-danger">{errors.email.message}</p>
+            )}
+          </div>
 
           {/* password */}
-          <input
-            type="password"
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('password', {
-              required: true,
-              minLength: 6,
-              maxLength: 20,
-            })}
-            placeholder="Password"
-            required
-          />
+          <div>
+            <input
+              type="password"
+              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('password', {
+                required: 'required',
+                pattern: {
+                  value: /(?=.*[!@#$&%^*])/,
+                  message:
+                    'please provide atleast one special charaters (@, # etc.)',
+                },
+                minLength: {
+                  value: 6,
+                  message: 'Your password should be at least 6 characters',
+                },
+              })}
+              placeholder="Password"
+            />
+
+            {errors.password && (
+              <p className="text-danger">{errors.password.message}</p>
+            )}
+          </div>
 
           {/* submit button */}
           <input

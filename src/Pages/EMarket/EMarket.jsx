@@ -16,10 +16,12 @@ const EMarket = () => {
     setProduct(product);
     dispatch(setShowModal(true));
   };
+
   const products = useSelector((state) => state.market.products.products);
   useEffect(() => {
     dispatch(fetchAllProducts());
   }, []);
+
   return (
     <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       {/* Banner */}
