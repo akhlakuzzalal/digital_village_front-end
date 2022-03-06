@@ -141,7 +141,7 @@ const DevelopmentSlider = ({n}) => {
 
                           </div>
                          
-                          <button className="text-yellow-400 text-lg mt-24 px-5 mx-5 hover:text-white hover:rounded-xl transition-all duration-500 border-2 p-2 border-white hover:bg-primary hover:border-0  ">
+                          <button className="text-yellow-400 text-lg mt-24 px-5 mx-5 hover:text-white hover:rounded-xl transition-all duration-500 border-2  p-2 border-white hover:bg-primary hover:border-  ">
                           More Project ...
                           </button>
                           
@@ -225,7 +225,7 @@ const DevelopmentSlider = ({n}) => {
                           <h3>{n?.title}</h3>
                           <p className='py-5'>{n.description.slice(0,150)} ...</p>
                           <Link to={`/newsDetails/${n.id}`}>
-                          <button className="text-black text-lg hover:text-white hover:rounded-xl transition-all duration-500 border-2 p-2 border-blue-600 hover:bg-primary hover:border-0  ">
+                          <button className="text-black text-lg hover:text-white hover:rounded-xl transition-all duration-500 border-0 bg-gray-200 p-2 border-blue-600 hover:bg-primary hover:border-0  ">
                           View Project...
                           </button>
                           </Link>

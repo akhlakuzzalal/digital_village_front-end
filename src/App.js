@@ -8,6 +8,9 @@ import DevelopmentManage from './Pages/Admin/DashboardItem/Development/Developme
 import Donation from './Pages/Admin/DashboardItem/Donation/Donation';
 import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/DashboardItem/Market/MarketManagement';
+import AddNews from './Pages/Admin/DashboardItem/News/AddNews/AddNews';
+import ManageNews from './Pages/Admin/DashboardItem/News/ManageNews/ManageNews';
+import NewsDashboard from './Pages/Admin/DashboardItem/News/NewsDashboard';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import CaseSingle from './Pages/Donations/Causes/CaseSingle';
@@ -186,7 +189,10 @@ function App() {
               <Route path="market" element={<MarketManagement />} />
               <Route path="add-events" element={<AddEvents />} />
               <Route path="add-review" element={<AddReview />} />
-              <Route path="medical" element={<AddAppointment />} />
+
+              <Route path="newsDashboard" element={<NewsDashboard />} />
+              <Route path="addNews" element={<AddNews/>} />
+              <Route path="manageNews" element={<ManageNews />} />
             </Route>
           </Routes>
         </ScrollToTop>
