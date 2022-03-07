@@ -1,7 +1,8 @@
 import React from 'react';
 import { BiDonateHeart } from 'react-icons/bi';
 import { BsCalendar2EventFill } from 'react-icons/bs';
-import { FaConnectdevelop, FaShopify, FaUsers } from 'react-icons/fa';
+import { FaConnectdevelop, FaFistRaised, FaShopify, FaUsers } from 'react-icons/fa';
+import { FcDonate, FcImport } from 'react-icons/fc';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
@@ -41,7 +42,25 @@ const links = [
   {
     name: 'Donation',
     icon: <BiDonateHeart size={30} />,
-    path: '/admindashboard/donation',
+    path: '/admin/paymentcauses',
+    nestedPath: [
+
+      {
+        name: 'All Payment',
+        icon: <FaFistRaised size={30} />,
+        path: '/admin/paymentcauses',
+      },
+      {
+        name: 'Add a Cause',
+        icon: <FcImport size={30} />,
+        path: '/admin/addcause',
+      },
+      {
+        name: 'All Cuases',
+        icon: <FcDonate size={30} />,
+        path: '/admin/allcauses',
+      },
+    ],
   },
   {
     name: 'Development',

@@ -12,6 +12,7 @@ const CaseSingle = () => {
   const { id } = useParams();
   const causes = useSelector((state) => state.donation.causes);
   const cause = causes.find((c) => c._id === id);
+  // const cause = causes?.filter((pd) => pd._id === id);
   //Progressbar for
   let donationGoal = cause.goal;
   let donationTotal = cause.raised;

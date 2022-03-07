@@ -5,7 +5,10 @@ import { AuthProvider } from './context/AuthProvider';
 import AdminDashboard from './Pages/Admin/AdminDashboard';
 import AllUsers from './Pages/Admin/AllUsers/AllUsers';
 import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage';
-import Donation from './Pages/Admin/DashboardItem/Donation/Donation';
+import AddCause from './Pages/Admin/DashboardItem/Donation/AddCause';
+import AllCauses from './Pages/Admin/DashboardItem/Donation/AllCauses';
+import AllDonarPayment from './Pages/Admin/DashboardItem/Donation/AllDonarPayment';
+import UpdateCause from './Pages/Admin/DashboardItem/Donation/UpdateCause';
 import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/DashboardItem/Market/MarketManagement';
 import AllNews from './Pages/AllNews/AllNews';
@@ -182,12 +185,15 @@ function App() {
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
               <Route path="manageEvents" element={<ManageEvents />} />
-              <Route path="donation" element={<Donation />} />
               <Route path="development" element={<DevelopmentManage />} />
               <Route path="market" element={<MarketManagement />} />
               <Route path="add-events" element={<AddEvents />} />
               <Route path="add-review" element={<AddReview />} />
               <Route path="medical" element={<AddAppointment />} />
+              <Route path="addcause" element={<AddCause />} />
+              <Route path="allcauses" element={<AllCauses />} />
+              <Route path="updatecause/:id" element={<UpdateCause />} />
+              <Route path="paymentcauses" element={<AllDonarPayment />} />
             </Route>
           </Routes>
         </ScrollToTop>
