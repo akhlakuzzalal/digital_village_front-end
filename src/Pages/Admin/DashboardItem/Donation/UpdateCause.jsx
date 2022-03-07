@@ -19,12 +19,10 @@ const UpdateCause = () => {
 
 
   const handleUpdateCause = (data) => {
-    const newData = {...data,id}
-    console.log(newData);
+        data.id = id
         dispatch(updateAnCuase(data));
         // console.log(newData);
-        alert('update successfully added');
-        
+        alert('update successfully added');      
   };
   // title image description category goal date author
     return (

@@ -15,10 +15,13 @@ const AddCause = () => {
 
   const handleAddCause = (data) => {
         // data.author= user?.name
+        // data.raised= '10'
+        // data.donars= []
         data.date= new Date().toLocaleDateString()
         dispatch(addAnCuase(data));
         alert('successfully added');
         reset();
+
   };
   // title image description category goal date author
     return (

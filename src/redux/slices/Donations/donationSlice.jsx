@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios from "../../../api/axios";
 
 
 // create the thunk
@@ -27,10 +27,11 @@ export const addAnCuase = createAsyncThunk(
 // update cuase
 export const updateAnCuase = createAsyncThunk(
   'cuases/updateAnCuase',
-  async (id) => {
-    console.log('hitted');
-await axios.put(`/donation/updatecuase/?id=${id}`)
-    return id;
+
+  async (data) => {
+    console.log(data);
+await axios.put(`/donation/updatecuase/?id=${data.id}` , data )
+    return data;
   }
 );
 // delete cuase
@@ -58,6 +59,7 @@ const donationSlice = createSlice({
   name: 'causes',
   initialState: {
     causes: [],
+    updatecause:{},
   },
 
   reducers: {},
@@ -71,11 +73,17 @@ const donationSlice = createSlice({
     });
     //update
     builder.addCase(updateAnCuase.fulfilled, (state, { payload }) =>  { 
-      console.log(payload);
-      state.causes = state.causes.find(
+
+    const prevCause = state.causes.find(
               (cause) => cause._id === payload.id
             );
+            // state.causes={...prevCause, ...data}
+            const updateCause = {...prevCause, ...payload}
+            const removeCause = state.causes.filter((cause) => cause._id !== payload.id)
+            state.causes=[...removeCause,updateCause ]
+         
     });
+    
     //delete
     builder.addCase(deleteAnCuase.fulfilled, (state, { payload }) =>  { 
       console.log(payload);
