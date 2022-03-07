@@ -14,7 +14,7 @@ import UpdateCause from './Pages/Admin/DashboardItem/Donation/UpdateCause';
 import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/DashboardItem/Market/MarketManagement';
 import AddNews from './Pages/Admin/DashboardItem/News/AddNews/AddNews';
-import ManageNews from './Pages/Admin/DashboardItem/News/ManageNews/ManageNews';
+import ManageNews from './Pages/Admin/DashboardItem/News/ManageNews/ManageNews.jsx';
 import NewsDashboard from './Pages/Admin/DashboardItem/News/NewsDashboard';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';

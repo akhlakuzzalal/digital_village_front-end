@@ -1,7 +1,12 @@
 import React from 'react';
-import { BiDonateHeart,GiNewspaper} from 'react-icons/bi';
+import { BiDonateHeart } from 'react-icons/bi';
 import { BsCalendar2EventFill } from 'react-icons/bs';
-import { FaConnectdevelop, FaFistRaised, FaShopify, FaUsers } from 'react-icons/fa';
+import {
+  FaConnectdevelop,
+  FaFistRaised,
+  FaShopify,
+  FaUsers,
+} from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
@@ -44,7 +49,6 @@ const links = [
     icon: <BiDonateHeart size={30} />,
     path: '/admin/paymentcauses',
     nestedPath: [
-
       {
         name: 'All Payment',
         icon: <FaFistRaised size={30} />,
@@ -77,7 +81,6 @@ const links = [
         icon: <BsCalendar2EventFill size={30} />,
         path: '/admin/manageDevelopmet',
       },
-     
     ],
   },
   {
@@ -101,7 +104,6 @@ const links = [
         icon: <BsCalendar2EventFill size={30} />,
         path: '/admin/manageNews',
       },
-     
     ],
   },
 ];
