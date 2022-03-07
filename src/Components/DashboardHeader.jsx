@@ -1,5 +1,4 @@
 import React from 'react';
-import UserMenu from '../Pages/Education/Teacher/Dashboard/partials/header/UserMenu';
 
 const DashboardHeader = ({ sidebarOpen, setSidebarOpen }) => {
   return (
@@ -32,7 +31,6 @@ const DashboardHeader = ({ sidebarOpen, setSidebarOpen }) => {
           <div className="flex items-center">
             {/*  Divider */}
             <hr className="w-px h-6 bg-slate-200 mx-3" />
-            <UserMenu />
           </div>
         </div>
       </div>

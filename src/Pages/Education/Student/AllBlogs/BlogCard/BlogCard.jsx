@@ -1,9 +1,10 @@
-import React from 'react';
-import { FaEdit, FaPushed, FaTrashAlt } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
+import { FaPushed } from 'react-icons/fa';
 import Rating from '../../../../../Components/Rating';
-import { BsBookmark } from 'react-icons/bs';
 
-const BlogCard = ({ blog }) => {
+const BlogCard = ({ blog, children }) => {
+  const [bookmark, setBookmark] = useState(true);
   return (
     <div className="bg-white rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between max-w-[400px] shadow-2xl">
       <div className="absolute top-20 text-sm left-0 z-20 font-primary rounded-lg">
@@ -33,9 +34,23 @@ const BlogCard = ({ blog }) => {
                 <Rating rating={blog?.rating} />
               </div>
             </div>
-            <div className="mr-4">
-              <BsBookmark size={30} />
-            </div>
+            {!children ? (
+              <div className="mr-4 cursor-pointer">
+                {bookmark ? (
+                  <BsBookmark
+                    size={30}
+                    onClick={() => setBookmark(!bookmark)}
+                  />
+                ) : (
+                  <BsBookmarkFill
+                    size={30}
+                    onClick={() => setBookmark(!bookmark)}
+                  />
+                )}
+              </div>
+            ) : (
+              children
+            )}
           </div>
           {/* title and description */}
           <p className="text-gray-500 text-sm">{blog?.about}</p>

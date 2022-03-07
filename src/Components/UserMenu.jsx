@@ -1,11 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import UserAvatar from './../../../../../../assets/user-avatar-32.png';
-import Transition from './../../utils/Transition';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
+import Transition from '../Pages/Education/Teacher/Dashboard/utils/Transition';
+import UserAvatar from './../assets/user-avatar-32.png';
 
 const UserMenu = () => {
+  const { logout } = useAuth();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const user = useSelector((state) => state.user.user);
+  const isUser = user.name.includes('user');
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
@@ -24,9 +30,6 @@ const UserMenu = () => {
     document.addEventListener('click', clickHandler);
     return () => document.removeEventListener('click', clickHandler);
   });
-  const user = useSelector((state) => state.user.user);
-  const isUser = user.name.includes('user');
-  console.log(user, isUser, 'check');
 
   // close if the esc key is pressed
   useEffect(() => {
@@ -37,6 +40,14 @@ const UserMenu = () => {
     document.addEventListener('keydown', keyHandler);
     return () => document.removeEventListener('keydown', keyHandler);
   });
+
+  // log out
+  const handleLogout = async () => {
+    console.log(user);
+    await logout();
+    console.log(user);
+    navigate('/');
+  };
 
   return (
     <div className="relative inline-flex">
@@ -55,9 +66,7 @@ const UserMenu = () => {
           alt="User"
         />
         <div className="flex items-center truncate">
-          <span className="truncate ml-2 text-sm font-medium group-hover:text-slate-800">
-            Admin Name
-          </span>
+          <span className="truncate ml-2 text-sm font-bold">{user.name}</span>
           <svg
             className="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400"
             viewBox="0 0 12 12"
@@ -83,10 +92,7 @@ const UserMenu = () => {
           onBlur={() => setDropdownOpen(false)}
         >
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
-            <div className="font-medium text-slate-800">User Name</div>
-            <div className="text-xs text-slate-500 italic">
-              Administrator Role
-            </div>
+            <div className="text-xs text-slate-500 italic">Administrator</div>
           </div>
           <ul>
             <li className="hover:bg-green-500">
@@ -98,12 +104,35 @@ const UserMenu = () => {
                 Profile
               </Link>
             </li>
-
+            {user.name && isUser ? (
+              <li className="hover:bg-green-500">
+                <Link
+                  className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                  to="/"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                >
+                  User dashboard
+                </Link>
+              </li>
+            ) : (
+              <li className="hover:bg-green-500">
+                <Link
+                  className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                  to="/"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                >
+                  Admin dashboard
+                </Link>
+              </li>
+            )}
             <li className="hover:bg-green-500">
               <Link
                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
                 to="/"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                onClick={() => {
+                  setDropdownOpen(!dropdownOpen);
+                  handleLogout();
+                }}
               >
                 Sign Out
               </Link>

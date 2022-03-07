@@ -7,7 +7,7 @@ const NewSidebar = ({ links }) => {
 
   return (
     <div
-      className={`bg-slate-900 text-white mt-[88px] fixed z-50 overflow-y-scroll ${
+      className={`bg-slate-900 text-white mt-[80px] z-30 fixed ${
         showText && 'min-w-[200px]'
       }`}
       style={{ height: 'calc(100vh - 88px)' }}
@@ -28,20 +28,20 @@ const NewSidebar = ({ links }) => {
 
       {/* icon for closing and opening */}
       {showText ? (
-        <div className="absolute bottom-16 right-3 rounded-full text-white opacity-60 hover:opacity-100">
+        <div className="sticky text-right bottom-4 w-full rounded-lg text-white opacity-60 hover:opacity-100 bg-slate-900">
           <BsArrowLeft
             size={30}
-            className="cursor-pointer"
+            className="cursor-pointer ml-auto m-3"
             onClick={() => {
               setShowText(false);
             }}
           />
         </div>
       ) : (
-        <div className="absolute bottom-16 right-3 rounded-full text-white opacity-60 hover:opacity-100">
+        <div className="sticky text-right bottom-4 w-full rounded-lg text-white opacity-60 hover:opacity-100 bg-slate-900">
           <BsArrowRight
             size={30}
-            className="cursor-pointer"
+            className="cursor-pointer ml-auto m-3"
             onClick={() => {
               setShowText(true);
             }}

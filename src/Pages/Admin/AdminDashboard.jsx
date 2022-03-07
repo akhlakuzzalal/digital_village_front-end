@@ -14,24 +14,7 @@ const links = [
   {
     name: 'All Users',
     icon: <FaUsers size={30} />,
-    path: '/admin',
-    nestedPath: [
-      {
-        name: 'All Users',
-        icon: <FaUsers size={30} />,
-        path: '/admin',
-      },
-      {
-        name: 'All Users',
-        icon: <FaUsers size={30} />,
-        path: '/admin',
-      },
-      {
-        name: 'All Users',
-        icon: <FaUsers size={30} />,
-        path: '/admin',
-      },
-    ],
+    path: '/admin/allusers',
   },
   {
     name: 'Events',
@@ -42,6 +25,11 @@ const links = [
         name: 'Add Event',
         icon: <BsCalendar2EventFill size={30} />,
         path: '/admin/add-events',
+      },
+      {
+        name: 'Delete Event',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/manageEvents',
       },
     ],
   },
@@ -54,22 +42,23 @@ const links = [
   {
     name: 'Donation',
     icon: <BiDonateHeart size={30} />,
-    path: '/admindashboard/donation',
+    path: '/admin/paymentcauses',
     nestedPath: [
-      {
-        name: 'Add a Cuase',
-        icon: <FcImport size={30} />,
-        path: '/admin',
-      },
+
       {
         name: 'All Payment',
         icon: <FaFistRaised size={30} />,
-        path: '/admin',
+        path: '/admin/paymentcauses',
+      },
+      {
+        name: 'Add a Cause',
+        icon: <FcImport size={30} />,
+        path: '/admin/addcause',
       },
       {
         name: 'All Cuases',
         icon: <FcDonate size={30} />,
-        path: '/admin',
+        path: '/admin/allcauses',
       },
     ],
   },

@@ -55,7 +55,7 @@ const Student = () => {
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <NewSidebar links={links} />
-      <div className="mt-[88px] flex-1 ml-20">
+      <div className="mt-[80px] flex-1 ml-20">
         {location?.pathname === '/student' ||
         location?.pathname === '/student/' ? (
           <StudentHome />
