@@ -14,8 +14,7 @@ const Header = () => {
   const location = useLocation();
   return location.pathname.includes('/teacher') ||
     location.pathname.includes('/medical') ||
-    location.pathname.includes('admin') ||
-    location.pathname.includes('userdashboard') ? null : (
+    location.pathname.includes('admin') ? null : (
     <Navbar navigation={navigation} />
   );
 };
