@@ -5,7 +5,7 @@ import ManageNews from './ManageNews/ManageNews';
 const NewsDashboard = () => {
     return (
         <div>
-            <AddNews/>
+           
             <ManageNews/>
         </div>
     );

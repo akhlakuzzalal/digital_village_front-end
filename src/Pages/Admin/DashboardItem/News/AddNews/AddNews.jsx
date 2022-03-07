@@ -33,14 +33,10 @@ const AddNews = () => {
       const formData = new FormData();
       formData.append('file', file);
       formData.append(
-        'blog',
+        'news',
         JSON.stringify({
           ...data,
-          author: user?.name,
-          email: user?.email,
-          content,
-          publishDate: new Date().toLocaleDateString(),
-          tags: data?.tags.split(' '),
+          content, 
         })
       );
   
@@ -49,8 +45,8 @@ const AddNews = () => {
     };
   
     return (
-      <div className="flex flex-col justify-center items-center min-h-full space-y-6 md:mx-24">
-        <h1>Publish your blog now</h1>
+      <div className="flex flex-col justify-center items-center min-h-full md:mt-24 space-y-6 md:mx-36">
+        <h1 className='hover:text-blue-600'>Publish your News Now</h1>
         <form
           onSubmit={handleSubmit(handlePublishBlogs)}
           className="space-y-6 mx-auto"
@@ -82,16 +78,16 @@ const AddNews = () => {
   
               {/* tags */}
               <input
-                type="publishDate"
+                type="Date"
                 className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
                 {...register('publishDate', { required: true })}
-                placeholder="Add tags with space seperated"
+                placeholder="Write your News Publish Date"
               />
                <input
                 type="time"
                 className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
                 {...register('publishTime', { required: true })}
-                placeholder="Add tags with space seperated"
+                placeholder="Write your News Publish Time"
               />
             </div>
              

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import swal from 'sweetalert';
 
 
 
@@ -14,7 +15,32 @@ const ManageNews = () => {
   }, []);
 
   const handleDelete=id=>{
-      console.log(id);
+
+    fetch(`http://localhost:5000/news/deleteNews/${id}`,{
+      method:"DELETE"
+    })
+    .then((res) => res.json())
+    .then((data) =>{
+      console.log(data)
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this imaginary file!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      
+        if (data?.deletedCount) {
+          swal("Delete! Your News Fille has been deleted!", {
+            icon: "success",
+          });
+        } else {
+          swal("Your News  file is safe!");
+        }
+      
+      
+    });
+     
   }
   return (
     <article className="flex flex-wrap justify-evenly items-center gap-6 md:mx-24 md:my-24">
