@@ -4,13 +4,18 @@ import ScrollToTop from './Components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
 import AdminDashboard from './Pages/Admin/AdminDashboard';
 import AllUsers from './Pages/Admin/AllUsers/AllUsers';
-import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage';
+import AddDevelopment from './Pages/Admin/DashboardItem/Development/AddDevelopment/AddDevelopment';
+import DevelopmentDashboard from './Pages/Admin/DashboardItem/Development/DevelopmentDashboard';
+import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage/DevelopmentManage';
 import AddCause from './Pages/Admin/DashboardItem/Donation/AddCause';
 import AllCauses from './Pages/Admin/DashboardItem/Donation/AllCauses';
 import AllDonarPayment from './Pages/Admin/DashboardItem/Donation/AllDonarPayment';
 import UpdateCause from './Pages/Admin/DashboardItem/Donation/UpdateCause';
 import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/DashboardItem/Market/MarketManagement';
+import AddNews from './Pages/Admin/DashboardItem/News/AddNews/AddNews';
+import ManageNews from './Pages/Admin/DashboardItem/News/ManageNews/ManageNews';
+import NewsDashboard from './Pages/Admin/DashboardItem/News/NewsDashboard';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import CaseSingle from './Pages/Donations/Causes/CaseSingle';
@@ -194,6 +199,16 @@ function App() {
               <Route path="allcauses" element={<AllCauses />} />
               <Route path="updatecause/:id" element={<UpdateCause />} />
               <Route path="paymentcauses" element={<AllDonarPayment />} />
+              <Route path="donation" element={<Donations />} />
+              <Route path="development" element={<DevelopmentDashboard />} />
+              <Route path="manageDevelopmet" element={<DevelopmentManage />} />
+              <Route path="addDevelopment" element={<AddDevelopment />} />
+              <Route path="market" element={<MarketManagement />} />
+              <Route path="add-events" element={<AddEvents />} />
+              <Route path="add-review" element={<AddReview />} />
+              <Route path="newsDashboard" element={<NewsDashboard />} />
+              <Route path="addNews" element={<AddNews />} />
+              <Route path="manageNews" element={<ManageNews />} />
             </Route>
           </Routes>
         </ScrollToTop>
