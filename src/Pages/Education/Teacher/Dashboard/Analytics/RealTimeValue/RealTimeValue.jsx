@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pie, PieChart } from 'recharts';
-import Info from '../../Dashboard/utils/Info';
+import Info from '../../../../../Medical/Dashboard/utils/Info';
 
 const RealTimeValue = () => {
   const data01 = [

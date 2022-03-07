@@ -21,7 +21,7 @@ import FavouriteBlogs from './Pages/Education/Student/FavouriteBlogs/FavouriteBl
 import FavouriteVideos from './Pages/Education/Student/FavouriteVideos/FavouriteVideos';
 import Student from './Pages/Education/Student/Student';
 import StudentHome from './Pages/Education/Student/StudentHome/StudentHome';
-import Analytics from './Pages/Education/Teacher/Analytics/Analytics';
+import Analytics from './Pages/Education/Teacher/Dashboard/Analytics/Analytics';
 import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
 import Myvideos from './Pages/Education/Teacher/Myvideos/Myvideos';
 import PublishBlog from './Pages/Education/Teacher/PublishBlog/PublishBlog';

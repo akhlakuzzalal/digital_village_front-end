@@ -1,5 +1,5 @@
 import React from 'react';
-import WelcomeBanner from '../../../../Components/WelcomeBanner';
+import WelcomeBanner from '../../../../../Components/WelcomeBanner';
 import BlogsPostdata from './BlogsPostData/BlogsPostdata';
 import RealTimeValue from './RealTimeValue/RealTimeValue';
 
