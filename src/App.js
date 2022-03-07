@@ -4,7 +4,9 @@ import ScrollToTop from './Components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
 import AdminDashboard from './Pages/Admin/AdminDashboard';
 import AllUsers from './Pages/Admin/AllUsers/AllUsers';
-import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage';
+import AddDevelopment from './Pages/Admin/DashboardItem/Development/AddDevelopment/AddDevelopment';
+import DevelopmentDashboard from './Pages/Admin/DashboardItem/Development/DevelopmentDashboard';
+import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage/DevelopmentManage';
 import Donation from './Pages/Admin/DashboardItem/Donation/Donation';
 import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/DashboardItem/Market/MarketManagement';
@@ -185,11 +187,12 @@ function App() {
               <Route path="events" element={<Eventmanagement />} />
               <Route path="manageEvents" element={<ManageEvents />} />
               <Route path="donation" element={<Donation />} />
-              <Route path="development" element={<DevelopmentManage />} />
+              <Route path="development" element={<DevelopmentDashboard />} />
+              <Route path="manageDevelopmet" element={<DevelopmentManage />} />
+              <Route path="addDevelopment" element={<AddDevelopment />} />
               <Route path="market" element={<MarketManagement />} />
               <Route path="add-events" element={<AddEvents />} />
               <Route path="add-review" element={<AddReview />} />
-
               <Route path="newsDashboard" element={<NewsDashboard />} />
               <Route path="addNews" element={<AddNews/>} />
               <Route path="manageNews" element={<ManageNews />} />

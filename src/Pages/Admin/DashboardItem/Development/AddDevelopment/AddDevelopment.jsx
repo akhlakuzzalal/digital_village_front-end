@@ -7,7 +7,7 @@ import FileUpload from '../../../../../Components/FileUpload';
 import RichTextEditor from '../../../../../Components/RichTextEditor';
 
 
-const AddNews = () => {
+const AddDevelopment = () => {
     const [content, setContent] = useState('');
   
     const user = useSelector((state) => state.user.user);
@@ -29,35 +29,38 @@ const AddNews = () => {
       setFile(acceptedFiles[0]);
     }, []);
   
-    const handlePublishNews = async (data) => {
+    const handleAddDevelopment = async (data) => {
       const formData = new FormData();
       formData.append('file', file);
       formData.append(
-        'news',
+        'development',
         JSON.stringify({
           ...data,
           content, 
         })
+        
       );
   
-      const response = await axios.post('/news/addNews', formData);
-      console.log(response.data);
+      const response = await axios.post('/development/addDevelopment', formData)
+      reset()
+      console.log(response);
+      
     };
   
     return (
-      <div className="flex flex-col justify-center items-center min-h-full md:mt-24 space-y-6 md:mx-36">
-        <h1 className='hover:text-blue-600'>Publish your News Now</h1>
+      <div className="flex flex-col justify-center items-center min-h-full md:mt-24 space-y-6 md:mx-48">
+        <h1 className='hover:text-blue-600'>Publish your New Development Now</h1>
         <form
-          onSubmit={handleSubmit(handlePublishNews)}
+          onSubmit={handleSubmit(handleAddDevelopment)}
           className="space-y-6 mx-auto"
         >
           <div className="flex flex-wrap gap-4 items-center justify-evenly">
             <div className="space-y-6">
-              {/* title of the News */}
+              {/* title of the blog */}
               <input
                 className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
                 {...register('title', { required: true })}
-                placeholder="Title of your Development Item"
+                placeholder="Title of your Development"
               />
   
               {/* file upload */}
@@ -65,30 +68,25 @@ const AddNews = () => {
                 <FileUpload
                   onDrop={onDrop}
                   file={file}
-                  message="Upload a banner for your News"
+                  message="Upload a banner for your Development"
                 />
               </div>
   
-              {/* about the News */}
+              {/* about the blog */}
               <textarea
                 className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
                 {...register('description', { required: true })}
-                placeholder="Write what this News Articale Details"
+                placeholder="Write Development Description"
               />
   
-              {/* Publishd Date */}
+              {/* tags */}
               <input
                 type="Date"
                 className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-                {...register('publishDate', { required: true })}
-                placeholder="Write your News Publish Date"
+                {...register('constructionDate', { required: true })}
+                placeholder="Write your Construction Date"
               />
-               <input
-                type="time"
-                className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-                {...register('publishTime', { required: true })}
-                placeholder="Write your News Publish Time"
-              />
+               
             </div>
              
             
@@ -97,19 +95,19 @@ const AddNews = () => {
             <RichTextEditor
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
               handleEditorChange={handleEditorChange}
-              message="Start writing the blog"
+              message="Start writing the Development Item"
             />
           </div>
           {/* submit button */}
           <input
             className="btn bg-primary rounded-lg w-full cursor-pointer hover:bg-opacity-80  transition-all duration-300"
             type="submit"
-            value="Publish Your News"
+            value="Publish Your Development"
           />
         </form>
       </div>
     );
   };
   
-  export default AddNews;
+  export default AddDevelopment;
   

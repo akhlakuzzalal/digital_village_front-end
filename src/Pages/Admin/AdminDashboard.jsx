@@ -47,6 +47,19 @@ const links = [
     name: 'Development',
     icon: <FaConnectdevelop size={30} />,
     path: '/admin/development',
+    nestedPath: [
+      {
+        name: 'Add-Development',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/addDevelopment',
+      },
+      {
+        name: 'Manage-Development',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/manageDevelopmet',
+      },
+     
+    ],
   },
   {
     name: 'Market',
@@ -69,6 +82,7 @@ const links = [
         icon: <BsCalendar2EventFill size={30} />,
         path: '/admin/manageNews',
       },
+     
     ],
   },
 ];
