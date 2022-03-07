@@ -6,7 +6,7 @@ import Rating from '../../../../../Components/Rating';
 const BlogCard = ({ blog, children }) => {
   const [bookmark, setBookmark] = useState(true);
   return (
-    <div className="bg-white rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between max-w-[400px] shadow-2xl">
+    <div className="bg-white dark:dark-card-bg rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between max-w-[400px] shadow-2xl">
       <div className="absolute top-20 text-sm left-0 z-20 font-primary rounded-lg">
         <button className="w-90 flex items-center justify-center py-2 border border-transparent text-sm rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 px-6">
           <FaPushed />

@@ -15,8 +15,7 @@ const Header = () => {
   return location.pathname.includes('/teacher') ||
     location.pathname.includes('/medical') ||
     location.pathname.includes('admin') ||
-    location.pathname.includes('userdashboard') ||
-    location.pathname.includes('/marketdashboard') ? null : (
+    location.pathname.includes('userdashboard') ? null : (
     <Navbar navigation={navigation} />
   );
 };

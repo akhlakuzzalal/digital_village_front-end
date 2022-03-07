@@ -14,6 +14,7 @@ import storage from 'redux-persist/lib/storage';
 import donationSlice from './slices/Donations/donationSlice';
 import { marketAllReducers } from './slices/eMarket/marketAllReducers';
 import eventReducer from './slices/event/eventSlice';
+import MoodSlice from './slices/mood/MoodSlice';
 import notificationReducer from './slices/notification/notificationSlice';
 import PayModalSlice from './slices/payModal/PayModalSlice';
 import reviewReducer from './slices/review/reviewSlice';
@@ -27,6 +28,7 @@ const reducers = combineReducers({
   pay: PayModalSlice,
   events: eventReducer,
   donation: donationSlice,
+  mood: MoodSlice,
 });
 
 const persistConfig = {

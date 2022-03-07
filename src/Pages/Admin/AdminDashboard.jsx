@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
 import { BsCalendar2EventFill } from 'react-icons/bs';
 import {
@@ -8,6 +9,7 @@ import {
   FaUsers,
 } from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
+import { MdRateReview } from 'react-icons/md';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
@@ -28,12 +30,12 @@ const links = [
     nestedPath: [
       {
         name: 'Add Event',
-        icon: <BsCalendar2EventFill size={30} />,
+        icon: <AiFillFileAdd size={30} />,
         path: '/admin/add-events',
       },
       {
         name: 'Delete Event',
-        icon: <BsCalendar2EventFill size={30} />,
+        icon: <AiFillDelete size={30} />,
         path: '/admin/manageEvents',
       },
     ],
@@ -41,7 +43,7 @@ const links = [
 
   {
     name: 'Add Review',
-    icon: <BsCalendar2EventFill size={30} />,
+    icon: <MdRateReview size={30} />,
     path: '/admin/add-review',
   },
   {
@@ -113,7 +115,6 @@ const navigation = [
   { name: 'Service', href: '/#service' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
-  { name: 'Admin', href: '/admin' },
 ];
 
 const AdminDashboard = () => {
