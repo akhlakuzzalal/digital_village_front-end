@@ -1,12 +1,12 @@
 import React from 'react';
-import PayModal from '../Pay/PayModal';
+import PayModal from '../../../../Components/Pay/PayModal';
 import BillingAddress from './BillingAddress';
 import CustomerOrder from './CustomerOrder';
 
 const Checkout = () => {
   return (
     <div
-      className="mt-[100px]  md:mx-20 mx-10"
+      className="mt-[100px]  md:mx-20 mx-5"
       style={{ minHeight: 'calc(100vh - 700px)' }}
     >
       <div className="w-full grid grid-cols-6">
@@ -17,7 +17,7 @@ const Checkout = () => {
           <CustomerOrder></CustomerOrder>
         </div>
       </div>
-      <PayModal></PayModal>
+      <PayModal price={120} id={2} returnPage={'e-market'}></PayModal>
     </div>
   );
 };

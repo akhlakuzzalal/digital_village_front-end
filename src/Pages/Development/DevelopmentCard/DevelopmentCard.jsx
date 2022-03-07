@@ -15,7 +15,7 @@ const DevelopmentCard = ({
         ></div>
       </div>
       <div className="space-y-4 p-4">
-        <h3>{name}</h3>
+        <h3 className="text-2xl md:text-3xl ">{name}</h3>
         <p>{desc.slice(0, 200)} ...</p>
 
         {/* upvote and downvote buttons */}

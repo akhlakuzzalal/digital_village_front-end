@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import logo from './../../../../assets/logo.png';
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, links }) => {
   const location = useLocation();
@@ -86,7 +85,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, links }) => {
               <path d="M10.7 18.7l1.4-1.4L7.8 13H20v-2H7.8l4.3-4.3-1.4-1.4L4 12z" />
             </svg>
           </button>
-          {/* Logo */}
+          {/* Logo
           <div>
             <NavLink to="/" className="block">
               <img
@@ -95,7 +94,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, links }) => {
                 alt="logo"
               />
             </NavLink>
-          </div>
+          </div> */}
         </div>
 
         {/* Links */}

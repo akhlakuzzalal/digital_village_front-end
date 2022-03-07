@@ -1,16 +1,16 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import useMarketData from '../../MarketContext/useMarketData';
+import { useDispatch } from 'react-redux';
+import { setPayModal } from '../../../../redux/slices/payModal/PayModalSlice';
 
 const BillingAddress = () => {
-  const { showModal, setShowModal } = useMarketData();
+  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const handleRegister = async ({ firstName, lastName, email, password }) => {
     const name = `${firstName} ${lastName}`;
     console.log({ name, email, password });
-    setShowModal(true);
+    dispatch(setPayModal(true));
   };
-  console.log(showModal);
   return (
     <div>
       <h6 className="mb-6">Billing Address</h6>
@@ -64,7 +64,7 @@ const BillingAddress = () => {
         </div>
 
         <input
-          className="bg-primary hover:bg-opacity-80 px-20 py-3 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
+          className="bg-primary hover:bg-opacity-80 px-8 md:px-20 py-3 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
           type="submit"
           value="Ready for Payment"
         />

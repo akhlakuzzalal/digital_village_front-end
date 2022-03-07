@@ -13,15 +13,19 @@ const News = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('./letestNewsFakeData.json')
+    fetch('http://localhost:5000/news/allNews')
       .then((res) => res.json())
       .then((data) => setNews(data));
   }, []);
 
   return (
-    <div className="container my-20 mx-auto px-4">
+    <div className="container my-20 mx-auto px-4 ">
+      <p className="text-center">Our News</p>
+      <h1 className=" text-2xl   text-center font-bold py-2   text-primary">
+        Latest News
+      </h1>
       <div className="flex md:my-4">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 pt-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 pt-10  pb-10">
           <div className="lg:col-span-2 ">
             <Swiper
               // slidesPerView={2}
@@ -49,7 +53,7 @@ const News = () => {
               className="swiper"
             >
               {news.map((n) => (
-                <SwiperSlide key={n.id}>
+                <SwiperSlide key={n._id}>
                   <NewsCard n={n} />
                 </SwiperSlide>
               ))}
@@ -59,14 +63,8 @@ const News = () => {
           {/* news sidebar */}
           <div className="hidden  lg:flex flex-col justify-center">
             {news.slice(0, 3).map((n) => (
-              <NewsSideCard key={n.id} n={n} />
+              <NewsSideCard key={n._id} n={n} />
             ))}
-            <button
-              className="text-primary text-lg hover:text-black transition-all duration-500 w-fit mx-auto"
-              onClick={() => navigate('/news')}
-            >
-              Read More
-            </button>
           </div>
         </div>
       </div>

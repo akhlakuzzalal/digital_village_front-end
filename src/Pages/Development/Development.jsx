@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import school from '../../assets/development/school.jpg';
-import DevelopmentCard from './DevelopmentCard/DevelopmentCard';
+import DevelopmentAbout from './DevelopmentAbout/DevelopmentAbout';
+import DevelopmentBanner from './DevelopmentBanner/DevelopmentBanner';
 const Development = () => {
   const [proposals, setProposals] = useState([
     {
@@ -56,17 +57,18 @@ const Development = () => {
   };
 
   return (
-    <div className="mt-[88px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
-      {/* development proposal cards */}
-      <div className="flex flex-wrap justify-evenly gap-6">
-        {proposals.map((proposal) => (
-          <DevelopmentCard
-            key={proposal._id}
-            proposal={proposal}
-            handleUpVote={handleUpVote}
-            handleDownVote={handleDownVote}
-          />
-        ))}
+    <div
+      className="mt-[80px]"
+      style={{ minHeight: 'calc(100vh - 700px) bg-gray-100' }}
+    >
+      <DevelopmentBanner />
+      <DevelopmentAbout />
+      <div>
+        <img
+          className="w-full h-96 "
+          src="https://storage.icograms.com/usages/headers/construction-site.png"
+          alt=""
+        />
       </div>
     </div>
   );

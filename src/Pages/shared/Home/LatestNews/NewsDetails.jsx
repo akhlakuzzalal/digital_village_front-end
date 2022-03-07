@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import img from '../../../../assets/healthcare.png';
-import Header from '../Header/Header';
+import img from '../../../../assets/events/events.png';
 
 const NewsDetails = () => {
   return (
     <>
-      <Header></Header>
-      <div className="event-details-main py-48 px-5 lg:px-20">
+      <div className="py-48 px-5 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 ">
           {/* left side */}
           <div className="lg:col-span-2">

@@ -1,30 +1,58 @@
 import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { AiOutlineMedicineBox } from 'react-icons/ai';
+import { FaClinicMedical } from 'react-icons/fa';
+import { GiLoveInjection } from 'react-icons/gi';
+import { Outlet, useLocation } from 'react-router-dom';
+import Sidebar from '../../../src/Components/Sidebar';
 import WelcomeBanner from './../Medical/Dashboard/partials/dashboardItem/WelcomeBanner';
-import Sidebar from './../Medical/Dashboard/partials/Sidebar';
 import Header from './../shared/Home/Header/Header';
+
+const links = [
+  {
+    name: 'Medicine Store',
+    icon: <FaClinicMedical size={30} />,
+    path: '/medical',
+  },
+  {
+    name: 'Vaccine Registration',
+    icon: <GiLoveInjection size={30} />,
+    path: '/medical/vaccine',
+  },
+  {
+    name: 'Doctor Appointment',
+    icon: <AiOutlineMedicineBox size={30} />,
+    path: '/medical/appointment',
+  },
+  {
+    name: 'User Appointment',
+    icon: <AiOutlineMedicineBox size={30} />,
+    path: '/medical/userAppointments',
+  },
+];
 
 const MedicalDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showText, setShowText] = useState(true);
+
+  const location = useLocation();
+  const initial =
+    location.pathname === '/medical' || location.pathname === '/medical/';
+
   return (
-    <div style={{ minHeight: 'calc(100vh - 700px)' }}>
-      <div className="flex h-screen overflow-hidden ">
-        {/* Sidebar */}
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+    <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
+      {/* Sidebar */}
+      <Sidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+        showText={showText}
+        setShowText={setShowText}
+        links={links}
+      />
 
-        {/* Content area */}
-        <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-          {/*  Site header */}
-          <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
-          <main>
-            <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-              {/* Welcome banner */}
-              <WelcomeBanner />
-            </div>
-            <Outlet />
-          </main>
-        </div>
+      {/* contents */}
+      <div className="flex-1">
+        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        {initial ? <WelcomeBanner /> : <Outlet />}
       </div>
     </div>
   );

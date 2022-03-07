@@ -21,8 +21,8 @@ const services = [
     name: 'Digital Learning',
     image: education,
     detail:
-      'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
-    desc: 'Digital Village Service!',
+      'Digital Learning is a service provided by us to improve the literacy rate of our village. We offers full free and quality education.',
+    desc: 'Free and Quality education',
     controlData: 'education',
   },
   {
@@ -30,7 +30,7 @@ const services = [
     name: 'Medical',
     image: medical,
     detail:
-      'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
+      'Medical services means Medically Necessary services, including, as the context requires, Confinement, treatments, procedures, tests, examinations .',
     desc: 'Digital Village Service!',
     controlData: 'medical',
   },
@@ -39,7 +39,7 @@ const services = [
     name: 'Events',
     image: event,
     detail:
-      'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
+      'Check out some amazing free events in village to take away all the fun experiences. There can be a lot that  might be offering but all the events  make it unique, distinctive and different from others.',
     desc: 'Digital Village Service!',
     controlData: 'events',
   },
@@ -48,8 +48,8 @@ const services = [
     name: 'Donations',
     image: donate,
     detail:
-      'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
-    desc: 'Development proposal',
+      ' Donation is a gift for charity, humanitarian aid, or to benefit a cause. A donation may take various forms, including money, alms, services, or goods such as clothing, toys, food, or vehicles. ',
+    desc: 'Donate available Get Help Request',
     controlData: 'donation',
   },
   {
@@ -57,7 +57,7 @@ const services = [
     name: 'Development',
     image: development,
     detail:
-      'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
+      'Our proud team working hard for the poor village people and improve their life style.we take somme village development work to develop various area ',
     desc: 'Propose your thoughts here',
     controlData: 'development',
   },
@@ -77,30 +77,35 @@ const Service = () => {
   const [control, setControl] = useState('education');
 
   return (
-    <section
-      id="service"
-      className="space-y-6 md:space-y-0 flex flex-wrap py-8 mt-16"
-    >
-      <div className="w-full lg:w-1/2 space-y-3 md:space-y-6 text-center md:text-left">
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-          {services.map((service) => (
-            <ServiceBoard
-              key={service.name}
-              setControl={setControl}
-              control={control}
-              service={service}
-            ></ServiceBoard>
-          ))}
+    <>
+      {/* <h1 className=" text-5xl md:text-7xl pb-4 text-center mx-auto font-bold py-2 my-8  text-primary">
+        Services
+      </h1> */}
+      <section
+        id="service"
+        className="space-y-6 md:space-y-0 flex flex-wrap py-8 mt-10"
+      >
+        <div className="w-full lg:w-1/2 space-y-3 md:space-y-6 text-center md:text-left">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+            {services.map((service) => (
+              <ServiceBoard
+                key={service.name}
+                setControl={setControl}
+                control={control}
+                service={service}
+              ></ServiceBoard>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {services.map(
-        (service) =>
-          control === service.controlData && (
-            <ServiceExplore key={service.name} service={service} />
-          )
-      )}
-    </section>
+        {services.map(
+          (service) =>
+            control === service.controlData && (
+              <ServiceExplore key={service.name} service={service} />
+            )
+        )}
+      </section>
+    </>
   );
 };
 

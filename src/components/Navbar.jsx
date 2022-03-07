@@ -1,9 +1,11 @@
 import { Popover, Transition } from '@headlessui/react';
 import React, { Fragment, useState } from 'react';
 import { MdClose, MdEditNotifications, MdMenuOpen } from 'react-icons/md';
+import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 import logo from '../assets/logo.png';
+import UserMenu from './UserMenu';
 
 const Navbar = ({ navigation }) => {
   const [changeHeader, setChangeHeader] = useState(false);
@@ -12,8 +14,9 @@ const Navbar = ({ navigation }) => {
 
   const navigate = useNavigate();
 
-  const user = true; // will come from firebase
+  const user = useSelector((state) => state.user.user);
 
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   //header change function
   const onChangeHeader = () => {
     const scrollTop =
@@ -36,10 +39,6 @@ const Navbar = ({ navigation }) => {
     }
   };
 
-  const handleLogout = () => {
-    navigate('/');
-  };
-
   //change header by scrolling
   window.addEventListener('scroll', onChangeHeader);
 
@@ -48,9 +47,11 @@ const Navbar = ({ navigation }) => {
       className={`
           ${
             changeHeader
-              ? '-mt-32 fixed z-50 top-0 left-0 w-full shadow-md'
+              ? '-mt-32 fixed z-50 top-0 left-0 w-full  shadow-md'
               : 'mt-0 fixed z-50 top-0 left-0 w-full'
-          } ${headerBgWhite ? 'bg-white' : 'bg-transparent'}`}
+          } ${
+        headerBgWhite ? 'bg-slate-900 text-white' : 'bg-slate-900 text-white'
+      }`}
     >
       <nav className="flex items-center justify-between max-w-screen-xl mx-auto px-6 py-3">
         {/* logo */}
@@ -58,7 +59,7 @@ const Navbar = ({ navigation }) => {
           className="flex grow md:grow-0 items-center justify-start order-1"
           onClick={() => navigate('/')}
         >
-          <img className="w-16 cursor-pointer" src={logo} alt="logo" />
+          <img className="w-14 cursor-pointer" src={logo} alt="logo" />
         </div>
 
         {/* Nav links */}
@@ -96,14 +97,14 @@ const Navbar = ({ navigation }) => {
                     </div>
                   </div>
 
-                  {/* nav links */}
+                  {/* nav links on small divice */}
                   <div className="px-2 pt-2 pb-3 space-y-1">
                     {navigation.map((item) =>
                       item.name.includes('#') ? (
                         <NavLink
                           key={item.name}
                           to={item.href}
-                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary"
+                          className="block px-3 py-2 rounded-md text-lg font-bold text-gray-700 hover:text-primary"
                         >
                           {item.name}
                         </NavLink>
@@ -112,7 +113,7 @@ const Navbar = ({ navigation }) => {
                           smooth
                           key={item.name}
                           to={item.href}
-                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary"
+                          className="block px-3 py-2 rounded-md text-lg font-bold text-gray-700 hover:text-primary"
                         >
                           {item.name}
                         </NavHashLink>
@@ -126,11 +127,12 @@ const Navbar = ({ navigation }) => {
             {/* on large device this links will be shown */}
             <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
               {navigation.map((item) =>
+                // User navigations
                 item.name.includes('#') ? (
                   <NavLink
                     key={item.name}
                     to={item.href}
-                    className="font-medium text-gray-500 hover:text-primary"
+                    className="font-bold text-white text-lg hover:text-primary"
                   >
                     {item.name}
                   </NavLink>
@@ -139,7 +141,7 @@ const Navbar = ({ navigation }) => {
                     smooth
                     key={item.name}
                     to={item.href}
-                    className="font-medium text-gray-500 hover:text-primary"
+                    className="font-bold text-white text-lg hover:text-primary"
                   >
                     {item.name}
                   </NavHashLink>
@@ -156,30 +158,31 @@ const Navbar = ({ navigation }) => {
               className="relative flex cursor-pointer"
               onClick={() => navigate('/notifications')}
             >
-              <span className="bg-primary w-6 h-6 rounded-full flex items-center justify-center text-white poppins absolute -right-1 -top-1">
+              <span className="bg-info w-6 h-6 rounded-full text-white font-bold flex items-center justify-center  poppins absolute -right-1 -top-1">
                 2
               </span>
               <MdEditNotifications
                 size={40}
-                className="cursor-pointer text-primary"
+                className="cursor-pointer text-white"
               />
             </div>
           </div>
           <div className="flex items-center justify-end space-x-6">
-            {user ? (
+            {!user?.email ? (
               <button
-                className="btn bg-success py-3 hover:bg-opacity-80 transition-all duration-300"
+                className="btn rounded-lg bg-success py-0 md:py-3 lg:py-3 text-xs md:text-xl px-5 hover:bg-opacity-80 transition-all duration-300"
                 onClick={() => navigate('/login')}
               >
                 Sign In
               </button>
             ) : (
-              <button
-                className="btn bg-danger py-3 hover:bg-opacity-80 transition-all duration-300"
-                onClick={handleLogout}
-              >
-                logout
-              </button>
+              // <button
+              //   className="btn bg-danger py-3 hover:bg-opacity-80 transition-all duration-300"
+              //   onClick={handleLogout}
+              // >
+              //   logout
+              // </button>
+              <UserMenu />
             )}
           </div>
         </div>

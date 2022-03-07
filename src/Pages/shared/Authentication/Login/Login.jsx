@@ -39,10 +39,9 @@ const Login = () => {
     setIsLoading,
   } = useAuth();
 
-  const handleLogin = ({ email, password }) => {
-    console.log({ email, password });
-    // processSignIn(email, password, location, navigate);
-    // reset();
+  const handleLogin = async ({ email, password }) => {
+    await processSignIn(email, password, location, navigate);
+    reset();
   };
 
   const handleGoogleLogin = () => {
@@ -57,7 +56,7 @@ const Login = () => {
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <div className="flex-1 px-3">
-        <div className="pt-48 mx-10 text-center lg:mx-48 space-y-4 mb-3">
+        <div className="pt-36 md:mx-10 text-center lg:mx-48 space-y-4 mb-3">
           <h3 className="capitalize">Welcome to digital village</h3>
           <p className="space-x-2">
             <span>Don't Have an account?</span>
@@ -75,7 +74,7 @@ const Login = () => {
               className="h-8 w-8 hover:scale-110 hover:text-secondary mx-3"
               aria-hidden="true"
             />
-            <p className="sm:text-center ">Continue With Google</p>
+            <p className="text-center ">Continue With Google</p>
           </button>
 
           <p>or</p>
@@ -88,16 +87,32 @@ const Login = () => {
           {/* email */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('email')}
+            {...register('email', {
+              required: true,
+              pattern: {
+                value:
+                  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                message: 'Please provide correct email address.',
+              },
+            })}
             placeholder="Email"
+            type="email"
           />
+          {errors.email && (
+            <p className="text-error mb-2">{errors.email.message}</p>
+          )}
 
           {/* password */}
           <input
             type="password"
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('password')}
+            {...register('password', {
+              required: true,
+              minLength: 6,
+              maxLength: 20,
+            })}
             placeholder="Password"
+            required
           />
 
           {/* submit button */}
@@ -108,12 +123,15 @@ const Login = () => {
           />
         </form>
       </div>
+
       <div className="hidden md:block w-full md:w-1/2 px-3 pt-24 pointer-events-none">
-        <Lottie
-          options={defaultOptions}
-          isClickToPauseDisabled={true}
-          height={isDesktop ? 500 : isTablet ? 400 : 300}
-        />
+        <div className="w-fit mx-auto">
+          <Lottie
+            options={defaultOptions}
+            isClickToPauseDisabled={true}
+            height={isDesktop ? 500 : isTablet ? 400 : 300}
+          />
+        </div>
       </div>
     </div>
   );
