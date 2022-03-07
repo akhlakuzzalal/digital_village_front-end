@@ -1,41 +1,6 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import AllEvents from './AllEvents/AllEvents';
-// const events = [
-//   {
-//     _id: 1,
-//     name: 'Local Artists Showcase',
-//     type: 'EXIBITIONS',
-//     image: event,
-//     date: '2:00 pm - 9:00 pm',
-//     place: 'Art Gallery',
-//   },
-//   {
-//     _id: 2,
-//     name: 'Local Artists Showcase',
-//     type: 'EXIBITIONS',
-//     image: event,
-//     date: '2:00 pm - 9:00 pm',
-//     place: 'Art Gallery',
-//   },
-//   {
-//     _id: 3,
-//     name: 'Local Artists Showcase',
-//     type: 'EXIBITIONS',
-//     image: event,
-//     date: '2:00 pm - 9:00 pm',
-//     place: 'Art Gallery',
-//   },
-//   {
-//     _id: 4,
-//     name: 'Local Artists Showcase',
-//     type: 'EXIBITIONS',
-//     image: event,
-//     date: '2:00 pm - 9:00 pm',
-//     place: 'Art Gallery',
-//   },
-// ];
-
 const Events = () => {
   const location = useLocation();
 
@@ -44,7 +9,7 @@ const Events = () => {
 
   return (
     <div>
-      <div className="px-4 md:px-12 lg:px-36 space-y-6 bg-white py-36">
+      <div className="px-4 md:px-12 lg:px-36 space-y-6 bg-white py-36 dark:bg-black">
         <div>
           <h1>Events</h1>
           <p className="lg:w-1/2 py-3">

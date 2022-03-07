@@ -17,7 +17,7 @@ const Reviews = () => {
     dispatch(fetchAllReview());
   }, []);
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 dark:bg-black">
       <div className="pt-[100px]">
         <p className="text-center">TESTIMONIALS</p>
         <h1 className=" text-2xl  text-center font-bold py-2   text-primary">
@@ -30,34 +30,42 @@ const Reviews = () => {
       </div>
 
       <Swiper
-        slidesPerGroup={2}
+        slidesPerView={2}
+        slidesPerGroup={1}
         autoplay={{
-          delay: 3500,
+          delay: 2500,
         }}
         breakpoints={{
-          640: {
+          '@0.00': {
             slidesPerView: 1,
-            spaceBetween: 10,
+            spaceBetween: 0,
           },
-          768: {
+          '@0.75': {
             slidesPerView: 2,
-            spaceBetween: 10,
+            spaceBetween: 20,
           },
-          // 1024: {
-          //   slidesPerView: 4,
-          //   spaceBetween: 10,
-          // },
+          '@1.00': {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          '@1.50': {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
         }}
         loop={true}
         loopFillGroupWithBlank={true}
         modules={[Autoplay]}
         className="swiper"
       >
-        <SwiperSlide className="flex justify-center p-10 space-x-2 ml-[400px]">
-          {allReview?.map((reviews) => (
-            <Review key={reviews._id} reviews={reviews} />
-          ))}
-        </SwiperSlide>
+        {allReview?.map((reviews) => (
+          <SwiperSlide
+            key={reviews._id}
+            className="flex justify-center p-4 ml-36"
+          >
+            <Review reviews={reviews} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

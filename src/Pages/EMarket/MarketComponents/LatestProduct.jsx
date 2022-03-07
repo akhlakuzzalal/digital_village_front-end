@@ -7,7 +7,7 @@ const LatestProduct = ({ lastProduct }) => {
   const { handleAddCart } = useCart();
   return (
     <div
-      className="mt-6 shadow-md rounded-lg overflow-hidden p-4 md:p-0"
+      className="mt-6 shadow-md rounded-lg overflow-hidden p-4 md:p-0 dark:dark-card-bg"
       style={{ height: '88%' }}
     >
       <div
@@ -16,7 +16,9 @@ const LatestProduct = ({ lastProduct }) => {
       ></div>
       <div className="text-center mt-6 mx-8">
         <h6>{lastProduct.title}</h6>
-        <h6 className="text-yellow-500">$ {lastProduct.price}</h6>
+        <h6 className="text-yellow-500 dark:text-yellow-500">
+          $ {lastProduct.price}
+        </h6>
         <p>{lastProduct.description.slice(0, 120)}</p>
       </div>
       <div className="w-full flex justify-center mt-6">

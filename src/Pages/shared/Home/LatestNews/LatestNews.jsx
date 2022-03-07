@@ -52,25 +52,27 @@ const LatestNews = () => {
             >
               {news.map((n) => (
                 <SwiperSlide key={n.id}>
-                  <div className="rounded-lg bg-[#eafae7] w-fit">
+                  <div className="rounded-lg bg-[#eafae7] w-fit dark:dark-card-bg ">
                     <img
                       className="rounded-t-lg w-100"
                       style={{ height: '280px' }}
                       src={n.img}
                       alt="village-news"
                     />
-                    <div className="p-4">
-                      <h3 className=" heading_sm font-medium py-4">
-                        {n.title}
-                      </h3>
-                      <p>{n.description.slice(0, 200)}</p>
-                      <div className="flex justify-between pt-3 font-medium">
-                        <Link to="/newsdetails">
-                          <button className="text-primary flex">
-                            Read more
-                            <MdDoubleArrow className="mt-1" />
-                          </button>
-                        </Link>
+                    <div className="dark:dark-card-bg">
+                      <div className="p-4">
+                        <h3 className=" heading_sm font-medium py-4">
+                          {n.title}
+                        </h3>
+                        <p>{n.description.slice(0, 200)}</p>
+                        <div className="flex justify-between pt-3 font-medium">
+                          <Link to="/newsdetails">
+                            <button className="text-primary flex">
+                              Read more
+                              <MdDoubleArrow className="mt-1" />
+                            </button>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -82,7 +84,7 @@ const LatestNews = () => {
             {news.slice(0, 3).map((n) => (
               <div
                 key={n.id}
-                className="flex news-card items-center bg-[#eafae7] rounded-lg shadow-lg mb-4 px-5 py-3"
+                className="flex news-card items-center bg-[#eafae7] rounded-lg shadow-lg mb-4 px-5 py-3 dark:dark-card-bg"
               >
                 <img className="w-3/6 h-fit" src={n.img} alt="" />
                 <p className="ml-5">{n.description.slice(0, 100)}</p>

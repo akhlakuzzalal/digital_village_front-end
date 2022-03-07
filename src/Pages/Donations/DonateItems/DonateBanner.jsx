@@ -18,7 +18,7 @@ const DonateBanner = () => {
   };
   return (
     <div
-      className="mt-[80px] bg-gray-700  bg-no-repeat bg-cover bg-center px-10 object-fill"
+      className="mt-[80px] bg-gray-700 bg-no-repeat bg-cover bg-center px-10 object-fill"
       style={{
         height: 'calc(100vh - 88px)',
         backgroundImage:

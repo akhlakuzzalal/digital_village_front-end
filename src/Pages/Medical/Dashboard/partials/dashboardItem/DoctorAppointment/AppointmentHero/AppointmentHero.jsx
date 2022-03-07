@@ -3,7 +3,7 @@ import doctor from './../../../../../../../assets/medical/doctor.png';
 
 const AppointmentHero = () => {
   return (
-    <div className="flex justify-center items-center bg-slate-100 ">
+    <div className="flex justify-center items-center bg-slate-100 dark:bg-slate-800">
       <div className="w-full md:w-1/2 p-10 text-center my-5">
         <h1>Quality Care</h1>
         <h3 justify-center items-center>
