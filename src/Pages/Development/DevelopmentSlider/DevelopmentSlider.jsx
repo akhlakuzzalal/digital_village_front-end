@@ -81,7 +81,7 @@ const DevelopmentSlider = ({n}) => {
                           >
                             {developments.map((n) => (
                               <SwiperSlide key={n.id}>
-                          <div  className=' w-96 shadow-2xl'>
+                          <div  className=' md:w-96 shadow-2xl'>
                           <div className="  cursor-pointer ">
                               
                               <div className=''>
@@ -94,7 +94,7 @@ const DevelopmentSlider = ({n}) => {
 
                           <p>{n.description.slice(0,100)} ...</p>
                           <Link to={`/newsDetails/${n.id}`}>
-                          <button className="text-primary text-lg hover:text-white hover:rounded-xl transition-all duration-500 border-2 p-2 border-green-600 hover:bg-primary hover:border-0  ">
+                          <button className="text-primary text-lg hover:text-white hover:rounded-xl transition-all duration-500 border-0 p-2 bg-gray-200 my-2  hover:bg-primary hover:border-0  ">
                           View Service...
                           </button>
                           </Link>
@@ -114,7 +114,7 @@ const DevelopmentSlider = ({n}) => {
                               
 
                           </div>
-                          <div className="space-y-4 md:p-4 text-white bg-gray-800 h-full py-10 shadow-2xl ">
+                          <div className="space-y-4 md:p-4 text-white bg-gray-800 h-full mr-5 py-10 shadow-2xl ">
                           <h3 className="text-yellow-400  flex items-center space-x-2 md:px-5">
                           FEATURED WEEK PROJECTS
                           </h3>
@@ -123,7 +123,7 @@ const DevelopmentSlider = ({n}) => {
 
                           <div className='grid grid-cols-2 '>
                           <div className='flex'>
-                              <img className='w-10 h-10 mx-2 my-auto mr-5' src="https://icon2.cleanpng.com/20180426/rvq/kisspng-computer-icons-download-setting-icon-5ae152c8c78b41.3187121115247162328173.jpg" alt="" />
+                              <img className='w-10 h-10  my-auto mr-5' src="https://icon2.cleanpng.com/20180426/rvq/kisspng-computer-icons-download-setting-icon-5ae152c8c78b41.3187121115247162328173.jpg" alt="" />
                              
                               <div>
                               <h3>110 <br />
@@ -141,7 +141,7 @@ const DevelopmentSlider = ({n}) => {
 
                           </div>
                          
-                          <button className="text-yellow-400 text-lg mt-24 px-5 mx-5 hover:text-white hover:rounded-xl transition-all duration-500 border-2 p-2 border-white hover:bg-primary hover:border-0  ">
+                          <button className="text-yellow-400 text-lg mt-24 px-5 mx-5 hover:text-white hover:rounded-xl transition-all duration-500 border-2  p-2 border-white hover:bg-primary hover:border-  ">
                           More Project ...
                           </button>
                           
@@ -159,7 +159,7 @@ const DevelopmentSlider = ({n}) => {
                  <h3 className='my-2'>SERVICE AND RENTAL TRANSFORMATIONS</h3>
                  <p className='py-5'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum laudantium ab aspernatur voluptatibus fuga sit, consequatur neque pariatur, iure suscipit tempora sed quibusdam aliquam cupiditate eaque quos doloribus dolore nulla ex. Ex quasi dolore minus fugit quibusdam quia velit !</p>
 
-                 <button className='p-2 bg-gray-200 text-primary'><a href="https://drive.google.com/u/1/uc?id=14vK9v0vP6pucv8RcMAUFlhvVr3Mv2Q21&export=download" target="_blank">Download Brochure</a></button>
+                
               </div>
 
               <div className='md:ml-5 mx-2 '>
@@ -225,7 +225,7 @@ const DevelopmentSlider = ({n}) => {
                           <h3>{n?.title}</h3>
                           <p className='py-5'>{n.description.slice(0,150)} ...</p>
                           <Link to={`/newsDetails/${n.id}`}>
-                          <button className="text-black text-lg hover:text-white hover:rounded-xl transition-all duration-500 border-2 p-2 border-blue-600 hover:bg-primary hover:border-0  ">
+                          <button className="text-black text-lg hover:text-white hover:rounded-xl transition-all duration-500 border-0 bg-gray-200 p-2 border-blue-600 hover:bg-primary hover:border-0  ">
                           View Project...
                           </button>
                           </Link>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BiDonateHeart } from 'react-icons/bi';
+import { BiDonateHeart,GiNewspaper} from 'react-icons/bi';
 import { BsCalendar2EventFill } from 'react-icons/bs';
 import { FaConnectdevelop, FaFistRaised, FaShopify, FaUsers } from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
@@ -66,11 +66,43 @@ const links = [
     name: 'Development',
     icon: <FaConnectdevelop size={30} />,
     path: '/admin/development',
+    nestedPath: [
+      {
+        name: 'Add-Development',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/addDevelopment',
+      },
+      {
+        name: 'Manage-Development',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/manageDevelopmet',
+      },
+     
+    ],
   },
   {
     name: 'Market',
     icon: <FaShopify size={30} />,
     path: '/admin/market',
+  },
+
+  {
+    name: 'newsDashboard',
+    icon: <BsCalendar2EventFill size={30} />,
+    path: '/admin/newsDashboard',
+    nestedPath: [
+      {
+        name: 'Add-News',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/addNews',
+      },
+      {
+        name: 'Manage-News',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/manageNews',
+      },
+     
+    ],
   },
 ];
 

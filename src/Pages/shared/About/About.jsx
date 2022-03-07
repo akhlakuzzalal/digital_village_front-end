@@ -9,9 +9,20 @@ const About = () => {
       <div
         className="bg-cover h-[240px] w-[100%]bg-no-repeat  lg:h-[500px]  md:h-[500px]"
         style={{
-          backgroundImage: `url(https://cdn.searchenginejournal.com/wp-content/uploads/2019/01/Top-10-Ranking-About-Us-Pages-760x400.png)`,
+          backgroundImage: `url(https://mpsconsulting.id/wp-content/uploads/2020/10/about_us_banner.png)`,
         }}
-      ></div>
+        
+      >
+        <div className="bg-primary lg:w-[500px] w-full mx-auto relative top-[400px] py-5">
+          <h1 className="text-2xl text-center text-white pt-16 font-bold">
+            About With Us
+          </h1>
+          <h3 className="text-center font-semibold my-3 text-xl md:text-2xl lg:text-lg text-white ">
+            Home / About Us
+          </h3>
+        </div>
+      </div>
+      
 
       <div className=" lg:flex  mt-20 lg:mt-48 lg:mx-[100px] mx-5">
         <div className="lg:flex">
@@ -19,7 +30,7 @@ const About = () => {
             <div className=" lg:w-[300px] w-[100%] border rounded py-8 mb-6">
               <img
                 className="ml-5 h-10 w-10   "
-                src="https://cdn-icons.flaticon.com/png/128/3213/premium/3213003.png?token=exp=1645161063~hmac=1c249334d03ba80cce190094b31dfa06"
+                src="http://cdn.onlinewebfonts.com/svg/img_142809.png"
                 alt=""
               />
 

@@ -34,8 +34,6 @@ const PublishBlog = () => {
       'blog',
       JSON.stringify({
         ...data,
-        author: user?.name,
-        email: user?.email,
         content,
         publishDate: new Date().toLocaleDateString(),
         tags: data?.tags.split(' '),
