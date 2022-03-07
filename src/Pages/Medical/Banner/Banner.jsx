@@ -21,25 +21,29 @@ const Banner = () => {
     <div
       className="mt-[80px] mb-36 md:mb-24"
       style={{
-        minHeight: isDesktop ? 'calc(100vh - 88px)' : 'fit-content',
+        backgroundColor: '#f7f8fa',
       }}
     >
-      {/* style={{ backgroundImage: isDesktop ? `url(${homeBg})` : 'none' }} */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 items-center lg:space-y-0 bg-no-repeat bg-left-top">
+      <div className="flex justify-center items-center p-10">
         {/* banner description */}
-        <div className="w-full place-self-center lg:mt-24 order-1 text-center lg:text-left lg:ml-80">
-          <h1>Quality Care</h1>
-          <h3 className="my-6">
-            <span className="text-primary">Your health</span> is our priority
+        <div className="w-full md:w-3/4 flex flex-col  justify-center items-center place-self-center lg:mt-24 order-1 text-center lg:text-left p-5">
+          <h1 className="my-3">Quality Care</h1>
+          <h3 justify-center items-center>
+            <span style={{ color: '#10217d' }}>Your health, </span> our priority
           </h3>
-          <p className="pb-3 w-4/6 text-sm font-extralight mt-3 text-gray-600">
-            We the village administration provide quality services through this
-            platform. Every villagers can fit their needs by utilizing the
-            facilities we provide.
+          <p className="my-6">
+            From preventive care and checkups, to immunizations and exams, our
+            primary care physicians and providers work to keep you and your
+            whole family healthy and strong each and every day.{' '}
           </p>
           <div className="flex items-start">
             <NavHashLink smooth to="/#service">
-              <button className="btn rounded-lg bg-primary">Services</button>
+              <button
+                className="btn rounded-lg "
+                style={{ backgroundColor: '#10217d' }}
+              >
+                Services
+              </button>
             </NavHashLink>
           </div>
         </div>
