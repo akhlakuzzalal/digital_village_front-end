@@ -1,11 +1,9 @@
 import React from 'react';
-import WelcomeBanner from './WelcomeBanner';
 
 const MyOrder = () => {
   const orders = [1, 2];
   return (
-    <div>
-      <WelcomeBanner />
+    <div className="mt-[80px] mb-36 md:mb-24">
       <h3 className="text-center">My Orders</h3>
       {orders.map((order) => (
         <div

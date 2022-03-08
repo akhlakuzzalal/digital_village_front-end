@@ -35,7 +35,13 @@ const UserDashboard = () => {
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
       {/* Sidebar */}
-      <NewSidebar links={links} />
+      <NewSidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+        showText={showText}
+        setShowText={setShowText}
+        links={links}
+      />
 
       {/* contents */}
       <div className="flex-1">

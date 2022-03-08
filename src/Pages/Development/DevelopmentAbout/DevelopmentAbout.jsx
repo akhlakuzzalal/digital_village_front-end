@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ImCalendar } from 'react-icons/im';
 import { Link } from 'react-router-dom';
 import { Autoplay } from 'swiper';
@@ -8,46 +8,15 @@ import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 
-const developments=[
-    {
-      "id": 1,
-      "title": "THE LIGHTWIRE | TEMPLATE-1",
-      "description": "At the 1991 census, there were 68,038 villages in Bangladesh with an average of 232 households.[1] The rural areas of Bangladesh (i.e. villages) are characterized by higher growth rate of population and lower literacy rate compared to urban areas - but these gaps are decreasing",
-      "img": "http://lightwire.webps.info/assets/themes/lightwire/images/hd-5.jpg",
-      "date": "20 September 2022"
-    },
-    {
-      "id": 2,
-      "title": "INTERIORS | TEMPLATE-2.",
-      "description": "At the 1991 census, there were 68,038 villages in Bangladesh with an average of 232 households.[1] The rural areas of Bangladesh (i.e. villages) are characterized by higher growth rate of population and lower literacy rate compared to urban areas - but these gaps are decreasing",
-      "img": "http://lightwire.webps.info/assets/themes/lightwire/images/hd-7.jpg",
-      "date": "21 September 2022"
-    },
-    {
-      "id": 3,
-      "title": "CONSULTING | TEMPLATE-1.",
-      "description": "At the 1991 census, there were 68,038 villages in Bangladesh with an average of 232 households.[1] The rural areas of Bangladesh (i.e. villages) are characterized by higher growth rate of population and lower literacy rate compared to urban areas - but these gaps are decreasing",
-      "img": "http://lightwire.webps.info/assets/themes/lightwire/images/hd-15.jpg",
-      "date": "22 September 2022"
-    },
-    {
-      "id": 4,
-      "title": "TECHNOLOGY | TEMPLATE-1",
-      "description": "At the 1991 census, there were 68,038 villages in Bangladesh with an average of 232 households.[1] The rural areas of Bangladesh (i.e. villages) are characterized by higher growth rate of population and lower literacy rate compared to urban areas - but these gaps are decreasing",
-      "img": "http://lightwire.webps.info/assets/components/phpthumbof/cache/image-17.6f48a82beff109794692619590fda6592.jpg",
-      "date": "23 September 2022"
-    },
-    {
-      "id": 5,
-      "title": " THEATRE | TEMPLATE-1",
-      "description": "At the 1991 census, there were 68,038 villages in Bangladesh with an average of 232 households.[1] The rural areas of Bangladesh (i.e. villages) are characterized by higher growth rate of population and lower literacy rate compared to urban areas - but these gaps are decreasing",
-      "img": "http://lightwire.webps.info/assets/components/phpthumbof/cache/image-11.6f48a82beff109794692619590fda6592.jpg",
-      "date": "24 September 2022"
-    },
-    
-  ]
 
 const DevelopmentAbout = () => {
+  const [developments,setDevelopments] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/development/allDevelopment')
+      .then((res) => res.json())
+      .then((data) => setDevelopments(data));
+  }, []);
     return (
         <div className=' mx-auto md:mx-80'>
 
@@ -82,11 +51,11 @@ const DevelopmentAbout = () => {
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-5 my-12 py-6'>
-                <img className='md:ml-8 md:w-48 border-r-4 md:p-5 m-2 border hover:bg-red-400' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-3B.png" alt="" />
-                <img className='md:ml-8 md:w-48 md:border-r-4 md:p-5 m-2 border hover:bg-red-400' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-2.png" alt="" />
-                <img className='md:ml-8 md:w-48 md:border-r-4 md:p-5 m-2 border hover:bg-red-400' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-4B.png" alt="" />
-                <img className='md:mr-8 md:w-48 md:border-r-4 md:p-5 m-2 border hover:bg-red-400' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-5.png" alt="" />
-                <img className=' md:w-48 md:p-5 md:m-2 border hover:bg-red-400' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-1.png" alt="" />
+                <img className='md:ml-8 md:w-48 border-r-4 md:p-5 m-2 border ' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-3B.png" alt="" />
+                <img className='md:ml-8 md:w-48 md:border-r-4 md:p-5 m-2 border ' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-2.png" alt="" />
+                <img className='md:ml-8 md:w-48 md:border-r-4 md:p-5 m-2 border ' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-4B.png" alt="" />
+                <img className='md:mr-8 md:w-48 md:border-r-4 md:p-5 m-2 border ' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-5.png" alt="" />
+                <img className=' md:w-48 md:p-5 md:m-2 border ' src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-1.png" alt="" />
                
             </div>
 
@@ -113,8 +82,8 @@ const DevelopmentAbout = () => {
 
                       {/* About Slider */}
                       <div className='col-span-2'>
-                  <div className=' grid grid-cols-3 '>
-                  <div className='col-span-3'>
+                  <div className=' grid grid-cols-2 '>
+                  <div className='col-span-2'>
                   <Swiper className=""
                             // slidesPerView={2}
                             slidesPerGroup={1}
@@ -154,7 +123,7 @@ const DevelopmentAbout = () => {
                           <h3 className='text-2xl'>{n?.title}</h3>
                           <p className='py-2'>{n.description.slice(0,70)} ...</p>
                           <Link to={`/newsDetails/${n.id}`}>
-                          <button className="text-black text-lg hover:text-white hover:rounded-xl transition-all duration-500 border-2 p-2 border-blue-600 hover:bg-primary hover:border-0  ">
+                          <button className="text-black text-lg hover:text-white hover:rounded-xl transition-all duration-500 border-0 p-2 bg-gray-200  hover:bg-primary hover:border-0  ">
                           View Project...
                           </button>
                           </Link>

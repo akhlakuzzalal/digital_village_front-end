@@ -29,7 +29,7 @@ const CauseCard = (props) => {
   let percent = percentage(donationTotal, donationGoal);
 
   return (
-    <div className="rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between border-l-4  bg-blue-50 shadow hover:shadow-md">
+    <div className="rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between border-l-4  bg-blue-50 shadow hover:shadow-md dark:dark-card-bg">
       <div className="overflow-hidden rounded-xl h-full w-full">
         <div className="absolute top-10 text-white text-md left-0 z-50 bg-red-600 font-primary px-4 py-1 rounded-lg">
           {category}
@@ -61,8 +61,8 @@ const CauseCard = (props) => {
           <p> GOAL {goal}</p>
         </button>
       </div>
-      <div className="py-5">
-        <p className="text-gray-600">Raised {percent.toFixed(0)}% completed</p>
+      <div class="py-5">
+        <p class="text-gray-600">Raised {percent.toFixed(0)}% completed</p>
         <Progress
           percent={percent.toFixed(0)}
           theme={{

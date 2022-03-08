@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from '../../../api/axios';
-import { setCauses } from '../../../redux/slices/Donations/donationSlice';
+import { fetchAllCuases } from '../../../redux/slices/Donations/donationSlice';
 import CauseCard from './CauseCard';
 
 const Causes = () => {
-  const dispatch = useDispatch();
   const causes = useSelector((state) => state.donation.causes);
-  // console.log(causes);
-
-  useEffect(() => {
-    axios.get('/donation/cuases').then((res) => dispatch(setCauses(res.data)));
-  }, []);
+  console.log(causes);
+  
+     const dispatch = useDispatch();
+     useEffect(() => {
+       dispatch(fetchAllCuases());
+     }, []);
 
   return (
     <section

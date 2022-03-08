@@ -42,7 +42,7 @@ const PublishBlog = () => {
       })
     );
 
-    const response = await axios.post('/teacher/publishBlogs', formData);
+    const response = await axios.post('/teacher/publishBlog', formData);
     console.log(response.data);
   };
 

@@ -8,7 +8,7 @@ const Calender = ({ onChange }) => {
   // };
   return (
     <div>
-      <DatePicker onChange={onChange} />
+      <DatePicker onChange={onChange} className="dark:dark-card-bg" />
     </div>
   );
 };
