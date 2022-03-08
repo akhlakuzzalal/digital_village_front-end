@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { AiFillDelete } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllEvent } from '../../../redux/slices/event/eventSlice';
 import ManageEventsCard from './ManageEventsCard';
@@ -14,7 +15,10 @@ const ManageEvents = () => {
 
   return (
     <div>
-      <h1 className="lg:ml-52 mt-44">You Can Delete Events</h1>
+      <h1 className="lg:ml-52 mt-44 flex space-x-3">
+        Delete Exixting Events{' '}
+        <AiFillDelete color="red" className="animate-bounce mt-2" />
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8 pt-20 pb-20 lg:mx-[210px] mx-5">
         {allEvent.map((event) => (
           <ManageEventsCard

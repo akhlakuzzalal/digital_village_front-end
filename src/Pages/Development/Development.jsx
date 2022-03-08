@@ -63,13 +63,7 @@ const Development = () => {
     >
       <DevelopmentBanner />
       <DevelopmentAbout />
-      <div>
-        <img
-          className="w-full h-96 "
-          src="https://storage.icograms.com/usages/headers/construction-site.png"
-          alt=""
-        />
-      </div>
+      
     </div>
   );
 };

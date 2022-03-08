@@ -10,13 +10,13 @@ const Schedule = ({ onChange }) => {
         Take a schedule for a consultation
       </h3>
       <div className="flex justify-center items-center">
-        <div className="w-full md: w-1/2 flex justify-center items-center">
+        <div className="w-full md:w-1/2 flex justify-center items-center">
           {' '}
           <Calender onChange={onChange} />
         </div>
-        <div className="w-full md: w-1/2 flex justify-center items-center">
+        <div className="w-full md:w-1/2 flex justify-center items-center">
           {' '}
-          <img src={schedule} />
+          <img src={schedule} alt="" />
         </div>
       </div>
     </div>

@@ -1,7 +1,15 @@
 import React from 'react';
+import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
 import { BsCalendar2EventFill } from 'react-icons/bs';
-import { FaConnectdevelop, FaShopify, FaUsers } from 'react-icons/fa';
+import {
+  FaConnectdevelop,
+  FaFistRaised,
+  FaShopify,
+  FaUsers,
+} from 'react-icons/fa';
+import { FcDonate, FcImport } from 'react-icons/fc';
+import { MdRateReview } from 'react-icons/md';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
@@ -22,12 +30,12 @@ const links = [
     nestedPath: [
       {
         name: 'Add Event',
-        icon: <BsCalendar2EventFill size={30} />,
+        icon: <AiFillFileAdd size={30} />,
         path: '/admin/add-events',
       },
       {
         name: 'Delete Event',
-        icon: <BsCalendar2EventFill size={30} />,
+        icon: <AiFillDelete size={30} />,
         path: '/admin/manageEvents',
       },
     ],
@@ -35,23 +43,70 @@ const links = [
 
   {
     name: 'Add Review',
-    icon: <BsCalendar2EventFill size={30} />,
+    icon: <MdRateReview size={30} />,
     path: '/admin/add-review',
   },
   {
     name: 'Donation',
     icon: <BiDonateHeart size={30} />,
-    path: '/admindashboard/donation',
+    path: '/admin/paymentcauses',
+    nestedPath: [
+      {
+        name: 'All Payment',
+        icon: <FaFistRaised size={30} />,
+        path: '/admin/paymentcauses',
+      },
+      {
+        name: 'Add a Cause',
+        icon: <FcImport size={30} />,
+        path: '/admin/addcause',
+      },
+      {
+        name: 'All Cuases',
+        icon: <FcDonate size={30} />,
+        path: '/admin/allcauses',
+      },
+    ],
   },
   {
     name: 'Development',
     icon: <FaConnectdevelop size={30} />,
     path: '/admin/development',
+    nestedPath: [
+      {
+        name: 'Add-Development',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/addDevelopment',
+      },
+      {
+        name: 'Manage-Development',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/manageDevelopmet',
+      },
+    ],
   },
   {
     name: 'Market',
     icon: <FaShopify size={30} />,
     path: '/admin/market',
+  },
+
+  {
+    name: 'newsDashboard',
+    icon: <BsCalendar2EventFill size={30} />,
+    path: '/admin/newsDashboard',
+    nestedPath: [
+      {
+        name: 'Add-News',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/addNews',
+      },
+      {
+        name: 'Manage-News',
+        icon: <BsCalendar2EventFill size={30} />,
+        path: '/admin/manageNews',
+      },
+    ],
   },
 ];
 
@@ -60,7 +115,6 @@ const navigation = [
   { name: 'Service', href: '/#service' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
-  { name: 'Admin', href: '/admin' },
 ];
 
 const AdminDashboard = () => {

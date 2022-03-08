@@ -8,15 +8,15 @@ const Review = ({ reviews }) => {
   console.log(reviews);
 
   return (
-    <div className=" px-[30px] ">
-      <div className="w-16 md:w-28  relative top-9 md:top-44 md:right-11 ">
+    <div className="">
+      <div className="w-16 md:w-28 relative top-9 md:top-44 md:right-11 ">
         <img
           className="w-full rounded-full border-4 border-slate-200"
           src={client}
           alt=""
         />
       </div>
-      <div className="bg-white shadow-2xl border-4 rounded-lg text-center py-9  md:py-16 px-8  border-slate-50 w-[400px]">
+      <div className="bg-white dark:dark-card-bg shadow-md border-4 rounded-lg text-center py-9  md:py-16 px-8  border-slate-50 w-[400px]">
         <div className="flex justify-center text-yellow-400 heading_sm md:heading_md">
           <Rating rating={rating} />
         </div>
