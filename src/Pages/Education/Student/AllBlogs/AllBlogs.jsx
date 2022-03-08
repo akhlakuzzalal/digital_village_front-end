@@ -1,17 +1,32 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBlogs } from '../../../../redux/slices/blog/blogSlice';
+import Pagination from '../../../../Components/Pagination';
+import {
+  fetchBlogs,
+  setCurrPage,
+} from '../../../../redux/slices/blog/blogSlice';
 import Search from '../Search/Search';
 import BlogCard from './BlogCard/BlogCard';
 const AllBlogs = () => {
+  const pageCount = useSelector((state) => state.blogs.pageCount);
+  const currPage = useSelector((state) => state.blogs.currPage);
   const blogs = useSelector((state) => state.blogs.blogs);
-  console.log(blogs);
+  const size = 10;
+
+  console.log('this is currpage', currPage);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchBlogs());
-  }, []);
+    dispatch(
+      fetchBlogs({
+        pageCount,
+        currPage,
+        size,
+      })
+    );
+  }, [currPage, pageCount, size]);
+
   return (
     <div className="space-y-6">
       <Search />
@@ -21,6 +36,13 @@ const AllBlogs = () => {
           <BlogCard key={blog._id} blog={blog} />
         ))}
       </article>
+
+      {/* pagination */}
+      <Pagination
+        currPage={currPage}
+        setCurrPage={setCurrPage}
+        pageCount={pageCount}
+      />
     </div>
   );
 };
