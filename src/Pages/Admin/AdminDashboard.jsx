@@ -5,9 +5,6 @@ import { FaConnectdevelop, FaShopify, FaUsers } from 'react-icons/fa';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
-// import Sidebar from '../../Components/Sidebar';
-// import WelcomeBanner from '../../Components/WelcomeBanner';
-// import Header from '../Education/Teacher/Dashboard/partials/Header';
 
 const links = [
   {
