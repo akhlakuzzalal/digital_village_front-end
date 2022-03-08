@@ -7,7 +7,7 @@ const Rating = ({ rating, size = 20 }) => {
   let element;
 
   for (let i = 0; i < rating; i++) {
-    element = <AiFillStar key={i} size={size} color={'#faca51'} />;
+    element = <AiFillStar className='w-6 h-6' key={i} size={size} color={'#faca51'} />;
     starArr.push(element);
   }
   return starArr;

@@ -5,7 +5,7 @@ import { SiGoogleanalytics } from 'react-icons/si';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../../Components/Navbar';
 import NewSidebar from '../../../Components/Sidebar/NewSidebar';
-import Analytics from './Analytics/Analytics';
+import Analytics from './Dashboard/Analytics/Analytics';
 
 const links = [
   {

@@ -10,7 +10,7 @@ import RichTextEditor from '../../../../../Components/RichTextEditor';
 const AddNews = () => {
     const [content, setContent] = useState('');
   
-    const user = useSelector((state) => state.user.user);
+    // const user = useSelector((state) => state.user.user);
   
     const {
       register,
@@ -40,7 +40,7 @@ const AddNews = () => {
         })
       );
   
-      const response = await axios.post('/news/addNews', formData);
+      const response = await axios.post('http://localhost:5000/news/addNews', formData);
       console.log(response.data);
     };
   

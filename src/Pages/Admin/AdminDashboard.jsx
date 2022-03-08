@@ -1,13 +1,21 @@
 import React from 'react';
-import { BiDonateHeart} from 'react-icons/bi';
-import { GiNewspaper } from 'react-icons/gi';
+import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
+import { BiDonateHeart } from 'react-icons/bi';
 import { BsCalendar2EventFill } from 'react-icons/bs';
-import { FaConnectdevelop, FaShopify, FaUsers } from 'react-icons/fa';
+import {
+  FaConnectdevelop,
+  FaFistRaised,
+  FaShopify,
+  FaUsers,
+} from 'react-icons/fa';
+import { FcDonate, FcImport } from 'react-icons/fc';
+import { MdRateReview } from 'react-icons/md';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
 import { IoLogoDesignernews } from 'react-icons/io';
 import { MdOutlineManageAccounts } from 'react-icons/md';
+import { GiNewspaper } from 'react-icons/gi';
 // import Sidebar from '../../Components/Sidebar';
 // import WelcomeBanner from '../../Components/WelcomeBanner';
 // import Header from '../Education/Teacher/Dashboard/partials/Header';
@@ -25,12 +33,12 @@ const links = [
     nestedPath: [
       {
         name: 'Add Event',
-        icon: <BsCalendar2EventFill size={30} />,
+        icon: <AiFillFileAdd size={30} />,
         path: '/admin/add-events',
       },
       {
         name: 'Delete Event',
-        icon: <BsCalendar2EventFill size={30} />,
+        icon: <AiFillDelete size={30} />,
         path: '/admin/manageEvents',
       },
     ],
@@ -38,13 +46,30 @@ const links = [
 
   {
     name: 'Add Review',
-    icon: <BsCalendar2EventFill size={30} />,
+    icon: <MdRateReview size={30} />,
     path: '/admin/add-review',
   },
   {
     name: 'Donation',
     icon: <BiDonateHeart size={30} />,
-    path: '/admindashboard/donation',
+    path: '/admin/paymentcauses',
+    nestedPath: [
+      {
+        name: 'All Payment',
+        icon: <FaFistRaised size={30} />,
+        path: '/admin/paymentcauses',
+      },
+      {
+        name: 'Add a Cause',
+        icon: <FcImport size={30} />,
+        path: '/admin/addcause',
+      },
+      {
+        name: 'All Cuases',
+        icon: <FcDonate size={30} />,
+        path: '/admin/allcauses',
+      },
+    ],
   },
   {
     name: 'Development',
@@ -61,7 +86,6 @@ const links = [
         icon: <BsCalendar2EventFill size={30} />,
         path: '/admin/manageDevelopmet',
       },
-     
     ],
   },
   {
@@ -85,7 +109,6 @@ const links = [
         icon: <MdOutlineManageAccounts size={30} />,
         path: '/admin/manageNews',
       },
-     
     ],
   },
 ];
@@ -95,7 +118,6 @@ const navigation = [
   { name: 'Service', href: '/#service' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
-  { name: 'Admin', href: '/admin' },
 ];
 
 const AdminDashboard = () => {

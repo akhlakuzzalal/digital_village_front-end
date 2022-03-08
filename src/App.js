@@ -7,11 +7,14 @@ import AllUsers from './Pages/Admin/AllUsers/AllUsers';
 import AddDevelopment from './Pages/Admin/DashboardItem/Development/AddDevelopment/AddDevelopment';
 import DevelopmentDashboard from './Pages/Admin/DashboardItem/Development/DevelopmentDashboard';
 import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage/DevelopmentManage';
-import Donation from './Pages/Admin/DashboardItem/Donation/Donation';
+import AddCause from './Pages/Admin/DashboardItem/Donation/AddCause';
+import AllCauses from './Pages/Admin/DashboardItem/Donation/AllCauses';
+import AllDonarPayment from './Pages/Admin/DashboardItem/Donation/AllDonarPayment';
+import UpdateCause from './Pages/Admin/DashboardItem/Donation/UpdateCause';
 import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/DashboardItem/Market/MarketManagement';
 import AddNews from './Pages/Admin/DashboardItem/News/AddNews/AddNews';
-import ManageNews from './Pages/Admin/DashboardItem/News/ManageNews/ManageNews';
+import ManageNews from './Pages/Admin/DashboardItem/News/ManageNews/ManageNews.jsx';
 import NewsDashboard from './Pages/Admin/DashboardItem/News/NewsDashboard';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
@@ -26,7 +29,7 @@ import FavouriteBlogs from './Pages/Education/Student/FavouriteBlogs/FavouriteBl
 import FavouriteVideos from './Pages/Education/Student/FavouriteVideos/FavouriteVideos';
 import Student from './Pages/Education/Student/Student';
 import StudentHome from './Pages/Education/Student/StudentHome/StudentHome';
-import Analytics from './Pages/Education/Teacher/Analytics/Analytics';
+import Analytics from './Pages/Education/Teacher/Dashboard/Analytics/Analytics';
 import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
 import Myvideos from './Pages/Education/Teacher/Myvideos/Myvideos';
 import PublishBlog from './Pages/Education/Teacher/PublishBlog/PublishBlog';
@@ -54,6 +57,7 @@ import UserAppointments from './Pages/Medical/Dashboard/partials/dashboardItem/D
 import RegForm from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegForm/RegForm';
 import VaccineInfo from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/VaccineInfo';
 import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
+import Medical from './Pages/Medical/Medical';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
 import Notification from './Pages/Notification/Notification';
 import About from './Pages/shared/About/About';
@@ -67,6 +71,7 @@ import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import AddReview from './Pages/shared/Home/Reviews/AddReview/AddReview';
 import NotFound from './Pages/shared/NotFound/NotFound';
 import Profile from './Pages/User/DashboardComponent/Profile/Profile';
+import Review from './Pages/User/DashboardComponent/Review/Review';
 import UserDashboard from './Pages/User/UserDashboard';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
 
@@ -106,6 +111,7 @@ function App() {
             {/* user routes */}
             <Route path="userdashboard" element={<UserDashboard />}>
               <Route path="profile" element={<Profile />} />
+              <Route path="review" element={<Review/>} />
             </Route>
 
             {/* education related routes */}
@@ -179,14 +185,23 @@ function App() {
             <Route path="marketdashboard" element={<MarketDashboard />}>
               <Route path="myorder" element={<MyOrder />} />
             </Route>
-
+            <Route path="medi" element={<Medical />} />
             <Route path="*" element={<NotFound />} />
             {/* Admin dashboard routes */}
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
               <Route path="manageEvents" element={<ManageEvents />} />
-              <Route path="donation" element={<Donation />} />
+              <Route path="development" element={<DevelopmentManage />} />
+              <Route path="market" element={<MarketManagement />} />
+              <Route path="add-events" element={<AddEvents />} />
+              <Route path="add-review" element={<AddReview />} />
+              <Route path="medical" element={<AddAppointment />} />
+              <Route path="addcause" element={<AddCause />} />
+              <Route path="allcauses" element={<AllCauses />} />
+              <Route path="updatecause/:id" element={<UpdateCause />} />
+              <Route path="paymentcauses" element={<AllDonarPayment />} />
+              <Route path="donation" element={<Donations />} />
               <Route path="development" element={<DevelopmentDashboard />} />
               <Route path="manageDevelopmet" element={<DevelopmentManage />} />
               <Route path="addDevelopment" element={<AddDevelopment />} />
@@ -194,7 +209,7 @@ function App() {
               <Route path="add-events" element={<AddEvents />} />
               <Route path="add-review" element={<AddReview />} />
               <Route path="newsDashboard" element={<NewsDashboard />} />
-              <Route path="addNews" element={<AddNews/>} />
+              <Route path="addNews" element={<AddNews />} />
               <Route path="manageNews" element={<ManageNews />} />
             </Route>
           </Routes>
