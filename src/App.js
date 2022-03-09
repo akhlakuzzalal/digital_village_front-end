@@ -42,6 +42,7 @@ import EventBooking from './Pages/Events/EventBooking/EventBooking';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import ManageEvents from './Pages/Events/ManageEvents/ManageEvents';
+import MyBookedEvents from './Pages/Events/MyBookedEvents/MyBookedEvents';
 import UpcomingEvents from './Pages/Events/UpcomingEvents/UpcomingEvents';
 import AddAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/AddAppointment';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
@@ -101,6 +102,7 @@ function App() {
             {/* user routes */}
             <Route path="userdashboard" element={<UserDashboard />}>
               <Route path="profile" element={<Profile />} />
+              <Route path="my-event-booking" element={<MyBookedEvents />} />
             </Route>
 
             {/* education related routes */}
