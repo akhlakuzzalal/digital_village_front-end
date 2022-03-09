@@ -13,6 +13,9 @@ import { MdRateReview } from 'react-icons/md';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
+import { IoLogoDesignernews } from 'react-icons/io';
+import { MdOutlineManageAccounts } from 'react-icons/md';
+import { GiNewspaper } from 'react-icons/gi';
 // import Sidebar from '../../Components/Sidebar';
 // import WelcomeBanner from '../../Components/WelcomeBanner';
 // import Header from '../Education/Teacher/Dashboard/partials/Header';
@@ -93,17 +96,17 @@ const links = [
 
   {
     name: 'newsDashboard',
-    icon: <BsCalendar2EventFill size={30} />,
+    icon: <GiNewspaper size={30} />,
     path: '/admin/newsDashboard',
     nestedPath: [
       {
         name: 'Add-News',
-        icon: <BsCalendar2EventFill size={30} />,
+        icon: <IoLogoDesignernews size={30} />,
         path: '/admin/addNews',
       },
       {
         name: 'Manage-News',
-        icon: <BsCalendar2EventFill size={30} />,
+        icon: <MdOutlineManageAccounts size={30} />,
         path: '/admin/manageNews',
       },
     ],

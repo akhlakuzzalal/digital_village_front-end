@@ -41,7 +41,7 @@ const AddDevelopment = () => {
         
       );
   
-      const response = await axios.post('/development/addDevelopment', formData)
+      const response = await axios.post('http://localhost:5000/development/addDevelopment', formData)
       reset()
       console.log(response);
       
