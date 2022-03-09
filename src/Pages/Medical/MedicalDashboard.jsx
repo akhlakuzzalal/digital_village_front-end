@@ -3,7 +3,7 @@ import { AiOutlineMedicineBox } from 'react-icons/ai';
 import { FaClinicMedical } from 'react-icons/fa';
 import { GiLoveInjection } from 'react-icons/gi';
 import { Outlet, useLocation } from 'react-router-dom';
-import Sidebar from '../../../src/Components/Sidebar';
+import NewSidebar from '../../Components/Sidebar/NewSidebar';
 import WelcomeBanner from './../Medical/Dashboard/partials/dashboardItem/WelcomeBanner';
 import Header from './../shared/Home/Header/Header';
 
@@ -32,7 +32,6 @@ const links = [
 
 const MedicalDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [showText, setShowText] = useState(true);
 
   const location = useLocation();
   const initial =
@@ -41,13 +40,7 @@ const MedicalDashboard = () => {
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
       {/* Sidebar */}
-      <Sidebar
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-        showText={showText}
-        setShowText={setShowText}
-        links={links}
-      />
+      <NewSidebar links={links} />
 
       {/* contents */}
       <div className="flex-1">

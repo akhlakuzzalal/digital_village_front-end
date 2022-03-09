@@ -68,7 +68,10 @@ const Links = ({ link, showText, showTooltip, setShowTooltip }) => {
         <div className="ml-6 mr-1 space-y-2">
           {link?.nestedPath &&
             link?.nestedPath.map((l) => (
-              <div className="hover:bg-slate-600 transition-all duration-300 px-3 py-1 rounded-lg">
+              <div
+                key={l.path}
+                className="hover:bg-slate-600 transition-all duration-300 px-3 py-1 rounded-lg"
+              >
                 <NavLink to={l.path} key={l.path}>
                   <div className="relative group">
                     {!showText && (

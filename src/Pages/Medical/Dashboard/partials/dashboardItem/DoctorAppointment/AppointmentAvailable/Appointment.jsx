@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 
 const Appointment = ({ service, description, time, price }) => {
- 
   const navigate = useNavigate();
   const redirect_uri = '/medical/userAppointments';
 
@@ -21,14 +20,14 @@ const Appointment = ({ service, description, time, price }) => {
     });
   };
   return (
-    <div class="w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500">
-      <div class="p-5">
+    <div className="w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500">
+      <div className="p-5">
         <Link to="#">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight hover:text-blue-600 text-gray-900 dark:text-white">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight hover:text-blue-600 text-gray-900 dark:text-white">
             {service}
           </h5>
         </Link>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           {description}
         </p>
 
@@ -36,7 +35,7 @@ const Appointment = ({ service, description, time, price }) => {
         <p>Cost : {price} </p>
         <Link
           to="#"
-          class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-black rounded-lg "
+          className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-black rounded-lg "
         >
           <button onClick={handleAlert}>Book Appointment</button>
         </Link>

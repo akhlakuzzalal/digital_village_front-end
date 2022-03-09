@@ -94,8 +94,7 @@ function App() {
             <Route path="contact" element={<Contact />} />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
-
-            {/* testing */}
+            {/* TESTING */}
             <Route
               element={
                 <PrivateRoute allowedRoles={[Roles.User, Roles.Admin]} />
@@ -103,20 +102,15 @@ function App() {
             >
               <Route path="allUsers" element={<AllUsers />} />
             </Route>
-
-            {/* ALL PRIVATE ROUTES */}
-
             {/* notification route */}
             <Route path="notifications" element={<Notification />} />
-
             {/* user routes */}
             <Route path="userdashboard" element={<UserDashboard />}>
               <Route path="profile" element={<Profile />} />
               <Route path="my-event-booking" element={<MyBookedEvents />} />
               <Route path="review" element={<Review />} />
             </Route>
-
-            {/* education related routes */}
+            {/* EDUCATION RELATED ROUTES */}
             <Route path="education" element={<Education />} />
             <Route path="registerTeacher" element={<RegisterTeacher />} />
             {/* routes for teacher */}
@@ -127,7 +121,6 @@ function App() {
               <Route path="publishVideo" element={<PublishVideo />} />
               <Route path="analytics" element={<Analytics />} />
             </Route>
-
             {/* routes for student */}
             <Route path="student" element={<Student />}>
               <Route path="home" element={<StudentHome />} />
@@ -139,8 +132,7 @@ function App() {
             </Route>
             <Route path="detailvideo/:id" element={<DetailVideo />} />
             <Route path="blogDetails/:id" element={<BlogDetails />} />
-
-            {/* medical related routes */}
+            {/* MEDICAL RELATED ROUTES */}
             <Route path="medical" element={<MedicalDashboard />}>
               <Route path="vaccine" element={<VaccineRegistration />} />
               <Route path="appointment" element={<DoctorsAppointment />} />
@@ -148,8 +140,7 @@ function App() {
               <Route path="userAppointments" element={<UserAppointments />} />
               <Route path="pdf" element={<VaccineInfo />} />
             </Route>
-
-            {/* event realted routes */}
+            {/* EVENT RELATED ROUTES */}
             <Route path="events" element={<Events />}>
               <Route path="all-events" element={<AllEvents />} />
               <Route path="upcoming-events" element={<UpcomingEvents />} />
@@ -161,24 +152,16 @@ function App() {
                 element={<EventBooking />}
               />
             </Route>
-
-            {/* next */}
-            {/* <Route path="eventDetails/:id" element={<EventDetails />} /> */}
-
             <Route path="eventDetails/:id" element={<EventDetails />} />
-
-            {/* development related routes */}
+            {/* DEVELOPMENT RELATED ROUTES */}
             <Route path="development" element={<Development />} />
-
-            {/* news related routes */}
+            {/* NEWS RELATED ROUTES */}
             <Route path="newsDetails/:id" element={<NewsDetails />} />
             <Route path="allNews" element={<AllNews />} />
-
-            {/* donation related routes */}
+            {/* DONATION RELATED ROUTES */}
             <Route path="donation" element={<Donations />} />
             <Route path="causedetails/:id" element={<CaseSingle />} />
-
-            {/* village market related routes */}
+            {/* VILLAGE MARKET RELATED ROUTES */}
             <Route path="e-market" element={<EMarket />} />
             <Route path="cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
@@ -187,8 +170,10 @@ function App() {
             <Route path="marketdashboard" element={<MarketDashboard />}>
               <Route path="myorder" element={<MyOrder />} />
             </Route>
+
+            {/* landing page of medical */}
             <Route path="medi" element={<Medical />} />
-            <Route path="*" element={<NotFound />} />
+
             {/* Admin dashboard routes */}
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
@@ -214,6 +199,8 @@ function App() {
               <Route path="addNews" element={<AddNews />} />
               <Route path="manageNews" element={<ManageNews />} />
             </Route>
+            {/* NOT FOUND ROUTE */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </ScrollToTop>
         <Footer />

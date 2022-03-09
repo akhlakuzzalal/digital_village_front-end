@@ -24,7 +24,7 @@ const DonateCategory = () => {
           <h3 class="mt-4 text-base md:text-xl font-medium text-gray-800">
             Education Help
           </h3>
-          <p class="mt-4 text-base md:text-lg text-gray-600">
+          <p className="mt-4 text-base md:text-lg text-gray-600">
             Your feature description summary here.
           </p>
         </div>
@@ -37,7 +37,7 @@ const DonateCategory = () => {
           <h3 class="mt-4 text-base md:text-xl font-medium text-gray-800">
             Homeless help
           </h3>
-          <p class="mt-4 text-base md:text-lg text-gray-600">
+          <p className="mt-4 text-base md:text-lg text-gray-600">
             Your feature Homeless summary here.
           </p>
         </div>
@@ -50,7 +50,7 @@ const DonateCategory = () => {
           <h3 class="mt-4 text-base md:text-xl font-medium text-gray-800">
             Madical Treatment Help
           </h3>
-          <p class="mt-4 text-base md:text-lg text-gray-600">
+          <p className="mt-4 text-base md:text-lg text-gray-600">
             Your feature description summary here.
           </p>
         </div>
@@ -63,7 +63,7 @@ const DonateCategory = () => {
           <h3 class="mt-4 text-base md:text-xl font-medium text-gray-800">
             Help poor people
           </h3>
-          <p class="mt-4 text-base md:text-lg text-gray-600">
+          <p className="mt-4 text-base md:text-lg text-gray-600">
             Your feature description summary here.
           </p>
         </div>
@@ -75,7 +75,7 @@ const DonateCategory = () => {
           <h3 class="mt-4 text-base md:text-xl font-medium text-gray-800">
             Save the Humanity
           </h3>
-          <p class="mt-4 text-base md:text-lg text-gray-600">
+          <p className="mt-4 text-base md:text-lg text-gray-600">
             Your feature description summary here.
           </p>
         </div>
@@ -87,7 +87,7 @@ const DonateCategory = () => {
           <h3 class="mt-4 text-base md:text-xl font-medium text-gray-800">
             Water pump Help
           </h3>
-          <p class="mt-4 text-base md:text-lg text-gray-600">
+          <p className="mt-4 text-base md:text-lg text-gray-600">
             Your feature description summary here.
           </p>
         </div>

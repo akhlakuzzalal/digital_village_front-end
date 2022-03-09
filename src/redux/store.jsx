@@ -11,6 +11,7 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import blogReducer from './slices/blog/blogSlice';
 import donationSlice from './slices/Donations/donationSlice';
 import { marketAllReducers } from './slices/eMarket/marketAllReducers';
 import eventReducer from './slices/event/eventSlice';
@@ -19,9 +20,12 @@ import notificationReducer from './slices/notification/notificationSlice';
 import PayModalSlice from './slices/payModal/PayModalSlice';
 import reviewReducer from './slices/review/reviewSlice';
 import userReducer from './slices/user/userSlice';
+import videoReducer from './slices/video/videoSlice';
 
 const reducers = combineReducers({
   reviews: reviewReducer,
+  blogs: blogReducer,
+  videos: videoReducer,
   notifications: notificationReducer,
   user: userReducer,
   market: marketAllReducers,

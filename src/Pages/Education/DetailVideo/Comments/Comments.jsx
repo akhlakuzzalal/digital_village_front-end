@@ -2,22 +2,23 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import axios from '../../../../api/axios';
+import ReplyComment from './ReplyComment/ReplyComment';
+import SingleComment from './SingleComment/Singlecomment';
 
-function Comments({ postId, refreshFunc, commentLists }) {
-  const user = useSelector((state) => state.user.user);
+const Comments = ({ postId, updateComment, commentLists }) => {
+  const uId = useSelector((state) => state.user.uId);
 
   const { register, handleSubmit } = useForm();
 
   const handleCommentSubmit = async (data) => {
     const { comment } = data;
-    const commentData = { comment, commenter: user?.email, postId };
-
+    const commentData = { comment, commenter: uId, postId };
     const response = await axios.post('/comment/add', commentData);
-
+    console.log('response after adding', response);
     if (response.data.success) {
-      refreshFunc(response.data.result);
+      updateComment(...response.data.result);
     } else {
-      console.log(response);
+      console.log('return from backend', response);
       alert('Failed to save Comment');
     }
   };
@@ -25,13 +26,37 @@ function Comments({ postId, refreshFunc, commentLists }) {
   return (
     <div>
       <br />
-      <p> replies</p>
+      <p>replies</p>
       <hr />
       {/* Comment Lists  */}
-      {console.log(commentLists)}
+      {console.log('comment lists', commentLists)}
+
+      {commentLists &&
+        commentLists.map(
+          (comment, index) =>
+            !comment?.responseTo && (
+              <>
+                <SingleComment
+                  key={index}
+                  comment={comment}
+                  postId={postId}
+                  updateComment={updateComment}
+                />
+                <ReplyComment
+                  commentLists={commentLists}
+                  postId={postId}
+                  parentCommentId={comment._id}
+                  updateComment={updateComment}
+                />
+              </>
+            )
+        )}
 
       {/* Root Comment Form */}
-      <form className="flex" onSubmit={handleSubmit(handleCommentSubmit)}>
+      <form
+        className="flex border-4 border-warning"
+        onSubmit={handleSubmit(handleCommentSubmit)}
+      >
         <textarea
           {...register('comment')}
           className="w-full rounded-sm"
@@ -44,6 +69,6 @@ function Comments({ postId, refreshFunc, commentLists }) {
       </form>
     </div>
   );
-}
+};
 
 export default Comments;

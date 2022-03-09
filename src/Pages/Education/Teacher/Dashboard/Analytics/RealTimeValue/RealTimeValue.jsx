@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pie, PieChart } from 'recharts';
-import Info from '../../../../../Medical/Dashboard/utils/Info';
+import Info from '../../../../../../Components/Info';
 
 const RealTimeValue = () => {
   const data01 = [
@@ -29,6 +29,7 @@ const RealTimeValue = () => {
       value: 189,
     },
   ];
+
   const data02 = [
     {
       name: 'Group A',

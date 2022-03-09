@@ -9,13 +9,12 @@ import {
   FaUsers,
 } from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
-import { MdRateReview } from 'react-icons/md';
+import { GiNewspaper } from 'react-icons/gi';
+import { IoLogoDesignernews } from 'react-icons/io';
+import { MdOutlineManageAccounts, MdRateReview } from 'react-icons/md';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
-import { IoLogoDesignernews } from 'react-icons/io';
-import { MdOutlineManageAccounts } from 'react-icons/md';
-import { GiNewspaper } from 'react-icons/gi';
 // import Sidebar from '../../Components/Sidebar';
 // import WelcomeBanner from '../../Components/WelcomeBanner';
 // import Header from '../Education/Teacher/Dashboard/partials/Header';
