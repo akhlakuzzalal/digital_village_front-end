@@ -21,7 +21,7 @@ import FavouriteBlogs from './Pages/Education/Student/FavouriteBlogs/FavouriteBl
 import FavouriteVideos from './Pages/Education/Student/FavouriteVideos/FavouriteVideos';
 import Student from './Pages/Education/Student/Student';
 import StudentHome from './Pages/Education/Student/StudentHome/StudentHome';
-import Analytics from './Pages/Education/Teacher/Analytics/Analytics';
+import Analytics from './Pages/Education/Teacher/Dashboard/Analytics/Analytics';
 import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
 import Myvideos from './Pages/Education/Teacher/Myvideos/Myvideos';
 import PublishBlog from './Pages/Education/Teacher/PublishBlog/PublishBlog';
@@ -129,7 +129,7 @@ function App() {
             <Route path="blogDetails/:id" element={<BlogDetails />} />
 
             {/* medical related routes */}
-            <Route path="medical" element={<MedicalDashboard />}>
+            <Route path="medicalDashboard" element={<MedicalDashboard />}>
               <Route path="vaccine" element={<VaccineRegistration />} />
               <Route path="appointment" element={<DoctorsAppointment />} />
               <Route path="regForm" element={<RegForm />} />
@@ -175,7 +175,8 @@ function App() {
             <Route path="marketdashboard" element={<MarketDashboard />}>
               <Route path="myorder" element={<MyOrder />} />
             </Route>
-            <Route path="medi" element={<Medical />} />
+            <Route path="medical" element={<Medical />} />
+            <Route path="addAppointment" element={<AddAppointment />} />
             <Route path="*" element={<NotFound />} />
             {/* Admin dashboard routes */}
             <Route path="admin" element={<AdminDashboard />}>

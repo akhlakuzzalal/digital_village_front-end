@@ -3,30 +3,31 @@ import { AiOutlineMedicineBox } from 'react-icons/ai';
 import { FaClinicMedical } from 'react-icons/fa';
 import { GiLoveInjection } from 'react-icons/gi';
 import { Outlet, useLocation } from 'react-router-dom';
-import Sidebar from '../../../src/Components/Sidebar';
-import WelcomeBanner from './../Medical/Dashboard/partials/dashboardItem/WelcomeBanner';
+import NewSidebar from './../../Components/Sidebar/NewSidebar';
+
 import Header from './../shared/Home/Header/Header';
+import WelcomeBanner from './Dashboard/partials/dashboardItem/WelcomeBanner';
 
 const links = [
   {
     name: 'Medicine Store',
     icon: <FaClinicMedical size={30} />,
-    path: '/medical',
+    path: '/medicalDashboard',
   },
   {
     name: 'Vaccine Registration',
     icon: <GiLoveInjection size={30} />,
-    path: '/medical/vaccine',
+    path: '/medicalDashboard/vaccine',
   },
   {
     name: 'Doctor Appointment',
     icon: <AiOutlineMedicineBox size={30} />,
-    path: '/medical/appointment',
+    path: '/medicalDashboard/appointment',
   },
   {
     name: 'User Appointment',
     icon: <AiOutlineMedicineBox size={30} />,
-    path: '/medical/userAppointments',
+    path: '/medicalDashboard/userAppointments',
   },
 ];
 
@@ -36,12 +37,13 @@ const MedicalDashboard = () => {
 
   const location = useLocation();
   const initial =
-    location.pathname === '/medical' || location.pathname === '/medical/';
+    location.pathname === '/medicalDashboard' ||
+    location.pathname === '/medicalDashboard/';
 
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
       {/* Sidebar */}
-      <Sidebar
+      <NewSidebar
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
         showText={showText}
