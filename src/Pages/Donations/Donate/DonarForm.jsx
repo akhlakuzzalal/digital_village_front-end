@@ -1,27 +1,19 @@
+
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import PayModal from '../../../Components/Pay/PayModal';
-import { setPayModal } from '../../../redux/slices/payModal/PayModalSlice';
 
 const DonarForm = () => {
-  const dispatch = useDispatch();
+
+
   const { register, handleSubmit } = useForm();
-  const handleRegister = async ({
-    firstName,
-    lastName,
-    email,
-    amount,
-    message,
-    address,
-  }) => {
-    const name = `${firstName} ${lastName}`;
-    console.log({ name, email, address, message, amount });
-    dispatch(setPayModal(true));
-  };
+
+  const onHandleCheckout = async () => {
+console.log("clik");
+};
+
   return (
     <div>
-      <form onSubmit={handleSubmit(handleRegister)} className="space-y-6">
+      <form onSubmit={handleSubmit(onHandleCheckout)} className="space-y-6">
         {/* name */}
         <div className="flex gap-4">
           {/* first name */}
@@ -87,10 +79,10 @@ const DonarForm = () => {
         <input
           className="bg-primary hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
           type="submit"
-          value="Ready for Donation Payment"
+          value= "Ready for Donation Payment"
         />
+
       </form>
-      <PayModal price={120} id={2} returnPage={'donation'} />
     </div>
   );
 };

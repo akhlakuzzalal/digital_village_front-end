@@ -122,7 +122,7 @@ const CaseSingle = () => {
                 </p>
               </div>
               {/* start */}
-              <DonarForm></DonarForm>
+              <DonarForm cause={cause} />
               {/* end */}
             </div>
           </section>

@@ -7,6 +7,7 @@ import "react-sweet-progress/lib/style.css";
 import { deleteAnCuase} from '../../../../redux/slices/Donations/donationSlice';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import swal from 'sweetalert';
 
 const Cause = (props) => {
     const { _id, title, image, goal, raised, category} = props;
@@ -14,12 +15,25 @@ const Cause = (props) => {
     const navigate = useNavigate();
 // handing donetion
     const handleDeleteCause = () => {
-        dispatch(deleteAnCuase(_id)).then(() => {
-            console.log(_id);
-        //   dispatch(removeFromCause(_id));
-          alert('successfully delete');
-        });
-      };
+
+        // dispatch(deleteAnCuase(_id))
+            swal({
+              title: 'Are you sure?',
+              text: 'Once deleted, you will not be able to recover this imaginary file!',
+              icon: 'warning',
+        
+              buttons: true,
+            })
+            .then((willConfirm) => {
+                if (willConfirm) {
+                  dispatch(deleteAnCuase(_id));
+                  swal('Confirmed!', {
+                    icon: 'success',
+                  });
+                }
+              });
+            };
+
 
     const handleUpdateCause = () => {
         navigate(`/admin/updatecause/${_id}`);
