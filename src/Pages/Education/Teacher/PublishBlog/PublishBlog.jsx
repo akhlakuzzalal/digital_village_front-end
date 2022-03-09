@@ -6,7 +6,7 @@ import FileUpload from '../../../../Components/FileUpload';
 import RichTextEditor from '../../../../Components/RichTextEditor';
 
 const PublishBlog = () => {
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState('Start writing the blog');
 
   const user = useSelector((state) => state.user.user);
 

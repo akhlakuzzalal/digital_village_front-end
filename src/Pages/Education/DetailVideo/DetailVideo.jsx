@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import axios from '../../../api/axios';
 import Comments from './Comments/Comments';
 
 const DetailVideo = () => {
@@ -12,10 +13,19 @@ const DetailVideo = () => {
   const [commentLists, setCommentLists] = useState([]);
 
   const updateComment = (newComment) => {
+    console.log('this is new comment', newComment);
     setCommentLists([...commentLists, newComment]);
   };
 
-  console.log(video);
+  useEffect(() => {
+    axios.get(`/comment/all/?id=${id}`).then((response) => {
+      if (response.data.success) {
+        setCommentLists(response.data.comments);
+      } else {
+        alert('Failed to get video Info');
+      }
+    });
+  }, []);
 
   return (
     <div
@@ -31,7 +41,7 @@ const DetailVideo = () => {
       <div className="mx-auto md:w-5/6">
         <Comments
           postId={id}
-          refreshFunc={updateComment}
+          updateComment={updateComment}
           commentLists={commentLists}
         />
       </div>
