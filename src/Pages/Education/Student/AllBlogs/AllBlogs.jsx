@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Pagination from '../../../../Components/Pagination';
 import {
@@ -12,6 +12,7 @@ const AllBlogs = () => {
   const currPage = useSelector((state) => state.blogs.currPage);
   const blogs = useSelector((state) => state.blogs.blogs);
   const size = 10;
+  const [search, setSearch] = useState('');
 
   console.log('this is currpage', currPage);
 
@@ -23,13 +24,18 @@ const AllBlogs = () => {
         pageCount,
         currPage,
         size,
+        search,
       })
     );
-  }, [currPage, pageCount, size]);
+  }, [currPage, pageCount, size, search]);
+
+  const handleSearch = (data) => {
+    setSearch(data.search);
+  };
 
   return (
     <div className="space-y-6">
-      <Search />
+      <Search handleSearch={handleSearch} />
       <h3 className="text-center py-6">Available Blogs</h3>
       <article className="flex flex-wrap justify-evenly items-center gap-6">
         {blogs.map((blog) => (

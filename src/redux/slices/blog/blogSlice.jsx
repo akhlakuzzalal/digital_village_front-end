@@ -9,7 +9,7 @@ export const fetchBlogs = createAsyncThunk(
       .get(
         `/student/allBlogs/?page=${pagination.currPage}&size=${
           pagination.size
-        }&roles=${JSON.stringify([2000])}`
+        }&search=${pagination.search}&roles=${JSON.stringify([2000])}`
       )
       .then((response) => response.data);
     return {
@@ -38,10 +38,8 @@ const blogSlice = createSlice({
     builder.addCase(fetchBlogs.fulfilled, (state, { payload }) => {
       state.blogs = payload.blogs;
       const count = payload.count;
-      console.log('this is count', count);
       const pageNumber = Math.ceil(count / payload.size);
       state.pageCount = pageNumber;
-      console.log('this is page count', state.pageCount);
     });
   },
 });
