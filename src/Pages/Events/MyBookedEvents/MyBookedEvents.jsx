@@ -21,10 +21,10 @@ const MyBookedEvents = () => {
 
   return (
     <>
-      <div className="bg-[#4d4b4b] w-full h-20"></div>
-      <h3 className=" text-sm mx-20 my-10">
-        Welcome <span className="text-blue">{user?.name}</span> your all booking
-        events
+      <div className="bg-[#13273b] w-full h-20"></div>
+      <h3 className=" text-lg mx-5 my-10">
+        Welcome <span className="text-primary">{user?.name}</span> your all
+        booking events
       </h3>
       <div className="flex flex-col mt-20">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">

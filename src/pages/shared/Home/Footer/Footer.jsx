@@ -38,7 +38,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="py-20 px-6 bg-secondary bg-opacity-30 pt-48">
+      <div className="py-20 px-6 bg-indigo-300 bg-opacity-30 pt-48">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
             <div className="mb-5 ">
