@@ -40,9 +40,7 @@ const Banner = () => {
           </p>
           <div className="flex items-start">
             <NavHashLink smooth to="/#service">
-              <button className="btn rounded-lg bg-primary dark:bg-dark_secondary">
-                Services
-              </button>
+              <button className="btn rounded-lg bg-primary">Services</button>
             </NavHashLink>
           </div>
         </div>

@@ -12,11 +12,11 @@ const FeatureCard = ({ active, feature: { name, img, currentActive } }) => {
           : active === currentActive + 1
           ? scaleDownClasses
           : ''
-      } shadow-2xl w-32 sm:w-36 dark:dark-card-bg rounded-lg`}
+      } shadow-2xl w-32 sm:w-36 dark:dark-card-bg`}
     >
       <div
-        className={`p-4 space-y-3 rounded-lg bg-white dark:dark-card-bg z-50 border-2 border-secondary dark:border-dark_secondary transition-all duration-300 ${
-          active === currentActive && 'border-danger dark:border-dark_text'
+        className={`p-4 space-y-3 rounded-lg bg-white dark:dark-card-bg z-50 border-2 border-secondary transition-all duration-300 ${
+          active === currentActive && 'border-danger'
         }`}
       >
         <div>

@@ -13,10 +13,6 @@ module.exports = {
         warning: '#F5B841',
         info: '#66C7F4',
         dark: '#222',
-        dark_bg: '#0f172a',
-        dark_primary: '#2D4263',
-        dark_secondary: '#C84B31',
-        dark_text: '#ffffff',
       },
     },
     fontFamily: {
