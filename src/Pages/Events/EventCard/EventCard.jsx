@@ -6,9 +6,13 @@ const EventCard = ({
 }) => {
   return (
     <Link to={`/eventDetails/${_id}`}>
-      <div className="border rounded-xl">
-        <img className="lg:h-[300px] w-full" src={image} alt={title} />
-        <div className=" bg-primary p-3 ">
+      <div className="border rounded-xl ">
+        <img
+          className="lg:h-[300px] w-full rounded-t-xl"
+          src={image}
+          alt={title}
+        />
+        <div className=" bg-primary p-3 dark:dark-card-bg rounded-b-xl">
           <div className="text-white">
             <p className="pb-4 ml-2">{date}</p>
           </div>

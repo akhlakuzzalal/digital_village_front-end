@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
-import Transition from '../Pages/Education/Teacher/Dashboard/utils/Transition';
 import UserAvatar from './../assets/user-avatar-32.png';
+import Transition from './Transition';
 
 const UserMenu = () => {
   const { logout } = useAuth();
@@ -11,7 +11,7 @@ const UserMenu = () => {
   const navigate = useNavigate();
 
   const user = useSelector((state) => state.user.user);
-  const isUser = user.name.includes('user');
+  // const isUser = user.name.includes('user');
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
@@ -43,9 +43,7 @@ const UserMenu = () => {
 
   // log out
   const handleLogout = async () => {
-    console.log(user);
     await logout();
-    console.log(user);
     navigate('/');
   };
 
@@ -66,7 +64,7 @@ const UserMenu = () => {
           alt="User"
         />
         <div className="flex items-center truncate">
-          <span className="truncate ml-2 text-sm font-bold">{user.name}</span>
+          <span className="truncate ml-2 text-sm font-bold">{user?.name}</span>
           <svg
             className="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400"
             viewBox="0 0 12 12"
@@ -104,22 +102,20 @@ const UserMenu = () => {
                 Profile
               </Link>
             </li>
-            {user.name && isUser ? (
+            {true ? (
               <li className="hover:bg-green-500">
                 <Link
                   className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                  to="/"
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  to="/userdashboard"
                 >
-                  User dashboard
+                  Profile
                 </Link>
               </li>
             ) : (
               <li className="hover:bg-green-500">
                 <Link
                   className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                  to="/"
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  to="/admin"
                 >
                   Admin dashboard
                 </Link>

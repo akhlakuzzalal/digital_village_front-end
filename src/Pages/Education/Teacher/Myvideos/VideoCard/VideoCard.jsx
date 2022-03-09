@@ -13,7 +13,10 @@ const VideoCard = ({ video }) => {
         className="space-y-4 cursor-pointer group hover:bg-slate-100"
         onClick={() => navigate(`/detailvideo/${video?._id}`)}
       >
-        <video className="w-72 rounded-2xl" src={video?.video?.path}></video>
+        <video
+          className="w-72 rounded-2xl"
+          src={`http://localhost:5000/${video?.video?.path}`}
+        ></video>
         <div className="flex justify-between px-3">
           <div className="space-y-2">
             <h3 className="text-xl">{video?.title}</h3>

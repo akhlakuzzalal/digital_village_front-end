@@ -31,16 +31,16 @@ const TableBody = ({ data }) => {
     dispatch(increaseQuantity(data.id));
   };
   return (
-    <tr class="bg-white border-b dark:bg-gray-800">
+    <tr className="bg-white border-b dark:bg-gray-800">
       {/* product name */}
-      <td class="py-4 px-6 text-sm font-semibold text-gray-900 whitespace-nowrap d">
+      <td className="py-4 px-6 text-sm font-semibold text-gray-900 whitespace-nowrap d">
         {data.name}
       </td>
       {/* product image */}
-      <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap">
+      <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap">
         <img className="h-20 w-20" src={data.img} alt="" />
       </td>
-      <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap">
+      <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap">
         {/* increase decrease btn */}
         <div className="flex items-center">
           <button
@@ -59,11 +59,11 @@ const TableBody = ({ data }) => {
         </div>
       </td>
       {/* price */}
-      <td class="py-4 px-6 text-sm text-green-700 font-semibold whitespace-nowrap">
+      <td className="py-4 px-6 text-sm text-green-700 font-semibold whitespace-nowrap">
         $ {data.quantityBasePrice}
       </td>
       {/* remove action */}
-      <td class="py-4 px-6 text-sm font-medium text-right text-danger cursor-pointer whitespace-nowrap">
+      <td className="py-4 px-6 text-sm font-medium text-right text-danger cursor-pointer whitespace-nowrap">
         <button onClick={handleAlert}>Remove</button>
       </td>
     </tr>
