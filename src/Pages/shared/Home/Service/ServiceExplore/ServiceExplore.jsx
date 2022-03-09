@@ -16,7 +16,7 @@ const ServiceExplore = ({ service: { controlData, image, detail } }) => {
       <p className="text-ellipsis">{detail}</p>
       <div className="flex items-center justify-center">
         <button
-          className="btn bg-secondary flex items-center space-x-3"
+          className="btn bg-secondary dark:bg-dark_secondary flex items-center space-x-3"
           onClick={() => navigate(`/${controlData}`)}
         >
           <SiAzuredataexplorer /> <span>Explore</span>
