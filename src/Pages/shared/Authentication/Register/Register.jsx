@@ -9,7 +9,6 @@ import swal from 'sweetalert';
 import useAuth from '../../../../hooks/useAuth';
 import useMediaQuery from '../../../../hooks/useMediaQuery';
 import animationData from '../../../../lotties/registration.json';
-import { setUser } from '../../../../redux/slices/user/userSlice';
 
 const Register = () => {
   const isTablet = useMediaQuery('(min-width: 656px)');
@@ -73,12 +72,8 @@ const Register = () => {
 
           sendEmailVerification(auth.currentUser);
 
-          const newUser = { name, email, dateOfBirth, emailVerified };
-
-          dispatch(setUser(newUser));
-
           // register user to the database
-          registerToDB({ name, email, dateOfBirth, password });
+          registerToDB({ name, email, dateOfBirth, emailVerified, password });
 
           // send name to firebase after creation
           updateProfile(auth.currentUser, {

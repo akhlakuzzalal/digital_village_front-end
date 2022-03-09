@@ -11,7 +11,12 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios, { axiosPrivate } from '../api/axios';
 import initializeAuthentication from '../Firebase/Firebase.init';
-import { setRoles, setToken, setUser } from '../redux/slices/user/userSlice';
+import {
+  setRoles,
+  setToken,
+  setUId,
+  setUser,
+} from '../redux/slices/user/userSlice';
 
 // initialize firebase app
 initializeAuthentication();
@@ -40,18 +45,13 @@ const useFirebase = () => {
           name: user.displayName,
           email: user.email,
           dateOfBirth: 'unknown',
+          password: 'noneedofpassword',
           emailVerified: user.emailVerified,
         };
 
         // REGISTER USER IN DATABASE
-        registerToDB({
-          name: user.displayName,
-          email: user.email,
-          dateOfBirth: 'unknown',
-          password: 'noneedofpassword',
-        });
+        registerToDB(newUser);
 
-        dispatch(setUser(newUser));
         navigate('/');
         setIsLoading(false);
       })
@@ -94,12 +94,7 @@ const useFirebase = () => {
     setIsLoading(true);
     try {
       await signOut(auth);
-      console.log('clicked 2');
       logoutFromDB();
-      dispatch(setUser({}));
-      setAuthError('');
-      dispatch(setRoles([]));
-      dispatch(setToken(''));
     } catch (error) {
       console.log(error);
       setAuthError(error.message);
@@ -112,6 +107,8 @@ const useFirebase = () => {
     const response = await axios.post('/auth/register', newUser);
     dispatch(setRoles([...roles, response?.data?.roles]));
     dispatch(setToken(response?.data?.accessToken));
+    dispatch(setUId(response?.data?.uId));
+    dispatch(setUser(newUser));
     console.log(response?.data);
   };
 
@@ -129,14 +126,21 @@ const useFirebase = () => {
       );
       dispatch(setRoles([...roles, response?.data?.roles]));
       dispatch(setToken(response?.data?.accessToken));
+      dispatch(setToken(response?.data?.uId));
       console.log(response?.data?.message);
     } catch (error) {
       console.log(error.message);
+      setAuthError(error.message);
     }
   };
 
   const logoutFromDB = async () => {
     const response = await axiosPrivate.get('/auth/logout');
+    dispatch(setUser({}));
+    setAuthError('');
+    dispatch(setRoles([]));
+    dispatch(setToken(''));
+    dispatch(setUId(''));
     console.log(response?.data);
   };
 

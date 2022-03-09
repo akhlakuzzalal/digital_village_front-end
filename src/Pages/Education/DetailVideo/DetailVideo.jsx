@@ -1,67 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import video from '../../../assets/videos/video1.mp4';
-import Comments from '../../../Components/Comments/Comments';
-
-const videos = [
-  {
-    _id: '1',
-    author: 'user 1',
-    email: 'user1@gmail.com',
-    title: 'Video one',
-    video: {
-      path: video,
-    },
-    rating: 3,
-    isVerified: true,
-    tags: ['microsoft-word', 'writing', 'skill'],
-    publishDate: '17 january 2022',
-  },
-  {
-    _id: '2',
-    email: 'user2@gmail.com',
-    author: 'user 2',
-    title: 'Video two',
-    video: {
-      path: video,
-    },
-    rating: 4,
-    isVerified: true,
-    tags: ['microsoft-excell', 'data', 'skill'],
-    publishDate: '17 january 2022',
-  },
-  {
-    _id: '3',
-    author: 'user 3',
-    email: 'user3@gmail.com',
-    title: 'Video three',
-    video: {
-      path: video,
-    },
-    rating: 5,
-    isVerified: true,
-    tags: ['marchendising', 'skill'],
-    publishDate: '17 january 2022',
-  },
-  {
-    _id: '4',
-    author: 'user 4',
-    email: 'user4@gmail.com',
-    title: 'Video four',
-    video: {
-      path: video,
-    },
-    rating: 2,
-    isVerified: true,
-    tags: ['programming', 'beginners'],
-    publishDate: '17 january 2022',
-  },
-];
+import Comments from './Comments/Comments';
 
 const DetailVideo = () => {
   const { id } = useParams();
 
+  const videos = useSelector((state) => state.videos.videos);
   const video = videos.filter((video) => video._id === id)[0];
+
+  const [commentLists, setCommentLists] = useState([]);
+
+  const updateComment = (newComment) => {
+    setCommentLists([...commentLists, newComment]);
+  };
+
+  console.log(video);
 
   return (
     <div
@@ -71,11 +25,15 @@ const DetailVideo = () => {
       <h1 className="text-center">{video?.title}</h1>
       <video
         className="w-5/6 h-72 mx-auto"
-        src={video?.video?.path}
+        src={`http://localhost:5000/${video?.video?.path}`}
         controls
       ></video>
       <div className="mx-auto md:w-5/6">
-        <Comments />
+        <Comments
+          postId={id}
+          refreshFunc={updateComment}
+          commentLists={commentLists}
+        />
       </div>
     </div>
   );
