@@ -1,6 +1,6 @@
 import axios from 'axios';
-const BASE_URI = 'https://digital-village.herokuapp.com';
-// const BASE_URI = 'http://localhost:5000';
+// const BASE_URI = 'https://digital-village.herokuapp.com/';
+const BASE_URI = 'http://localhost:5000/';
 
 export default axios.create({
   baseURL: BASE_URI,
