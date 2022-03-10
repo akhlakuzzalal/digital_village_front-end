@@ -38,7 +38,10 @@ const AddReview = () => {
             {/* email */}
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-              {...register('name', { required: "Name is Required" })}
+              {...register('name', { required: "Name is Required" , maxLength: {
+                value: 30,
+                message: "First Name shouldn't exceed 30 words",
+              }})}
           
               onKeyUp={() => {
                 trigger("name");

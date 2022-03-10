@@ -61,7 +61,10 @@ const AddDevelopment = () => {
               <input
                 className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
                 {...register('title', 
-                { required: "title is Required" })}
+                { required: "title is Required" , maxLength: {
+                  value: 30,
+                  message: "First Name shouldn't exceed 30words",
+                }})}
           
                 onKeyUp={() => {
                   trigger("title");
