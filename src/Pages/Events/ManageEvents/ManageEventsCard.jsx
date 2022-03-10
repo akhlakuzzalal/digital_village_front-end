@@ -32,8 +32,8 @@ const ManageEventsCard = ({
     });
   };
   return (
-    <div className="border rounded-xl">
-      <img src={image} alt={title} />
+    <div className="border rounded-xl ">
+      <img className="h-[200px] w-full" src={image} alt={title} />
       <div className="">
         <div className=" p-4 md:p-10">
           <div className=""></div>
