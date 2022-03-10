@@ -10,7 +10,9 @@ const UpdateProduct = ({ product }) => {
   const { name, brand, _id, price, categorie } = product;
   const dispatch = useDispatch();
   const modal = useSelector((state) => state.market.modal.showModal);
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset ,
+    trigger, formState: { errors }
+  } = useForm();
 
   const handleUpdate = (data) => {
     data._id = _id;
@@ -37,30 +39,50 @@ const UpdateProduct = ({ product }) => {
                       <p className="font-semibold">Name:</p>
                       <input
                         className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-                        {...register('name')}
+                        {...register('name', { required: "Name is Required" })}
+                        onKeyUp={() => {
+                          trigger("name");
+                        }}
                         placeholder="Name"
                         defaultValue={name}
                       />
+                      {errors.name && (
+                        <small className="text-danger">{errors.name.message}</small>
+                      )}
+                       
                     </div>
                     {/* categorie */}
                     <div className="flex items-center space-x-3">
                       <p className="font-semibold">Categorie:</p>
                       <input
                         className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-                        {...register('categorie')}
+                        {...register('categorie', { required: "Categorie is Required" })}
+                        onKeyUp={() => {
+                          trigger("categorie");
+                        }}
                         placeholder="Categorie"
                         defaultValue={categorie}
                       />
+                      {errors.categorie && (
+                        <small className="text-danger">{errors.categorie.message}</small>
+                      )}
+                    
                     </div>
                     {/* brand */}
                     <div className="flex items-center space-x-3">
                       <p className="font-semibold">Brand:</p>
                       <input
                         className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-                        {...register('brand')}
+                        {...register('brand', { required: "Brand is Required" })}
+                        onKeyUp={() => {
+                          trigger("brand");
+                        }}
                         placeholder="Brand"
                         defaultValue={brand}
                       />
+                      {errors.brand && (
+                        <small className="text-danger">{errors.brand.message}</small>
+                      )}
                     </div>
                     {/* price */}
                     <div className="flex items-center space-x-3">
@@ -68,10 +90,31 @@ const UpdateProduct = ({ product }) => {
                       <input
                         type="number"
                         className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
-                        {...register('price', { required: true })}
+                        {...register('price', {
+                          required: "Price is Required",
+                          min: {
+                            value: 1,
+                            message: "Minimum Required price is 1",
+                          },
+                          max: {
+                            value: 50000,
+                            message: "Maximum allowed price is 5000",
+                          },
+                          pattern: {
+                            value: /^[0-9]*$/,
+                            message: "Only numbers price allowed",
+                          }
+                        })}
+                        onKeyUp={() => {
+                          trigger("price");
+                        }}
                         placeholder="Price"
                         defaultValue={price}
                       />
+                      {errors.price && (
+                        <small className="text-danger">{errors.price.message}</small>
+                      )}
+                      
                     </div>
                     {/* submit btn */}
                     <input

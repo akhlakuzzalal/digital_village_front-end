@@ -13,9 +13,10 @@ const PublishBlog = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
     reset,
-  } = useForm();
+    trigger,
+    formState: { errors }
+  } = useForm ();
 
   const handleEditorChange = (e) => {
     setContent(e.target.getContent());
@@ -58,9 +59,15 @@ const PublishBlog = () => {
             {/* title of the blog */}
             <input
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('title', { required: true })}
+              {...register('title', { required: "Title is Required" })}
+              onKeyUp={() => {
+                trigger("title");
+              }}
               placeholder="Title of your blog"
             />
+            {errors.title && (
+              <small className="text-danger">{errors.title.message}</small>
+            )}
 
             {/* file upload */}
             <div>
@@ -74,17 +81,38 @@ const PublishBlog = () => {
             {/* about the blog */}
             <textarea
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('about', { required: true })}
-              placeholder="Write what this blog teaches within 50 words"
-            />
+              {...register('about', { required: "About is Required",
+              minLength: {
+                value: 50,
+                message: "Minimum Required length is 50",
+              },
+              maxLength: {
+                value: 100,
+                message: "Maximum allowed length is 100",
+              }
+             })}
+             placeholder="Write what this blog teaches within 50 words"
+             onKeyUp={() => {
+              trigger("about");
+            }}
+            ></textarea>
+            {errors.about && (
+              <small className="text-danger">{errors.about.message}</small>
+            )}
 
             {/* tags */}
             <input
               type="text"
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('tags', { required: true })}
+              {...register('tags', { required: "Tags is Required" })}
+              onKeyUp={() => {
+                trigger("tags");
+              }}
               placeholder="Add tags with space seperated"
             />
+            {errors.tags && (
+              <small className="text-danger">{errors.tags.message}</small>
+            )}
           </div>
 
           {/* text editor for writing blogs */}

@@ -2,7 +2,9 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const Search = ({ handleSearch }) => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,trigger,
+    formState: { errors }
+  } = useForm ();
   return (
     <form
       onSubmit={handleSubmit(handleSearch)}
@@ -10,9 +12,16 @@ const Search = ({ handleSearch }) => {
     >
       <input
         className="w-full pl-4 pr-2 text-2xl outline-none dark:bg-black dark:text-white"
-        {...register('search')}
+        {...register('search', { required: "Search is Required" })}
+        onKeyUp={() => {
+          trigger("search");
+        }}
+        className="w-full rounded-sm"
         placeholder="Find what you need"
       />
+      {errors.search && (
+        <small className="text-danger">{errors.search.message}</small>
+      )}
       <div className="rounded-md shadow ml-auto">
         <button
           className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base

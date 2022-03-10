@@ -7,7 +7,9 @@ function SingleComment({ comment, updateComment, postId }) {
 
   const [OpenReply, setOpenReply] = useState(false);
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit ,trigger,
+    formState: { errors }
+  } = useForm ();
 
   const openReply = () => {
     setOpenReply(!OpenReply);
@@ -67,10 +69,17 @@ function SingleComment({ comment, updateComment, postId }) {
           onSubmit={handleSubmit(handleCommentSubmit)}
         >
           <textarea
-            {...register('comment')}
+            {...register('comment' , { required: "Comment is Required" })}
+            onKeyUp={() => {
+              trigger("comment");
+            }}
             className="w-full rounded-sm"
             placeholder="write your comment"
           />
+          {errors.comment && (
+            <small className="text-danger">{errors.comment.message}</small>
+          )}
+
           <br />
           <button type="submit" className="w-[25%] h-12">
             Submit

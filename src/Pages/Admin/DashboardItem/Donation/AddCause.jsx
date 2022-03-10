@@ -11,6 +11,7 @@ const AddCause = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    trigger,
   } = useForm();
 
   const handleAddCause = (data) => {
@@ -20,6 +21,7 @@ const AddCause = () => {
         data.date= new Date().toLocaleDateString()
         dispatch(addAnCuase(data));
         alert('successfully added');
+        // swal
         reset();
 
   };
@@ -37,38 +39,103 @@ const AddCause = () => {
           {/* title */}
         <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('title')}
-          placeholder="Title"
+          {...register('title', { required: "Title is Required" })}
+          
+          onKeyUp={() => {
+            trigger("title");
+          }}
+          placeholder="Add a Title"
         />
+        {errors.title && (
+          <small className="text-danger">{errors.title.message}</small>
+        )}
         {/* description */}
         <textarea
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('description')}
-          placeholder="Description"
+          
+          {...register('description', { required: "Message is Required",
+          minLength: {
+            value: 10,
+            message: "Minimum Required length is 10",
+          },
+          maxLength: {
+            value: 50,
+            message: "Maximum allowed length is 150 ",
+          }
+         })}
+         placeholder="Write Cause description"
+          required
+         onKeyUp={() => {
+          trigger("description");
+        }}
         />
+        {errors.description && (
+          <small className="text-danger">{errors.description.message}</small>
+        )}
         {/* image */}
         <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('image')}
-          placeholder="Image link"
+          {...register('image', { required: "Image is Required" })}
+          
+          onKeyUp={() => {
+            trigger("image");
+          }}
+          placeholder="Add a image Link"
         />
+        {errors.image && (
+          <small className="text-danger">{errors.image.message}</small>
+        )}
         <div className="flex items-center justify-center">
           {/* category */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
-            {...register('category', { required: true })}
+            {...register('category', { required: "category is Required" })}
+          
+            onKeyUp={() => {
+              trigger("category");
+            }}
             placeholder="Category"
           />
+          {errors.category && (
+            <small className="text-danger">{errors.category.message}</small>
+          )}
+        {/* <select {...register("gender")}>
+        <option value="female">female</option>
+        <option value="male">male</option>
+        <option value="other">other</option>
+      </select> */}
         </div>
         <div className="flex items-center justify-center">
           {/* goal */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
-            {...register('goal', { required: true})}
-            type="number"
-            placeholder="Goal"
-            defaultValue={500}
-          />
+            {...register('goal', {
+              required: "Goal is Required",
+                    min: {
+                      value: 500,
+                      message: "Minimum Required Goal is 500",
+                    },
+                    max: {
+                      value: 500000,
+                      message: "Maximum allowed age is 50000",
+                    },
+                    pattern: {
+                      value: /^[0-5._%+-]*$/,
+                      message: "Only numbers are allowed",
+                    }
+                  })}
+                  type="number"
+                  placeholder="Acquired Goal"
+                  defaultValue={500}
+                  required
+                  onKeyUp={() => {
+                    trigger("goal");
+                  }}
+                />
+                
+                {errors.goal && (
+                  <small className="text-danger mb-2">{errors.goal.message}</small>
+                )}
         </div>
         <input
           className="bg-primary hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"

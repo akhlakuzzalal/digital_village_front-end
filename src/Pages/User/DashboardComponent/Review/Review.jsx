@@ -14,6 +14,7 @@ const Review = () => {
     formState: { errors },
     reset,
     handleSubmit,
+    trigger
   } = useForm();
   
   const handleAddReview = (data) => {
@@ -56,23 +57,64 @@ const Review = () => {
             />
             <input
               className="px-7 py-10 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-              {...register('description')}
-              placeholder="description"
-              required
+              {...register('description', { required: "Description is Required",
+              minLength: {
+                value: 50,
+                message: "Minimum Required length is 50",
+              },
+              maxLength: {
+                value: 250,
+                message: "Maximum allowed length is 250 ",
+              }
+             })}
+             placeholder="Description"
+             onKeyUp={() => {
+              trigger("description");
+            }}
             />
+            {errors.description && (
+              <small className="text-danger">{errors.description.message}</small>
+            )}
 
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-              {...register('image')}
+              {...register('image', { required: "Image is Required" })}
+              onKeyUp={() => {
+                trigger("image");
+              }}
               placeholder="Image URL"
               required
             />
+            {errors.image && (
+              <small className="text-danger">{errors.image.message}</small>
+            )}
+
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-              {...register('rating')}
+              {...register('rating', {
+                required: "Rating is Required",
+                min: {
+                  value: 1,
+                  message: "Minimum Required rating is 1",
+                },
+                max: {
+                  value: 5,
+                  message: "Maximum allowed rating is 5",
+                },
+                pattern: {
+                  value: /^[0-9]*$/,
+                  message: "Only numbers are allowed",
+                }
+              })}
+              onKeyUp={() => {
+                trigger("rating");
+              }}
               placeholder="Rating in between one to five"
               required
             />
+            {errors.rating && (
+              <small className="text-danger">{errors.rating.message}</small>
+            )}
 
             {/* submit button */}
             <input
