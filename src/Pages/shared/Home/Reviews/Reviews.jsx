@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import required modules
-import { Autoplay, Navigation } from 'swiper';
+import { Autoplay } from 'swiper';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -17,7 +17,7 @@ const Reviews = () => {
     dispatch(fetchAllReview());
   }, []);
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 dark:bg-dark_bg">
       <div className="pt-[100px]">
         <p className="text-center">TESTIMONIALS</p>
         <h1 className=" text-2xl  text-center font-bold py-2   text-primary">
@@ -32,11 +32,8 @@ const Reviews = () => {
       <Swiper
         slidesPerView={2}
         slidesPerGroup={1}
-        spaceBetween={0}
-        centeredSlides={false}
         autoplay={{
           delay: 2500,
-          disableOnInteraction: false,
         }}
         breakpoints={{
           '@0.00': {
@@ -52,19 +49,23 @@ const Reviews = () => {
             spaceBetween: 20,
           },
           '@1.50': {
-            slidesPerView: 2,
+            slidesPerView: 4,
             spaceBetween: 20,
           },
         }}
-        navigation={true}
-        modules={[Autoplay, Navigation]}
-        className="mySwiper w-full bg-slate-50 pb-36  "
+        loop={true}
+        loopFillGroupWithBlank={true}
+        modules={[Autoplay]}
+        className="swiper"
       >
-        <SwiperSlide className="flex justify-center p-10 space-x-2 ml-[400px]">
-          {allReview?.map((reviews) => (
-            <Review key={reviews._id} reviews={reviews} />
-          ))}
-        </SwiperSlide>
+        {allReview?.map((reviews) => (
+          <SwiperSlide
+            key={reviews._id}
+            className="flex justify-center p-4 ml-36"
+          >
+            <Review reviews={reviews} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

@@ -18,7 +18,7 @@ const Links = ({ link, showText, showTooltip, setShowTooltip }) => {
               <span
                 className={`hidden ${
                   showTooltip && 'group-hover:block'
-                } w-[120px] bg-black text-white text-center py-1 rounded-lg absolute z-50 left-[130%] top-0 after:content-[' '] after:absolute after:right-[100%] after:mt-2  after:border-[5px] after:border-t-transparent after:border-r-black after:border-b-transparent after:border-l-transparent`}
+                } w-[120px] bg-black text-white z-[100] text-center py-1 rounded-lg absolute  left-[130%] top-0 after:content-[' '] after:absolute after:right-[100%] after:mt-2  after:border-[5px] after:border-t-transparent after:border-r-black after:border-b-transparent after:border-l-transparent`}
               >
                 {link?.name}
               </span>
@@ -68,7 +68,10 @@ const Links = ({ link, showText, showTooltip, setShowTooltip }) => {
         <div className="ml-6 mr-1 space-y-2">
           {link?.nestedPath &&
             link?.nestedPath.map((l) => (
-              <div className="hover:bg-slate-600 transition-all duration-300 px-3 py-1 rounded-lg">
+              <div
+                key={l.path}
+                className="hover:bg-slate-600 transition-all duration-300 px-3 py-1 rounded-lg"
+              >
                 <NavLink to={l.path} key={l.path}>
                   <div className="relative group">
                     {!showText && (

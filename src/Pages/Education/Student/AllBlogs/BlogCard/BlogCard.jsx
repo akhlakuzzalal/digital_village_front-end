@@ -1,11 +1,12 @@
-import React from 'react';
-import { FaEdit, FaPushed, FaTrashAlt } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
+import { FaPushed } from 'react-icons/fa';
 import Rating from '../../../../../Components/Rating';
-import { BsBookmark } from 'react-icons/bs';
 
-const BlogCard = ({ blog }) => {
+const BlogCard = ({ blog, children }) => {
+  const [bookmark, setBookmark] = useState(true);
   return (
-    <div className="bg-white rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between max-w-[400px] shadow-2xl">
+    <div className="bg-white dark:dark-card-bg rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between max-w-[400px] shadow-2xl">
       <div className="absolute top-20 text-sm left-0 z-20 font-primary rounded-lg">
         <button className="w-90 flex items-center justify-center py-2 border border-transparent text-sm rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 px-6">
           <FaPushed />
@@ -17,7 +18,7 @@ const BlogCard = ({ blog }) => {
       <div className="overflow-hidden rounded-xl h-52">
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-          src={blog?.bannerImg?.path}
+          src={`http://localhost:5000/${blog?.bannerImg?.path}`}
           alt={blog?.title}
         />
       </div>
@@ -33,9 +34,23 @@ const BlogCard = ({ blog }) => {
                 <Rating rating={blog?.rating} />
               </div>
             </div>
-            <div className="mr-4">
-              <BsBookmark size={30} />
-            </div>
+            {!children ? (
+              <div className="mr-4 cursor-pointer">
+                {bookmark ? (
+                  <BsBookmark
+                    size={30}
+                    onClick={() => setBookmark(!bookmark)}
+                  />
+                ) : (
+                  <BsBookmarkFill
+                    size={30}
+                    onClick={() => setBookmark(!bookmark)}
+                  />
+                )}
+              </div>
+            ) : (
+              children
+            )}
           </div>
           {/* title and description */}
           <p className="text-gray-500 text-sm">{blog?.about}</p>

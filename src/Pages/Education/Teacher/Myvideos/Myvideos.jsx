@@ -1,39 +1,14 @@
-import React from 'react';
-import video from '../../../../assets/videos/video2.mp4';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchVideos } from '../../../../redux/slices/video/videoSlice';
 import VideoCard from './VideoCard/VideoCard';
 
-const videos = [
-  {
-    _id: 1,
-    name: 'Video one',
-    video,
-    date: '17 january 2022',
-    rating: 5,
-  },
-  {
-    _id: 2,
-    name: 'Video two',
-    video,
-    date: '18 january 2022',
-    rating: 3,
-  },
-  {
-    _id: 3,
-    name: 'Video three',
-    video,
-    date: '11 january 2022',
-    rating: 2,
-  },
-  {
-    _id: 4,
-    name: 'Video four',
-    video,
-    date: '10 january 2022',
-    rating: 3,
-  },
-];
-
 const Myvideos = () => {
+  const videos = useSelector((state) => state.videos.videos);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchVideos());
+  }, []);
   return (
     <div>
       <div className="flex flex-wrap gap-4 justify-evenly p-6">

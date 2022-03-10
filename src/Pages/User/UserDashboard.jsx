@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { MdOutlineProductionQuantityLimits } from 'react-icons/md';
+import { MdOutlineProductionQuantityLimits, MdReviews } from 'react-icons/md';
 import { RiDashboard2Line } from 'react-icons/ri';
 import { SiHomebridge } from 'react-icons/si';
 import { Outlet, useLocation } from 'react-router-dom';
-import Sidebar from '../../Components/Sidebar';
-import Header from '../Education/Teacher/Dashboard/partials/Header';
+import NewSidebar from '../../Components/Sidebar/NewSidebar';
 import Profile from './DashboardComponent/Profile/Profile';
 const links = [
   {
@@ -22,6 +21,11 @@ const links = [
     icon: <RiDashboard2Line size={30} />,
     path: '/',
   },
+  {
+    name: 'Review',
+    icon: <MdReviews size={30} />,
+    path: '/userdashboard/review',
+  },
 ];
 
 const UserDashboard = () => {
@@ -36,7 +40,7 @@ const UserDashboard = () => {
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
       {/* Sidebar */}
-      <Sidebar
+      <NewSidebar
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
         showText={showText}
@@ -46,7 +50,7 @@ const UserDashboard = () => {
 
       {/* contents */}
       <div className="flex-1">
-        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
         {initial ? <Profile /> : <Outlet />}
       </div>
     </div>

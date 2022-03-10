@@ -1,50 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import video from '../../../assets/videos/video2.mp4';
-import Comments from '../../../Components/Comments/Comments';
-const videos = [
-  {
-    _id: 1,
-    name: 'Video one',
-    video,
-    date: '17 january 2022',
-    rating: 5,
-  },
-  {
-    _id: 2,
-    name: 'Video two',
-    video,
-    date: '18 january 2022',
-    rating: 3,
-  },
-  {
-    _id: 3,
-    name: 'Video three',
-    video,
-    date: '11 january 2022',
-    rating: 2,
-  },
-  {
-    _id: 4,
-    name: 'Video four',
-    video,
-    date: '10 january 2022',
-    rating: 3,
-  },
-];
+import axios from '../../../api/axios';
+import Comments from './Comments/Comments';
+
 const DetailVideo = () => {
   const { id } = useParams();
 
-  const video = videos.filter((video) => video._id === Number(id))[0];
+  const videos = useSelector((state) => state.videos.videos);
+  const video = videos.filter((video) => video._id === id)[0];
+
+  const [commentLists, setCommentLists] = useState([]);
+
+  const updateComment = (newComment) => {
+    console.log('this is new comment', newComment);
+    setCommentLists([...commentLists, newComment]);
+  };
+
+  useEffect(() => {
+    axios.get(`/comment/all/?id=${id}`).then((response) => {
+      if (response.data.success) {
+        setCommentLists(response.data.comments);
+      } else {
+        alert('Failed to get video Info');
+      }
+    });
+  }, []);
 
   return (
     <div
-      className="mt-[80px] space-y-6"
+      className="mt-[88px] space-y-6"
       style={{ minHeight: 'calc(100vh - 700px)' }}
     >
-      <h1 className="text-center">{video.name}</h1>
-      <video className="w-5/6 h-72 mx-auto" src={video.video} controls></video>
-      <Comments />
+      <h1 className="text-center">{video?.title}</h1>
+      <video
+        className="w-5/6 h-72 mx-auto"
+        src={`http://localhost:5000/${video?.video?.path}`}
+        controls
+      ></video>
+      <div className="mx-auto md:w-5/6">
+        <Comments
+          postId={id}
+          updateComment={updateComment}
+          commentLists={commentLists}
+        />
+      </div>
     </div>
   );
 };

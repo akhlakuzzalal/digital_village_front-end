@@ -6,7 +6,7 @@ import FileUpload from '../../../../Components/FileUpload';
 import RichTextEditor from '../../../../Components/RichTextEditor';
 
 const PublishBlog = () => {
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState('Start writing the blog');
 
   const user = useSelector((state) => state.user.user);
 
@@ -42,7 +42,7 @@ const PublishBlog = () => {
       })
     );
 
-    const response = await axios.post('/teacher/publishBlogs', formData);
+    const response = await axios.post('/teacher/publishBlog', formData);
     console.log(response.data);
   };
 
@@ -53,7 +53,7 @@ const PublishBlog = () => {
         onSubmit={handleSubmit(handlePublishBlogs)}
         className="space-y-6 mx-auto"
       >
-        <div className="flex flex-wrap items-center justify-evenly">
+        <div className="flex flex-wrap gap-4 items-center justify-evenly">
           <div className="space-y-6">
             {/* title of the blog */}
             <input
@@ -98,7 +98,7 @@ const PublishBlog = () => {
         <input
           className="btn bg-primary rounded-lg w-full cursor-pointer hover:bg-opacity-80  transition-all duration-300"
           type="submit"
-          value="Publish blogs"
+          value="Publish blog"
         />
       </form>
     </div>

@@ -21,7 +21,7 @@ const BreakingNews = () => {
               of Divorce
             </h1>
             <p>
-              Class aptent taciti sociosqu ad litora torquent per conubia
+              className aptent taciti sociosqu ad litora torquent per conubia
               nostra, per inceptos himenaeos sociosqu ad litora.
             </p>
             <hr className="my-8" />

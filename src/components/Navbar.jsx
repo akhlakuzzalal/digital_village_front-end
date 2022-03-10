@@ -1,11 +1,17 @@
 import { Popover, Transition } from '@headlessui/react';
-import React, { Fragment, useState } from 'react';
-import { MdClose, MdEditNotifications, MdMenuOpen } from 'react-icons/md';
-import { useSelector } from 'react-redux';
+import React, { Fragment, useEffect, useState } from 'react';
+import { FiSun } from 'react-icons/fi';
+import {
+  MdClose,
+  MdDarkMode,
+  MdEditNotifications,
+  MdMenuOpen,
+} from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 import logo from '../assets/logo.png';
-import useAuth from '../hooks/useAuth';
+import { setMood } from '../redux/slices/mood/MoodSlice';
 import UserMenu from './UserMenu';
 
 const Navbar = ({ navigation }) => {
@@ -15,7 +21,6 @@ const Navbar = ({ navigation }) => {
 
   const navigate = useNavigate();
 
-  const { logout } = useAuth(); // will come from firebase
   const user = useSelector((state) => state.user.user);
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -41,15 +46,20 @@ const Navbar = ({ navigation }) => {
     }
   };
 
-  const handleLogout = async () => {
-    console.log(user);
-    await logout();
-    console.log(user);
-    navigate('/');
-  };
-
   //change header by scrolling
   window.addEventListener('scroll', onChangeHeader);
+
+  // dark Mood controller
+  const mood = useSelector((state) => state.mood.mood);
+  const dispatch = useDispatch();
+  const html = document.querySelector('html');
+  useEffect(() => {
+    if (mood === 'dark') {
+      html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
+    }
+  }, [mood]);
 
   return (
     <header
@@ -106,7 +116,7 @@ const Navbar = ({ navigation }) => {
                     </div>
                   </div>
 
-                  {/* nav links */}
+                  {/* nav links on small divice */}
                   <div className="px-2 pt-2 pb-3 space-y-1">
                     {navigation.map((item) =>
                       item.name.includes('#') ? (
@@ -136,6 +146,7 @@ const Navbar = ({ navigation }) => {
             {/* on large device this links will be shown */}
             <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
               {navigation.map((item) =>
+                // User navigations
                 item.name.includes('#') ? (
                   <NavLink
                     key={item.name}
@@ -160,7 +171,7 @@ const Navbar = ({ navigation }) => {
         </div>
 
         {/* Notification and SignIn SignOut button */}
-        <div className="flex order-3 mr-6">
+        <div className="flex items-center space-x-2 order-3 mr-6">
           <div className="flex items-center justify-center space-x-3 mx-3">
             <div
               className="relative flex cursor-pointer"
@@ -184,13 +195,15 @@ const Navbar = ({ navigation }) => {
                 Sign In
               </button>
             ) : (
-              // <button
-              //   className="btn bg-danger py-3 hover:bg-opacity-80 transition-all duration-300"
-              //   onClick={handleLogout}
-              // >
-              //   logout
-              // </button>
               <UserMenu />
+            )}
+          </div>
+          {/* dark mood handler */}
+          <div className="cursor-pointer">
+            {mood === 'dark' ? (
+              <FiSun size={40} onClick={() => dispatch(setMood('light'))} />
+            ) : (
+              <MdDarkMode size={40} onClick={() => dispatch(setMood('dark'))} />
             )}
           </div>
         </div>

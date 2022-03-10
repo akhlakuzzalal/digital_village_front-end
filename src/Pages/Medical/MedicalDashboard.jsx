@@ -3,9 +3,9 @@ import { AiOutlineMedicineBox } from 'react-icons/ai';
 import { FaClinicMedical } from 'react-icons/fa';
 import { GiLoveInjection } from 'react-icons/gi';
 import { Outlet, useLocation } from 'react-router-dom';
-import Header from '../Education/Teacher/Dashboard/partials/Header';
 import NewSidebar from './../../Components/Sidebar/NewSidebar';
-import WelcomeBanner from './Dashboard/partials/dashboardItem/WelcomeBanner';
+
+
 
 const links = [
   {
@@ -39,6 +39,8 @@ const MedicalDashboard = () => {
     location.pathname === '/medicalDashboard' ||
     location.pathname === '/medicalDashboard/';
 
+   
+
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
       {/* Sidebar */}
@@ -52,8 +54,13 @@ const MedicalDashboard = () => {
 
       {/* contents */}
       <div className="flex-1">
-        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        {initial ? <WelcomeBanner /> : <Outlet />}
+        {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
+        {initial ? (
+          <div className="w-fit mx-auto">
+          <img src="https://www.freepik.com/free-vector/privacy-policy-concept-illustration_19245710.htm#query=policy&position=0&from_view=search" alt="" />
+        </div>
+
+        ) : <Outlet />}
       </div>
     </div>
   );
