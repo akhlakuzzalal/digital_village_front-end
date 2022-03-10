@@ -6,7 +6,12 @@ const SingleComment = ({ comment, updateComment, postId }) => {
   const uId = useSelector((state) => state.user.uId);
   const [openReply, setOpenReply] = useState(false);
 
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    trigger,
+    formState: { errors },
+  } = useForm();
 
   const handleCommentSubmit = (data) => {
     const nestedCommentData = {
@@ -58,12 +63,20 @@ const SingleComment = ({ comment, updateComment, postId }) => {
           className="ml-20 flex"
           onSubmit={handleSubmit(handleCommentSubmit)}
         >
-          <input
-            {...register('comment', { required: 'required' })}
-            className="border-2 border-info outline-none px-6 flex-1 rounded-xl"
+          <textarea
+            {...register('comment', { required: 'Comment is Required' })}
+            onKeyUp={() => {
+              trigger('comment');
+            }}
+            className="w-full rounded-sm"
             placeholder="write your comment"
           />
-          <button type="submit" className="btn bg-info rounded-xl">
+          {errors.comment && (
+            <small className="text-danger">{errors.comment.message}</small>
+          )}
+
+          <br />
+          <button type="submit" className="w-[25%] h-12">
             Submit
           </button>
         </form>

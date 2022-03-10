@@ -5,7 +5,13 @@ import useMarketAdminDashboard from '../utility/useMarketAdminDashboard';
 
 const AddProducts = ({ sidebar, setSidebar }) => {
   const { addANewProduct } = useMarketAdminDashboard();
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    trigger,
+    formState: { errors },
+  } = useForm();
   const handleAddProduct = (data) => {
     addANewProduct(data);
     reset();
@@ -27,51 +33,138 @@ const AddProducts = ({ sidebar, setSidebar }) => {
             {/* name */}
             <input
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('name', { required: true })}
+              {...register('name', { required: 'Name is Required' })}
+              onKeyUp={() => {
+                trigger('name');
+              }}
               placeholder="Name"
             />
+            {errors.name && (
+              <small className="text-danger">{errors.name.message}</small>
+            )}
+
             <div className="flex items-center space-x-3">
               {/* categorie */}
               <input
                 className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-                {...register('categorie', { required: true })}
+                {...register('categorie', {
+                  required: 'Categorie is Required',
+                })}
+                onKeyUp={() => {
+                  trigger('categorie');
+                }}
                 placeholder="Categorie"
               />
+              {errors.categorie && (
+                <small className="text-danger">
+                  {errors.categorie.message}
+                </small>
+              )}
               {/* brand */}
               <input
                 className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-                {...register('brand')}
+                {...register('brand', { required: 'Brand is Required' })}
+                onKeyUp={() => {
+                  trigger('brand');
+                }}
                 placeholder="Brand"
               />
+              {errors.brand && (
+                <small className="text-danger">{errors.brand.message}</small>
+              )}
             </div>
             {/* price */}
             <input
               type="number"
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
-              {...register('price', { required: true })}
+              {...register('price', {
+                required: 'Price is Required',
+                min: {
+                  value: 1,
+                  message: 'Minimum Required price is 1',
+                },
+                max: {
+                  value: 50000,
+                  message: 'Maximum allowed price is 50000',
+                },
+                pattern: {
+                  value: /^[0-9]*$/,
+                  message: 'Only numbers price allowed',
+                },
+              })}
+              onKeyUp={() => {
+                trigger('price');
+              }}
               placeholder="Price"
             />
+            {errors.price && (
+              <small className="text-danger">{errors.price.message}</small>
+            )}
             {/* description */}
             <textarea
               type="text"
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
-              {...register('description', { required: true })}
+              {...register('description', {
+                required: 'Description is Required',
+                minLength: {
+                  value: 200,
+                  message: 'Minimum Required length is 200',
+                },
+                maxLength: {
+                  value: 1500,
+                  message: 'Maximum allowed length is 1500',
+                },
+              })}
               placeholder="Description"
-            />
+              onKeyUp={() => {
+                trigger('description');
+              }}
+            ></textarea>
+            {errors.description && (
+              <small className="text-danger">
+                {errors.description.message}
+              </small>
+            )}
             {/* img */}
             <input
               type="url"
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
-              {...register('img', { required: true })}
-              placeholder="Image Link"
+              {...register('img', { required: 'Image link is Required' })}
+              onKeyUp={() => {
+                trigger('img');
+              }}
+              placeholder="Image link"
             />
+            {errors.img && (
+              <small className="text-danger">{errors.img.message}</small>
+            )}
             {/* rating */}
             <input
               type="number"
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
-              {...register('rating', { required: true })}
+              {...register('rating', {
+                required: 'Rating is Required',
+                min: {
+                  value: 1,
+                  message: 'Minimum Required rating is 1',
+                },
+                max: {
+                  value: 5,
+                  message: 'Maximum allowed rating is 5',
+                },
+                pattern: {
+                  value: /^[0-9]*$/,
+                  message: 'Only numbers rating allowed',
+                },
+              })}
+              onKeyUp={() => {
+                trigger('rating');
+              }}
               placeholder="Rating"
             />
+            {errors.rating && (
+              <small className="text-danger">{errors.rating.message}</small>
+            )}
             {/* submit btn */}
             <input
               className="bg-primary hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"

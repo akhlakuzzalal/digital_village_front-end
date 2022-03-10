@@ -54,7 +54,6 @@ export const deleteAnCuase = createAsyncThunk(
 //   }
 // );
 
-
 const donationSlice = createSlice({
   name: 'causes',
   initialState: {

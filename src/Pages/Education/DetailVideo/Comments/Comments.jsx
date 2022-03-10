@@ -8,7 +8,12 @@ import SingleComment from './SingleComment/Singlecomment';
 const Comments = ({ postId, updateComment, commentLists }) => {
   const uId = useSelector((state) => state.user.uId);
 
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    trigger,
+    formState: { errors },
+  } = useForm();
 
   const handleCommentSubmit = async (data) => {
     const { comment } = data;
@@ -58,6 +63,29 @@ const Comments = ({ postId, updateComment, commentLists }) => {
               </>
             )
         )}
+
+      {/* Root Comment Form */}
+      <form
+        className="flex border-4 border-warning"
+        onSubmit={handleSubmit(handleCommentSubmit)}
+      >
+        <textarea
+          {...register('comment', { required: 'Comment is Required' })}
+          onKeyUp={() => {
+            trigger('comment');
+          }}
+          className="w-full rounded-sm"
+          placeholder="write your comment"
+        />
+        {errors.comment && (
+          <small className="text-danger">{errors.comment.message}</small>
+        )}
+
+        <br />
+        <button type="submit" className="w-[25%] h-12">
+          Submit
+        </button>
+      </form>
     </div>
   );
 };

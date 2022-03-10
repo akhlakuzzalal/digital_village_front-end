@@ -10,6 +10,7 @@ const AddAppointment = () => {
     formState: { errors },
     register,
     handleSubmit,
+    trigger,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -49,24 +50,63 @@ const AddAppointment = () => {
         >
           <input
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-            {...register('service')}
-            placeholder="Service name"
+            {...register('service', { required: "Service is Required" , pattern: /^[A-Za-z]+$/i , maxLength: 20  })}
+            onKeyUp={() => {
+              trigger("service");
+            }}
+            placeholder="Service Name"
           />
           <input
             className="px-7 py-10 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-            {...register('description')}
-            placeholder="Service Description"
+            {...register('description', { required: "Message is Required",
+            minLength: {
+              value: 10,
+              message: "Minimum Required length is 10",
+            },
+            maxLength: {
+              value: 50,
+              message: "Maximum allowed length is 150 ",
+            }
+           })}
+           placeholder="Write Service description"
+            required
+           onKeyUp={() => {
+            trigger("description");
+          }}
           />
+          {errors.description && (
+            <small className="text-danger">{errors.description.message}</small>
+          )}
           <input
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-            {...register('time')}
+            {...register('time', { required: true})}
             placeholder="time(am to pm)"
           />
           <input
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-            {...register('price')}
+            {...register('price', {
+              required: "price is Required",
+              min: {
+                value: 5,
+                message: "Minimum Required price is 5",
+              },
+              max: {
+                value: 500000,
+                message: "Maximum allowed price is 50000",
+              },
+              pattern: {
+                value: /^[0-9]*$/,
+                message: "Only numbers are allowed",
+              }
+            })}
+            onKeyUp={() => {
+              trigger("price");
+            }}
             placeholder="Cost($)"
           />
+          {errors.price && (
+            <small className="text-danger">{errors.price.message}</small>
+          )}
 
           {/* submit button */}
           <input
