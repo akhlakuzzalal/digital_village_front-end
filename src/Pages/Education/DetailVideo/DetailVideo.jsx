@@ -27,7 +27,7 @@ const DetailVideo = () => {
         alert('Failed to get video Info');
       }
     });
-  }, []);
+  }, [id]);
 
   return (
     <div

@@ -21,6 +21,15 @@ export const fetchBlogs = createAsyncThunk(
   }
 );
 
+// fetch teacher my blogs
+export const fetchMyBlogs = createAsyncThunk(
+  'blogs/fetchMyBlogs',
+  async (email) => {
+    const response = await axios.get(`/teacher/myBlogs/?email=${email}`);
+    return response.data;
+  }
+);
+
 const blogSlice = createSlice({
   name: 'blogs',
   initialState: {
@@ -40,6 +49,9 @@ const blogSlice = createSlice({
       const count = payload.count;
       const pageNumber = Math.ceil(count / payload.size);
       state.pageCount = pageNumber;
+    });
+    builder.addCase(fetchMyBlogs.fulfilled, (state, { payload }) => {
+      state.blogs = payload;
     });
   },
 });

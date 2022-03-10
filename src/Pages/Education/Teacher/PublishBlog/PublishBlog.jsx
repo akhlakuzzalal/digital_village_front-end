@@ -4,9 +4,10 @@ import { useSelector } from 'react-redux';
 import axios from '../../../../api/axios';
 import FileUpload from '../../../../Components/FileUpload';
 import RichTextEditor from '../../../../Components/RichTextEditor';
+import { giveAlert } from '../../../../utilities/alert';
 
 const PublishBlog = () => {
-  const [content, setContent] = useState('Start writing the blog');
+  const [content, setContent] = useState('Start writing');
 
   const user = useSelector((state) => state.user.user);
 
@@ -43,7 +44,15 @@ const PublishBlog = () => {
     );
 
     const response = await axios.post('/teacher/publishBlog', formData);
-    console.log(response.data);
+
+    if (response.data && response.data.length >= 1) {
+      giveAlert('Your blog published successfully', 'success');
+      reset();
+      setContent('Start writing another');
+      setFile({});
+    } else {
+      giveAlert('Failed to publish', 'error');
+    }
   };
 
   return (

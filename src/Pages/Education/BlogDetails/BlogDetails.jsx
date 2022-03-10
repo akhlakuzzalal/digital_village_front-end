@@ -1,4 +1,6 @@
+import parse from 'html-react-parser';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios from '../../../api/axios';
 import Comments from '../DetailVideo/Comments/Comments';
@@ -58,8 +60,8 @@ const blogs = [
 const BlogDetails = () => {
   const { id } = useParams();
 
-  const blog = blogs.filter((blog) => blog?._id === id);
-  const mainBlog = blog[0];
+  const blogs = useSelector((state) => state.blogs.blogs);
+  const blog = blogs.filter((blog) => blog._id === id)[0];
 
   const [commentLists, setCommentLists] = useState([]);
 
@@ -75,7 +77,7 @@ const BlogDetails = () => {
         alert('Failed to get blog Info');
       }
     });
-  }, []);
+  }, [id]);
 
   return (
     <div
@@ -85,21 +87,21 @@ const BlogDetails = () => {
       <div className="col-span-5 w-4/5 space-y-6 px-12">
         <div>
           <img
-            src={mainBlog?.bannerImg?.path}
-            alt={mainBlog?.title}
+            src={`http://localhost:5000/${blog?.bannerImg?.path}`}
+            alt={blog?.title}
             className="w-full"
           />
         </div>
-        <div>Authored by {mainBlog?.author}</div>
-        <div>author Email: {mainBlog?.email}</div>
+        <div>Authored by {blog?.author}</div>
+        <div>author Email: {blog?.email}</div>
         <div className="flex gap-4 items-center">
-          {mainBlog?.tags.map((tag) => (
+          {blog?.tags.map((tag) => (
             <div key={tag} className="bg-emerald-500 p-2 text-white">
               #{tag}
             </div>
           ))}
         </div>
-        <div>{mainBlog?.content}</div>
+        <div>{parse(blog?.content)}</div>
         <div>
           <Comments
             postId={id}
@@ -116,7 +118,6 @@ const BlogDetails = () => {
             <BlogSideCard blog={blog} />
           ))}
         </div>
-        {/* <div>featured videos</div> */}
       </div>
     </div>
   );
