@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axios from '../../../api/axios';
 
 // create the thunk
 export const fetchBlogs = createAsyncThunk(

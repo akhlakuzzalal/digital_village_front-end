@@ -11,9 +11,9 @@ export const fetchVideos = createAsyncThunk('videos/fetchVideos', async () => {
 
 // fetch teacher my videos
 export const fetchMyVideos = createAsyncThunk(
-  'blogs/fetchMyVideos',
+  'videos/fetchMyVideos',
   async (email) => {
-    const response = await axios.get(`/teacher/myBlogs/?email=${email}`);
+    const response = await axios.get(`/teacher/myVideos/?email=${email}`);
     return response.data;
   }
 );
