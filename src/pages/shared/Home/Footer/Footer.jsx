@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaFacebook, FaTwitterSquare } from 'react-icons/fa';
 import { GrInstagram } from 'react-icons/gr';
-import MessengerCustomerChat from 'react-messenger-customer-chat';
+// import MessengerCustomerChat from 'react-messenger-customer-chat';
 import { Link } from 'react-router-dom';
 import AppleStore from '../../../../assets/footer/appstore.png';
 import playStore from '../../../../assets/footer/playstore.png';
@@ -126,10 +126,10 @@ const Footer = () => {
               className="h-8 w-8 hover:scale-110 hover:text-primary mx-3"
               aria-hidden="true"
             />
-            <MessengerCustomerChat
+            {/* <MessengerCustomerChat
               pageId="104685378841819"
               appId="720117475814303"
-            />
+            /> */}
             ,
           </div>
         </div>
