@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './../shared/Home/Header/Header';
+import Header from './../../Pages/shared/Home/Header/Header';
 import Banner from './Banner/Banner';
 import Features from './Features/Features';
 import Services from './Services/Services';

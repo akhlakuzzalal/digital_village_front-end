@@ -3,9 +3,8 @@ import { AiOutlineMedicineBox } from 'react-icons/ai';
 import { FaClinicMedical } from 'react-icons/fa';
 import { GiLoveInjection } from 'react-icons/gi';
 import { Outlet, useLocation } from 'react-router-dom';
+import Header from '../Education/Teacher/Dashboard/partials/Header';
 import NewSidebar from './../../Components/Sidebar/NewSidebar';
-
-import Header from './../shared/Home/Header/Header';
 import WelcomeBanner from './Dashboard/partials/dashboardItem/WelcomeBanner';
 
 const links = [
