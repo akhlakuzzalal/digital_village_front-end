@@ -37,12 +37,12 @@ const Banner = () => {
             whole family healthy and strong each and every day.{' '}
           </p>
           <div className="flex items-start">
-            <NavHashLink smooth to="/#service">
+            <NavHashLink smooth to="/medicalDashboard">
               <button
                 className="btn rounded-lg "
                 style={{ backgroundColor: '#10217d' }}
               >
-                Services
+                Explore
               </button>
             </NavHashLink>
           </div>

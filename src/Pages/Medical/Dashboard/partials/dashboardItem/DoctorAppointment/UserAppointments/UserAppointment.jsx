@@ -7,7 +7,7 @@ const UserAppointment = ({ date }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const [appointment, setAppointment] = useState([]);
-  const email = user.email;
+  const email = 'user1@gmail.com';
 
   useEffect(() => {
     const url = `http://localhost:5000/appointment/findUserAppointment?email=${email}&date=${date}`;
@@ -15,7 +15,7 @@ const UserAppointment = ({ date }) => {
       .then((res) => res.json())
       .then((data) => setAppointment(data));
   }, [date]);
-  console.log(appointment);
+  console.log(Array.isArray(appointment));
   return (
     <div className="flex flex-col">
       <h4> Total Appointments:{appointment.length}</h4>

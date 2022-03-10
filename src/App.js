@@ -132,8 +132,9 @@ function App() {
             </Route>
             <Route path="detailvideo/:id" element={<DetailVideo />} />
             <Route path="blogDetails/:id" element={<BlogDetails />} />
-            {/* MEDICAL RELATED ROUTES */}
-            <Route path="medical" element={<MedicalDashboard />}>
+
+            {/* medical related routes */}
+            <Route path="medicalDashboard" element={<MedicalDashboard />}>
               <Route path="vaccine" element={<VaccineRegistration />} />
               <Route path="appointment" element={<DoctorsAppointment />} />
               <Route path="regForm" element={<RegForm />} />
@@ -170,9 +171,10 @@ function App() {
             <Route path="marketdashboard" element={<MarketDashboard />}>
               <Route path="myorder" element={<MyOrder />} />
             </Route>
-
             {/* landing page of medical */}
-            <Route path="medi" element={<Medical />} />
+            <Route path="medical" element={<Medical />} />
+            <Route path="addAppointment" element={<AddAppointment />} />
+            <Route path="*" element={<NotFound />} />
 
             {/* Admin dashboard routes */}
             <Route path="admin" element={<AdminDashboard />}>
