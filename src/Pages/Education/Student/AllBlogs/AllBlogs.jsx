@@ -14,8 +14,6 @@ const AllBlogs = () => {
   const size = 10;
   const [search, setSearch] = useState('');
 
-  console.log('this is currpage', currPage);
-
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -9,6 +9,15 @@ export const fetchVideos = createAsyncThunk('videos/fetchVideos', async () => {
   return response;
 });
 
+// fetch teacher my videos
+export const fetchMyVideos = createAsyncThunk(
+  'blogs/fetchMyVideos',
+  async (email) => {
+    const response = await axios.get(`/teacher/myBlogs/?email=${email}`);
+    return response.data;
+  }
+);
+
 const videoSlice = createSlice({
   name: 'videos',
   initialState: {
@@ -17,6 +26,9 @@ const videoSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchVideos.fulfilled, (state, { payload }) => {
+      state.videos = payload;
+    });
+    builder.addCase(fetchMyVideos.fulfilled, (state, { payload }) => {
       state.videos = payload;
     });
   },

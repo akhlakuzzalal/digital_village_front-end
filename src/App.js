@@ -201,6 +201,7 @@ function App() {
               <Route path="addNews" element={<AddNews />} />
               <Route path="manageNews" element={<ManageNews />} />
             </Route>
+
             {/* NOT FOUND ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

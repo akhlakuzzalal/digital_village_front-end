@@ -59,7 +59,7 @@ const PublishVideo = () => {
         {/* description of your video */}
         <textarea
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('desc', { required: true })}
+          {...register('about', { required: true })}
           placeholder="Write a description within 50 words"
         />
 

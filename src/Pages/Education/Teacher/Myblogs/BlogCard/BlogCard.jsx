@@ -26,7 +26,7 @@ const BlogCard = ({ blog }) => {
       >
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-          src={blog?.bannerImg?.path}
+          src={`http://localhost:5000/${blog?.bannerImg?.path}`}
           alt={blog?.title}
         />
       </div>
