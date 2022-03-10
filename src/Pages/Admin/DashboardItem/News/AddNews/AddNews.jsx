@@ -57,7 +57,10 @@ const AddNews = () => {
               {/* title of the News */}
               <input
                 className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-                {...register('title', { required: "Title is Required" })}
+                {...register('title', { required: "Title is Required" , maxLength: {
+                  value: 25,
+                  message: "First Name shouldn't exceed 25 words",
+                }})}
                 onKeyUp={() => {
                   trigger("title");
                 }}

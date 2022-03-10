@@ -37,8 +37,11 @@ const AddEvents = () => {
             {/* email */}
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-              {...register('title', { required: "title is Required" })}
-          
+              {...register('title', { required: "title is Required" , maxLength: {
+                value: 25,
+                message: "First Name shouldn't exceed 15 words",
+              }})}
+               
               onKeyUp={() => {
                 trigger("title");
               }}

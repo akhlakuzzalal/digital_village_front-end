@@ -33,7 +33,13 @@ const AddProducts = ({ sidebar, setSidebar }) => {
             {/* name */}
             <input
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('name', { required: 'Name is Required' })}
+              {...register('name', {
+                required: 'Name is Required',
+                maxLength: {
+                  value: 25,
+                  message: "First Name shouldn't exceed 15 words",
+                },
+              })}
               onKeyUp={() => {
                 trigger('name');
               }}
@@ -153,7 +159,7 @@ const AddProducts = ({ sidebar, setSidebar }) => {
                   message: 'Maximum allowed rating is 5',
                 },
                 pattern: {
-                  value: /^[0-9]*$/,
+                  // value: /^[0-9,.-+%#]*$/,
                   message: 'Only numbers rating allowed',
                 },
               })}
