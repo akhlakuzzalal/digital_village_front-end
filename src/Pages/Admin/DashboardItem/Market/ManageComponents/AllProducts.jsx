@@ -21,14 +21,14 @@ const AllProducts = () => {
   };
   return (
     <div>
-      <h3 className="mb-6 ">Found {products?.length} Products</h3>
+      <h3>Found {products?.length} Products</h3>
       <button
         onClick={() => setSidebar(true)}
-        className="bg-primary px-6 py-2 rounded-xl mb-6"
+        className="px-6 py-2 rounded-xl mb-6 bg-info"
       >
-        Create
+        Add Product
       </button>
-      <div className="grid grid-cols-6 gap-6">
+      <div className="flex flex-wrap justify-evenly items-center gap-6 ">
         {products?.map((product) => (
           <SingleProduct
             key={product._id}

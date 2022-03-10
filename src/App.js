@@ -180,10 +180,9 @@ function App() {
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
-              <Route path="manageEvents" element={<ManageEvents />} />
-              <Route path="development" element={<DevelopmentManage />} />
-              <Route path="market" element={<MarketManagement />} />
               <Route path="add-events" element={<AddEvents />} />
+              <Route path="manageEvents" element={<ManageEvents />} />
+              <Route path="market" element={<MarketManagement />} />
               <Route path="add-review" element={<AddReview />} />
               <Route path="medical" element={<AddAppointment />} />
               <Route path="addcause" element={<AddCause />} />
@@ -192,6 +191,7 @@ function App() {
               <Route path="paymentcauses" element={<AllDonarPayment />} />
               <Route path="donation" element={<Donations />} />
               <Route path="development" element={<DevelopmentDashboard />} />
+              <Route path="development" element={<DevelopmentManage />} />
               <Route path="manageDevelopmet" element={<DevelopmentManage />} />
               <Route path="addDevelopment" element={<AddDevelopment />} />
               <Route path="market" element={<MarketManagement />} />

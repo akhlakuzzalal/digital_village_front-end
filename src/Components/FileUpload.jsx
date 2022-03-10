@@ -49,7 +49,7 @@ const FileUpload = ({ onDrop, file, message }) => {
   );
 
   return (
-    <section className="max-w-[600px]">
+    <section>
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
         <div>{message}</div>
