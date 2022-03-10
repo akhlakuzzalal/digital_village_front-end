@@ -87,7 +87,7 @@ const useFirebase = () => {
       setIsLoading(false); // as the user state changed so we are not in loading state
     });
     return () => unsubscribed;
-  }, [auth]);
+  }, [auth, user?.dateOfBirth]);
 
   //process user logout
   const logout = async () => {
@@ -126,7 +126,7 @@ const useFirebase = () => {
       );
       dispatch(setRoles([...roles, response?.data?.roles]));
       dispatch(setToken(response?.data?.accessToken));
-      dispatch(setToken(response?.data?.uId));
+      dispatch(setUId(response?.data?.uId));
       console.log(response?.data?.message);
     } catch (error) {
       console.log(error.message);

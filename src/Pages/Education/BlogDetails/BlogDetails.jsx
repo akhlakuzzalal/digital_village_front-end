@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Comments from '../../../Components/Comments/Comments';
+import axios from '../../../api/axios';
+import Comments from '../DetailVideo/Comments/Comments';
 import BlogSideCard from '../Teacher/BlogSideCard/BlogSideCard';
 
 const blogs = [
@@ -60,6 +61,22 @@ const BlogDetails = () => {
   const blog = blogs.filter((blog) => blog?._id === id);
   const mainBlog = blog[0];
 
+  const [commentLists, setCommentLists] = useState([]);
+
+  const updateComment = (newComment) => {
+    setCommentLists([...commentLists, newComment]);
+  };
+
+  useEffect(() => {
+    axios.get(`/comment/all/?id=${id}`).then((response) => {
+      if (response.data.success) {
+        setCommentLists(response.data.comments);
+      } else {
+        alert('Failed to get blog Info');
+      }
+    });
+  }, []);
+
   return (
     <div
       className="mt-[80px] flex"
@@ -84,7 +101,11 @@ const BlogDetails = () => {
         </div>
         <div>{mainBlog?.content}</div>
         <div>
-          <Comments />
+          <Comments
+            postId={id}
+            updateComment={updateComment}
+            commentLists={commentLists}
+          />
         </div>
       </div>
 
