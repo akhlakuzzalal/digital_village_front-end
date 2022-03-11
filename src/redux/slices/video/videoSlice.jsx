@@ -11,10 +11,18 @@ export const fetchVideos = createAsyncThunk('videos/fetchVideos', async () => {
 
 // fetch teacher my videos
 export const fetchMyVideos = createAsyncThunk(
-  'blogs/fetchMyVideos',
+  'videos/fetchMyVideos',
   async (email) => {
-    const response = await axios.get(`/teacher/myBlogs/?email=${email}`);
+    const response = await axios.get(`/teacher/myVideos/?email=${email}`);
     return response.data;
+  }
+);
+
+export const deleteAVideo = createAsyncThunk(
+  'videos/deleteAVideo',
+  async (id) => {
+    const response = await axios.delete(`/teacher/deleteAVideo/?id=${id}`);
+    return response?.data?._id;
   }
 );
 
@@ -30,6 +38,9 @@ const videoSlice = createSlice({
     });
     builder.addCase(fetchMyVideos.fulfilled, (state, { payload }) => {
       state.videos = payload;
+    });
+    builder.addCase(deleteAVideo.fulfilled, (state, { payload }) => {
+      state.videos = state.videos.filter((video) => video._id !== payload);
     });
   },
 });

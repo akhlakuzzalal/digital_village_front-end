@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import axios from '../../../../../api/axios';
 const SingleComment = ({ comment, updateComment, postId }) => {
@@ -47,9 +48,10 @@ const SingleComment = ({ comment, updateComment, postId }) => {
         </div>
       </div>
 
-      <div className="ml-20 flex space-x-6">
-        <p>like</p>
-        <p>dislike</p>
+      <div className="ml-20 flex space-x-6 dark:text-white">
+        <AiOutlineLike size={30} className="cursor-pointer" />
+        <AiOutlineDislike size={30} className="cursor-pointer" />
+
         <span
           className="cursor-pointer hover:text-gray-500 transition-all duration-500"
           onClick={() => setOpenReply(!openReply)}

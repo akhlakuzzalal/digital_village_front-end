@@ -5,12 +5,11 @@ import CauseCard from './CauseCard';
 
 const Causes = () => {
   const causes = useSelector((state) => state.donation.causes);
-  // console.log(causes);
-  
-     const dispatch = useDispatch();
-     useEffect(() => {
-       dispatch(fetchAllCuases());
-     }, []);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllCuases());
+  }, []);
 
   return (
     <section

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { BsBookmark } from 'react-icons/bs';
-import { GrDislike, GrLike } from 'react-icons/gr';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios from '../../../api/axios';
 import Comments from './Comments/Comments';
+import LikeDislikes from './LikeDislikes/LikeDislikes';
 import Sidebar from './Sidebar/Sidebar';
 
 const DetailVideo = () => {
@@ -12,6 +12,7 @@ const DetailVideo = () => {
 
   const videos = useSelector((state) => state.videos.videos);
   const video = videos.filter((video) => video._id === id)[0];
+  const uId = useSelector((state) => state.user.uId);
 
   const [commentLists, setCommentLists] = useState([]);
 
@@ -65,9 +66,8 @@ const DetailVideo = () => {
                     {video?.author}
                   </p>
                 </div>
-                <div className="flex items-center space-x-6 mr-20">
-                  <GrLike size={30} className="cursor-pointer" />
-                  <GrDislike size={30} className="cursor-pointer" />
+                <div className="flex items-center space-x-6 mr-20 text-white">
+                  <LikeDislikes video={video} videoId={id} uId={uId} />
                   <BsBookmark size={30} className="cursor-pointer" />
                 </div>
               </div>

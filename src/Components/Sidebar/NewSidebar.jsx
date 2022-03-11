@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import Links from './Links/Links';
-const NewSidebar = ({ links }) => {
+const NewSidebar = ({ links, setIsOpen }) => {
   const [showText, setShowText] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
 
@@ -34,6 +34,7 @@ const NewSidebar = ({ links }) => {
             className="cursor-pointer ml-auto m-3"
             onClick={() => {
               setShowText(false);
+              setIsOpen(false);
             }}
           />
         </div>
@@ -44,6 +45,7 @@ const NewSidebar = ({ links }) => {
             className="cursor-pointer ml-auto m-3"
             onClick={() => {
               setShowText(true);
+              setIsOpen(true);
             }}
           />
         </div>
