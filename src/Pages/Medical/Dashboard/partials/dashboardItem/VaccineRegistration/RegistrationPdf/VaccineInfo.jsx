@@ -15,7 +15,7 @@ const VaccineInfo = () => {
     const url = `http://localhost:5000/vaccine/findInfo?email=${email}`;
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setInfo(data));
+      .then((data) => setInfo(data[0]));
   }, []);
   console.log(info);
   const generatePDF = (singleInfo) => {

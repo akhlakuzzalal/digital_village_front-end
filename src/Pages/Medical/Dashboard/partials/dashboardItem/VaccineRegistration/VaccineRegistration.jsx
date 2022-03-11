@@ -31,8 +31,12 @@ const VaccineRegistration = () => {
                 so many vaccines proving and going into development.
               </p>
               <Link
-                to="/medical/regForm"
-                className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white bg-primary"
+                to="/medicalDashboard/regForm"
+                className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white "
+                style={{
+                  backgroundColor: '#10217d',
+                  color: 'white',
+                }}
               >
                 Registration
                 <svg
@@ -73,8 +77,12 @@ const VaccineRegistration = () => {
                 and older.
               </p>
               <Link
-                to="/medical/regForm"
-                className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white bg-primary"
+                to="/medicalDashboard/regForm"
+                className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white "
+                style={{
+                  backgroundColor: '#10217d',
+                  color: 'white',
+                }}
               >
                 Registration
                 <svg
@@ -115,8 +123,12 @@ const VaccineRegistration = () => {
                 spinal cord, causing paralysis
               </p>
               <Link
-                to="/medical/regForm"
-                className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white bg-primary"
+                to="/medicalDashboard/regForm"
+                className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white "
+                style={{
+                  backgroundColor: '#10217d',
+                  color: 'white',
+                }}
               >
                 Registration
                 <svg
