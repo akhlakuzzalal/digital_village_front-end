@@ -53,7 +53,7 @@ const FileUpload = ({ onDrop, file, message }) => {
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
         <div>{message}</div>
-        <h3 className="text-success text-lg">{file.name}</h3>
+        <h3 className="text-success text-lg dark:text-success">{file.name}</h3>
       </div>
     </section>
   );

@@ -44,7 +44,6 @@ const PublishBlog = () => {
     );
 
     const response = await axios.post('/teacher/publishBlog', formData);
-
     if (response.data && response.data.length >= 1) {
       giveAlert('Your blog published successfully', 'success');
       reset();

@@ -18,6 +18,14 @@ export const fetchMyVideos = createAsyncThunk(
   }
 );
 
+export const deleteAVideo = createAsyncThunk(
+  'videos/deleteAVideo',
+  async (id) => {
+    const response = await axios.delete(`/teacher/deleteAVideo/?id=${id}`);
+    return response?.data?._id;
+  }
+);
+
 const videoSlice = createSlice({
   name: 'videos',
   initialState: {
@@ -30,6 +38,9 @@ const videoSlice = createSlice({
     });
     builder.addCase(fetchMyVideos.fulfilled, (state, { payload }) => {
       state.videos = payload;
+    });
+    builder.addCase(deleteAVideo.fulfilled, (state, { payload }) => {
+      state.videos = state.videos.filter((video) => video._id !== payload);
     });
   },
 });

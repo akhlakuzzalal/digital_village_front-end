@@ -66,9 +66,7 @@ const DetailVideo = () => {
                     {video?.author}
                   </p>
                 </div>
-                <div className="flex items-center space-x-6 mr-20">
-                  {/* <GrLike size={30} className="cursor-pointer" />
-                  <GrDislike size={30} className="cursor-pointer" /> */}
+                <div className="flex items-center space-x-6 mr-20 text-white">
                   <LikeDislikes video={video} videoId={id} uId={uId} />
                   <BsBookmark size={30} className="cursor-pointer" />
                 </div>

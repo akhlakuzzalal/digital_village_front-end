@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import axios from '../../../../api/axios';
 import FileUpload from '../../../../Components/FileUpload';
+import { giveAlert } from '../../../../utilities/alert';
 
 const PublishVideo = () => {
   const [file, setFile] = useState({});
@@ -35,6 +36,13 @@ const PublishVideo = () => {
 
     const response = await axios.post('/teacher/publishVideo', formData);
     console.log(response.data);
+    if (response.data && response.data.length >= 1) {
+      giveAlert('Your blog published successfully', 'success');
+      reset();
+      setFile({});
+    } else {
+      giveAlert('Failed to publish', 'error');
+    }
   };
 
   return (

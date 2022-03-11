@@ -154,14 +154,18 @@ function App() {
               />
             </Route>
             <Route path="eventDetails/:id" element={<EventDetails />} />
+
             {/* DEVELOPMENT RELATED ROUTES */}
             <Route path="development" element={<Development />} />
+
             {/* NEWS RELATED ROUTES */}
             <Route path="newsDetails/:id" element={<NewsDetails />} />
             <Route path="allNews" element={<AllNews />} />
+
             {/* DONATION RELATED ROUTES */}
             <Route path="donation" element={<Donations />} />
             <Route path="causedetails/:id" element={<CaseSingle />} />
+
             {/* VILLAGE MARKET RELATED ROUTES */}
             <Route path="e-market" element={<EMarket />} />
             <Route path="cart" element={<Cart />} />
@@ -171,10 +175,10 @@ function App() {
             <Route path="marketdashboard" element={<MarketDashboard />}>
               <Route path="myorder" element={<MyOrder />} />
             </Route>
+
             {/* landing page of medical */}
             <Route path="medical" element={<Medical />} />
             <Route path="addAppointment" element={<AddAppointment />} />
-            <Route path="*" element={<NotFound />} />
 
             {/* Admin dashboard routes */}
             <Route path="admin" element={<AdminDashboard />}>
