@@ -31,10 +31,7 @@ const AddDevelopment = () => {
       })
     );
 
-    const response = await axios.post(
-      'https://digital-village.herokuapp.com/development/addDevelopment',
-      formData
-    );
+    const response = await axios.post('/development/addDevelopment', formData);
     console.log(response.data);
     if (response && response.data.length >= 1) {
       giveAlert('Your proposal published', 'success');

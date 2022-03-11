@@ -17,10 +17,7 @@ const Review = () => {
 
   const handleAddReview = (data) => {
     data.email = user?.email;
-    const result = axios.post(
-      'https://digital-village.herokuapp.com/userReview/addReview',
-      data
-    );
+    const result = axios.post('/userReview/addReview', data);
 
     reset();
     console.log(data);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { BASE_URI } from '../../../../../api/axios';
 
 const SideVideoCard = ({ video }) => {
   return (
@@ -6,7 +7,7 @@ const SideVideoCard = ({ video }) => {
       <div className="w-[40%] overflow-hidden">
         <video
           className="w-fit group-hover:scale-150 transition-all duration-500"
-          src={`https://digital-village.herokuapp.com/${video?.video?.path}`}
+          src={`${BASE_URI}/${video?.video?.path}`}
         ></video>
       </div>
       <div>

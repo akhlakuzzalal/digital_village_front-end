@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaEdit, FaPushed, FaTrashAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URI } from '../../../../../api/axios';
 
 const BlogCard = ({ blog }) => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const BlogCard = ({ blog }) => {
       >
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-          src={`https://digital-village.herokuapp.com/${blog?.bannerImg?.path}`}
+          src={`${BASE_URI}${blog?.bannerImg?.path}`}
           alt={blog?.title}
         />
       </div>

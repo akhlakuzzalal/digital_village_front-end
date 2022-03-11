@@ -9,7 +9,7 @@ const ManageNews = () => {
 
   useEffect(() => {
     axios
-      .get('https://digital-village.herokuapp.com/news/allNews')
+      .get('/news/allNews')
       .then((res) => res.json())
       .then((data) => {
         setNews(data);
@@ -24,17 +24,15 @@ const ManageNews = () => {
       buttons: 'delete',
       dangerMode: true,
     }).then(() => {
-      axios
-        .delete(`https://digital-village.herokuapp.com/news/deleteNews/${id}`)
-        .then((response) => {
-          if (response?.data?.deletedCount) {
-            swal('Delete! Your News Fille has been deleted!', {
-              icon: 'success',
-            });
-          } else {
-            swal('Your News  file is safe!');
-          }
-        });
+      axios.delete(`/news/deleteNews/${id}`).then((response) => {
+        if (response?.data?.deletedCount) {
+          swal('Delete! Your News Fille has been deleted!', {
+            icon: 'success',
+          });
+        } else {
+          swal('Your News  file is safe!');
+        }
+      });
     });
   };
   return (
