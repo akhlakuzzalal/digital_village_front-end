@@ -3,20 +3,35 @@ import { BsFillPlayCircleFill } from 'react-icons/bs';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import Rating from '../../../../../Components/Rating';
 import { deleteAVideo } from '../../../../../redux/slices/video/videoSlice';
-import { giveAlert } from '../../../../../utilities/alert';
 
 const VideoCard = ({ video }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const elem = <p>hello this is a modal</p>;
+
   const handleDeleteVideo = () => {
-    giveAlert('Are you sure? You want to delete this', 'warning').then(() => {
-      dispatch(deleteAVideo(video._id)).then(() => {
-        giveAlert('Successfully deleted');
-      });
+    swal({
+      title: 'Are you sure?',
+      text: 'hello',
+      icon: 'warning',
+      buttons: true,
+    }).then((willConfirm) => {
+      if (willConfirm) {
+        dispatch(deleteAVideo(video._id));
+        swal('Confirmed!', {
+          icon: 'success',
+          showConfirmButton: false,
+        });
+      }
     });
+  };
+
+  const handleUpdateVideo = () => {
+    // do the updating part here
   };
 
   return (
