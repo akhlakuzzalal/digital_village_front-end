@@ -26,7 +26,7 @@ const BlogCard = ({ blog }) => {
       >
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-          src={blog?.bannerImg?.path}
+          src={`https://digital-village.herokuapp.com/${blog?.bannerImg?.path}`}
           alt={blog?.title}
         />
       </div>

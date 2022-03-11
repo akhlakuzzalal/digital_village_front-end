@@ -1,55 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import swal from 'sweetalert';
+import axios from '../../../../../api/axios';
+import { giveAlert } from '../../../../../utilities/alert';
 
 const DevelopmentManage = () => {
   const [development, setDevelopment] = useState([]);
-  const [isLoading,setIsLoading]=useState(false)
 
   useEffect(() => {
-    setIsLoading(true)
-    fetch('http://localhost:5000/development/allDevelopment')
-      .then((res) => res.json())
-      .then((data) => {
-        setDevelopment(data)
-        setIsLoading(false)
+    axios
+      .get('https://digital-village.herokuapp.com/development/allDevelopment')
+      .then((response) => {
+        setDevelopment(response.data);
       });
-  }, [isLoading]);
+  }, []);
 
   const handleDelete = (id) => {
-    setIsLoading(true)
-    fetch(`http://localhost:5000/development/deleteDevelopment/${id}`, {
-      method: 'DELETE',
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        swal({
-          title: 'Are you sure?',
-          text: 'Once deleted, you will not be able to recover this imaginary file!',
-          icon: 'warning',
-          buttons: true,
-          dangerMode: true,
+    swal({
+      icon: 'warning',
+      confirm: 'You want to delete this development proposal',
+      dangerMode: true,
+    }).then(() => {
+      axios
+        .delete(
+          `https://digital-village.herokuapp.com/development/deleteDevelopment/${id}`
+        )
+        .then((response) => {
+          if (response?.data?.deletedCount) {
+            giveAlert('Your Development Proposal has been deleted!', 'success');
+          } else {
+            giveAlert('something went wrong', 'error');
+          }
         });
-
-        if (data?.deletedCount) {
-          swal('Delete! Your Development Item has been deleted!', {
-            icon: 'success',
-          });
-          setIsLoading(false)
-        } else {
-          swal('Your Development Item is safe!');
-        }
-      });
+    });
   };
   return (
-    <article className="flex flex-wrap justify-evenly items-center gap-6 md:mx-24 md:my-24">
+    <article className="flex flex-wrap justify-evenly items-center gap-6">
       {development.map((data) => (
         <div className="bg-white rounded-xl p-4 relative max-w-[400px] shadow-2xl">
           <div className="overflow-hidden rounded-xl h-52 cursor-pointer">
             <img
               className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-              src={data.img}
+              src={`https://digital-village.herokuapp.com/${data?.bannerImg.path}`}
               alt={''}
             />
           </div>

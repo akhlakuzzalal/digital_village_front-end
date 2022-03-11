@@ -6,6 +6,7 @@ const userSlice = createSlice({
     user: {},
     roles: [],
     token: '',
+    uId: '',
   },
   reducers: {
     setRoles: (state, { payload }) => {
@@ -17,9 +18,12 @@ const userSlice = createSlice({
     setUser: (state, { payload }) => {
       state.user = payload;
     },
+    setUId: (state, { payload }) => {
+      state.uId = payload;
+    },
   },
 });
 
-export const { setRoles, setToken, setUser } = userSlice.actions;
+export const { setRoles, setToken, setUser, setUId } = userSlice.actions;
 
 export default userSlice.reducer;

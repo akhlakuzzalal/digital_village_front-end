@@ -55,10 +55,10 @@ const Navbar = ({ navigation }) => {
   const dispatch = useDispatch();
   const html = document.querySelector('html');
   useEffect(() => {
-    if (mood === 'light') {
-      html.classList.remove('dark');
-    } else {
+    if (mood === 'dark') {
       html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
     }
   }, [mood]);
 

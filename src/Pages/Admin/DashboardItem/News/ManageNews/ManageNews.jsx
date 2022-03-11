@@ -1,46 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import swal from 'sweetalert';
+import axios from '../../../../../api/axios';
 
 const ManageNews = () => {
   const [news, setNews] = useState([]);
-  const [isLoading,setIsLoading]=useState(false)
+  const [confirm, setConfirm] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true)
-    fetch('http://localhost:5000/news/allNews')
+    axios
+      .get('https://digital-village.herokuapp.com/news/allNews')
       .then((res) => res.json())
       .then((data) => {
-        setNews(data)
-        setIsLoading(false)
+        setNews(data);
       });
-  }, [isLoading]);
+  }, []);
 
-  const handleDelete = (id) => {
-    setIsLoading(true)
-    fetch(`http://localhost:5000/news/deleteNews/${id}`, {
-      method: 'DELETE',
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        swal({
-          title: 'Are you sure?',
-          text: 'Once deleted, you will not be able to recover this imaginary file!',
-          icon: 'warning',
-          buttons: true,
-          dangerMode: true,
+  const handleDelete = async (id) => {
+    swal({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this imaginary file!',
+      icon: 'warning',
+      buttons: 'delete',
+      dangerMode: true,
+    }).then(() => {
+      axios
+        .delete(`https://digital-village.herokuapp.com/news/deleteNews/${id}`)
+        .then((response) => {
+          if (response?.data?.deletedCount) {
+            swal('Delete! Your News Fille has been deleted!', {
+              icon: 'success',
+            });
+          } else {
+            swal('Your News  file is safe!');
+          }
         });
-
-        if (data?.deletedCount) {
-          swal('Delete! Your News Fille has been deleted!', {
-            icon: 'success',
-          });
-          setIsLoading(false)
-        } else {
-          swal('Your News  file is safe!');
-        }
-      });
+    });
   };
   return (
     <article className="flex flex-wrap justify-evenly items-center gap-6 md:mx-24 md:my-24">

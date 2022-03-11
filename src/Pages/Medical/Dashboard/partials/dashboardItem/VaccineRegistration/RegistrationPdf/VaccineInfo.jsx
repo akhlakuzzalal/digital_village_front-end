@@ -10,12 +10,16 @@ const VaccineInfo = () => {
   const user = useSelector((state) => state.user.user);
   const email = user.email;
   const [info, setInfo] = useState([]);
+  console.log(info);
 
   useEffect(() => {
-    const url = `http://localhost:5000/vaccine/findInfo?email=${email}`;
+    const url = `https://digital-village.herokuapp.com/vaccine/findInfo?email=${email}`;
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setInfo(data));
+      .then((data) => {
+        setInfo(data);
+        console.log(data);
+      });
   }, []);
   console.log(info);
   const generatePDF = (singleInfo) => {

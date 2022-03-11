@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import Swal from 'sweetalert2/src/sweetalert2.js';
+import swal from 'sweetalert';
 import axios from '../../../../src/api/axios';
 import {
   fetchAllEvent,
@@ -33,10 +33,10 @@ const EventDetails = () => {
   const handleBookEvent = () => {
     // const url = `/event/participant?id=${eventItem[0]?._id}&email=${user.email}`
     axios.put(`/event/participant?id=${eventItem[0]?._id}&email=${user.email}`);
-    Swal.fire('Good job!', 'You clicked the button!', 'success');
+    swal('Good job!', 'Successfully booked !', 'success');
   };
 
-  // http://localhost:5000/event/participant?id=61793a64f536b7c2cd793&email=sabbirrrrr0911
+  // https://digital-village.herokuapp.com/event/participant?id=61793a64f536b7c2cd793&email=sabbirrrrr0911
 
   return (
     <div className="event-details-main py-48 px-5 lg:px-20">
@@ -44,7 +44,11 @@ const EventDetails = () => {
         {/* left side */}
         <div className="lg:col-span-2">
           <div>
-            <img className="w-full" src={eventItem[0]?.image} alt="" />
+            <img
+              className="w-full lg:h-[700px]"
+              src={eventItem[0]?.image}
+              alt=""
+            />
             <h1 className="mt-20 hover:text-blue-600">{eventItem[0]?.title}</h1>
           </div>
           <div className="mt-20">
@@ -133,7 +137,7 @@ const EventDetails = () => {
 
       <button
         onClick={handleBookEvent}
-        className="mt-20 bg-purple-300 py-5 px-10"
+        className="mt-10 bg-purple-300 py-5 px-20"
       >
         Book This Event
       </button>

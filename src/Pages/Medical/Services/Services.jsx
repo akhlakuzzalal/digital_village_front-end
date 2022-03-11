@@ -134,11 +134,7 @@ const Services = () => {
       </div>
       <div
         className="w-full flex justify-center items-center p-10 "
-        style={{
-          backgroundImage: `ur${background})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-        }}
+      
       >
         <div className="w-full md:w-1/2">
           <section class="text-gray-700">

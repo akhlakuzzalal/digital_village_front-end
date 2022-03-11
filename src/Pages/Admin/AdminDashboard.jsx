@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
 import { BsCalendar2EventFill } from 'react-icons/bs';
@@ -9,13 +9,17 @@ import {
   FaUsers,
 } from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
-import { MdRateReview } from 'react-icons/md';
+import { GiNewspaper } from 'react-icons/gi';
+import { IoLogoDesignernews } from 'react-icons/io';
+import {
+  MdManageAccounts,
+  MdOutlineManageAccounts,
+  MdRateReview,
+} from 'react-icons/md';
+import { RiLightbulbFlashFill } from 'react-icons/ri';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
-import { IoLogoDesignernews } from 'react-icons/io';
-import { MdOutlineManageAccounts } from 'react-icons/md';
-import { GiNewspaper } from 'react-icons/gi';
 // import Sidebar from '../../Components/Sidebar';
 // import WelcomeBanner from '../../Components/WelcomeBanner';
 // import Header from '../Education/Teacher/Dashboard/partials/Header';
@@ -77,13 +81,13 @@ const links = [
     path: '/admin/development',
     nestedPath: [
       {
-        name: 'Add-Development',
-        icon: <BsCalendar2EventFill size={30} />,
+        name: 'Add development',
+        icon: <RiLightbulbFlashFill size={30} />,
         path: '/admin/addDevelopment',
       },
       {
-        name: 'Manage-Development',
-        icon: <BsCalendar2EventFill size={30} />,
+        name: 'Manage Development',
+        icon: <MdManageAccounts size={30} />,
         path: '/admin/manageDevelopmet',
       },
     ],
@@ -122,15 +126,22 @@ const navigation = [
 
 const AdminDashboard = () => {
   const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
   const initial =
     location.pathname === '/admindashboard' ||
     location.pathname === '/admindashboard/';
 
   return (
-    <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div style={{ minHeight: 'calc(100vh - 700px)' }}>
       <Navbar navigation={navigation} />
-      <NewSidebar links={links} />
-      <Outlet />
+      <div className="flex">
+        <NewSidebar links={links} setIsOpen={setIsOpen} />
+        <div
+          className={`mt-[80px] flex-1 ${isOpen ? 'ml-[273px]' : 'ml-[82px]'}`}
+        >
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
 };

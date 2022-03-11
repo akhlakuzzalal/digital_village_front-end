@@ -14,6 +14,7 @@ const UpdateCause = () => {
   const {
     register,
     handleSubmit,
+    trigger,
     formState: { errors }
   } = useForm ();
 
@@ -38,43 +39,99 @@ const UpdateCause = () => {
           {/* title */}
         <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('title')}
+          {...register('title', { required: "Title is Required" })}
+          onKeyUp={() => {
+            trigger("title");
+          }}
           placeholder="Title"
           defaultValue={cause.title}
         />
+        {errors.title && (
+          <small className="text-danger">{errors.title.message}</small>
+        )}
          {/* image */}
          <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('image')}
+          {...register('image'
+          , { required: "Image link is Required" })}
+          onKeyUp={() => {
+            trigger("image");
+          }}
           placeholder="Image link"
           defaultValue={cause.image}
         />
+        {errors.image && (
+          <small className="text-danger">{errors.image.message}</small>
+        )}
         {/* description */}
         <textarea
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('description')}
-          placeholder="Description"
-          defaultValue={cause.description}
-        />
+          {...register('description'
+          , { required: "Description is Required",
+                minLength: {
+                  value: 200,
+                  message: "Minimum Required length is 200",
+                },
+                maxLength: {
+                  value: 1500,
+                  message: "Maximum allowed length is 1500",
+                }
+               })}
+                placeholder="Description"
+                defaultValue={cause.description}
+               onKeyUp={() => {
+                trigger("description");
+              }}
+              ></textarea>
+              {errors.description && (
+                <small className="text-danger">{errors.description.message}</small>
+              )}
        
         <div className="flex items-center justify-center">
           {/* category */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
-            {...register('category', { required: true })}
-            placeholder="Category"
+            {...register('category', { required: "Category is Required" })}
+            onKeyUp={() => {
+              trigger("title");
+            }}
+            placeholder="Category here"
             defaultValue={cause.category}
           />
+          {errors.category && (
+            <small className="text-danger">{errors.category.message}</small>
+          )}
         </div>
         <div className="flex items-center justify-center">
           {/* goal */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
-            {...register('goal', { required: true})}
+            {...register('goal'
+            , {
+              required: "Goal is Required",
+              min: {
+                value: 1000,
+                message: "Minimum Required age is 1000",
+              },
+              max: {
+                value: 50000,
+                message: "Maximum allowed age is 50000",
+              },
+              pattern: {
+                value: /^[0-9]*$/,
+                message: "Only numbers are allowed",
+              }
+            })}
             type="number"
             placeholder="Goal"
             defaultValue={cause.goal}
+            onKeyUp={() => {
+              trigger("goal");
+            }}
           />
+          {errors.goal && (
+            <small className="text-danger">{errors.goal.message}</small>
+          )}
         </div>
         <div className="flex items-center justify-center">
           {/* category */}
@@ -88,7 +145,7 @@ const UpdateCause = () => {
         <input
           className="bg-primary hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
           type="submit"
-          value="Add a new Cause"
+          value="Update"
         />
       </form>
       </div>

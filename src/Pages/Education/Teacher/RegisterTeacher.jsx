@@ -12,6 +12,7 @@ const RegisterTeacher = () => {
     register,
     handleSubmit,
     formState: { errors },
+    trigger,
     reset,
   } = useForm();
 
@@ -54,25 +55,70 @@ const RegisterTeacher = () => {
         {/* highest qualification */}
         <input
           className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-          {...register('qualification', { required: true })}
+          {...register('qualification', { required: "Qualification is Required" })}
+          
+          onKeyUp={() => {
+            trigger("qualification");
+          }}
           placeholder="Highest qualification: HSC, BSC, MSC or something else"
         />
+        {errors.qualification && (
+          <small className="text-danger">{errors.qualification.message}</small>
+        )}
+          
+      
 
         {/* gpa */}
         <input
           className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('gpa', { required: true })}
-          placeholder="Acquired GPA"
-          required
-        />
+          {...register('gpa', {
+            required: "GPA is Required",
+                  min: {
+                    value: 1,
+                    message: "Minimum Required GPA is 1",
+                  },
+                  max: {
+                    value: 5,
+                    message: "Maximum allowed age is 5",
+                  },
+                  pattern: {
+                    value: /^[0-5._%+-]*$/,
+                    message: "Only numbers are allowed",
+                  }
+                })}
+                placeholder="Acquired GPA"
+                required
+                onKeyUp={() => {
+                  trigger("gpa");
+                }}
+              />
+              
+              {errors.gpa && (
+                <small className="text-danger">{errors.gpa.message}</small>
+              )}
 
         {/* about yourself */}
         <textarea
           className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-          {...register('about', { required: true })}
-          placeholder="Write about yourself"
+          {...register('about', { required: "Message is Required",
+          minLength: {
+            value: 10,
+            message: "Minimum Required length is 10",
+          },
+          maxLength: {
+            value: 50,
+            message: "Maximum allowed length is 150 ",
+          }
+         })}
+         placeholder="Write about yourself"
           required
-        />
+         onKeyUp={() => {
+          trigger("about");
+        }}
+        ></textarea>
+        {errors.about && (
+          <small className="text-danger">{errors.about.message}</small>
+        )}
 
         {/* submit button */}
         <input

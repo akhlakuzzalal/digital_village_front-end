@@ -7,7 +7,7 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
-    reset,
+    reset,trigger,
     formState: { errors },
   } = useForm({
     defaultValues: { yes_i_understand: false },
@@ -179,37 +179,78 @@ const Contact = () => {
         >
           <input
             className=" w-full  bg-gray-100 px-20  outline-none border-2 py-5 focus:border-primary  rounded mb-5 lg:mb-0"
-            {...register('name', { required: true, maxLength: 20 })}
-            placeholder="Your Name"
+            {...register('name', { required: "Name is Required" })}
+          
+            onKeyUp={() => {
+              trigger("name");
+            }}
+            placeholder="Name"
           />
+          {errors.name && (
+            <small className="text-danger">{errors.name.message}</small>
+          )}
 
           <input
             className=" w-full mb-5 lg:mb-0 py-5 lg:py-0 outline-none border-2 focus:border-primary bg-gray-100 px-20 rounded"
             type="number"
-            {...register('number', { required: true, maxLength: 20 })}
-            placeholder="Your Phone Number"
+            {...register('number', { required: "Phone is Required",
+            pattern: {
+              value: /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+              message: "Invalid phone no",
+            },
+           })}
+           onKeyUp={() => {
+            trigger("number");
+          }}
           />
-
+          {errors.number && (
+            <small className="text-danger">{errors.number.message}</small>
+          )}
           <input
             className=" w-full mb-5 lg:mb-0 outline-none border-2 bg-gray-100 focus:border-primary px-20 rounded py-5 "
             type="email"
-            {...register('email')}
+            {...register('email', { required: "Email is Required" ,
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "Invalid email address",
+            }})}
+            onKeyUp={() => {
+              trigger("email");
+            }}
             placeholder="Enter Your Email"
           />
+          {errors.email && (
+            <small className="text-danger">{errors.email.message}</small>
+          )}
 
           <input
             className=" w-full mb-5 lg:mb-0 outline-none border-2 bg-gray-100 px-20 focus:border-primary rounded py-5 lg:py-0"
             type="email"
-            {...register('email')}
+            {...register('email',{ required: true, maxLength: 20 })}
             placeholder="Write your Subject"
           />
 
           <div className=" col-span-2">
             <textarea
-              placeholder="Please Write Your Message"
               className=" w-full bg-gray-100 py-8 px-5 outline-none border-2 focus:border-primary"
-              {...register('firstName', { required: true, maxLength: 20 })}
-            />
+              {...register("message", { required: "Message is Required",
+                minLength: {
+                  value: 10,
+                  message: "Minimum Required length is 10",
+                },
+                maxLength: {
+                  value: 50,
+                  message: "Maximum allowed length is 50 ",
+                }
+               })}
+               placeholder="Write your message"
+               onKeyUp={() => {
+                trigger("message");
+              }}
+              ></textarea>
+              {errors.message && (
+                <small className="text-danger">{errors.message.message}</small>
+              )}
           </div>
 
           <input

@@ -13,7 +13,7 @@ const News = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:5000/news/allNews')
+    fetch('https://digital-village.herokuapp.com/news/allNews')
       .then((res) => res.json())
       .then((data) => setNews(data));
   }, []);

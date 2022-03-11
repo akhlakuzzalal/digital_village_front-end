@@ -12,6 +12,7 @@ const EditProfile = ({ setEditProfile }) => {
     handleSubmit,
     watch,
     formState: { errors },
+    trigger,
   } = useForm();
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -59,11 +60,17 @@ const EditProfile = ({ setEditProfile }) => {
             {/* user name */}
             <input
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('name', { required: true })}
+              {...register('name', { required: "Name is Required" })}
+          
+              onKeyUp={() => {
+                trigger("name");
+              }}
               defaultValue={user?.name}
               placeholder="User Name"
             />
-
+            {errors.name && (
+              <small className="text-danger">{errors.name.message}</small>
+            )}
             {/*date of birth */}
             <input
               type="date"
@@ -78,10 +85,21 @@ const EditProfile = ({ setEditProfile }) => {
             <input
               type="text"
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('phone', { required: true })}
-              defaultValue={user?.phone}
+              {...register('phone' , { required: "Phone is Required",
+              pattern: {
+                value: /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+                message: "Invalid phone no",
+              },
+             })}
+             onKeyUp={() => {
+              trigger("phone");
+            }}
+            defaultValue={user?.phone}
               placeholder="Phone Number"
             />
+            {errors.phone && (
+              <small className="text-danger">{errors.phone.message}</small>
+            )}
           </div>
         </div>
         {/* submit button */}

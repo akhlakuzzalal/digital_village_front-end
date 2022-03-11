@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import axios from '../../../../api/axios';
 import FileUpload from '../../../../Components/FileUpload';
+import { giveAlert } from '../../../../utilities/alert';
 
 const PublishVideo = () => {
   const [file, setFile] = useState({});
@@ -11,8 +12,9 @@ const PublishVideo = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    trigger,
     reset,
+    formState: { errors },
   } = useForm();
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -35,6 +37,13 @@ const PublishVideo = () => {
 
     const response = await axios.post('/teacher/publishVideo', formData);
     console.log(response.data);
+    if (response.data && response.data.length >= 1) {
+      giveAlert('Your blog published successfully', 'success');
+      reset();
+      setFile({});
+    } else {
+      giveAlert('Failed to publish', 'error');
+    }
   };
 
   return (
@@ -47,9 +56,15 @@ const PublishVideo = () => {
         {/* title for your video */}
         <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('title', { required: true })}
+          {...register('title', { required: 'Title is Required' })}
+          onKeyUp={() => {
+            trigger('title');
+          }}
           placeholder="Title for your video"
         />
+        {errors.title && (
+          <small className="text-danger">{errors.title.message}</small>
+        )}
 
         {/* file upload */}
         <div>
@@ -59,17 +74,39 @@ const PublishVideo = () => {
         {/* description of your video */}
         <textarea
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('desc', { required: true })}
+          {...register('desc', {
+            required: 'Description is Required',
+            minLength: {
+              value: 50,
+              message: 'Minimum Required length is 50',
+            },
+            maxLength: {
+              value: 100,
+              message: 'Maximum allowed length is 100',
+            },
+          })}
           placeholder="Write a description within 50 words"
-        />
+          onKeyUp={() => {
+            trigger('desc');
+          }}
+        ></textarea>
+        {errors.desc && (
+          <small className="text-danger">{errors.desc.message}</small>
+        )}
 
         {/* tags */}
         <input
           type="text"
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('tags', { required: true })}
+          {...register('tags', { required: 'Tags is Required' })}
+          onKeyUp={() => {
+            trigger('tags');
+          }}
           placeholder="Add tags with space seperated"
         />
+        {errors.tags && (
+          <small className="text-danger">{errors.tags.message}</small>
+        )}
 
         {/* submit button */}
         <input

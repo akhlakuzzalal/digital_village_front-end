@@ -1,9 +1,10 @@
 import React from 'react';
+import AllProducts from './ManageComponents/AllProducts';
 
 const MarketManagement = () => {
   return (
     <div>
-      <h3>This is market management for admin</h3>
+      <AllProducts />
     </div>
   );
 };
