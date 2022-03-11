@@ -87,7 +87,7 @@ const BlogDetails = () => {
       <div className="col-span-5 w-4/5 space-y-6 px-12">
         <div>
           <img
-            src={`http://localhost:5000/${blog?.bannerImg?.path}`}
+            src={`https://digital-village.herokuapp.com/${blog?.bannerImg?.path}`}
             alt={blog?.title}
             className="w-full"
           />

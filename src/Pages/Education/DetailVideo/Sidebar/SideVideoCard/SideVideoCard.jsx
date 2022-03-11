@@ -6,7 +6,7 @@ const SideVideoCard = ({ video }) => {
       <div className="w-[40%] overflow-hidden">
         <video
           className="w-fit group-hover:scale-150 transition-all duration-500"
-          src={`http://localhost:5000/${video?.video?.path}`}
+          src={`https://digital-village.herokuapp.com/${video?.video?.path}`}
         ></video>
       </div>
       <div>

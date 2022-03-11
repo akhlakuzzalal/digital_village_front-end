@@ -11,7 +11,7 @@ const UserAppointment = ({ date }) => {
   const Sdate = date.toDateString();
 
   useEffect(() => {
-    const url = `http://localhost:5000/appointment/findUserAppointment?email=${email}&date=${Sdate}`;
+    const url = `https://digital-village.herokuapp.com/appointment/findUserAppointment?email=${email}&date=${Sdate}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setAppointment(data));

@@ -36,7 +36,7 @@ const EventDetails = () => {
     swal('Good job!', 'Successfully booked !', 'success');
   };
 
-  // http://localhost:5000/event/participant?id=61793a64f536b7c2cd793&email=sabbirrrrr0911
+  // https://digital-village.herokuapp.com/event/participant?id=61793a64f536b7c2cd793&email=sabbirrrrr0911
 
   return (
     <div className="event-details-main py-48 px-5 lg:px-20">

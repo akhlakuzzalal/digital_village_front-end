@@ -30,7 +30,7 @@ const Appointment = (props) => {
 
   const handleAlert = () => {
     const data = { name, email, service, date, time, price };
-    fetch('http://localhost:5000/appointment/addAppointment', {
+    fetch('https://digital-village.herokuapp.com/appointment/addAppointment', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),

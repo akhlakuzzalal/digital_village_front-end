@@ -1,40 +1,40 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 
 const DonarForm = (props) => {
-  const { _id,title,image, goal,category} =props;
+  const { _id, title, image, goal, category } = props;
   const user = useSelector((state) => state.user.user);
 
-  const { register, handleSubmit, trigger,
-    formState: { errors }
-  } = useForm ();
+  const {
+    register,
+    handleSubmit,
+    trigger,
+    formState: { errors },
+  } = useForm();
 
-  const purchase =( data )=>{
+  const purchase = (data) => {
     const info = {
-        product_name: title,
-        product_profile: category,
-        product_image: image,
-        total_amount: goal,
-        cus_name: user?.displayName,
-        cus_email:user?.email
-        
-    }
-    fetch(`http://localhost:5000/sslpayment/init`,{
-        method: 'POST',
-        headers:{
-            "content-type" :"application/json"
-        },
-        body: JSON.stringify(data)
+      product_name: title,
+      product_profile: category,
+      product_image: image,
+      total_amount: goal,
+      cus_name: user?.displayName,
+      cus_email: user?.email,
+    };
+    fetch(`https://digital-village.herokuapp.com/sslpayment/init`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(data),
     })
-    .then(res => res.json())
-    .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
-        window.location.replace(data)
-    })
-    
-}
+        window.location.replace(data);
+      });
+  };
 
   return (
     <div>
@@ -44,9 +44,13 @@ const DonarForm = (props) => {
           {/* first name */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('firstName', { required: "Name is Required" , pattern: /^[A-Za-z]+$/i , maxLength: 20  })}
+            {...register('firstName', {
+              required: 'Name is Required',
+              pattern: /^[A-Za-z]+$/i,
+              maxLength: 20,
+            })}
             onKeyUp={() => {
-              trigger("firstName");
+              trigger('firstName');
             }}
             placeholder="First Name"
           />
@@ -57,9 +61,13 @@ const DonarForm = (props) => {
           {/* last name */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('lastName', { required: "Name is Required" , pattern: /^[A-Za-z]+$/i , maxLength: 20  })}
+            {...register('lastName', {
+              required: 'Name is Required',
+              pattern: /^[A-Za-z]+$/i,
+              maxLength: 20,
+            })}
             onKeyUp={() => {
-              trigger("lastName");
+              trigger('lastName');
             }}
             placeholder="Last Name"
           />
@@ -83,25 +91,24 @@ const DonarForm = (props) => {
           type="email"
         />
 
-        {errors.email && (
-          <p className="text-danger">{errors.email.message}</p>
-        )}
+        {errors.email && <p className="text-danger">{errors.email.message}</p>}
         {/* Message */}
         <textarea
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('message', { required: "Message is Required",
-          minLength: {
-            value: 10,
-            message: "Minimum Required length is 10",
-          },
-          maxLength: {
-            value: 50,
-            message: "Maximum allowed length is 50 ",
-          }
-         })}
-         onKeyUp={() => {
-          trigger("message");
-        }}
+          {...register('message', {
+            required: 'Message is Required',
+            minLength: {
+              value: 10,
+              message: 'Minimum Required length is 10',
+            },
+            maxLength: {
+              value: 50,
+              message: 'Maximum allowed length is 50 ',
+            },
+          })}
+          onKeyUp={() => {
+            trigger('message');
+          }}
         ></textarea>
         {errors.message && (
           <small className="text-danger">{errors.message.message}</small>
@@ -109,9 +116,13 @@ const DonarForm = (props) => {
         {/* Address */}
         <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('address', { required: "Address is Required" , pattern: /^[A-Za-z]+$/i , maxLength: 50  })}
+          {...register('address', {
+            required: 'Address is Required',
+            pattern: /^[A-Za-z]+$/i,
+            maxLength: 50,
+          })}
           onKeyUp={() => {
-            trigger("address");
+            trigger('address');
           }}
           placeholder="Full address"
         />
@@ -123,9 +134,12 @@ const DonarForm = (props) => {
           {/* House no */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('houseno', { required: "House no is Required", maxLength: 10  })}
+            {...register('houseno', {
+              required: 'House no is Required',
+              maxLength: 10,
+            })}
             onKeyUp={() => {
-              trigger("houseno");
+              trigger('houseno');
             }}
             placeholder="House no"
           />
@@ -144,24 +158,23 @@ const DonarForm = (props) => {
           {/* Address */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
-            {...register('amount',
-            {
-              required: "Amount is Required",
+            {...register('amount', {
+              required: 'Amount is Required',
               min: {
                 value: 49,
-                message: "Minimum Required amount is 49",
+                message: 'Minimum Required amount is 49',
               },
               max: {
                 value: 50000,
-                message: "Maximum allowed amount is 50000",
+                message: 'Maximum allowed amount is 50000',
               },
               pattern: {
                 value: /^[0-9]*$/,
-                message: "Only numbers price allowed",
-              }
+                message: 'Only numbers price allowed',
+              },
             })}
             onKeyUp={() => {
-              trigger("amount");
+              trigger('amount');
             }}
             type="number"
             defaultValues={50}
@@ -175,9 +188,8 @@ const DonarForm = (props) => {
         <input
           className="bg-primary hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
           type="submit"
-          value= "Ready for Donation Payment"
+          value="Ready for Donation Payment"
         />
-
       </form>
     </div>
   );

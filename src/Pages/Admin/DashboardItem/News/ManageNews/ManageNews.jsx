@@ -9,7 +9,7 @@ const ManageNews = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/news/allNews')
+      .get('https://digital-village.herokuapp.com/news/allNews')
       .then((res) => res.json())
       .then((data) => {
         setNews(data);
@@ -25,7 +25,7 @@ const ManageNews = () => {
       dangerMode: true,
     }).then(() => {
       axios
-        .delete(`http://localhost:5000/news/deleteNews/${id}`)
+        .delete(`https://digital-village.herokuapp.com/news/deleteNews/${id}`)
         .then((response) => {
           if (response?.data?.deletedCount) {
             swal('Delete! Your News Fille has been deleted!', {

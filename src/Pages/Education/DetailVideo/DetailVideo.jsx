@@ -42,7 +42,7 @@ const DetailVideo = () => {
           <div>
             <video
               className="w-full"
-              src={`http://localhost:5000/${video?.video?.path}`}
+              src={`https://digital-village.herokuapp.com/${video?.video?.path}`}
               controls
             ></video>
           </div>

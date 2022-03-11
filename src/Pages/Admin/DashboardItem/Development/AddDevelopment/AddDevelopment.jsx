@@ -32,7 +32,7 @@ const AddDevelopment = () => {
     );
 
     const response = await axios.post(
-      'http://localhost:5000/development/addDevelopment',
+      'https://digital-village.herokuapp.com/development/addDevelopment',
       formData
     );
     console.log(response.data);

@@ -14,11 +14,14 @@ const AddAppointment = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch('http://localhost:5000/availableAppointment/saveAppointment', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      'https://digital-village.herokuapp.com/availableAppointment/saveAppointment',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         swal({
@@ -50,57 +53,62 @@ const AddAppointment = () => {
         >
           <input
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-            {...register('service', { required: "Service is Required" , pattern: /^[A-Za-z]+$/i , maxLength: 20  })}
+            {...register('service', {
+              required: 'Service is Required',
+              pattern: /^[A-Za-z]+$/i,
+              maxLength: 20,
+            })}
             onKeyUp={() => {
-              trigger("service");
+              trigger('service');
             }}
             placeholder="Service Name"
           />
           <input
             className="px-7 py-10 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-            {...register('description', { required: "Message is Required",
-            minLength: {
-              value: 10,
-              message: "Minimum Required length is 10",
-            },
-            maxLength: {
-              value: 50,
-              message: "Maximum allowed length is 150 ",
-            }
-           })}
-           placeholder="Write Service description"
+            {...register('description', {
+              required: 'Message is Required',
+              minLength: {
+                value: 10,
+                message: 'Minimum Required length is 10',
+              },
+              maxLength: {
+                value: 50,
+                message: 'Maximum allowed length is 150 ',
+              },
+            })}
+            placeholder="Write Service description"
             required
-           onKeyUp={() => {
-            trigger("description");
-          }}
+            onKeyUp={() => {
+              trigger('description');
+            }}
           />
           {errors.description && (
             <small className="text-danger">{errors.description.message}</small>
           )}
           <input
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-            {...register('time', { required: true})}
+            {...register('time', { required: true })}
             placeholder="time(am to pm)"
           />
           <input
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
             {...register('price', {
-              required: "price is Required",
+              required: 'price is Required',
               min: {
                 value: 5,
-                message: "Minimum Required price is 5",
+                message: 'Minimum Required price is 5',
               },
               max: {
                 value: 500000,
-                message: "Maximum allowed price is 50000",
+                message: 'Maximum allowed price is 50000',
               },
               pattern: {
                 value: /^[0-9]*$/,
-                message: "Only numbers are allowed",
-              }
+                message: 'Only numbers are allowed',
+              },
             })}
             onKeyUp={() => {
-              trigger("price");
+              trigger('price');
             }}
             placeholder="Cost($)"
           />

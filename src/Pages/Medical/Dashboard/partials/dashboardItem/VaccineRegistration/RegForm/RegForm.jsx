@@ -18,7 +18,7 @@ const RegForm = () => {
   const redirect_uri = '/medicalDashboard/pdf';
 
   const onSubmit = (data) => {
-    fetch('http://localhost:5000/vaccine/addInfo', {
+    fetch('https://digital-village.herokuapp.com/vaccine/addInfo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),

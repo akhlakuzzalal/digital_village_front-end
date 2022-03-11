@@ -38,7 +38,7 @@ const AddNews = () => {
     );
 
     const response = await axios.post(
-      'http://localhost:5000/news/addNews',
+      'https://digital-village.herokuapp.com/news/addNews',
       formData
     );
     console.log(response.data);

@@ -9,7 +9,7 @@ const DevelopmentManage = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/development/allDevelopment')
+      .get('https://digital-village.herokuapp.com/development/allDevelopment')
       .then((response) => {
         setDevelopment(response.data);
       });
@@ -22,7 +22,9 @@ const DevelopmentManage = () => {
       dangerMode: true,
     }).then(() => {
       axios
-        .delete(`http://localhost:5000/development/deleteDevelopment/${id}`)
+        .delete(
+          `https://digital-village.herokuapp.com/development/deleteDevelopment/${id}`
+        )
         .then((response) => {
           if (response?.data?.deletedCount) {
             giveAlert('Your Development Proposal has been deleted!', 'success');
@@ -39,7 +41,7 @@ const DevelopmentManage = () => {
           <div className="overflow-hidden rounded-xl h-52 cursor-pointer">
             <img
               className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-              src={`http://localhost:5000/${data?.bannerImg.path}`}
+              src={`https://digital-village.herokuapp.com/${data?.bannerImg.path}`}
               alt={''}
             />
           </div>

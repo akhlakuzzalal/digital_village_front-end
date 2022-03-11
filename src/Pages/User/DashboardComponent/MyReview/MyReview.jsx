@@ -10,7 +10,9 @@ const MyReview = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://localhost:5000/userReview/singleReview/${user?.email}`)
+    fetch(
+      `https://digital-village.herokuapp.com/userReview/singleReview/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setReview(data);
@@ -20,9 +22,12 @@ const MyReview = () => {
 
   const handleDelete = (id) => {
     setIsLoading(true);
-    fetch(`http://localhost:5000/userReview/deleteReview/${id}`, {
-      method: 'DELETE',
-    })
+    fetch(
+      `https://digital-village.herokuapp.com/userReview/deleteReview/${id}`,
+      {
+        method: 'DELETE',
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
