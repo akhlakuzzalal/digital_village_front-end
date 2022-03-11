@@ -12,7 +12,7 @@ const Appointment = (props) => {
   const { service, time, price, description } = props.appointment;
   const email = user.email;
   const name = user.name;
-  const date = props.date.toDateString();
+  const date = props.date;
   const isTablet = useMediaQuery('(min-width: 656px)');
   const isDesktop = useMediaQuery('(min-width: 900px)');
 
