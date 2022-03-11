@@ -10,6 +10,7 @@ const VaccineInfo = () => {
   const user = useSelector((state) => state.user.user);
   const email = user.email;
   const [info, setInfo] = useState([]);
+  console.log(info);
 
   useEffect(() => {
     const url = `http://localhost:5000/vaccine/findInfo?email=${email}`;

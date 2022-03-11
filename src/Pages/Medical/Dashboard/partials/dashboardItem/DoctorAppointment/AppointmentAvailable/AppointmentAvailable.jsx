@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import axios from '../../../../../../../api/axios';
 import Appointment from './Appointment';
 const AppointmentAvailable = ({ date }) => {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:5000/availableAppointment/getAppointment`;
-
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setAppointments(data));
+    axios
+      .get('/availableAppointment/getAppointment')
+      .then((res) => setAppointments(res.data));
   }, []);
   console.log(appointments);
 
@@ -24,7 +23,7 @@ const AppointmentAvailable = ({ date }) => {
       </h3>
       <div className="flex flex-wrap justify-center items-center my-5 ">
         {appointments.map((appointment) => (
-          <Appointment appointment={appointment} />
+          <Appointment appointment={appointment} date={date} />
         ))}
       </div>
     </div>

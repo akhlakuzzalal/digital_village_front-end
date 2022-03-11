@@ -9,11 +9,13 @@ const RegForm = () => {
   const {
     formState: { errors },
     register,
-    handleSubmit,trigger
+    handleSubmit,
+    trigger,
   } = useForm();
   const email = user.email;
+  const name = user.name;
   const navigate = useNavigate();
-  const redirect_uri = '/medical/pdf';
+  const redirect_uri = '/medicalDashboard/pdf';
 
   const onSubmit = (data) => {
     fetch('http://localhost:5000/vaccine/addInfo', {
@@ -41,7 +43,6 @@ const RegForm = () => {
     navigate(redirect_uri);
   };
 
-  
   return (
     <>
       <div className="add-events-main my-40 lg:flex  lg:mx-32 md:mx-32 mx-0 border rounded-2xl">
@@ -54,13 +55,15 @@ const RegForm = () => {
             {/* email */}
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-              {...register('email', { required: "Email is Required" ,
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: "Invalid email address",
-              }})}
+              {...register('email', {
+                required: 'Email is Required',
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: 'Invalid email address',
+                },
+              })}
               onKeyUp={() => {
-                trigger("email");
+                trigger('email');
               }}
               value={email}
             />
@@ -69,22 +72,21 @@ const RegForm = () => {
             )}
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-              {...register('name', { required: "Name is Required" })}
-          
+              {...register('name', { required: 'Name is Required' })}
               onKeyUp={() => {
-                trigger("name");
+                trigger('name');
               }}
               placeholder="Full Name"
+              value={name}
             />
             {errors.name && (
               <small className="text-danger">{errors.name.message}</small>
             )}
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-              {...register('fatherName', { required: "Name is Required" })}
-          
+              {...register('fatherName', { required: 'Name is Required' })}
               onKeyUp={() => {
-                trigger("fatherName");
+                trigger('fatherName');
               }}
               placeholder="Father Name"
             />
@@ -93,10 +95,9 @@ const RegForm = () => {
             )}
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-              {...register('motherName', { required: "Name is Required" })}
-          
+              {...register('motherName', { required: 'Name is Required' })}
               onKeyUp={() => {
-                trigger("motherName");
+                trigger('motherName');
               }}
               placeholder="Mother Name"
             />
@@ -112,38 +113,42 @@ const RegForm = () => {
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
               {...register('nid', {
-                required: "NID is Required",
-                min: {
-                  value: 12,
-                  message: "Minimum Required age is 12",
-                },
-                max: {
-                  value: 18,
-                  message: "Maximum allowed age is 18",
-                },
+                required: 'NID is Required',
+                // min: {
+                //   value: 12,
+                //   message: 'Minimum Required age is 12',
+                // },
+                // max: {
+                //   value: 18,
+                //   message: 'Maximum allowed age is 18',
+                // },
                 pattern: {
                   value: /^[0-9]*$/,
-                  message: "Only numbers are allowed",
-                }
+                  message: 'Only numbers are allowed',
+                },
               })}
               onKeyUp={() => {
-                trigger("nid");
+                trigger('nid');
               }}
+              placeholder="NID"
             />
             {errors.nid && (
               <small className="text-danger">{errors.nid.message}</small>
             )}
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('mobile', { required: "Phone is Required",
-              pattern: {
-                value: /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
-                message: "Invalid phone no",
-              },
-             })}
-             onKeyUp={() => {
-              trigger("mobile");
-            }}
+              {...register('mobile', {
+                required: 'Phone is Required',
+                pattern: {
+                  value:
+                    /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+                  message: 'Invalid phone no',
+                },
+              })}
+              onKeyUp={() => {
+                trigger('mobile');
+              }}
+              placeholder="Contact"
             />
             {errors.mobile && (
               <small className="text-danger">{errors.mobile.message}</small>
@@ -151,9 +156,13 @@ const RegForm = () => {
 
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('address', { required: "Address is Required" , pattern: /^[A-Za-z]+$/i , maxLength: 50  })}
+              {...register('address', {
+                required: 'Address is Required',
+                pattern: /^[A-Za-z]+$/i,
+                maxLength: 50,
+              })}
               onKeyUp={() => {
-                trigger("address");
+                trigger('address');
               }}
               placeholder="Full address"
             />
@@ -162,7 +171,11 @@ const RegForm = () => {
             )}
             {/* submit button */}
             <input
-              className="bg-primary hover:bg-opacity-80 px-20 py-2 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
+              className=" hover:bg-opacity-80 px-20 py-2 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
+              style={{
+                backgroundColor: '#10217d',
+                color: 'white',
+              }}
               type="submit"
               value="Confirm"
             />

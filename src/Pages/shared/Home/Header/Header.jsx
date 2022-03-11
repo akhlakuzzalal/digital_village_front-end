@@ -13,7 +13,6 @@ const navigation = [
 const Header = () => {
   const location = useLocation();
   return location.pathname.includes('/teacher') ||
-    location.pathname.includes('/medical') ||
     location.pathname.includes('admin') ? null : (
     <Navbar navigation={navigation} />
   );

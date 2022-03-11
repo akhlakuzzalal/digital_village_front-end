@@ -14,7 +14,7 @@ const links = [
   {
     name: 'Events',
     icon: <MdOutlineProductionQuantityLimits size={30} />,
-    path: '/',
+    path: '/userdashboard/my-event-booking',
   },
   {
     name: 'Donation',
