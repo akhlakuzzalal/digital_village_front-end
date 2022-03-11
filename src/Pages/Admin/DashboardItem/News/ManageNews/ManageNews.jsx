@@ -4,14 +4,20 @@ import swal from 'sweetalert';
 
 const ManageNews = () => {
   const [news, setNews] = useState([]);
+  const [isLoading,setIsLoading]=useState(false)
 
   useEffect(() => {
+    setIsLoading(true)
     fetch('http://localhost:5000/news/allNews')
       .then((res) => res.json())
-      .then((data) => setNews(data));
-  }, []);
+      .then((data) => {
+        setNews(data)
+        setIsLoading(false)
+      });
+  }, [isLoading]);
 
   const handleDelete = (id) => {
+    setIsLoading(true)
     fetch(`http://localhost:5000/news/deleteNews/${id}`, {
       method: 'DELETE',
     })
@@ -30,6 +36,7 @@ const ManageNews = () => {
           swal('Delete! Your News Fille has been deleted!', {
             icon: 'success',
           });
+          setIsLoading(false)
         } else {
           swal('Your News  file is safe!');
         }

@@ -4,14 +4,20 @@ import swal from 'sweetalert';
 
 const DevelopmentManage = () => {
   const [development, setDevelopment] = useState([]);
+  const [isLoading,setIsLoading]=useState(false)
 
   useEffect(() => {
+    setIsLoading(true)
     fetch('http://localhost:5000/development/allDevelopment')
       .then((res) => res.json())
-      .then((data) => setDevelopment(data));
-  }, []);
+      .then((data) => {
+        setDevelopment(data)
+        setIsLoading(false)
+      });
+  }, [isLoading]);
 
   const handleDelete = (id) => {
+    setIsLoading(true)
     fetch(`http://localhost:5000/development/deleteDevelopment/${id}`, {
       method: 'DELETE',
     })
@@ -30,6 +36,7 @@ const DevelopmentManage = () => {
           swal('Delete! Your Development Item has been deleted!', {
             icon: 'success',
           });
+          setIsLoading(false)
         } else {
           swal('Your Development Item is safe!');
         }

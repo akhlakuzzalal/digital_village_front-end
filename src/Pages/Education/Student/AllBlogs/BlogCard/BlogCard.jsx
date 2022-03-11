@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 import { FaPushed } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import Rating from '../../../../../Components/Rating';
 
 const BlogCard = ({ blog, children }) => {
   const [bookmark, setBookmark] = useState(true);
+  const navigate = useNavigate();
   return (
     <div className="bg-white dark:dark-card-bg rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between max-w-[400px] shadow-2xl">
       <div className="absolute top-20 text-sm left-0 z-20 font-primary rounded-lg">
@@ -15,10 +17,13 @@ const BlogCard = ({ blog, children }) => {
       </div>
 
       {/* image  */}
-      <div className="overflow-hidden rounded-xl h-52">
+      <div
+        className="overflow-hidden rounded-xl h-52 cursor-pointer"
+        onClick={() => navigate(`/blogDetails/${blog._id}`)}
+      >
         <img
-          className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-          src={blog?.bannerImg?.path}
+          className="transform hover:scale-125 transition duration-700 w-full h-full object-cover "
+          src={`http://localhost:5000/${blog?.bannerImg?.path}`}
           alt={blog?.title}
         />
       </div>

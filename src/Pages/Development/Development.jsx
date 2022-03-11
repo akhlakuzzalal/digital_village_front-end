@@ -1,60 +1,17 @@
-import React, { useState } from 'react';
-import school from '../../assets/development/school.jpg';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllDevelopment } from '../../redux/slices/Developmet/DevelopmentSlice';
 import DevelopmentAbout from './DevelopmentAbout/DevelopmentAbout';
 import DevelopmentBanner from './DevelopmentBanner/DevelopmentBanner';
+import DevelopmentCard from './DevelopmentCard/DevelopmentCard';
+import useDevelopment from './utilities/useDevelopment';
 const Development = () => {
-  const [proposals, setProposals] = useState([
-    {
-      _id: 1,
-      name: 'Need to rebuild the primary school',
-      image: school,
-      desc: 'Our school is here for many years. But it is loosing his beauty because of carefullness. It is high time we rebuild our primary school again',
-      upvotes: 3,
-      downvotes: 5,
-    },
-    {
-      _id: 2,
-      name: 'Need to rebuild the primary school',
-      image: school,
-      desc: 'Our school is here for many years. But it is loosing his beauty because of carefullness. It is high time we rebuild our primary school again',
-      upvotes: 7,
-      downvotes: 9,
-    },
-    {
-      _id: 3,
-      name: 'Need to rebuild the primary school',
-      image: school,
-      desc: 'Our school is here for many years. But it is loosing his beauty because of carefullness. It is high time we rebuild our primary school again',
-      upvotes: 8,
-      downvotes: 10,
-    },
-    {
-      _id: 4,
-      name: 'Need to rebuild the primary school',
-      image: school,
-      desc: 'Our school is here for many years. But it is loosing his beauty because of carefullness. It is high time we rebuild our primary school again',
-      upvotes: 10,
-      downvotes: 5,
-    },
-  ]);
-
-  const handleUpVote = (id) => {
-    const newProposals = proposals.map((proposal) =>
-      proposal._id === id
-        ? { ...proposal, upvotes: proposal.upvotes + 1 }
-        : proposal
-    );
-    setProposals(newProposals);
-  };
-
-  const handleDownVote = (id) => {
-    const newProposals = proposals.map((proposal) =>
-      proposal._id === id
-        ? { ...proposal, downvotes: proposal.downvotes - 1 }
-        : proposal
-    );
-    setProposals(newProposals);
-  };
+  const dispatch = useDispatch();
+  const proposals = useSelector((state) => state.development.proposals);
+  const { handleUpvote, handleDownvote } = useDevelopment();
+  useEffect(() => {
+    dispatch(fetchAllDevelopment());
+  }, []);
 
   return (
     <div
@@ -63,7 +20,19 @@ const Development = () => {
     >
       <DevelopmentBanner />
       <DevelopmentAbout />
-      
+      <div className="mx-10 mt-36">
+        <h3>Development Proposal</h3>
+        <div className="grid grid-cols-3 gap-6">
+          {proposals.map((proposal) => (
+            <DevelopmentCard
+              proposal={proposal}
+              handleUpvote={handleUpvote}
+              handleDownvote={handleDownvote}
+              key={proposal._id}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

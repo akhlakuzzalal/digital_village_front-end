@@ -17,6 +17,7 @@ const AddDevelopment = () => {
       handleSubmit,
       formState: { errors },
       reset,
+      trigger,
     } = useForm();
   
     const handleEditorChange = (e) => {
@@ -41,7 +42,7 @@ const AddDevelopment = () => {
         
       );
   
-      const response = await axios.post('/development/addDevelopment', formData)
+      const response = await axios.post('http://localhost:5000/development/addDevelopment', formData)
       reset()
       console.log(response);
       
@@ -59,9 +60,20 @@ const AddDevelopment = () => {
               {/* title of the blog */}
               <input
                 className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-                {...register('title', { required: true })}
+                {...register('title', 
+                { required: "title is Required" , maxLength: {
+                  value: 30,
+                  message: "First Name shouldn't exceed 30words",
+                }})}
+          
+                onKeyUp={() => {
+                  trigger("title");
+                }}
                 placeholder="Title of your Development"
               />
+              {errors.title && (
+          <small className="text-danger">{errors.title.message}</small>
+        )}
   
               {/* file upload */}
               <div className='w-full'>
@@ -75,9 +87,26 @@ const AddDevelopment = () => {
               {/* about the blog */}
               <textarea
                 className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-                {...register('description', { required: true })}
-                placeholder="Write Development Description"
-              />
+                {...register('description', 
+                  { required: "Description is Required",
+                  minLength: {
+                  value: 30,
+                  message: "Minimum Required length is 10",
+                  },
+                  maxLength: {
+                  value: 250,
+                  message: "Maximum allowed length is 250 ",
+                  }
+                  })}
+                  placeholder="Write Development Description"
+                  required
+                  onKeyUp={() => {
+                  trigger("description");
+                  }}
+                  ></textarea>
+                  {errors.description && (
+                  <small className="text-danger">{errors.description.message}</small>
+                  )}
   
               {/* tags */}
               <input

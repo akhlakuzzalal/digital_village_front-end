@@ -10,13 +10,14 @@ import RichTextEditor from '../../../../../Components/RichTextEditor';
 const AddNews = () => {
     const [content, setContent] = useState('');
   
-    const user = useSelector((state) => state.user.user);
+    // const user = useSelector((state) => state.user.user);
   
     const {
       register,
       handleSubmit,
       formState: { errors },
       reset,
+      trigger,
     } = useForm();
   
     const handleEditorChange = (e) => {
@@ -40,7 +41,7 @@ const AddNews = () => {
         })
       );
   
-      const response = await axios.post('/news/addNews', formData);
+      const response = await axios.post('http://localhost:5000/news/addNews', formData);
       console.log(response.data);
     };
   
@@ -56,9 +57,18 @@ const AddNews = () => {
               {/* title of the News */}
               <input
                 className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-                {...register('title', { required: true })}
+                {...register('title', { required: "Title is Required" , maxLength: {
+                  value: 25,
+                  message: "First Name shouldn't exceed 25 words",
+                }})}
+                onKeyUp={() => {
+                  trigger("title");
+                }}
                 placeholder="Title of your Development Item"
               />
+              {errors.title && (
+                <small className="text-danger">{errors.title.message}</small>
+              )}
   
               {/* file upload */}
               <div className='w-full'>
@@ -72,9 +82,25 @@ const AddNews = () => {
               {/* about the News */}
               <textarea
                 className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-                {...register('description', { required: true })}
-                placeholder="Write what this News Articale Details"
-              />
+                {...register('description', { required: "Description is Required",
+                minLength: {
+                  value: 500,
+                  message: "Minimum Required length is 500",
+                },
+                maxLength: {
+                  value: 5000,
+                  message: "Maximum allowed length is 5000",
+                }
+               })}
+               placeholder="Write what this News Articale Details"
+               onKeyUp={() => {
+                trigger("description");
+              }}
+              ></textarea>
+              {errors.description && (
+                <small className="text-danger">{errors.description.message}</small>
+              )}
+                
   
               {/* Publishd Date */}
               <input
@@ -86,9 +112,17 @@ const AddNews = () => {
                <input
                 type="time"
                 className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-                {...register('publishTime', { required: true })}
+                {...register('publishTime', { required: "publishTime is Required" })}
+                onKeyUp={() => {
+                  trigger("publishTime");
+                }}
                 placeholder="Write your News Publish Time"
+            
               />
+              {errors.publishTime && (
+                <small className="text-danger">{errors.publishTime.message}</small>
+              )}
+               
             </div>
              
             
