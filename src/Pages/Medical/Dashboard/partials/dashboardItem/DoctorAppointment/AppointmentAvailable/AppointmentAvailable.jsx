@@ -24,7 +24,7 @@ const AppointmentAvailable = ({ date }) => {
       </h3>
       <div className="flex flex-wrap justify-center items-center my-5 ">
         {appointments.map((appointment) => (
-          <Appointment appointment={appointment} />
+          <Appointment appointment={appointment} date={date} />
         ))}
       </div>
     </div>

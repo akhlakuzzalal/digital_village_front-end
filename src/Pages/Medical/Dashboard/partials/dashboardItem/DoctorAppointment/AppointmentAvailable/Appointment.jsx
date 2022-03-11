@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Lottie from 'react-lottie';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import useMediaQuery from './../../../../../../../hooks/useMediaQuery';
 import animationData from './../../../../../../../lotties/medicalService.json';
 
 const Appointment = (props) => {
+  const user = useSelector((state) => state.user.user);
   console.log(props);
   const { service, time, price, description } = props.appointment;
-  const [info, setInfo] = useState([]);
+  const email = user.email;
+  const name = user.name;
+  const date = props.date.toDateString();
   const isTablet = useMediaQuery('(min-width: 656px)');
   const isDesktop = useMediaQuery('(min-width: 900px)');
 
@@ -25,17 +29,31 @@ const Appointment = (props) => {
   const redirect_uri = '/medicalDashboard/userAppointments';
 
   const handleAlert = () => {
-    swal({
-      title: 'want to proceed?',
-      // text: 'Once deleted, you will not be able to recover this imaginary file!',
-      icon: 'warning',
+    const data = { name, email, service, date, time, price };
+    fetch('http://localhost:5000/appointment/addAppointment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        swal({
+          title: 'Want to proceed?',
+          // text: 'Once deleted, you will not be able to recover this imaginary file!',
+          icon: 'warning',
 
-      buttons: true,
-    }).then((willConfirm) => {
-      if (willConfirm) {
-        navigate(redirect_uri);
-      }
-    });
+          buttons: true,
+        }).then((willConfirm) => {
+          if (willConfirm) {
+            console.log('ok');
+            swal('Registration Done', {
+              icon: 'success',
+            });
+          }
+        });
+      });
+    navigate(redirect_uri);
   };
   return (
     <div
