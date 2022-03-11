@@ -31,19 +31,6 @@ const Comments = ({ postId, updateComment, commentLists }) => {
   return (
     <div className="px-6">
       <h3 className="my-6">Share your feedback</h3>
-
-      {/* this is the root comment form */}
-      <form className="flex" onSubmit={handleSubmit(handleCommentSubmit)}>
-        <input
-          {...register('comment', { required: 'required' })}
-          className="border-2 border-info outline-none px-6 flex-1 rounded-xl"
-          placeholder="write your comment"
-        />
-        <button type="submit" className="btn bg-info rounded-xl">
-          Submit
-        </button>
-      </form>
-
       {commentLists &&
         commentLists.map(
           (comment, index) =>
@@ -64,25 +51,14 @@ const Comments = ({ postId, updateComment, commentLists }) => {
             )
         )}
 
-      {/* Root Comment Form */}
-      <form
-        className="flex border-4 border-warning"
-        onSubmit={handleSubmit(handleCommentSubmit)}
-      >
-        <textarea
-          {...register('comment', { required: 'Comment is Required' })}
-          onKeyUp={() => {
-            trigger('comment');
-          }}
-          className="w-full rounded-sm"
+      {/* this is the root comment form */}
+      <form className="flex" onSubmit={handleSubmit(handleCommentSubmit)}>
+        <input
+          {...register('comment', { required: 'required' })}
+          className="border-2 border-info outline-none px-6 flex-1 rounded-xl"
           placeholder="write your comment"
         />
-        {errors.comment && (
-          <small className="text-danger">{errors.comment.message}</small>
-        )}
-
-        <br />
-        <button type="submit" className="w-[25%] h-12">
+        <button type="submit" className="btn bg-info   rounded-xl">
           Submit
         </button>
       </form>

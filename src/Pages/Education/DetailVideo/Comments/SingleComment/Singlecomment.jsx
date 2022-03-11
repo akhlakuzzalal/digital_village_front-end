@@ -65,20 +65,20 @@ const SingleComment = ({ comment, updateComment, postId }) => {
           className="ml-20 flex"
           onSubmit={handleSubmit(handleCommentSubmit)}
         >
-          <textarea
+          <input
             {...register('comment', { required: 'Comment is Required' })}
             onKeyUp={() => {
               trigger('comment');
             }}
-            className="w-full rounded-sm"
-            placeholder="write your comment"
+            className="border-2 border-info outline-none px-6 flex-1 rounded-xl"
+            placeholder="write your reply"
           />
           {errors.comment && (
             <small className="text-danger">{errors.comment.message}</small>
           )}
 
           <br />
-          <button type="submit" className="w-[25%] h-12">
+          <button type="submit" className="btn bg-info  rounded-xl">
             Submit
           </button>
         </form>

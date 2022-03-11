@@ -66,7 +66,7 @@ const DetailVideo = () => {
                     {video?.author}
                   </p>
                 </div>
-                <div className="flex items-center space-x-6 mr-20 text-white">
+                <div className="flex items-center space-x-6 mr-20 dark:text-white">
                   <LikeDislikes video={video} videoId={id} uId={uId} />
                   <BsBookmark size={30} className="cursor-pointer" />
                 </div>
@@ -85,7 +85,6 @@ const DetailVideo = () => {
           <Sidebar />
         </div>
       </div>
-
       {/* comment section */}
       <div className="md:w-4/6">
         <Comments
