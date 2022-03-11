@@ -1,10 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import PayModal from '../../../Components/Pay/PayModal';
+import { setPayModal } from '../../../redux/slices/payModal/PayModalSlice';
 
 const DonarForm = (props) => {
   const { _id, title, image, goal, category } = props;
   const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -34,6 +37,7 @@ const DonarForm = (props) => {
         console.log(data);
         window.location.replace(data);
       });
+    dispatch(setPayModal(true));
   };
 
   return (
@@ -191,6 +195,7 @@ const DonarForm = (props) => {
           value="Ready for Donation Payment"
         />
       </form>
+      <PayModal price={60} id={12} returnPage="donation" />
     </div>
   );
 };
