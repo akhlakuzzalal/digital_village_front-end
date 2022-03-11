@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import { AiOutlineMedicineBox } from 'react-icons/ai';
 import { FaClinicMedical } from 'react-icons/fa';
-import { GiLoveInjection } from 'react-icons/gi';
+import { GiLoveInjection, GiMedicines } from 'react-icons/gi';
 import { Outlet, useLocation } from 'react-router-dom';
 import NewSidebar from './../../Components/Sidebar/NewSidebar';
+import VaccineRegistration from './Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
 
 const links = [
   {
-    name: 'Medicine Store',
+    name: 'Home',
     icon: <FaClinicMedical size={30} />,
-    path: '/medicalDashboard',
+    path: '/medical',
+  },
+  {
+    name: 'Medicine Store',
+    icon: <GiMedicines size={30} />,
+    path: '/medicinestore',
   },
   {
     name: 'Vaccine Registration',
@@ -51,16 +57,7 @@ const MedicalDashboard = () => {
       {/* contents */}
       <div className="flex-1">
         {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
-        {initial ? (
-          <div className="w-fit mx-auto">
-            <img
-              src="https://www.freepik.com/free-vector/privacy-policy-concept-illustration_19245710.htm#query=policy&position=0&from_view=search"
-              alt=""
-            />
-          </div>
-        ) : (
-          <Outlet />
-        )}
+        {initial ? <VaccineRegistration /> : <Outlet />}
       </div>
     </div>
   );
