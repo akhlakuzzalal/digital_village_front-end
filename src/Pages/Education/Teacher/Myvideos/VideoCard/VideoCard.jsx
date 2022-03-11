@@ -27,7 +27,7 @@ const VideoCard = ({ video }) => {
       >
         <video
           className="h-56 w-full rounded-2xl"
-          src={`https://digital-village.herokuapp.com/${video?.video?.path}`}
+          src={`http://localhost:5000/${video?.video?.path}`}
         ></video>
         <div className="flex justify-between px-3">
           <div className="space-y-2">
