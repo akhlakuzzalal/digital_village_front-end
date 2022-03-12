@@ -23,16 +23,20 @@ function LikeDislikes({ video, videoId, commentId, uId }) {
 
   useEffect(() => {
     axios.post('/videoLike/getAll', data).then((response) => {
-      console.log('get all video likes', response.data);
-
       if (response.data.success) {
         //How many likes does this video or comment have
         setLikes(response.data.videoLikes.length);
+
+        if (response.data.videoLikes.length === 0) {
+          setLikeAction(null);
+        }
 
         //if I already click this like button or not
         response.data.videoLikes.map((like) => {
           if (like.uId === uId) {
             setLikeAction('liked');
+          } else {
+            setLikeAction(null);
           }
         });
       } else {
@@ -46,6 +50,10 @@ function LikeDislikes({ video, videoId, commentId, uId }) {
         //How many likes does this video or comment have
         setDislikes(response.data.videoDisLikes.length);
 
+        if (response.data.videoDisLikes.length === 0) {
+          setDislikeAction(null);
+        }
+
         //if I already click this like button or not
         response.data.videoDisLikes.map((dislike) => {
           if (dislike.uId === uId) {
@@ -56,7 +64,7 @@ function LikeDislikes({ video, videoId, commentId, uId }) {
         alert('Failed to get dislikes');
       }
     });
-  }, []);
+  }, [data, uId]);
 
   const onLike = () => {
     if (LikeAction === null) {
@@ -72,7 +80,7 @@ function LikeDislikes({ video, videoId, commentId, uId }) {
             setDislikes(Dislikes - 1);
           }
         } else {
-          alert('Failed to increase the like');
+          // alert('Failed to increase the like');
         }
       });
     } else {
@@ -90,6 +98,7 @@ function LikeDislikes({ video, videoId, commentId, uId }) {
   const onDisLike = () => {
     if (DislikeAction === null) {
       axios.post('/videoDisLike/add', data).then((response) => {
+        console.log(response.data);
         if (response.data.success) {
           setDislikes(Dislikes + 1);
           setDislikeAction('disliked');
@@ -105,6 +114,7 @@ function LikeDislikes({ video, videoId, commentId, uId }) {
       });
     } else {
       axios.post('/videoDisLike/remove', data).then((response) => {
+        console.log('this is response', response);
         if (response.data.success) {
           setDislikes(Dislikes - 1);
           setDislikeAction(null);
