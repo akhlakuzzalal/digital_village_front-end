@@ -7,7 +7,7 @@ import {
 } from 'react-icons/ai';
 import axios from '../../../../api/axios';
 
-function LikeDislikes({ video, videoId, commentId, uId }) {
+const LikeDislikes = ({ video, videoId, commentId, uId }) => {
   const [Likes, setLikes] = useState(0);
   const [Dislikes, setDislikes] = useState(0);
   const [LikeAction, setLikeAction] = useState(null);
@@ -160,6 +160,6 @@ function LikeDislikes({ video, videoId, commentId, uId }) {
       </div>
     </>
   );
-}
+};
 
 export default LikeDislikes;

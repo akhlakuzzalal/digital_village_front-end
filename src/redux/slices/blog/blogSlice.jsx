@@ -30,6 +30,11 @@ export const fetchMyBlogs = createAsyncThunk(
   }
 );
 
+export const deleteABlog = createAsyncThunk('blogs/deleteABlog', async (id) => {
+  const response = await axios.delete(`/teacher/deleteABlog/?id=${id}`);
+  return response?.data?._id;
+});
+
 const blogSlice = createSlice({
   name: 'blogs',
   initialState: {
@@ -52,6 +57,9 @@ const blogSlice = createSlice({
     });
     builder.addCase(fetchMyBlogs.fulfilled, (state, { payload }) => {
       state.blogs = payload;
+    });
+    builder.addCase(deleteABlog.fulfilled, (state, { payload }) => {
+      state.blogs = state.blogs.filter((video) => video._id !== payload);
     });
   },
 });
