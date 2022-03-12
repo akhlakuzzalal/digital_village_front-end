@@ -28,7 +28,6 @@ const CaseSingle = () => {
   return (
     <>
       <div
-        id="donate"
         className="mt-[80px]"
         style={{ minHeight: 'calc(100vh - 700px)' }}
       >
@@ -53,7 +52,7 @@ const CaseSingle = () => {
                 </a>
                 <a
                   href="/"
-                  className="text-3xl font-bold hover:text-gray-700 pb-4"
+                  className=" text-sm md:text-3xl lg:text-4xl font-bold hover:text-gray-700 pb-4"
                 >
                   {cause?.title}
                 </a>
