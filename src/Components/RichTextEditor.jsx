@@ -4,7 +4,7 @@ const RichTextEditor = ({ handleEditorChange, message }) => {
   return (
     <Editor
       apiKey={process.env.REACT_APP_EDITOR_API_KEY}
-      initialValue={`<p>${message}</p>`}
+      initialValue={`<div>${message}</div>`}
       init={{
         height: 500,
         menubar: true,

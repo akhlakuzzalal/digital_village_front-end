@@ -65,7 +65,10 @@ const BlogCard = ({ blog }) => {
 
       {/* card footer  */}
       <div className="flex items-center justify-between pt-3">
-        <button className="w-100 flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <button
+          className="w-100 flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          onClick={() => navigate(`/teacher/editBlog/${blog._id}`)}
+        >
           <FaEdit />
         </button>
         <button
