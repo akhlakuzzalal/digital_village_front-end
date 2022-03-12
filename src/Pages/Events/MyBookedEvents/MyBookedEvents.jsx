@@ -7,18 +7,17 @@ const MyBookedEvents = () => {
   const [myBookingEvents, setMyBookingEvents] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `https://digital-village.herokuapp.com/event/myBookingEvents?email=${user.email}`
-    )
-      .then((response) => response.json())
-      .then((data) => setMyBookingEvents(data));
+    axios
+      .get(`/event/myBookingEvents?email=${user.email}`)
+      .then((response) => setMyBookingEvents(response.d));
   });
 
   const handleCancelBookingEvent = (id) => {
-    axios.put(
-      `https://digital-village.herokuapp.com/event/deleteMyBooking?id=${id}&email=${user.email}`
-    );
-    swal('Good job!', 'Successfully Deleted !', 'success');
+    axios
+      .put(`/event/deleteMyBooking?id=${id}&email=${user.email}`)
+      .then(() => {
+        swal('Good job!', 'Successfully Deleted!', 'success');
+      });
   };
 
   return (

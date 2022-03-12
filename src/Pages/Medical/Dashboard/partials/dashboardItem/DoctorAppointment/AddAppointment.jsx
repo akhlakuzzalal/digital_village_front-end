@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import swal from 'sweetalert';
+import axios from '../../../../../../api/axios';
 
 const AddAppointment = () => {
   const user = useSelector((state) => state.user.user);
@@ -14,14 +15,8 @@ const AddAppointment = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch(
-      'https://digital-village.herokuapp.com/availableAppointment/saveAppointment',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      }
-    )
+    axios
+      .post('/availableAppointment/saveAppointment', data)
       .then((res) => res.json())
       .then((data) => {
         swal({

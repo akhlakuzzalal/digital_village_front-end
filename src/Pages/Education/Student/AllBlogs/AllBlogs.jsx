@@ -34,6 +34,7 @@ const AllBlogs = () => {
   return (
     <div className="space-y-6">
       <Search handleSearch={handleSearch} />
+
       <h3 className="text-center py-6">Available Blogs</h3>
       <article className="flex flex-wrap justify-evenly items-center gap-6">
         {blogs.map((blog) => (

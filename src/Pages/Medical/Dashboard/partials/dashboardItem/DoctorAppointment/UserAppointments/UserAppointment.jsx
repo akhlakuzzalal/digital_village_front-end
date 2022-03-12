@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from '../../../../../../../api/axios';
 import PayModal from '../../../../../../../Components/Pay/PayModal';
 import { setPayModal } from '../../../../../../../redux/slices/payModal/PayModalSlice';
 
@@ -11,12 +12,11 @@ const UserAppointment = ({ date }) => {
   const Sdate = date.toDateString();
 
   useEffect(() => {
-    const url = `https://digital-village.herokuapp.com/appointment/findUserAppointment?email=${email}&date=${Sdate}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setAppointment(data));
+    axios
+      .get(`/appointment/findUserAppointment?email=${email}&date=${Sdate}`)
+      .then((response) => setAppointment(response.data));
   }, [Sdate]);
-  console.log(Array.isArray(appointment));
+
   return (
     <div className="flex flex-col">
       <h4> Total Appointments:{appointment.length}</h4>

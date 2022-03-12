@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BsBookmark } from 'react-icons/bs';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import axios from '../../../api/axios';
+import axios, { BASE_URI } from '../../../api/axios';
 import Comments from './Comments/Comments';
 import LikeDislikes from './LikeDislikes/LikeDislikes';
 import Sidebar from './Sidebar/Sidebar';
@@ -42,7 +42,7 @@ const DetailVideo = () => {
           <div>
             <video
               className="w-full"
-              src={`https://digital-village.herokuapp.com/${video?.video?.path}`}
+              src={`${BASE_URI}/${video?.video?.path}`}
               controls
             ></video>
           </div>

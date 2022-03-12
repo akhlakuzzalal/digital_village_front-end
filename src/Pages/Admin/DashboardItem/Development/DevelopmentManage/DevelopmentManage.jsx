@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import swal from 'sweetalert';
-import axios from '../../../../../api/axios';
+import axios, { BASE_URI } from '../../../../../api/axios';
 import { giveAlert } from '../../../../../utilities/alert';
 
 const DevelopmentManage = () => {
   const [development, setDevelopment] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('https://digital-village.herokuapp.com/development/allDevelopment')
-      .then((response) => {
-        setDevelopment(response.data);
-      });
+    axios.get('/development/allDevelopment').then((response) => {
+      setDevelopment(response.data);
+    });
   }, []);
 
   const handleDelete = (id) => {
@@ -21,17 +19,13 @@ const DevelopmentManage = () => {
       confirm: 'You want to delete this development proposal',
       dangerMode: true,
     }).then(() => {
-      axios
-        .delete(
-          `https://digital-village.herokuapp.com/development/deleteDevelopment/${id}`
-        )
-        .then((response) => {
-          if (response?.data?.deletedCount) {
-            giveAlert('Your Development Proposal has been deleted!', 'success');
-          } else {
-            giveAlert('something went wrong', 'error');
-          }
-        });
+      axios.delete(`/development/deleteDevelopment/${id}`).then((response) => {
+        if (response?.data?.deletedCount) {
+          giveAlert('Your Development Proposal has been deleted!', 'success');
+        } else {
+          giveAlert('something went wrong', 'error');
+        }
+      });
     });
   };
   return (
@@ -41,7 +35,7 @@ const DevelopmentManage = () => {
           <div className="overflow-hidden rounded-xl h-52 cursor-pointer">
             <img
               className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-              src={`https://digital-village.herokuapp.com/${data?.bannerImg.path}`}
+              src={`${BASE_URI}/${data?.bannerImg.path}`}
               alt={''}
             />
           </div>

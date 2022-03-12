@@ -17,21 +17,18 @@ const Review = () => {
 
   const handleAddReview = (data) => {
     data.email = user?.email;
-    const result = axios.post(
-      'https://digital-village.herokuapp.com/userReview/addReview',
-      data
-    );
+    const result = axios.post('/userReview/addReview', data);
 
     reset();
     console.log(data);
     Swal.fire({
-      position: 'top-end',
       icon: 'success',
       title: 'Your Review is Successfully Save',
       showConfirmButton: false,
       timer: 1500,
     });
   };
+
   return (
     <>
       <div className="add-events-main my-40 lg:flex  lg:mx-32 md:mx-32 mx-0 border rounded-2xl">

@@ -17,6 +17,7 @@ export const fetchBlogs = createAsyncThunk(
       count: response.count,
       pageCount: pagination.pageCount,
       size: pagination.size,
+      search: pagination.search,
     };
   }
 );
@@ -30,6 +31,11 @@ export const fetchMyBlogs = createAsyncThunk(
   }
 );
 
+export const deleteABlog = createAsyncThunk('blogs/deleteABlog', async (id) => {
+  const response = await axios.delete(`/teacher/deleteABlog/?id=${id}`);
+  return response?.data?._id;
+});
+
 const blogSlice = createSlice({
   name: 'blogs',
   initialState: {
@@ -39,7 +45,6 @@ const blogSlice = createSlice({
   },
   reducers: {
     setCurrPage: (state, { payload }) => {
-      console.log(payload);
       state.currPage = payload;
     },
   },
@@ -48,10 +53,16 @@ const blogSlice = createSlice({
       state.blogs = payload.blogs;
       const count = payload.count;
       const pageNumber = Math.ceil(count / payload.size);
+      if (payload.search) {
+        state.currPage = 0;
+      }
       state.pageCount = pageNumber;
     });
     builder.addCase(fetchMyBlogs.fulfilled, (state, { payload }) => {
       state.blogs = payload;
+    });
+    builder.addCase(deleteABlog.fulfilled, (state, { payload }) => {
+      state.blogs = state.blogs.filter((video) => video._id !== payload);
     });
   },
 });
