@@ -6,14 +6,17 @@ import axios from '../../../../../api/axios';
 const ManageNews = () => {
   const [news, setNews] = useState([]);
   const [confirm, setConfirm] = useState(false);
+const [isLoading,setIsLoading]=useState(true);
 
   useEffect(() => {
-    axios.get('https://digital-village.herokuapp.com/news/allNews')
-      .then(res => res.json())
-      .then((data) => {
-        setNews(data);
-      });
-  }, []);
+    setIsLoading(true)
+    axios.get('/news/allNews')
+      .then(res =>{
+        
+        setNews(res.data)
+        setIsLoading(false)
+      })
+  }, [isLoading]);
 
   const handleDelete = async (id) => {
     swal({
@@ -23,17 +26,17 @@ const ManageNews = () => {
       buttons: 'delete',
       dangerMode: true,
     }).then(() => {
-      axios
-        .delete(`https://digital-village.herokuapp.com/news/deleteNews/${id}`)
-        .then((response) => {
-          if (response?.data?.deletedCount) {
-            swal('Delete! Your News Fille has been deleted!', {
-              icon: 'success',
-            });
-          } else {
-            swal('Your News  file is safe!');
-          }
-        });
+      setIsLoading(true)
+      axios.delete(`/news/deleteNews/${id}`).then((response) => {
+        if (response?.data?.deletedCount) {
+          swal('Delete! Your News Fille has been deleted!', {
+            icon: 'success',
+          });
+          setIsLoading(false)
+        } else {
+          swal('Your News  file is safe!');
+        }
+      });
     });
   };
   return (

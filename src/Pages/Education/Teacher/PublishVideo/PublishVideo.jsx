@@ -36,8 +36,8 @@ const PublishVideo = () => {
     );
 
     const response = await axios.post('/teacher/publishVideo', formData);
-    console.log(response.data);
-    if (response.data && response.data.length >= 1) {
+    console.log(response.data[0]);
+    if (response.data[0]?.title) {
       giveAlert('Your blog published successfully', 'success');
       reset();
       setFile({});
@@ -74,8 +74,8 @@ const PublishVideo = () => {
         {/* description of your video */}
         <textarea
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('desc', {
-            required: 'Description is Required',
+          {...register('about', {
+            required: 'about is Required',
             minLength: {
               value: 50,
               message: 'Minimum Required length is 50',
@@ -87,7 +87,7 @@ const PublishVideo = () => {
           })}
           placeholder="Write a description within 50 words"
           onKeyUp={() => {
-            trigger('desc');
+            trigger('about');
           }}
         ></textarea>
         {errors.desc && (

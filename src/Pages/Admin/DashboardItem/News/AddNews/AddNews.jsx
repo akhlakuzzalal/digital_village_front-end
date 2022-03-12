@@ -37,10 +37,7 @@ const AddNews = () => {
       })
     );
 
-    const response = await axios.post(
-      'https://digital-village.herokuapp.com/news/addNews',
-      formData
-    );
+    const response = await axios.post('/news/addNews', formData);
     console.log(response.data);
   };
 

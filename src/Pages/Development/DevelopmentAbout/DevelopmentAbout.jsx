@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Autoplay } from 'swiper';
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import axios from '../../../api/axios';
 
 const DevelopmentAbout = () => {
   const [developments, setDevelopments] = useState([]);
 
   useEffect(() => {
-    fetch('https://digital-village.herokuapp.com/development/allDevelopment')
-      .then((res) => res.json())
-      .then((data) => setDevelopments(data));
+    axios
+      .get('/allDevelopment')
+      .then((response) => setDevelopments(response.data));
   }, []);
+
   return (
     <div className=" mx-auto md:mx-80">
       <div className=" grid grid-cols-1 md:grid-cols-3 ">
@@ -127,7 +128,6 @@ const DevelopmentAbout = () => {
           <div className=" grid grid-cols-2 ">
             <div className="col-span-2">
               <Swiper
-                className=""
                 // slidesPerView={2}
                 slidesPerGroup={1}
                 autoplay={{

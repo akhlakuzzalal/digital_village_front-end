@@ -8,7 +8,7 @@ const Join = () => {
     return (
         <div className='md:my-48 md:mx-48 '>
             
-                <div className='mx-auto drop-shadow-2xl shadow-gray-500/100 w-full md:w-1/2  bg-black py-24 rounded px-12 to-transparent'>
+                <div className='mx-auto drop-shadow-2xl shadow-gray-500/100 w-full md:w-1/2 dark:dark-card-bg bg-black py-24 rounded px-12 to-transparent'>
                 <h1 className='text-white pb-4 text-center '>Join Us</h1>
                
                 <div  >

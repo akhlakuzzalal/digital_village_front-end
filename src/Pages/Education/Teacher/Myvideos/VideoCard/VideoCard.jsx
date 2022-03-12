@@ -3,19 +3,29 @@ import { BsFillPlayCircleFill } from 'react-icons/bs';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
+import { BASE_URI } from '../../../../../api/axios';
 import Rating from '../../../../../Components/Rating';
 import { deleteAVideo } from '../../../../../redux/slices/video/videoSlice';
-import { giveAlert } from '../../../../../utilities/alert';
 
 const VideoCard = ({ video }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleDeleteVideo = () => {
-    giveAlert('Are you sure? You want to delete this', 'warning').then(() => {
-      dispatch(deleteAVideo(video._id)).then(() => {
-        giveAlert('Successfully deleted');
-      });
+    swal({
+      title: 'Are you sure?',
+      text: 'hello',
+      icon: 'warning',
+      buttons: true,
+    }).then((willConfirm) => {
+      if (willConfirm) {
+        dispatch(deleteAVideo(video._id));
+        swal('Confirmed!', {
+          icon: 'success',
+          showConfirmButton: false,
+        });
+      }
     });
   };
 
@@ -27,7 +37,7 @@ const VideoCard = ({ video }) => {
       >
         <video
           className="h-56 w-full rounded-2xl"
-          src={`https://digital-village.herokuapp.com/${video?.video?.path}`}
+          src={`${BASE_URI}/${video?.video?.path}`}
         ></video>
         <div className="flex justify-between px-3">
           <div className="space-y-2">
@@ -44,7 +54,10 @@ const VideoCard = ({ video }) => {
       </div>
       {/* card footer  */}
       <div className="flex items-center justify-between p-3">
-        <button className="w-100 flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <button
+          className="w-100 flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          onClick={() => navigate(`/teacher/editVideo/${video._id}`)}
+        >
           <FaEdit />
         </button>
         <button

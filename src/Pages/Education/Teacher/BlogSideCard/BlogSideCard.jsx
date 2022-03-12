@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URI } from '../../../../api/axios';
 
 const BlogSideCard = ({ blog }) => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const BlogSideCard = ({ blog }) => {
       >
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-          src={`https://digital-village.herokuapp.com/${blog?.bannerImg?.path}`}
+          src={`${BASE_URI}/${blog?.bannerImg?.path}`}
           alt={blog?.title}
         />
       </div>

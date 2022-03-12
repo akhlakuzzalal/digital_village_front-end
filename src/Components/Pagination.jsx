@@ -3,6 +3,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 
 const Pagination = ({ currPage, setCurrPage, pageCount }) => {
+  console.log({ currPage, setCurrPage, pageCount });
   const dispatch = useDispatch();
   return (
     <ul className="flex space-x-1 md:space-x-4 items-center justify-center my-3">

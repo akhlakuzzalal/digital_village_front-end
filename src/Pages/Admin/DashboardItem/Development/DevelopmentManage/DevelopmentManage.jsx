@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import swal from 'sweetalert';
-import axios from '../../../../../api/axios';
+import axios, { BASE_URI } from '../../../../../api/axios';
 import { giveAlert } from '../../../../../utilities/alert';
 
 const DevelopmentManage = () => {
@@ -49,7 +49,7 @@ const DevelopmentManage = () => {
           <div className="overflow-hidden rounded-xl h-52 cursor-pointer">
             <img
               className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-              src={`https://digital-village.herokuapp.com/${data?.bannerImg.path}`}
+              src={`${BASE_URI}/${data?.bannerImg.path}`}
               alt={''}
             />
           </div>

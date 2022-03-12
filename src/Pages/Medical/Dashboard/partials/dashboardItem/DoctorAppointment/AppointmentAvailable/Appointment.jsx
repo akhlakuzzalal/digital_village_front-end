@@ -3,6 +3,7 @@ import Lottie from 'react-lottie';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import axios from '../../../../../../../api/axios';
 import useMediaQuery from './../../../../../../../hooks/useMediaQuery';
 import animationData from './../../../../../../../lotties/medicalService.json';
 
@@ -30,29 +31,23 @@ const Appointment = (props) => {
 
   const handleAlert = () => {
     const data = { name, email, service, date, time, price };
-    fetch('https://digital-village.herokuapp.com/appointment/addAppointment', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        swal({
-          title: 'Want to proceed?',
-          // text: 'Once deleted, you will not be able to recover this imaginary file!',
-          icon: 'warning',
+    axios.post('/appointment/addAppointment', data).then((response) => {
+      console.log(response.data);
+      swal({
+        title: 'Want to proceed?',
+        // text: 'Once deleted, you will not be able to recover this imaginary file!',
+        icon: 'warning',
 
-          buttons: true,
-        }).then((willConfirm) => {
-          if (willConfirm) {
-            console.log('ok');
-            swal('Registration Done', {
-              icon: 'success',
-            });
-          }
-        });
+        buttons: true,
+      }).then((willConfirm) => {
+        if (willConfirm) {
+          console.log('ok');
+          swal('Registration Done', {
+            icon: 'success',
+          });
+        }
       });
+    });
     navigate(redirect_uri);
   };
   return (

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from '../../api/axios';
 import NewsBanner from '../shared/Home/News/NewsBanner/NewsBanner';
 import NewsCard from '../shared/Home/News/NewsCard/NewsCard';
 import BreakingNews from '../shared/Home/News/NewsDetails/BreakingNews/BreakingNews';
@@ -8,9 +9,7 @@ const AllNews = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    fetch('https://digital-village.herokuapp.com/news/allNews')
-      .then((res) => res.json())
-      .then((data) => setNews(data));
+    axios.get('/news/allNews').then((response) => setNews(response.data));
   }, []);
   if (news.length === 0) return <p>no news</p>;
 

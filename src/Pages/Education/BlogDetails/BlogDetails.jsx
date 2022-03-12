@@ -2,7 +2,7 @@ import parse from 'html-react-parser';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import axios from '../../../api/axios';
+import axios, { BASE_URI } from '../../../api/axios';
 import Comments from '../DetailVideo/Comments/Comments';
 import BlogSideCard from '../Teacher/BlogSideCard/BlogSideCard';
 
@@ -87,7 +87,7 @@ const BlogDetails = () => {
       <div className="col-span-5 w-4/5 space-y-6 px-12">
         <div>
           <img
-            src={`https://digital-village.herokuapp.com/${blog?.bannerImg?.path}`}
+            src={`${BASE_URI}/${blog?.bannerImg?.path}`}
             alt={blog?.title}
             className="w-full"
           />
