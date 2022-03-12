@@ -31,6 +31,7 @@ import Student from './Pages/Education/Student/Student';
 import StudentHome from './Pages/Education/Student/StudentHome/StudentHome';
 import Analytics from './Pages/Education/Teacher/Dashboard/Analytics/Analytics';
 import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
+import EditVideo from './Pages/Education/Teacher/Myvideos/EditVideo/EditVideo';
 import Myvideos from './Pages/Education/Teacher/Myvideos/Myvideos';
 import PublishBlog from './Pages/Education/Teacher/PublishBlog/PublishBlog';
 import PublishVideo from './Pages/Education/Teacher/PublishVideo/PublishVideo';
@@ -117,6 +118,7 @@ function App() {
             <Route path="teacher" element={<Teacher />}>
               <Route path="myblogs" element={<Myblogs />} />
               <Route path="myvideos" element={<Myvideos />} />
+              <Route path="editVideo/:id" element={<EditVideo />} />
               <Route path="publishBlog" element={<PublishBlog />} />
               <Route path="publishVideo" element={<PublishVideo />} />
               <Route path="analytics" element={<Analytics />} />
