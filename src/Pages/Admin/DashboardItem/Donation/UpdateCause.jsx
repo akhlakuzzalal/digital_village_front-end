@@ -3,6 +3,7 @@ import { updateAnCuase } from '../../../../redux/slices/Donations/donationSlice'
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import swal from 'sweetalert';
 const UpdateCause = () => {
     const { id } = useParams();
     const causes = useSelector((state) => state.donation.causes);
@@ -23,7 +24,13 @@ const UpdateCause = () => {
         data.id = id
         dispatch(updateAnCuase(data));
         // console.log(newData);
-        alert('update successfully added');      
+        swal({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your cause has been saved',
+          showConfirmButton: false,
+          timer: 1500,
+        });    
   };
   // title image description category goal date author
     return (

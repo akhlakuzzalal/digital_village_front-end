@@ -8,7 +8,7 @@ import 'react-sweet-progress/lib/style.css';
 const CauseCard = (props) => {
   const { _id, title, image, description, goal, raised, category, donars } =
     props;
-
+    console.log(_id, "CauseCard");
   const navigate = useNavigate();
 
   // handing donetion
@@ -50,14 +50,14 @@ const CauseCard = (props) => {
         </div>
       </div>
       {/* card footer  */}
-      <div className="flex items-center justify-between pt-3">
+      <div className="items-center justify-between pt-2 gap-1 mx-auto space-y-2 sm:flex sm:items-center sm:py-3 sm:space-y-0 sm:space-x-4">
         <button className="w-100 space-x-1 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-r-indigo-500">
-          <FaHandsHelping className="text-2xl text-red-400" />
+          <FaHandsHelping className="font-medium text-red-400" />
           <p>RAISED {raised}</p>
         </button>
 
-        <button className="w-100  space-x-1 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-l-indigo-500">
-          <FaDonate className="text-2xl text-red-400"></FaDonate>
+        <button className="w-100 space-x-1 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-l-indigo-500">
+          <FaDonate className="font-medium text-red-400"></FaDonate>
           <p> GOAL {goal}</p>
         </button>
       </div>

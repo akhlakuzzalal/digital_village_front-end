@@ -1,70 +1,69 @@
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import swal from 'sweetalert';
+import PayModal from '../../../Components/Pay/PayModal';
+import { setPayModal } from '../../../redux/slices/payModal/PayModalSlice';
 
 const DonarForm = (props) => {
-  const { _id,title,image, goal,category} =props;
-  const user = useSelector((state) => state.user.user);
-
+  const { _id} =props;
+  // const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
   const { register, handleSubmit, trigger,
     formState: { errors }
   } = useForm ();
 
-  const purchase =( data )=>{
-    const info = {
-        product_name: title,
-        product_profile: category,
-        product_image: image,
-        total_amount: goal,
-        cus_name: user?.displayName,
-        cus_email:user?.email
-        
-    }
-    fetch(`http://localhost:5000/sslpayment/init`,{
-        method: 'POST',
-        headers:{
-            "content-type" :"application/json"
-        },
-        body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-        window.location.replace(data)
-    })
-    
-}
+  const handleRegister = async ({
+    firstName,
+    lastName,
+    email,
+    amount,
+    message,
+    address,
+  }) => {
+    const name = `${firstName} ${lastName}`;
+    console.log({ name, email, address, message, amount });
+    dispatch(setPayModal(true));
+    swal({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Your cause has been saved',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+ 
+  };
 
   return (
     <div>
-      <form onSubmit={handleSubmit(purchase)} className="space-y-6">
+      <form onSubmit={handleSubmit(handleRegister)} className="space-y-6">
         {/* name */}
         <div className="flex gap-4">
           {/* first name */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('firstName', { required: "Name is Required" , pattern: /^[A-Za-z]+$/i , maxLength: 20  })}
+            {...register('firstName', { required: "Name is Required" , pattern: /^[A-Za-z]+$/i , maxLength: 50 })}
             onKeyUp={() => {
               trigger("firstName");
             }}
             placeholder="First Name"
           />
           {errors.firstName && (
-            <small className="text-danger">{errors.firstName.message}</small>
+            <p className="text-danger mb-2">{errors.firstName.message}</p>
           )}
 
           {/* last name */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('lastName', { required: "Name is Required" , pattern: /^[A-Za-z]+$/i , maxLength: 20  })}
+            {...register('lastName', { required: "Name is Required" , pattern: /^[A-Za-z]+$/i , maxLength: 50 })}
             onKeyUp={() => {
               trigger("lastName");
             }}
             placeholder="Last Name"
           />
           {errors.lastName && (
-            <small className="text-danger">{errors.lastName.message}</small>
+            <p className="text-danger">{errors.lastName.message}</p>
           )}
         </div>
 
@@ -104,19 +103,19 @@ const DonarForm = (props) => {
         }}
         ></textarea>
         {errors.message && (
-          <small className="text-danger">{errors.message.message}</small>
+          <p className="text-danger">{errors.message.message}</p>
         )}
         {/* Address */}
         <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('address', { required: "Address is Required" , pattern: /^[A-Za-z]+$/i , maxLength: 50  })}
+          {...register('address', { required: "Address is Required" , maxLength: 50  })}
           onKeyUp={() => {
             trigger("address");
           }}
           placeholder="Full address"
         />
         {errors.address && (
-          <small className="text-danger">{errors.address.message}</small>
+          <p className="text-danger">{errors.address.message}</p>
         )}
         {/* house no and zip code */}
         <div className="flex gap-4">
@@ -130,7 +129,7 @@ const DonarForm = (props) => {
             placeholder="House no"
           />
           {errors.houseno && (
-            <small className="text-danger">{errors.houseno.message}</small>
+            <p className="text-danger">{errors.houseno.message}</p>
           )}
 
           {/* Post code */}
@@ -168,7 +167,7 @@ const DonarForm = (props) => {
             placeholder="Amount"
           />
           {errors.amount && (
-            <small className="text-danger">{errors.amount.message}</small>
+            <p className="text-danger">{errors.amount.message}</p>
           )}
         </div>
 
@@ -179,6 +178,7 @@ const DonarForm = (props) => {
         />
 
       </form>
+      <PayModal price={50} id={1} returnPage={"/admin/paymentcauses"} />
     </div>
   );
 };
