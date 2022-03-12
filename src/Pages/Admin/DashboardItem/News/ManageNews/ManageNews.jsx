@@ -8,9 +8,8 @@ const ManageNews = () => {
   const [confirm, setConfirm] = useState(false);
 
   useEffect(() => {
-    axios
-      .get('https://digital-village.herokuapp.com/news/allNews')
-      .then((res) => res.json())
+    axios.get('https://digital-village.herokuapp.com/news/allNews')
+      .then(res => res.json())
       .then((data) => {
         setNews(data);
       });

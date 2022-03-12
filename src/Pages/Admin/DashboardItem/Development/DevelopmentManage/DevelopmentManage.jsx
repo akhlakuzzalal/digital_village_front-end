@@ -6,14 +6,20 @@ import { giveAlert } from '../../../../../utilities/alert';
 
 const DevelopmentManage = () => {
   const [development, setDevelopment] = useState([]);
+  const [isLoading,setIsLoading]=useState(false)
 
   useEffect(() => {
+    setIsLoading(true)
     axios
       .get('https://digital-village.herokuapp.com/development/allDevelopment')
       .then((response) => {
         setDevelopment(response.data);
-      });
-  }, []);
+      }).then(res=>res.json())
+      .then(data=>{
+        setIsLoading(false)
+        console.log(data);
+      })
+  }, [isLoading]);
 
   const handleDelete = (id) => {
     swal({
@@ -21,6 +27,7 @@ const DevelopmentManage = () => {
       confirm: 'You want to delete this development proposal',
       dangerMode: true,
     }).then(() => {
+      setIsLoading(true)
       axios
         .delete(
           `https://digital-village.herokuapp.com/development/deleteDevelopment/${id}`
@@ -32,6 +39,7 @@ const DevelopmentManage = () => {
             giveAlert('something went wrong', 'error');
           }
         });
+        setIsLoading(false)
     });
   };
   return (

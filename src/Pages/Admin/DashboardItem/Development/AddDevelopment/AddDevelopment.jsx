@@ -7,6 +7,7 @@ import { giveAlert } from '../../../../../utilities/alert';
 
 const AddDevelopment = () => {
   const user = useSelector((state) => state.user.user);
+  
 
   const {
     register,
@@ -45,22 +46,27 @@ const AddDevelopment = () => {
   };
 
   return (
-    <div>
-      <h1>Give Your development proposal</h1>
+    <div className="bg-cover h-[100vh] w-[100%]bg-no-repeat md:pb-24    "
+     style={{
+      backgroundImage: `url(https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/397-ted8144-chim-card.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=e5a10d9aa5c0cade0fd2e95bf819b8d8)`,
+    }}>
+      <div className='  mx-2'>
+     
       <form
         onSubmit={handleSubmit(handleAddDevelopment)}
-        className="space-y-6 md:w-2/4"
+         className=' w-full md:w-1/2 mx-auto md:pt-24 space-y-3'
       >
-        <div className="flex flex-wrap gap-4 items-center justify-evenly bg-primary">
+         <h1 className='md:text-5xl text-xl text-center pt-3 md:py-8 text-primary font-bolder'>Give Your Development Proposal</h1>
+        <div className="  ">
           {/* title of the blog */}
           <input
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+            className="px-7 py-3 my-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
             {...register('title', { required: true })}
             placeholder="Title of your Development"
           />
 
           {/* file upload */}
-          <div className="w-full">
+          <div className="w-full mb-2">
             <FileUpload
               onDrop={onDrop}
               file={file}
@@ -85,11 +91,12 @@ const AddDevelopment = () => {
         </div>
         {/* submit button */}
         <input
-          className="btn bg-primary rounded-lg w-full cursor-pointer hover:bg-opacity-80  transition-all duration-300"
+          className="btn font-bolder bg-primary rounded-lg mb-2 w-full mx-auto cursor-pointer hover:bg-opacity-80  transition-all duration-300"
           type="submit"
-          value="submit"
+          value="Submit"
         />
       </form>
+      </div>
     </div>
   );
 };

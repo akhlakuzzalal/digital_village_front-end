@@ -24,7 +24,7 @@ const NewsDetails = () => {
     <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <div className="grid grid-cols-1 md:grid-cols-4 mx-auto md:mx-10">
         <div className=" col-span-3 mx-10 bg-white rounded-lg  pb-10    dark:bg-gray-800 dark:border-gray-700">
-          <h3 className=" py-5">{result[0]?.title}</h3>
+          <h3 className="text-xl md:text-4xl py-5">{result[0]?.title}</h3>
 
           <hr />
           <br />
@@ -40,15 +40,15 @@ const NewsDetails = () => {
             <a href="#">
               {/* <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{result[0]?.title}</h5> */}
             </a>
-            <p className=" font-normal text-gray-700 dark:text-gray-400 text-justify mx-10 ">
+            <p className=" font-normal text-gray-700 dark:text-gray-400 text-justify md:mx-10 ">
               {result[0]?.description}{' '}
             </p>
 
-            <p className="mx-10 mt-5">
+            <p className="md:mx-10 mt-5">
               Publish Date:
               <span className="text-red-600"> {result[0]?.date}</span>
             </p>
-            <p className="mx-10">
+            <p className="md:mx-10">
               Publish Time:
               <span className="text-red-600"> {result[0]?.time}</span>
             </p>
@@ -56,16 +56,16 @@ const NewsDetails = () => {
 
           <div className="grid md:grid-cols-2 mt-5 border-b-4 border-gray-400 pb-10 ">
             <div className="border-r-2 border-gray-400 mr-5">
-              <h5 className="my-3 text-gray-400 hover:text-blue-600">
+              <h5 className="my-3  text-gray-400 hover:text-blue-600">
                 PREVIOUS POST
               </h5>
-              <h3 className="text-xl hover:opacity-70">{news[8]?.title}</h3>
+              <h3 className="text-sm md:text-xl hover:opacity-70">{news[1]?.title}</h3>
             </div>
             <div>
               <h5 className="my-3 text-gray-400 hover:text-blue-600">
                 NEXT POST
               </h5>
-              <h3 className="text-xl hover:opacity-70">{news[10]?.title}</h3>
+              <h3 className="text-sm md:text-xl hover:opacity-70">{news[2]?.title}</h3>
             </div>
           </div>
 
@@ -74,10 +74,10 @@ const NewsDetails = () => {
           </div>
         </div>
 
-        <div className="mx-5 border-l-4 pl-8 pt-5">
+        <div className="mx-5 md:border-l-4 md:pl-8 pt-5">
           <p className="text-gray-400 hover:text-blue-600">LATEST ARTICLES</p>
           {news.map((data) => (
-            <li className="text-sm p-2 my-3 border hover:bg-gray-100 hover:opacity-90">
+            <li className="text-sm p-2 my-3 border hover:bg-gray-100 hover:opacity-90 dark:text-white">
               The Impact of Family Structure on the Health of Children: Effects
               of Divorce
             </li>
@@ -152,13 +152,13 @@ const NewsDetails = () => {
                 </h5>
                 <p className="text-left">
                   Art & Design{' '}
-                  <span className="text-2xl font-bold text-gray-600">Blog</span>{' '}
+                  <span className="text-2xl font-bold text-gray-600 dark:text-white">Blog</span>{' '}
                   Village Business,{' '}
-                  <span className="text-2xl font-bold text-gray-600">
+                  <span className="text-2xl font-bold text-gray-600 dark:text-white">
                     Village
                   </span>{' '}
                   Culture,Village{' '}
-                  <span className="text-2xl font-bold text-gray-600">
+                  <span className="text-2xl font-bold text-gray-600 dark:text-white">
                     Health
                   </span>{' '}
                   Care, Degital Village Newspaper Obituaries Photos Politics
