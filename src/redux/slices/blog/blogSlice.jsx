@@ -17,6 +17,7 @@ export const fetchBlogs = createAsyncThunk(
       count: response.count,
       pageCount: pagination.pageCount,
       size: pagination.size,
+      search: pagination.search,
     };
   }
 );
@@ -44,7 +45,6 @@ const blogSlice = createSlice({
   },
   reducers: {
     setCurrPage: (state, { payload }) => {
-      console.log(payload);
       state.currPage = payload;
     },
   },
@@ -53,6 +53,9 @@ const blogSlice = createSlice({
       state.blogs = payload.blogs;
       const count = payload.count;
       const pageNumber = Math.ceil(count / payload.size);
+      if (payload.search) {
+        state.currPage = 0;
+      }
       state.pageCount = pageNumber;
     });
     builder.addCase(fetchMyBlogs.fulfilled, (state, { payload }) => {

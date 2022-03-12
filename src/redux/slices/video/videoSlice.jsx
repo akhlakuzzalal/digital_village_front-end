@@ -2,12 +2,26 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../../api/axios';
 
 // create the thunk
-export const fetchVideos = createAsyncThunk('videos/fetchVideos', async () => {
-  const response = await axios
-    .get('/teacher/video/all')
-    .then((response) => response.data);
-  return response;
-});
+export const fetchVideos = createAsyncThunk(
+  'videos/fetchVideos',
+  async (pagination) => {
+    const response = await axios
+      .get(
+        `/student/allVideos/?page=${pagination.currPage}&size=${
+          pagination.size
+        }&search=${pagination.search}&roles=${JSON.stringify([5000])}`
+      )
+      .then((response) => response.data);
+    console.log(response, 'error checking');
+    return {
+      videos: response.videos,
+      count: response.count,
+      pageCount: pagination.pageCount,
+      size: pagination.size,
+      search: pagination.search,
+    };
+  }
+);
 
 // fetch teacher my videos
 export const fetchMyVideos = createAsyncThunk(
@@ -18,6 +32,7 @@ export const fetchMyVideos = createAsyncThunk(
   }
 );
 
+// delete a video
 export const deleteAVideo = createAsyncThunk(
   'videos/deleteAVideo',
   async (id) => {
@@ -30,11 +45,26 @@ const videoSlice = createSlice({
   name: 'videos',
   initialState: {
     videos: [],
+    pageCount: 0,
+    currPage: 0,
   },
-  reducers: {},
+  reducers: {
+    setCurrPage: (state, { payload }) => {
+      state.currPage = payload;
+    },
+    setPageCount: (state, { payload }) => {
+      state.pageCount = payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchVideos.fulfilled, (state, { payload }) => {
-      state.videos = payload;
+      state.videos = payload.videos;
+      const count = payload.count;
+      const pageNumber = Math.ceil(count / payload.size);
+      if (payload.search) {
+        state.currPage = 0;
+      }
+      state.pageCount = pageNumber;
     });
     builder.addCase(fetchMyVideos.fulfilled, (state, { payload }) => {
       state.videos = payload;
@@ -44,5 +74,7 @@ const videoSlice = createSlice({
     });
   },
 });
+
+export const { setCurrPage, setPageCount } = videoSlice.actions;
 
 export default videoSlice.reducer;
