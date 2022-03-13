@@ -56,11 +56,11 @@ const RealTimeValue = () => {
     },
   ];
   return (
-    <div className="flex items-center flex-col col-span-full sm:col-span-6 bg-white dark:dark-card-bg shadow-lg rounded-sm border border-slate-200">
+    <div className="w-full md:w-1/2 flex items-center flex-col col-span-full sm:col-span-6 bg-white dark:dark-card-bg shadow-lg rounded-sm border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-black flex items-center">
         <h2 className="font-semibold text-slate-800">Real Time Value</h2>
         <Info className="ml-2" containerClassName="min-w-44">
-          <div className="text-sm text-center">
+          <div className="text-sm text-center w-full md:w-1/2">
             Built with{' '}
             <a
               className="underline"
