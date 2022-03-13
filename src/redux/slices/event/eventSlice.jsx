@@ -59,7 +59,7 @@ const eventSlice = createSlice({
     upcomingEvents: [],
     archivedEvents: [],
   },
-  
+
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchAllEvent.fulfilled, (state, { payload }) => {

@@ -91,7 +91,7 @@ const EventDetails = () => {
         <div className="right-main ">
           <div className="lg:ml-36">
             <h4 className="my-5 text-xl">Calender</h4>
-            <Calender className="w-full lg:w-0 md:w-full"></Calender>
+            <Calender className="w-[500px] lg:w-0 md:w-full"></Calender>
 
             <p className="my-4 text-primary">
               <Link to="/events">More Events</Link>
@@ -134,7 +134,7 @@ const EventDetails = () => {
 
       <button
         onClick={handleBookEvent}
-        className="mt-10 bg-purple-300 py-5 px-20"
+        className="mt-10 bg-purple-300 py-5 px-20 ml-8 lg:ml-0 md:ml-0"
       >
         Book This Event
       </button>
