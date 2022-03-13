@@ -73,6 +73,7 @@ import Home from './Pages/shared/Home/Home';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import AddReview from './Pages/shared/Home/Reviews/AddReview/AddReview';
 import NotFound from './Pages/shared/NotFound/NotFound';
+import SocialHome from './Pages/SocialMedia/Home/SocialHome';
 import Profile from './Pages/User/DashboardComponent/Profile/Profile';
 import Review from './Pages/User/DashboardComponent/Review/Review';
 import UserDashboard from './Pages/User/UserDashboard';
@@ -211,6 +212,9 @@ function App() {
               <Route path="addNews" element={<AddNews />} />
               <Route path="manageNews" element={<ManageNews />} />
             </Route>
+
+            {/* Social Media Routes */}
+            <Route path="social" element={<SocialHome />} />
 
             {/* NOT FOUND ROUTE */}
             <Route path="*" element={<NotFound />} />
