@@ -44,8 +44,9 @@ const DonarForm = (props) => {
     <div>
       <form onSubmit={handleSubmit(purchase)} className="space-y-6">
         {/* name */}
-        <div className="flex gap-4">
+        <div className="flex flex-col  md:flex-row gap-4 w-full ">
           {/* first name */}
+          <div className='w-full md:w-1/2'>
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
             {...register('firstName', {
@@ -61,8 +62,10 @@ const DonarForm = (props) => {
           {errors.firstName && (
             <small className="text-danger">{errors.firstName.message}</small>
           )}
+          </div>
 
           {/* last name */}
+          <div className='w-full md:w-1/2'>
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
             {...register('lastName', {
@@ -78,6 +81,7 @@ const DonarForm = (props) => {
           {errors.lastName && (
             <small className="text-danger">{errors.lastName.message}</small>
           )}
+          </div>
         </div>
 
         {/* email */}

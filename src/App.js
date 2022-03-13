@@ -194,7 +194,7 @@ function App() {
             <Route path="addAppointment" element={<AddAppointment />} />
 
             {/* Admin dashboard routes */}
-            <Route path="admin" element={<AdminDashboard />}>
+              <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
               <Route path="add-events" element={<AddEvents />} />

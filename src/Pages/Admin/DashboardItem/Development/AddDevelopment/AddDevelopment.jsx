@@ -53,7 +53,7 @@ const AddDevelopment = () => {
         onSubmit={handleSubmit(handleAddDevelopment)}
          className=' w-full md:w-1/2 mx-auto md:pt-24 space-y-3'
       >
-         <h1 className='md:text-5xl text-xl text-center pt-3 md:py-8 text-primary font-bolder'>Give Your Development Proposal</h1>
+         <h1 className='md:text-5xl text-xl text-center pt-3 md:py-4 text-primary font-bolder'>Give Your Development Proposal</h1>
         <div className="  ">
           {/* title of the blog */}
           <input
@@ -94,6 +94,7 @@ const AddDevelopment = () => {
         />
       </form>
       </div>
+      
     </div>
   );
 };

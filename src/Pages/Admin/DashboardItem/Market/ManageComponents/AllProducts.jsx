@@ -20,11 +20,11 @@ const AllProducts = () => {
     dispatch(setShowModal(true));
   };
   return (
-    <div>
-      <h3>Found {products?.length} Products</h3>
+    <div className='mx-12 my-10'>
+      <h3 className='text-base text-center md:text-left md:text-2xl mb-4 md:ml-20'>Found <span className='h-5 w-5 px-2 text-white  rounded-full bg-blue-600'>{products?.length}</span> Products</h3>
       <button
         onClick={() => setSidebar(true)}
-        className="px-6 py-2 rounded-xl mb-6 bg-info"
+        className="px-6 py-2 ml-4 md:ml-20 rounded-xl mb-6 text-white bg-info"
       >
         Add Product
       </button>

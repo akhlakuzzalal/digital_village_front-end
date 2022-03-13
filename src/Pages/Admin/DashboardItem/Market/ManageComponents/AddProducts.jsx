@@ -18,13 +18,13 @@ const AddProducts = ({ sidebar, setSidebar }) => {
   };
   return (
     <div
-      className={`absolute w-2/4 top-[80px] rounded-xl bg-slate-400 right-0  ${
+      className={`absolute w-3/4 md:w-2/4 top-[90px] rounded-xl bg-slate-400 right-1  ${
         sidebar ? 'translate-x-0' : 'translate-x-full'
       } ease-in-out duration-700`}
     >
       {/* body */}
       <div className="justify-center items-center min-h-full  space-y-6 px-4 py-6">
-        <h3 className="text-center space-y-2">Add a New Product</h3>
+        <h3 className="text-center text-base md:text-4xl space-y-2 text-white">Add a New Product</h3>
         <form
           onSubmit={handleSubmit(handleAddProduct)}
           className="space-y-6 mx-auto w-3/4"

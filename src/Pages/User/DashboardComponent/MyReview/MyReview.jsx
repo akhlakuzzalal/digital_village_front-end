@@ -45,7 +45,7 @@ const MyReview = () => {
   //     })};
   return (
     <>
-      <article className="grid grid-cols-1 md:grid-cols-4 justify-evenly items-center gap-6 md:mx-24 md:my-24">
+      <article className="grid grid-cols-1 md:grid-cols-4 justify-evenly items-center gap-6 px-12 md:mx-24 md:my-24">
         {review.map((data) => (
           <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
             <div class="flex flex-col items-center pb-10 pt-4">
