@@ -7,7 +7,7 @@ const Calender = ({ onChange }) => {
   //   console.log(date.toString());
   // };
   return (
-    <div>
+    <div className="w-[600px]">
       <DatePicker onChange={onChange} className="dark:dark-card-bg" />
     </div>
   );

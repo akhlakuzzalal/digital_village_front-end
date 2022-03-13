@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import swal from 'sweetalert';
 import axios from '../../../api/axios';
-import useFirebase from '../../../hooks/useFirebase';
 const MyBookedEvents = () => {
-  const { user } = useFirebase();
+  const user = useSelector((state) => state.user.user);
   const [myBookingEvents, setMyBookingEvents] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`/event/myBookingEvents?email=${user.email}`)
-      .then((response) => setMyBookingEvents(response.d));
-  });
+    fetch(`/event/myBookingEvents?email=${user.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setMyBookingEvents(data);
+      });
+  }, []);
 
   const handleCancelBookingEvent = (id) => {
     axios
@@ -23,11 +25,11 @@ const MyBookedEvents = () => {
   return (
     <>
       <div className="bg-[#13273b] w-full h-20"></div>
-      <h3 className=" text-lg mx-5 my-10">
+      <h3 className=" text-lg mx-20 my-10">
         Welcome <span className="text-primary">{user?.name}</span> your all
         booking events
       </h3>
-      <div className="flex flex-col mt-20">
+      <div className="flex flex-col mt-20 w-[400px] px-10">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
             <div className="overflow-hidden">

@@ -48,7 +48,6 @@ import MarketDashboard from './Pages/EMarket/MarketDashboard';
 import AddEvents from './Pages/Events/AddEvents/AddEvents';
 import AllEvents from './Pages/Events/AllEvents/AllEvents';
 import ArchivedEvents from './Pages/Events/ArchivedEvents/ArchivedEvents';
-import EventBooking from './Pages/Events/EventBooking/EventBooking';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import ManageEvents from './Pages/Events/ManageEvents/ManageEvents';
@@ -153,12 +152,7 @@ function App() {
               <Route path="upcoming-events" element={<UpcomingEvents />} />
               <Route path="archived-events" element={<ArchivedEvents />} />
             </Route>
-            <Route>
-              <Route
-                path="/event-booking/:eventBookingId"
-                element={<EventBooking />}
-              />
-            </Route>
+            <Route></Route>
             <Route path="eventDetails/:id" element={<EventDetails />} />
 
             {/* DEVELOPMENT RELATED ROUTES */}
