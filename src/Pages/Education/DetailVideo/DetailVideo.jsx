@@ -99,7 +99,7 @@ const DetailVideo = () => {
                   </p>
                 </div>
                 <div className="flex items-center space-x-6 mr-20 dark:text-white">
-                  <LikeDislikes video={video} videoId={id} uId={uId} />
+                  <LikeDislikes videoId={id} uId={uId} />
                   {isFavouritted ? (
                     <BsBookmarkFill
                       className="cursor-pointer"
