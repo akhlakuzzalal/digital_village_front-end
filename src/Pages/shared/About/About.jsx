@@ -13,8 +13,8 @@ const About = () => {
         }}
         
       >
-        <div className="bg-primary lg:w-[500px] w-full mx-auto relative top-[400px] py-5">
-          <h1 className="text-2xl text-center text-white pt-16 font-bold">
+        <div className="bg-primary lg:w-[500px] md:w-full mx-auto relative top-[200px] md:top-[400px] md:py-5">
+          <h1 className="text-2xl text-center text-white md:pt-16 font-bold">
             About With Us
           </h1>
           <h3 className="text-center font-semibold my-3 text-xl md:text-2xl lg:text-lg text-white ">
@@ -118,7 +118,7 @@ const About = () => {
 
         <div className="lg:ml-20  lg:mt-[130px] mt-20 space-y-3">
           <h1 className="text-lg">why choose us</h1>
-          <h1 className="text-3xl">We Provide best services for villagers</h1>
+          <h1 className="text-xl md:text-3xl">We Provide best services for villagers</h1>
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam
             similique minima dolores. Magnam similique neque inventore molestiae
@@ -151,36 +151,36 @@ const About = () => {
             </li>
           </ul>
 
-          <button className="flex bg-primary rounded py-3 px-20 ">
+          <button className="flex bg-primary rounded  py-2 md:py-3 px-20 ">
             View More <MdOutlineDoubleArrow className="mt-1" />
           </button>
         </div>
       </div>
 
-      <div className="bg-gray-100 lg:py-48 lg:flex mt-[100px] lg:px-[200px] lg:space-x-8 ">
+      <div className="bg-gray-100 lg:py-32 lg:flex mt-6 md:mt-[50px] lg:px-[200px] lg:space-x-8 ">
         <div className=" lg:w-[300px] w-[100%]  border flex-col items-center justify-center py-8">
-          <GiHumanPyramid className="h-[100px] w-52 text-center ;lg:ml-8 ml-[94px] lg:ml-5" />
+          <GiHumanPyramid className="h-[100px] w-52 text-center mx-auto" />
           <div className="text-center">
             <h1>300+</h1>
             <p>Villagers</p>
           </div>
         </div>
         <div className=" lg:w-[300px]  w-[100%]   flex-col items-center justify-center py-8 border">
-          <GiHumanPyramid className="h-[100px] w-52 text-center  ml-[94px] lg:ml-5" />
+          <GiHumanPyramid className="h-[100px] w-52 text-center mx-auto   lg:ml-5" />
           <div className="text-center">
             <h1>30+</h1>
             <p>Teachers</p>
           </div>
         </div>
         <div className=" lg:w-[300px]  w-[100%]  flex-col items-center justify-center py-8 border">
-          <GiTeacher className="h-[100px] w-52 text-center ml-[94px] lg:ml-5" />
+          <GiTeacher className="h-[100px] w-52 text-center mx-auto " />
           <div className="text-center">
             <h1>30+</h1>
             <p>Doctors</p>
           </div>
         </div>
         <div className=" lg:w-[300px] w-[100%]   flex-col items-center justify-center py-8 border">
-          <GiHumanPyramid className="h-[100px] w-52 text-center  ml-[94px] lg:ml-5" />
+          <GiHumanPyramid className="h-[100px] w-52 text-center mx-auto" />
           <div className="text-center">
             <h1>300+</h1>
             <p>Donner's</p>
@@ -188,10 +188,10 @@ const About = () => {
         </div>
       </div>
 
-      <div className="lg:flex lg:mx-[100px] mx-5 lg:mt-[150px] mt-10">
-        <div className="lg:w-1/2 w-[100%] space-y-5 mt-[150px]">
+      <div className="lg:flex lg:mx-[100px] mx-5 md:mt-[100px] mt-6">
+        <div className="lg:w-1/2 w-[100%] space-y-5 md:mt-[110px]">
           <h1 className="text-lg">Who we are </h1>
-          <h1 className="text-2xl">To Change Your View For SEO Our Mission</h1>
+          <h1 className="md:text-2xl text-xl">To Change Your View For SEO Our Mission</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
             tenetur tempore repudiandae cupiditate libero non beatae! Quo
@@ -200,7 +200,7 @@ const About = () => {
           </p>
 
           <ul>
-            <li className="flex mb-2">
+            <li className="flex md:mb-2">
               <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
               <p className="mt-2 pl-2">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem

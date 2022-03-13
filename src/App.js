@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Chat from './Components/ChattingApp/Chat/Chat';
+import Join from './Components/ChattingApp/Join/Join';
 import ScrollToTop from './Components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
 import AdminDashboard from './Pages/Admin/AdminDashboard';
@@ -116,6 +118,11 @@ function App() {
             {/* EDUCATION RELATED ROUTES */}
             <Route path="education" element={<Education />} />
             <Route path="registerTeacher" element={<RegisterTeacher />} />
+            
+            {/* education related routes */}
+            <Route path="chat" element={<Chat />} />
+            <Route path="join" element={<Join />} />
+
             {/* routes for teacher */}
             <Route path="teacher" element={<Teacher />}>
               <Route path="myblogs" element={<Myblogs />} />
@@ -183,7 +190,7 @@ function App() {
             <Route path="addAppointment" element={<AddAppointment />} />
 
             {/* Admin dashboard routes */}
-            <Route path="admin" element={<AdminDashboard />}>
+              <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
               <Route path="add-events" element={<AddEvents />} />

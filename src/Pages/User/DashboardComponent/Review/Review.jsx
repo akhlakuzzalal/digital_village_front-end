@@ -30,11 +30,14 @@ const Review = () => {
   };
 
   return (
-    <>
-      <div className="add-events-main my-40 lg:flex  lg:mx-32 md:mx-32 mx-0 border rounded-2xl">
+    <div className="bg-cover h-[100vh] md:h-[100%] w-[100%]bg-no-repeat md:pb-10 "
+    style={{
+      backgroundImage: `url(https://st2.depositphotos.com/3467927/6010/i/600/depositphotos_60107233-stock-photo-businessman-pushing-button-five-star.jpg)`,
+    }}>
+      <div className="add-events-main pb-10 pt-14 md:pt-24 lg:flex  mx-20 md:mx-32 dark:dark-card-bg  rounded-2xl">
         {/* add Review form */}
         <div className="md:mx-14">
-          <h1 className="md:ml-14 mt-6 text-3xl ">Add Review</h1>
+          <h1 className="md:ml-14 text-center pt-12  text-4xl md:text-5xl text-white ">Add Review</h1>
           <form
             className=" space-y-6 mx-14 mt-10"
             onSubmit={handleSubmit(handleAddReview)}
@@ -122,11 +125,11 @@ const Review = () => {
 
         {/* My Review */}
       </div>
-      <div>
-        <h1 className="text-center">My Review</h1>
+      <div className='mt-10'>
+        <h1 className="text-center text-white">My Review</h1>
         <MyReview />
       </div>
-    </>
+    </div>
   );
 };
 

@@ -7,8 +7,8 @@ import { MdOutlineMedicalServices } from 'react-icons/md';
 const Features = () => {
   return (
     <>
-      <div className="w-full flex justify-center items-center my-20">
-        <div className="w-full flex justify-center items-center">
+      <div className="w-full flex justify-center items-center  md:my-20">
+        <div className="grid grid-cols-1 md:grid-cols-4 justify-center px-4 items-center">
           <div
             class=" p-5 flex flex-col justify-center items-center mx-0 md:mx-4  shadow-lg border-2 rounded-md bg-white text-justify text-white"
             style={{ backgroundColor: '#10217d' }}
