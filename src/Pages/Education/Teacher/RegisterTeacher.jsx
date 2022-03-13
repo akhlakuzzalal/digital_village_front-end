@@ -29,11 +29,11 @@ const RegisterTeacher = () => {
 
   return (
     <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
-      <h3 className="text-center mt-3">
+      <h3 className="text-center text-xl md:text-6xl lg:text-6xl mt-3">
         Please fill up the form to be a part of our mission
       </h3>
       <form
-        className=" space-y-6 mt-10 w-2/2 md:w-1/2  mx-auto"
+        className="space-y-6 mt-10 w-2/2 md:w-1/2  mx-auto"
         onSubmit={handleSubmit(handleTeacherRegistration)}
       >
         {/* name */}
@@ -123,7 +123,8 @@ const RegisterTeacher = () => {
         {/* submit button */}
         <input
           type="submit"
-          className="bg-primary hover:bg-opacity-80 px-11 md:px-20 lg:px-20 py-2 rounded-lg  sm:mb-20 md:w-full lg:w-full mx-auto mb-20 cursor-pointer text-white"
+          className="bg-primary text-sm hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
+          // className="bg-primary hover:bg-opacity-80 px-11 md:px-20 lg:px-20 py-2 rounded-lg  sm:mb-20 md:w-full lg:w-full mx-auto mb-20 cursor-pointer text-white"
           value="Register as a teacher"
         />
       </form>

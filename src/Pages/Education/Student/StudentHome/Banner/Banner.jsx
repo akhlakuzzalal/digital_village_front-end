@@ -19,10 +19,10 @@ const Banner = () => {
   return (
     <div className="flex flex-wrap">
       <div className="w-full md:w-1/2 place-self-center pl-6 space-y-3">
-        <h1 className="text-[#2d3748] capitalize">
+        <h1 className="text-[#2d3748] capitalize text-center text-sm md:text-2xl lg:text-3xl mt-3 ">
           Gain valuable knowledge from our content
         </h1>
-        <p className="w-5/6">
+        <p className="w-5/6 text-center text-sm md:text-xl lg:text-xl mt-3">
           We have loads of resources created by the village teacher for sharing
           knowledge amongst the village students.
         </p>

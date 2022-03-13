@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Cardcausesidber = (props) => {
-    const { _id, title, image, goal, raised, category} = props;
+    const { _id, title, image, category} = props;
     const navigate = useNavigate();
 
     // handing donetion
@@ -16,7 +16,7 @@ const Cardcausesidber = (props) => {
           <img
             src={image}
             alt="My profile"
-            class="w-16 h-16 rounded-full"
+            class="w-16 h-16 mx-auto rounded-full ring-2 ring-green-400 sm:mx-0 sm:flex-shrink-0"
           />
           <span class="absolute h-4 w-4 bg-green-400 rounded-full bottom-0 right-0 border-2 border-white"></span>
         </div>

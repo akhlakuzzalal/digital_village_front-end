@@ -10,6 +10,7 @@ import DevelopmentManage from './Pages/Admin/DashboardItem/Development/Developme
 import AddCause from './Pages/Admin/DashboardItem/Donation/AddCause';
 import AllCauses from './Pages/Admin/DashboardItem/Donation/AllCauses';
 import AllDonarPayment from './Pages/Admin/DashboardItem/Donation/AllDonarPayment';
+import PaymentScreen from './Pages/Admin/DashboardItem/Donation/PaymentScreen';
 import UpdateCause from './Pages/Admin/DashboardItem/Donation/UpdateCause';
 import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/DashboardItem/Market/MarketManagement';
@@ -205,6 +206,7 @@ function App() {
               <Route path="newsDashboard" element={<NewsDashboard />} />
               <Route path="addNews" element={<AddNews />} />
               <Route path="manageNews" element={<ManageNews />} />
+              <Route path="paymentcauses" element={<PaymentScreen />} />
             </Route>
 
             {/* Social Media Routes */}

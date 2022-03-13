@@ -55,25 +55,30 @@ const DetailVideo = () => {
               </div>
               {/* like, dislike and favourite button */}
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
+                <div className="flex flex-col md:flex-row items-center space-x-2 w-full">
+                <div className='w-full md:w-1/2'>
                   <img
                     className="h-16 rounded-2xl"
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNDgyaDCaoDZJx8N9BBE6eXm5uXuObd6FPeg&usqp=CAU"
                     alt="profile"
                   />
-                  <p>
+                  <p className='text-sm md:text-xl lg:text-2xl'>
                     Published by <br />
                     {video?.author}
                   </p>
                 </div>
-                <div className="flex items-center space-x-6 mr-20 dark:text-white">
+                </div>
+                <div className='w-full md:w-1/2'>
+                <div className="flex items-center space-x-4 mr-20 dark:text-white">
                   <LikeDislikes video={video} videoId={id} uId={uId} />
                   <BsBookmark size={30} className="cursor-pointer" />
                 </div>
+                </div>
+
               </div>
             </div>
             <div className="space-y-3">
-              <p>About this video</p>
+              <p className='text-sm md:text-xl lg:text-2xl'>About this video</p>
               <p>{video?.about}</p>
             </div>
           </div>
@@ -81,7 +86,7 @@ const DetailVideo = () => {
 
         {/* sidebar */}
         <div className="col-span-4 mt-6 md:mt-0 mx-6">
-          <h3 className="my-4">Related videos</h3>
+          <h3 className="my-4 text-sm md:text-xl lg:text-2xl">Related videos</h3>
           <Sidebar />
         </div>
       </div>

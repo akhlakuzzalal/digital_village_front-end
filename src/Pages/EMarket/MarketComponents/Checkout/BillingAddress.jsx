@@ -66,7 +66,7 @@ const BillingAddress = () => {
         {/* Address */}
         <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('address', { required: "Address is Required" , pattern: /^[A-Za-z]+$/i , maxLength: 50  })}
+          {...register('address', { required: "Address is Required" , maxLength: 50 })}
           onKeyUp={() => {
             trigger("address");
           }}
