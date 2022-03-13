@@ -7,7 +7,7 @@ import {
 } from 'react-icons/ai';
 import axios from '../../../../api/axios';
 
-const LikeDislikes = ({ video, videoId, commentId, uId }) => {
+const LikeDislikes = ({ videoId, blogId, commentId, uId }) => {
   const [Likes, setLikes] = useState(0);
   const [Dislikes, setDislikes] = useState(0);
   const [LikeAction, setLikeAction] = useState(null);
@@ -15,24 +15,27 @@ const LikeDislikes = ({ video, videoId, commentId, uId }) => {
 
   let data = {};
 
-  if (video) {
+  if (videoId) {
     data = { videoId, uId };
+  } else if (blogId) {
+    data = { blogId, uId };
   } else {
     data = { commentId, uId };
   }
 
   useEffect(() => {
-    axios.post('/videoLike/getAll', data).then((response) => {
+    axios.post('/like/all', data).then((response) => {
       if (response.data.success) {
-        //How many likes does this video or comment have
-        setLikes(response.data.videoLikes.length);
+        // How many likes does this video or comment have
+        console.log(response.data);
+        setLikes(response.data.likes.length);
 
-        if (response.data.videoLikes.length === 0) {
+        if (response.data.likes.length === 0) {
           setLikeAction(null);
         }
 
         //if I already click this like button or not
-        response.data.videoLikes.map((like) => {
+        response.data.likes.map((like) => {
           if (like.uId === uId) {
             setLikeAction('liked');
           } else {
@@ -44,18 +47,17 @@ const LikeDislikes = ({ video, videoId, commentId, uId }) => {
       }
     });
 
-    axios.post('/videoDisLike/getAll', data).then((response) => {
-      console.log('get all video dislike', response.data);
+    axios.post('/disLike/all', data).then((response) => {
       if (response.data.success) {
         //How many likes does this video or comment have
-        setDislikes(response.data.videoDisLikes.length);
+        setDislikes(response.data.dislikes.length);
 
-        if (response.data.videoDisLikes.length === 0) {
+        if (response.data.dislikes.length === 0) {
           setDislikeAction(null);
         }
 
         //if I already click this like button or not
-        response.data.videoDisLikes.map((dislike) => {
+        response.data.dislikes.map((dislike) => {
           if (dislike.uId === uId) {
             setDislikeAction('disliked');
           }
@@ -68,23 +70,22 @@ const LikeDislikes = ({ video, videoId, commentId, uId }) => {
 
   const onLike = () => {
     if (LikeAction === null) {
-      axios.post('/videoLike/add', data).then((response) => {
+      axios.post('/like/add', data).then((response) => {
         if (response.data.success) {
           setLikes(Likes + 1);
           setLikeAction('liked');
 
           //If dislike button is already clicked
-
           if (DislikeAction !== null) {
             setDislikeAction(null);
             setDislikes(Dislikes - 1);
           }
         } else {
-          // alert('Failed to increase the like');
+          alert('Failed to decrease like');
         }
       });
     } else {
-      axios.post('/videoLike/remove', data).then((response) => {
+      axios.post('/like/remove', data).then((response) => {
         if (response.data.success) {
           setLikes(Likes - 1);
           setLikeAction(null);
@@ -97,8 +98,7 @@ const LikeDislikes = ({ video, videoId, commentId, uId }) => {
 
   const onDisLike = () => {
     if (DislikeAction === null) {
-      axios.post('/videoDisLike/add', data).then((response) => {
-        console.log(response.data);
+      axios.post('/disLike/add', data).then((response) => {
         if (response.data.success) {
           setDislikes(Dislikes + 1);
           setDislikeAction('disliked');
@@ -113,8 +113,7 @@ const LikeDislikes = ({ video, videoId, commentId, uId }) => {
         }
       });
     } else {
-      axios.post('/videoDisLike/remove', data).then((response) => {
-        console.log('this is response', response);
+      axios.post('/disLike/remove', data).then((response) => {
         if (response.data.success) {
           setDislikes(Dislikes - 1);
           setDislikeAction(null);

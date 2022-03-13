@@ -48,7 +48,7 @@ const PublishVideo = () => {
 
   return (
     <div className="flex flex-col items-center justify-center space-y-6 px-3">
-      <h1>Publish your video now</h1>
+      <h1 className='text-center text-xl md:text-6xl lg:text-6xl mt-3'>Publish your video now</h1>
       <form
         onSubmit={handleSubmit(handlePublishVideo)}
         className="space-y-6 flex flex-col w-full md:w-[500px]"
@@ -110,7 +110,7 @@ const PublishVideo = () => {
 
         {/* submit button */}
         <input
-          className="btn bg-primary rounded-lg w-full cursor-pointer hover:bg-opacity-80  transition-all duration-300"
+          className="bg-primary text-sm hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
           type="submit"
           value="Publish"
         />

@@ -14,8 +14,7 @@ const VideoCard = ({ video }) => {
 
   const handleDeleteVideo = () => {
     swal({
-      title: 'Are you sure?',
-      text: 'hello',
+      title: 'Are you sure? You want to delete this.',
       icon: 'warning',
       buttons: true,
     }).then((willConfirm) => {

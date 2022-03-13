@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
+import swal from 'sweetalert';
 import PayModal from '../../../Components/Pay/PayModal';
 import { setPayModal } from '../../../redux/slices/payModal/PayModalSlice';
 
@@ -38,6 +39,13 @@ const DonarForm = (props) => {
         window.location.replace(data);
       });
     dispatch(setPayModal(true));
+    swal({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Your payment has been successfull',
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   return (
@@ -83,12 +91,11 @@ const DonarForm = (props) => {
           )}
           </div>
         </div>
-
         {/* email */}
         <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
           {...register('email', {
-            required: 'required',
+            required: 'Email required',
             pattern: {
               value:
                 /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
@@ -119,28 +126,25 @@ const DonarForm = (props) => {
           }}
         ></textarea>
         {errors.message && (
-          <small className="text-danger">{errors.message.message}</small>
+          <p className="text-danger">{errors.message.message}</p>
         )}
         {/* Address */}
         <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('address', {
-            required: 'Address is Required',
-            pattern: /^[A-Za-z]+$/i,
-            maxLength: 50,
-          })}
+          {...register('address', { required: "Address is Required" , maxLength: 50  })}
           onKeyUp={() => {
             trigger('address');
           }}
           placeholder="Full address"
         />
         {errors.address && (
-          <small className="text-danger">{errors.address.message}</small>
+          <p className="text-danger">{errors.address.message}</p>
         )}
         {/* house no and zip code */}
-        <div className="flex gap-4">
-          {/* House no */}
-          <input
+        <div className="flex flex-col  md:flex-row gap-4 w-full ">
+          {/* fHouse no */}
+          <div className='w-full md:w-1/2'>
+         <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
             {...register('houseno', {
               required: 'House no is Required',
@@ -152,22 +156,31 @@ const DonarForm = (props) => {
             placeholder="House no"
           />
           {errors.houseno && (
-            <small className="text-danger">{errors.houseno.message}</small>
+            <p className="text-danger">{errors.houseno.message}</p>
           )}
+          </div>
 
-          {/* Post code */}
+          {/* last name */}
+          <div className='w-full md:w-1/2'>
+         {/* Post code */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('postcode', { required: true, maxLength: 10 })}
-            placeholder="Post code"
+            {...register('postcode', { required: "Postcode no is Required", maxLength: 10  })}
+            onKeyUp={() => {
+              trigger("postcode");
+            }}
+            placeholder="Postcode no"
           />
+          {errors.postcode && (
+            <p className="text-danger">{errors.postcode.message}</p>
+          )}
+          </div>
         </div>
-        <div className="flex items-center justify-center">
-          {/* Address */}
           <input
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
-            {...register('amount', {
-              required: 'Amount is Required',
+            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+            {...register('amount',
+            {
+              required: "Amount is Required",
               min: {
                 value: 49,
                 message: 'Minimum Required amount is 49',
@@ -181,20 +194,17 @@ const DonarForm = (props) => {
                 message: 'Only numbers price allowed',
               },
             })}
-            onKeyUp={() => {
-              trigger('amount');
-            }}
             type="number"
             defaultValues={50}
             placeholder="Amount"
           />
           {errors.amount && (
-            <small className="text-danger">{errors.amount.message}</small>
+            <p className="text-danger">{errors.amount.message}</p>
           )}
-        </div>
+        {/* </div> */}
 
         <input
-          className="bg-primary hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
+          className="bg-primary text-sm hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
           type="submit"
           value="Ready for Donation Payment"
         />

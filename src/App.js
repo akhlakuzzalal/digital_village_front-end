@@ -12,6 +12,7 @@ import DevelopmentManage from './Pages/Admin/DashboardItem/Development/Developme
 import AddCause from './Pages/Admin/DashboardItem/Donation/AddCause';
 import AllCauses from './Pages/Admin/DashboardItem/Donation/AllCauses';
 import AllDonarPayment from './Pages/Admin/DashboardItem/Donation/AllDonarPayment';
+import PaymentScreen from './Pages/Admin/DashboardItem/Donation/PaymentScreen';
 import UpdateCause from './Pages/Admin/DashboardItem/Donation/UpdateCause';
 import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/DashboardItem/Market/MarketManagement';
@@ -50,7 +51,6 @@ import MarketDashboard from './Pages/EMarket/MarketDashboard';
 import AddEvents from './Pages/Events/AddEvents/AddEvents';
 import AllEvents from './Pages/Events/AllEvents/AllEvents';
 import ArchivedEvents from './Pages/Events/ArchivedEvents/ArchivedEvents';
-import EventBooking from './Pages/Events/EventBooking/EventBooking';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import ManageEvents from './Pages/Events/ManageEvents/ManageEvents';
@@ -75,6 +75,7 @@ import Home from './Pages/shared/Home/Home';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import AddReview from './Pages/shared/Home/Reviews/AddReview/AddReview';
 import NotFound from './Pages/shared/NotFound/NotFound';
+import SocialHome from './Pages/SocialMedia/Home/SocialHome';
 import Profile from './Pages/User/DashboardComponent/Profile/Profile';
 import Review from './Pages/User/DashboardComponent/Review/Review';
 import UserDashboard from './Pages/User/UserDashboard';
@@ -160,12 +161,7 @@ function App() {
               <Route path="upcoming-events" element={<UpcomingEvents />} />
               <Route path="archived-events" element={<ArchivedEvents />} />
             </Route>
-            <Route>
-              <Route
-                path="/event-booking/:eventBookingId"
-                element={<EventBooking />}
-              />
-            </Route>
+            <Route></Route>
             <Route path="eventDetails/:id" element={<EventDetails />} />
 
             {/* DEVELOPMENT RELATED ROUTES */}
@@ -217,7 +213,11 @@ function App() {
               <Route path="newsDashboard" element={<NewsDashboard />} />
               <Route path="addNews" element={<AddNews />} />
               <Route path="manageNews" element={<ManageNews />} />
+              <Route path="paymentcauses" element={<PaymentScreen />} />
             </Route>
+
+            {/* Social Media Routes */}
+            <Route path="social" element={<SocialHome />} />
 
             {/* NOT FOUND ROUTE */}
             <Route path="*" element={<NotFound />} />

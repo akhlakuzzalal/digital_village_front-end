@@ -49,10 +49,11 @@ const BlogsPostdata = () => {
   ];
   return (
     <>
-      <div className="flex flex-col col-span-full sm:col-span-6 bg-white dark:dark-card-bg shadow-lg rounded-sm border border-slate-200">
-        <header className="px-5 py-4 border-b border-slate-100 dark:border-black">
+      <div className="w-full md:w-1/2 flex flex-col col-span-full sm:col-span-6 bg-white dark:dark-card-bg shadow-lg rounded-sm border border-slate-200">
+        <header className="px-2 py-4 border-b border-slate-100 dark:border-black">
           <h2 className="font-semibold text-slate-800">Blogs Post Data</h2>
         </header>
+       
         <div className="flex items-center overflow-hidden">
           <BarChart width={450} height={248} data={data}>
             <CartesianGrid strokeDasharray="3 3" />

@@ -8,9 +8,9 @@ const Analytics = () => {
     <div>
       {/* Welcome banner */}
       <WelcomeBanner />
-      <div className="space-y-6">
+      <div className="space-y-6 max-w-6xl mx-auto">
         {/* charts */}
-        <div className="flex flex-wrap justify-evenly">
+        <div className="flex flex-col  md:flex-row gap-4 w-full mx-auto">
           {/* Post data */}
           <BlogsPostdata />
           {/* (Real Time Value)*/}

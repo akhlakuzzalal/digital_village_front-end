@@ -60,7 +60,7 @@ const SingleComment = ({ comment, updateComment, postId }) => {
 
       {openReply && (
         <form
-          className="ml-20 flex"
+          className="flex space-y-6 mt-10 w-2/2 md:w-1/2 mx-auto"
           onSubmit={handleSubmit(handleCommentSubmit)}
         >
           <input
