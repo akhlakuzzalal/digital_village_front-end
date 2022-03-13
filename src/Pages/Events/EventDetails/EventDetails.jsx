@@ -31,12 +31,9 @@ const EventDetails = () => {
 
   //to book events
   const handleBookEvent = () => {
-    // const url = `/event/participant?id=${eventItem[0]?._id}&email=${user.email}`
     axios.put(`/event/participant?id=${eventItem[0]?._id}&email=${user.email}`);
     swal('Good job!', 'Successfully booked !', 'success');
   };
-
-  // http://localhost:5000/event/participant?id=61793a64f536b7c2cd793&email=sabbirrrrr0911
 
   return (
     <div className="event-details-main py-48 px-5 lg:px-20">

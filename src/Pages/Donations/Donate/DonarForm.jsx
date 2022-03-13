@@ -1,42 +1,56 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import swal from 'sweetalert';
 import PayModal from '../../../Components/Pay/PayModal';
 import { setPayModal } from '../../../redux/slices/payModal/PayModalSlice';
 
-const DonarForm = () => {
-  // const user = useSelector((state) => state.user.user);
+const DonarForm = (props) => {
+  const { _id, title, image, goal, category } = props;
+  const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
-  const { register, handleSubmit, trigger,
-    formState: { errors }
-  } = useForm ();
 
-  const handleRegister = async ({
-    firstName,
-    lastName,
-    email,
-    amount,
-    message,
-    address,
-  }) => {
-    const name = `${firstName} ${lastName}`;
-    console.log({ name, email, address, message, amount });
+  const {
+    register,
+    handleSubmit,
+    trigger,
+    formState: { errors },
+  } = useForm();
+
+  const purchase = (data) => {
+    const info = {
+      product_name: title,
+      product_profile: category,
+      product_image: image,
+      total_amount: goal,
+      cus_name: user?.displayName,
+      cus_email: user?.email,
+    };
+    fetch(`https://digital-village.herokuapp.com/sslpayment/init`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        window.location.replace(data);
+      });
     dispatch(setPayModal(true));
     swal({
       position: 'top-end',
       icon: 'success',
-      title: 'Your cause has been saved',
+      title: 'Your payment has been successfull',
       showConfirmButton: false,
       timer: 1500,
     });
- 
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit(handleRegister)} className="space-y-6">
+      <form onSubmit={handleSubmit(purchase)} className="space-y-6">
         {/* name */}
         <div className="flex flex-col  md:flex-row gap-4 w-full ">
           {/* first name */}
@@ -92,25 +106,24 @@ const DonarForm = () => {
           type="email"
         />
 
-        {errors.email && (
-          <p className="text-danger">{errors.email.message}</p>
-        )}
+        {errors.email && <p className="text-danger">{errors.email.message}</p>}
         {/* Message */}
         <textarea
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('message', { required: "Message is Required",
-          minLength: {
-            value: 10,
-            message: "Minimum Required length is 10",
-          },
-          maxLength: {
-            value: 50,
-            message: "Maximum allowed length is 50 ",
-          }
-         })}
-         onKeyUp={() => {
-          trigger("message");
-        }}
+          {...register('message', {
+            required: 'Message is Required',
+            minLength: {
+              value: 10,
+              message: 'Minimum Required length is 10',
+            },
+            maxLength: {
+              value: 50,
+              message: 'Maximum allowed length is 50 ',
+            },
+          })}
+          onKeyUp={() => {
+            trigger('message');
+          }}
         ></textarea>
         {errors.message && (
           <p className="text-danger">{errors.message.message}</p>
@@ -120,7 +133,7 @@ const DonarForm = () => {
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
           {...register('address', { required: "Address is Required" , maxLength: 50  })}
           onKeyUp={() => {
-            trigger("address");
+            trigger('address');
           }}
           placeholder="Full address"
         />
@@ -133,9 +146,12 @@ const DonarForm = () => {
           <div className='w-full md:w-1/2'>
          <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('houseno', { required: "House no is Required", maxLength: 10  })}
+            {...register('houseno', {
+              required: 'House no is Required',
+              maxLength: 10,
+            })}
             onKeyUp={() => {
-              trigger("houseno");
+              trigger('houseno');
             }}
             placeholder="House no"
           />
@@ -167,16 +183,16 @@ const DonarForm = () => {
               required: "Amount is Required",
               min: {
                 value: 49,
-                message: "Minimum Required amount is 49",
+                message: 'Minimum Required amount is 49',
               },
               max: {
                 value: 50000,
-                message: "Maximum allowed amount is 50000",
+                message: 'Maximum allowed amount is 50000',
               },
               pattern: {
                 value: /^[0-9]*$/,
-                message: "Only numbers price allowed",
-              }
+                message: 'Only numbers price allowed',
+              },
             })}
             type="number"
             defaultValues={50}
@@ -190,11 +206,10 @@ const DonarForm = () => {
         <input
           className="bg-primary text-sm hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
           type="submit"
-          value= "Ready for Donation Payment"
+          value="Ready for Donation Payment"
         />
-
       </form>
-      <PayModal price={50} id={1} returnPage={"/admin/paymentcauses"} />
+      <PayModal price={60} id={12} returnPage="donation" />
     </div>
   );
 };

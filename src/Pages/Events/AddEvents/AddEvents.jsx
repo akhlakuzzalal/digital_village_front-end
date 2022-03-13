@@ -19,7 +19,7 @@ const AddEvents = () => {
 
   return (
     <>
-      <div className="my-40 lg:flex  lg:mx-32 md:mx-32 mx-0 border rounded-2xl">
+      <div className="lg:flex border rounded-2xl">
         <div>
           <img
             className="lg:h-[780px] md:h-[580px] lg:w-[1000px] md:w-[1000px] w-[100%] h-[300px]"

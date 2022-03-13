@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import SingleComment from '../SingleComment/Singlecomment';
 
-function ReplyComment({
+const ReplyComment = ({
   commentLists,
   parentCommentId,
   updateComment,
   postId,
-}) {
+}) => {
   const [ChildCommentNumber, setChildCommentNumber] = useState(0);
   const [OpenReplyComments, setOpenReplyComments] = useState(false);
   useEffect(() => {
@@ -23,23 +23,23 @@ function ReplyComment({
   let renderReplyComment = (parentCommentId) =>
     commentLists &&
     commentLists.map((comment, index) => (
-      <React.Fragment>
+      <>
         {comment.responseTo === parentCommentId && (
-          <div style={{ width: '80%', marginLeft: '40px' }}>
+          <div className="ml-20">
             <SingleComment
               comment={comment}
               postId={postId}
               updateComment={updateComment}
             />
             <ReplyComment
-              CommentLists={commentLists}
-              parentCommentId={comment._id}
+              commentLists={commentLists}
               postId={postId}
+              parentCommentId={comment._id}
               updateComment={updateComment}
             />
           </div>
         )}
-      </React.Fragment>
+      </>
     ));
 
   const handleOpenReplyComments = () => {
@@ -49,14 +49,18 @@ function ReplyComment({
   return (
     <div>
       {ChildCommentNumber > 0 && (
-        <p onClick={handleOpenReplyComments} className="cursor-pointer">
-          View {ChildCommentNumber} more comment(s)
+        <p
+          onClick={handleOpenReplyComments}
+          className="cursor-pointer ml-20 hover:text-gray-500 transition-all duration-500"
+        >
+          show {ChildCommentNumber} more{' '}
+          {ChildCommentNumber > 1 ? 'comments' : 'comment'}
         </p>
       )}
 
       {OpenReplyComments && commentLists && renderReplyComment(parentCommentId)}
     </div>
   );
-}
+};
 
 export default ReplyComment;

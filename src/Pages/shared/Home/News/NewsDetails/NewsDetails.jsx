@@ -5,6 +5,7 @@ import { Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import axios from '../../../../../api/axios';
 import Reply from '../ReplyFrom/Reply';
 
 const NewsDetails = () => {
@@ -12,9 +13,7 @@ const NewsDetails = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/news/allNews')
-      .then((res) => res.json())
-      .then((data) => setNews(data));
+    axios.get('/news/allNews').then((response) => setNews(response.data));
   }, []);
 
   const result = news.filter((data) => data?._id == id);

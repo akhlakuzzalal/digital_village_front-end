@@ -1,51 +1,63 @@
 import React, { useState } from 'react';
 import { AiOutlineMedicineBox } from 'react-icons/ai';
 import { FaClinicMedical } from 'react-icons/fa';
-import { GiLoveInjection } from 'react-icons/gi';
+import { GiLoveInjection, GiMedicines } from 'react-icons/gi';
 import { Outlet, useLocation } from 'react-router-dom';
-import NewSidebar from '../../Components/Sidebar/NewSidebar';
-import WelcomeBanner from './../Medical/Dashboard/partials/dashboardItem/WelcomeBanner';
-import Header from './../shared/Home/Header/Header';
+import NewSidebar from './../../Components/Sidebar/NewSidebar';
+import VaccineRegistration from './Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
 
 const links = [
   {
-    name: 'Medicine Store',
+    name: 'Home',
     icon: <FaClinicMedical size={30} />,
     path: '/medical',
   },
   {
+    name: 'Medicine Store',
+    icon: <GiMedicines size={30} />,
+    path: '/medicinestore',
+  },
+  {
     name: 'Vaccine Registration',
     icon: <GiLoveInjection size={30} />,
-    path: '/medical/vaccine',
+    path: '/medicalDashboard/vaccine',
   },
   {
     name: 'Doctor Appointment',
     icon: <AiOutlineMedicineBox size={30} />,
-    path: '/medical/appointment',
+    path: '/medicalDashboard/appointment',
   },
   {
-    name: 'User Appointment',
+    name: 'Your Appointment',
     icon: <AiOutlineMedicineBox size={30} />,
-    path: '/medical/userAppointments',
+    path: '/medicalDashboard/userAppointments',
   },
 ];
 
 const MedicalDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showText, setShowText] = useState(true);
 
   const location = useLocation();
   const initial =
-    location.pathname === '/medical' || location.pathname === '/medical/';
+    location.pathname === '/medicalDashboard' ||
+    location.pathname === '/medicalDashboard/';
 
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
       {/* Sidebar */}
-      <NewSidebar links={links} />
+      <NewSidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+        showText={showText}
+        setShowText={setShowText}
+        links={links}
+      />
 
       {/* contents */}
       <div className="flex-1">
-        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        {initial ? <WelcomeBanner /> : <Outlet />}
+        {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
+        {initial ? <VaccineRegistration /> : <Outlet />}
       </div>
     </div>
   );

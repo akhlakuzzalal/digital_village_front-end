@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import swal from 'sweetalert';
+import axios from '../../../../api/axios';
 import Rating from '../../../../Components/Rating';
 import useFirebase from '../../../../hooks/useFirebase';
 
@@ -10,39 +11,33 @@ const MyReview = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://localhost:5000/userReview/singleReview/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setReview(data);
-        setIsLoading(false);
-      });
+    axios.get(`/userReview/singleReview/${user?.email}`).then((response) => {
+      setReview(response.data);
+      setIsLoading(false);
+    });
   }, [isLoading]);
 
   const handleDelete = (id) => {
     setIsLoading(true);
-    fetch(`http://localhost:5000/userReview/deleteReview/${id}`, {
-      method: 'DELETE',
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        swal({
-          title: 'Are you sure?',
-          text: 'Once deleted, you will not be able to recover this imaginary file!',
-          icon: 'warning',
-          buttons: true,
-          dangerMode: true,
-        });
-
-        if (data?.deletedCount) {
-          swal('Delete! Your News Fille has been deleted!', {
-            icon: 'success',
-          });
-          setIsLoading(false);
-        } else {
-          swal('Your News  file is safe!');
-        }
+    axios.delete(`/userReview/deleteReview/${id}`).then((response) => {
+      console.log(response.data);
+      swal({
+        title: 'Are you sure?',
+        text: 'Once deleted, you will not be able to recover this imaginary file!',
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true,
       });
+
+      if (response?.data?.deletedCount) {
+        swal('Delete! Your News Fille has been deleted!', {
+          icon: 'success',
+        });
+        setIsLoading(false);
+      } else {
+        swal('Your News  file is safe!');
+      }
+    });
   };
   //   const changeRating=( newRating, name )=>{
   //     this.setState({

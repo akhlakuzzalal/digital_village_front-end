@@ -10,7 +10,12 @@ const VaccineRegistration = () => {
       <div className="text-center ">
         <h3 className="text-3xl md:text-5xl py-3 ">Vaccine Registration</h3>
         <div className="flex flex-wrap justify-center items-center m-2">
-          <div className=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500">
+          <div
+            className=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500"
+            style={{
+              borderBottom: '5px solid #10217d',
+            }}
+          >
             <Link to="#">
               <img className="rounded-t-lg" src={covax} alt="" />
             </Link>
@@ -26,8 +31,12 @@ const VaccineRegistration = () => {
                 so many vaccines proving and going into development.
               </p>
               <Link
-                to="/medical/regForm"
-                className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white bg-primary"
+                to="/medicalDashboard/regForm"
+                className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white "
+                style={{
+                  backgroundColor: '#10217d',
+                  color: 'white',
+                }}
               >
                 Registration
                 <svg
@@ -46,7 +55,12 @@ const VaccineRegistration = () => {
             </div>
           </div>
 
-          <div className=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500 pb-3 ">
+          <div
+            className=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500 pb-3 "
+            style={{
+              borderBottom: '5px solid #10217d',
+            }}
+          >
             <Link to="#">
               <img className="rounded-t-lg " src={hepatitis} alt="" />
             </Link>
@@ -63,8 +77,12 @@ const VaccineRegistration = () => {
                 and older.
               </p>
               <Link
-                to="/medical/regForm"
-                className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white bg-primary"
+                to="/medicalDashboard/regForm"
+                className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white "
+                style={{
+                  backgroundColor: '#10217d',
+                  color: 'white',
+                }}
               >
                 Registration
                 <svg
@@ -83,7 +101,12 @@ const VaccineRegistration = () => {
             </div>
           </div>
 
-          <div className=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500">
+          <div
+            className=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500"
+            style={{
+              borderBottom: '5px solid #10217d',
+            }}
+          >
             <Link to="#">
               <img className="rounded-t-lg" src={polio} alt="" />
             </Link>
@@ -100,8 +123,12 @@ const VaccineRegistration = () => {
                 spinal cord, causing paralysis
               </p>
               <Link
-                to="/medical/regForm"
-                className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white bg-primary"
+                to="/medicalDashboard/regForm"
+                className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white "
+                style={{
+                  backgroundColor: '#10217d',
+                  color: 'white',
+                }}
               >
                 Registration
                 <svg

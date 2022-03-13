@@ -7,16 +7,17 @@ const MyBookedEvents = () => {
   const [myBookingEvents, setMyBookingEvents] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/event/myBookingEvents?email=${user.email}`)
-      .then((response) => response.json())
-      .then((data) => setMyBookingEvents(data));
+    axios
+      .get(`/event/myBookingEvents?email=${user.email}`)
+      .then((response) => setMyBookingEvents(response.d));
   });
 
   const handleCancelBookingEvent = (id) => {
-    axios.put(
-      `http://localhost:5000/event/deleteMyBooking?id=${id}&email=${user.email}`
-    );
-    swal('Good job!', 'Successfully Deleted !', 'success');
+    axios
+      .put(`/event/deleteMyBooking?id=${id}&email=${user.email}`)
+      .then(() => {
+        swal('Good job!', 'Successfully Deleted!', 'success');
+      });
   };
 
   return (

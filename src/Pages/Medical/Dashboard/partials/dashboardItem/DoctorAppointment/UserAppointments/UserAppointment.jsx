@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from '../../../../../../../api/axios';
 import PayModal from '../../../../../../../Components/Pay/PayModal';
 import { setPayModal } from '../../../../../../../redux/slices/payModal/PayModalSlice';
 
@@ -7,15 +8,15 @@ const UserAppointment = ({ date }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const [appointment, setAppointment] = useState([]);
-  const email = user.email;
+  const email = 'user1@gmail.com';
+  const Sdate = date.toDateString();
 
   useEffect(() => {
-    const url = `http://localhost:5000/appointment/findUserAppointment?email=${email}&date=${date}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setAppointment(data));
-  }, [date]);
-  console.log(appointment);
+    axios
+      .get(`/appointment/findUserAppointment?email=${email}&date=${Sdate}`)
+      .then((response) => setAppointment(response.data));
+  }, [Sdate]);
+
   return (
     <div className="flex flex-col">
       <h4> Total Appointments:{appointment.length}</h4>
@@ -52,6 +53,26 @@ const UserAppointment = ({ date }) => {
                 </tr>
               </thead>
               <tbody>
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Consultation
+                  </td>
+                  <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                    From 10 am to 5pm
+                  </td>
+                  <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                    $15
+                  </td>
+                  <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                    <button
+                      onClick={() => dispatch(setPayModal(true))}
+                      className="bg-primary border-1 rounded-md text-white py-1 px-4"
+                    >
+                      Pay
+                    </button>
+                  </td>
+                </tr>
+
                 {appointment.map((row) => (
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">

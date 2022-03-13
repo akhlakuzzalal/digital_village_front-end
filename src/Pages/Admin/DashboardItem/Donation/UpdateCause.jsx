@@ -41,7 +41,7 @@ const UpdateCause = () => {
         <h3 className='text-center space-y-2'>Add a new Cause</h3>
         <form
           onSubmit={handleSubmit(handleUpdateCause)}
-          className="space-y-6 mx-auto"
+          className="space-y-6 mt-10 w-full md:w-1/2  mx-auto"
         >
           {/* title */}
         <input

@@ -31,7 +31,9 @@ import FavouriteVideos from './Pages/Education/Student/FavouriteVideos/Favourite
 import Student from './Pages/Education/Student/Student';
 import StudentHome from './Pages/Education/Student/StudentHome/StudentHome';
 import Analytics from './Pages/Education/Teacher/Dashboard/Analytics/Analytics';
+import EditBlog from './Pages/Education/Teacher/Myblogs/EditBlog/EditBlog';
 import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
+import EditVideo from './Pages/Education/Teacher/Myvideos/EditVideo/EditVideo';
 import Myvideos from './Pages/Education/Teacher/Myvideos/Myvideos';
 import PublishBlog from './Pages/Education/Teacher/PublishBlog/PublishBlog';
 import PublishVideo from './Pages/Education/Teacher/PublishVideo/PublishVideo';
@@ -117,7 +119,9 @@ function App() {
             {/* routes for teacher */}
             <Route path="teacher" element={<Teacher />}>
               <Route path="myblogs" element={<Myblogs />} />
+              <Route path="editBlog/:id" element={<EditBlog />} />
               <Route path="myvideos" element={<Myvideos />} />
+              <Route path="editVideo/:id" element={<EditVideo />} />
               <Route path="publishBlog" element={<PublishBlog />} />
               <Route path="publishVideo" element={<PublishVideo />} />
               <Route path="analytics" element={<Analytics />} />
@@ -133,14 +137,17 @@ function App() {
             </Route>
             <Route path="detailvideo/:id" element={<DetailVideo />} />
             <Route path="blogDetails/:id" element={<BlogDetails />} />
-            {/* MEDICAL RELATED ROUTES */}
-            <Route path="medical" element={<MedicalDashboard />}>
+
+            {/* medical related routes */}
+            {/* medical related routes */}
+            <Route path="medicalDashboard" element={<MedicalDashboard />}>
               <Route path="vaccine" element={<VaccineRegistration />} />
               <Route path="appointment" element={<DoctorsAppointment />} />
               <Route path="regForm" element={<RegForm />} />
               <Route path="userAppointments" element={<UserAppointments />} />
               <Route path="pdf" element={<VaccineInfo />} />
             </Route>
+
             {/* EVENT RELATED ROUTES */}
             <Route path="events" element={<Events />}>
               <Route path="all-events" element={<AllEvents />} />
@@ -154,14 +161,18 @@ function App() {
               />
             </Route>
             <Route path="eventDetails/:id" element={<EventDetails />} />
+
             {/* DEVELOPMENT RELATED ROUTES */}
             <Route path="development" element={<Development />} />
+
             {/* NEWS RELATED ROUTES */}
             <Route path="newsDetails/:id" element={<NewsDetails />} />
             <Route path="allNews" element={<AllNews />} />
+
             {/* DONATION RELATED ROUTES */}
             <Route path="donation" element={<Donations />} />
             <Route path="causedetails/:id" element={<CaseSingle />} />
+
             {/* VILLAGE MARKET RELATED ROUTES */}
             <Route path="e-market" element={<EMarket />} />
             <Route path="cart" element={<Cart />} />
@@ -173,16 +184,16 @@ function App() {
             </Route>
 
             {/* landing page of medical */}
-            <Route path="medi" element={<Medical />} />
+            <Route path="medical" element={<Medical />} />
+            <Route path="addAppointment" element={<AddAppointment />} />
 
             {/* Admin dashboard routes */}
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
-              <Route path="manageEvents" element={<ManageEvents />} />
-              <Route path="development" element={<DevelopmentManage />} />
-              <Route path="market" element={<MarketManagement />} />
               <Route path="add-events" element={<AddEvents />} />
+              <Route path="manageEvents" element={<ManageEvents />} />
+              <Route path="market" element={<MarketManagement />} />
               <Route path="add-review" element={<AddReview />} />
               <Route path="medical" element={<AddAppointment />} />
               <Route path="addcause" element={<AddCause />} />
@@ -191,6 +202,7 @@ function App() {
               <Route path="paymentcauses" element={<AllDonarPayment />} />
               <Route path="donation" element={<Donations />} />
               <Route path="development" element={<DevelopmentDashboard />} />
+              <Route path="development" element={<DevelopmentManage />} />
               <Route path="manageDevelopmet" element={<DevelopmentManage />} />
               <Route path="addDevelopment" element={<AddDevelopment />} />
               <Route path="market" element={<MarketManagement />} />
@@ -201,6 +213,7 @@ function App() {
               <Route path="manageNews" element={<ManageNews />} />
               <Route path="paymentcauses" element={<PaymentScreen />} />
             </Route>
+
             {/* NOT FOUND ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

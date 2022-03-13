@@ -17,7 +17,7 @@ const AddCause = () => {
 
   const handleAddCause = (data) => {
         // data.author= user?.name
-        // data.raised= '10'
+        data.raised= '0'
         // data.donars= []
         data.date= new Date().toLocaleDateString()
         dispatch(addAnCuase(data));
@@ -34,14 +34,14 @@ const AddCause = () => {
   };
   // title image description category goal date author
     return (
-      <div className="max-w-5xl flex justify-center items-center mx-auto  mt-[80px]"
+      <div className="flex justify-center items-center mx-auto  mt-[80px]"
       style={{ minHeight: 'calc(100vh - 700px)' }}>
         
         <div className="justify-center items-center min-h-full space-y-10">
         <h3 className='text-center space-y-2'>Add a new Cause</h3>
         <form
           onSubmit={handleSubmit(handleAddCause)}
-          className="space-y-6 mx-auto"
+          className="space-y-6 mt-10 w-full md:w-1/2  mx-auto"
         >
           {/* title */}
         <input

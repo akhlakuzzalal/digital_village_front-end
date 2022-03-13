@@ -1,6 +1,7 @@
 import React from 'react';
 import { BsFillPlayCircleFill } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URI } from '../../../../../api/axios';
 import Rating from '../../../../../Components/Rating';
 
 const VideoCard = ({ video, children }) => {
@@ -12,7 +13,10 @@ const VideoCard = ({ video, children }) => {
         className="space-y-4 cursor-pointer group hover:bg-slate-100 dark:hover:dark-card-bg"
         onClick={() => navigate(`/detailvideo/${video?._id}`)}
       >
-        <video className="w-72 rounded-2xl" src={video?.video?.path}></video>
+        <video
+          className="w-72 rounded-2xl"
+          src={`${BASE_URI}/${video?.video?.path}`}
+        ></video>
         <div className="flex justify-between px-3">
           <div className="space-y-2">
             <h3 className="text-xl">{video?.title}</h3>
