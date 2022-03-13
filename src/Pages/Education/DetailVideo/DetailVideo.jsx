@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BsBookmark } from 'react-icons/bs';
+import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios, { BASE_URI } from '../../../api/axios';
@@ -9,18 +9,50 @@ import Sidebar from './Sidebar/Sidebar';
 
 const DetailVideo = () => {
   const { id } = useParams();
+  const [isFavouritted, setIsFavouritted] = useState(false);
+  const [commentLists, setCommentLists] = useState([]);
 
   const videos = useSelector((state) => state.videos.videos);
   const video = videos.filter((video) => video._id === id)[0];
   const uId = useSelector((state) => state.user.uId);
 
-  const [commentLists, setCommentLists] = useState([]);
-
   const updateComment = (newComment) => {
     setCommentLists([...commentLists, newComment]);
   };
 
+  const data = { uId, videoId: id };
+
+  const handleAddToFavourite = () => {
+    axios.post('/favouriteVideos/add', data).then((response) => {
+      console.log('added to favourite', response.data);
+      if (response?.data?.videoId) {
+        setIsFavouritted(true);
+      } else {
+        alert('failed to add in favourite list');
+      }
+    });
+  };
+
+  const handleRemoveFromFavourite = () => {
+    axios.post('/favouriteVideos/remove', data).then((response) => {
+      console.log('remove from favourite', response.data);
+      if (response?.data?.videoId) {
+        setIsFavouritted(false);
+      } else {
+        alert('failed to remove from favourite list');
+      }
+    });
+  };
+
   useEffect(() => {
+    // get is favouritted or not
+    axios.get(`/favouriteVideos/all/?uId=${uId}`).then((response) => {
+      if (response?.data) {
+        setIsFavouritted(response.data.map((d) => d.videoId._id).includes(id));
+      }
+    });
+
+    // get all comments
     axios.get(`/comment/all/?id=${id}`).then((response) => {
       if (response.data.success) {
         setCommentLists(response.data.comments);
@@ -28,7 +60,7 @@ const DetailVideo = () => {
         alert('Failed to get video Info');
       }
     });
-  }, [id]);
+  }, [uId, isFavouritted, id]);
 
   return (
     <div
@@ -68,7 +100,19 @@ const DetailVideo = () => {
                 </div>
                 <div className="flex items-center space-x-6 mr-20 dark:text-white">
                   <LikeDislikes video={video} videoId={id} uId={uId} />
-                  <BsBookmark size={30} className="cursor-pointer" />
+                  {isFavouritted ? (
+                    <BsBookmarkFill
+                      className="cursor-pointer"
+                      size={30}
+                      onClick={handleRemoveFromFavourite}
+                    />
+                  ) : (
+                    <BsBookmark
+                      size={30}
+                      onClick={handleAddToFavourite}
+                      className="cursor-pointer"
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -77,6 +121,15 @@ const DetailVideo = () => {
               <p>{video?.about}</p>
             </div>
           </div>
+
+          {/* comment section */}
+          <div className="md:w-5/6">
+            <Comments
+              postId={id}
+              updateComment={updateComment}
+              commentLists={commentLists}
+            />
+          </div>
         </div>
 
         {/* sidebar */}
@@ -84,14 +137,6 @@ const DetailVideo = () => {
           <h3 className="my-4">Related videos</h3>
           <Sidebar />
         </div>
-      </div>
-      {/* comment section */}
-      <div className="md:w-4/6">
-        <Comments
-          postId={id}
-          updateComment={updateComment}
-          commentLists={commentLists}
-        />
       </div>
     </div>
   );

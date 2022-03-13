@@ -45,7 +45,6 @@ const LikeDislikes = ({ video, videoId, commentId, uId }) => {
     });
 
     axios.post('/videoDisLike/getAll', data).then((response) => {
-      console.log('get all video dislike', response.data);
       if (response.data.success) {
         //How many likes does this video or comment have
         setDislikes(response.data.videoDisLikes.length);
