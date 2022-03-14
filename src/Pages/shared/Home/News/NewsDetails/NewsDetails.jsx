@@ -38,8 +38,6 @@ const NewsDetails = () => {
     <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <div className="grid grid-cols-1 md:grid-cols-4 mx-auto md:mx-10">
         <div className=" col-span-3 mx-10 bg-white rounded-lg  pb-10    dark:bg-gray-800 dark:border-gray-700">
-          <h3 className="text-xl md:text-4xl py-5">{result[0]?.title}</h3>
-
           <hr />
           <br />
 
@@ -51,20 +49,25 @@ const NewsDetails = () => {
             />
           </a>
           <div className=" border-b-4 border-black pb-24">
-            <a href="/#">
-              {/* <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{result[0]?.title}</h5> */}
-            </a>
-            <p className=" font-normal text-gray-700 dark:text-gray-400 text-justify md:mx-10 ">
-              {result[0]?.description}{' '}
+            <p className=" mt-5">
+              Publish Date:
+              <span className="text-red-600 mr-5 md:mr-5">
+                {' '}
+                {result[0]?.date}
+              </span>
+              <span>
+                {' '}
+                Publish Time:
+                <span className="text-red-600"> {result[0]?.time}</span>
+              </span>
             </p>
 
-            <p className="md:mx-10 mt-5">
-              Publish Date:
-              <span className="text-red-600"> {result[0]?.date}</span>
-            </p>
-            <p className="md:mx-10">
-              Publish Time:
-              <span className="text-red-600"> {result[0]?.time}</span>
+            <h3 className="text-base md:text-4xl text-justify md:text-center mt-3   md:mt-5">
+              {result[0]?.title}...
+            </h3>
+
+            <p className=" font-normal text-gray-700 dark:text-gray-400 text-justify md:pt-8 ">
+              {result[0]?.description}{' '}
             </p>
           </div>
 
@@ -100,8 +103,7 @@ const NewsDetails = () => {
           <p className="text-gray-400 hover:text-blue-600">LATEST ARTICLES</p>
           {news.map((data) => (
             <li className="text-sm p-2 my-3 border hover:bg-gray-100 hover:opacity-90 dark:text-white">
-              The Impact of Family Structure on the Health of Children: Effects
-              of Divorce
+              {data?.title}
             </li>
           ))}
 

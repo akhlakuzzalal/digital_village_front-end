@@ -17,13 +17,13 @@ const Reviews = () => {
     dispatch(fetchAllReview());
   }, []);
   return (
-    <div className="bg-gray-50 dark:bg-dark_bg">
-      <div className="pt-[100px]">
-        <p className="text-center">TESTIMONIALS</p>
-        <h1 className=" text-2xl  text-center font-bold py-2   text-primary">
+    <div className="bg-gray-50 dark:bg-dark_bg mb-8">
+      <div className="md:pt-[50px]">
+        <p className="text-center md:text-2xl text-blue-600 font-bolder">TESTIMONIALS</p>
+        <h1 className=" text-xl md:text-2xl  text-center font-bold py-2   text-primary">
           WHAT PEOPLE SAY ABOUT US
         </h1>
-        <p className="px-[100px] text-center">
+        <p className="px-10 md:px-[100px] text-justify md:text-center">
           Lorem Ipsum has been the industry's standard dummy text ever since the
           1500s, when an unknown printer took
         </p>

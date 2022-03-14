@@ -8,8 +8,8 @@ const Review = ({ reviews }) => {
   console.log(reviews);
 
   return (
-    <div className="">
-      <div className="w-16 md:w-28 relative top-9 md:top-44 md:right-11 ">
+    <div className="md:pb-12">
+      <div className="w-16 md:w-28 relative top-2 md:top-10 md:right-11 ">
         <img
           className="w-full rounded-full border-4 border-slate-200"
           src={client}
