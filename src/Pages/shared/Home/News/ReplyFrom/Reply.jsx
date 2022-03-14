@@ -59,7 +59,7 @@ const Reply = () => {
             onKeyUp={() => {
               trigger("name");
             }}
-            placeholder="User Name"
+            placeholder="Write Your Name"
           />
           {errors.name && (
             <small className="text-danger">{errors.name.message}</small>
@@ -69,6 +69,7 @@ const Reply = () => {
           <input
             className=" w-full mb-5 lg:mb-0 bg-gray-100 px-20 rounded py-5 "
             type="email"
+            placeholder='Write Your Email'
             {...register('email', { required: "Email is Required" ,
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -84,13 +85,12 @@ const Reply = () => {
           <div className=" col-span-2">
             <textarea
               placeholder="Please Write Your Comment"
-              className=" w-full bg-gray-100 py-8 px-5"
+              className=" w-full rounded-sm bg-gray-100 py-8 px-5"
               {...register('comment', { required: "Comment is Required" })}
               onKeyUp={() => {
                 trigger("comment");
               }}
-              className="w-full rounded-sm"
-              placeholder="write your comment"
+            
          
             />
             {errors.comment && (

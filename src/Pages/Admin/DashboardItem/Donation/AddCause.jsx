@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch} from 'react-redux';
+import swal from 'sweetalert';
 import { addAnCuase } from '../../../../redux/slices/Donations/donationSlice';
 
 const AddCause = () => {
@@ -16,12 +17,18 @@ const AddCause = () => {
 
   const handleAddCause = (data) => {
         // data.author= user?.name
-        // data.raised= '10'
+        data.raised= '0'
         // data.donars= []
         data.date= new Date().toLocaleDateString()
         dispatch(addAnCuase(data));
-        alert('successfully added');
-        // swal
+        swal({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your cause has been saved',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+    
         reset();
 
   };
@@ -30,11 +37,11 @@ const AddCause = () => {
       <div className="flex justify-center items-center mx-auto  mt-[80px]"
       style={{ minHeight: 'calc(100vh - 700px)' }}>
         
-        <div className="justify-center items-center min-h-full  space-y-10">
+        <div className="justify-center items-center min-h-full space-y-10">
         <h3 className='text-center space-y-2'>Add a new Cause</h3>
         <form
           onSubmit={handleSubmit(handleAddCause)}
-          className="space-y-6 mx-auto"
+          className="space-y-6 mt-10 w-full md:w-1/2  mx-auto"
         >
           {/* title */}
         <input
@@ -50,7 +57,7 @@ const AddCause = () => {
           placeholder="Add a Title"
         />
         {errors.title && (
-          <small className="text-danger">{errors.title.message}</small>
+          <p className="text-danger">{errors.title.message}</p>
         )}
         {/* description */}
         <textarea
@@ -73,7 +80,7 @@ const AddCause = () => {
         }}
         />
         {errors.description && (
-          <small className="text-danger">{errors.description.message}</small>
+          <p className="text-danger">{errors.description.message}</p>
         )}
         {/* image */}
         <input
@@ -86,9 +93,8 @@ const AddCause = () => {
           placeholder="Add a image Link"
         />
         {errors.image && (
-          <small className="text-danger">{errors.image.message}</small>
+          <p className="text-danger mb-2">{errors.image.message}</p>
         )}
-        <div className="flex items-center justify-center">
           {/* category */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
@@ -100,15 +106,13 @@ const AddCause = () => {
             placeholder="Category"
           />
           {errors.category && (
-            <small className="text-danger">{errors.category.message}</small>
+            <p className="text-danger">{errors.category.message}</p>
           )}
         {/* <select {...register("gender")}>
         <option value="female">female</option>
         <option value="male">male</option>
         <option value="other">other</option>
       </select> */}
-        </div>
-        <div className="flex items-center justify-center">
           {/* goal */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
@@ -137,9 +141,8 @@ const AddCause = () => {
                 />
                 
                 {errors.goal && (
-                  <small className="text-danger mb-2">{errors.goal.message}</small>
+                  <p className="text-danger mb-2">{errors.goal.message}</p>
                 )}
-        </div>
         <input
           className="bg-primary hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
           type="submit"

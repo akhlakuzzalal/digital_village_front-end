@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Chat from './Components/ChattingApp/Chat/Chat';
+import Join from './Components/ChattingApp/Join/Join';
 import ScrollToTop from './Components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
 import AdminDashboard from './Pages/Admin/AdminDashboard';
@@ -9,7 +11,8 @@ import DevelopmentDashboard from './Pages/Admin/DashboardItem/Development/Develo
 import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage/DevelopmentManage';
 import AddCause from './Pages/Admin/DashboardItem/Donation/AddCause';
 import AllCauses from './Pages/Admin/DashboardItem/Donation/AllCauses';
-import AllDonarPayment from './Pages/Admin/DashboardItem/Donation/AllDonarPayment';
+import DonarPaymente from './Pages/Admin/DashboardItem/Donation/DonarPaymente';
+import ManageAllPaymente from './Pages/Admin/DashboardItem/Donation/ManageAllPaymente';
 import UpdateCause from './Pages/Admin/DashboardItem/Donation/UpdateCause';
 import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/DashboardItem/Market/MarketManagement';
@@ -48,7 +51,6 @@ import MarketDashboard from './Pages/EMarket/MarketDashboard';
 import AddEvents from './Pages/Events/AddEvents/AddEvents';
 import AllEvents from './Pages/Events/AllEvents/AllEvents';
 import ArchivedEvents from './Pages/Events/ArchivedEvents/ArchivedEvents';
-import EventBooking from './Pages/Events/EventBooking/EventBooking';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import ManageEvents from './Pages/Events/ManageEvents/ManageEvents';
@@ -73,6 +75,7 @@ import Home from './Pages/shared/Home/Home';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import AddReview from './Pages/shared/Home/Reviews/AddReview/AddReview';
 import NotFound from './Pages/shared/NotFound/NotFound';
+import SocialHome from './Pages/SocialMedia/Home/SocialHome';
 import Profile from './Pages/User/DashboardComponent/Profile/Profile';
 import Review from './Pages/User/DashboardComponent/Review/Review';
 import UserDashboard from './Pages/User/UserDashboard';
@@ -111,10 +114,17 @@ function App() {
               <Route path="profile" element={<Profile />} />
               <Route path="my-event-booking" element={<MyBookedEvents />} />
               <Route path="review" element={<Review />} />
+              <Route path="donarpaymente" element={<DonarPaymente />} />
             </Route>
+            
             {/* EDUCATION RELATED ROUTES */}
             <Route path="education" element={<Education />} />
             <Route path="registerTeacher" element={<RegisterTeacher />} />
+            
+            {/* education related routes */}
+            <Route path="chat" element={<Chat />} />
+            <Route path="join" element={<Join />} />
+
             {/* routes for teacher */}
             <Route path="teacher" element={<Teacher />}>
               <Route path="myblogs" element={<Myblogs />} />
@@ -153,12 +163,7 @@ function App() {
               <Route path="upcoming-events" element={<UpcomingEvents />} />
               <Route path="archived-events" element={<ArchivedEvents />} />
             </Route>
-            <Route>
-              <Route
-                path="/event-booking/:eventBookingId"
-                element={<EventBooking />}
-              />
-            </Route>
+            <Route></Route>
             <Route path="eventDetails/:id" element={<EventDetails />} />
 
             {/* DEVELOPMENT RELATED ROUTES */}
@@ -186,7 +191,7 @@ function App() {
             <Route path="medical" element={<Medical />} />
 
             {/* Admin dashboard routes */}
-            <Route path="admin" element={<AdminDashboard />}>
+              <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
               <Route path="add-events" element={<AddEvents />} />
@@ -196,8 +201,7 @@ function App() {
               <Route path="addcause" element={<AddCause />} />
               <Route path="allcauses" element={<AllCauses />} />
               <Route path="updatecause/:id" element={<UpdateCause />} />
-              <Route path="paymentcauses" element={<AllDonarPayment />} />
-              <Route path="donation" element={<Donations />} />
+              <Route path="allpaymente" element={<ManageAllPaymente />} />
               <Route path="development" element={<DevelopmentDashboard />} />
               <Route path="development" element={<DevelopmentManage />} />
               <Route path="manageDevelopmet" element={<DevelopmentManage />} />
@@ -210,6 +214,9 @@ function App() {
               <Route path="manageNews" element={<ManageNews />} />
               <Route path="addAppointment" element={<AddAppointment />} />
             </Route>
+
+            {/* Social Media Routes */}
+            <Route path="social" element={<SocialHome />} />
 
             {/* NOT FOUND ROUTE */}
             <Route path="*" element={<NotFound />} />

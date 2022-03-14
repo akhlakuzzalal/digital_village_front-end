@@ -2,18 +2,19 @@ import React from 'react';
 import { FaFacebook, FaTwitterSquare } from 'react-icons/fa';
 import { GrInstagram } from 'react-icons/gr';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import AppleStore from '../../../../assets/footer/appstore.png';
 import playStore from '../../../../assets/footer/playstore.png';
 import logo from '../../../../assets/logo.png';
 const Footer = () => {
-  return (
+  const location = useLocation();
+  return location.pathname.includes('/social') ? null : (
     <footer className="pt-6">
-      <div className="w-5/6 md:w-3/4 text-center py-20 bg-info bg-opacity-20 text-black mx-auto -mb-32">
+      <div className="w-5/6 md:w-3/4 text-center py-4 md:py-20 bg-info bg-opacity-20 text-black mx-auto -mb-32">
         <div className="space-y-6 px-3">
           {/* subscribe text */}
           <div className="space-y-6">
-            <h3 className="text-secondary">SubsCribe to Digital Village</h3>
+            <h3 className="text-secondary text-base md:text-3xl">SubsCribe to Digital Village</h3>
             <p className="text-sm w-2/3 mx-auto hidden md:block">
               Need update about Everything of our village. Don't worry we Will
               reach out to you. Just Subsribe to our weekly Newsletter.

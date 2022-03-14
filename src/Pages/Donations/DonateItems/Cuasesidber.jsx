@@ -4,7 +4,6 @@ import { fetchAllCuases } from '../../../redux/slices/Donations/donationSlice';
 import Cardcausesidber from './Cardcausesidber';
 
 const Cuasesidber = () => {
-
   const causes = useSelector((state) => state.donation.causes);
   // console.log(causes);
   
