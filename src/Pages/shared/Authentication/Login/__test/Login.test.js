@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { AuthProvider } from '../../../../../context/AuthProvider';
-import initializeAuthentication from '../../../../../Firebase/Firebase.init';
+// import initializeAuthentication from '../../../../../Firebase/Firebase.init';
 import { persistor, store } from '../../../../../redux/store';
 import Login from '../Login';
 
@@ -21,10 +21,10 @@ const MockLogin = () => (
 );
 
 describe('Firebase Utile Test suite', () => {
-  beforeAll(async () => {
-    jest.setTimeout(10000);
-    initializeAuthentication();
-  });
+  // beforeAll(async () => {
+  //   jest.setTimeout(10000);
+  //   initializeAuthentication();
+  // });
 
   it('should be able to type an email', () => {
     render(<MockLogin />, () => {

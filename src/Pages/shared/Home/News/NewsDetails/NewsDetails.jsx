@@ -6,15 +6,30 @@ import 'swiper/css';
 import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import axios from '../../../../../api/axios';
-import Reply from '../ReplyFrom/Reply';
+import Comments from '../../../../Education/DetailVideo/Comments/Comments';
 
 const NewsDetails = () => {
   const { id } = useParams();
   const [news, setNews] = useState([]);
 
+  const [commentLists, setCommentLists] = useState([]);
+
+  const updateComment = (newComment) => {
+    setCommentLists([...commentLists, newComment]);
+  };
+
   useEffect(() => {
     axios.get('/news/allNews').then((response) => setNews(response.data));
-  }, []);
+
+    // get all comments
+    axios.get(`/comment/all/?id=${id}`).then((response) => {
+      if (response.data.success) {
+        setCommentLists(response.data.comments);
+      } else {
+        alert('Failed to get blog Info');
+      }
+    });
+  }, [id]);
 
   const result = news.filter((data) => data?._id == id);
   console.log(result);
@@ -24,11 +39,10 @@ const NewsDetails = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 mx-auto md:mx-10">
         <div className=" col-span-3 mx-10 bg-white rounded-lg  pb-10    dark:bg-gray-800 dark:border-gray-700">
           <h3 className=" py-5">{result[0]?.title}</h3>
-
           <hr />
           <br />
 
-          <a href="#">
+          <a href="/#">
             <img
               className="rounded-t-lg w-full mx-auto"
               src={result[0]?.image}
@@ -36,7 +50,7 @@ const NewsDetails = () => {
             />
           </a>
           <div className=" border-b-4 border-black pb-24">
-            <a href="#">
+            <a href="/#">
               {/* <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{result[0]?.title}</h5> */}
             </a>
             <p className=" font-normal text-gray-700 dark:text-gray-400 text-justify mx-10 ">
@@ -69,7 +83,11 @@ const NewsDetails = () => {
           </div>
 
           <div>
-            <Reply />
+            <Comments
+              postId={id}
+              updateComment={updateComment}
+              commentLists={commentLists}
+            />
           </div>
         </div>
 
