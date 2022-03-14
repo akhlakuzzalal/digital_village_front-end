@@ -8,7 +8,7 @@ import DecidingCard from './DecidingCard/DecidingCard';
 const TeacherOrStudent = () => {
   return (
     <div>
-      <h1 className="text-center text-3xl md:text-6xl lg:text-6xl py-5 ">
+      <h1 className="text-center text-xl md:text-6xl lg:text-6xl py-5">
         Choose Your Path
       </h1>
       <div className="md:flex justify-center items-center  flex-wrap">

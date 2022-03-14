@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Transition from '../../../../../Components/Transition';
 import UserAvatar from './../../../../../../assets/user-avatar-32.png';
-import Transition from './../../utils/Transition';
 
 const UserMenu = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -24,9 +23,6 @@ const UserMenu = () => {
     document.addEventListener('click', clickHandler);
     return () => document.removeEventListener('click', clickHandler);
   });
-  const user = useSelector((state) => state.user.user);
-  const isUser = user.name.includes('user');
-  console.log(user, isUser, 'check');
 
   // close if the esc key is pressed
   useEffect(() => {

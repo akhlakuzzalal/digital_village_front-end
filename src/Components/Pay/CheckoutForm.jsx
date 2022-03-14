@@ -4,6 +4,7 @@ import {
   useStripe,
 } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import { BASE_URI } from '../../api/axios';
 
 const CheckoutForm = ({ returnPage }) => {
   const stripe = useStripe();
@@ -58,7 +59,7 @@ const CheckoutForm = ({ returnPage }) => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `https://digital-village.herokuapp.com/${returnPage}`,
+        return_url: `${BASE_URI}/${returnPage}`,
       },
     });
 

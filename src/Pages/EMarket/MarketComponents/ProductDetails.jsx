@@ -27,21 +27,21 @@ const ProductDetails = () => {
             <p className="text-gray-600">{description}</p>
             <button
               onClick={() => handleAddCart(id, name, img, price)}
-              className="btn bg-primary px-4 py-2"
+              className="btn bg-primary px-4 py-2 my-2"
             >
-              Add to cart
+             <span className='text-white font-bolder '> Add to cart</span>
             </button>
           </div>
         </div>
       </div>
       {/* Rating & Review of a product */}
       <div className="w-10/12 mx-auto mt-6">
-        <h6 className="mb-10">Ratings and reviews of {name}</h6>
+        <h6 className="md:mb-10 text-blue-600 text-base md:text-xl">Ratings and reviews of {name}</h6>
         {/* Rating */}
-        <h6 className="mt-6 ml-0 md:ml-10 inline border-b-2 border-gray-700">
+        <h6 className="md:mt-6 ml-0 md:ml-10 inline border-b-2 border-gray-700">
           Rating
         </h6>
-        <div className="grid grid-cols-1 md:grid-cols-5 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-5 mt-2 md:mt-6">
           <div className="col-span-2 flex flex-col items-center justify-center">
             <h1>
               {rating}/ <span className="text-gray-600">5</span>{' '}

@@ -12,6 +12,7 @@ const Reply = () => {
         control,
         reset,
         formState: { errors },
+        trigger,
       } = useForm();
 
         const handleAddComment = (data) => {
@@ -53,27 +54,48 @@ const Reply = () => {
         >
           <input
             className=" w-full  bg-gray-100 px-20 py-5 rounded mb-5 lg:mb-0"
-            {...register('name', { required: true, maxLength: 20 })}
-            placeholder="Your Name"
+            {...register('name', { required: "Name is Required" })}
+          
+            onKeyUp={() => {
+              trigger("name");
+            }}
+            placeholder="Write Your Name"
           />
+          {errors.name && (
+            <small className="text-danger">{errors.name.message}</small>
+          )}
 
 
           <input
             className=" w-full mb-5 lg:mb-0 bg-gray-100 px-20 rounded py-5 "
             type="email"
-            {...register('email')}
-            placeholder="Enter Your Email"
+            placeholder='Write Your Email'
+            {...register('email', { required: "Email is Required" ,
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "Invalid email address",
+            }})}
+            onKeyUp={() => {
+              trigger("email");
+            }}
           />
-          
-
-
-
+          {errors.email && (
+            <small className="text-danger">{errors.email.message}</small>
+          )}
           <div className=" col-span-2">
             <textarea
               placeholder="Please Write Your Comment"
-              className=" w-full bg-gray-100 py-8 px-5"
-              {...register('comment')}
+              className=" w-full rounded-sm bg-gray-100 py-8 px-5"
+              {...register('comment', { required: "Comment is Required" })}
+              onKeyUp={() => {
+                trigger("comment");
+              }}
+            
+         
             />
+            {errors.comment && (
+              <small className="text-danger">{errors.comment.message}</small>
+            )}
           </div>
 
 

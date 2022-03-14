@@ -17,7 +17,7 @@ const Reviews = () => {
     dispatch(fetchAllReview());
   }, []);
   return (
-    <div className="bg-gray-50 dark:bg-black">
+    <div className="bg-gray-50 dark:bg-dark_bg">
       <div className="pt-[100px]">
         <p className="text-center">TESTIMONIALS</p>
         <h1 className=" text-2xl  text-center font-bold py-2   text-primary">

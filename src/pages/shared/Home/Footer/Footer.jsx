@@ -1,12 +1,14 @@
 import React from 'react';
 import { FaFacebook, FaTwitterSquare } from 'react-icons/fa';
 import { GrInstagram } from 'react-icons/gr';
+// import MessengerCustomerChat from 'react-messenger-customer-chat';
+import { Link, useLocation } from 'react-router-dom';
 import AppleStore from '../../../../assets/footer/appstore.png';
 import playStore from '../../../../assets/footer/playstore.png';
 import logo from '../../../../assets/logo.png';
-
 const Footer = () => {
-  return (
+  const location = useLocation();
+  return location.pathname.includes('/social') ? null : (
     <footer className="pt-6">
       <div className="w-5/6 md:w-3/4 text-center py-20 bg-info bg-opacity-20 text-black mx-auto -mb-32">
         <div className="space-y-6 px-3">
@@ -37,7 +39,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="py-20 px-6 bg-secondary bg-opacity-30 pt-48">
+      <div className="py-20 px-6 bg-indigo-300 bg-opacity-30 pt-48">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
             <div className="mb-5 ">
@@ -66,10 +68,21 @@ const Footer = () => {
             <div className="lg:px-20 lg:pt-20">
               <h4 className="text-lg mb-3 font-bold">Quick Links</h4>
               <ul>
-                <li className="mb-3">Home</li>
-                <li className="mb-3">About Us</li>
-                <li className="mb-3">Services</li>
-                <li className="mb-3">Contact Us</li>
+                <Link to="/">
+                  <li className="mb-3">Home</li>
+                </Link>
+                <Link to="/about">
+                  {' '}
+                  <li className="mb-3">About Us</li>
+                </Link>
+                <Link to="/service">
+                  {' '}
+                  <li className="mb-3">Services</li>
+                </Link>
+                <Link to="/contact">
+                  {' '}
+                  <li className="mb-3">Contact Us</li>
+                </Link>
               </ul>
             </div>
             <div className="lg:pt-20">
@@ -100,10 +113,12 @@ const Footer = () => {
             </h3>
           </div>
           <div className="ml-auto flex">
-            <FaFacebook
-              className="h-8 w-8 hover:scale-110 hover:text-primary"
-              aria-hidden="true"
-            />
+            <Link to={{ pathname: 'https://web.facebook.com' }}>
+              <FaFacebook
+                className="h-8 w-8 hover:scale-110 hover:text-primary"
+                aria-hidden="true"
+              />
+            </Link>
             <GrInstagram
               className="h-8 w-8 hover:scale-110 hover:text-primary mx-3"
               aria-hidden="true"
@@ -112,6 +127,11 @@ const Footer = () => {
               className="h-8 w-8 hover:scale-110 hover:text-primary mx-3"
               aria-hidden="true"
             />
+            {/* <MessengerCustomerChat
+              pageId="104685378841819"
+              appId="720117475814303"
+            /> */}
+            ,
           </div>
         </div>
       </div>

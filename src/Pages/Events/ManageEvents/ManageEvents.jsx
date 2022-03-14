@@ -15,11 +15,11 @@ const ManageEvents = () => {
 
   return (
     <div>
-      <h1 className="lg:ml-52 mt-44 flex space-x-3">
+      <h1 className="flex space-x-3 text-xl ml-5 mt-10 lg:ml-[150px]">
         Delete Exixting Events{' '}
         <AiFillDelete color="red" className="animate-bounce mt-2" />
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8 pt-20 pb-20 lg:mx-[210px] mx-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 py-20 lg:mx-[150px] mx-5">
         {allEvent.map((event) => (
           <ManageEventsCard
             key={event._id}

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const RegularProduct = ({ product, handleAddToCart }) => {
   const { name, img, price, _id } = product;
   return (
-    <div className="group relative max-w-sm rounded-xl overflow-hidden shadow-md hover:scale-105 duration-500 dark:bg-white">
+    <div className="group relative max-w- mx-5 md:mx-0  rounded-xl overflow-hidden shadow-md hover:scale-105 duration-500 dark:bg-white">
       <div className="absolute invisible  top-2/4 left-2 group-hover:visible transition-all ease-in duration-100">
         <BsFillCartPlusFill
           onClick={() => handleAddToCart(product)}

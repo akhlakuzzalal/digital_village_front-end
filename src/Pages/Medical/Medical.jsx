@@ -6,6 +6,7 @@ import Services from './Services/Services';
 const Medical = () => {
   return (
     <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
+      
       <Banner />
       <Features />
 

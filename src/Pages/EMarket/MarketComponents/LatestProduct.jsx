@@ -7,7 +7,7 @@ const LatestProduct = ({ lastProduct }) => {
   const { handleAddCart } = useCart();
   return (
     <div
-      className="mt-6 shadow-md rounded-lg overflow-hidden p-4 md:p-0 dark:dark-card-bg"
+      className="md:mt-6 mx-2 shadow-md rounded-lg overflow-hidden p-4 md:p-0 dark:dark-card-bg"
       style={{ height: '88%' }}
     >
       <div
@@ -26,7 +26,7 @@ const LatestProduct = ({ lastProduct }) => {
           onClick={() => handleAddCart(id, name, img, price)}
           className="px-8 rounded-full py-2 bg-secondary"
         >
-          Add to Cart
+         <span className='text-white'> Add to Cart</span>
         </button>
       </div>
     </div>

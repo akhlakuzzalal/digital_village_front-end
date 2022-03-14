@@ -22,7 +22,7 @@ export default function AddToCart({ product }) {
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*body*/}
-                <div className="relative p-6 flex-auto">
+                <div className="relative mx-6 py-6 flex-auto">
                   <div className="grid grid-cols-1 md:grid-cols-2">
                     <img className="w-full h-4/5" src={img} alt="" />
                     <div>
@@ -38,7 +38,7 @@ export default function AddToCart({ product }) {
                           className="px-8 py-2 bg-secondary rounded-full"
                           onClick={() => handleAddCart(_id, name, img, price)}
                         >
-                          Add to cart
+                         <span className='text-white font-bolder'> Add to cart</span>
                         </button>
                         <GiSelfLove
                           className="cursor-pointer"

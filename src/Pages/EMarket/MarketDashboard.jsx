@@ -4,7 +4,6 @@ import { RiDashboard2Line } from 'react-icons/ri';
 import { SiHomebridge } from 'react-icons/si';
 import { Outlet, useLocation } from 'react-router-dom';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
-import Header from '../Education/Teacher/Dashboard/partials/Header';
 import MyOrder from './MarketComponents/DashboardItems/MyOrder';
 const links = [
   {
@@ -36,17 +35,11 @@ const MarketDashboard = () => {
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
       {/* Sidebar */}
-      <NewSidebar
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-        showText={showText}
-        setShowText={setShowText}
-        links={links}
-      />
+      <NewSidebar links={links} />
 
       {/* contents */}
       <div className="flex-1">
-        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
         {initial ? <MyOrder /> : <Outlet />}
       </div>
     </div>
