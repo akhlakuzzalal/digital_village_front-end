@@ -5,7 +5,10 @@ const ManageAllPaymente = () => {
     return (
         <div className="flex flex-col my-3">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <h3 className='text-center space-y-2 text-sm md:text-xl  lg:text-2xl'>admin see all Paymente fainal</h3>
+        <h3 className="text-center text-gray-800 text-sm md:text-lg lg:text-2xl">All Causes Paymente</h3>
+        <p className="text-center text-gray-600 font-normal text-sm lg:text-lg">
+        Admin can any cause dynamically delete and update.
+        </p>
         <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
         <div className="rounded-lg">
             <table className="max-w-screen-xl mx-auto">
