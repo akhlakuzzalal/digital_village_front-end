@@ -23,7 +23,7 @@ const DetailVideo = () => {
   const data = { uId, videoId: id };
 
   const handleAddToFavourite = () => {
-    axios.post('/favouriteVideos/add', data).then((response) => {
+    axios.post('/favourites/add', data).then((response) => {
       console.log('added to favourite', response.data);
       if (response?.data?.videoId) {
         setIsFavouritted(true);
@@ -34,7 +34,7 @@ const DetailVideo = () => {
   };
 
   const handleRemoveFromFavourite = () => {
-    axios.post('/favouriteVideos/remove', data).then((response) => {
+    axios.post('/favourites/remove', data).then((response) => {
       console.log('remove from favourite', response.data);
       if (response?.data?.videoId) {
         setIsFavouritted(false);
@@ -46,7 +46,7 @@ const DetailVideo = () => {
 
   useEffect(() => {
     // get is favouritted or not
-    axios.get(`/favouriteVideos/all/?uId=${uId}`).then((response) => {
+    axios.get(`/favourites/all/?uId=${uId}`).then((response) => {
       if (response?.data) {
         setIsFavouritted(response.data.map((d) => d.videoId._id).includes(id));
       }

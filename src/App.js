@@ -184,7 +184,6 @@ function App() {
 
             {/* landing page of medical */}
             <Route path="medical" element={<Medical />} />
-            <Route path="addAppointment" element={<AddAppointment />} />
 
             {/* Admin dashboard routes */}
             <Route path="admin" element={<AdminDashboard />}>
@@ -194,7 +193,6 @@ function App() {
               <Route path="manageEvents" element={<ManageEvents />} />
               <Route path="market" element={<MarketManagement />} />
               <Route path="add-review" element={<AddReview />} />
-              <Route path="medical" element={<AddAppointment />} />
               <Route path="addcause" element={<AddCause />} />
               <Route path="allcauses" element={<AllCauses />} />
               <Route path="updatecause/:id" element={<UpdateCause />} />
@@ -210,6 +208,7 @@ function App() {
               <Route path="newsDashboard" element={<NewsDashboard />} />
               <Route path="addNews" element={<AddNews />} />
               <Route path="manageNews" element={<ManageNews />} />
+              <Route path="addAppointment" element={<AddAppointment />} />
             </Route>
 
             {/* NOT FOUND ROUTE */}
