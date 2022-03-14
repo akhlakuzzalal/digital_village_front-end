@@ -2,24 +2,28 @@ import React from 'react';
 import { FaDonate, FaFilePdf, FaHandsHelping } from 'react-icons/fa';
 import { FcApproval} from 'react-icons/fc';
 
-const AllDonarPayment = () => {
+const DonarPaymente = () => {
     return (
-        <section className="my-16 max-w-6xl mx-auto px-3 mt-[80px]"
+        <section className="max-w-6xl mx-auto px-3 mt-[80px]"
         style={{ minHeight: 'calc(100vh - 700px)' }}>
-            <h3 className='text-center space-y-2'>All Donar Payment</h3>
-            <div className="col-span-3 flex flex-col space-y-2">
-
-                            <div  className="grid grid-cols-1 lg:grid-cols-4 gap-3 bg-white rounded-lg shadow-xl p-3 box-border">
+            <h3 className='text-center space-y-6 text-sm md:text-xl lg:-2xl ml-5 mt-24'>sigle user Donar Payment</h3>
+            <div className="col-span-3 flex flex-col space-y-2 ml-16 lg:ml-10 md:ml-20">
+                <div  className="grid grid-cols-1 lg:grid-cols-4 gap-3 bg-white rounded-lg shadow-xl p-3 box-border">
                                 {/* {/_ image _/} */}
                                 <div className="col-span-1">
                                     <img className="w-full h-full rounded-lg" src="http://primehostingindia.com/templatemonster/react/aidup/assets/img/donations/5.jpg" alt='Mercedes-benz B Class 170' />
                                 </div>
+                                
                                 {/* {/_ details _/} */}
                                 <div className="col-span-2">
-                                    <h1 className="text-gray-700 text-lg font-primary">Need Help For Treatment</h1>
-                                    <p className="text-gray-500 text-sm">Most forms of charity are concerned with providing basic necessities such as food, water, clothing, healthcare and shelter</p>
+                                    
+                                   <p className='text-gray-500 text-sm'>Category:Donation</p>
+                                    <h1 className="text-gray-700 text-sm md:text-lg lg:text-2xl font-primary">Need Help For Treatment</h1>
+                                    <p className="text-gray-500 text-sm">Email: zaman@amin.com</p>
+                                    <p className="text-gray-500 text-sm">date: Mon Mar 14 2022</p>
+                                    
                                     {/* {/_ others info _/} */}
-                                    <div className="flex flex-col lg:flex-row items-start lg:space-x-12 py-4 space-y-4 lg:items-center">
+                                    <div className="flex flex-col lg:flex-row items-start lg:space-x-12 py-4 space-y-4 lg:items-center sm:justify-between">
                                         {/* {/_ status _/} */}
                                         <div className="flex items-center space-x-3">
                                             <div className="flex flex-col">
@@ -48,7 +52,7 @@ const AllDonarPayment = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-span-1 flex items-center lg:justify-end">
+                                <div className="col-span-1 flex items-center lg:justify-between g-4 sm:flex-wrap">
                                     <button className="btn-danger px-2 w-36 mr-auto lg:ml-auto  mt-4 bg-green-200 border border-transparent rounded-md py-2 flex items-center justify-center text-base font-medium text-white hover:bg-3reen-600 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-indigo-500"><FcApproval className='text-red-400 text-2xl'/></button>
                                     <button className="btn-danger w-36 mr-auto lg:ml-auto  mt-4 bg-green-400 border border-transparent rounded-md py-2 px-1 flex items-center justify-center text-base font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-indigo-500"><FaFilePdf className='text-red-400 text-2xl'/></button>
                                 </div>
@@ -61,4 +65,4 @@ const AllDonarPayment = () => {
     );
 };
 
-export default AllDonarPayment;
+export default DonarPaymente;

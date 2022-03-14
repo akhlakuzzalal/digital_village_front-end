@@ -38,7 +38,7 @@ const UpdateCause = () => {
       style={{ minHeight: 'calc(100vh - 700px)' }}>
         
         <div className="justify-center items-center min-h-full  space-y-10">
-        <h3 className='text-center space-y-2'>Add a new Cause</h3>
+        <h3 className='text-center space-y-2 text-sm md:text-xl  lg:text-2xl'>Update a new Cause</h3>
         <form
           onSubmit={handleSubmit(handleUpdateCause)}
           className="space-y-6 mt-10 w-full md:w-1/2  mx-auto"

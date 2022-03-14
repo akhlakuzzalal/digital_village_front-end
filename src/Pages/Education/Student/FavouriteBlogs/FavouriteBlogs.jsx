@@ -57,7 +57,6 @@ const FavouriteBlogs = () => {
   return (
     <div className="space-y-6">
       <h3 className="py-6 text-center text-xl md:text-6xl lg:text-6xl mt-3">Favourite Blogs</h3>
-      {/* <article className="flex flex-wrap justify-evenly items-center gap-4"> */}
       <article className="flex flex-wrap gap-4 justify-evenly items-center p-4">
         {blogs.map((blog) => (
           <BlogCard key={blog._id} blog={blog}>

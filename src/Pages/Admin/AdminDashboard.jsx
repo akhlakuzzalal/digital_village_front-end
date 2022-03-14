@@ -56,13 +56,8 @@ const links = [
   {
     name: 'Donation',
     icon: <BiDonateHeart size={30} />,
-    path: '/admin/paymentcauses',
+    path: '/admin/allpaymente',
     nestedPath: [
-      {
-        name: 'All Payment',
-        icon: <FaFistRaised size={30} />,
-        path: '/admin/paymentcauses',
-      },
       {
         name: 'Add a Cause',
         icon: <FcImport size={30} />,
