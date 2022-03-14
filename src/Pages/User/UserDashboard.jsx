@@ -19,7 +19,7 @@ const links = [
   {
     name: 'Donation',
     icon: <RiDashboard2Line size={30} />,
-    path: '/',
+    path: '/userdashboard/donarpaymente',
   },
   {
     name: 'Review',

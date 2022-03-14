@@ -11,8 +11,8 @@ import DevelopmentDashboard from './Pages/Admin/DashboardItem/Development/Develo
 import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage/DevelopmentManage';
 import AddCause from './Pages/Admin/DashboardItem/Donation/AddCause';
 import AllCauses from './Pages/Admin/DashboardItem/Donation/AllCauses';
-import AllDonarPayment from './Pages/Admin/DashboardItem/Donation/AllDonarPayment';
-import PaymentScreen from './Pages/Admin/DashboardItem/Donation/PaymentScreen';
+import DonarPaymente from './Pages/Admin/DashboardItem/Donation/DonarPaymente';
+import ManageAllPaymente from './Pages/Admin/DashboardItem/Donation/ManageAllPaymente';
 import UpdateCause from './Pages/Admin/DashboardItem/Donation/UpdateCause';
 import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/DashboardItem/Market/MarketManagement';
@@ -114,7 +114,9 @@ function App() {
               <Route path="profile" element={<Profile />} />
               <Route path="my-event-booking" element={<MyBookedEvents />} />
               <Route path="review" element={<Review />} />
+              <Route path="donarpaymente" element={<DonarPaymente />} />
             </Route>
+            
             {/* EDUCATION RELATED ROUTES */}
             <Route path="education" element={<Education />} />
             <Route path="registerTeacher" element={<RegisterTeacher />} />
@@ -201,8 +203,7 @@ function App() {
               <Route path="addcause" element={<AddCause />} />
               <Route path="allcauses" element={<AllCauses />} />
               <Route path="updatecause/:id" element={<UpdateCause />} />
-              <Route path="paymentcauses" element={<AllDonarPayment />} />
-              <Route path="donation" element={<Donations />} />
+              <Route path="allpaymente" element={<ManageAllPaymente />} />
               <Route path="development" element={<DevelopmentDashboard />} />
               <Route path="development" element={<DevelopmentManage />} />
               <Route path="manageDevelopmet" element={<DevelopmentManage />} />
@@ -213,7 +214,6 @@ function App() {
               <Route path="newsDashboard" element={<NewsDashboard />} />
               <Route path="addNews" element={<AddNews />} />
               <Route path="manageNews" element={<ManageNews />} />
-              <Route path="paymentcauses" element={<PaymentScreen />} />
             </Route>
 
             {/* Social Media Routes */}
