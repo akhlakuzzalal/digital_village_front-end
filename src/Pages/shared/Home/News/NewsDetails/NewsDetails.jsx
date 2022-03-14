@@ -6,17 +6,32 @@ import 'swiper/css';
 import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import axios from '../../../../../api/axios';
-import Reply from '../ReplyFrom/Reply';
+import Comments from '../../../../Education/DetailVideo/Comments/Comments';
 
 const NewsDetails = () => {
   const { id } = useParams();
   const [news, setNews] = useState([]);
 
+  const [commentLists, setCommentLists] = useState([]);
+
+  const updateComment = (newComment) => {
+    setCommentLists([...commentLists, newComment]);
+  };
+
   useEffect(() => {
     axios.get('/news/allNews').then((response) => setNews(response.data));
-  }, []);
 
-  const result = news.filter((data) => data?._id == id);
+    // get all comments
+    axios.get(`/comment/all/?id=${id}`).then((response) => {
+      if (response.data.success) {
+        setCommentLists(response.data.comments);
+      } else {
+        alert('Failed to get blog Info');
+      }
+    });
+  }, [id]);
+
+  const result = news.filter((data) => data?._id === id);
   console.log(result);
 
   return (
@@ -28,7 +43,7 @@ const NewsDetails = () => {
           <hr />
           <br />
 
-          <a href="#">
+          <a href="/#">
             <img
               className="rounded-t-lg w-full mx-auto"
               src={result[0]?.image}
@@ -36,7 +51,7 @@ const NewsDetails = () => {
             />
           </a>
           <div className=" border-b-4 border-black pb-24">
-            <a href="#">
+            <a href="/#">
               {/* <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{result[0]?.title}</h5> */}
             </a>
             <p className=" font-normal text-gray-700 dark:text-gray-400 text-justify md:mx-10 ">
@@ -58,18 +73,26 @@ const NewsDetails = () => {
               <h5 className="my-3  text-gray-400 hover:text-blue-600">
                 PREVIOUS POST
               </h5>
-              <h3 className="text-sm md:text-xl hover:opacity-70">{news[1]?.title}</h3>
+              <h3 className="text-sm md:text-xl hover:opacity-70">
+                {news[1]?.title}
+              </h3>
             </div>
             <div>
               <h5 className="my-3 text-gray-400 hover:text-blue-600">
                 NEXT POST
               </h5>
-              <h3 className="text-sm md:text-xl hover:opacity-70">{news[2]?.title}</h3>
+              <h3 className="text-sm md:text-xl hover:opacity-70">
+                {news[2]?.title}
+              </h3>
             </div>
           </div>
 
           <div>
-            <Reply />
+            <Comments
+              postId={id}
+              updateComment={updateComment}
+              commentLists={commentLists}
+            />
           </div>
         </div>
 
@@ -151,7 +174,9 @@ const NewsDetails = () => {
                 </h5>
                 <p className="text-left">
                   Art & Design{' '}
-                  <span className="text-2xl font-bold text-gray-600 dark:text-white">Blog</span>{' '}
+                  <span className="text-2xl font-bold text-gray-600 dark:text-white">
+                    Blog
+                  </span>{' '}
                   Village Business,{' '}
                   <span className="text-2xl font-bold text-gray-600 dark:text-white">
                     Village

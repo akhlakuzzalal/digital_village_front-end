@@ -14,6 +14,7 @@ import { IoLogoDesignernews } from 'react-icons/io';
 import {
   MdManageAccounts,
   MdOutlineManageAccounts,
+  MdOutlineMedicalServices,
   MdRateReview,
 } from 'react-icons/md';
 import { RiLightbulbFlashFill } from 'react-icons/ri';
@@ -91,6 +92,11 @@ const links = [
     name: 'Market',
     icon: <FaShopify size={30} />,
     path: '/admin/market',
+  },
+  {
+    name: 'Add appointment',
+    icon: <MdOutlineMedicalServices size={30} />,
+    path: '/admin/addAppointment',
   },
 
   {
