@@ -78,7 +78,7 @@ const EMarket = () => {
 
             {/* products */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 my-6">
-              {products?.slice(0, 8).map((product) => (
+              {products.map((product) => (
                 <RegularProduct
                   key={product._id}
                   product={product}
