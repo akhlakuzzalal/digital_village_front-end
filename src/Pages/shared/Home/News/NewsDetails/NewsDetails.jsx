@@ -7,6 +7,7 @@ import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import axios from '../../../../../api/axios';
 import Reply from '../ReplyFrom/Reply';
+import { SiGooglenews } from "react-icons/si";
 
 const NewsDetails = () => {
   const { id } = useParams();
@@ -53,7 +54,7 @@ const NewsDetails = () => {
           </div>
 
           <div className="grid md:grid-cols-2 mt-5 border-b-4 border-gray-400 pb-10 ">
-            <div className="border-r-2 border-gray-400 mr-5">
+            <div className="border-r-2 border-gray-400 md:mr-5">
               <h5 className="my-3  text-gray-400 hover:text-blue-600">
                 PREVIOUS POST
               </h5>
@@ -67,17 +68,23 @@ const NewsDetails = () => {
             </div>
           </div>
 
-          <div>
+          {/* <div>
             <Reply />
-          </div>
+          </div> */}
         </div>
 
-        <div className="mx-5 md:border-l-4 md:pl-8 pt-5">
+        <div className="px-5  md:border-l-4 md:pl-8 pt-5">
           <p className="text-gray-400 hover:text-blue-600">LATEST ARTICLES</p>
           {news.map((data) => (
-            <li className="text-sm p-2 my-3 border hover:bg-gray-100 hover:opacity-90 dark:text-white">
-              {data?.title}
+            
+            <Link to={`/newsDetails/${data?._id}`}>
+            
+            <li className="text-sm p-2 my-3 border flex list-non hover:text-blue-800 hover:bg-gray-100 hover:opacity-90 dark:text-white">
+            <SiGooglenews className='mr-2'/>{data?.title.slice(0,30)}..
             </li>
+           
+            </Link>
+            
           ))}
 
           <div className="grid grid-cols-1 my-10">
@@ -96,14 +103,7 @@ const NewsDetails = () => {
                     slidesPerView: 1,
                     spaceBetween: 10,
                   },
-                  768: {
-                    slidesPerView: 2,
-                    spaceBetween: 10,
-                  },
-                  1024: {
-                    slidesPerView: 2,
-                    spaceBetween: 10,
-                  },
+                  
                 }}
                 loop={true}
                 loopFillGroupWithBlank={true}
@@ -111,7 +111,7 @@ const NewsDetails = () => {
                 className="swiper"
               >
                 {news.map((n) => (
-                  <SwiperSlide key={n.id}>
+                  <SwiperSlide key={n._id}>
                     <div className="mb-10">
                       <div className="  cursor-pointer ">
                         <div>
@@ -143,11 +143,11 @@ const NewsDetails = () => {
               </Swiper>
             </div>
             <div className="border-t-4 my-5 pt-5">
-              <div className="mx-auto md:mx-24">
-                <h5 className="text-gray-400   hover:text-blue-600 py-5">
-                  TOP SEARCHES
+              <div className="mx-auto ">
+                <h5 className="font-bolder text-xl md:text-2xl   hover:text-blue-600 py-5">
+                  TOP News
                 </h5>
-                <p className="text-left">
+                {/* <p className="text-left">
                   Art & Design{' '}
                   <span className="text-2xl font-bold text-gray-600 dark:text-white">Blog</span>{' '}
                   Village Business,{' '}
@@ -161,7 +161,18 @@ const NewsDetails = () => {
                   Care, Degital Village Newspaper Obituaries Photos Politics
                   Post Science slider Sports Tech Today's Digital Village Videos
                   World
-                </p>
+                </p> */}
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
+
+                  {
+                    news.map(data=><div className='hover:overflow-hidden '><Link to={`/newsDetails/${data._id}`}>
+                    <img className="w-full h-full  hover:scale-105 translate duration-700 ease-in-out  " src={data?.image} alt="" />
+                    </Link></div>)
+                  }
+                  
+                </div>
+
+
               </div>
             </div>
           </div>
