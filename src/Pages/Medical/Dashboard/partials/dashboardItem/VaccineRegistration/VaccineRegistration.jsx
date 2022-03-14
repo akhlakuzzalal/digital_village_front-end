@@ -1,13 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import covax from './../../../../../../assets/medical/COVAX.jpg';
-import hepatitis from './../../../../../../assets/medical/hepatitis.jpg';
-import polio from './../../../../../../assets/medical/polio.jpg';
+import Banner from './Banner/Banner';
+import Hotline from './Hotline/Hotline';
+import Steps from './Steps/Steps';
 
 const VaccineRegistration = () => {
   return (
     <>
-      <div className="text-center ">
+      <Banner />
+      <Steps />
+      <Hotline />
+      {/* <div className="text-center ">
         <h3 className="text-3xl md:text-5xl py-3 ">Vaccine Registration</h3>
         <div className="flex flex-wrap justify-center items-center m-2">
           <div
@@ -147,7 +149,7 @@ const VaccineRegistration = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
