@@ -8,8 +8,8 @@ const Status = () => {
   const email = user.email;
   useEffect(() => {
     axios.get(`/vaccine/findInfo?email=${email}`).then((response) => {
-      setInfo(response.data);
-      console.log(response.data);
+      setInfo(response.data[0]);
+      console.log(response.data[0]);
     });
   }, []);
   return (
