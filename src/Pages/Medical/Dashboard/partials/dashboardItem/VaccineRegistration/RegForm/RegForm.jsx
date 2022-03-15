@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import axios from '../../../../../../../api/axios';
 
@@ -15,9 +16,13 @@ const RegForm = () => {
   } = useForm();
   const email = user.email;
   const name = user.name;
+  const navigate = useNavigate();
+  const redirect_uri = '/medicalDashboard/pdf';
 
   const onSubmit = (data) => {
+    console.log(data);
     axios.post('/vaccine/addInfo', data).then(() => {
+      console.log(data);
       swal({
         title: 'Make sure all the information  valid.Want to proceed?',
         // text: 'Once deleted, you will not be able to recover this imaginary file!',
@@ -32,6 +37,7 @@ const RegForm = () => {
           });
         }
       });
+      navigate(redirect_uri);
     });
   };
 
@@ -105,14 +111,7 @@ const RegForm = () => {
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
             {...register('nid', {
               required: 'NID is Required',
-              // min: {
-              //   value: 12,
-              //   message: 'Minimum Required age is 12',
-              // },
-              // max: {
-              //   value: 18,
-              //   message: 'Maximum allowed age is 18',
-              // },
+
               pattern: {
                 value: /^[0-9]*$/,
                 message: 'Only numbers are allowed',
@@ -160,6 +159,12 @@ const RegForm = () => {
           {errors.address && (
             <small className="text-danger">{errors.address.message}</small>
           )}
+          <select {...register('center', { required: 'Name is Required' })}>
+            <option>Choose your center</option>
+            <option value="center1">center1</option>
+            <option value="center2">center2</option>
+            <option value="center3">center3</option>
+          </select>
           {/* submit button */}
           <input
             className=" hover:bg-opacity-80 px-20 py-2 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"

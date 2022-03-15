@@ -63,6 +63,7 @@ import FrequentlyAsked from './Pages/Medical/Dashboard/partials/dashboardItem/Va
 import RegForm from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegForm/RegForm';
 import VaccineInfo from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/VaccineInfo';
 import Status from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/Status/Status';
+import StatusCheck from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/Status/StatusCheck';
 import VaccineOptions from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineOptionns/VaccineOptions';
 import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
 import Medical from './Pages/Medical/Medical';
@@ -218,6 +219,7 @@ function App() {
               <Route path="addNews" element={<AddNews />} />
               <Route path="manageNews" element={<ManageNews />} />
               <Route path="addAppointment" element={<AddAppointment />} />
+              <Route path="status" element={<StatusCheck />} />
             </Route>
 
             {/* Social Media Routes */}

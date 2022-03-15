@@ -27,14 +27,14 @@ const VaccineInfo = () => {
 
   useEffect(() => {
     axios.get(`/vaccine/findInfo?email=${email}`).then((response) => {
-      setInfo(response.data);
-      console.log(response.data);
+      setInfo(response.data[0]);
+      console.log(response.data[0]);
     });
   }, []);
 
   const generatePDF = (singleInfo) => {
     // initialize jsPDF
-
+    console.log(singleInfo);
     const doc = new jsPDF();
 
     // // define the columns we want and their titles
@@ -43,11 +43,12 @@ const VaccineInfo = () => {
       singleInfo.email,
       singleInfo.name,
       singleInfo.fatherName,
-      singleInfo.MotherName,
+      singleInfo.motherName,
       singleInfo.date,
       singleInfo.nid,
       singleInfo.mobile,
       singleInfo.address,
+      singleInfo.center,
     ];
 
     const date = Date().split(' ');
@@ -57,14 +58,16 @@ const VaccineInfo = () => {
 
     doc.text(20, 30, `YOUR INFORMATION:`);
 
-    doc.text(20, 40, `Email: ${data[1]}`);
-    doc.text(20, 50, `Name: ${data[2]}`);
-    doc.text(20, 60, `Father's Name: ${data[3]}`);
-    doc.text(20, 70, `Mother's Name: ${data[4]}`);
-    doc.text(20, 80, `Birth date: ${data[5]}`);
-    doc.text(20, 90, `NID: ${data[6]}`);
-    doc.text(20, 100, `Contact No: ${data[7]}`);
-    doc.text(20, 110, `Address: ${data[8]}`);
+    doc.text(20, 40, `Email: ${data[0]}`);
+    doc.text(20, 50, `Name: ${data[1]}`);
+    doc.text(20, 60, `Father's Name: ${data[2]}`);
+    doc.text(20, 70, `Mother's Name: ${data[3]}`);
+    doc.text(20, 80, `Birth date: ${data[4]}`);
+    doc.text(20, 90, `NID: ${data[5]}`);
+    doc.text(20, 100, `Contact No: ${data[6]}`);
+    doc.text(20, 110, `Address: ${data[7]}`);
+    doc.text(20, 130, `CENTER INFORMATION:`);
+    doc.text(20, 140, `Center Name: ${data[8]}`);
 
     // we define the name of our PDF file.
     doc.save(`report_${dateStr}.pdf`);

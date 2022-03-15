@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import axios from '../../../../../../../api/axios';
 
-const Status = () => {
+const StatusCheck = () => {
   const user = useSelector((state) => state.user.user);
   const [info, setInfo] = useState([]);
   const email = user.email;
@@ -12,14 +13,15 @@ const Status = () => {
       console.log(response.data);
     });
   }, []);
+  const handleStatus = () => {};
   return (
-    <div className="my-20 p-10 min-h-screen">
+    <div class="bg-gray-50 min-h-screen">
       <div>
         <div class="p-4">
           <div class="bg-white p-4 rounded-md">
             <div>
-              <h2 class="mb-4 text-xl font-bold text-blue-900 text-center">
-                Your Status
+              <h2 class="mb-4 text-xl font-bold text-gray-700">
+                Approve application
               </h2>
               <div>
                 <div>
@@ -30,9 +32,12 @@ const Status = () => {
                     <div>
                       <span>Email</span>
                     </div>
+                    <div>
+                      <span>View</span>
+                    </div>
 
                     <div>
-                      <span>Status</span>
+                      <span>Edit</span>
                     </div>
                   </div>
                   <div>
@@ -43,9 +48,21 @@ const Status = () => {
                       <div>
                         <span>{info.email}</span>
                       </div>
+                      <div class="px-2">
+                        <Link to="#">
+                          <button className="border-2 g bg-blue-900  text-white py-2 px-5">
+                            See the details
+                          </button>
+                        </Link>
+                      </div>
 
                       <div class="px-2">
-                        <span>Panding</span>
+                        <button
+                          className="border-2 g bg-blue-900  text-white py-2 px-5"
+                          onClick={handleStatus}
+                        >
+                          Approve
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -59,4 +76,4 @@ const Status = () => {
   );
 };
 
-export default Status;
+export default StatusCheck;
