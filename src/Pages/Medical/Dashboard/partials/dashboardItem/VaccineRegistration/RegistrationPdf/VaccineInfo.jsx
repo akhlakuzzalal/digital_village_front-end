@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 import axios from '../../../../../../../api/axios';
 import useMediaQuery from '../../../../../../../hooks/useMediaQuery';
 import animationData from '../../../../../../../lotties/vaccine.json';
-// import vaccineInfo from './../../../../../../../assets/medical/vaccineinfo.png';
 import RegistrationPdf from './RegistrationPdf';
 
 const VaccineInfo = () => {
@@ -91,7 +90,7 @@ const VaccineInfo = () => {
         <Lottie
           options={defaultOptions}
           isClickToPauseDisabled={true}
-          width={isDesktop ? 600 : isTablet ? 400 : 250}
+          width={isDesktop ? 500 : isTablet ? 400 : 250}
         />
       </div>
     </div>

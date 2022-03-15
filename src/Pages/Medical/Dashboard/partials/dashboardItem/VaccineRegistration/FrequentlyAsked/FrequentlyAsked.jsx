@@ -78,7 +78,7 @@ const FrequentlyAsked = () => {
           <Lottie
             options={defaultOptions}
             isClickToPauseDisabled={true}
-            width={isDesktop ? 600 : isTablet ? 400 : 250}
+            width={isDesktop ? 500 : isTablet ? 400 : 250}
           />
         </div>
         <div className=" md:w-1/2  w-full md:mt-0 sm:mt-14 mt-10">
@@ -94,14 +94,14 @@ const FrequentlyAsked = () => {
 
                   {active && data.id === active ? (
                     <AiOutlineMinusSquare
-                      className="hover:rotate-180 transition duration-700 ease-in-out"
+                      className="hover:rotate-180 transition duration-700 ease-in-out text-blue-900"
                       custome
                       size={30}
                       onClick={() => setActive('')}
                     />
                   ) : (
                     <GoDiffAdded
-                      className="hover:rotate-180 transition duration-700 ease-in-out"
+                      className="hover:rotate-180 transition duration-700 ease-in-out text-blue-900"
                       size={30}
                       onClick={() => setActive(data?.id)}
                     />
