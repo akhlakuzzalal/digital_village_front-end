@@ -1,4 +1,5 @@
 import React from 'react';
+
 const RegistrationPdf = (props) => {
   const { name, email, fatherName, motherName, date, nid, mobile, address } =
     props?.info;
@@ -17,6 +18,13 @@ const RegistrationPdf = (props) => {
           <p>NID: {nid}</p>
           <p>Contact: {mobile}</p>
           <p> Address: {address}</p>
+          <br />
+          <br />
+          <hr />
+          <br />
+          <br />
+          <h3 className="text-blue-900 text-center my-2">Center Information</h3>
+          Center: Center1
         </div>
       )}
     </div>

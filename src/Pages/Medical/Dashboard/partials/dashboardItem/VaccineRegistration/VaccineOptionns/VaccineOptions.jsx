@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { covax } from './../../../../../../../assets/medical/COVAX.jpg';
-import { hepatitis } from './../../../../../../../assets/medical/hepatitis.jpg';
-import { polio } from './../../../../../../../assets/medical/polio.jpg';
+import covax from './../../../../../../../assets/medical/COVAX.jpg';
+import hepatitis from './../../../../../../../assets/medical/hepatitis.jpg';
+import polio from './../../../../../../../assets/medical/polio.jpg';
 
 const VaccineOptions = () => {
   return (
-    <div className="text-center ">
-      <h3 className="text-3xl md:text-5xl py-3 ">Vaccine Registration</h3>
+    <div className="text-center  my-32">
+      <h3 className="text-blue-900  py-3 ">Vaccine Registration</h3>
       <div className="flex flex-wrap justify-center items-center m-2">
         <div
-          className=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500"
+          className=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500 pb-3 "
           style={{
             borderBottom: '5px solid #10217d',
           }}
@@ -20,7 +20,7 @@ const VaccineOptions = () => {
           </Link>
           <div className="p-5">
             <Link to="#">
-              <h5 className="mb-2 text-1xl md:text-2xl  font-bold tracking-tight text-gray-900 dark:text-white">
+              <h5 className="mb-2 text-1xl md:text-2xl  font-bold tracking-tight text-blue-900 dark:text-white">
                 Covid-19 Vaccination
               </h5>
             </Link>
@@ -65,7 +65,7 @@ const VaccineOptions = () => {
           </Link>
           <div className="p-5">
             <Link to="#">
-              <h5 className="mb-2 text-1xl md:text-2xl  font-bold tracking-tight text-gray-900 dark:text-white">
+              <h5 className="mb-2 text-1xl md:text-2xl  font-bold tracking-tight text-blue-900 dark:text-white">
                 Hepatitis A Vaccination
               </h5>
             </Link>
@@ -101,7 +101,7 @@ const VaccineOptions = () => {
         </div>
 
         <div
-          className=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500"
+          className=" w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500 pb-3 "
           style={{
             borderBottom: '5px solid #10217d',
           }}
@@ -111,7 +111,7 @@ const VaccineOptions = () => {
           </Link>
           <div className="p-5">
             <Link to="#">
-              <h5 className="mb-2 text-1xl md:text-2xl  font-bold tracking-tight text-gray-900 dark:text-white">
+              <h5 className="mb-2 text-1xl md:text-2xl  font-bold tracking-tight text-blue-900 dark:text-white">
                 Polio Vaccination
               </h5>
             </Link>
@@ -119,7 +119,7 @@ const VaccineOptions = () => {
               Polio, or poliomyelitis, is a crippling and potentially deadly
               disease. It is caused by the poliovirus. The virus spreads from
               person to person and can invade an infected person’s brain and
-              spinal cord, causing paralysis
+              spinal cord
             </p>
             <Link
               to="/medicalDashboard/regForm"

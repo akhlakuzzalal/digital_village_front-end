@@ -59,8 +59,11 @@ import UpcomingEvents from './Pages/Events/UpcomingEvents/UpcomingEvents';
 import AddAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/AddAppointment';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
 import UserAppointments from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/UserAppointments/UserAppointments';
+import FrequentlyAsked from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/FrequentlyAsked/FrequentlyAsked';
 import RegForm from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegForm/RegForm';
 import VaccineInfo from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/VaccineInfo';
+import Status from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/Status/Status';
+import VaccineOptions from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineOptionns/VaccineOptions';
 import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
 import Medical from './Pages/Medical/Medical';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
@@ -148,14 +151,15 @@ function App() {
             <Route path="blogDetails/:id" element={<BlogDetails />} />
 
             {/* medical related routes */}
-            {/* medical related routes */}
             <Route path="medicalDashboard" element={<MedicalDashboard />}>
               <Route path="vaccine" element={<VaccineRegistration />} />
-
-              <Route path="appointment" element={<DoctorsAppointment />} />
+              <Route path="options" element={<VaccineOptions />} />
+              <Route path="status" element={<Status />} />
+              <Route path="faq" element={<FrequentlyAsked />} />
               <Route path="regForm" element={<RegForm />} />
-              <Route path="userAppointments" element={<UserAppointments />} />
               <Route path="pdf" element={<VaccineInfo />} />
+              <Route path="appointment" element={<DoctorsAppointment />} />
+              <Route path="userAppointments" element={<UserAppointments />} />
             </Route>
 
             {/* EVENT RELATED ROUTES */}

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import axios from '../../../../../../../api/axios';
+
 const RegForm = () => {
   const user = useSelector((state) => state.user.user);
 
@@ -15,13 +15,11 @@ const RegForm = () => {
   } = useForm();
   const email = user.email;
   const name = user.name;
-  const navigate = useNavigate();
-  const redirect_uri = '/medicalDashboard/pdf';
 
   const onSubmit = (data) => {
     axios.post('/vaccine/addInfo', data).then(() => {
       swal({
-        title: 'Want to proceed?',
+        title: 'Make sure all the information  valid.Want to proceed?',
         // text: 'Once deleted, you will not be able to recover this imaginary file!',
         icon: 'warning',
 
@@ -29,19 +27,18 @@ const RegForm = () => {
       }).then((willConfirm) => {
         if (willConfirm) {
           console.log('ok');
-          swal('Registration Done', {
+          swal('Registration Done.', {
             icon: 'success',
           });
         }
       });
     });
-    navigate(redirect_uri);
   };
 
   return (
     <div className="add-events-main my-40 lg:flex  lg:mx-32 md:mx-32 mx-0 border rounded-2xl">
       <div>
-        <h1 className="ml-10 mt-6 text-3xl ">Give Your Information</h1>
+        <h3 className="ml-10 mt-6 text-blue-900 ">Give Your Information</h3>
         <form
           className=" space-y-6 mx-10 mt-10"
           onSubmit={handleSubmit(onSubmit)}

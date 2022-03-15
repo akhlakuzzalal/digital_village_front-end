@@ -2,16 +2,29 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import React, { useEffect, useState } from 'react';
 import { BsDownload } from 'react-icons/bs';
+import Lottie from 'react-lottie';
 import { useSelector } from 'react-redux';
 import axios from '../../../../../../../api/axios';
-import vaccineInfo from './../../../../../../../assets/medical/vaccineinfo.png';
+import useMediaQuery from '../../../../../../../hooks/useMediaQuery';
+import animationData from '../../../../../../../lotties/vaccine.json';
+// import vaccineInfo from './../../../../../../../assets/medical/vaccineinfo.png';
 import RegistrationPdf from './RegistrationPdf';
 
 const VaccineInfo = () => {
   const user = useSelector((state) => state.user.user);
   const email = user.email;
   const [info, setInfo] = useState([]);
-  console.log(info);
+  const isTablet = useMediaQuery('(min-width: 656px)');
+  const isDesktop = useMediaQuery('(min-width: 900px)');
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
 
   useEffect(() => {
     axios.get(`/vaccine/findInfo?email=${email}`).then((response) => {
@@ -61,21 +74,25 @@ const VaccineInfo = () => {
   return (
     <div className="mt-20  flex justify-center items-center">
       <div className=" w-1/2 p-3">
-        <h3 className=" text-center text-primary">YOUR INFORMATION</h3>
+        <h3 className=" text-center my-2 text-blue-900 ">YOUR INFORMATION</h3>
 
         <RegistrationPdf info={info} />
 
         <div className="flex justify-center ">
           <button
-            className="border-2 g bg-primary text-white py-2 px-5 "
+            className="border-2 g bg-blue-900  text-white py-2 px-5 "
             onClick={() => generatePDF(info)}
           >
             Download <BsDownload style={{ display: 'inline' }} />
           </button>
         </div>
       </div>
-      <div className="w-1/2">
-        <img className="w-2/3" src={vaccineInfo} alt="" />{' '}
+      <div className="w-fit mx-auto">
+        <Lottie
+          options={defaultOptions}
+          isClickToPauseDisabled={true}
+          width={isDesktop ? 600 : isTablet ? 400 : 250}
+        />
       </div>
     </div>
   );
