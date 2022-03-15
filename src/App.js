@@ -116,11 +116,11 @@ function App() {
               <Route path="review" element={<Review />} />
               <Route path="donarpaymente" element={<DonarPaymente />} />
             </Route>
-            
+
             {/* EDUCATION RELATED ROUTES */}
             <Route path="education" element={<Education />} />
             <Route path="registerTeacher" element={<RegisterTeacher />} />
-            
+
             {/* education related routes */}
             <Route path="chat" element={<Chat />} />
             <Route path="join" element={<Join />} />
@@ -151,6 +151,7 @@ function App() {
             {/* medical related routes */}
             <Route path="medicalDashboard" element={<MedicalDashboard />}>
               <Route path="vaccine" element={<VaccineRegistration />} />
+
               <Route path="appointment" element={<DoctorsAppointment />} />
               <Route path="regForm" element={<RegForm />} />
               <Route path="userAppointments" element={<UserAppointments />} />
@@ -191,7 +192,7 @@ function App() {
             <Route path="medical" element={<Medical />} />
 
             {/* Admin dashboard routes */}
-              <Route path="admin" element={<AdminDashboard />}>
+            <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
               <Route path="add-events" element={<AddEvents />} />
