@@ -75,6 +75,8 @@ import Home from './Pages/shared/Home/Home';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import AddReview from './Pages/shared/Home/Reviews/AddReview/AddReview';
 import NotFound from './Pages/shared/NotFound/NotFound';
+import BoardHome from './Pages/SocialMedia/Connections/BoardComponent/BoardHome.jsx';
+import ConnectionBoard from './Pages/SocialMedia/Connections/ConnectionBoard';
 import SocialHome from './Pages/SocialMedia/Home/SocialHome';
 import Profile from './Pages/User/DashboardComponent/Profile/Profile';
 import Review from './Pages/User/DashboardComponent/Review/Review';
@@ -116,11 +118,11 @@ function App() {
               <Route path="review" element={<Review />} />
               <Route path="donarpaymente" element={<DonarPaymente />} />
             </Route>
-            
+
             {/* EDUCATION RELATED ROUTES */}
             <Route path="education" element={<Education />} />
             <Route path="registerTeacher" element={<RegisterTeacher />} />
-            
+
             {/* education related routes */}
             <Route path="chat" element={<Chat />} />
             <Route path="join" element={<Join />} />
@@ -191,7 +193,7 @@ function App() {
             <Route path="medical" element={<Medical />} />
 
             {/* Admin dashboard routes */}
-              <Route path="admin" element={<AdminDashboard />}>
+            <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
               <Route path="add-events" element={<AddEvents />} />
@@ -217,6 +219,9 @@ function App() {
 
             {/* Social Media Routes */}
             <Route path="social" element={<SocialHome />} />
+            <Route path="connection" element={<ConnectionBoard />}>
+              <Route path="home" element={<BoardHome />} />
+            </Route>
 
             {/* NOT FOUND ROUTE */}
             <Route path="*" element={<NotFound />} />

@@ -20,6 +20,7 @@ import MoodSlice from './slices/mood/MoodSlice';
 import notificationReducer from './slices/notification/notificationSlice';
 import PayModalSlice from './slices/payModal/PayModalSlice';
 import reviewReducer from './slices/review/reviewSlice';
+import socialSlice from './slices/socialSlice/socialSlice';
 import userReducer from './slices/user/userSlice';
 import videoReducer from './slices/video/videoSlice';
 
@@ -35,6 +36,7 @@ const reducers = combineReducers({
   donation: donationSlice,
   mood: MoodSlice,
   development: DevelopmentSlice,
+  social: socialSlice,
 });
 
 const persistConfig = {
