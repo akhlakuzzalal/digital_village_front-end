@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
 import { BsCalendar2EventFill } from 'react-icons/bs';
-import {
-  FaConnectdevelop,
-  FaShopify,
-  FaUsers,
-} from 'react-icons/fa';
+import { FaConnectdevelop, FaShopify, FaUsers } from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
 import { GiNewspaper } from 'react-icons/gi';
 import { IoLogoDesignernews } from 'react-icons/io';
@@ -34,7 +30,7 @@ const links = [
         name: 'Add Users',
         icon: <AiFillFileAdd size={30} />,
         path: '/admin/manageusers',
-      }
+      },
     ],
   },
   {
@@ -100,9 +96,21 @@ const links = [
     path: '/admin/market',
   },
   {
-    name: 'Add appointment',
+    name: 'Medical',
     icon: <MdOutlineMedicalServices size={30} />,
-    path: '/admin/addAppointment',
+    path: '/admin/Medical',
+    nestedPath: [
+      {
+        name: 'Add appointment',
+        icon: <MdOutlineMedicalServices size={30} />,
+        path: '/admin/addAppointment',
+      },
+      {
+        name: 'Add vaccine',
+        icon: <MdManageAccounts size={30} />,
+        path: '#',
+      },
+    ],
   },
 
   {

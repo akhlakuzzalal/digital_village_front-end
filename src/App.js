@@ -60,8 +60,12 @@ import UpcomingEvents from './Pages/Events/UpcomingEvents/UpcomingEvents';
 import AddAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/AddAppointment';
 import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
 import UserAppointments from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/UserAppointments/UserAppointments';
+import FrequentlyAsked from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/FrequentlyAsked/FrequentlyAsked';
 import RegForm from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegForm/RegForm';
 import VaccineInfo from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/VaccineInfo';
+import Status from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/Status/Status';
+import StatusCheck from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/Status/StatusCheck';
+import VaccineOptions from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineOptionns/VaccineOptions';
 import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
 import Medical from './Pages/Medical/Medical';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
@@ -117,11 +121,11 @@ function App() {
               <Route path="review" element={<Review />} />
               <Route path="donarpaymente" element={<DonarPaymente />} />
             </Route>
-            
+
             {/* EDUCATION RELATED ROUTES */}
             <Route path="education" element={<Education />} />
             <Route path="registerTeacher" element={<RegisterTeacher />} />
-            
+
             {/* education related routes */}
             <Route path="chat" element={<Chat />} />
             <Route path="join" element={<Join />} />
@@ -149,13 +153,15 @@ function App() {
             <Route path="blogDetails/:id" element={<BlogDetails />} />
 
             {/* medical related routes */}
-            {/* medical related routes */}
             <Route path="medicalDashboard" element={<MedicalDashboard />}>
               <Route path="vaccine" element={<VaccineRegistration />} />
-              <Route path="appointment" element={<DoctorsAppointment />} />
+              <Route path="options" element={<VaccineOptions />} />
+              <Route path="status" element={<Status />} />
+              <Route path="faq" element={<FrequentlyAsked />} />
               <Route path="regForm" element={<RegForm />} />
-              <Route path="userAppointments" element={<UserAppointments />} />
               <Route path="pdf" element={<VaccineInfo />} />
+              <Route path="appointment" element={<DoctorsAppointment />} />
+              <Route path="userAppointments" element={<UserAppointments />} />
             </Route>
 
             {/* EVENT RELATED ROUTES */}
@@ -192,7 +198,7 @@ function App() {
             <Route path="medical" element={<Medical />} />
 
             {/* Admin dashboard routes */}
-              <Route path="admin" element={<AdminDashboard />}>
+            <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="manageusers" element={<ManageAllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
@@ -215,6 +221,7 @@ function App() {
               <Route path="addNews" element={<AddNews />} />
               <Route path="manageNews" element={<ManageNews />} />
               <Route path="addAppointment" element={<AddAppointment />} />
+              <Route path="status" element={<StatusCheck />} />
             </Route>
 
             {/* Social Media Routes */}
