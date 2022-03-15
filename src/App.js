@@ -6,6 +6,7 @@ import ScrollToTop from './Components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
 import AdminDashboard from './Pages/Admin/AdminDashboard';
 import AllUsers from './Pages/Admin/AllUsers/AllUsers';
+import ManageAllUsers from './Pages/Admin/AllUsers/ManageAllUsers';
 import AddDevelopment from './Pages/Admin/DashboardItem/Development/AddDevelopment/AddDevelopment';
 import DevelopmentDashboard from './Pages/Admin/DashboardItem/Development/DevelopmentDashboard';
 import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage/DevelopmentManage';
@@ -194,6 +195,7 @@ function App() {
             {/* Admin dashboard routes */}
               <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
+              <Route path="manageusers" element={<ManageAllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
               <Route path="add-events" element={<AddEvents />} />
               <Route path="manageEvents" element={<ManageEvents />} />

@@ -4,7 +4,6 @@ import { BiDonateHeart } from 'react-icons/bi';
 import { BsCalendar2EventFill } from 'react-icons/bs';
 import {
   FaConnectdevelop,
-  FaFistRaised,
   FaShopify,
   FaUsers,
 } from 'react-icons/fa';
@@ -29,6 +28,13 @@ const links = [
     name: 'All Users',
     icon: <FaUsers size={30} />,
     path: '/admin/allusers',
+    nestedPath: [
+      {
+        name: 'Add Users',
+        icon: <AiFillFileAdd size={30} />,
+        path: '/admin/manageusers',
+      }
+    ],
   },
   {
     name: 'Events',
