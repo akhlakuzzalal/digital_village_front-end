@@ -24,6 +24,7 @@ const Banner = () => {
       className="mt-[80px] mb-36 md:mb-24"
       style={{
         minHeight: isDesktop ? 'calc(100vh - 88px)' : 'fit-content',
+        backgroundColor: '#3500D3',
       }}
     >
       <div

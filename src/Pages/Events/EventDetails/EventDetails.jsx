@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { FaLocationArrow } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -46,7 +47,15 @@ const EventDetails = () => {
               src={eventItem[0]?.image}
               alt=""
             />
-            <h1 className="mt-20 hover:text-blue-600">{eventItem[0]?.title}</h1>
+            <div className="flex">
+              <h1 className="mt-20 ">{eventItem[0]?.title}</h1>
+              <button
+                onClick={handleBookEvent}
+                className="flex bg-[blue] text-white lg:px-10 md:px-10 px-1  mt-[90px] ml-10 py-3  rounded"
+              >
+                Book This Event <FaLocationArrow className=" ml-2 w-[30px] " />
+              </button>
+            </div>
           </div>
           <div className="mt-20">
             <div className="bg-gray-100 p-7 border-l-4 flex items-center gap-6 lg:gap-20 px-5 lg:px-32">
@@ -131,13 +140,6 @@ const EventDetails = () => {
           </div>
         </div>
       </div>
-
-      <button
-        onClick={handleBookEvent}
-        className="mt-10 bg-purple-300 py-5 px-20 ml-8 lg:ml-0 md:ml-0"
-      >
-        Book This Event
-      </button>
     </div>
   );
 };
