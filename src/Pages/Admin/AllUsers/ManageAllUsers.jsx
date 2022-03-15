@@ -125,13 +125,72 @@ const ManageAllUsers = () => {
                                         class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                         <span aria-hidden
                                             class="absolute inset-0  opacity-70 rounded-full"></span>
-									<span class="relative"><FcApproval className='text-green-500 text-2xl'/></span>
+									<button class="relative"><FcApproval className='text-green-500 text-2xl'/></button>
 									</span>
 									<span
                                         class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight g-4">
                                         <span aria-hidden
                                             class="absolute inset-0 opacity-70 rounded-full"></span>
-									<span class="relative"><RiDeleteBin6Line className='text-red-500 text-2xl' /></span>
+									<button class="relative"><RiDeleteBin6Line className='text-red-500 text-2xl' /></button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<div class="flex items-center">
+										<div class="flex-shrink-0 w-16 h-16">
+											<img class="w-full h-full rounded-full"
+                                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                                alt="" />
+                                        </div>
+											<div class="ml-3">
+												<p class="text-gray-900 whitespace-no-wrap">
+													Vera Carpenter
+												</p>
+												<p class="text-gray-900 whitespace-no-wrap">
+													Admin@admin.com
+												</p>
+											</div>
+										</div>
+								</td>
+								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<p class="text-gray-900 whitespace-no-wrap">Male</p>
+									<p class="text-gray-900 whitespace-no-wrap">Female</p>
+								</td>
+								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<p class="text-gray-900 whitespace-no-wrap">
+										Jan 21, 2020
+									</p>
+								</td>
+								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-gray-900 font-semibold ">
+                                <select
+                                    class="h-full block appearance-none w-full bg-green-300 border-gray-400 px-3 py-1 leading-tight focus:outline-none inset-0 rounded-full text-gray-900">
+                                    <option className='inset-0 bg-green-200  rounded-full'>Inactive</option>
+                                    <option>Admin</option>
+                                    <option>Editor</option>
+                                    <option>User</option>
+                                </select>
+								</td>
+								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<span
+                                        class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                        <span aria-hidden
+                                            class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+									<span class="relative">Activo</span>
+									</span>
+								</td>
+								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<span
+                                        class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                        <span aria-hidden
+                                            class="absolute inset-0  opacity-70 rounded-full"></span>
+									<button class="relative"><FcApproval className='text-green-500 text-2xl'/></button>
+									</span>
+									<span
+                                        class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight g-4">
+                                        <span aria-hidden
+                                            class="absolute inset-0 opacity-70 rounded-full"></span>
+									<button class="relative"><RiDeleteBin6Line className='text-red-500 text-2xl' /></button>
 									</span>
 								</td>
 							</tr>
@@ -184,72 +243,13 @@ const ManageAllUsers = () => {
                                         class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                         <span aria-hidden
                                             class="absolute inset-0  opacity-70 rounded-full"></span>
-									<span class="relative"><FcApproval className='text-green-500 text-2xl'/></span>
+									<button class="relative"><FcApproval className='text-green-500 text-2xl'/></button>
 									</span>
 									<span
                                         class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight g-4">
                                         <span aria-hidden
                                             class="absolute inset-0 opacity-70 rounded-full"></span>
-									<span class="relative"><RiDeleteBin6Line className='text-red-500 text-2xl' /></span>
-									</span>
-								</td>
-							</tr>
-							<tr>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									<div class="flex items-center">
-										<div class="flex-shrink-0 w-16 h-16">
-											<img class="w-full h-full rounded-full"
-                                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                                alt="" />
-                                        </div>
-											<div class="ml-3">
-												<p class="text-gray-900 whitespace-no-wrap">
-													Vera Carpenter
-												</p>
-												<p class="text-gray-900 whitespace-no-wrap">
-													Vera Carpenter
-												</p>
-											</div>
-										</div>
-								</td>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									<p class="text-gray-900 whitespace-no-wrap">Admin</p>
-									<p class="text-gray-900 whitespace-no-wrap">Admin</p>
-								</td>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									<p class="text-gray-900 whitespace-no-wrap">
-										Jan 21, 2020
-									</p>
-								</td>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-gray-900 font-semibold ">
-                                <select
-                                    class="h-full block appearance-none w-full bg-green-300 border-gray-400 px-3 py-1 leading-tight focus:outline-none inset-0 rounded-full text-gray-900">
-                                    <option className='inset-0 bg-green-200  rounded-full'>Inactive</option>
-                                    <option>Admin</option>
-                                    <option>Editor</option>
-                                    <option>User</option>
-                                </select>
-								</td>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									<span
-                                        class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        <span aria-hidden
-                                            class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-									<span class="relative">Activo</span>
-									</span>
-								</td>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									<span
-                                        class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        <span aria-hidden
-                                            class="absolute inset-0  opacity-70 rounded-full"></span>
-									<span class="relative"><FcApproval className='text-green-500 text-2xl'/></span>
-									</span>
-									<span
-                                        class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight g-4">
-                                        <span aria-hidden
-                                            class="absolute inset-0 opacity-70 rounded-full"></span>
-									<span class="relative"><RiDeleteBin6Line className='text-red-500 text-2xl' /></span>
+									<button class="relative"><RiDeleteBin6Line className='text-red-500 text-2xl' /></button>
 									</span>
 								</td>
 							</tr>
