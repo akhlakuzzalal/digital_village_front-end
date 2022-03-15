@@ -7,7 +7,8 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
-    reset,trigger,
+    reset,
+    trigger,
     formState: { errors },
   } = useForm({
     defaultValues: { yes_i_understand: false },
@@ -48,14 +49,14 @@ const Contact = () => {
           backgroundImage: `url(https://cdn01.grameenphone.com/sites/default/files/contact_us_1692_490.jpg)`,
         }}
       >
-        <div className="bg-primary lg:w-[500px] md:w-full mx-auto relative top-[200px] md:top-[400px] md:py-5">
+        {/* <div className="bg-primary lg:w-[500px] md:w-full mx-auto relative top-[200px] md:top-[400px] md:py-5">
           <h1 className="text-2xl text-center text-white md:pt-16 font-bold">
             Contact With Us
           </h1>
           <h3 className="text-center font-semibold my-3 text-xl md:text-2xl lg:text-lg text-white ">
             Home / Contact Us
           </h3>
-        </div>
+        </div> */}
       </div>
 
       <div className="md:pt-52">
@@ -92,7 +93,6 @@ const Contact = () => {
             </div>
           </div>
 
-     
           <div className="flex bg-gray-100 px-7 w-full my-1 ">
             <div className=" rounded-full">
               <img
@@ -103,15 +103,14 @@ const Contact = () => {
             </div>
             <div className="flex flex-col justify-between mr-7 leading-normal py-10 ml-5 ">
               <p className="mb-3 font-semibold  text-gray-700 dark:text-gray-400">
-              13005 Greenville Avenue
+                13005 Greenville Avenue
               </p>
               <p className="mb-3 font-semibold text-red-600 dark:text-gray-400mb-3 ">
-              California, TX 70240
+                California, TX 70240
               </p>
             </div>
           </div>
 
-        
           <div className="flex bg-gray-100 px-7 w-full my-1 ">
             <div className=" rounded-full">
               <img
@@ -122,15 +121,15 @@ const Contact = () => {
             </div>
             <div className="flex flex-col justify-between mr-7 leading-normal py-10 ml-5 ">
               <p className="mb-3 font-semibold  text-gray-700 dark:text-gray-400">
-              +1 000999 0099
+                +1 000999 0099
               </p>
               <p className="mb-3 font-semibold text-red-600 dark:text-gray-400mb-3 ">
-              info@themerange.net
+                info@themerange.net
               </p>
             </div>
           </div>
 
-           <div className="flex bg-gray-100 px-7 w-full my-1 ">
+          <div className="flex bg-gray-100 px-7 w-full my-1 ">
             <div className=" rounded-full">
               <img
                 className="lg:mr-0 object-cover rounded-full h-20 w-20  my-5 mr-8 md:mr-0"
@@ -140,10 +139,10 @@ const Contact = () => {
             </div>
             <div className="flex flex-col justify-between mr-7 leading-normal py-10 ml-5 ">
               <p className="mb-3 font-semibold  text-gray-700 dark:text-gray-400">
-              +1 000999 0099
+                +1 000999 0099
               </p>
               <p className="mb-3 font-semibold text-red-600 dark:text-gray-400mb-3 ">
-              info@themerange.net
+                info@themerange.net
               </p>
             </div>
           </div>
@@ -192,10 +191,9 @@ const Contact = () => {
         >
           <input
             className=" w-full  bg-gray-100 px-20  outline-none border-2 py-5 focus:border-primary  rounded mb-5 lg:mb-0"
-            {...register('name', { required: "Name is Required" })}
-          
+            {...register('name', { required: 'Name is Required' })}
             onKeyUp={() => {
-              trigger("name");
+              trigger('name');
             }}
             placeholder="Name"
           />
@@ -206,15 +204,17 @@ const Contact = () => {
           <input
             className=" w-full mb-5 lg:mb-0 py-5 lg:py-0 outline-none border-2 focus:border-primary bg-gray-100 px-20 rounded"
             type="number"
-            {...register('number', { required: "Phone is Required",
-            pattern: {
-              value: /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
-              message: "Invalid phone no",
-            },
-           })}
-           onKeyUp={() => {
-            trigger("number");
-          }}
+            {...register('number', {
+              required: 'Phone is Required',
+              pattern: {
+                value:
+                  /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+                message: 'Invalid phone no',
+              },
+            })}
+            onKeyUp={() => {
+              trigger('number');
+            }}
           />
           {errors.number && (
             <small className="text-danger">{errors.number.message}</small>
@@ -222,13 +222,15 @@ const Contact = () => {
           <input
             className=" w-full mb-5 lg:mb-0 outline-none border-2 bg-gray-100 focus:border-primary px-20 rounded py-5 "
             type="email"
-            {...register('email', { required: "Email is Required" ,
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: "Invalid email address",
-            }})}
+            {...register('email', {
+              required: 'Email is Required',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Invalid email address',
+              },
+            })}
             onKeyUp={() => {
-              trigger("email");
+              trigger('email');
             }}
             placeholder="Enter Your Email"
           />
@@ -239,31 +241,32 @@ const Contact = () => {
           <input
             className=" w-full mb-5 lg:mb-0 outline-none border-2 bg-gray-100 px-20 focus:border-primary rounded py-5 lg:py-0"
             type="email"
-            {...register('email',{ required: true, maxLength: 20 })}
+            {...register('email', { required: true, maxLength: 20 })}
             placeholder="Write your Subject"
           />
 
           <div className=" col-span-2">
             <textarea
               className=" w-full bg-gray-100 py-8 px-5 outline-none border-2 focus:border-primary"
-              {...register("message", { required: "Message is Required",
+              {...register('message', {
+                required: 'Message is Required',
                 minLength: {
                   value: 10,
-                  message: "Minimum Required length is 10",
+                  message: 'Minimum Required length is 10',
                 },
                 maxLength: {
                   value: 50,
-                  message: "Maximum allowed length is 50 ",
-                }
-               })}
-               placeholder="Write your message"
-               onKeyUp={() => {
-                trigger("message");
+                  message: 'Maximum allowed length is 50 ',
+                },
+              })}
+              placeholder="Write your message"
+              onKeyUp={() => {
+                trigger('message');
               }}
-              ></textarea>
-              {errors.message && (
-                <small className="text-danger">{errors.message.message}</small>
-              )}
+            ></textarea>
+            {errors.message && (
+              <small className="text-danger">{errors.message.message}</small>
+            )}
           </div>
 
           <input
