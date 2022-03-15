@@ -80,6 +80,8 @@ import Home from './Pages/shared/Home/Home';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import AddReview from './Pages/shared/Home/Reviews/AddReview/AddReview';
 import NotFound from './Pages/shared/NotFound/NotFound';
+import BoardHome from './Pages/SocialMedia/Connections/BoardComponent/BoardHome.jsx';
+import ConnectionBoard from './Pages/SocialMedia/Connections/ConnectionBoard';
 import SocialHome from './Pages/SocialMedia/Home/SocialHome';
 import Profile from './Pages/User/DashboardComponent/Profile/Profile';
 import Review from './Pages/User/DashboardComponent/Review/Review';
@@ -226,6 +228,9 @@ function App() {
 
             {/* Social Media Routes */}
             <Route path="social" element={<SocialHome />} />
+            <Route path="connection" element={<ConnectionBoard />}>
+              <Route path="home" element={<BoardHome />} />
+            </Route>
 
             {/* NOT FOUND ROUTE */}
             <Route path="*" element={<NotFound />} />
