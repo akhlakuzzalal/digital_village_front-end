@@ -34,7 +34,11 @@ const FavouriteVideos = () => {
 
   useEffect(() => {
     axios.get(`/favourites/all/?uId=${uId}`).then((response) => {
-      setFavouriteVideos(response.data.map((res) => res.videoId));
+      if (response?.data) {
+        setFavouriteVideos(
+          response.data.filter((res) => res.videoId).map((v) => v.videoId)
+        );
+      }
     });
   }, []);
 
