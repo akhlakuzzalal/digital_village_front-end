@@ -19,7 +19,9 @@ const Reviews = () => {
   return (
     <div className="bg-gray-50 dark:bg-dark_bg mb-8">
       <div className="md:pt-[50px]">
-        <p className="text-center md:text-2xl text-blue-600 font-bolder">TESTIMONIALS</p>
+        <p className="text-center md:text-2xl text-blue-600 font-bolder">
+          TESTIMONIALS
+        </p>
         <h1 className=" text-xl md:text-2xl  text-center font-bold py-2   text-primary">
           WHAT PEOPLE SAY ABOUT US
         </h1>
@@ -30,7 +32,6 @@ const Reviews = () => {
       </div>
 
       <Swiper
-        slidesPerView={2}
         slidesPerGroup={1}
         autoplay={{
           delay: 2500,
@@ -41,12 +42,12 @@ const Reviews = () => {
             spaceBetween: 0,
           },
           '@0.75': {
-            slidesPerView: 2,
-            spaceBetween: 20,
+            slidesPerView: 1,
+            spaceBetween: 5,
           },
           '@1.00': {
             slidesPerView: 2,
-            spaceBetween: 20,
+            spaceBetween: 5,
           },
           '@1.50': {
             slidesPerView: 4,

@@ -5,13 +5,14 @@ import axios from '../../../../../../../api/axios';
 const Status = () => {
   const user = useSelector((state) => state.user.user);
   const [info, setInfo] = useState([]);
-  const email = user.email;
+  const email = user?.email;
   useEffect(() => {
     axios.get(`/vaccine/findInfo?email=${email}`).then((response) => {
-      setInfo(response.data[0]);
-      console.log(response.data[0]);
+      if (response.data && response.data.length > 0) {
+        setInfo(response.data[0]);
+      }
     });
-  }, []);
+  }, [email]);
   return (
     <div className="my-20 p-10 min-h-screen">
       <div>
@@ -38,10 +39,10 @@ const Status = () => {
                   <div>
                     <div class="flex justify-between border-t text-sm font-normal mt-4 space-x-4">
                       <div class="px-2 flex">
-                        <span>{info.name}</span>
+                        <span>{info?.name}</span>
                       </div>
                       <div>
-                        <span>{info.email}</span>
+                        <span>{info?.email}</span>
                       </div>
 
                       <div class="px-2">

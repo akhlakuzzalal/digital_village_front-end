@@ -15,7 +15,7 @@ const ManageEvents = () => {
 
   return (
     <div>
-      <h1 className="flex space-x-3 text-xl ml-5 mt-10 lg:ml-[150px]">
+      <h1 className="flex space-x-3 text-xl ml-5 mt-10">
         Delete Exixting Events{' '}
         <AiFillDelete color="red" className="animate-bounce mt-2" />
       </h1>

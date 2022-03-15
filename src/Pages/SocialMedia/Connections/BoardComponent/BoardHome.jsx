@@ -23,7 +23,7 @@ const BoardHome = () => {
       </div>
       {/* friends */}
       <h3>Friends</h3>
-      {friends.length > 0 ? (
+      {friends && friends.length > 0 ? (
         <div className="grid grid-cols-5 gap-6">
           {friends.map((user) => (
             <SingleUser key={user._id} user={user} />
@@ -36,7 +36,9 @@ const BoardHome = () => {
       )}
       {/* Requesting */}
       <h3>Requesting</h3>
-      {socialUser.requesting.length > 0 ? (
+      {socialUser &&
+      socialUser.requesting &&
+      socialUser.requesting?.length > 0 ? (
         <div className="grid grid-cols-5 gap-6">
           {friends.map((user) => (
             <SingleUser key={user._id} user={user} />
@@ -49,11 +51,10 @@ const BoardHome = () => {
       )}
       {/* Requested */}
       <h3>Requested</h3>
-      {socialUser.requested.length > 0 ? (
+      {socialUser && socialUser.requested && socialUser.requested.length > 0 ? (
         <div className="grid grid-cols-5 gap-6">
-          {friends.map((user) => (
-            <SingleUser key={user._id} user={user} />
-          ))}
+          {friends &&
+            friends?.map((user) => <SingleUser key={user._id} user={user} />)}
         </div>
       ) : (
         <div className="flex items-center h-16">
