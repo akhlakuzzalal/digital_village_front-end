@@ -1,12 +1,12 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { BiArrowBack } from 'react-icons/bi';
 import { useSelector } from 'react-redux';
 import FileUpload from '../../../../Components/FileUpload';
 
-const EditProfile = ({ setEditProfile }) => {
-  const [file, setFile] = useState({});
+const EditProfile = ({ setEditProfile, handleUpdateProfile, onDrop, file }) => {
   const user = useSelector((state) => state.user.user);
+
   const {
     register,
     handleSubmit,
@@ -15,24 +15,6 @@ const EditProfile = ({ setEditProfile }) => {
     trigger,
   } = useForm();
 
-  const onDrop = useCallback((acceptedFiles) => {
-    setFile(acceptedFiles[0]);
-  }, []);
-
-  const handleUpdateProfile = async (data) => {
-    console.log(data);
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append(
-      'profile',
-      JSON.stringify({
-        ...data,
-      })
-    );
-
-    // const response = await axios.post('/teacher/publishBlogs', formData);
-    // console.log(response.data);
-  };
   return (
     <div className="flex flex-col justify-center items-center min-h-full space-y-6">
       <div className="flex justify-between items-center w-full">
@@ -60,10 +42,9 @@ const EditProfile = ({ setEditProfile }) => {
             {/* user name */}
             <input
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('name', { required: "Name is Required" })}
-          
+              {...register('name', { required: 'Name is Required' })}
               onKeyUp={() => {
-                trigger("name");
+                trigger('name');
               }}
               defaultValue={user?.name}
               placeholder="User Name"
@@ -85,16 +66,18 @@ const EditProfile = ({ setEditProfile }) => {
             <input
               type="text"
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('phone' , { required: "Phone is Required",
-              pattern: {
-                value: /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
-                message: "Invalid phone no",
-              },
-             })}
-             onKeyUp={() => {
-              trigger("phone");
-            }}
-            defaultValue={user?.phone}
+              {...register('phone', {
+                required: 'Phone is Required',
+                pattern: {
+                  value:
+                    /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+                  message: 'Invalid phone no',
+                },
+              })}
+              onKeyUp={() => {
+                trigger('phone');
+              }}
+              defaultValue={user?.phone}
               placeholder="Phone Number"
             />
             {errors.phone && (
