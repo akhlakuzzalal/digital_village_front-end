@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 import axios from '../../../../../../../api/axios';
 
@@ -9,9 +8,9 @@ const StatusCheck = () => {
   const [info, setInfo] = useState([]);
   const email = user.email;
   useEffect(() => {
-    axios.get(`/vaccine/findInfo?email=${email}`).then((response) => {
-      setInfo(response.data[0]);
-      console.log(response.data[0]);
+    axios.get(`/vaccine/findAllInfo`).then((response) => {
+      setInfo(response.data);
+      console.log(response.data);
     });
   }, []);
   const handleStatus = () => {
@@ -60,39 +59,31 @@ const StatusCheck = () => {
                     <div>
                       <span>Email</span>
                     </div>
-                    <div>
-                      <span>View</span>
-                    </div>
 
                     <div>
                       <span>Edit</span>
                     </div>
                   </div>
                   <div>
-                    <div class="flex justify-between border-t text-sm font-normal mt-4 space-x-4">
-                      <div class="px-2 flex">
-                        <span>{info.name}</span>
-                      </div>
-                      <div>
-                        <span>{info.email}</span>
-                      </div>
-                      <div class="px-2">
-                        <Link to="#">
-                          <button className="border-2 g bg-blue-900  text-white py-2 px-5">
-                            See the details
-                          </button>
-                        </Link>
-                      </div>
+                    {info.map((row) => (
+                      <div class="flex justify-between border-t text-sm font-normal mt-4 space-x-4">
+                        <div class="px-2 flex">
+                          <span>{row.name}</span>
+                        </div>
+                        <div>
+                          <span>{row.email}</span>
+                        </div>
 
-                      <div class="px-2">
-                        <button
-                          className="border-2 g bg-blue-900  text-white py-2 px-5"
-                          onClick={handleStatus}
-                        >
-                          Approve
-                        </button>
+                        <div class="px-2">
+                          <button
+                            className="border-2 g bg-blue-900  text-white py-2 px-5"
+                            onClick={handleStatus}
+                          >
+                            Approve
+                          </button>
+                        </div>
                       </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>
