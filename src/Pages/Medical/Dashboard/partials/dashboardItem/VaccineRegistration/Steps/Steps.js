@@ -3,12 +3,12 @@ import { FcApproval, FcHome, FcSms } from 'react-icons/fc';
 
 const Steps = () => {
   return (
-    <div className="p-10">
-      <div className="border-l-8 border-indigo-700 p-5 ml-20 my-20">
+    <div className="p-0 md:p-10">
+      <div className="border-l-8 border-indigo-700 p-0 md:p-5 ml-20 my-20">
         <h3 className="text-indigo-700">Steps of vaccination</h3>
       </div>
-      <div className="flex justify-between items-center px-20">
-        <div className="p-2">
+      <div className="flex flex-col justify-between items-center px-0 md:px-20">
+        <div className="p-0 md:p-2 w-full md:w-1/3">
           <FcApproval
             style={{
               fontSize: '5em',
@@ -22,7 +22,7 @@ const Steps = () => {
             cannot register for Vaccination{' '}
           </p>
         </div>
-        <div className="p-2">
+        <div className="p-0 md:p-2 w-full md:w-1/3">
           <FcSms
             style={{
               fontSize: '5em',
@@ -36,7 +36,7 @@ const Steps = () => {
             given number during registration{' '}
           </p>
         </div>
-        <div className="p-2">
+        <div className="p-0 md:p-2 w-full md:w-1/3">
           <FcHome
             style={{
               fontSize: '5em',

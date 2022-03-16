@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 import axios from '../../../../../../../api/axios';
 
 const StatusCheck = () => {
@@ -13,7 +14,34 @@ const StatusCheck = () => {
       console.log(response.data[0]);
     });
   }, []);
-  const handleStatus = () => {};
+  const handleStatus = () => {
+    const userEmail = info.email;
+    fetch('http://localhost:5000/vaccine/updateInfo', {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(userEmail),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        swal({
+          title: 'Make sure all the information  valid.Want to proceed?',
+          // text: 'Once deleted, you will not be able to recover this imaginary file!',
+          icon: 'warning',
+
+          buttons: true,
+        }).then((willConfirm) => {
+          if (willConfirm) {
+            console.log('ok');
+            swal('Registration Done.', {
+              icon: 'success',
+            });
+          }
+        });
+      });
+  };
   return (
     <div class="bg-gray-50 min-h-screen">
       <div>

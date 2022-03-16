@@ -10,17 +10,17 @@ import bg from './../../../../../../../assets/medical/bg.jpg';
 const Banner = () => {
   return (
     <div
-      className="py-20 px-5 min-h-screen flex justify-center items-center"
+      className="py-20 px-0 md:px-5 min-h-screen flex justify-center items-center"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
       }}
     >
-      <div className="flex flex-wrap justify-between items-center ">
+      <div className="flex flex-col justify-between items-center md:flex-row ">
         <div
           style={{ background: 'rgba(135, 87, 247,.9)' }}
-          className=" w-full md:w-1/2  border-l-8 hover:bottom-2 border-indigo-700 hover:border-slate-900 rounded-lg p-10 "
+          className=" w-full md:w-1/2  border-l-8 hover:bottom-2 border-indigo-700 hover:border-slate-900 rounded-lg p-0 md:p-10 "
         >
           <Link to="/medicalDashboard/options">
             <div className="w-full flex justify-center items-center  my-5">
