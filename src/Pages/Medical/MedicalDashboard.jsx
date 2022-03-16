@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AiOutlineMedicineBox } from 'react-icons/ai';
 import { FaClinicMedical } from 'react-icons/fa';
 import { GiLoveInjection, GiMedicines } from 'react-icons/gi';
+import { RiUserHeartFill } from 'react-icons/ri';
 import { Outlet, useLocation } from 'react-router-dom';
 import NewSidebar from './../../Components/Sidebar/NewSidebar';
 import VaccineRegistration from './Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
@@ -29,7 +30,7 @@ const links = [
   },
   {
     name: 'Your Appointment',
-    icon: <AiOutlineMedicineBox size={30} />,
+    icon: <RiUserHeartFill size={30} />,
     path: '/medicalDashboard/userAppointments',
   },
 ];

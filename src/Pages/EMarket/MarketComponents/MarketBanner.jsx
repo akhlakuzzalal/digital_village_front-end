@@ -21,7 +21,7 @@ const MarketBanner = () => {
         backgroundImage: 'url(https://i.ibb.co/pzhw70W/market-banner.png)',
       }}
     >
-      <div className="grid grid-cols-3 justify-around h-[300px] pb-2">
+      <div className="grid grid-cols-3 md:justify-around h-[300px] pb-2">
         {/* 1st column */}
         <div className="w-full hidden md:flex justify-center">
           <img
@@ -31,10 +31,10 @@ const MarketBanner = () => {
           />
         </div>
         {/* 2nd column */}
-        <div className="flex relative flex-col col-span-2 md:col-span-1 justify-center items-center">
-          <div className="absolute ml-2 top-0 mt-6 text-black font-semibold space-x-4">
+        <div className="flex relative w-full flex-col col-span-2 md:col-span-1 justify-center items-center">
+          <div className="absolute w-full text-center top-0 mt-6 text-black font-semibold space-x-4">
             <Link to="/cart">
-              <p className="relative inline">
+              <p className="relative inline ">
                 Cart{' '}
                 <small className="absolute -top-2 -right-2 font-extrabold text-red-700">
                   {cart.length}
@@ -42,10 +42,10 @@ const MarketBanner = () => {
               </p>
             </Link>
             <Link to="/marketdashboard">
-              <p className="inline"> Dashboard</p>
+              <p className="inline right-4"> Dashboard</p>
             </Link>
             <Link to="/medicinestore">
-              <p className="inline">Medicine Store</p>
+              <p className="inline right-2">Medicine Store</p>
             </Link>
           </div>
           <h3 className="md:animate-bounce text-xl md:text-4xl mx-2">Welcome to Village market</h3>

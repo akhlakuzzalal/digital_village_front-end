@@ -31,14 +31,14 @@ const Banner = () => {
         style={{ backgroundImage: isDesktop ? `url(${homeBg})` : 'none' }}
       >
         {/* banner description */}
-        <div className="w-full place-self-center lg:mt-24 order-1 text-center lg:text-left lg:ml-80">
+        <div className="w-full mx-auto lg:mx-0 place-self-center mt-6 lg:mt-24 order-1 text-center lg:text-left lg:ml-80">
           <h1>Digital Village</h1>
-          <p className="pb-3 w-4/6 text-sm font-extralight mt-3 text-gray-600">
+          <p className="pb-3 w-4/6 mx-auto lg:mx-0 text-sm text-left font-extralight mt-3 text-gray-600">
             We the village administration provide quality services through this
             platform. Every villagers can fit their needs by utilizing the
             facilities we provide.
           </p>
-          <div className="flex items-start">
+          <div className="flex items-start justify-center md:justify-start">
             <NavHashLink smooth to="/#service">
               <button className="btn rounded-lg bg-primary dark:bg-dark_secondary">
                 Services

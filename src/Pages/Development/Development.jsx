@@ -11,6 +11,7 @@ const Development = () => {
   const { handleUpvote, handleDownvote } = useDevelopment();
   useEffect(() => {
     dispatch(fetchAllDevelopment());
+    console.log(proposals);
   }, []);
 
   return (
@@ -23,7 +24,7 @@ const Development = () => {
       <div className="mx-10 mt-36">
         <h3>Development Proposal</h3>
         <div className="grid grid-cols-3 gap-6">
-          {proposals.map((proposal) => (
+          {proposals?.map((proposal) => (
             <DevelopmentCard
               proposal={proposal}
               handleUpvote={handleUpvote}

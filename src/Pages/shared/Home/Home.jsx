@@ -1,5 +1,4 @@
 import React from 'react';
-import ChatBot from '../ChatBot/ChatBot.jsx';
 import Analyticale from './Analyticale/Analyticale.js';
 import Banner from './Banner/Banner';
 import Faq from './Faq/Faq.jsx';
@@ -16,7 +15,6 @@ const Home = () => {
       <Reviews />
       <Analyticale />
       <Faq />
-      <ChatBot />
     </div>
   );
 };

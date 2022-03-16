@@ -54,7 +54,7 @@ const AddNews = () => {
           <input
             className="md:px-7 mx-2 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
             {...register('title', { required: true })}
-            placeholder="Title of your Development Item"
+            placeholder="Title of the news"
           />
 
           {/* file upload */}
@@ -70,7 +70,7 @@ const AddNews = () => {
           <textarea
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
             {...register('description', { required: true })}
-            placeholder="Write what this News Articale Details"
+            placeholder="Write the description in short"
           />
 
           {/* Publishd Date */}
@@ -80,6 +80,7 @@ const AddNews = () => {
             {...register('publishDate', { required: true })}
             placeholder="Write your News Publish Date"
           />
+
           <input
             type="time"
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
@@ -94,6 +95,7 @@ const AddNews = () => {
           handleEditorChange={handleEditorChange}
           message="Start writing the blog"
         />
+
         {/* submit button */}
         <input
           className="btn bg-white text-black rounded-lg w-full cursor-pointer hover:bg-opacity-80  transition-all duration-700 hover:bg-blue-600 hover:text-white"

@@ -6,7 +6,7 @@ const PopularMedicine = () => {
   const lastMedicine = [1, 2];
   return (
     <div>
-      <h6 className="inline border-b-2 border-black">Popular Medicines</h6>
+      <h6 className="inline border-b-2 border-black ml-6">Popular Medicines</h6>
       <div className="px-10 py-6">
         <Swiper
           slidesPerView={1}
