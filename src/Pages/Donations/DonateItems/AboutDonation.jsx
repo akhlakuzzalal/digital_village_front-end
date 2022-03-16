@@ -30,7 +30,7 @@ const AboutDonation = () => {
     <div class="w-full lg:w-3/5 md:w-1/2 px-4">
     <h1 className="text-gray-800 text-center text-sm md:text-lg mt-2">What We Do?</h1>
       <div class="flex flex-wrap">
-        <div class="w-full md:w-6/12 px-4">
+        <div class="w-full md:w-6/12 sm:px-4 md:px-0 lg:px-1">
           <div class="relative flex flex-col mt-4">
             <div class="px-4 py-5 flex-auto">
               <div class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-50  hover:bg-violet-200">
