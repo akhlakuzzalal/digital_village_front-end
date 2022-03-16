@@ -13,19 +13,19 @@ const StudentHome = () => {
       <Banner />
 
       {/* top blogs */}
-      <h3 className="py-6">Top Categories</h3>
+      <h3 className="py-6 text-center md:text-left">Top Categories</h3>
 
       <Categories />
 
       {/* top blogs */}
-      <h3>Top Blogs</h3>
-      <div className="flex flex-wrap items-center gap-6">
+      <h3 className='py-6 text-center md:text-left'>Top Blogs</h3>
+      <div className="flex flex-wrap  items-center gap-6">
         {blogs.map((blog) => (
           <BlogCard key={blog._id} blog={blog} />
         ))}
       </div>
 
-      <h3 className="py-6">Top Videos</h3>
+      <h3 className="py-6 text-center md:text-left">Top Videos</h3>
       <div className="flex flex-wrap items-center gap-6">
         {videos.map((video) => (
           <VideoCard key={video._id} video={video} />
