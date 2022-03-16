@@ -1,7 +1,17 @@
 import React from 'react';
+
 const RegistrationPdf = (props) => {
-  const { name, email, fatherName, motherName, date, nid, mobile, address } =
-    props?.info;
+  const {
+    name,
+    email,
+    fatherName,
+    motherName,
+    date,
+    nid,
+    mobile,
+    address,
+    center,
+  } = props?.info;
   console.log(props.info);
   return (
     <div className="flex justify-center items-center my-5 ">
@@ -17,6 +27,13 @@ const RegistrationPdf = (props) => {
           <p>NID: {nid}</p>
           <p>Contact: {mobile}</p>
           <p> Address: {address}</p>
+          <br />
+          <br />
+          <hr />
+          <br />
+          <br />
+          <h3 className="text-blue-900 text-center my-2">Center Information</h3>
+          <p>Center Name: {center}</p>
         </div>
       )}
     </div>

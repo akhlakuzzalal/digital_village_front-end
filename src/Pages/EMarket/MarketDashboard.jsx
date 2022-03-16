@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MdOutlineProductionQuantityLimits } from 'react-icons/md';
 import { RiDashboard2Line } from 'react-icons/ri';
 import { SiHomebridge } from 'react-icons/si';
@@ -24,9 +24,6 @@ const links = [
 ];
 
 const MarketDashboard = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [showText, setShowText] = useState(true);
-
   const location = useLocation();
   const initial =
     location.pathname === '/marketdashboard' ||

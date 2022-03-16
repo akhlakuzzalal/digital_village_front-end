@@ -1,35 +1,48 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import axios from '../../../api/axios';
 const MyBookedEvents = () => {
   const user = useSelector((state) => state.user.user);
   const [myBookingEvents, setMyBookingEvents] = useState([]);
 
   useEffect(() => {
-    fetch(`/event/myBookingEvents?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setMyBookingEvents(data);
-      });
+    axios(`/event/myBookingEvents?email=${user.email}`).then((res) =>
+      setMyBookingEvents(res.data)
+    );
   }, []);
 
   const handleCancelBookingEvent = (id) => {
-    axios
-      .put(`/event/deleteMyBooking?id=${id}&email=${user.email}`)
-      .then(() => {
-        swal('Good job!', 'Successfully Deleted!', 'success');
-      });
+    Swal.fire({
+      title: 'Are you sure? you want to cancel this booking.',
+      showDenyButton: true,
+      confirmButtonText: 'Delete',
+      denyButtonText: `Cancel`,
+      icon: 'warning',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .put(`/event/deleteMyBooking?id=${id}&email=${user.email}`)
+          .then(() => {
+            Swal.fire({
+              title: 'This event is cancel',
+              icon: 'success',
+            });
+            axios(`/event/myBookingEvents?email=${user.email}`).then((res) =>
+              setMyBookingEvents(res.data)
+            );
+          });
+      }
+    });
   };
 
   return (
     <>
-      <div className="bg-[#13273b] w-full h-20"></div>
       <h3 className=" text-lg mx-20 my-10">
         Welcome <span className="text-primary">{user?.name}</span> your all
         booking events
       </h3>
-      <div className="flex flex-col mt-20 w-[400px] px-10">
+      <div className="flex flex-col mt-20 w-5/6 mx-auto px-10">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
             <div className="overflow-hidden">
