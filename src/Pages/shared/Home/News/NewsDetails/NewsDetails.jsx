@@ -80,7 +80,7 @@ const NewsDetails = () => {
             <Link to={`/newsDetails/${data?._id}`}>
             
             <li className="text-sm p-2 my-3 border flex list-non hover:text-blue-800 hover:bg-gray-100 hover:opacity-90 dark:text-white">
-            <SiGooglenews className='mr-2'/>{data?.title.slice(0,30)}..
+            <SiGooglenews className='mr-2'/>{data?.title.slice(0,25)}....
             </li>
            
             </Link>
@@ -166,7 +166,7 @@ const NewsDetails = () => {
 
                   {
                     news.map(data=><div className='hover:overflow-hidden '><Link to={`/newsDetails/${data._id}`}>
-                    <img className="w-full h-full  hover:scale-105 translate duration-700 ease-in-out  " src={data?.image} alt="" />
+                    <img className="w-full h-full  hover:scale-115 translate duration-700 ease-in-out  " src={data?.image} alt="" />
                     </Link></div>)
                   }
                   
