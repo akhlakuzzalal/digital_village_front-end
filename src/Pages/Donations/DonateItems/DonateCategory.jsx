@@ -9,10 +9,10 @@ import { FcHome, FcReading } from 'react-icons/fc';
 
 const DonateCategory = () => {
   return (
-    <div className="mx-auto px-4 sm:px-6 ">
-      <div className="flex flex-col col-span-2 md:col-span-1 justify-center items-center py-7">
-        <h3 className="text-gray-800">ACHIEVED WITH YOU</h3>
-        <p className="text-gray-600">We need your help</p>
+    <div className="mx-auto px-3 sm:px-2 ">
+      <div className="flex flex-col col-span-2 md:col-span-1 justify-center items-center py-4">
+        <h3 className="text-gray-800 text-center text-sm md:text-2xl lg:text-3xl mt-2">ACHIEVED WITH YOU</h3>
+        <p className="text-gray-600 text-center text-sm md:text-xl lg:text-2xl mt-2">We need your help</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full bg-white p-4 dark:bg-black">

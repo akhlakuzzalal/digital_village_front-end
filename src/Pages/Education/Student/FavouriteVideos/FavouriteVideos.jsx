@@ -17,12 +17,12 @@ const FavouriteVideos = () => {
       icon: 'warning',
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.post('favouriteVideos/remove', { uId, videoId }).then(() => {
+        axios.post('favourites/remove', { uId, videoId }).then(() => {
           Swal.fire({
             title: 'this video is removed from favourite',
             icon: 'success',
           });
-          axios.get(`/favouriteVideos/all/?uId=${uId}`).then((response) => {
+          axios.get(`/favourites/all/?uId=${uId}`).then((response) => {
             if (response?.data) {
               setFavouriteVideos(response.data.map((res) => res.videoId));
             }
@@ -33,8 +33,12 @@ const FavouriteVideos = () => {
   };
 
   useEffect(() => {
-    axios.get(`/favouriteVideos/all/?uId=${uId}`).then((response) => {
-      setFavouriteVideos(response.data.map((res) => res.videoId));
+    axios.get(`/favourites/all/?uId=${uId}`).then((response) => {
+      if (response?.data) {
+        setFavouriteVideos(
+          response.data.filter((res) => res.videoId).map((v) => v.videoId)
+        );
+      }
     });
   }, []);
 

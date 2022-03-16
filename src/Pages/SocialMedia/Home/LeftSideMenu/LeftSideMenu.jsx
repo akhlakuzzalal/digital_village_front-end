@@ -28,7 +28,7 @@ const LeftSideMenu = () => {
       </div>
       {/* App menus */}
       <div>
-        <Link to="/">
+        <Link to="/connection">
           <div className="flex items-center space-x-3 cursor-pointer">
             <GrGroup size={30} />
             <h6>Connectios</h6>

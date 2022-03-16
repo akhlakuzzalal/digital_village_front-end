@@ -17,22 +17,16 @@ const AddAppointment = () => {
   const onSubmit = (data) => {
     axios
       .post('/availableAppointment/saveAppointment', data)
-      .then((res) => res.json())
-      .then((data) => {
-        swal({
-          title: 'Want to proceed?',
-          // text: 'Once deleted, you will not be able to recover this imaginary file!',
-          icon: 'warning',
-
-          buttons: true,
-        }).then((willConfirm) => {
-          if (willConfirm) {
-            console.log('ok');
-            swal('Service Added', {
-              icon: 'success',
-            });
-          }
-        });
+      .then((response) => {
+        if (response?.data) {
+          swal('appointment added', {
+            icon: 'success',
+          });
+        } else {
+          swal('failed to add', {
+            icon: 'error',
+          });
+        }
       });
   };
   return (
@@ -48,16 +42,19 @@ const AddAppointment = () => {
         >
           <input
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-            {...register('service', {
-              required: 'Service is Required',
-              pattern: /^[A-Za-z]+$/i,
-              maxLength: 20,
+            {...register('appointment', {
+              required: 'appointment name is required',
+              maxLength: {
+                value: 30,
+                message: "Don't exceed 30 letters",
+              },
             })}
-            onKeyUp={() => {
-              trigger('service');
-            }}
-            placeholder="Service Name"
+            placeholder="Appointment Name"
           />
+          {errors.appointment && (
+            <small className="text-danger">{errors.appointment.message}</small>
+          )}
+
           <input
             className="px-7 py-10 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
             {...register('description', {
@@ -81,9 +78,9 @@ const AddAppointment = () => {
             <small className="text-danger">{errors.description.message}</small>
           )}
           <input
+            type="time"
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
             {...register('time', { required: true })}
-            placeholder="time(am to pm)"
           />
           <input
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"

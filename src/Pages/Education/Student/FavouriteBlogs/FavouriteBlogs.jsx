@@ -1,70 +1,59 @@
-import React from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
-import BlogCard from '../AllBlogs/BlogCard/BlogCard';
-
-const blogs = [
-  {
-    _id: '1',
-    author: 'user 1',
-    email: 'user1@gmail.com',
-    title: 'Microsoft word',
-    bannerImg: {
-      path: 'https://www.versionmuseum.com/images/applications/microsoft-word/microsoft-word%5E2015%5Ems-word-logo-new.png',
-    },
-    about:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis porro inventore unde voluptatibus autem eius officiis? Nulla, est reprehenderit?',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente itaque officia maiores quia. Nesciunt molestias doloribus explicabo deserunt quia eligendi itaque odit doloremque atque, obcaecati esse voluptate alias ipsa nihil a quasi inventore quae accusantium deleniti laboriosam cum aperiam sed? Blanditiis odit ipsa ratione eligendi quam consequatur, exercitationem sint placeat! Enim ducimus debitis nisi, voluptatum recusandae error, odio accusantium sapiente, laudantium nostrum praesentium illum magnam mollitia quas ex tempora hic modi in. Facilis aut et obcaecati eveniet explicabo eos aliquam, cupiditate omnis ex recusandae eligendi! Dolorem eaque ipsam vero. Amet doloremque veniam minima, quis distinctio eius ullam, officia aut odio dignissimos facere ad explicabo doloribus natus expedita, suscipit dolores consectetur repudiandae vel eaque est eveniet maxime illo et. Natus molestiae eius neque est labore, adipisci earum iste culpa ex nihil aperiam similique atque nulla fugiat ratione aliquid! Natus dignissimos unde libero perferendis veritatis atque dolores dolor eius consequuntur ipsum voluptate laudantium, modi minima? At enim dicta amet et iure quaerat architecto dolorem alias eos quis tenetur dignissimos blanditiis non similique libero, dolores obcaecati est! Laboriosam accusantium incidunt odio nihil facere accusamus similique officia? Obcaecati totam in repellat inventore quo blanditiis voluptatibus temporibus tenetur, quod neque nobis odio assumenda sint consectetur debitis optio error? Pariatur inventore voluptatum similique aperiam, necessitatibus ipsam eum corporis esse asperiores nemo! Eum distinctio architecto corporis excepturi alias deserunt similique quidem! Blanditiis cumque vitae nesciunt enim eaque quisquam, veniam expedita, commodi nemo quae aliquid inventore ab deleniti iste aspernatur voluptatem ipsam neque ipsa. Quasi eaque voluptate quisquam natus fugiat maxime, beatae, inventore dolor voluptas id autem quia nesciunt, excepturi iusto quis ab eligendi a? Et cumque eaque ratione dolore dolorem, debitis asperiores expedita possimus id ullam tempora optio nam nostrum veritatis nihil delectus quisquam esse sint repudiandae quibusdam beatae harum! Nihil incidunt nesciunt quibusdam aliquid, ipsam odio.',
-    tags: ['beginner', 'microsft-word', 'writing'],
-    publishDate: '2/2/2022',
-    rating: 3,
-  },
-  {
-    _id: '2',
-    author: 'user 2',
-    email: 'user2@gmail.com',
-    title: 'Marchendising',
-    bannerImg: {
-      path: 'https://static.fibre2fashion.com/articleresources/images/51/5070/differentiating-edge-merchandising-as-centre-of-excellence.jpg',
-    },
-    about:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis porro inventore unde voluptatibus autem eius officiis? Nulla, est reprehenderit?',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente itaque officia maiores quia. Nesciunt molestias doloribus explicabo deserunt quia eligendi itaque odit doloremque atque, obcaecati esse voluptate alias ipsa nihil a quasi inventore quae accusantium deleniti laboriosam cum aperiam sed? Blanditiis odit ipsa ratione eligendi quam consequatur, exercitationem sint placeat! Enim ducimus debitis nisi, voluptatum recusandae error, odio accusantium sapiente, laudantium nostrum praesentium illum magnam mollitia quas ex tempora hic modi in. Facilis aut et obcaecati eveniet explicabo eos aliquam, cupiditate omnis ex recusandae eligendi! Dolorem eaque ipsam vero. Amet doloremque veniam minima, quis distinctio eius ullam, officia aut odio dignissimos facere ad explicabo doloribus natus expedita, suscipit dolores consectetur repudiandae vel eaque est eveniet maxime illo et. Natus molestiae eius neque est labore, adipisci earum iste culpa ex nihil aperiam similique atque nulla fugiat ratione aliquid! Natus dignissimos unde libero perferendis veritatis atque dolores dolor eius consequuntur ipsum voluptate laudantium, modi minima? At enim dicta amet et iure quaerat architecto dolorem alias eos quis tenetur dignissimos blanditiis non similique libero, dolores obcaecati est! Laboriosam accusantium incidunt odio nihil facere accusamus similique officia? Obcaecati totam in repellat inventore quo blanditiis voluptatibus temporibus tenetur, quod neque nobis odio assumenda sint consectetur debitis optio error? Pariatur inventore voluptatum similique aperiam, necessitatibus ipsam eum corporis esse asperiores nemo! Eum distinctio architecto corporis excepturi alias deserunt similique quidem! Blanditiis cumque vitae nesciunt enim eaque quisquam, veniam expedita, commodi nemo quae aliquid inventore ab deleniti iste aspernatur voluptatem ipsam neque ipsa. Quasi eaque voluptate quisquam natus fugiat maxime, beatae, inventore dolor voluptas id autem quia nesciunt, excepturi iusto quis ab eligendi a? Et cumque eaque ratione dolore dolorem, debitis asperiores expedita possimus id ullam tempora optio nam nostrum veritatis nihil delectus quisquam esse sint repudiandae quibusdam beatae harum! Nihil incidunt nesciunt quibusdam aliquid, ipsam odio.',
-    tags: ['beginner', 'microsft-word', 'writing'],
-    publishDate: '2/2/2022',
-    rating: 3,
-  },
-  {
-    _id: '3',
-    author: 'user 3',
-    email: 'user3@gmail.com',
-    title: 'Microsoft excel',
-    bannerImg: {
-      path: 'https://leverageedu.com/blog/wp-content/uploads/2020/06/Types-of-Digital-Marketing.png',
-    },
-    about:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet corporis porro inventore unde voluptatibus autem eius officiis? Nulla, est reprehenderit?',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente itaque officia maiores quia. Nesciunt molestias doloribus explicabo deserunt quia eligendi itaque odit doloremque atque, obcaecati esse voluptate alias ipsa nihil a quasi inventore quae accusantium deleniti laboriosam cum aperiam sed? Blanditiis odit ipsa ratione eligendi quam consequatur, exercitationem sint placeat! Enim ducimus debitis nisi, voluptatum recusandae error, odio accusantium sapiente, laudantium nostrum praesentium illum magnam mollitia quas ex tempora hic modi in. Facilis aut et obcaecati eveniet explicabo eos aliquam, cupiditate omnis ex recusandae eligendi! Dolorem eaque ipsam vero. Amet doloremque veniam minima, quis distinctio eius ullam, officia aut odio dignissimos facere ad explicabo doloribus natus expedita, suscipit dolores consectetur repudiandae vel eaque est eveniet maxime illo et. Natus molestiae eius neque est labore, adipisci earum iste culpa ex nihil aperiam similique atque nulla fugiat ratione aliquid! Natus dignissimos unde libero perferendis veritatis atque dolores dolor eius consequuntur ipsum voluptate laudantium, modi minima? At enim dicta amet et iure quaerat architecto dolorem alias eos quis tenetur dignissimos blanditiis non similique libero, dolores obcaecati est! Laboriosam accusantium incidunt odio nihil facere accusamus similique officia? Obcaecati totam in repellat inventore quo blanditiis voluptatibus temporibus tenetur, quod neque nobis odio assumenda sint consectetur debitis optio error? Pariatur inventore voluptatum similique aperiam, necessitatibus ipsam eum corporis esse asperiores nemo! Eum distinctio architecto corporis excepturi alias deserunt similique quidem! Blanditiis cumque vitae nesciunt enim eaque quisquam, veniam expedita, commodi nemo quae aliquid inventore ab deleniti iste aspernatur voluptatem ipsam neque ipsa. Quasi eaque voluptate quisquam natus fugiat maxime, beatae, inventore dolor voluptas id autem quia nesciunt, excepturi iusto quis ab eligendi a? Et cumque eaque ratione dolore dolorem, debitis asperiores expedita possimus id ullam tempora optio nam nostrum veritatis nihil delectus quisquam esse sint repudiandae quibusdam beatae harum! Nihil incidunt nesciunt quibusdam aliquid, ipsam odio.',
-    tags: ['beginner', 'microsft-word', 'writing'],
-    publishDate: '2/2/2022',
-    rating: 3,
-  },
-];
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+import axios from '../../../../api/axios';
+import FavouriteBlogCard from './FavouriteBlogCard/FavouriteBlogCard';
 
 const FavouriteBlogs = () => {
+  const [favouriteBlogs, setFavouriteBlogs] = useState([]);
+  const uId = useSelector((state) => state.user.uId);
+
+  const handleRemoveFromFavourite = (blogId) => {
+    Swal.fire({
+      title: 'Are you sure? you want to remove this from favourite.',
+      showDenyButton: true,
+      confirmButtonText: 'Delete',
+      denyButtonText: `Cancel`,
+      icon: 'warning',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.post('favourites/remove', { uId, blogId }).then(() => {
+          Swal.fire({
+            title: 'this blog is removed from favourite',
+            icon: 'success',
+          });
+          axios.get(`/favourites/all/?uId=${uId}`).then((response) => {
+            if (response.data) {
+              setFavouriteBlogs(
+                response.data.filter((res) => res.blogId).map((b) => b.blogId)
+              );
+            }
+          });
+        });
+      }
+    });
+  };
+
+  useEffect(() => {
+    axios.get(`/favourites/all/?uId=${uId}`).then((response) => {
+      if (response?.data) {
+        setFavouriteBlogs(
+          response.data.filter((res) => res.blogId).map((b) => b.blogId)
+        );
+      }
+    });
+  }, []);
+
   return (
     <div className="space-y-6">
-      <h3 className="py-6 text-center text-xl md:text-6xl lg:text-6xl mt-3">Favourite Blogs</h3>
-      {/* <article className="flex flex-wrap justify-evenly items-center gap-4"> */}
-      <article className="flex flex-wrap gap-4 justify-evenly items-center p-4">
-        {blogs.map((blog) => (
-          <BlogCard key={blog._id} blog={blog}>
-            <button className="w-100 flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              <FaTrashAlt />
-            </button>
-          </BlogCard>
+      <h3 className="text-center py-6">Favourite Blogs</h3>
+      <article className="flex flex-wrap justify-evenly items-center gap-6">
+        {favouriteBlogs.map((blog) => (
+          <FavouriteBlogCard
+            key={blog._id}
+            blog={blog}
+            handleRemoveFromFavourite={handleRemoveFromFavourite}
+          />
         ))}
       </article>
     </div>

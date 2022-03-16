@@ -11,7 +11,6 @@ const Comments = ({ postId, updateComment, commentLists }) => {
   const {
     register,
     handleSubmit,
-    trigger,
     formState: { errors },
   } = useForm();
 

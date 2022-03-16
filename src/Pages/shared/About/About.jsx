@@ -11,18 +11,16 @@ const About = () => {
         style={{
           backgroundImage: `url(https://mpsconsulting.id/wp-content/uploads/2020/10/about_us_banner.png)`,
         }}
-        
       >
-        <div className="bg-primary lg:w-[500px] md:w-full mx-auto relative top-[200px] md:top-[400px] md:py-5">
+        {/* <div className="bg-primary lg:w-[500px] md:w-full mx-auto relative top-[200px] md:top-[400px] md:py-5">
           <h1 className="text-2xl text-center text-white md:pt-16 font-bold">
             About With Us
           </h1>
           <h3 className="text-center font-semibold my-3 text-xl md:text-2xl lg:text-lg text-white ">
             Home / About Us
           </h3>
-        </div>
+        </div> */}
       </div>
-      
 
       <div className=" lg:flex  mt-20 lg:mt-48 lg:mx-[100px] mx-5">
         <div className="lg:flex">
@@ -118,7 +116,9 @@ const About = () => {
 
         <div className="lg:ml-20  lg:mt-[130px] mt-20 space-y-3">
           <h1 className="text-lg">why choose us</h1>
-          <h1 className="text-xl md:text-3xl">We Provide best services for villagers</h1>
+          <h1 className="text-xl md:text-3xl">
+            We Provide best services for villagers
+          </h1>
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam
             similique minima dolores. Magnam similique neque inventore molestiae
@@ -151,7 +151,7 @@ const About = () => {
             </li>
           </ul>
 
-          <button className="flex bg-primary rounded  py-2 md:py-3 px-20 ">
+          <button className="flex hover:bg-[blue] border border-[blue] border-5 hover:text-white rounded  py-2 md:py-3 px-20 ">
             View More <MdOutlineDoubleArrow className="mt-1" />
           </button>
         </div>
@@ -191,7 +191,9 @@ const About = () => {
       <div className="lg:flex lg:mx-[100px] mx-5 md:mt-[100px] mt-6">
         <div className="lg:w-1/2 w-[100%] space-y-5 md:mt-[110px]">
           <h1 className="text-lg">Who we are </h1>
-          <h1 className="md:text-2xl text-xl">To Change Your View For SEO Our Mission</h1>
+          <h1 className="md:text-2xl text-xl">
+            To Change Your View For SEO Our Mission
+          </h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
             tenetur tempore repudiandae cupiditate libero non beatae! Quo

@@ -1,13 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 import { FaPushed } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URI } from '../../../../../api/axios';
 import Rating from '../../../../../Components/Rating';
+import axios from '../../../../../api/axios';
+import { useSelector } from 'react-redux';
 
-const BlogCard = ({ blog, children }) => {
-  const [bookmark, setBookmark] = useState(true);
+const BlogCard = ({ blog }) => {
+  const [isFavouritted, setIsFavouritted] = useState(false);
+
+  const uId = useSelector((state) => state.user.uId);
+
   const navigate = useNavigate();
+
+  const data = { uId, blogId: blog._id };
+
+  const handleAddToFavourite = () => {
+    axios.post('/favourites/add', data).then((response) => {
+      console.log('added to favourite', response.data);
+      if (response?.data?.blogId) {
+        setIsFavouritted(true);
+      } else {
+        alert('failed to add in favourite list');
+      }
+    });
+  };
+
+  const handleRemoveFromFavourite = () => {
+    axios.post('/favourites/remove', data).then((response) => {
+      console.log('removed from favourite', response.data);
+      if (response?.data?.blogId) {
+        setIsFavouritted(false);
+      } else {
+        alert('failed to remove from favourite list');
+      }
+    });
+  };
+
+  useEffect(() => {
+    // get is favouritted or not
+    axios.get(`/favourites/all/?uId=${uId}`).then((response) => {
+      if (response?.data) {
+        setIsFavouritted(
+          response.data.map((d) => d.blogId._id).includes(blog._id)
+        );
+      }
+    });
+  }, [uId, isFavouritted, blog._id]);
+
   return (
     <div className="bg-white dark:dark-card-bg rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between max-w-[400px] shadow-2xl">
       <div className="absolute top-20 text-sm left-0 z-20 font-primary rounded-lg">
@@ -40,22 +81,18 @@ const BlogCard = ({ blog, children }) => {
                 <Rating rating={blog?.rating} />
               </div>
             </div>
-            {!children ? (
-              <div className="mr-4 cursor-pointer">
-                {bookmark ? (
-                  <BsBookmark
-                    size={30}
-                    onClick={() => setBookmark(!bookmark)}
-                  />
-                ) : (
-                  <BsBookmarkFill
-                    size={30}
-                    onClick={() => setBookmark(!bookmark)}
-                  />
-                )}
-              </div>
+            {isFavouritted ? (
+              <BsBookmarkFill
+                className="cursor-pointer"
+                size={30}
+                onClick={handleRemoveFromFavourite}
+              />
             ) : (
-              children
+              <BsBookmark
+                size={30}
+                onClick={handleAddToFavourite}
+                className="cursor-pointer"
+              />
             )}
           </div>
           {/* title and description */}
