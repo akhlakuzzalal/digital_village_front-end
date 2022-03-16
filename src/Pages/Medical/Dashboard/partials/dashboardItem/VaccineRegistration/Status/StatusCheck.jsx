@@ -13,18 +13,12 @@ const StatusCheck = () => {
       console.log(response.data);
     });
   }, []);
-  const handleStatus = () => {
-    const userEmail = info.email;
-    fetch('http://localhost:5000/vaccine/updateInfo', {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(userEmail),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+  const handleStatus = (userEmail) => {
+    axios
+      .put('/vaccine/updateInfo', userEmail)
+
+      .then((response) => {
+        console.log(response.data);
         swal({
           title: 'Make sure all the information  valid.Want to proceed?',
           // text: 'Once deleted, you will not be able to recover this imaginary file!',
@@ -77,7 +71,7 @@ const StatusCheck = () => {
                         <div class="px-2">
                           <button
                             className="border-2 g bg-blue-900  text-white py-2 px-5"
-                            onClick={handleStatus}
+                            onClick={() => handleStatus(row.email)}
                           >
                             Approve
                           </button>

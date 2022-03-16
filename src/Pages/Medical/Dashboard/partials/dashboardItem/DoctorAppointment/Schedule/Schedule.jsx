@@ -28,7 +28,7 @@ const Schedule = ({ onChange }) => {
         Take a schedule for a consultation
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2  ">
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-1/2 flex justify-center">
           {' '}
           <Calender onChange={onChange} />
         </div>

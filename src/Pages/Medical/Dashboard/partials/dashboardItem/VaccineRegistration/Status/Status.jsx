@@ -14,7 +14,7 @@ const Status = () => {
     });
   }, [email]);
   return (
-    <div className="my-20 p-0 md:p-10 min-h-screen">
+    <div className="w-3/4 my-20 p-0 md:p-10 min-h-screen">
       <div>
         <div class="p-0 md:p-4">
           <div class="bg-white p-0 md:p-4 rounded-md">
@@ -24,28 +24,28 @@ const Status = () => {
               </h2>
               <div>
                 <div>
-                  <div class="flex justify-between bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-md py-2 px-0 md:px-4 text-white font-bold text-md">
-                    <div>
+                  <div class="flex justify-between bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-md py-2  px-0 px-0 md:px-4 text-white font-bold text-md">
+                    <div className="w-1/3">
                       <span>Name</span>
                     </div>
-                    <div>
+                    <div className="w-1/3">
                       <span>Email</span>
                     </div>
 
-                    <div>
+                    <div className="w-1/3">
                       <span>Status</span>
                     </div>
                   </div>
                   <div>
-                    <div class="flex justify-between border-t text-sm font-normal mt-4 space-x-4">
-                      <div class="px-0 md:px-2 flex">
+                    <div class="flex justify-between border-t text-sm font-normal mt-4 space-x-0 md:space-x-4">
+                      <div class="className='w-1/3'px-0 md:px-2">
                         <span>{info?.name}</span>
                       </div>
-                      <div>
+                      <div class="className='w-1/3'px-0 md:px-2 ">
                         <span>{info?.email}</span>
                       </div>
 
-                      <div class="px-2">
+                      <div class="className='w-1/3'px-0 md:px-2 ">
                         <span>Panding</span>
                       </div>
                     </div>
