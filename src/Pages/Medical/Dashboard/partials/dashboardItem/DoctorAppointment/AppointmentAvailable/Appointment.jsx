@@ -52,21 +52,21 @@ const Appointment = (props) => {
   };
   return (
     <div
-      class="w-full md:w-1/4 m-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ccc hover:scale-110 transition-all duration-500"
+      class="w-full md:w-1/3 m-0 md:m-4 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 hover:scale-110 transition-all duration-500"
       style={{
         borderBottom: '5px solid #10217d',
       }}
     >
-      <div class="p-5">
+      <div class="p-0 md:p-5">
         <div className="w-fit mx-auto">
           <Lottie
             options={defaultOptions}
             isClickToPauseDisabled={true}
-            width={isDesktop ? 200 : isTablet ? 100 : 50}
+            width={isDesktop ? 200 : isTablet ? 150 : 100}
           />
         </div>
         <Link to="#">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight hover:text-blue-600 text-gray-900 dark:text-white">
+          <h5 class="mb-2 md:text-xl text-2xl font-bold tracking-tight hover:text-blue-600 text-gray-900 dark:text-white">
             {service}
           </h5>
         </Link>
@@ -78,7 +78,7 @@ const Appointment = (props) => {
         <p>Cost : {price} </p>
         <Link
           to="#"
-          class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-black rounded-lg "
+          class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-black rounded-lg my-2 "
           style={{
             backgroundColor: '#10217d',
             color: 'white',

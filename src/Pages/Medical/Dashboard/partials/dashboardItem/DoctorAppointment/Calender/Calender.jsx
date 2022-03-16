@@ -7,7 +7,7 @@ const Calender = ({ onChange }) => {
   //   console.log(date.toString());
   // };
   return (
-    <div className="w-[600px]">
+    <div className="flex justify-center items-center ">
       <DatePicker onChange={onChange} className="dark:dark-card-bg" />
     </div>
   );

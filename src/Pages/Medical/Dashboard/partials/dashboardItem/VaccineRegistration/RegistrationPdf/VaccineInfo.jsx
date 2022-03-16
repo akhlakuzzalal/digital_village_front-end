@@ -11,7 +11,7 @@ import RegistrationPdf from './RegistrationPdf';
 
 const VaccineInfo = () => {
   const user = useSelector((state) => state.user.user);
-  const email = user.email;
+  const email = user?.email;
   const [info, setInfo] = useState([]);
   const isTablet = useMediaQuery('(min-width: 656px)');
   const isDesktop = useMediaQuery('(min-width: 900px)');
@@ -27,8 +27,10 @@ const VaccineInfo = () => {
 
   useEffect(() => {
     axios.get(`/vaccine/findInfo?email=${email}`).then((response) => {
-      setInfo(response.data[0]);
-      console.log(response.data[0]);
+      if (response.data.length > 0) {
+        setInfo(response.data[0]);
+        console.log(response.data[0]);
+      }
     });
   }, []);
 
@@ -40,15 +42,15 @@ const VaccineInfo = () => {
     // // define the columns we want and their titles
 
     const data = [
-      singleInfo.email,
-      singleInfo.name,
-      singleInfo.fatherName,
-      singleInfo.motherName,
-      singleInfo.date,
-      singleInfo.nid,
-      singleInfo.mobile,
-      singleInfo.address,
-      singleInfo.center,
+      singleInfo?.email,
+      singleInfo?.name,
+      singleInfo?.fatherName,
+      singleInfo?.motherName,
+      singleInfo?.date,
+      singleInfo?.nid,
+      singleInfo?.mobile,
+      singleInfo?.address,
+      singleInfo?.center,
     ];
 
     const date = Date().split(' ');
@@ -74,22 +76,24 @@ const VaccineInfo = () => {
   };
 
   return (
-    <div className="mt-20  flex justify-center items-center">
-      <div className=" w-1/2 p-3">
-        <h3 className=" text-center my-2 text-blue-900 ">YOUR INFORMATION</h3>
+    <div className="mt-20  flex flex-col md:flex-row justify-center items-center">
+      <div className=" w-1/2 p-0 md:p-3">
+        <h3 className=" text-xl md:text-2xl text-center my-2 text-blue-900 ">
+          YOUR INFORMATION
+        </h3>
 
         <RegistrationPdf info={info} />
 
-        <div className="flex justify-center ">
+        <div className="flex  justify-center ">
           <button
-            className="border-2 g bg-blue-900  text-white py-2 px-5 "
+            className="border-2 bg-blue-900  text-white py-2 px-2 md:px-5 "
             onClick={() => generatePDF(info)}
           >
             Download <BsDownload style={{ display: 'inline' }} />
           </button>
         </div>
       </div>
-      <div className="w-fit mx-auto">
+      <div className="w-fit mx-0 md:mx-auto">
         <Lottie
           options={defaultOptions}
           isClickToPauseDisabled={true}

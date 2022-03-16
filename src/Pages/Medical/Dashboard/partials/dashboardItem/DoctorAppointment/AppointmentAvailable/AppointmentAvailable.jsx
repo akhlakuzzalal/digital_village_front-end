@@ -13,7 +13,7 @@ const AppointmentAvailable = ({ date }) => {
 
   return (
     <div className="text-center ">
-      <h3 className="  mt-20  text-2xl mb-10 text-[#10217d]">
+      <h3 className="  mt-10 text-xl  md:text-2xl mb-10 text-[#10217d]">
         Available Appointment <br /> on {date.toDateString()}
       </h3>
       <div className="flex flex-wrap justify-center items-center my-5 ">

@@ -61,7 +61,7 @@ const FrequentlyAsked = () => {
   };
 
   return (
-    <div className=" 2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6  px-4 my-28">
+    <div className=" 2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6  px-0 my-28">
       <h2 className=" font-bolder text-xl md:text-3xl  lg:text-4xl text-blue-900  lg:leading-9 md:leading-7 leading-9  dark:text-dark_text">
         Frequently Asked Questions
       </h2>
@@ -74,7 +74,7 @@ const FrequentlyAsked = () => {
         </div>
       </div>
       <div className=" flex flex-col justify-center items-center  md:flex-row md:space-x-8 md:mt-16 mt-8 ">
-        <div className="w-fit mx-auto">
+        <div className="w-fit mx-0 md:mx-auto">
           <Lottie
             options={defaultOptions}
             isClickToPauseDisabled={true}

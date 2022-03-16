@@ -66,7 +66,7 @@ const UserAppointment = ({ date }) => {
                   <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                     <button
                       onClick={() => dispatch(setPayModal(true))}
-                      className="bg-primary border-1 rounded-md text-white py-1 px-4"
+                      className="bg-blue-900 border-1 rounded-md text-white py-1 px-4"
                     >
                       Pay
                     </button>
@@ -87,7 +87,7 @@ const UserAppointment = ({ date }) => {
                     <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                       <button
                         onClick={() => dispatch(setPayModal(true))}
-                        className="bg-primary border-1 rounded-md text-white py-1 px-4"
+                        className="bg-blue-900 border-1 rounded-md text-white py-1 px-4"
                       >
                         Pay
                       </button>
