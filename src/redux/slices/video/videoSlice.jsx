@@ -5,21 +5,30 @@ import axios from '../../../api/axios';
 export const fetchVideos = createAsyncThunk(
   'videos/fetchVideos',
   async (pagination) => {
-    const response = await axios
-      .get(
-        `/student/allVideos/?page=${pagination.currPage}&size=${
-          pagination.size
-        }&search=${pagination.search}&roles=${JSON.stringify([5000])}`
-      )
-      .then((response) => response.data);
-    console.log(response, 'error checking');
-    return {
-      videos: response.videos,
-      count: response.count,
-      pageCount: pagination.pageCount,
-      size: pagination.size,
-      search: pagination.search,
-    };
+    if (pagination?.size) {
+      const response = await axios
+        .get(
+          `/student/allVideos/?page=${pagination.currPage}&size=${
+            pagination.size
+          }&search=${pagination.search}&roles=${JSON.stringify([5000])}`
+        )
+        .then((response) => response.data);
+      console.log(response, 'error checking');
+      return {
+        videos: response.videos,
+        count: response.count,
+        pageCount: pagination.pageCount,
+        size: pagination.size,
+        search: pagination.search,
+      };
+    } else {
+      const response = await axios
+        .get(`/student/allVideos/?roles=${JSON.stringify([5000])}`)
+        .then((response) => response.data);
+      return {
+        videos: response.videos,
+      };
+    }
   }
 );
 
@@ -49,22 +58,23 @@ const videoSlice = createSlice({
     currPage: 0,
   },
   reducers: {
-    setCurrPage: (state, { payload }) => {
+    setVideoCurrPage: (state, { payload }) => {
       state.currPage = payload;
-    },
-    setPageCount: (state, { payload }) => {
-      state.pageCount = payload;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchVideos.fulfilled, (state, { payload }) => {
       state.videos = payload.videos;
-      const count = payload.count;
-      const pageNumber = Math.ceil(count / payload.size);
-      if (payload.search) {
-        state.currPage = 0;
+      if (payload?.size) {
+        const count = payload.count;
+        const pageNumber = Math.ceil(count / payload.size);
+        if (payload.search) {
+          state.currPage = 0;
+        }
+        if (state.pageCount) {
+          state.pageCount = pageNumber;
+        }
       }
-      state.pageCount = pageNumber;
     });
     builder.addCase(fetchMyVideos.fulfilled, (state, { payload }) => {
       state.videos = payload;
@@ -75,6 +85,6 @@ const videoSlice = createSlice({
   },
 });
 
-export const { setCurrPage, setPageCount } = videoSlice.actions;
+export const { setVideoCurrPage } = videoSlice.actions;
 
 export default videoSlice.reducer;

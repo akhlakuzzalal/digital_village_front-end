@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Pagination from '../../../../Components/Pagination';
 import {
   fetchBlogs,
-  setCurrPage,
+  setBlogCurrPage,
 } from '../../../../redux/slices/blog/blogSlice';
 import Search from '../Search/Search';
 import BlogCard from './BlogCard/BlogCard';
@@ -35,7 +35,9 @@ const AllBlogs = () => {
     <div className="space-y-6">
       <Search handleSearch={handleSearch} />
 
-      <h3 className="text-center py-6 text-xl md:text-6xl lg:text-6xl mt-3">Available Blogs</h3>
+      <h3 className="text-center py-6 text-xl md:text-6xl lg:text-6xl mt-3">
+        Available Blogs
+      </h3>
       <article className="flex flex-wrap justify-evenly items-center gap-6">
         {blogs.map((blog) => (
           <BlogCard key={blog._id} blog={blog} />
@@ -45,7 +47,7 @@ const AllBlogs = () => {
       {/* pagination */}
       <Pagination
         currPage={currPage}
-        setCurrPage={setCurrPage}
+        setCurrPage={setBlogCurrPage}
         pageCount={pageCount}
       />
     </div>

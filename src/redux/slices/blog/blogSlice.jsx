@@ -5,20 +5,31 @@ import axios from '../../../api/axios';
 export const fetchBlogs = createAsyncThunk(
   'blogs/fetchBlogs',
   async (pagination) => {
-    const response = await axios
-      .get(
-        `/student/allBlogs/?page=${pagination.currPage}&size=${
-          pagination.size
-        }&search=${pagination.search}&roles=${JSON.stringify([2000])}`
-      )
-      .then((response) => response.data);
-    return {
-      blogs: response.blogs,
-      count: response.count,
-      pageCount: pagination.pageCount,
-      size: pagination.size,
-      search: pagination.search,
-    };
+    if (pagination?.size) {
+      const response = await axios
+        .get(
+          `/student/allBlogs/?page=${pagination.currPage}&size=${
+            pagination.size
+          }&search=${pagination.search}&roles=${JSON.stringify([5000])}`
+        )
+        .then((response) => response.data);
+      return {
+        blogs: response.blogs,
+        count: response.count,
+        pageCount: pagination.pageCount,
+        size: pagination.size,
+        search: pagination.search,
+      };
+    } else {
+      const response = await axios
+        .get(
+          `/student/allBlogs/?roles=${JSON.stringify([5000])}` // here will be roles of user
+        )
+        .then((response) => response.data);
+      return {
+        blogs: response.blogs,
+      };
+    }
   }
 );
 
@@ -44,7 +55,7 @@ const blogSlice = createSlice({
     currPage: 0,
   },
   reducers: {
-    setCurrPage: (state, { payload }) => {
+    setBlogCurrPage: (state, { payload }) => {
       state.currPage = payload;
     },
   },
@@ -56,7 +67,9 @@ const blogSlice = createSlice({
       if (payload.search) {
         state.currPage = 0;
       }
-      state.pageCount = pageNumber;
+      if (pageNumber || pageNumber === 0) {
+        state.pageCount = pageNumber;
+      }
     });
     builder.addCase(fetchMyBlogs.fulfilled, (state, { payload }) => {
       state.blogs = payload;
@@ -67,6 +80,6 @@ const blogSlice = createSlice({
   },
 });
 
-export const { setCurrPage } = blogSlice.actions;
+export const { setBlogCurrPage } = blogSlice.actions;
 
 export default blogSlice.reducer;

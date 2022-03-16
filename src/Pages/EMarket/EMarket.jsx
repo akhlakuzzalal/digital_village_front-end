@@ -4,7 +4,7 @@ import Pagination from '../../Components/Pagination';
 import { setShowModal } from '../../redux/slices/eMarket/modalSlicle';
 import {
   fetchAllProducts,
-  setCurrPage,
+  setProductCurrPage,
 } from '../../redux/slices/eMarket/productsSlice';
 import Search from '../Education/Student/Search/Search';
 import AddToCart from './MarketComponents/AddToCart';
@@ -40,7 +40,6 @@ const EMarket = () => {
   }, [currPage, pageCount, size, search]);
 
   const handleSearch = (data) => {
-    console.log(data, 'search');
     setSearch(data.search);
   };
 
@@ -74,6 +73,7 @@ const EMarket = () => {
               see all
             </p>
           </div>
+
           <div>
             {/* search */}
             <Search handleSearch={handleSearch} />
@@ -91,7 +91,7 @@ const EMarket = () => {
             {/* pagination */}
             <Pagination
               currPage={currPage}
-              setCurrPage={setCurrPage}
+              setCurrPage={setProductCurrPage}
               pageCount={pageCount}
             />
           </div>
