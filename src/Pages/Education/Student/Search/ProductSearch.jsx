@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import img from '../../../../assets/events/market-banner.PNG';
+import img from '../../../../assets/events/vegi-banner.PNG';
 const ProductSearch = ({ handleSearch }) => {
   const {
     register,
@@ -10,15 +10,21 @@ const ProductSearch = ({ handleSearch }) => {
   } = useForm();
   return (
     <div
-      style={{ backgroundImage: `url(${img})` }}
-      className="py-20 lg:mx-[100px]"
+      // style={{
+      //   backgroundImage: `url(${img})`,
+      //   backgroundRepeat: 'no-repeat',
+      //   width: '1750px',
+      // }}
+
+      className=" lg:mx-[100px] "
     >
+      <img className="w-full h-[200px]" src={img} alt="" />
       <form
         onSubmit={handleSubmit(handleSearch)}
-        className="flex items-center border-2 p-1 border-gray-200 bg-gray-200 sm:w-3/4 mx-2 mt-3 sm:mx-auto rounded lg:w-[700px] lg:h-[50px]  "
+        className="flex items-center border-2 p-1 border-indigo-200 bg-white sm:w-3/4 mx-2 mt-3 sm:mx-auto rounded lg:w-[600px] lg:h-[50px] relative bottom-[140px] "
       >
         <input
-          className="w-full rounded-sm pl-4 pr-2 bg-gray-200 outline-none  lg:p-3"
+          className="w-full rounded-sm pl-4 pr-2 bg-white outline-none  lg:p-3"
           {...register('search', { required: 'Search is Required' })}
           onKeyUp={() => {
             trigger('search');

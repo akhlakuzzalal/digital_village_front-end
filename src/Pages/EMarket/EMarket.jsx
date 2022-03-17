@@ -7,6 +7,7 @@ import {
   setProductCurrPage,
 } from '../../redux/slices/eMarket/productsSlice';
 import ProductSearch from '../Education/Student/Search/ProductSearch';
+import HotOffer from './HotOffer';
 import AddToCart from './MarketComponents/AddToCart';
 import Categorie from './MarketComponents/Categorie';
 import LatestProduct from './MarketComponents/LatestProduct';
@@ -54,7 +55,7 @@ const EMarket = () => {
         <div className="lg:mt-[200px] w-full">
           <ProductSearch handleSearch={handleSearch} />
         </div>
-        <div className="grid grid-cols-6 gap-0 md:gap-6 mx-2 md:mx-24 mt-10 lg:h-[100vh]">
+        <div className="grid grid-cols-6 gap-0 md:gap-6 mx-2 md:mx-24  lg:h-[100vh]">
           {/* Latest Product */}
           <div className="col-span-6 md:col-span-2 h-min md:h-full">
             <h6 className="inline border-b-2 border-primary ml-2 md:ml-0">
@@ -104,6 +105,7 @@ const EMarket = () => {
         </div>
         <AddToCart product={product} />
       </div>
+      <HotOffer></HotOffer>
     </>
   );
 };
