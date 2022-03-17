@@ -42,14 +42,14 @@ const AddAppointment = () => {
         >
           <input
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-            {...register('appointment', {
-              required: 'appointment name is required',
+            {...register('service', {
+              required: 'service name is required',
               maxLength: {
                 value: 30,
                 message: "Don't exceed 30 letters",
               },
             })}
-            placeholder="Appointment Name"
+            placeholder="service Name"
           />
           {errors.appointment && (
             <small className="text-danger">{errors.appointment.message}</small>
@@ -81,6 +81,7 @@ const AddAppointment = () => {
             type="time"
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
             {...register('time', { required: true })}
+            placeholder="time to time"
           />
           <input
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
