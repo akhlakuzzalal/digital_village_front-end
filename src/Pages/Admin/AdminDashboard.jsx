@@ -25,13 +25,6 @@ const links = [
     name: 'All Users',
     icon: <FaUsers size={30} />,
     path: '/admin/allusers',
-    nestedPath: [
-      {
-        name: 'Add Users',
-        icon: <AiFillFileAdd size={30} />,
-        path: '/admin/manageusers',
-      },
-    ],
   },
   {
     name: 'Events',
