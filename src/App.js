@@ -20,6 +20,7 @@ import Eventmanagement from './Pages/Admin/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/Market/MarketManagement';
 import AddNews from './Pages/Admin/News/AddNews/AddNews';
 import ManageNews from './Pages/Admin/News/ManageNews/ManageNews';
+import DonarPaymente from './Pages/Admin/DashboardItem/Donation/DonarPaymente';
 import NewsDashboard from './Pages/Admin/News/NewsDashboard';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
@@ -61,7 +62,7 @@ import MyBookedEvents from './Pages/Events/MyBookedEvents/MyBookedEvents';
 import UpcomingEvents from './Pages/Events/UpcomingEvents/UpcomingEvents';
 import AddAppointment from './Pages/Medical/DoctorsAppointment/AddAppointment/AddAppointment';
 import DoctorsAppointment from './Pages/Medical/DoctorsAppointment/DoctorsAppointment';
-import UserAppointments from './Pages/Medical/DoctorsAppointment/UserAppointments/UserAppointment';
+import UserAppointments from './Pages/Medical/DoctorsAppointment/UserAppointments/UserAppointments';
 import Medical from './Pages/Medical/Medical';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
 import FrequentlyAsked from './Pages/Medical/VaccineRegistration/FrequentlyAsked/FrequentlyAsked';
@@ -89,6 +90,8 @@ import Profile from './Pages/User/DashboardComponent/Profile/Profile';
 import Review from './Pages/User/DashboardComponent/Review/Review';
 import UserDashboard from './Pages/User/UserDashboard';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
+import AllApply from './Pages/Admin/DashboardItem/Donation/AllApply';
+import HelpRequestApply from './Pages/Admin/Donation/HelpRequestApply';
 
 const Roles = {
   User: 1000,
@@ -118,11 +121,14 @@ function App() {
             </Route>
             {/* notification route */}
             <Route path="notifications" element={<Notification />} />
+
             {/* user routes */}
             <Route path="userdashboard" element={<UserDashboard />}>
               <Route path="profile" element={<Profile />} />
               <Route path="my-event-booking" element={<MyBookedEvents />} />
               <Route path="review" element={<Review />} />
+              <Route path="donarpaymente" element={<DonarPaymente />} />
+              <Route path="requestapply" element={<HelpRequestApply />} />
               <Route
                 path="createDonationCause"
                 element={<CreateDonationCause />}
@@ -228,6 +234,7 @@ function App() {
               <Route path="manageNews" element={<ManageNews />} />
               <Route path="addAppointment" element={<AddAppointment />} />
               <Route path="status" element={<StatusCheck />} />
+              <Route path="requestapply" element={<AllApply />} />
             </Route>
 
             {/* Social Media Routes */}

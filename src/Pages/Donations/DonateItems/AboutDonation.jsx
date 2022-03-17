@@ -102,7 +102,6 @@ const AboutDonation = () => {
     </div>
   </div>
 </div>
-
 </section>
     );
 };

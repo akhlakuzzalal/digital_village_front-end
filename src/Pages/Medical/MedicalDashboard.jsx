@@ -36,8 +36,7 @@ const links = [
 ];
 
 const MedicalDashboard = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [showText, setShowText] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const location = useLocation();
   const initial =
@@ -45,18 +44,14 @@ const MedicalDashboard = () => {
     location.pathname === '/medicalDashboard/';
 
   return (
-    <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div className="flex">
       {/* Sidebar */}
-      <NewSidebar
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-        showText={showText}
-        setShowText={setShowText}
-        links={links}
-      />
+      <NewSidebar setIsOpen={setIsOpen} links={links} />
 
       {/* contents */}
-      <div className="flex-1">
+      <div
+        className={`mt-[85px] flex-1 ${isOpen ? 'ml-[273px]' : 'ml-[82px]'}`}
+      >
         {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
         {initial ? <VaccineRegistration /> : <Outlet />}
       </div>

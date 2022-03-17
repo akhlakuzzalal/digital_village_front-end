@@ -5,9 +5,10 @@ import Schedule from './Schedule/Schedule';
 const DoctorsAppointment = () => {
   const [date, setDate] = useState(new Date());
   const onChange = (date) => {
-    console.log(date.toString());
+    console.log(date.toLocaleDateString(), 'date');
     setDate(date);
   };
+
   return (
     <div>
       <Schedule onChange={onChange} />
