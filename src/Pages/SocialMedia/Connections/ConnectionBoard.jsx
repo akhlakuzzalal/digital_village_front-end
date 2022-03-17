@@ -4,6 +4,7 @@ import { MdPending, MdPersonAddAlt1 } from 'react-icons/md';
 import { SiHomebridge } from 'react-icons/si';
 import { Outlet, useLocation } from 'react-router-dom';
 import NewSidebar from '../../../Components/Sidebar/NewSidebar';
+import BoardHome from './BoardComponent/BoardHome';
 const links = [
   {
     name: 'Home',
@@ -31,7 +32,7 @@ const ConnectionBoard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const initial =
-    location.pathname === '/social' || location.pathname === '/social/';
+    location.pathname === '/connection' || location.pathname === '/connection/';
 
   return (
     <div className="flex">
@@ -39,7 +40,7 @@ const ConnectionBoard = () => {
       <div
         className={`mt-[90px] flex-1 ${isOpen ? 'ml-[273px]' : 'ml-[82px]'}`}
       >
-        <Outlet />
+        {initial ? <BoardHome /> : <Outlet />}
       </div>
     </div>
   );

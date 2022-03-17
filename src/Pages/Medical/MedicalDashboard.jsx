@@ -5,7 +5,7 @@ import { GiLoveInjection, GiMedicines } from 'react-icons/gi';
 import { RiUserHeartFill } from 'react-icons/ri';
 import { Outlet, useLocation } from 'react-router-dom';
 import NewSidebar from './../../Components/Sidebar/NewSidebar';
-import VaccineRegistration from './Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
+import VaccineRegistration from './VaccineRegistration/VaccineRegistration';
 
 const links = [
   {

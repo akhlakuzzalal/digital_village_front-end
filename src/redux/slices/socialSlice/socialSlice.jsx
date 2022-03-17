@@ -16,38 +16,68 @@ const socialSlice = createSlice({
     friends: [],
     requesting: [],
     requested: [],
-    notFriends: [],
+    noConnection: [],
   },
-  reducers: {},
+  reducers: {
+    // add Friend
+    setAddFriend: (state, { payload }) => {
+      const reqUser = state.noConnection.find((user) => user._id === payload);
+      const newNoConnection = state.noConnection.filter(
+        (user) => user._id !== payload
+      );
+      state.requesting.push(reqUser);
+      state.noConnection = newNoConnection;
+    },
+    // cancle from redux
+    setCancleRequest: (state, { payload }) => {
+      const reqUser = state.requesting.find((user) => user._id === payload);
+      const newRequesting = state.requesting.filter(
+        (user) => user._id !== payload
+      );
+      state.noConnection.push(reqUser);
+      state.requesting = newRequesting;
+    },
+    // accept A Friend
+    setAcceptFriend: (state, { payload }) => {
+      const acceptUser = state.requested.find((user) => user._id === payload);
+      const newRequested = state.requested.filter(
+        (user) => user._id !== payload
+      );
+      state.friends.push(acceptUser);
+      state.requested = newRequested;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(allSocialUser.fulfilled, (state, { payload }) => {
       state.socialUsers = payload.allUsers;
       state.user = payload.user[0];
+      const { connection, requesting, requested } = payload.user[0];
+      const allConnection = [...connection, ...requested, ...requesting];
       //   friends
-      const friendsID = payload.user[0].connection;
-      const friends = payload.allUsers?.filter(
-        (user) => user._id === friendsID.find((id) => id)
+      const friends = payload.allUsers?.filter((user) =>
+        connection.includes(user._id)
       );
-      // not Friend
-      const notFriends = payload.allUsers?.filter(
-        (user) => user._id !== friendsID.find((id) => id)
+      // not Connected
+      const notConnected = payload.allUsers?.filter(
+        (user) => !allConnection.includes(user._id)
       );
       //   requesting
-      const requestingID = payload.user[0].requesting;
-      const requesting = payload.allUsers?.filter(
-        (user) => user._id === requestingID.find((id) => id)
+      const requestingUser = payload.allUsers?.filter((user) =>
+        requesting.includes(user._id)
       );
       //   requested
-      const requestedID = payload.user[0].requested;
-      const requested = payload.allUsers?.filter(
-        (user) => user._id === requestedID.find((id) => id)
+      const requestedUser = payload.allUsers?.filter((user) =>
+        requested.includes(user._id)
       );
       state.friends = friends;
-      state.requesting = requesting;
-      state.requested = requested;
-      state.notFriends = notFriends;
+      state.requesting = requestingUser;
+      state.requested = requestedUser;
+      state.noConnection = notConnected;
     });
   },
 });
+
+export const { setAddFriend, setCancleRequest, setAcceptFriend } =
+  socialSlice.actions;
 
 export default socialSlice.reducer;

@@ -4,7 +4,7 @@ import {
   addProduct,
   deleteAProduct,
   updateAProduct,
-} from '../../../../../redux/slices/eMarket/productsSlice';
+} from '../../../../redux/slices/eMarket/productsSlice';
 
 const useMarketAdminDashboard = () => {
   const dispatch = useDispatch();

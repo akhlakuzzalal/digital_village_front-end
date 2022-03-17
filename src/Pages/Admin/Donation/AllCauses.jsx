@@ -1,25 +1,25 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllCuases} from '../../../../redux/slices/Donations/donationSlice';
+import { fetchAllCuases } from '../../../redux/slices/Donations/donationSlice';
 import Cause from './Cause';
 
 const AllCauses = () => {
-    const causes = useSelector((state) => state.donation.causes);
-//  console.log(causes);
+  const causes = useSelector((state) => state.donation.causes);
+  //  console.log(causes);
 
-    const dispatch = useDispatch();
-    useEffect(() => {
-      dispatch(fetchAllCuases());
-    }, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllCuases());
+  }, []);
 
-    return (
-        <section
-      className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4"
-    >
+  return (
+    <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4">
       <div className="flex flex-col col-span-2 md:col-span-1 justify-center items-center py-12">
-        <h3 className="text-gray-800 text-lg md:text-xl lg:text-2xl">All Causes</h3>
+        <h3 className="text-gray-800 text-lg md:text-xl lg:text-2xl">
+          All Causes
+        </h3>
         <p className="text-center text-gray-600 font-normal text-sm lg:text-lg">
-        Admin can any cause dynamically delete and update.
+          Admin can any cause dynamically delete and update.
         </p>
       </div>
       <div
@@ -31,7 +31,7 @@ const AllCauses = () => {
         })}
       </div>
     </section>
-    );
+  );
 };
 
 export default AllCauses;

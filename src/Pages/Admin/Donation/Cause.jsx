@@ -1,58 +1,54 @@
 import React from 'react';
-import { FaDonate, FaHandsHelping, } from 'react-icons/fa';
-import { RiDeleteBin5Fill } from "react-icons/ri";
-import { GrDocumentUpdate } from "react-icons/gr";
-import { Progress } from 'react-sweet-progress';
-import "react-sweet-progress/lib/style.css";
-import { deleteAnCuase} from '../../../../redux/slices/Donations/donationSlice';
-import { useNavigate } from 'react-router-dom';
+import { FaDonate, FaHandsHelping } from 'react-icons/fa';
+import { GrDocumentUpdate } from 'react-icons/gr';
+import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { Progress } from 'react-sweet-progress';
+import 'react-sweet-progress/lib/style.css';
 import swal from 'sweetalert';
+import { deleteACause } from '../../../redux/slices/Donations/donationSlice';
 
 const Cause = (props) => {
-    const { _id, title, image, goal, raised, category} = props;
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-// handing donetion
-    const handleDeleteCause = () => {
+  const { _id, title, image, goal, raised, category } = props;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  // handing donetion
+  const handleDeleteCause = () => {
+    // dispatch(deleteAnCuase(_id))
+    swal({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this imaginary file!',
+      icon: 'warning',
 
-        // dispatch(deleteAnCuase(_id))
-            swal({
-              title: 'Are you sure?',
-              text: 'Once deleted, you will not be able to recover this imaginary file!',
-              icon: 'warning',
-        
-              buttons: true,
-            })
-            .then((willConfirm) => {
-                if (willConfirm) {
-                  dispatch(deleteAnCuase(_id));
-                  swal('Confirmed!', {
-                    icon: 'success',
-                  });
-                }
-              });
-            };
+      buttons: true,
+    }).then((willConfirm) => {
+      if (willConfirm) {
+        dispatch(deleteACause(_id));
+        swal('Confirmed!', {
+          icon: 'success',
+        });
+      }
+    });
+  };
 
+  const handleUpdateCause = () => {
+    navigate(`/admin/updatecause/${_id}`);
+  };
+  //Progressbar for
+  let donationGoal = goal;
+  let donationTotal = raised;
 
-    const handleUpdateCause = () => {
-        navigate(`/admin/updatecause/${_id}`);
-      };
-        //Progressbar for
-        let donationGoal = goal;
-        let donationTotal = raised;
-    
-    
-      const percentage = (donationTotal, donationGoal) => {
-        return (donationTotal / donationGoal) * 100 > 100
-          ? 100
-          : (donationTotal / donationGoal) * 100;
-      };
-    
-      let percent = percentage(donationTotal, donationGoal);
+  const percentage = (donationTotal, donationGoal) => {
+    return (donationTotal / donationGoal) * 100 > 100
+      ? 100
+      : (donationTotal / donationGoal) * 100;
+  };
 
-    return (
-      <div className="rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between border-l-4  bg-blue-50 shadow hover:shadow-md dark:dark-card-bg">
+  let percent = percentage(donationTotal, donationGoal);
+
+  return (
+    <div className="rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between border-l-4  bg-blue-50 shadow hover:shadow-md dark:dark-card-bg">
       <div className="overflow-hidden rounded-xl h-full w-full">
         <div className="absolute top-10 text-white font-medium text-sm md:text-md lg:text-xl left-0 z-50 bg-red-600 font-primary px-4 py-1 rounded-lg">
           {category}
@@ -67,7 +63,9 @@ const Cause = (props) => {
       <div className="flex flex-col flex-grow">
         {/* title and description */}
         <div className="flex flex-col space-y-1 my-4">
-          <h2 className="text-gray-900 font-medium text-sm md:text-md lg:text-xl">{title}</h2>
+          <h2 className="text-gray-900 font-medium text-sm md:text-md lg:text-xl">
+            {title}
+          </h2>
         </div>
       </div>
       {/* card footer  */}
@@ -112,12 +110,21 @@ const Cause = (props) => {
       </div>
       {/* Button */}
       <div className="flex items-center justify-between pt-3">
-      <button onClick={handleDeleteCause} className="w-100 flex items-center justify-center px-3 bg-transparent border-1 border-red-500 text-red-500 text-lg rounded-lg"><RiDeleteBin5Fill className='text-2xl text-red-400'/></button>
-      <button onClick={handleUpdateCause} className="w-100 flex items-center justify-center py-2 px-3 border border-transparent text-sm font-medium rounded-md btn bg-gradient-to-r from-primary via-secondary to-secondary hover:from-primary hover:via-secondary hover:to-primary shadow-xl"  ><GrDocumentUpdate className='text-2xl'></GrDocumentUpdate></button>
+        <button
+          onClick={handleDeleteCause}
+          className="w-100 flex items-center justify-center px-3 bg-transparent border-1 border-red-500 text-red-500 text-lg rounded-lg"
+        >
+          <RiDeleteBin5Fill className="text-2xl text-red-400" />
+        </button>
+        <button
+          onClick={handleUpdateCause}
+          className="w-100 flex items-center justify-center py-2 px-3 border border-transparent text-sm font-medium rounded-md btn bg-gradient-to-r from-primary via-secondary to-secondary hover:from-primary hover:via-secondary hover:to-primary shadow-xl"
+        >
+          <GrDocumentUpdate className="text-2xl"></GrDocumentUpdate>
+        </button>
       </div>
     </div>
-    );
+  );
 };
 
 export default Cause;
- 

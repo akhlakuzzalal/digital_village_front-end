@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import swal from 'sweetalert';
-import axios from '../../../../../api/axios';
+import axios from '../../../../api/axios';
 
 const ManageNews = () => {
   const [news, setNews] = useState([]);
   const [confirm, setConfirm] = useState(false);
-const [isLoading,setIsLoading]=useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true)
-    axios.get('/news/allNews')
-      .then(res =>{
-        
-        setNews(res.data)
-        setIsLoading(false)
-      })
+    setIsLoading(true);
+    axios.get('/news/allNews').then((res) => {
+      setNews(res.data);
+      setIsLoading(false);
+    });
   }, [isLoading]);
 
   const handleDelete = async (id) => {
@@ -26,13 +24,13 @@ const [isLoading,setIsLoading]=useState(true);
       buttons: 'delete',
       dangerMode: true,
     }).then(() => {
-      setIsLoading(true)
+      setIsLoading(true);
       axios.delete(`/news/deleteNews/${id}`).then((response) => {
         if (response?.data?.deletedCount) {
           swal('Delete! Your News Fille has been deleted!', {
             icon: 'success',
           });
-          setIsLoading(false)
+          setIsLoading(false);
         } else {
           swal('Your News  file is safe!');
         }

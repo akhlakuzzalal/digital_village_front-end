@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import swal from 'sweetalert';
-import axios, { BASE_URI } from '../../../../../api/axios';
-import { giveAlert } from '../../../../../utilities/alert';
+import Swal from 'sweetalert2';
+import axios, { BASE_URI } from '../../../../api/axios';
 
 const DevelopmentManage = () => {
   const [development, setDevelopment] = useState([]);
@@ -31,14 +31,22 @@ const DevelopmentManage = () => {
       setIsLoading(true);
       axios.delete(`/development/deleteDevelopment/${id}`).then((response) => {
         if (response?.data?.deletedCount) {
-          giveAlert('Your Development Proposal has been deleted!', 'success');
+          Swal.fire({
+            title: 'Your Development Proposal has been deleted!',
+            confirmButtonText: 'Okay',
+          });
         } else {
-          giveAlert('something went wrong', 'error');
+          Swal.fire({
+            title: 'Something went wrong',
+            icon: 'error',
+            confirmButtonText: 'Okay',
+          });
         }
       });
       setIsLoading(false);
     });
   };
+
   return (
     <article className="flex flex-wrap justify-evenly items-center gap-6">
       {development.map((data) => (

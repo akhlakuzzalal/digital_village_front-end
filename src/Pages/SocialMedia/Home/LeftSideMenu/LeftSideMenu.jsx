@@ -12,20 +12,22 @@ import { Link } from 'react-router-dom';
 
 const LeftSideMenu = () => {
   return (
-    <div className="mt-10 space-y-6 ml-6 fixed">
+    <div className="mt-2 space-y-6 ml-6 fixed px-10 shadow-xl rounded-lg py-8 dark:dark-card-bg">
       {/* User Profile */}
-      <div className="flex items-center space-x-3 cursor-pointer">
-        {/* avatar */}
-        <div class="mr-2 w-12 h-12 relative flex justify-center items-center rounded-full bg-gray-500 text-xl text-white">
-          <img
-            src="http://source.unsplash.com/100x100/?woman"
-            className="rounded-full"
-            alt=""
-          />
-          <div className="absolute right-0 bottom-0 w-3 h-3 rounded-full bg-green-600"></div>
+      <Link to="/userdashboard/profile">
+        <div className="flex items-center space-x-3 cursor-pointer">
+          {/* avatar */}
+          <div class="mr-2 w-12 h-12 relative flex justify-center items-center rounded-full bg-gray-500 text-xl text-white">
+            <img
+              src="http://source.unsplash.com/100x100/?woman"
+              className="rounded-full"
+              alt=""
+            />
+            <div className="absolute right-0 bottom-0 w-3 h-3 rounded-full bg-green-600"></div>
+          </div>
+          <h6>User Name</h6>
         </div>
-        <h6>User Name</h6>
-      </div>
+      </Link>
       {/* App menus */}
       <div>
         <Link to="/connection">

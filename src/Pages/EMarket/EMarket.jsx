@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Pagination from '../../Components/Pagination';
-import { setShowModal } from '../../redux/slices/eMarket/modalSlicle';
+import { setShowModal } from '../../redux/slices/eMarket/modalSlice';
 import {
   fetchAllProducts,
   setProductCurrPage,
