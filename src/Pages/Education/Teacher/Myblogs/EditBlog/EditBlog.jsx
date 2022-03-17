@@ -54,7 +54,7 @@ const EditBlog = () => {
 
   useEffect(() => {
     axios.get(`/teacher/getSingleBlog?id=${id}`).then((response) => {
-      setSingleBlog(response?.data);
+      setSingleBlog(response?.data); // fetch the previous blog
       setFile(response?.data?.bannerImg);
     });
   }, [id]);
