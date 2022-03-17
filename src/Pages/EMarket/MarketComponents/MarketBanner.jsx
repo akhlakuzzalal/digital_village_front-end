@@ -31,8 +31,8 @@ const MarketBanner = () => {
           />
         </div>
         {/* 2nd column */}
-        <div className="flex relative w-full flex-col col-span-2 md:col-span-1 justify-center items-center">
-          <div className="">
+        <div className="flex relative w-full flex-col col-span-2 md:col-span-1 justify-center items-center ">
+          <div className="space-x-3 mb-10">
             <Link to="/marketdashboard">
               <p className="inline right-4"> Dashboard</p>
             </Link>
