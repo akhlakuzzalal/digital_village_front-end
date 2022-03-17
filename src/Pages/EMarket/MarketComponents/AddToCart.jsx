@@ -3,13 +3,13 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { GiSelfLove } from 'react-icons/gi';
 import { MdDoneOutline } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import { setShowModal } from '../../../redux/slices/eMarket/modalSlicle';
-import useCart from './Cart/useCart';
+import { setShowModal } from '../../../redux/slices/eMarket/modalSlice';
+import cart from '../../../utilities/cart';
 
-export default function AddToCart({ product }) {
+const AddToCart = ({ product }) => {
   const { name, _id, img, price, description } = product;
   // add a product in cart
-  const { handleAddCart } = useCart();
+  const { handleAddCart } = cart();
   // redux state
   const showModal = useSelector((state) => state.market.modal.showModal);
   const dispatch = useDispatch();
@@ -38,7 +38,10 @@ export default function AddToCart({ product }) {
                           className="px-8 py-2 bg-secondary rounded-full"
                           onClick={() => handleAddCart(_id, name, img, price)}
                         >
-                         <span className='text-white font-bolder'> Add to cart</span>
+                          <span className="text-white font-bolder">
+                            {' '}
+                            Add to cart
+                          </span>
                         </button>
                         <GiSelfLove
                           className="cursor-pointer"
@@ -70,4 +73,6 @@ export default function AddToCart({ product }) {
       ) : null}
     </>
   );
-}
+};
+
+export default AddToCart;

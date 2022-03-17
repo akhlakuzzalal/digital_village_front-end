@@ -4,13 +4,13 @@ import { FcApproval} from 'react-icons/fc';
 
 const DonarPaymente = () => {
     return (
-        <section className="max-w-6xl mx-auto px-3 mt-[88px] py-10"
+        <section className="max-w-6xl mx-auto px-3 mt-[88px]"
         style={{ minHeight: 'calc(100vh - 700px)' }}>
-             <h3 className="text-center font-semibold text-gray-800 text-lg md:text-2xl lg:text-3xl mx-auto ml-16">Donation Paymente</h3>
+             <h3 className="text-center font-semibold text-gray-800 text-lg md:text-2xl lg:text-3xl mx-auto ml-16">Donation a Donar Paymente</h3>
         <p className="text-center text-gray-600 font-normal text-sm lg:text-lg  mx-auto ml-12">
             You can donate the available from here and Get Help Request
         </p>
-            <div className="col-span-3 flex flex-col space-y-2 ml-16 lg:ml-10 md:ml-20 py-4">
+            <div className="col-span-3 flex flex-col space-y-2 ml-14 lg:ml-10 md:ml-20 py-4">
                 <div  className="grid grid-cols-1 lg:grid-cols-4 gap-3 bg-white rounded-lg shadow-xl p-3 box-border">
                     {/* {/_ image _/} */}
                     <div className="col-span-1">

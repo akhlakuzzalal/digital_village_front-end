@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
 import { BsCalendar2EventFill } from 'react-icons/bs';
-import { FaConnectdevelop, FaShopify, FaUsers } from 'react-icons/fa';
+import { FaConnectdevelop, FaHandsHelping, FaShopify, FaUsers } from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
 import { GiNewspaper } from 'react-icons/gi';
 import { IoLogoDesignernews } from 'react-icons/io';
@@ -16,22 +16,12 @@ import { RiLightbulbFlashFill } from 'react-icons/ri';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
-// import Sidebar from '../../Components/Sidebar';
-// import WelcomeBanner from '../../Components/WelcomeBanner';
-// import Header from '../Education/Teacher/Dashboard/partials/Header';
 
 const links = [
   {
     name: 'All Users',
     icon: <FaUsers size={30} />,
     path: '/admin/allusers',
-    nestedPath: [
-      {
-        name: 'Add Users',
-        icon: <AiFillFileAdd size={30} />,
-        path: '/admin/manageusers',
-      },
-    ],
   },
   {
     name: 'Events',
@@ -59,7 +49,7 @@ const links = [
   {
     name: 'Donation',
     icon: <BiDonateHeart size={30} />,
-    path: '/admin/allpaymente',
+    path: '/admin/manageAllDonars',
     nestedPath: [
       {
         name: 'Add a Cause',
@@ -70,6 +60,11 @@ const links = [
         name: 'All Cuases',
         icon: <FcDonate size={30} />,
         path: '/admin/allcauses',
+      },
+      {
+        name: 'All Help Request',
+        icon: <FaHandsHelping size={30} />,
+        path: '/admin/requestapply',
       },
     ],
   },
