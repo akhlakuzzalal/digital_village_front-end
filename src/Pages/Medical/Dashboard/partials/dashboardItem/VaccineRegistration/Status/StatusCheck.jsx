@@ -13,27 +13,29 @@ const StatusCheck = () => {
       console.log(response.data);
     });
   }, []);
-  const handleStatus = (userEmail) => {
-    axios
-      .put('/vaccine/updateInfo', userEmail)
+  const handleStatus = (dt) => {
+    console.log(dt);
+    swal({
+      title: 'Make sure all the information  valid.Want to proceed?',
+      // text: 'Once deleted, you will not be able to recover this imaginary file!',
+      icon: 'warning',
 
-      .then((response) => {
-        console.log(response.data);
-        swal({
-          title: 'Make sure all the information  valid.Want to proceed?',
-          // text: 'Once deleted, you will not be able to recover this imaginary file!',
-          icon: 'warning',
-
-          buttons: true,
-        }).then((willConfirm) => {
-          if (willConfirm) {
-            console.log('ok');
-            swal('Registration Done.', {
-              icon: 'success',
-            });
-          }
+      buttons: true,
+    }).then((willConfirm) => {
+      if (willConfirm) {
+        console.log('ok');
+        swal('Registration Done.', {
+          icon: 'success',
         });
-      });
+
+        axios
+          .put('/vaccine/updateInfo', dt)
+
+          .then((response) => {
+            console.log(response.data);
+          });
+      }
+    });
   };
   return (
     <div class="bg-gray-50 min-h-screen">
@@ -47,31 +49,31 @@ const StatusCheck = () => {
               <div>
                 <div>
                   <div class="flex justify-between bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-md py-2 px-4 text-white font-bold text-md">
-                    <div>
+                    <div className="w-1/3">
                       <span>Name</span>
                     </div>
-                    <div>
+                    <div className="w-1/3">
                       <span>Email</span>
                     </div>
 
-                    <div>
+                    <div className="w-1/3">
                       <span>Edit</span>
                     </div>
                   </div>
                   <div>
                     {info.map((row) => (
-                      <div class="flex justify-between border-t text-sm font-normal mt-4 space-x-4">
-                        <div class="px-2 flex">
+                      <div class="flex justify-between border-2 text-sm font-normal mt-4 space-x-4">
+                        <div className="w-1/3">
                           <span>{row.name}</span>
                         </div>
                         <div>
                           <span>{row.email}</span>
                         </div>
 
-                        <div class="px-2">
+                        <div class="w-1/3">
                           <button
                             className="border-2 g bg-blue-900  text-white py-2 px-5"
-                            onClick={() => handleStatus(row.email)}
+                            onClick={() => handleStatus(row)}
                           >
                             Approve
                           </button>

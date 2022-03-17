@@ -8,13 +8,14 @@ const Status = () => {
   const email = user?.email;
   useEffect(() => {
     axios.get(`/vaccine/findInfo?email=${email}`).then((response) => {
+      console.log(response.data);
       if (response.data && response.data.length > 0) {
         setInfo(response.data[0]);
       }
     });
   }, [email]);
   return (
-    <div className="w-3/4 my-20 p-0 md:p-10 min-h-screen">
+    <div className="w-full  my-20 p-0 md:p-10 min-h-screen">
       <div>
         <div class="p-0 md:p-4">
           <div class="bg-white p-0 md:p-4 rounded-md">
@@ -37,16 +38,16 @@ const Status = () => {
                     </div>
                   </div>
                   <div>
-                    <div class="flex justify-between border-t text-sm font-normal mt-4 space-x-0 md:space-x-4">
-                      <div class="className='w-1/3'px-0 md:px-2">
+                    <div class="flex justify-between border-2 text-sm font-normal mt-4 ">
+                      <div class="w-1/3">
                         <span>{info?.name}</span>
                       </div>
-                      <div class="className='w-1/3'px-0 md:px-2 ">
+                      <div class="w-1/3">
                         <span>{info?.email}</span>
                       </div>
 
-                      <div class="className='w-1/3'px-0 md:px-2 ">
-                        <span>Panding</span>
+                      <div class="w-1/3 ">
+                        <span>{info?.status}</span>
                       </div>
                     </div>
                   </div>
