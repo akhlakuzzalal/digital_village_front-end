@@ -1,13 +1,18 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
 import axios from '../../../../../api/axios';
 import FileUpload from '../../../../../Components/FileUpload';
 import RichTextEditor from '../../../../../Components/RichTextEditor';
 
-const AddNews = () => {
+const EditNews = () => {
   const [content, setContent] = useState('');
+  const { id } = useParams();
+  const [news, setNews] = useState([]);
+  const [confirm, setConfirm] = useState(false);
+  const [isLoading,setIsLoading]=useState(false);
 
-  // const user = useSelector((state) => state.user.user);
+ 
 
   const {
     register,
@@ -19,6 +24,13 @@ const AddNews = () => {
   const handleEditorChange = (e) => {
     setContent(e.target.getContent());
   };
+
+  useEffect(() => {
+    axios.get('/news/allNews')
+      .then(res =>{
+        setNews(res.data)
+      })
+  }, []);
 
   const [file, setFile] = useState({});
 
@@ -37,9 +49,12 @@ const AddNews = () => {
       })
     );
 
-    const response = await axios.post('/news/addNews', formData);
-    console.log(response.data);
+    const response = await axios.put('/news/editNews', formData);
+ 
   };
+  const result=news.filter(d=>d._id ===id)
+  console.log(result);
+
 
   return (
     <div  className="bg-cover h-[100%] w-[100%]bg-no-repeat md:pb-10    "
@@ -47,12 +62,12 @@ const AddNews = () => {
       backgroundImage: `url(https://images.unsplash.com/photo-1551406483-3731d1997540?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80)`,
     }}>
       <div className=' md:mx-48  py-6'>
-      <h1 className='text-center my-8 text-white'>Publish News</h1>
+      <h1 className='text-center my-8 text-white'>Edit News</h1>
       <form onSubmit={handleSubmit(handlePublishNews)} className="space-y-6 px-4">
         <div className="flex flex-wrap gap-4 items-center justify-evenly">
           {/* title of the News */}
           <input
-            className="md:px-7 mx-2 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+            className="md:px-7  py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
             {...register('title', { required: true })}
             placeholder="Title of the news"
           />
@@ -91,24 +106,22 @@ const AddNews = () => {
 
         {/* text editor for writing blogs */}
         <RichTextEditor
-          className="px-4 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+          className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
           handleEditorChange={handleEditorChange}
           message="Start writing the blog"
         />
 
         {/* submit button */}
         <input
-          className="btn w-full -ml-1 md:mx-auto py-3 bg-white text-black rounded-lg  cursor-pointer  hover:bg-opacity-80  transition-all duration-700 hover:bg-blue-600 hover:text-white"
+          className="btn w-full -ml-2 md:mx-auto py-3 bg-white text-black rounded-lg  cursor-pointer hover:bg-opacity-80  transition-all duration-700 hover:bg-blue-600 hover:text-white"
           type="submit"
-          value="Publish Your News"
+          value="Update Your News"
         />
       </form>
       </div>
-
-      
 
     </div>
   );
 };
 
-export default AddNews;
+export default EditNews;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import axios from '../../../../../api/axios';
 
@@ -7,6 +8,7 @@ const ManageNews = () => {
   const [news, setNews] = useState([]);
   const [confirm, setConfirm] = useState(false);
 const [isLoading,setIsLoading]=useState(true);
+const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true)
@@ -39,6 +41,9 @@ const [isLoading,setIsLoading]=useState(true);
       });
     });
   };
+
+  
+
   return (
     <article className="flex flex-wrap justify-evenly items-center gap-6 md:mx-24 md:my-24">
       {news.map((data) => (
@@ -65,14 +70,17 @@ const [isLoading,setIsLoading]=useState(true);
 
           {/* card footer  */}
           <div className="flex items-center justify-between pt-3">
-            <button className="w-100 flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              <FaEdit />
+            
+            <button onClick={()=>navigate(`/admin/editNews/${data._id}`)} className="w-100 flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Update
             </button>
+          
+           
             <button
               onClick={() => handleDelete(data._id)}
               className="w-100 flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              <FaTrashAlt />
+              Delete
             </button>
           </div>
         </div>

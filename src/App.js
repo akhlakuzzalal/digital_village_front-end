@@ -77,6 +77,7 @@ import Contact from './Pages/shared/Contact/Contact';
 import Footer from './Pages/shared/Home/Footer/Footer';
 import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
+import EditNews from './Pages/shared/Home/News/EditNews/EditNews';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import AddReview from './Pages/shared/Home/Reviews/AddReview/AddReview';
 import NotFound from './Pages/shared/NotFound/NotFound';
@@ -128,7 +129,7 @@ function App() {
             <Route path="education" element={<Education />} />
             <Route path="registerTeacher" element={<RegisterTeacher />} />
 
-            {/* education related routes */}
+            {/* Chat related routes */}
             <Route path="chat" element={<Chat />} />
             <Route path="join" element={<Join />} />
 
@@ -215,6 +216,7 @@ function App() {
               <Route path="development" element={<DevelopmentDashboard />} />
               <Route path="development" element={<DevelopmentManage />} />
               <Route path="manageDevelopmet" element={<DevelopmentManage />} />
+              <Route path="editDevelopment/:id" element={<EditBlog />} />
               <Route path="addDevelopment" element={<AddDevelopment />} />
               <Route path="market" element={<MarketManagement />} />
               <Route path="add-events" element={<AddEvents />} />
@@ -222,6 +224,7 @@ function App() {
               <Route path="newsDashboard" element={<NewsDashboard />} />
               <Route path="addNews" element={<AddNews />} />
               <Route path="manageNews" element={<ManageNews />} />
+              <Route path="editNews/:id" element={<EditNews/>} />
               <Route path="addAppointment" element={<AddAppointment />} />
               <Route path="status" element={<StatusCheck />} />
             </Route>
