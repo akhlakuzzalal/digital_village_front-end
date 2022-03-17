@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import swal from 'sweetalert';
 import { setCart } from '../../../../redux/slices/eMarket/cartSlice';
-import { setShowModal } from '../../../../redux/slices/eMarket/modalSlicle';
+import { setShowModal } from '../../../../redux/slices/eMarket/modalSlice';
 
 const useCart = () => {
   const dispatch = useDispatch();

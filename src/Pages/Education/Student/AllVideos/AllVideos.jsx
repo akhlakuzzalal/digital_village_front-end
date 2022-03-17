@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Pagination from '../../../../Components/Pagination';
 import {
   fetchVideos,
-  setCurrPage,
+  setVideoCurrPage,
 } from '../../../../redux/slices/video/videoSlice';
 import Search from '../Search/Search';
 import VideoCard from './VideoCard/VideoCard';
@@ -47,7 +47,7 @@ const Allvideos = () => {
       </div>
       <Pagination
         currPage={currPage}
-        setCurrPage={setCurrPage}
+        setCurrPage={setVideoCurrPage}
         pageCount={pageCount}
       />
     </div>

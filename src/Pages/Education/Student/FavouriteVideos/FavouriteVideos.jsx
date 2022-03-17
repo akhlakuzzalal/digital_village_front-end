@@ -24,7 +24,9 @@ const FavouriteVideos = () => {
           });
           axios.get(`/favourites/all/?uId=${uId}`).then((response) => {
             if (response?.data) {
-              setFavouriteVideos(response.data.map((res) => res.videoId));
+              setFavouriteVideos(
+                response.data.filter((res) => res.videoId).map((v) => v.videoId)
+              );
             }
           });
         });
@@ -40,7 +42,7 @@ const FavouriteVideos = () => {
         );
       }
     });
-  }, []);
+  }, [uId]);
 
   return (
     <div className="space-y-6">

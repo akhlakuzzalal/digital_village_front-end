@@ -48,8 +48,8 @@ const EditNews = () => {
         content,
       })
     );
-
-    const response = await axios.put('/news/editNews', formData);
+ console.log(data)
+    // const response = await axios.put('/news/editNews', formData);
  
   };
   const result=news.filter(d=>d._id ===id)
@@ -68,8 +68,9 @@ const EditNews = () => {
           {/* title of the News */}
           <input
             className="md:px-7  py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('title', { required: true })}
+            {...register('title', { required: true, })}
             placeholder="Title of the news"
+            defaultValue={result[0]?.title}
           />
 
           {/* file upload */}
@@ -78,6 +79,7 @@ const EditNews = () => {
               onDrop={onDrop}
               file={file}
               message="Upload a banner for your News"
+              defaultValue={result[0]?.image}
             />
           </div>
 
@@ -86,6 +88,7 @@ const EditNews = () => {
             className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
             {...register('description', { required: true })}
             placeholder="Write the description in short"
+            defaultValue={result[0]?.description}
           />
 
           {/* Publishd Date */}
@@ -94,6 +97,7 @@ const EditNews = () => {
             className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
             {...register('publishDate', { required: true })}
             placeholder="Write your News Publish Date"
+            defaultValue={result[0]?.publishDate}
           />
 
           <input
@@ -101,6 +105,7 @@ const EditNews = () => {
             className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
             {...register('publishTime', { required: true })}
             placeholder="Write your News Publish Time"
+            defaultValue={result[0]?.publishTime}
           />
         </div>
 
@@ -109,6 +114,7 @@ const EditNews = () => {
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
           handleEditorChange={handleEditorChange}
           message="Start writing the blog"
+          defaultValue={result[0]?.content}
         />
 
         {/* submit button */}

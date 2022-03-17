@@ -31,7 +31,7 @@ const CauseCard = (props) => {
   return (
     <div className="rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between border-l-4  bg-blue-50 shadow hover:shadow-md dark:dark-card-bg">
       <div className="overflow-hidden rounded-xl h-full w-full">
-        <div className="absolute top-10 text-white text-md left-0 z-50 bg-red-600 font-primary px-4 py-1 rounded-lg">
+        <div className="absolute top-10 text-white text-md left-0 z-40 bg-red-600 font-primary px-4 py-1 rounded-lg">
           {category}
         </div>
         <img

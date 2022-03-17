@@ -4,10 +4,11 @@ import { allSocialUser } from '../../../../redux/slices/socialSlice/socialSlice'
 import SingleUser from './SingleUser';
 
 const BoardHome = () => {
-  const allUsers = useSelector((state) => state.social.notFriends);
-  const friends = useSelector((state) => state.social.friends);
-  const socialUser = useSelector((state) => state.social.user);
   const user = useSelector((state) => state.user.user);
+  const noConnection = useSelector((state) => state.social.noConnection);
+  const friends = useSelector((state) => state.social.friends);
+  const requested = useSelector((state) => state.social.requested);
+  const requesting = useSelector((state) => state.social.requesting);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(allSocialUser(user?.email));
@@ -17,16 +18,17 @@ const BoardHome = () => {
       {/* Suggest */}
       <h3>Suggestion</h3>
       <div className="grid grid-cols-5 gap-6">
-        {allUsers.map((user) => (
-          <SingleUser key={user._id} user={user} />
-        ))}
+        {noConnection &&
+          noConnection.map((user) => (
+            <SingleUser key={user._id} user={user} as="suggest" />
+          ))}
       </div>
       {/* friends */}
       <h3>Friends</h3>
       {friends && friends.length > 0 ? (
         <div className="grid grid-cols-5 gap-6">
           {friends.map((user) => (
-            <SingleUser key={user._id} user={user} />
+            <SingleUser key={user._id} user={user} as="friend" />
           ))}
         </div>
       ) : (
@@ -36,12 +38,10 @@ const BoardHome = () => {
       )}
       {/* Requesting */}
       <h3>Requesting</h3>
-      {socialUser &&
-      socialUser.requesting &&
-      socialUser.requesting?.length > 0 ? (
+      {requesting && requesting?.length > 0 ? (
         <div className="grid grid-cols-5 gap-6">
-          {friends.map((user) => (
-            <SingleUser key={user._id} user={user} />
+          {requesting.map((user) => (
+            <SingleUser key={user._id} user={user} as="requesting" />
           ))}
         </div>
       ) : (
@@ -51,10 +51,12 @@ const BoardHome = () => {
       )}
       {/* Requested */}
       <h3>Requested</h3>
-      {socialUser && socialUser.requested && socialUser.requested.length > 0 ? (
+      {requested && requested?.length > 0 ? (
         <div className="grid grid-cols-5 gap-6">
           {friends &&
-            friends?.map((user) => <SingleUser key={user._id} user={user} />)}
+            requested?.map((user) => (
+              <SingleUser key={user._id} user={user} as="requested" />
+            ))}
         </div>
       ) : (
         <div className="flex items-center h-16">

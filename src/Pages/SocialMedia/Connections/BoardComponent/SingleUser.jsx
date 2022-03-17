@@ -1,15 +1,11 @@
 import React from 'react';
 import { MdPersonAddAlt1 } from 'react-icons/md';
 import { useSelector } from 'react-redux';
+import useSocialMedia from '../../utilities/useSocialMedia';
 
-const SingleUser = ({ user }) => {
+const SingleUser = ({ user, as }) => {
   const socialUser = useSelector((state) => state.social.user);
-  const requestingIDs = socialUser.requesting;
-  const requestedIDs = socialUser.requested;
-  const friendsIds = socialUser.connection;
-  const isRequesting = requestingIDs.find((id) => id !== user._id);
-  const isRequested = requestedIDs.find((id) => id !== user._id);
-  const isFriend = friendsIds.find((id) => id !== user._id);
+  const { addFriend, cancelRequest, acceptFriend } = useSocialMedia();
   return (
     <div className="group relative max-w- mx-5 md:mx-0  rounded-xl overflow-hidden shadow-md hover:scale-105 duration-500 dark:bg-white">
       <div className="w-full flex justify-center ">
@@ -17,26 +13,44 @@ const SingleUser = ({ user }) => {
       </div>
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 text-center">{user.name}</div>
-        {isRequesting && (
-          <div className="flex items-center cursor-pointer bg-primary justify-center px-4 py-2 rounded-lg space-x-2">
-            <MdPersonAddAlt1 size={20} color={'white'} />
-            <p>Ruquested</p>
+        {as === 'requesting' && (
+          <div className="space-y-3">
+            <div className="flex items-center cursor-pointer bg-primary justify-center px-4 py-2 rounded-lg space-x-2">
+              <MdPersonAddAlt1 size={20} color={'white'} />
+              <p>Ruquesting</p>
+            </div>
+            {/* cancle Request */}
+            <div
+              onClick={() => cancelRequest(socialUser._id, user._id)}
+              className="flex items-center cursor-pointer bg-primary justify-center px-4 py-2 rounded-lg space-x-2"
+            >
+              <MdPersonAddAlt1 size={20} color={'white'} />
+              <p>Cancel Request</p>
+            </div>
           </div>
         )}
-        {isRequested && (
-          <div className="flex items-center cursor-pointer bg-primary justify-center px-4 py-2 rounded-lg space-x-2">
+        {as === 'requested' && (
+          // Accept Request
+          <div
+            onClick={() => acceptFriend(socialUser._id, user._id)}
+            className="flex items-center cursor-pointer bg-primary justify-center px-4 py-2 rounded-lg space-x-2"
+          >
             <MdPersonAddAlt1 size={20} color={'white'} />
             <p>Accept Request</p>
           </div>
         )}
-        {isFriend && (
+        {as === 'friend' && (
           <div className="flex items-center cursor-pointer bg-primary justify-center px-4 py-2 rounded-lg space-x-2">
             <MdPersonAddAlt1 size={20} color={'white'} />
             <p>Send Message</p>
           </div>
         )}
-        {!isRequesting && !isFriend && !isRequested && (
-          <div className="flex items-center cursor-pointer bg-primary justify-center px-4 py-2 rounded-lg space-x-2">
+        {as === 'suggest' && (
+          // Add Friend
+          <div
+            onClick={() => addFriend(socialUser?._id, user?._id)}
+            className="flex items-center cursor-pointer bg-primary justify-center px-4 py-2 rounded-lg space-x-2"
+          >
             <MdPersonAddAlt1 size={20} color={'white'} />
             <p>Add Friend</p>
           </div>

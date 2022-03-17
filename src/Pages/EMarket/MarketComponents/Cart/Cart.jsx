@@ -78,7 +78,7 @@ const Cart = () => {
       </div>
       {/* Cart totall */}
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:mt-8">
-        <div className=''>
+        <div className="">
           <Lottie
             style={{ width: '50%' }}
             options={defaultOptions}
@@ -86,7 +86,7 @@ const Cart = () => {
             // height={isDesktop ? 300 : isTablet ? 300 : 300}
           />
         </div>
-        <div className='md:mt-12'>
+        <div className="md:mt-12 mb-32">
           <CartTotal></CartTotal>
         </div>
       </div>

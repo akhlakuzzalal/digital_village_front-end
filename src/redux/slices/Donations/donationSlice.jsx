@@ -1,6 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "../../../api/axios";
-
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from '../../../api/axios';
 
 // create the thunk
 export const fetchAllCuases = createAsyncThunk(
@@ -9,7 +8,7 @@ export const fetchAllCuases = createAsyncThunk(
     const response = await axios
       .get('/donation/cuases')
       .then((response) => response.data);
-      // console.log(response);
+    // console.log(response);
     return response;
   }
 );
@@ -25,21 +24,20 @@ export const addAnCuase = createAsyncThunk(
   }
 );
 // update cuase
-export const updateAnCuase = createAsyncThunk(
-  'cuases/updateAnCuase',
+export const updateACause = createAsyncThunk(
+  'cuases/updateACause',
 
   async (data) => {
     console.log(data);
-await axios.put(`/donation/updatecuase/?id=${data.id}` , data )
+    await axios.put(`/donation/updatecuase/?id=${data.id}`, data);
     return data;
   }
 );
 // delete cuase
-export const deleteAnCuase = createAsyncThunk(
-  'cuases/deleteAnCuase',
+export const deleteACause = createAsyncThunk(
+  'cuases/deleteACause',
   async (id) => {
-     await axios
-      .delete(`/donation/deletecuase/?id=${id}`)
+    await axios.delete(`/donation/deletecuase/?id=${id}`);
     return id;
   }
 );
@@ -58,7 +56,7 @@ const donationSlice = createSlice({
   name: 'causes',
   initialState: {
     causes: [],
-    updatecause:{},
+    updatecause: {},
   },
 
   reducers: {},
@@ -70,32 +68,26 @@ const donationSlice = createSlice({
     builder.addCase(addAnCuase.fulfilled, (state, { payload }) => {
       state.causes.push(payload);
     });
-    //update
-    builder.addCase(updateAnCuase.fulfilled, (state, { payload }) =>  { 
-
-    const prevCause = state.causes.find(
-              (cause) => cause._id === payload.id
-            );
-            // state.causes={...prevCause, ...data}
-            const updateCause = {...prevCause, ...payload}
-            const removeCause = state.causes.filter((cause) => cause._id !== payload.id)
-            state.causes=[...removeCause,updateCause ]
-         
+    builder.addCase(updateACause.fulfilled, (state, { payload }) => {
+      const prevCause = state.causes.find((cause) => cause._id === payload.id);
+      // state.causes={...prevCause, ...data}
+      const updateCause = { ...prevCause, ...payload };
+      const removeCause = state.causes.filter(
+        (cause) => cause._id !== payload.id
+      );
+      state.causes = [...removeCause, updateCause];
     });
-    
+
     //delete
-    builder.addCase(deleteAnCuase.fulfilled, (state, { payload }) =>  { 
+    builder.addCase(deleteACause.fulfilled, (state, { payload }) => {
       console.log(payload);
-      state.causes = state.causes.filter(
-              (cause) => cause._id !== payload
-            );
+      state.causes = state.causes.filter((cause) => cause._id !== payload);
     });
     //  //Payment add
     //  builder.addCase(fetchDonarPayment.fulfilled, (state, { payload }) => {
     //   state.causes.push(payload);
     // });
   },
-
 });
 
 // export const { removeFromCause } = donationSlice.actions;

@@ -3,9 +3,9 @@ import React from 'react';
 const RightSide = () => {
   const friends = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   return (
-    <div className="mt-10 space-y-6 h-[calc(100vh-80px)] overflow-y-scroll">
+    <div className="mt-10 space-y-6 sticky">
       {/* latest Feed */}
-      <div className="shadow-xl rounded-lg px-4 py-2 w-11/12 mx-auto">
+      <div className="shadow-xl rounded-lg px-4 py-2 w-11/12 mx-auto dark:dark-card-bg">
         <img
           className="w-full h-36"
           src="https://www.pandasecurity.com/en/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg"
