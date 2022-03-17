@@ -56,11 +56,11 @@ const PublishBlog = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-full space-y-6">
-      <h1>Publish your blog now</h1>
+    <div className="flex flex-col justify-center items-center min-h-full mb-12 space-y-6">
+      <h1 className='text-center text-xl md:text-6xl text-blue-800 py-6 md:py-12'>Publish your blog now</h1>
       <form
         onSubmit={handleSubmit(handlePublishBlogs)}
-        className="space-y-6 mx-auto"
+        className="space-y-6 mx-auto pl-10 md:pl-0"
       >
         <div className="flex flex-wrap gap-4 items-center justify-evenly">
           <div className="space-y-6">

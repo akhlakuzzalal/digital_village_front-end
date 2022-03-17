@@ -4,24 +4,24 @@ import Chat from './Components/ChattingApp/Chat/Chat';
 import Join from './Components/ChattingApp/Join/Join';
 import ScrollToTop from './Components/ScrollToTop';
 import { AuthProvider } from './context/AuthProvider';
-import AdminDashboard from './Pages/Admin/AdminDashboard';
+import {
+  default as AdminDashboard,
+  default as DevelopmentDashboard,
+} from './Pages/Admin/AdminDashboard';
 import AllUsers from './Pages/Admin/AllUsers/AllUsers';
-import ManageAllUsers from './Pages/Admin/AllUsers/ManageAllUsers';
-import AddDevelopment from './Pages/Admin/DashboardItem/Development/AddDevelopment/AddDevelopment';
-import DevelopmentDashboard from './Pages/Admin/DashboardItem/Development/DevelopmentDashboard';
-import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage/DevelopmentManage';
-import AddCause from './Pages/Admin/DashboardItem/Donation/AddCause';
-import AllApply from './Pages/Admin/DashboardItem/Donation/AllApply';
-import AllCauses from './Pages/Admin/DashboardItem/Donation/AllCauses';
+import AddDevelopment from './Pages/Admin/Development/AddDevelopment/AddDevelopment';
+import DevelopmentManage from './Pages/Admin/Development/DevelopmentManage/DevelopmentManage';
+import AddCause from './Pages/Admin/Donation/AddCause';
+import AllCauses from './Pages/Admin/Donation/AllCauses';
+import CreateDonationCause from './Pages/Admin/Donation/CreateDonationCause';
+import ManageAllDonars from './Pages/Admin/Donation/ManageAllDonars';
+import UpdateCause from './Pages/Admin/Donation/UpdateCause';
+import Eventmanagement from './Pages/Admin/EventManagement/Eventmanagement';
+import MarketManagement from './Pages/Admin/Market/MarketManagement';
+import AddNews from './Pages/Admin/News/AddNews/AddNews';
+import ManageNews from './Pages/Admin/News/ManageNews/ManageNews';
 import DonarPaymente from './Pages/Admin/DashboardItem/Donation/DonarPaymente';
-import HelpRequestApply from './Pages/Admin/DashboardItem/Donation/HelpRequestApply';
-import ManageAllPaymente from './Pages/Admin/DashboardItem/Donation/ManageAllPaymente';
-import UpdateCause from './Pages/Admin/DashboardItem/Donation/UpdateCause';
-import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
-import MarketManagement from './Pages/Admin/DashboardItem/Market/MarketManagement';
-import AddNews from './Pages/Admin/DashboardItem/News/AddNews/AddNews';
-import ManageNews from './Pages/Admin/DashboardItem/News/ManageNews/ManageNews.jsx';
-import NewsDashboard from './Pages/Admin/DashboardItem/News/NewsDashboard';
+import NewsDashboard from './Pages/Admin/News/NewsDashboard';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import CaseSingle from './Pages/Donations/Causes/CaseSingle';
@@ -34,8 +34,8 @@ import AllVideos from './Pages/Education/Student/AllVideos/AllVideos';
 import FavouriteBlogs from './Pages/Education/Student/FavouriteBlogs/FavouriteBlogs';
 import FavouriteVideos from './Pages/Education/Student/FavouriteVideos/FavouriteVideos';
 import Student from './Pages/Education/Student/Student';
+import StudentAnalytics from './Pages/Education/Student/StudentAnalytics/StudentAnalytics';
 import StudentHome from './Pages/Education/Student/StudentHome/StudentHome';
-import Analytics from './Pages/Education/Teacher/Dashboard/Analytics/Analytics';
 import EditBlog from './Pages/Education/Teacher/Myblogs/EditBlog/EditBlog';
 import Myblogs from './Pages/Education/Teacher/Myblogs/Myblogs';
 import EditVideo from './Pages/Education/Teacher/Myvideos/EditVideo/EditVideo';
@@ -44,6 +44,7 @@ import PublishBlog from './Pages/Education/Teacher/PublishBlog/PublishBlog';
 import PublishVideo from './Pages/Education/Teacher/PublishVideo/PublishVideo';
 import RegisterTeacher from './Pages/Education/Teacher/RegisterTeacher';
 import Teacher from './Pages/Education/Teacher/Teacher';
+import TeacherAnalytics from './Pages/Education/Teacher/TeacherAnalytics/TeacherAnalytics';
 import EMarket from './Pages/EMarket/EMarket';
 import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
 import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
@@ -59,18 +60,18 @@ import Events from './Pages/Events/Events';
 import ManageEvents from './Pages/Events/ManageEvents/ManageEvents';
 import MyBookedEvents from './Pages/Events/MyBookedEvents/MyBookedEvents';
 import UpcomingEvents from './Pages/Events/UpcomingEvents/UpcomingEvents';
-import AddAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/AddAppointment';
-import DoctorsAppointment from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/DoctorsAppointment';
-import UserAppointments from './Pages/Medical/Dashboard/partials/dashboardItem/DoctorAppointment/UserAppointments/UserAppointments';
-import FrequentlyAsked from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/FrequentlyAsked/FrequentlyAsked';
-import RegForm from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegForm/RegForm';
-import VaccineInfo from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/RegistrationPdf/VaccineInfo';
-import Status from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/Status/Status';
-import StatusCheck from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/Status/StatusCheck';
-import VaccineOptions from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineOptionns/VaccineOptions';
-import VaccineRegistration from './Pages/Medical/Dashboard/partials/dashboardItem/VaccineRegistration/VaccineRegistration';
+import AddAppointment from './Pages/Medical/DoctorsAppointment/AddAppointment/AddAppointment';
+import DoctorsAppointment from './Pages/Medical/DoctorsAppointment/DoctorsAppointment';
+import UserAppointments from './Pages/Medical/DoctorsAppointment/UserAppointments/UserAppointments';
 import Medical from './Pages/Medical/Medical';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
+import FrequentlyAsked from './Pages/Medical/VaccineRegistration/FrequentlyAsked/FrequentlyAsked';
+import RegForm from './Pages/Medical/VaccineRegistration/RegForm/RegForm';
+import VaccineInfo from './Pages/Medical/VaccineRegistration/RegistrationPdf/VaccineInfo';
+import Status from './Pages/Medical/VaccineRegistration/Status/Status';
+import StatusCheck from './Pages/Medical/VaccineRegistration/Status/StatusCheck';
+import VaccineOptions from './Pages/Medical/VaccineRegistration/VaccineOptions/VaccineOptions';
+import VaccineRegistration from './Pages/Medical/VaccineRegistration/VaccineRegistration';
 import Notification from './Pages/Notification/Notification';
 import About from './Pages/shared/About/About';
 import Login from './Pages/shared/Authentication/Login/Login';
@@ -89,6 +90,8 @@ import Profile from './Pages/User/DashboardComponent/Profile/Profile';
 import Review from './Pages/User/DashboardComponent/Review/Review';
 import UserDashboard from './Pages/User/UserDashboard';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
+import AllApply from './Pages/Admin/DashboardItem/Donation/AllApply';
+import HelpRequestApply from './Pages/Admin/Donation/HelpRequestApply';
 
 const Roles = {
   User: 1000,
@@ -126,13 +129,17 @@ function App() {
               <Route path="review" element={<Review />} />
               <Route path="donarpaymente" element={<DonarPaymente />} />
               <Route path="requestapply" element={<HelpRequestApply />} />
+              <Route
+                path="createDonationCause"
+                element={<CreateDonationCause />}
+              />
             </Route>
 
             {/* EDUCATION RELATED ROUTES */}
             <Route path="education" element={<Education />} />
             <Route path="registerTeacher" element={<RegisterTeacher />} />
 
-            {/* education related routes */}
+            {/* social media related routes */}
             <Route path="chat" element={<Chat />} />
             <Route path="join" element={<Join />} />
 
@@ -144,7 +151,7 @@ function App() {
               <Route path="editVideo/:id" element={<EditVideo />} />
               <Route path="publishBlog" element={<PublishBlog />} />
               <Route path="publishVideo" element={<PublishVideo />} />
-              <Route path="analytics" element={<Analytics />} />
+              <Route path="analytics" element={<TeacherAnalytics />} />
             </Route>
             {/* routes for student */}
             <Route path="student" element={<Student />}>
@@ -153,7 +160,7 @@ function App() {
               <Route path="allVideos" element={<AllVideos />} />
               <Route path="favouriteBlogs" element={<FavouriteBlogs />} />
               <Route path="favouriteVideos" element={<FavouriteVideos />} />
-              <Route path="analytics" element={<Analytics />} />
+              <Route path="analytics" element={<StudentAnalytics />} />
             </Route>
             <Route path="detailvideo/:id" element={<DetailVideo />} />
             <Route path="blogDetails/:id" element={<BlogDetails />} />
@@ -206,7 +213,6 @@ function App() {
             {/* Admin dashboard routes */}
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
-              <Route path="manageusers" element={<ManageAllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
               <Route path="add-events" element={<AddEvents />} />
               <Route path="manageEvents" element={<ManageEvents />} />
@@ -215,7 +221,7 @@ function App() {
               <Route path="addcause" element={<AddCause />} />
               <Route path="allcauses" element={<AllCauses />} />
               <Route path="updatecause/:id" element={<UpdateCause />} />
-              <Route path="allpaymente" element={<ManageAllPaymente />} />
+              <Route path="manageAllDonars" element={<ManageAllDonars />} />
               <Route path="development" element={<DevelopmentDashboard />} />
               <Route path="development" element={<DevelopmentManage />} />
               <Route path="manageDevelopmet" element={<DevelopmentManage />} />

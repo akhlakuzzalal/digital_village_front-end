@@ -1,43 +1,140 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   BsArrowReturnRight,
   BsFillCalendarDateFill,
   BsFillTelephoneFill,
 } from 'react-icons/bs';
-import { ImLocation } from 'react-icons/im';
 import { MdEmail } from 'react-icons/md';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+import { BASE_URI } from '../../../../api/axios';
+import {
+  getSingleUserInfo,
+  updateUser,
+  updateUserWithoutProfileImg,
+} from '../../../../redux/slices/user/userSlice';
 import EditProfile from './EditProfile';
 
 const Profile = () => {
   const user = useSelector((state) => state.user.user);
-  const [editProfile, setEditProfile] = useState();
+  const uId = useSelector((state) => state.user.uId);
+  const [updateProfile, setUpdateProfile] = useState(false);
+  const [file, setFile] = useState({});
+  const [previewFile, setPreviewFile] = useState([]);
+
+  const dispatch = useDispatch();
+
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      setFile(acceptedFiles[0]);
+      setPreviewFile(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
+      );
+    },
+    [previewFile]
+  );
+  const handleUpdateUser = async (data) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    // update without profile image
+    if (data.employmentStatus === 'choose one') delete data.employmentStatus;
+    if (data.maritialStatus === 'choose one') delete data.maritialStatus;
+    if (data.religion === 'choose one') delete data.religion;
+    if (data.gender === 'choose one') delete data.gender;
+
+    formData.append(
+      'user',
+      JSON.stringify({
+        ...data,
+      })
+    );
+
+    if (file?.path) {
+      dispatch(updateUser({ id: uId, formData })).then(() => {
+        Swal.fire({
+          title: 'updated successfully',
+          confirmButtonText: 'Okay',
+        });
+      });
+    } else {
+      dispatch(updateUserWithoutProfileImg({ id: uId, data })).then(() => {
+        Swal.fire({
+          title: 'updated successfully',
+          confirmButtonText: 'Okay',
+        });
+      });
+    }
+
+    // const response = await axios.post('/teacher/publishBlogs', formData);
+    // console.log(response.data);
+  };
+
+  const image = previewFile.map((f) => (
+    <img
+      key={f.name}
+      src={f.preview}
+      className="w-64 rounded-full h-64"
+      alt="drag and drop file to preview"
+    />
+  ));
+
+  useEffect(() => {
+    previewFile.forEach((f) => URL.revokeObjectURL(f.preview));
+    dispatch(getSingleUserInfo({ id: uId }));
+  }, [previewFile, uId]);
+
   return (
-    <div className="mx-10 my-24">
-      <div className="md:grid md:grid-cols-3">
-        <div className="w-full flex flex-col items-center">
-          <img
-            className="w-64 rounded-full h-64"
-            src="https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg"
-            alt=""
-          />
-          <button
-            onClick={() => setEditProfile(true)}
-            className="btn bg-warning my-6"
-          >
-            Edit Profile
-          </button>
+    <div className="my-24">
+      <div className="md:grid md:grid-cols-12 gap-12">
+        <div className="col-start-1 col-end-5">
+          {/* profile preview image */}
+          <div className="w-full flex flex-col items-center">
+            {previewFile.length >= 1 ? (
+              image
+            ) : user?.photo?.path ? (
+              <img
+                src={`${BASE_URI}/${user?.photo?.path}`}
+                className="w-64 rounded-full h-64"
+                alt={user?.profile?.name}
+              />
+            ) : (
+              <img
+                className="w-64 rounded-full h-64"
+                src="https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg"
+                alt=""
+              />
+            )}
+            <button
+              onClick={() => setUpdateProfile(true)}
+              className="btn bg-warning my-6"
+            >
+              Edit Profile
+            </button>
+          </div>
+
+          {/* user about info */}
+          <p className="text-center">{user?.about}</p>
         </div>
-        {editProfile ? (
-          <EditProfile setEditProfile={setEditProfile} />
+
+        {/* profile edit or user info */}
+        {updateProfile ? (
+          <div className="col-start-5 col-end-12">
+            <EditProfile
+              setUpdateProfile={setUpdateProfile}
+              handleUpdateProfile={handleUpdateUser}
+              onDrop={onDrop}
+              file={file}
+            />
+          </div>
         ) : (
-          <div className="md:col-span-2">
-            <h2 className="heading_md">
-              {user.name}{' '}
-              <span className="text-sm text-primary">(Approved)</span>
-            </h2>
-            <p>Occupation</p>
-            <p className="font-semibold mb-10">#id : 123abc</p>
+          <div className="col-start-5 col-end-12 mt-10 md:mt-0">
+            <h2 className="heading_md">{user?.name}</h2>
+            <p className="pt-3">{user?.occupation}</p>
+            <p className="font-semibold mb-10">#id : villager{uId}</p>
             {/* <div className="my-6">
               <button className="btn bg-primary mb-2">Send Message</button>
               <button className="btn bg-secondary mb-2">Contact User</button>
@@ -51,43 +148,46 @@ const Profile = () => {
                 <span className="mr-4">
                   <BsFillTelephoneFill />
                 </span>
-                Phone : <span className="font-semibold"> +99098345080</span>
-              </p>
-              <p className="flex items-center py-2">
-                <span className="mr-4">
-                  <ImLocation />
+                Phone :{' '}
+                <span className="font-semibold">
+                  {user?.phone || 'unavailable'}
                 </span>
-                Address : Level-4, 34, Awal Centre, Banani, Dhaka
               </p>
               <p className="flex items-center py-2">
                 <span className="mr-4">
                   <MdEmail />
                 </span>
-                Email: abcd@xyz.com
+                Email: {user?.email}
               </p>
               <p className="flex items-center py-2">
                 <span className="mr-4">
                   <BsFillCalendarDateFill />
                 </span>
-                Date of Birth : 02/02/2004
+                Date of Birth : {user?.dateOfBirth}
               </p>
               <p className="flex items-center py-2">
                 <span className="mr-4">
                   <BsArrowReturnRight />
                 </span>
-                Marital status : Married
+                Marital status : {user?.maritialStatus || 'unavailable'}
               </p>
               <p className="flex items-center py-2">
                 <span className="mr-4">
                   <BsArrowReturnRight />
                 </span>
-                Religion: Islam
+                Employment status : {user?.employmentStatus || 'unavailable'}
+              </p>
+              <p className="flex items-center py-2">
+                <span className="mr-4">
+                  <BsArrowReturnRight />
+                </span>
+                Religion: {user?.religion || 'unavailable'}
               </p>
               <p className="flex items-center py-2">
                 <span className="mr-4">
                   <BsArrowReturnRight py-2 />
                 </span>
-                Gender: male
+                Gender: {user?.gender || 'unavailable'}
               </p>
             </div>
           </div>

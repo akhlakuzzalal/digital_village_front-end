@@ -30,7 +30,7 @@ const AllApply = () => {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis incidunt numquam voluptate, laborum voluptates minus itaque? Dolores maiores veritatis eaque consequuntur iure est aspernatur ab error quia animi, ipsum id minus beatae laboriosam! Ducimus voluptates eos error labore voluptatibus hic, perferendis laudantium facere praesentium dicta provident adipisci voluptatem. Suscipit voluptatem numquam voluptatum porro quaerat vel repellat ipsa, repudiandae alias nobis doloremque nam exercitationem vero soluta repellendus sint nihil ducimus reiciendis! Voluptatem similique consequatur esse nihil autem in, sequi libero ad est enim, architecto excepturi quas modi neque soluta. Impedit omnis ipsa perferendis animi sed nemo sint? Hic, minima id porro fugiat ipsam eos voluptatem quidem maiores nesciunt. Praesentium rem, voluptatibus doloribus quo laborum cupiditate fugit odio! Quidem vel odit consectetur quod dolore, explicabo quis amet alias quia beatae ducimus laudantium quam quo odio! Doloremque quam illum minima perspiciatis pariatur mollitia sed nesciunt voluptas cum, maiores dolorum eius. Cumque modi quisquam accusamus impedit libero, dolore veniam? Vel quam at iusto eius, delectus libero dignissimos aliquid accusamus, cumque nisi quaerat dolores veritatis perferendis dolore deleniti tempore a error nesciunt iste, rem aperiam porro odio sit! Atque sint saepe debitis accusantium, minus magnam consequuntur officiis voluptas quam et at quas temporibus quos illo consequatur labore porro mollitia incidunt amet quasi. Error deserunt obcaecati voluptatem reiciendis, libero excepturi quod! Cumque dolor modi, a debitis corporis iure! Dolorum totam dolores necessitatibus molestias aliquid quos eligendi consequuntur placeat, odio sapiente debitis repudiandae numquam fuga doloribus quisquam asperiores tempore explicabo officia. Saepe sunt suscipit praesentium quod dicta voluptatum, eum tenetur consequuntur ex nisi labore voluptates fugiat eveniet, consequatur officiis aperiam eius repellat. Optio esse eligendi voluptatum labore. Nam explicabo deleniti omnis voluptas voluptate adipisci labore veniam doloremque quod aliquid dolores nemo eius inventore sint, neque saepe architecto. Quos, alias nulla quas cum exercitationem harum sit id earum!</p>
+                    <p className='text-sm md:text-lg font-light text-gray-700 mt-2 '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis incidunt numquam voluptate, laborum voluptates minus itaque? Dolores maiores veritatis eaque consequuntur iure est aspernatur ab error quia animi, ipsum id minus beatae laboriosam! Ducimus voluptates eos error labore voluptatibus hic, perferendis laudantium facere praesentium dicta provident adipisci voluptatem. Suscipit voluptatem numquam voluptatum porro quaerat vel repellat ipsa, repudiandae alias nobis doloremque nam exercitationem vero soluta repellendus sint nihil ducimus reiciendis! Voluptatem similique consequatur esse nihil autem in, sequi libero ad est enim, architecto excepturi quas modi neque soluta. Impedit omnis ipsa perferendis animi sed nemo sint? Hic, minima id porro fugiat ipsam eos voluptatem quidem maiores nesciunt. Praesentium rem, voluptatibus doloribus quo laborum cupiditate fugit odio! Quidem vel odit consectetur quod dolore, explicabo quis amet alias quia beatae ducimus laudantium quam quo odio! Doloremque quam illum minima perspiciatis pariatur mollitia sed nesciunt voluptas cum, maiores   neque saepe architecto. Quos, alias nulla quas cum exercitationem harum sit id earum!</p>
                     </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-2 border-t border-solid border-blueGray-200 rounded-b">
@@ -105,7 +105,13 @@ const AllApply = () => {
                     <button  onClick={() => setShowModal(true)} className="px-6 py-2 font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white border border-blue-500 hover:border-transparent">Details</button>
                     </td>
                     <td className="text-sm px-6 py-4 whitespace-nowrap">
-                            <span className="bg-yellow-500 text-white px-4 py-1 rounded-full font-primary">Pending</span>
+                            <select
+                            class="appearance-none h-full  border block w-full border-gray-400  pr-8 leading-tight focus:outline-none focus:bg-yellow-500 focus:border-gray-500 bg-yellow-500 text-white px-4 py-1 rounded-full font-primary">
+                            <option className="bg-yellow-500 text-white px-4 py-1 rounded-full font-primary">Pending</option>
+                            <option className="bg-pink-500 text-white px-4 py-1 rounded-full font-primary">Process</option>
+                            <option className="bg-green-500 text-white px-4 py-1 rounded-full font-primary">Success</option>
+                        </select>
+                      
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap flex flex-col h-24 items-center justify-center">
                         <div className="flex items-center justify-center space-x-3">
@@ -169,7 +175,13 @@ const AllApply = () => {
                     <button  onClick={() => setShowModal(true)} className="px-6 py-2 font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white border border-blue-500 hover:border-transparent">Details</button>
                     </td>
                     <td className="text-sm px-6 py-4 whitespace-nowrap">
-                            <span className="bg-yellow-500 text-white px-4 py-1 rounded-full font-primary">Pending</span>
+                            <select
+                            class="appearance-none h-full  border block w-full border-gray-400  pr-8 leading-tight focus:outline-none focus:bg-yellow-500 focus:border-gray-500 bg-green-500 text-white px-4 py-1 rounded-full font-primary">
+                            <option className="bg-green-500 text-white px-4 py-1 rounded-full font-primary">Success</option>
+                            <option className="bg-pink-500 text-white px-4 py-1 rounded-full font-primary">Process</option>
+                            <option className="bg-green-500 text-white px-4 py-1 rounded-full font-primary">Success</option>
+                        </select>
+                      
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap flex flex-col h-24 items-center justify-center">
                         <div className="flex items-center justify-center space-x-3">

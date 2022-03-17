@@ -57,7 +57,7 @@ const productSlice = createSlice({
     setProducts: (state, { payload }) => {
       state.products = payload;
     },
-    setCurrPage: (state, { payload }) => {
+    setProductCurrPage: (state, { payload }) => {
       state.currPage = payload;
     },
   },
@@ -94,6 +94,6 @@ const productSlice = createSlice({
   },
 });
 
-export const { setProducts, setCurrPage } = productSlice.actions;
+export const { setProducts, setProductCurrPage } = productSlice.actions;
 
 export default productSlice.reducer;
