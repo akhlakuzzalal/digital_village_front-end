@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 import { BASE_URI } from '../../../../api/axios';
 import {
   getSingleUserInfo,
+  updateUser,
   updateUserWithoutProfileImg,
 } from '../../../../redux/slices/user/userSlice';
 import EditProfile from './EditProfile';
@@ -39,6 +40,12 @@ const Profile = () => {
   const handleUpdateUser = async (data) => {
     const formData = new FormData();
     formData.append('file', file);
+    // update without profile image
+    if (data.employmentStatus === 'choose one') delete data.employmentStatus;
+    if (data.maritialStatus === 'choose one') delete data.maritialStatus;
+    if (data.religion === 'choose one') delete data.religion;
+    if (data.gender === 'choose one') delete data.gender;
+
     formData.append(
       'user',
       JSON.stringify({
@@ -47,15 +54,13 @@ const Profile = () => {
     );
 
     if (file?.path) {
-      // update with profile image
-      console.log('with profile', { file, data });
+      dispatch(updateUser({ id: uId, formData })).then(() => {
+        Swal.fire({
+          title: 'updated successfully',
+          confirmButtonText: 'Okay',
+        });
+      });
     } else {
-      // update without profile image
-      if (data.employmentStatus === 'choose one') delete data.employmentStatus;
-      if (data.maritialStatus === 'choose one') delete data.maritialStatus;
-      if (data.religion === 'choose one') delete data.religion;
-      if (data.gender === 'choose one') delete data.gender;
-
       dispatch(updateUserWithoutProfileImg({ id: uId, data })).then(() => {
         Swal.fire({
           title: 'updated successfully',
@@ -73,7 +78,7 @@ const Profile = () => {
       key={f.name}
       src={f.preview}
       className="w-64 rounded-full h-64"
-      alt={f.name}
+      alt="drag and drop file to preview"
     />
   ));
 
@@ -88,14 +93,14 @@ const Profile = () => {
         <div className="col-start-1 col-end-5">
           {/* profile preview image */}
           <div className="w-full flex flex-col items-center">
-            {user?.profile?.path ? (
+            {previewFile.length >= 1 ? (
+              image
+            ) : user?.photo?.path ? (
               <img
-                src={`${BASE_URI}/${user?.profile?.path}`}
+                src={`${BASE_URI}/${user?.photo?.path}`}
                 className="w-64 rounded-full h-64"
                 alt={user?.profile?.name}
               />
-            ) : previewFile.length >= 1 ? (
-              image
             ) : (
               <img
                 className="w-64 rounded-full h-64"

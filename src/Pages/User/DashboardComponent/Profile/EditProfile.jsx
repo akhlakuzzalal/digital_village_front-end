@@ -47,7 +47,7 @@ const EditProfile = ({
           <div className="w-full">
             <p className="py-2">About Yourself</p>
             <textarea
-              value={user?.about}
+              defaultValue={user?.about}
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
               {...register('about', {
                 required: 'this is required',

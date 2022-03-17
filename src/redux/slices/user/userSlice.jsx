@@ -55,8 +55,9 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(updateUser.fulfilled, (state, { payload }) => {
-      console.log('this is updated user', payload);
-      // state.user = payload
+      if (payload && payload.length >= 1) {
+        state.user = payload[0];
+      }
     });
     builder.addCase(
       updateUserWithoutProfileImg.fulfilled,
