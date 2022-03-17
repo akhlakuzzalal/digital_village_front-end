@@ -3,11 +3,19 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { BASE_URI } from '../../../api/axios';
+import Pagination from '../../../Components/Pagination';
 import useAxiosInterceptor from '../../../hooks/useAxiosInterceptor';
-import { getAllUsers } from '../../../redux/slices/user/userSlice';
+import {
+  getAllUsers,
+  setAllUserCurrPage,
+} from '../../../redux/slices/user/userSlice';
 
 const AllUsers = () => {
   const allUsers = useSelector((state) => state.user.allUsers);
+  const count = useSelector((state) => state.user.count);
+  const pageCount = useSelector((state) => state.user.pageCount);
+  const currPage = useSelector((state) => state.user.currPage);
+  const size = 10;
 
   const dispatch = useDispatch();
 
@@ -43,8 +51,8 @@ const AllUsers = () => {
     //   isMounted = false;
     //   controller.abort();
     // };
-    dispatch(getAllUsers());
-  }, []);
+    dispatch(getAllUsers({ currPage, size }));
+  }, [pageCount, currPage, size]);
 
   const handleChangeRoleOfUser = (data) => {
     console.log(data);
@@ -113,17 +121,13 @@ const AllUsers = () => {
           </table>
           <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
             <span className="text-xs xs:text-sm text-gray-900">
-              Showing 1 to 4 of 50 Entries
+              Showing {allUsers.length} from {count} results
             </span>
-            <div className="inline-flex mt-2 xs:mt-0">
-              <button className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-400 bg-indigo-600 font-semibold py-2 px-4 rounded-l">
-                Prev
-              </button>
-              &nbsp; &nbsp;
-              <button className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-400 bg-indigo-600 font-semibold py-2 px-4 rounded-r">
-                Next
-              </button>
-            </div>
+            <Pagination
+              currPage={currPage}
+              setCurrPage={setAllUserCurrPage}
+              pageCount={pageCount}
+            />
           </div>
         </div>
       </div>

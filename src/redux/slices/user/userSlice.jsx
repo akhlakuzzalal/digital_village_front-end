@@ -1,13 +1,20 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../../api/axios';
 
-export const getAllUsers = createAsyncThunk('user/getAllUsers', async () => {
-  const response = await axios
-    .get('/user/all')
-    .then((response) => response.data);
-  return response;
-});
-
+export const getAllUsers = createAsyncThunk(
+  'user/getAllUsers',
+  async (pagination) => {
+    const response = await axios
+      .get(`/user/all/?page=${pagination.currPage}&size=${pagination.size}`)
+      .then((response) => response.data);
+    return {
+      allUsers: response.allUsers,
+      count: response.count,
+      pageCount: pagination.pageCount,
+      size: pagination.size,
+    };
+  }
+);
 export const getSingleUserInfo = createAsyncThunk(
   'user/getSingleUserInfo',
   async ({ id }) => {
@@ -42,10 +49,13 @@ const userSlice = createSlice({
   name: 'user',
   initialState: {
     allUsers: [],
+    count: 0,
     user: {},
     roles: [],
     token: '',
     uId: '',
+    pageCount: 0,
+    currPage: 0,
   },
   reducers: {
     setRoles: (state, { payload }) => {
@@ -60,11 +70,22 @@ const userSlice = createSlice({
     setUId: (state, { payload }) => {
       state.uId = payload;
     },
+    setAllUserCurrPage: (state, { payload }) => {
+      state.currPage = payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getAllUsers.fulfilled, (state, { payload }) => {
-      console.log(payload);
-      state.allUsers = payload;
+      state.allUsers = payload.allUsers;
+      const count = payload.count;
+      state.count = payload.count;
+      const pageNumber = Math.ceil(count / payload.size);
+      if (payload.search) {
+        state.currPage = 0;
+      }
+      if (pageNumber || pageNumber === 0) {
+        state.pageCount = pageNumber;
+      }
     });
     builder.addCase(getSingleUserInfo.fulfilled, (state, { payload }) => {
       if (payload && payload.length >= 1) {
@@ -85,6 +106,7 @@ const userSlice = createSlice({
   },
 });
 
-export const { setRoles, setToken, setUser, setUId } = userSlice.actions;
+export const { setRoles, setToken, setUser, setUId, setAllUserCurrPage } =
+  userSlice.actions;
 
 export default userSlice.reducer;
