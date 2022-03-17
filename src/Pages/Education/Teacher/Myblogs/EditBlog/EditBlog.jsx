@@ -15,7 +15,6 @@ const EditBlog = () => {
   const {
     register,
     handleSubmit,
-    reset,
     trigger,
     formState: { errors },
   } = useForm();

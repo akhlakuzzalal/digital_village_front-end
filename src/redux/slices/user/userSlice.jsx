@@ -1,6 +1,23 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../../api/axios';
 
+export const getAllUsers = createAsyncThunk('user/getAllUsers', async () => {
+  const response = await axios
+    .get('/user/all')
+    .then((response) => response.data);
+  return response;
+});
+
+export const getSingleUserInfo = createAsyncThunk(
+  'user/getSingleUserInfo',
+  async ({ id }) => {
+    const response = await axios
+      .get(`/user/singleUserInfo?id=${id}`)
+      .then((response) => response.data);
+    return response;
+  }
+);
+
 export const updateUser = createAsyncThunk(
   'user/updateUser',
   async ({ id, formData }) => {
@@ -21,19 +38,10 @@ export const updateUserWithoutProfileImg = createAsyncThunk(
   }
 );
 
-export const getSingleUserInfo = createAsyncThunk(
-  'user/getSingleUserInfo',
-  async ({ id }) => {
-    const response = await axios
-      .get(`/user/singleUserInfo?id=${id}`)
-      .then((response) => response.data);
-    return response;
-  }
-);
-
 const userSlice = createSlice({
   name: 'user',
   initialState: {
+    allUsers: [],
     user: {},
     roles: [],
     token: '',
@@ -54,6 +62,15 @@ const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(getAllUsers.fulfilled, (state, { payload }) => {
+      console.log(payload);
+      state.allUsers = payload;
+    });
+    builder.addCase(getSingleUserInfo.fulfilled, (state, { payload }) => {
+      if (payload && payload.length >= 1) {
+        state.user = payload[0];
+      }
+    });
     builder.addCase(updateUser.fulfilled, (state, { payload }) => {
       if (payload && payload.length >= 1) {
         state.user = payload[0];
@@ -65,11 +82,6 @@ const userSlice = createSlice({
         state.user = payload;
       }
     );
-    builder.addCase(getSingleUserInfo.fulfilled, (state, { payload }) => {
-      if (payload && payload.length >= 1) {
-        state.user = payload[0];
-      }
-    });
   },
 });
 
