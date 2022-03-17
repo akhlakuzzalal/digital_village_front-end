@@ -12,7 +12,7 @@ const Services = () => {
         </div>
         <div className="px-5 mt-6 md:mt-0">
           <h3 className=" text-center md:text-5xl text-blue-600">Our Services</h3>
-          <p className="my-5 text-justify  " style={{ fontSize: '20px' }}>
+          <p className="my-5 text-justify px-5  " style={{ fontSize: '20px' }}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis
             ullam consectetur autem accusantium porro? Aspernatur, totam
             accusamus, molestias est architecto sed laborum officiis atque
@@ -29,7 +29,7 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '20px' }}>Online Consultation</span>
+                  <span style={{ fontSize: '18px' }}>Online Consultation</span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -41,7 +41,7 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '20px' }}>Offline Consultation</span>
+                  <span style={{ fontSize: '18px' }}>Offline Consultation</span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -53,7 +53,7 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '20px' }}>Online Appointment</span>
+                  <span style={{ fontSize: '18px' }}>Online Appointment</span>
                 </div>
               </div>
 
@@ -66,7 +66,7 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '20px' }}>Lab Test</span>
+                  <span style={{ fontSize: '18px' }}>Lab Test</span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -78,7 +78,7 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '20px' }}>Ambulance facilities</span>
+                  <span style={{ fontSize: '18px' }}>Ambulance facilities</span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -90,7 +90,7 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '20px' }}>Emergency Department</span>
+                  <span style={{ fontSize: '18px' }}>Emergency Department</span>
                 </div>
               </div>
             </div>

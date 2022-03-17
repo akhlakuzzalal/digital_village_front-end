@@ -30,13 +30,13 @@ const datas = [
   },
   {
     id: '5',
-    title: 'Digital Learning',
+    title: 'Development',
     description:
       'We are covering every major country worldwide. The shipment leaves from US as it is our headquarter. Some extra information you probably need to add here so that the customer is clear of their wanted expectations.',
   },
   {
     id: '6',
-    title: 'Digital Learning',
+    title: 'E-Market',
     description:
       'We are covering every major country worldwide. The shipment leaves from US as it is our headquarter. Some extra information you probably need to add here so that the customer is clear of their wanted expectations.',
   },
@@ -47,7 +47,7 @@ const Faq1 = () => {
 
   return (
     <div className=" 2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6  px-4">
-      <h2 className=" font-semibold lg:text-4xl text-3xl lg:leading-9 md:leading-7 leading-9 text-gray-800 dark:text-dark_text">
+      <h2 className=" font-bolder text-xl md:text-3xl  lg:text-4xl text-blue-600  lg:leading-9 md:leading-7 leading-9  dark:text-dark_text">
         Frequently Asked Questions
       </h2>
       <div className=" flex md:justify-between md:items-start md:flex-row flex-col justify-start items-start">

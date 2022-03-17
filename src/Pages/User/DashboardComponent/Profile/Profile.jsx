@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   BsArrowReturnRight,
   BsFillCalendarDateFill,
@@ -11,16 +11,67 @@ import EditProfile from './EditProfile';
 
 const Profile = () => {
   const user = useSelector((state) => state.user.user);
-  const [editProfile, setEditProfile] = useState();
+  const [editProfile, setEditProfile] = useState(false);
+  const [file, setFile] = useState({});
+  const [previewFile, setPreviewFile] = useState([]);
+
+  const onDrop = useCallback((acceptedFiles) => {
+    setFile(acceptedFiles[0]);
+    setPreviewFile(
+      acceptedFiles.map((file) =>
+        Object.assign(file, {
+          preview: URL.createObjectURL(file),
+        })
+      )
+    );
+    console.log(previewFile);
+    console.log(previewFile.length, 'length');
+  }, []);
+
+  const handleUpdateProfile = async (data) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append(
+      'user',
+      JSON.stringify({
+        ...data,
+      })
+    );
+
+    console.log(data);
+
+    // const response = await axios.post('/teacher/publishBlogs', formData);
+    // console.log(response.data);
+  };
+
+  console.log(previewFile.length, 'length');
+
+  const image = previewFile.map((f) => (
+    <img
+      key={f.name}
+      src={f.preview}
+      className="w-64 rounded-full h-64"
+      alt={f.name}
+    />
+  ));
+
+  useEffect(() => {
+    previewFile.forEach((f) => URL.revokeObjectURL(f.preview));
+  }, [previewFile]);
+
   return (
     <div className="mx-10 my-24">
       <div className="md:grid md:grid-cols-3">
         <div className="w-full flex flex-col items-center">
-          <img
-            className="w-64 rounded-full h-64"
-            src="https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg"
-            alt=""
-          />
+          {previewFile.length >= 1 ? (
+            image
+          ) : (
+            <img
+              className="w-64 rounded-full h-64"
+              src="https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg"
+              alt=""
+            />
+          )}
           <button
             onClick={() => setEditProfile(true)}
             className="btn bg-warning my-6"
@@ -29,11 +80,16 @@ const Profile = () => {
           </button>
         </div>
         {editProfile ? (
-          <EditProfile setEditProfile={setEditProfile} />
+          <EditProfile
+            setEditProfile={setEditProfile}
+            handleUpdateProfile={handleUpdateProfile}
+            onDrop={onDrop}
+            file={file}
+          />
         ) : (
           <div className="md:col-span-2">
             <h2 className="heading_md">
-              {user.name}{' '}
+              {user.name}
               <span className="text-sm text-primary">(Approved)</span>
             </h2>
             <p>Occupation</p>

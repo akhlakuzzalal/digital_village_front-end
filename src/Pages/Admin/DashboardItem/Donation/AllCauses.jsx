@@ -14,11 +14,11 @@ const AllCauses = () => {
 
     return (
         <section
-      className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12"
+      className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4"
     >
-      <div className="flex flex-col col-span-2 md:col-span-1 justify-center items-center py-7">
-        <h3 className="text-gray-800">All Causes</h3>
-        <p className="text-gray-600">
+      <div className="flex flex-col col-span-2 md:col-span-1 justify-center items-center py-12">
+        <h3 className="text-gray-800 text-lg md:text-xl lg:text-2xl">All Causes</h3>
+        <p className="text-center text-gray-600 font-normal text-sm lg:text-lg">
         Admin can any cause dynamically delete and update.
         </p>
       </div>

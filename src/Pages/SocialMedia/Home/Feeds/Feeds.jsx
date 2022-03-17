@@ -1,5 +1,6 @@
 import React from 'react';
 import { AiOutlineComment, AiOutlineShareAlt } from 'react-icons/ai';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 import { GiSelfLove } from 'react-icons/gi';
 
 const Feeds = () => {
@@ -10,33 +11,34 @@ const Feeds = () => {
       {feeds.map((feed) => (
         <div
           key={feed}
-          className="px-4 py-3 shadow-xl rounded-lg space-y-2 dark:dark-card-bg"
+          className="px-6 py-5 shadow-xl rounded-lg space-y-2 dark:dark-card-bg"
         >
           {/* post Heading */}
-          <div className="flex items-center space-x-2">
-            {/* avarar */}
-            <div class="mr-2 w-12 h-12 relative flex justify-center items-center rounded-full bg-gray-500 text-xl text-white">
-              <img
-                src="http://source.unsplash.com/100x100/?woman"
-                className="rounded-full"
-                alt=""
-              />
-              <div className="absolute right-0 bottom-0 w-3 h-3 rounded-full bg-green-600"></div>
+          <div className="flex items-center justify-between py-4">
+            <div className="flex items-center space-x-2">
+              {/* avarar */}
+              <div class="mr-2 w-12 h-12 relative flex justify-center items-center rounded-full bg-gray-500 text-xl text-white">
+                <img
+                  src="http://source.unsplash.com/100x100/?woman"
+                  className="rounded-full"
+                  alt=""
+                />
+                <div className="absolute right-0 bottom-0 w-3 h-3 rounded-full bg-green-600"></div>
+              </div>
+              {/* name and date */}
+              <div>
+                <h6>Name Of user</h6>
+                <p>
+                  10:12 <span className="text-slate-600">11/12/2021 </span>
+                </p>
+              </div>
             </div>
-            <div>
-              <h6>Name Of user</h6>
-              <p>
-                10:12 <span className="text-slate-600">11/12/2021 </span>
-              </p>
+            <div className="shadow-2xl p-3 bg-slate-300 rounded-full cursor-pointer">
+              <BsThreeDotsVertical />
             </div>
           </div>
           {/* post details */}
           <div className="border-b-2 border-primary pb-5">
-            <img
-              className="w-full h-64"
-              src="https://www.pandasecurity.com/en/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg"
-              alt=""
-            />
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit.
               Temporibus voluptates nam maiores minus, ipsum obcaecati labore.
@@ -44,6 +46,11 @@ const Feeds = () => {
               commodi, odio veritatis. Illum sint exercitationem quasi
               praesentium eius illo tenetur totam! Obcaecati, quos non.
             </p>
+            <img
+              className="w-full h-64"
+              src="https://www.pandasecurity.com/en/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg"
+              alt=""
+            />
           </div>
           {/* post Footer */}
           <div className="my-6 flex justify-between items-center">

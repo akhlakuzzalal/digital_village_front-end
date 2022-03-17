@@ -54,41 +54,41 @@ const DonarForm = (props) => {
         {/* name */}
         <div className="flex flex-col  md:flex-row gap-4 w-full ">
           {/* first name */}
-          <div className='w-full md:w-1/2'>
-          <input
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('firstName', {
-              required: 'Name is Required',
-              pattern: /^[A-Za-z]+$/i,
-              maxLength: 20,
-            })}
-            onKeyUp={() => {
-              trigger('firstName');
-            }}
-            placeholder="First Name"
-          />
-          {errors.firstName && (
-            <small className="text-danger">{errors.firstName.message}</small>
-          )}
+          <div className="w-full md:w-1/2">
+            <input
+              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('firstName', {
+                required: 'Name is Required',
+                pattern: /^[A-Za-z]+$/i,
+                maxLength: 20,
+              })}
+              onKeyUp={() => {
+                trigger('firstName');
+              }}
+              placeholder="First Name"
+            />
+            {errors.firstName && (
+              <small className="text-danger">{errors.firstName.message}</small>
+            )}
           </div>
 
           {/* last name */}
-          <div className='w-full md:w-1/2'>
-          <input
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('lastName', {
-              required: 'Name is Required',
-              pattern: /^[A-Za-z]+$/i,
-              maxLength: 20,
-            })}
-            onKeyUp={() => {
-              trigger('lastName');
-            }}
-            placeholder="Last Name"
-          />
-          {errors.lastName && (
-            <small className="text-danger">{errors.lastName.message}</small>
-          )}
+          <div className="w-full md:w-1/2">
+            <input
+              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('lastName', {
+                required: 'Name is Required',
+                pattern: /^[A-Za-z]+$/i,
+                maxLength: 20,
+              })}
+              onKeyUp={() => {
+                trigger('lastName');
+              }}
+              placeholder="Last Name"
+            />
+            {errors.lastName && (
+              <small className="text-danger">{errors.lastName.message}</small>
+            )}
           </div>
         </div>
         {/* email */}
@@ -131,10 +131,10 @@ const DonarForm = (props) => {
         {/* Address */}
         <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('address', { required: "Address is Required" , maxLength: 50  })}
-          onKeyUp={() => {
-            trigger('address');
-          }}
+          {...register('address', {
+            required: 'Address is Required',
+            maxLength: 200,
+          })}
           placeholder="Full address"
         />
         {errors.address && (
@@ -143,64 +143,66 @@ const DonarForm = (props) => {
         {/* house no and zip code */}
         <div className="flex flex-col  md:flex-row gap-4 w-full ">
           {/* fHouse no */}
-          <div className='w-full md:w-1/2'>
-         <input
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('houseno', {
-              required: 'House no is Required',
-              maxLength: 10,
-            })}
-            onKeyUp={() => {
-              trigger('houseno');
-            }}
-            placeholder="House no"
-          />
-          {errors.houseno && (
-            <p className="text-danger">{errors.houseno.message}</p>
-          )}
+          <div className="w-full md:w-1/2">
+            <input
+              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('houseno', {
+                required: 'House no is Required',
+                maxLength: 10,
+              })}
+              onKeyUp={() => {
+                trigger('houseno');
+              }}
+              placeholder="House no"
+            />
+            {errors.houseno && (
+              <p className="text-danger">{errors.houseno.message}</p>
+            )}
           </div>
 
           {/* last name */}
-          <div className='w-full md:w-1/2'>
-         {/* Post code */}
-          <input
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('postcode', { required: "Postcode no is Required", maxLength: 10  })}
-            onKeyUp={() => {
-              trigger("postcode");
-            }}
-            placeholder="Postcode no"
-          />
-          {errors.postcode && (
-            <p className="text-danger">{errors.postcode.message}</p>
-          )}
+          <div className="w-full md:w-1/2">
+            {/* Post code */}
+            <input
+              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('postcode', {
+                required: 'Postcode no is Required',
+                maxLength: 10,
+              })}
+              onKeyUp={() => {
+                trigger('postcode');
+              }}
+              placeholder="Postcode no"
+            />
+            {errors.postcode && (
+              <p className="text-danger">{errors.postcode.message}</p>
+            )}
           </div>
         </div>
-          <input
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('amount',
-            {
-              required: "Amount is Required",
-              min: {
-                value: 49,
-                message: 'Minimum Required amount is 49',
-              },
-              max: {
-                value: 50000,
-                message: 'Maximum allowed amount is 50000',
-              },
-              pattern: {
-                value: /^[0-9]*$/,
-                message: 'Only numbers price allowed',
-              },
-            })}
-            type="number"
-            defaultValues={50}
-            placeholder="Amount"
-          />
-          {errors.amount && (
-            <p className="text-danger">{errors.amount.message}</p>
-          )}
+        <input
+          className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+          {...register('amount', {
+            required: 'Amount is Required',
+            min: {
+              value: 49,
+              message: 'Minimum Required amount is 49',
+            },
+            max: {
+              value: 50000,
+              message: 'Maximum allowed amount is 50000',
+            },
+            pattern: {
+              value: /^[0-9]*$/,
+              message: 'Only numbers price allowed',
+            },
+          })}
+          type="number"
+          defaultValues={50}
+          placeholder="Amount"
+        />
+        {errors.amount && (
+          <p className="text-danger">{errors.amount.message}</p>
+        )}
         {/* </div> */}
 
         <input

@@ -1,14 +1,14 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import Lottie from 'react-lottie';
-import { NavHashLink } from 'react-router-hash-link';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import animationData from '../../../lotties/donate.json';
 import banner from '../../../assets/donation/donatebanner.jpg';
-
+import { useSelector } from 'react-redux';
+import swal from 'sweetalert';
 const DonateBanner = () => {
   const isTablet = useMediaQuery('(min-width: 655px)');
   const isDesktop = useMediaQuery('(min-width: 900px)');
-
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -17,7 +17,106 @@ const DonateBanner = () => {
       preserveAspectRatio: 'xMidYMid slice',
     },
   };
+  const user = useSelector ((state) => state.user.user);
+  const [showModal, setShowModal] = React.useState(false);
+  const { register, handleSubmit} = useForm();
+  const handleAlert = () => {
+    swal({
+      position: 'top-end',
+      icon: 'success',
+      title:"You request sumbit successfully",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
+  const onSubmit = () => {
+    setShowModal(false)
+    handleAlert()
+  };
   return (
+    <>
+    {showModal ? (
+        <>
+          <div
+            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+          >
+            <div className="relative w-auto my-6 mx-auto  max-w-6xl">
+              {/*content*/}
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                {/*header*/}
+                <div className="flex items-start justify-between p-5 border-b border-solid border-blue Gray-200 rounded-t">
+                  <h3 className="text-2xl font-semibold ">
+                   Donate! <span>Help Request</span>
+                  </h3>
+                  <button
+                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    onClick={() => setShowModal(false)}
+                  >
+                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                      ×
+                    </span>
+                  </button>
+                </div>
+                {/*body*/}
+                <div className="relative p-6 flex-auto">
+                
+                    <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-1 gap-5 w-full">
+
+                  
+
+                    <div className="flex flex-col space-y-2">
+
+                      {/* title  */}
+                    <input className="appearance-none rounded-none relative block w-full px-5 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
+                        
+                        defaultValue={user.name}
+                        placeholder="Your Name" {...register("name", { required: true })} />
+                    <textarea className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
+                    placeholder="Your Help Massage" {...register("massage", { required: true })} />
+
+                    <input className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
+                        
+                        defaultValue={new Date().toLocaleString()}
+                        placeholder="date" {...register("date", { required: true })} />
+                    <input type='number' className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
+                        
+                        
+                        placeholder="Your Phone Number" {...register("phone", { required: true })}
+                         />
+                   
+                   
+                    {/* price  */}
+                    <input type="number" 
+                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
+                   
+                   placeholder="Amount" {...register("amount", { required: true })} />
+                   
+                    </div>
+                    </form>
+                    </div>
+                {/*footer*/}
+                <div className="flex items-center justify-end p-2 border-t border-solid border-blueGray-200 rounded-b">
+                  <button
+                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button"
+                    onClick={() => setShowModal(false)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="submit"
+                    onClick={() => onSubmit()}
+                  >
+                   Request Doante
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+        </>
+      ) : null}
     <div
       className="w-full bg-cover bg-center mt-[64px]"
       style={{
@@ -39,16 +138,10 @@ const DonateBanner = () => {
             as a humanitarian act
           </p>
           <div className="items-center justify-between pt-2 gap-1 mx-auto space-y-6 sm:flex sm:items-center sm:py-3 sm:space-y-0 sm:space-x-4">
-          <NavHashLink smooth to="/#">
-            <button className="btn bg-gradient-to-r from-primary via-secondary to-secondary hover:from-primary hover:via-secondary hover:to-primary shadow-xl">
-              Donate Now
-            </button>
-          </NavHashLink>
-          {/* <NavHashLink smooth to="/#">
-            <button className="btn bg-gradient-to-r from-primary via-secondary to-secondary hover:from-primary hover:via-secondary hover:to-primary shadow-xl">
+          
+            <button onClick={() => setShowModal(true, user._id)} className="btn bg-gradient-to-r from-primary via-secondary to-secondary hover:from-primary hover:via-secondary hover:to-primary shadow-xl">
             Get Help Request
             </button>
-          </NavHashLink> */}
           </div>
           
         </div>
@@ -63,6 +156,7 @@ const DonateBanner = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

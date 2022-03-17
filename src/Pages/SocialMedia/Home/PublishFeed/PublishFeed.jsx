@@ -17,7 +17,7 @@ const PublishFeed = () => {
         </div>
         {/* Text Field */}
         <textarea
-          className="w-full focus:outline-0"
+          className="w-full focus:outline-0 dark:dark-card-bg dark:text-white"
           rows={5}
           placeholder="Share Tour Feelings"
         />
@@ -25,11 +25,11 @@ const PublishFeed = () => {
       {/* Media & activity */}
       <div className="my-3">
         <div className="flex items-center space-x-3">
-          <div className="flex items-center space-x-2 bg-slate-200 rounded-full shadow-md px-4 py-2 w-min cursor-pointer">
+          <div className="flex items-center space-x-2 bg-slate-200 dark:bg-slate-500 rounded-full shadow-md px-4 py-2 w-min cursor-pointer">
             <MdPermMedia size={20} />
             <p className="inline">Media</p>
           </div>
-          <div className="flex items-center space-x-2 bg-slate-200 rounded-full shadow-md px-4 py-2 w-min cursor-pointer">
+          <div className="flex items-center space-x-2 bg-slate-200 dark:bg-slate-500 rounded-full shadow-md px-4 py-2 w-min cursor-pointer">
             <VscReactions size={20} />
             <p className="inline">Activity</p>
           </div>

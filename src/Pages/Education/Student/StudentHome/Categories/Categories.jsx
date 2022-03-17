@@ -28,7 +28,7 @@ const categories = [
 ];
 const Categories = () => {
   return (
-    <div className="flex flex-wrap items-center gap-6">
+    <div className="flex flex-wrap pl-6 md:pl-10 md:pl-auto items-center gap-6">
       {categories.map((category) => (
         <CategoryCard key={category._id} category={category} />
       ))}

@@ -19,7 +19,7 @@ const links = [
   {
     name: 'Donation',
     icon: <RiDashboard2Line size={30} />,
-    path: '/',
+    path: '/userdashboard/donarpaymente',
   },
   {
     name: 'Review',
@@ -29,8 +29,7 @@ const links = [
 ];
 
 const UserDashboard = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [showText, setShowText] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const location = useLocation();
   const initial =
@@ -40,16 +39,12 @@ const UserDashboard = () => {
   return (
     <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
       {/* Sidebar */}
-      <NewSidebar
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-        showText={showText}
-        setShowText={setShowText}
-        links={links}
-      />
+      <NewSidebar setIsOpen={setIsOpen} links={links} />
 
       {/* contents */}
-      <div className="flex-1">
+      <div
+        className={`mt-[80px] flex-1 ${isOpen ? 'ml-[273px]' : 'ml-[82px]'}`}
+      >
         {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
         {initial ? <Profile /> : <Outlet />}
       </div>

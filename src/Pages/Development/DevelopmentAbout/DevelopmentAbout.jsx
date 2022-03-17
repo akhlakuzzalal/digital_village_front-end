@@ -11,7 +11,7 @@ const DevelopmentAbout = () => {
 
   useEffect(() => {
     axios
-      .get('/allDevelopment')
+      .get('/development/allDevelopment')
       .then((response) => setDevelopments(response.data));
   }, []);
 

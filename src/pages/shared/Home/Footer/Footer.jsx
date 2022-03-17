@@ -1,57 +1,44 @@
 import React from 'react';
 import { FaFacebook, FaTwitterSquare } from 'react-icons/fa';
 import { GrInstagram } from 'react-icons/gr';
-// import MessengerCustomerChat from 'react-messenger-customer-chat';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 import { Link, useLocation } from 'react-router-dom';
-import img from '../../../../assets/events/acffa5ab.png';
 import AppleStore from '../../../../assets/footer/appstore.png';
 import playStore from '../../../../assets/footer/playstore.png';
 import logo from '../../../../assets/logo.png';
 const Footer = () => {
   const location = useLocation();
   return location.pathname.includes('/social') ? null : (
-    <footer className="pt-6">
-      <div className=" text-center py-20 bg-slate-900 rounded-xl  mx-auto relative top-[200px] text-white font-[NoeDisplay">
-        <div className="space-y-3 px-3">
+    <footer className="pt-16 bg-slate-900">
+      <div className="text-center rounded-xl mx-auto text-white">
+        <div className="space-y-3 px-3 ">
           {/* subscribe text */}
 
-          <div className=" lg:flex md:flex justify-between mx-[10px] ">
-            <div className="space-y-3 ">
-              {' '}
-              <h3 className="text-white lg:text-[200px] md:text-[110px] text-[70px] leading-[150px]  font-bold ml-20">
-                SubsCribe
-              </h3>
-              <div className="flex flex-wrap md:flex-nowrap items-center justify-center space-y-3 md:space-y-0 ">
-                <input
-                  placeholder="Your Email"
-                  type="email"
-                  style={{ borderRadius: '0px 0px 0px 10px' }}
-                  className="text-black py-5 px-10 border border-primary outline-none focus:border focus:border-secondary w-full md:w-[300px] "
-                />
+          <div className="flex flex-wrap md:flex-nowrap items-center justify-center space-y-3 md:space-y-0 ">
+            <input
+              placeholder="Your Email"
+              type="email"
+              style={{ borderRadius: '0px 0px 0px 10px' }}
+              className="text-black py-5 px-10 border border-primary outline-none focus:border focus:border-secondary w-full md:w-[300px] "
+            />
 
-                {/* subscribe button */}
-                <button
-                  style={{ borderRadius: '0px 10px 0px 0px', color: 'white' }}
-                  className="hover:bg-[#1515aa] bg-[blue] px-20  py-5"
-                >
-                  Send
-                </button>
-              </div>
-            </div>
-            <div className="space-y-4 ">
-              {' '}
-              <img className="h-32 w-[400px]" src={img} alt="" />
-              <br />
-            </div>
+            {/* subscribe button */}
+            <button
+              style={{ borderRadius: '0px 10px 0px 0px', color: 'white' }}
+              className="hover:bg-[#1515aa] bg-[blue] px-20  py-5"
+            >
+              Send
+            </button>
           </div>
         </div>
       </div>
 
-      <div className="py-20 px-6 bg-slate-900 text-white bg-opacity-200 pt-48">
+      <div className="py-16 px-6 bg-slate-900 text-white bg-opacity-200">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
             <div className="mb-5 ">
               <div className="text-lg mb-3 font-bold">
+                {/* logo */}
                 <img
                   style={{ height: '60px', width: '60px' }}
                   src={logo}
@@ -137,10 +124,10 @@ const Footer = () => {
               className="h-8 w-8 hover:scale-110 hover:text-[blue] mx-3"
               aria-hidden="true"
             />
-            {/* <MessengerCustomerChat
+            <MessengerCustomerChat
               pageId="104685378841819"
               appId="720117475814303"
-            /> */}
+            />
           </div>
         </div>
       </div>

@@ -1,4 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from '../../../api/axios';
+
+export const updateUser = createAsyncThunk('user/updateUser', async (id) => {
+  const response = await axios
+    .put(`/user/update/?id=${id}`)
+    .then((response) => response.data);
+  return response;
+});
 
 const userSlice = createSlice({
   name: 'user',
@@ -21,6 +29,12 @@ const userSlice = createSlice({
     setUId: (state, { payload }) => {
       state.uId = payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(updateUser.fulfilled, (state, { payload }) => {
+      console.log('this is updated user', payload);
+      // state.user = payload
+    });
   },
 });
 

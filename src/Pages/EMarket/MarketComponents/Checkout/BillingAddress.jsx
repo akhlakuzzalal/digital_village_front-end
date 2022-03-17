@@ -5,9 +5,12 @@ import { setPayModal } from '../../../../redux/slices/payModal/PayModalSlice';
 
 const BillingAddress = () => {
   const dispatch = useDispatch();
-  const { register, handleSubmit,trigger,
-    formState: { errors }
-  } = useForm ();
+  const {
+    register,
+    handleSubmit,
+    trigger,
+    formState: { errors },
+  } = useForm();
   const handleRegister = async ({ firstName, lastName, email, password }) => {
     const name = `${firstName} ${lastName}`;
     console.log({ name, email, password });
@@ -15,16 +18,20 @@ const BillingAddress = () => {
   };
   return (
     <div>
-      <h6 className="mb-6">Billing Address</h6>
+      <h6 className="mb-6 pt-8 text-3xl">Billing Address</h6>
       <form onSubmit={handleSubmit(handleRegister)} className="space-y-6">
         {/* name */}
-        <div className="flex gap-4">
+        <div className="flex flex-col md:flex-row w-full  gap-4">
           {/* first name */}
           <input
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('firstName', { required: "Name is Required" , pattern: /^[A-Za-z]+$/i , maxLength: 20  })}
+            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary  w-full md:w-1/2 transition-all duration-300 rounded-xl"
+            {...register('firstName', {
+              required: 'Name is Required',
+              pattern: /^[A-Za-z]+$/i,
+              maxLength: 20,
+            })}
             onKeyUp={() => {
-              trigger("firstName");
+              trigger('firstName');
             }}
             placeholder="First Name"
           />
@@ -33,10 +40,14 @@ const BillingAddress = () => {
           )}
           {/* last name */}
           <input
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('lastName', { required: "Name is Required" , pattern: /^[A-Za-z]+$/i , maxLength: 20  })}
+            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full md:w-1/2 transition-all duration-300 rounded-xl"
+            {...register('lastName', {
+              required: 'Name is Required',
+              pattern: /^[A-Za-z]+$/i,
+              maxLength: 20,
+            })}
             onKeyUp={() => {
-              trigger("lastName");
+              trigger('lastName');
             }}
             placeholder="Last Name"
           />
@@ -60,16 +71,14 @@ const BillingAddress = () => {
           type="email"
         />
 
-        {errors.email && (
-          <p className="text-danger">{errors.email.message}</p>
-        )}
+        {errors.email && <p className="text-danger">{errors.email.message}</p>}
         {/* Address */}
         <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('address', { required: "Address is Required" , maxLength: 50 })}
-          onKeyUp={() => {
-            trigger("address");
-          }}
+          {...register('address', {
+            required: 'Address is Required',
+            maxLength: 200,
+          })}
           placeholder="Full address"
         />
         {errors.address && (
@@ -80,9 +89,12 @@ const BillingAddress = () => {
           {/* House no */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('houseno', { required: "House no is Required", maxLength: 20  })}
+            {...register('houseno', {
+              required: 'House no is Required',
+              maxLength: 20,
+            })}
             onKeyUp={() => {
-              trigger("houseno");
+              trigger('houseno');
             }}
             placeholder="House no"
           />
