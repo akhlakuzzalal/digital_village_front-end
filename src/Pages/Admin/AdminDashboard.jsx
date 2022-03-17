@@ -16,22 +16,12 @@ import { RiLightbulbFlashFill } from 'react-icons/ri';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
-// import Sidebar from '../../Components/Sidebar';
-// import WelcomeBanner from '../../Components/WelcomeBanner';
-// import Header from '../Education/Teacher/Dashboard/partials/Header';
 
 const links = [
   {
     name: 'All Users',
     icon: <FaUsers size={30} />,
     path: '/admin/allusers',
-    nestedPath: [
-      {
-        name: 'Add Users',
-        icon: <AiFillFileAdd size={30} />,
-        path: '/admin/manageusers',
-      },
-    ],
   },
   {
     name: 'Events',

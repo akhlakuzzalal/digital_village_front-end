@@ -15,7 +15,6 @@ const EditBlog = () => {
   const {
     register,
     handleSubmit,
-    reset,
     trigger,
     formState: { errors },
   } = useForm();
@@ -54,7 +53,7 @@ const EditBlog = () => {
 
   useEffect(() => {
     axios.get(`/teacher/getSingleBlog?id=${id}`).then((response) => {
-      setSingleBlog(response?.data);
+      setSingleBlog(response?.data); // fetch the previous blog
       setFile(response?.data?.bannerImg);
     });
   }, [id]);
