@@ -14,7 +14,7 @@ const Status = () => {
     });
   }, [email]);
   return (
-    <div className="w-3/4 my-20 p-0 md:p-10 min-h-screen">
+    <div className="w-full  my-20 p-0 md:p-10 min-h-screen">
       <div>
         <div class="p-0 md:p-4">
           <div class="bg-white p-0 md:p-4 rounded-md">

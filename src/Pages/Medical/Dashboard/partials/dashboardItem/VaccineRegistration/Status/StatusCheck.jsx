@@ -14,6 +14,7 @@ const StatusCheck = () => {
     });
   }, []);
   const handleStatus = (userEmail) => {
+    console.log(userEmail);
     axios
       .put('/vaccine/updateInfo', userEmail)
 
