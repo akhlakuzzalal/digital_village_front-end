@@ -32,7 +32,9 @@ const EMarket = () => {
       <div className="grid grid-cols-6 gap-0 md:gap-6 mx-2 md:mx-24 mt-16">
         {/* Latest Product */}
         <div className="col-span-6 md:col-span-2 h-min md:h-full">
-          <h6 className="inline border-b-2 border-primary ml-2 md:ml-0">Latest product</h6>
+          <h6 className="inline border-b-2 border-primary ml-2 md:ml-0">
+            Latest product
+          </h6>
           {products?.length > 0 && (
             <LatestProduct
               lastProduct={products[products?.length - 1]}
