@@ -11,8 +11,10 @@ import AddDevelopment from './Pages/Admin/DashboardItem/Development/AddDevelopme
 import DevelopmentDashboard from './Pages/Admin/DashboardItem/Development/DevelopmentDashboard';
 import DevelopmentManage from './Pages/Admin/DashboardItem/Development/DevelopmentManage/DevelopmentManage';
 import AddCause from './Pages/Admin/DashboardItem/Donation/AddCause';
+import AllApply from './Pages/Admin/DashboardItem/Donation/AllApply';
 import AllCauses from './Pages/Admin/DashboardItem/Donation/AllCauses';
 import DonarPaymente from './Pages/Admin/DashboardItem/Donation/DonarPaymente';
+import HelpRequestApply from './Pages/Admin/DashboardItem/Donation/HelpRequestApply';
 import ManageAllPaymente from './Pages/Admin/DashboardItem/Donation/ManageAllPaymente';
 import UpdateCause from './Pages/Admin/DashboardItem/Donation/UpdateCause';
 import Eventmanagement from './Pages/Admin/DashboardItem/EventManagement/Eventmanagement';
@@ -116,12 +118,14 @@ function App() {
             </Route>
             {/* notification route */}
             <Route path="notifications" element={<Notification />} />
+
             {/* user routes */}
             <Route path="userdashboard" element={<UserDashboard />}>
               <Route path="profile" element={<Profile />} />
               <Route path="my-event-booking" element={<MyBookedEvents />} />
               <Route path="review" element={<Review />} />
               <Route path="donarpaymente" element={<DonarPaymente />} />
+              <Route path="requestapply" element={<HelpRequestApply />} />
             </Route>
 
             {/* EDUCATION RELATED ROUTES */}
@@ -224,6 +228,7 @@ function App() {
               <Route path="manageNews" element={<ManageNews />} />
               <Route path="addAppointment" element={<AddAppointment />} />
               <Route path="status" element={<StatusCheck />} />
+              <Route path="requestapply" element={<AllApply />} />
             </Route>
 
             {/* Social Media Routes */}

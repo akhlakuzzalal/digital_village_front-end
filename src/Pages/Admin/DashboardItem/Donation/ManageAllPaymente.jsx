@@ -1,5 +1,6 @@
 import React from 'react';
 import { HiTrash } from "react-icons/hi";
+import { FcSearch } from "react-icons/fc";
 
 const ManageAllPaymente = () => {
     return (
@@ -9,10 +10,16 @@ const ManageAllPaymente = () => {
         <p className="text-center text-gray-600 font-normal text-sm lg:text-lg">
         Admin can any cause dynamically delete and update.
         </p>
+        <div class="flex items-center justify-between ml-20">
+			<div class="flex bg-gray-50 items-center p-2 rounded-md border-blue-500 border-1">
+                <FcSearch class="h-6 w-6 text-gray-400" />
+				<input class="bg-gray-50 outline-none ml-6 w-full rounded-sm md:rounded-md p-2 focus:outline-none focus:ring focus:border-blue-500 flex items-center" type="text" name="" id="" placeholder="search..."/>
+            </div>
+		</div>
         <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
         <div className="rounded-lg">
             <table className="max-w-screen-xl mx-auto">
-            <thead className="hidden lg:block bg-indigo-500 font-primary">
+            <thead className="hidden lg:block bg-pink-500 font-primary">
                 <tr className="grid grid-cols-1 lg:grid-cols-6 place-items-center">
                     <th scope="col" className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider">
                         Image
@@ -44,9 +51,7 @@ const ManageAllPaymente = () => {
                     </td>
                     <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">
                             shorifzaman
-                            <td className="text-sm text-gray-600 px-3 py-2 whitespace-nowrap">
-                        
-                          sylhet,bangladesh
+                    <td className="text-sm text-gray-600 py-2 whitespace-nowrap">sylhet,bangladesh
                     </td>
                             
                     </td>

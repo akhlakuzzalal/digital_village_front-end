@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
 import { BsCalendar2EventFill } from 'react-icons/bs';
-import { FaConnectdevelop, FaShopify, FaUsers } from 'react-icons/fa';
+import { FaConnectdevelop, FaHandsHelping, FaShopify, FaUsers } from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
 import { GiNewspaper } from 'react-icons/gi';
 import { IoLogoDesignernews } from 'react-icons/io';
@@ -70,6 +70,11 @@ const links = [
         name: 'All Cuases',
         icon: <FcDonate size={30} />,
         path: '/admin/allcauses',
+      },
+      {
+        name: 'All Help Request',
+        icon: <FaHandsHelping size={30} />,
+        path: '/admin/requestapply',
       },
     ],
   },

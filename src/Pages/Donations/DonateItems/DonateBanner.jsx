@@ -19,7 +19,9 @@ const DonateBanner = () => {
   };
   const user = useSelector ((state) => state.user.user);
   const [showModal, setShowModal] = React.useState(false);
-  const { register, handleSubmit} = useForm();
+  const { register, handleSubmit,trigger,reset, 
+    formState: { errors },} = useForm();
+
   const handleAlert = () => {
     swal({
       position: 'top-end',
@@ -31,7 +33,8 @@ const DonateBanner = () => {
   };
   const onSubmit = () => {
     setShowModal(false)
-    handleAlert()
+    handleAlert();
+    reset();
   };
   return (
     <>
@@ -49,48 +52,102 @@ const DonateBanner = () => {
                    Donate! <span>Help Request</span>
                   </h3>
                   <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    className="p-2 ml-auto bg-transparent border-0 text-pink-900 opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
                   >
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                    <span className="bg-transparent text-black opacity-80 h-6 w-6 text-2xl block outline-none focus:outline-none">
                       ×
                     </span>
                   </button>
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                
-                    <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-1 gap-5 w-full">
+                  <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-1 gap-5 w-full">
+                      <div className="flex flex-col space-y-2">
 
-                  
-
-                    <div className="flex flex-col space-y-2">
-
-                      {/* title  */}
+                      {/* name  */}
                     <input className="appearance-none rounded-none relative block w-full px-5 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
-                        
-                        defaultValue={user.name}
-                        placeholder="Your Name" {...register("name", { required: true })} />
+                      defaultValue={user.name}
+                      placeholder="Your Name" {...register("name", {
+                        required: 'Your Name is required',
+                        maxLength: {
+                          value: 30,
+                          message: "Your Name shouldn't exceed 30 words",
+                        },
+                      })}
+                      onKeyUp={() => {
+                        trigger('name');
+                      }}
+                    />
+      
+                    {errors.name && (
+                      <p className="text-danger">{errors.name.message}</p>
+                    )}
+                      
                     <textarea className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
-                    placeholder="Your Help Massage" {...register("massage", { required: true })} />
-
+                    placeholder="Your Help Message" {...register("message", {
+                      required: 'Message is Required',
+                      minLength: {
+                        value: 20,
+                        message: 'Minimum Required length is 20',
+                      },
+                      maxLength: {
+                        value: 500,
+                        message: 'Maximum allowed length is 500 ',
+                      },
+                    })}
+                    onKeyUp={() => {
+                      trigger('message');
+                    }}
+                    />
+                    {errors.message && (
+                      <p className="text-danger">{errors.message.message}</p>
+                    )}
                     <input className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
-                        
-                        defaultValue={new Date().toLocaleString()}
-                        placeholder="date" {...register("date", { required: true })} />
+                    defaultValue={new Date().toLocaleString()}
+                    placeholder="date" {...register("date", { required: true })} />
                     <input type='number' className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
-                        
-                        
-                        placeholder="Your Phone Number" {...register("phone", { required: true })}
-                         />
+                    placeholder="Your Phone Number" {...register("phone", { required: "Phone no is Required",
+                    pattern: {
+                      value: /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+                      message: "Invalid phone no",
+                    },
+                   })}
+                   onKeyUp={() => {
+                    trigger('phone');
+                  }}
                    
-                   
+                  />
+                  {errors.phone && (
+                      <p className="text-danger">{errors.phone.message}</p>
+                    )}
                     {/* price  */}
-                    <input type="number" 
+                    <input type="number"  
                     className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
-                   
-                   placeholder="Amount" {...register("amount", { required: true })} />
-                   
+                    {...register("amount",
+                   {
+                     required: "Amount is Required",
+                     min: {
+                       value: 49,
+                       message: 'Minimum Required amount is 49',
+                     },
+                     max: {
+                       value: 500,
+                       message: 'Maximum allowed amount is 500',
+                     },
+                     pattern: {
+                       value: /^[0-9]*$/,
+                       message: 'Only numbers price allowed',
+                     },
+                   })}
+                   onKeyUp={() => {
+                    trigger('amount');
+                  }}
+                   placeholder="Please Your Amount"
+                 />
+                 {errors.amount && (
+                   <p className="text-danger">{errors.amount.message}</p>
+                 )}
                     </div>
                     </form>
                     </div>
@@ -114,7 +171,8 @@ const DonateBanner = () => {
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <div className="opacity-25 fixed inset-0 z-40 bg-black">
+          </div>
         </>
       ) : null}
     <div
