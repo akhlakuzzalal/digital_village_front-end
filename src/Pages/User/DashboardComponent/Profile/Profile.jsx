@@ -55,6 +55,7 @@ const Profile = () => {
 
     if (file?.path) {
       dispatch(updateUser({ id: uId, formData })).then(() => {
+        dispatch(getSingleUserInfo({ id: uId }));
         Swal.fire({
           title: 'updated successfully',
           confirmButtonText: 'Okay',
@@ -62,15 +63,13 @@ const Profile = () => {
       });
     } else {
       dispatch(updateUserWithoutProfileImg({ id: uId, data })).then(() => {
+        dispatch(getSingleUserInfo({ id: uId }));
         Swal.fire({
           title: 'updated successfully',
           confirmButtonText: 'Okay',
         });
       });
     }
-
-    // const response = await axios.post('/teacher/publishBlogs', formData);
-    // console.log(response.data);
   };
 
   const image = previewFile.map((f) => (

@@ -13,21 +13,29 @@ export const fetchAllCuases = createAsyncThunk(
 );
 
 // add cuase
-export const addACuase = createAsyncThunk('cuases/addACuase', async (event) => {
-  const response = await axios
-    .post('/donationCause/add', event)
-    .then((response) => response.data);
-  return response;
-});
+export const addACuase = createAsyncThunk(
+  'cuases/addACuase',
+  async (formData) => {
+    const response = await axios
+      .post('/donationCause/add', formData)
+      .then((response) => response.data);
+    return response;
+  }
+);
 
 // update cuase
 export const updateACause = createAsyncThunk(
   'cuases/updateACause',
 
-  async (data) => {
-    console.log(data);
-    await axios.put(`/donationCause/update/?id=${data.id}`, data);
-    return data;
+  async ({ id, formData }) => {
+    const response = await axios.put(
+      `/donationCause/update/?id=${id}`,
+      formData
+    );
+    return {
+      id,
+      response,
+    };
   }
 );
 
@@ -62,18 +70,15 @@ const donationSlice = createSlice({
     builder.addCase(fetchAllCuases.fulfilled, (state, { payload }) => {
       state.causes = payload;
     });
-    // //add cuase
     builder.addCase(addACuase.fulfilled, (state, { payload }) => {
       state.causes.push(payload);
     });
     builder.addCase(updateACause.fulfilled, (state, { payload }) => {
-      const prevCause = state.causes.find((cause) => cause._id === payload.id);
-      // state.causes={...prevCause, ...data}
-      const updateCause = { ...prevCause, ...payload };
-      const removeCause = state.causes.filter(
+      const updatedCause = payload.response[0];
+      const AllCausesAfterRemovingThePrev = state.causes.filter(
         (cause) => cause._id !== payload.id
       );
-      state.causes = [...removeCause, updateCause];
+      state.causes = [...AllCausesAfterRemovingThePrev, updatedCause];
     });
 
     //delete

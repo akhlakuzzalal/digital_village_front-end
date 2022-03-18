@@ -4,12 +4,13 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Progress } from 'react-sweet-progress';
 import 'react-sweet-progress/lib/style.css';
+import { BASE_URI } from '../../../api/axios';
 import DonarForm from '../Donate/DonarForm';
-import Cuasesidber from '../DonateItems/Cuasesidber';
+import Cuasesidber from '../DonateItems/Cuasesidbar';
 import PageSection from '../DonateItems/PageSection/PageSection';
 
 // CaseSingle details page
-const CaseSingle = () => {
+const SingleCauseDetail = () => {
   const { id } = useParams();
   const causes = useSelector((state) => state.donation.causes);
   const cause = causes.find((c) => c._id === id);
@@ -36,7 +37,7 @@ const CaseSingle = () => {
               <div className="overflow-hidden">
                 <img
                   className="transform hover:scale-125 transition duration-700 object-cover h-full w-full"
-                  src={cause.image}
+                  src={`${BASE_URI}/${cause?.image?.path}`}
                   alt={cause?.title}
                 />
               </div>
@@ -134,4 +135,4 @@ const CaseSingle = () => {
   );
 };
 
-export default CaseSingle;
+export default SingleCauseDetail;

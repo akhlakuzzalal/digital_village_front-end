@@ -7,15 +7,16 @@ import { useNavigate } from 'react-router-dom';
 import { Progress } from 'react-sweet-progress';
 import 'react-sweet-progress/lib/style.css';
 import swal from 'sweetalert';
+import { BASE_URI } from '../../../api/axios';
 import { deleteACause } from '../../../redux/slices/Donations/donationSlice';
+import calculatePercentage from '../../../utilities/calculatePercentage';
 
-const Cause = (props) => {
-  const { _id, title, image, goal, raised, category } = props;
+const Cause = ({ _id, title, image, goal, raised, category }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   // handing donetion
   const handleDeleteCause = () => {
-    // dispatch(deleteAnCuase(_id))
     swal({
       title: 'Are you sure?',
       text: 'Once deleted, you will not be able to recover this imaginary file!',
@@ -35,17 +36,12 @@ const Cause = (props) => {
   const handleUpdateCause = () => {
     navigate(`/admin/updatecause/${_id}`);
   };
+
   //Progressbar for
   let donationGoal = goal;
   let donationTotal = raised;
 
-  const percentage = (donationTotal, donationGoal) => {
-    return (donationTotal / donationGoal) * 100 > 100
-      ? 100
-      : (donationTotal / donationGoal) * 100;
-  };
-
-  let percent = percentage(donationTotal, donationGoal);
+  let percent = calculatePercentage(donationTotal, donationGoal);
 
   return (
     <div className="rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between border-l-4  bg-blue-50 shadow hover:shadow-md dark:dark-card-bg">
@@ -55,7 +51,7 @@ const Cause = (props) => {
         </div>
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-          src={image}
+          src={`${BASE_URI}/${image?.path}`}
           alt={title}
         />
       </div>
