@@ -27,27 +27,37 @@ const StudentHome = () => {
     console.log('I am here');
   }, []);
   return (
-    <div className="space-y-6">
+    <div className="">
       <Banner />
 
       {/* top blogs */}
-      <h3 className="py-6 text-center md:text-left">Top Categories</h3>
+      <div className="lg:mx-[100px] ">
+        <h3 className="py-6 text-center md:text-left">
+          Top Categories <hr />
+        </h3>
 
-      <Categories />
-
-      {/* top blogs */}
-      <h3>Top Blogs</h3>
-      <div className="flex flex-wrap items-center gap-6">
-        {blogs.slice(0, 6).map((blog) => (
-          <BlogCard key={blog._id} blog={blog} />
-        ))}
+        <Categories />
       </div>
 
-      <h3 className="py-6 text-center md:text-left">Top Videos</h3>
-      <div className="flex flex-wrap items-center gap-6">
-        {videos.slice(0, 6).map((video) => (
-          <VideoCard key={video._id} video={video} />
-        ))}
+      {/* top blogs */}
+      <div className="lg:mx-[100px] my-[200px]">
+        <h3>
+          Top Blogs <hr />
+        </h3>
+        <div className="flex flex-wrap items-center gap-6">
+          {blogs.slice(0, 6).map((blog) => (
+            <BlogCard key={blog._id} blog={blog} />
+          ))}
+        </div>
+      </div>
+
+      <div className="mx-[100px]">
+        <h3 className="py-6 text-center md:text-left">Top Videos</h3>
+        <div className="flex flex-wrap items-center gap-6">
+          {videos.slice(0, 6).map((video) => (
+            <VideoCard key={video._id} video={video} />
+          ))}
+        </div>
       </div>
     </div>
   );
