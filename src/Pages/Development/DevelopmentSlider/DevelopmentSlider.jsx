@@ -189,7 +189,7 @@ const DevelopmentSlider = ({ n }) => {
       <div className="md:mx-80 grid grid-cols-1 md:grid-cols-2 my-auto md:my-24 ">
         <h3>LAST PROJECTS</h3>
         <p className="md:border-l-4 md:pl-5">
-          Large-scale construction TO Organize the villagers into a broad-based
+          Large-scale construction to organize the villagers into a broad-based
           village cooperative with a number of functional groups (landless and
           small, medium and large farmers, women, youth and other occupational
           group) and involve them in credit and marketing programme.

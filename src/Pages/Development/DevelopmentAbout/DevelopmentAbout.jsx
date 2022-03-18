@@ -28,9 +28,11 @@ const DevelopmentAbout = () => {
             <h3 className="hover:text-blue-600">CLIENT REQUEST</h3>
             <br />
             <p className="text-justify pb-10 mx-5 md:mx-auto">
-              Lorem ipsum dolor sit amet consectetur adipiscing elitsed do
-              eiusmod tempor incididunt utlabore et dolore magna aliqua. Utenim
-              ad minim veniam quis nostrud exercitation ullamco laboro.
+              We encourage villagers to propose some brillient and creative
+              ideas for village development.For sharing their ideas they can
+              contact us through our official website. After understanding their
+              idea and evaluting it if it selectrd by the authority our skilled
+              team start for the project.
             </p>
           </div>
         </div>
@@ -42,12 +44,14 @@ const DevelopmentAbout = () => {
             </h2>
           </div>
           <div>
-            <h3 className="hover:text-blue-600">QUOTATION</h3>
+            <h3 className="hover:text-blue-600">PLANNING</h3>
             <br />
             <p className="text-justify pb-10 mx-5 md:mx-auto">
-              Lorem ipsum dolor sit amet consectetur adipiscing elitsed do
-              eiusmod tempor incididunt utlabore et dolore magna aliqua. Utenim
-              ad minim veniam quis nostrud exercitation ullamco laboro.
+              After the project selection, we have to collect and manage many
+              things. Rising fund is one of the mejor challenges. We Work
+              togethe with the villagers to rise fund fot the project, and
+              beside that we also make plan, duration probability and othe
+              functional activities before starting the project.
             </p>
           </div>
         </div>
@@ -62,15 +66,17 @@ const DevelopmentAbout = () => {
             <h3 className="hover:text-blue-600">PROJECT START</h3>
             <br />
             <p className="text-justify pb-10 mx-5 md:mx-auto">
-              Lorem ipsum dolor sit amet consectetur adipiscing elitsed do
-              eiusmod tempor incididunt utlabore et dolore magna aliqua. Utenim
-              ad minim veniam quis nostrud exercitation ullamco laboro.
+              After the primary work of project selection, fund raising and
+              proper planning, we are good to go. Our skilled team with the
+              co-operation of the villagers worked hard to develop each project.
+              Every successful project brings smile to the villegers face and
+              that satisfy us.
             </p>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-5 my-12 py-6">
+      <div className="grid grid-cols-1 md:grid-cols-5  my-12 py-6">
         <img
           className="md:ml-8 md:w-48 border-r-4 md:p-5 m-2 border "
           src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-3B.png"
@@ -106,15 +112,14 @@ const DevelopmentAbout = () => {
                 WE'RE HIRING
               </h3>
               <p className="px-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Suscipit at eaque nihil impedit quasi, odio a animi minima
-                exercitationem id debitis quas iste!{' '}
+                Work opportunities in rural areas. We need some hard working
+                people to join our team who can work pressure and grow with us.{' '}
               </p>
               <div className="px-5">
                 <h5 className="text-yellow-400">OPEN POSITIONS</h5>
-                <p>Metal roofing</p>
-                <p>Engeneering</p>
-                <p>Clients support</p>
+                <p>Project manager</p>
+                <p>Technology Support</p>
+                <p>Clients Support</p>
               </div>
               <button className="text-white text-lg px-5 hover:text-white hover:rounded-xl transition-all duration-500 border-2 p-2 mx-5 border-white hover:bg-primary hover:border-0  ">
                 Contact us
