@@ -28,8 +28,10 @@ const Comments = ({ postId, updateComment, commentLists }) => {
   };
 
   return (
-    <div className="px-6">
-      <h3 className="my-6 text-sm md:text-xl lg:text-2xl">Share your feedback</h3>
+    <div className="px-3">
+      <h3 className="my-6 text-sm md:text-xl lg:text-2xl">
+        Share your feedback
+      </h3>
       {commentLists &&
         commentLists.map(
           (comment, index) =>
@@ -51,19 +53,22 @@ const Comments = ({ postId, updateComment, commentLists }) => {
         )}
 
       {/* this is the root comment form */}
-      <form className="flex flex-col md:flex-row gap-2 w-full" onSubmit={handleSubmit(handleCommentSubmit)}>
-          <input
-              {...register('comment', { required: 'required' })}
-              className="border-2 border-info outline-none px-6 flex-1 rounded-xl"
-              placeholder="write your comment"
-            />
+      <form
+        className="flex flex-col md:flex-row gap-2 w-full"
+        onSubmit={handleSubmit(handleCommentSubmit)}
+      >
+        <input
+          {...register('comment', { required: 'required' })}
+          className="border-2 border-info outline-none px-6 flex-1 rounded-xl"
+          placeholder="write your comment"
+        />
 
-          {/* last name */}
-          <div className='w-full md:w-1/2'>
-              <button type="submit" className="btn bg-info   rounded-xl">
-              Submit
-            </button>
-          </div>
+        {/* last name */}
+        <div className="w-full md:w-1/2">
+          <button type="submit" className="btn bg-info   rounded-xl">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

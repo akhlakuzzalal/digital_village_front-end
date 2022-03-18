@@ -1,6 +1,5 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import background from '../../../../../assets/education/blue_bg-removebg-preview.png';
 import useMediaQuery from '../../../../../hooks/useMediaQuery';
 import animationData from '../../../../../lotties/education.json';
 const Banner = () => {
@@ -26,8 +25,7 @@ const Banner = () => {
         // }}
         className="w-full md:w-1/2 place-self-center pl-6 space-y-7 order-2 md:order-1"
       >
-        <img className="w-[100vh] h-[70vh] " src={background} alt="" />
-        <div className="relative lg:bottom-[400px] bottom-[330px]  space-y-7 pl-7">
+        <div className="relative  space-y-7 pl-7">
           <h1 className="text-[#2d3748] capitalize  text-sm md:text-2xl lg:text-5xl  ">
             Gain valuable knowledge
             <br /> from our content

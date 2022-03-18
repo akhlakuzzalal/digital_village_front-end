@@ -6,7 +6,7 @@ const SideVideoCard = ({ video }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="flex space-x-4 items-center shadow-2xl rounded-lg hover:bg-slate-200 dark:hover:bg-slate-900 cursor-pointer transition-all duration-500 group  p-2"
+      className="flex space-x-4 items-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-900 cursor-pointer transition-all duration-500 group  p-2 border"
       onClick={() => navigate(`/detailVideo/${video._id}`)}
     >
       <div className="w-[40%] overflow-hidden">

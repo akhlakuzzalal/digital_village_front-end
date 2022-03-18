@@ -51,8 +51,10 @@ const StudentHome = () => {
         </div>
       </div>
 
-      <div className="mx-[100px]">
-        <h3 className="py-6 text-center md:text-left">Top Videos</h3>
+      <div className="mx-[100px] lg:mb-40">
+        <h3 className="py-6 text-center md:text-left">
+          Top Videos <hr />
+        </h3>
         <div className="flex flex-wrap items-center gap-6">
           {videos.slice(0, 6).map((video) => (
             <VideoCard key={video._id} video={video} />
