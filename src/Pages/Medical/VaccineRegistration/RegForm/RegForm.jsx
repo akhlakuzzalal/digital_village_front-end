@@ -148,12 +148,11 @@ const RegForm = () => {
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
             {...register('address', {
               required: 'Address is Required',
-              pattern: /^[A-Za-z]+$/i,
-              maxLength: 50,
+              maxLength: {
+                value: 100,
+                message: 'Write within 100 letters',
+              },
             })}
-            onKeyUp={() => {
-              trigger('address');
-            }}
             placeholder="Full address"
           />
           {errors.address && (

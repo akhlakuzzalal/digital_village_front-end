@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import swal from 'sweetalert';
-import { addAnCuase } from '../../../redux/slices/Donations/donationSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import FileUpload from '../../../Components/FileUpload';
 
 const AddCause = () => {
   const dispatch = useDispatch();
+  const [file, setFile] = useState({});
+  const user = useSelector((state) => state.user.user);
 
   const {
     register,
@@ -15,21 +16,39 @@ const AddCause = () => {
     trigger,
   } = useForm();
 
-  const handleAddCause = (data) => {
-    // data.author= user?.name
-    data.raised = '0';
-    // data.donars= []
-    data.date = new Date().toLocaleDateString();
-    dispatch(addAnCuase(data));
-    swal({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Your cause has been saved',
-      showConfirmButton: false,
-      timer: 1500,
+  const onDrop = useCallback((acceptedFiles) => {
+    setFile(acceptedFiles[0]);
+  }, []);
+
+  const handleAddCause = async (data) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append(
+      'video',
+      JSON.stringify({
+        ...data,
+        raised: 0,
+        date: new Date().toLocaleDateString(),
+        requesterName: user?.name,
+        requesterEmail: user?.email,
+      })
+    );
+
+    console.log({
+      ...data,
+      raised: 0,
+      date: new Date().toLocaleDateString(),
+      requesterName: user?.name,
+      requesterEmail: user?.email,
     });
 
-    reset();
+    // dispatch(addACuase(formData)).then(() => {
+    //   Swal.fire({
+    //     title: 'donation cause successfully added',
+    //     confirmButtonText: 'Okay',
+    //   });
+    //   reset();
+    // });
   };
   // title image description category goal date author
   return (
@@ -61,6 +80,16 @@ const AddCause = () => {
           {errors.title && (
             <p className="text-danger">{errors.title.message}</p>
           )}
+
+          {/* image */}
+          <div>
+            <FileUpload
+              onDrop={onDrop}
+              file={file}
+              message="Upload donation cause image"
+            />
+          </div>
+
           {/* description */}
           <textarea
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
@@ -84,35 +113,28 @@ const AddCause = () => {
           {errors.description && (
             <p className="text-danger">{errors.description.message}</p>
           )}
-          {/* image */}
-          <input
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('image', { required: 'Image is Required' })}
-            onKeyUp={() => {
-              trigger('image');
-            }}
-            placeholder="Add a image Link"
-          />
-          {errors.image && (
-            <p className="text-danger mb-2">{errors.image.message}</p>
-          )}
+
           {/* category */}
-          <input
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
-            {...register('category', { required: 'category is Required' })}
-            onKeyUp={() => {
-              trigger('category');
-            }}
-            placeholder="Category"
-          />
-          {errors.category && (
-            <p className="text-danger">{errors.category.message}</p>
-          )}
-          {/* <select {...register("gender")}>
-        <option value="female">female</option>
-        <option value="male">male</option>
-        <option value="other">other</option>
-      </select> */}
+          <div className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl">
+            <select
+              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('category', {
+                required: 'this is required',
+              })}
+            >
+              <option>{user?.category || 'choose one'}</option>
+              <option value="Education">Education</option>
+              <option value="Health">Health</option>
+              <option value="Water">Water</option>
+              <option value="Agriculture">Agriculture</option>
+              <option value="Food">Food</option>
+              <option value="Development">Development</option>
+            </select>
+            {errors.category && (
+              <small className="text-danger">{errors.category.message}</small>
+            )}
+          </div>
+
           {/* goal */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
@@ -132,17 +154,12 @@ const AddCause = () => {
               },
             })}
             type="number"
-            placeholder="Acquired Goal"
-            defaultValue={500}
-            required
-            onKeyUp={() => {
-              trigger('goal');
-            }}
+            placeholder="Your donation goal amount"
           />
-
           {errors.goal && (
             <p className="text-danger mb-2">{errors.goal.message}</p>
           )}
+
           <input
             className="bg-primary hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
             type="submit"
