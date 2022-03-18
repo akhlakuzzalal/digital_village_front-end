@@ -35,7 +35,7 @@ const DevelopmentAbout = () => {
           </div>
         </div>
 
-        <div className="flex my-10 border-b-4 border-yellow-400 hover:border-red-700 m-2 cursor-wait sm:mx-8 mx-8 ">
+        <div className="flex my-10 border-b-4 border-yellow-400 hover:border-red-700 m-2 cursor-wait  mx-8 ">
           <div>
             <h2 className="text-yellow-400 md:mx-5 text-5xl hover:text-red-700 ">
               2
@@ -54,7 +54,7 @@ const DevelopmentAbout = () => {
 
         <div className="flex my-10 border-b-4 border-blue-700 hover:border-red-700 cursor-wait sm:mx-8 mx-8 ">
           <div>
-            <h2 className="text-blue-700  text-5xl hover:text-red-700 md:mx-5">
+            <h2 className="text-blue-700  text-5xl hover:text-red-700 md:mx-8">
               3
             </h2>
           </div>

@@ -8,7 +8,7 @@ import {
   fetchAllEvent,
   fetchUpcomingEvents,
 } from '../../../redux/slices/event/eventSlice';
-import Calender from '../../Medical/Dashboard/partials/dashboardItem/DoctorAppointment/Calender/Calender';
+import Calender from '../../Medical/DoctorsAppointment/Calender/Calender';
 const EventDetails = () => {
   const user = useSelector((state) => state.user.user);
   const { id } = useParams();
@@ -100,7 +100,7 @@ const EventDetails = () => {
         <div className="right-main ">
           <div className="lg:ml-36">
             <h4 className="my-5 text-xl">Calender</h4>
-            <Calender className="w-[500px] lg:w-0 md:w-full"></Calender>
+            <Calender className="w-[500px] lg:w-0 md:w-full" />
 
             <p className="my-4 text-primary">
               <Link to="/events">More Events</Link>

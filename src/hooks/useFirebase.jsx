@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios, { axiosPrivate } from '../api/axios';
 import initializeAuthentication from '../Firebase/Firebase.init';
 import {
+  getSingleUserInfo,
   setRoles,
   setToken,
   setUId,
@@ -27,6 +28,7 @@ const useFirebase = () => {
   const [authError, setAuthError] = useState('');
   const roles = useSelector((state) => state.user.roles);
   const token = useSelector((state) => state.user.token);
+  const uId = useSelector((state) => state.user.uId);
 
   const dispatch = useDispatch();
 
@@ -81,6 +83,9 @@ const useFirebase = () => {
           emailVerified: authUser?.emailVerified,
         };
         dispatch(setUser(newUser));
+        if (uId) {
+          dispatch(getSingleUserInfo({ id: uId }));
+        }
       } else {
         dispatch(setUser({}));
       }
@@ -124,6 +129,7 @@ const useFirebase = () => {
           withCredentials: true,
         }
       );
+
       dispatch(setRoles([...roles, response?.data?.roles]));
       dispatch(setToken(response?.data?.accessToken));
       dispatch(setUId(response?.data?.uId));

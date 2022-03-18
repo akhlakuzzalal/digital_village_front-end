@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MdOutlineProductionQuantityLimits, MdReviews } from 'react-icons/md';
+import { MdOutlineAppRegistration, MdOutlineProductionQuantityLimits, MdReviews } from 'react-icons/md';
 import { RiDashboard2Line } from 'react-icons/ri';
 import { SiHomebridge } from 'react-icons/si';
 import { Outlet, useLocation } from 'react-router-dom';
@@ -20,6 +20,11 @@ const links = [
     name: 'Donation',
     icon: <RiDashboard2Line size={30} />,
     path: '/userdashboard/donarpaymente',
+  },
+  {
+    name: 'My Apply',
+    icon: <MdOutlineAppRegistration size={30} />,
+    path: '/userdashboard/requestapply',
   },
   {
     name: 'Review',

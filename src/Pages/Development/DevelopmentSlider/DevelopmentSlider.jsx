@@ -51,9 +51,9 @@ const developments = [
 
 const DevelopmentSlider = ({ n }) => {
   return (
-    <div className="md:-mt-24">
-      <div className="grid grid-cols-2 md:grid-cols-3 mx-auto md:mx-80 ">
-        <div className=" col-span-2 ">
+    <div className="mt-5 md:-mt-24">
+      <div className="grid grid-cols-2 md:grid-cols-3 mx-0 md:mx-80 ">
+        <div className="col-span-2  ">
           <Swiper
             // slidesPerView={2}
             slidesPerGroup={1}
@@ -81,7 +81,7 @@ const DevelopmentSlider = ({ n }) => {
           >
             {developments?.map((n) => (
               <SwiperSlide key={n.id}>
-                <div className=" md:w-100 shadow-2xl">
+                <div className=" w-full md:w-100 shadow-2xl">
                   <div className="  cursor-pointer ">
                     <div className="">
                       <img className="w-full h-64 " src={n?.img} alt="" />
@@ -102,17 +102,19 @@ const DevelopmentSlider = ({ n }) => {
         </div>
 
         <div>
-          <div className="mb-10 border w-96 ml-5">
-            <div className="  cursor-pointer "></div>
-            <div className="space-y-4 md:p-4 text-white bg-gray-800 h-full mr-5 py-10 shadow-2xl ">
-              <h3 className="text-yellow-400  flex items-center space-x-2 md:px-5">
+          <div className="mb-10 border w-auto md:w-96 ml-0 md:ml-5 p- ">
+            <div className="  cursor-pointer  "></div>
+            <div className="space-y-4 p-4 mt-2 md:mt-0 text-white bg-gray-800 h-full py-10 shadow-2xl ">
+              <h3 className="text-yellow-400 text-xl md:text-2xl  flex items-center  space-x-4 md:px-5">
                 FEATURED WEEK PROJECTS
               </h3>
 
-              <p className="px-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Suscipit at eaque nihil impedit quasi, odio a animi minima
-                exercitationem id,quasi, odioquasi, odio debitis quas iste!{' '}
+              <p className=" text-justify">
+                The project aims to develop and design community based
+                integrated sustainable development program for villages , with
+                improved health,nutrition, sanitation and livelihood. It
+                includes income generating activities,safe drinking water, and
+                protection of the village environment.{' '}
               </p>
 
               <div className="grid grid-cols-2 ">
@@ -150,7 +152,7 @@ const DevelopmentSlider = ({ n }) => {
                 </div>
               </div>
 
-              <button className="text-yellow-400 text-lg mt-24 px-5 mx-5 hover:text-white hover:rounded-xl transition-all duration-500 border-2  p-2 border-white hover:bg-primary hover:border-  ">
+              <button className="text-yellow-400 text-lg mt-24 px-5 mx-0 md:mx-5 hover:text-white hover:rounded-xl transition-all duration-500 border-2  p-2 border-white hover:bg-primary hover:border-  ">
                 More Project ...
               </button>
             </div>
@@ -159,26 +161,27 @@ const DevelopmentSlider = ({ n }) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 mx-auto md:mx-80 my-10">
-        <div className="md:col-span-2 md:mr-5 mx-2">
-          <h3 className="my-2">SERVICE AND RENTAL TRANSFORMATIONS</h3>
+        <div className="md:col-span-2 md:mr-5 mx-0">
+          <h3 className="my-2">DEVELOPMENT TRANSFORMATIONS</h3>
           <p className="py-5">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum
-            laudantium ab aspernatur voluptatibus fuga sit, consequatur neque
-            pariatur, iure suscipit tempora sed quibusdam aliquam cupiditate
-            eaque quos doloribus dolore nulla ex. Ex quasi dolore minus fugit
-            quibusdam quia velit !
+            A large improvement in rural connectivity such as through
+            technological infrastructure has contributed to increased mobility
+            dynamics from, to and within the regions. Migration cannot be
+            considered a unidirectional movement from rural areas to cities. It
+            has instead been shaped by a chain of connections in which rural and
+            urban livelihoods interact on a movement.
           </p>
         </div>
 
-        <div className="md:ml-5 mx-2 ">
+        <div className="md:ml-5 mx:0  md:mx-2 ">
           <ul>
-            <li>Full opariting system 24/7 active</li>
-            <li>Based in London, United Kingdom</li>
-            <li>More than 50 machines types</li>
-            <li>Training and free instructions</li>
+            <li>Development of leadership </li>
+            <li>intensification of farm and non-farm activities</li>
+            <li>Annual comprehensive development plan</li>
+            <li>Development of rural industries</li>
             <li>Test drive</li>
-            <li>Repair and buying service</li>
-            <li>Explore our rooms</li>
+            <li>Undertaking community based health</li>
+            <li>education , motivation and training </li>
           </ul>
         </div>
       </div>
@@ -186,9 +189,10 @@ const DevelopmentSlider = ({ n }) => {
       <div className="md:mx-80 grid grid-cols-1 md:grid-cols-2 my-auto md:my-24 ">
         <h3>LAST PROJECTS</h3>
         <p className="md:border-l-4 md:pl-5">
-          Large-scale construction requires collaboration across multiple
-          disciplines. A project manager normally manages the job and a
-          architect .
+          Large-scale construction TO Organize the villagers into a broad-based
+          village cooperative with a number of functional groups (landless and
+          small, medium and large farmers, women, youth and other occupational
+          group) and involve them in credit and marketing programme.
         </p>
       </div>
 
@@ -217,7 +221,7 @@ const DevelopmentSlider = ({ n }) => {
               },
             }}
             loop={true}
-            loopFillGroupWithBlank={true}
+            loopFillGroupWithBlank={false}
             modules={[Autoplay]}
             className="swiper"
           >
