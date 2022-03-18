@@ -12,15 +12,17 @@ import AllUsers from './Pages/Admin/AllUsers/AllUsers';
 import AddDevelopment from './Pages/Admin/Development/AddDevelopment/AddDevelopment';
 import DevelopmentManage from './Pages/Admin/Development/DevelopmentManage/DevelopmentManage';
 import AddCause from './Pages/Admin/Donation/AddCause';
+import AllApply from './Pages/Admin/Donation/AllApply';
 import AllCauses from './Pages/Admin/Donation/AllCauses';
 import CreateDonationCause from './Pages/Admin/Donation/CreateDonationCause';
+import DonarPaymente from './Pages/Admin/Donation/DonarPaymente';
+import HelpRequestApply from './Pages/Admin/Donation/HelpRequestApply';
 import ManageAllDonars from './Pages/Admin/Donation/ManageAllDonars';
 import UpdateCause from './Pages/Admin/Donation/UpdateCause';
 import Eventmanagement from './Pages/Admin/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/Market/MarketManagement';
 import AddNews from './Pages/Admin/News/AddNews/AddNews';
 import ManageNews from './Pages/Admin/News/ManageNews/ManageNews';
-import DonarPaymente from './Pages/Admin/DashboardItem/Donation/DonarPaymente';
 import NewsDashboard from './Pages/Admin/News/NewsDashboard';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
@@ -90,8 +92,6 @@ import Profile from './Pages/User/DashboardComponent/Profile/Profile';
 import Review from './Pages/User/DashboardComponent/Review/Review';
 import UserDashboard from './Pages/User/UserDashboard';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
-import AllApply from './Pages/Admin/DashboardItem/Donation/AllApply';
-import HelpRequestApply from './Pages/Admin/Donation/HelpRequestApply';
 
 const Roles = {
   User: 1000,

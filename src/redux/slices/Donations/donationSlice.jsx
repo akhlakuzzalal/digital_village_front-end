@@ -14,7 +14,7 @@ export const fetchAllCuases = createAsyncThunk(
 );
 
 // add cuase
-export const addAnCuase = createAsyncThunk(
+export const addACuase = createAsyncThunk(
   'cuases/postAnCuase',
   async (event) => {
     const response = await axios
@@ -65,7 +65,7 @@ const donationSlice = createSlice({
       state.causes = payload;
     });
     // //add cuase
-    builder.addCase(addAnCuase.fulfilled, (state, { payload }) => {
+    builder.addCase(addACuase.fulfilled, (state, { payload }) => {
       state.causes.push(payload);
     });
     builder.addCase(updateACause.fulfilled, (state, { payload }) => {
