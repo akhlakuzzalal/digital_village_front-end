@@ -26,7 +26,7 @@ import ManageNews from './Pages/Admin/News/ManageNews/ManageNews';
 import NewsDashboard from './Pages/Admin/News/NewsDashboard';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
-import CaseSingle from './Pages/Donations/Causes/CaseSingle';
+import CauseSingle from './Pages/Donations/Causes/CauseSingle';
 import Donations from './Pages/Donations/Donations';
 import BlogDetails from './Pages/Education/BlogDetails/BlogDetails';
 import DetailVideo from './Pages/Education/DetailVideo/DetailVideo';
@@ -195,7 +195,7 @@ function App() {
 
             {/* DONATION RELATED ROUTES */}
             <Route path="donation" element={<Donations />} />
-            <Route path="causedetails/:id" element={<CaseSingle />} />
+            <Route path="causedetails/:id" element={<CauseSingle />} />
 
             {/* VILLAGE MARKET RELATED ROUTES */}
             <Route path="e-market" element={<EMarket />} />

@@ -13,7 +13,7 @@ const CaseSingle = () => {
   const { id } = useParams();
   const causes = useSelector((state) => state.donation.causes);
   const cause = causes.find((c) => c._id === id);
-  // const cause = causes?.filter((pd) => pd._id === id);
+
   //Progressbar for
   let donationGoal = cause.goal;
   let donationTotal = cause.raised;
@@ -27,10 +27,7 @@ const CaseSingle = () => {
   let percent = percentage(donationTotal, donationGoal);
   return (
     <>
-      <div
-        className="mt-[80px]"
-        style={{ minHeight: 'calc(100vh - 700px)' }}
-      >
+      <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
         <PageSection />
         <div className="container mx-auto flex flex-wrap py-6">
           {/* Posts Section */}
@@ -130,7 +127,7 @@ const CaseSingle = () => {
             </div>
           </section>
           {/*Right Sidebar Section  */}
-          <Cuasesidber/>
+          <Cuasesidber />
         </div>
       </div>
     </>

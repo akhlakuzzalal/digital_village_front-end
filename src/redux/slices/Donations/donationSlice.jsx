@@ -1,43 +1,41 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../../api/axios';
 
-// create the thunk
+// fetch all causes
 export const fetchAllCuases = createAsyncThunk(
   'cuases/fetchAllCuases',
   async () => {
     const response = await axios
-      .get('/donation/cuases')
+      .get('/donationCause/all')
       .then((response) => response.data);
-    // console.log(response);
     return response;
   }
 );
 
 // add cuase
-export const addACuase = createAsyncThunk(
-  'cuases/postAnCuase',
-  async (event) => {
-    const response = await axios
-      .post('/donation/addcuase', event)
-      .then((response) => response.data);
-    return response;
-  }
-);
+export const addACuase = createAsyncThunk('cuases/addACuase', async (event) => {
+  const response = await axios
+    .post('/donationCause/add', event)
+    .then((response) => response.data);
+  return response;
+});
+
 // update cuase
 export const updateACause = createAsyncThunk(
   'cuases/updateACause',
 
   async (data) => {
     console.log(data);
-    await axios.put(`/donation/updatecuase/?id=${data.id}`, data);
+    await axios.put(`/donationCause/update/?id=${data.id}`, data);
     return data;
   }
 );
+
 // delete cuase
 export const deleteACause = createAsyncThunk(
   'cuases/deleteACause',
   async (id) => {
-    await axios.delete(`/donation/deletecuase/?id=${id}`);
+    await axios.delete(`/donationCause/delete/?id=${id}`);
     return id;
   }
 );
