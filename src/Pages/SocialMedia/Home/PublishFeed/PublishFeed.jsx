@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MdPermMedia } from 'react-icons/md';
 import { VscReactions } from 'react-icons/vsc';
+import PublisheModal from './PublisheModal';
 
 const PublishFeed = () => {
+  const [open, setOpen] = useState(false);
   return (
     <div className="w-full mt-4 rounded-xl p-3 shadow-xl dark:dark-card-bg mb-6">
       <div className="flex align-top border-b-2 border-slate-700">
@@ -19,6 +21,7 @@ const PublishFeed = () => {
         <textarea
           className="w-full focus:outline-0 dark:dark-card-bg dark:text-white"
           rows={5}
+          onClick={() => setOpen(true)}
           placeholder="Share Tour Feelings"
         />
       </div>
@@ -35,6 +38,7 @@ const PublishFeed = () => {
           </div>
         </div>
       </div>
+      <PublisheModal open={open} setOpen={setOpen} />
     </div>
   );
 };
