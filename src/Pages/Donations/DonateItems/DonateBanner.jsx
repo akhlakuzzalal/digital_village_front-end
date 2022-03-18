@@ -190,7 +190,7 @@ const DonateBanner = () => {
       <div className="flex flex-wrap md:space-y-0">
         {/* banner description */}
         <div className="w-full md:w-1/2 place-self-center space-y-3 md:space-y-6 text-center md:text-left md:pl-24 pt-12 mb-3">
-          <h1 className="text-[#ffffff] text-sm md:text-2xl lg:text-4xl">Donate for helpless</h1>
+          <h1 className="text-[#ffffff] text-lg md:text-2xl lg:text-4xl">Donate for helpless</h1>
           <p className="text-[#3f5a46] text-sm md:text-xl lg:text-2xl mx-auto md:mx-0 md:w-[420px] capitalize pb-3">
             Charitable giving is the act of giving money,Help to those in need,
             as a humanitarian act
