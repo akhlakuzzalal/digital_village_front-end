@@ -66,7 +66,7 @@ const AddDevelopment = () => {
           <div className="  ">
             {/* title of the blog */}
             <input
-              className="px-7 py-3 my-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              className="px-7 py-6 my-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
               {...register('title', { required: true })}
               placeholder="Title of your Development"
             />
@@ -82,7 +82,7 @@ const AddDevelopment = () => {
 
             {/* about the blog */}
             <textarea
-              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
               {...register('description', { required: true })}
               placeholder="Write Development Description"
             />
@@ -90,14 +90,14 @@ const AddDevelopment = () => {
             {/* tags */}
             <input
               type="Date"
-              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
               {...register('constructionDate', { required: true })}
               placeholder="Write your Construction Date"
             />
           </div>
           {/* submit button */}
           <input
-            className="btn font-bolder bg-primary rounded-lg mb-2 w-full mx-auto cursor-pointer hover:bg-opacity-80  transition-all duration-300"
+            className="btn font-bolder py-6 bg-primary rounded-lg mb-2 w-full mx-auto cursor-pointer hover:bg-opacity-80  transition-all duration-300"
             type="submit"
             value="Submit"
           />

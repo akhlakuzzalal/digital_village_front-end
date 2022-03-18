@@ -86,6 +86,7 @@ import NotFound from './Pages/shared/NotFound/NotFound';
 import BoardHome from './Pages/SocialMedia/Connections/BoardComponent/BoardHome.jsx';
 import ConnectionBoard from './Pages/SocialMedia/Connections/ConnectionBoard';
 import SocialHome from './Pages/SocialMedia/Home/SocialHome';
+import EditReview from './Pages/User/DashboardComponent/EditReview/EditReview';
 import Profile from './Pages/User/DashboardComponent/Profile/Profile';
 import Review from './Pages/User/DashboardComponent/Review/Review';
 import UserDashboard from './Pages/User/UserDashboard';
@@ -124,6 +125,7 @@ function App() {
               <Route path="profile" element={<Profile />} />
               <Route path="my-event-booking" element={<MyBookedEvents />} />
               <Route path="review" element={<Review />} />
+              <Route path="editReview/:id" element={<EditReview/>} />
               <Route
                 path="createDonationCause"
                 element={<CreateDonationCause />}

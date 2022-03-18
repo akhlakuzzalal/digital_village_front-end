@@ -37,8 +37,11 @@ const AddNews = () => {
       })
     );
 
-    const response = await axios.post('/news/addNews', formData);
-    console.log(response.data);
+    const response = await axios.post('/news/addNews', formData)
+      if(response.data.length){
+        reset()
+      }
+    
   };
 
   return (
