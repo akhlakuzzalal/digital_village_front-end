@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
 import { BsCalendar2EventFill } from 'react-icons/bs';
-import { FaConnectdevelop, FaHandsHelping, FaShopify, FaUsers } from 'react-icons/fa';
+import {
+  FaConnectdevelop,
+  FaHandsHelping,
+  FaShopify,
+  FaUsers,
+} from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
 import { GiNewspaper } from 'react-icons/gi';
 import { IoLogoDesignernews } from 'react-icons/io';
@@ -13,7 +18,7 @@ import {
   MdRateReview,
 } from 'react-icons/md';
 import { RiLightbulbFlashFill } from 'react-icons/ri';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
 
@@ -93,18 +98,18 @@ const links = [
   {
     name: 'Medical',
     icon: <MdOutlineMedicalServices size={30} />,
-    path: '/admin/Medical',
+    path: '/admin/addAppointment',
     nestedPath: [
       {
         name: 'Add appointment',
         icon: <MdOutlineMedicalServices size={30} />,
         path: '/admin/addAppointment',
       },
-      {
-        name: 'Add vaccine',
-        icon: <MdManageAccounts size={30} />,
-        path: '#',
-      },
+      // {
+      //   name: 'Add vaccines',
+      //   icon: <MdManageAccounts size={30} />,
+      //   path: '#',
+      // },
     ],
   },
 
@@ -135,11 +140,7 @@ const navigation = [
 ];
 
 const AdminDashboard = () => {
-  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
-  const initial =
-    location.pathname === '/admindashboard' ||
-    location.pathname === '/admindashboard/';
 
   return (
     <div style={{ minHeight: 'calc(100vh - 700px)' }}>
