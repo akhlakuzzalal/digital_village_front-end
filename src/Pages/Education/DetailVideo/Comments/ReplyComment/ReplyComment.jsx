@@ -9,6 +9,7 @@ const ReplyComment = ({
 }) => {
   const [ChildCommentNumber, setChildCommentNumber] = useState(0);
   const [OpenReplyComments, setOpenReplyComments] = useState(false);
+
   useEffect(() => {
     let commentNumber = 0;
     commentLists &&
