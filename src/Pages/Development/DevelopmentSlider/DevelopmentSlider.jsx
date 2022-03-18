@@ -75,13 +75,13 @@ const DevelopmentSlider = ({ n }) => {
               },
             }}
             loop={true}
-            loopFillGroupWithBlank={true}
+            loopFillGroupWithBlank={false}
             modules={[Autoplay]}
             className="swiper"
           >
             {developments?.map((n) => (
               <SwiperSlide key={n.id}>
-                <div className=" md:w-96 shadow-2xl">
+                <div className=" md:w-100 shadow-2xl">
                   <div className="  cursor-pointer ">
                     <div className="">
                       <img className="w-full h-64 " src={n?.img} alt="" />
