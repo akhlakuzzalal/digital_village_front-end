@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 import { FaPushed } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import { BASE_URI } from '../../../../../api/axios';
-import Rating from '../../../../../Components/Rating';
-import axios from '../../../../../api/axios';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import axios, { BASE_URI } from '../../../../../api/axios';
+import Rating from '../../../../../Components/Rating';
 
 const BlogCard = ({ blog }) => {
   const [isFavouritted, setIsFavouritted] = useState(false);
@@ -50,7 +49,7 @@ const BlogCard = ({ blog }) => {
   }, [uId, isFavouritted, blog._id]);
 
   return (
-    <div className="bg-white dark:dark-card-bg rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between max-w-[400px] shadow-2xl">
+    <div className="bg-white dark:dark-card-bg rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between max-w-[400px] border">
       <div className="absolute top-20 text-sm left-0 z-20 font-primary rounded-lg">
         <button className="w-90 flex items-center justify-center py-2 border border-transparent text-sm rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 px-6">
           <FaPushed />

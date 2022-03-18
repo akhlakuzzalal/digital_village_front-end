@@ -44,7 +44,7 @@ const StudentHome = () => {
         <h3>
           Top Blogs <hr />
         </h3>
-        <div className="flex flex-wrap items-center gap-6">
+        <div className="flex flex-wrap items-center gap-6 lg:mt-10">
           {blogs.slice(0, 6).map((blog) => (
             <BlogCard key={blog._id} blog={blog} />
           ))}

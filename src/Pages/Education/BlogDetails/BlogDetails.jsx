@@ -81,15 +81,15 @@ const BlogDetails = () => {
 
   return (
     <div
-      className="mt-[80px] flex"
+      className="mt-[100px] lg:flex "
       style={{ minHeight: 'calc(100vh - 700px)' }}
     >
-      <div className="col-span-5 w-4/5 space-y-6 px-12">
+      <div className="col-span-5 w-4/5 space-y-6 lg:px-12 px-4 my-20">
         <div>
           <img
             src={`${BASE_URI}/${blog?.bannerImg?.path}`}
             alt={blog?.title}
-            className="w-full"
+            className="w-[600px] lg:w-full lg:h-[70vh]"
           />
         </div>
         <div>Authored by {blog?.author}</div>
@@ -111,7 +111,7 @@ const BlogDetails = () => {
         </div>
       </div>
 
-      <div className="flex-1 mt-6">
+      <div className="flex-1 mt-6 lg:my-20 mx-5 lg:mx-0 mb-10">
         <div className="space-y-6">
           <h3>Featured Blogs</h3>
           {blogs?.map((blog) => (
