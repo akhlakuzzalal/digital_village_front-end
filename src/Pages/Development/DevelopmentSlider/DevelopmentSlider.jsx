@@ -9,41 +9,41 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 const developments = [
   {
     id: 1,
-    title: 'THE LIGHTWIRE | TEMPLATE-1',
+    title: 'Village development project',
     description:
-      'At the 1991 census, there were 68,038 villages in Bangladesh with an average of 232 households.[1] The rural areas of Bangladesh (i.e. villages) are characterized by higher growth rate of population and lower literacy rate compared to urban areas - but these gaps are decreasing',
+      'The project does not itself provide fund to disburse as credit to the members of the society. Societies generate their fund from their own contribution and invest jointly their collected fund in various profitable sectors like, operation of deep and shallow tube-well, tractor, power-tiller, grinding mills for wheat and rice, decoration materials, hiring of milk, leasing of shop, pisciculture, plantation of trees on the road-side, business of stocked materials',
     img: 'http://lightwire.webps.info/assets/themes/lightwire/images/hd-5.jpg',
     date: '20 September 2022',
   },
   {
     id: 2,
-    title: 'INTERIORS | TEMPLATE-2.',
+    title: 'Skill development project',
     description:
-      'At the 1991 census, there were 68,038 villages in Bangladesh with an average of 232 households.[1] The rural areas of Bangladesh (i.e. villages) are characterized by higher growth rate of population and lower literacy rate compared to urban areas - but these gaps are decreasing',
+      'The project arranged a number of skill development training courses for the beneficiaries. These training include Poultry and Cattle rearing, Pisciculture, Vegetables and Fruits Production, Health and Sanitation, Irrigation and Fertilizer Management, Maize cultivation, Mush-room cultivation and so on. The project has provided management and skill training to 135209 cooperators so far of which 39% are female',
     img: 'http://lightwire.webps.info/assets/themes/lightwire/images/hd-7.jpg',
     date: '21 September 2022',
   },
   {
     id: 3,
-    title: 'CONSULTING | TEMPLATE-1.',
+    title: 'Development Worker project',
     description:
-      'At the 1991 census, there were 68,038 villages in Bangladesh with an average of 232 households.[1] The rural areas of Bangladesh (i.e. villages) are characterized by higher growth rate of population and lower literacy rate compared to urban areas - but these gaps are decreasing',
+      'To run and manage the various development activities , a number of village representatives act as Village Development Worker. They are usually the manager, the model farmer, the women organizer, the health and nutrition worker, the livestock and fisheries development worker, the family planning worker, the pump operator etc, provided with training to enhance the skill and to equip in manner that they can successfully carry out their assigned work,',
     img: 'http://lightwire.webps.info/assets/themes/lightwire/images/hd-15.jpg',
     date: '22 September 2022',
   },
   {
     id: 4,
-    title: 'TECHNOLOGY | TEMPLATE-1',
+    title: 'Employment project',
     description:
-      'At the 1991 census, there were 68,038 villages in Bangladesh with an average of 232 households.[1] The rural areas of Bangladesh (i.e. villages) are characterized by higher growth rate of population and lower literacy rate compared to urban areas - but these gaps are decreasing',
+      'Level of employment and income are important indicators of development. Keeping this in view, endeavored to create employment and generate income for the cooperators through credit and training programmes. The project has been able to create a huge self-employment for co-operators. Total number of beneficiaries are 63450. The credit programme of  societies has exerted positive impact on the socio-economic aspects of life of the co-operators.',
     img: 'http://lightwire.webps.info/assets/components/phpthumbof/cache/image-17.6f48a82beff109794692619590fda6592.jpg',
     date: '23 September 2022',
   },
   {
     id: 5,
-    title: 'NEW YORK THEATRE | TEMPLATE-1',
+    title: 'Preoject ooperative society',
     description:
-      'At the 1991 census, there were 68,038 villages in Bangladesh with an average of 232 households.[1] The rural areas of Bangladesh (i.e. villages) are characterized by higher growth rate of population and lower literacy rate compared to urban areas - but these gaps are decreasing',
+      'Formation of one comprehensive village development cooperative society in a village and spontaneous participation of all persons irrespective of profession and class of the village.Comparatively poor members of the society borrow from the collected fund of the society individually and avail the opportunity to increase their income . The members of the society get various facilities at a cheaper price including personal dividend on proportionate basis from the earned profit at the end of the year through investment and business',
     img: 'http://lightwire.webps.info/assets/components/phpthumbof/cache/image-11.6f48a82beff109794692619590fda6592.jpg',
     date: '24 September 2022',
   },
