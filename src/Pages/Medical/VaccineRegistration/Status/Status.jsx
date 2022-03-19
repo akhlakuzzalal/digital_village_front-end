@@ -8,7 +8,6 @@ const Status = () => {
   const email = user?.email;
   useEffect(() => {
     axios.get(`/vaccine/findInfo?email=${email}`).then((response) => {
-      console.log(response.data);
       if (response.data && response.data.length > 0) {
         setInfo(response.data[0]);
       }
@@ -24,34 +23,42 @@ const Status = () => {
                 Your Status
               </h2>
               <div>
-                <div>
-                  <div class="flex justify-between bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-md py-2  px-0 px-0 md:px-4 text-white font-bold text-md">
-                    <div className="w-1/3">
-                      <span>Name</span>
-                    </div>
-                    <div className="w-1/3">
-                      <span>Email</span>
-                    </div>
-
-                    <div className="w-1/3">
-                      <span>Status</span>
-                    </div>
-                  </div>
+                {info?._id ? (
                   <div>
-                    <div class="flex justify-between border-2 text-sm font-normal mt-4 ">
-                      <div class="w-1/3">
-                        <span>{info?.name}</span>
+                    <div class="flex justify-between bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-md py-2  px-0 pmd:px-4 text-white font-bold text-md">
+                      <div className="w-1/3 py-2">
+                        <span>Name</span>
                       </div>
-                      <div class="w-1/3">
-                        <span>{info?.email}</span>
+                      <div className="w-1/3 py-2">
+                        <span>Email</span>
                       </div>
 
-                      <div class="w-1/3 ">
-                        <span>{info?.status}</span>
+                      <div className="w-1/3 py-2">
+                        <span>Status</span>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="flex justify-between border-2 text-sm font-normal mt-4 ">
+                        <div class="w-1/3 py-2">
+                          <span>{info?.name}</span>
+                        </div>
+                        <div class="w-1/3 py-2">
+                          <span>{info?.email}</span>
+                        </div>
+
+                        <div class="w-1/3 py-2">
+                          <span>{info?.status}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="flex justify-center items-center">
+                    <h3 className="text-gray-500">
+                      You haven't registered yet!
+                    </h3>
+                  </div>
+                )}
               </div>
             </div>
           </div>
