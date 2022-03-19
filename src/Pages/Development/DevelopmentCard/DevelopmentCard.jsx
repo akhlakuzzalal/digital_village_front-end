@@ -3,8 +3,9 @@ import { BiDownvote, BiUpvote } from 'react-icons/bi';
 
 const DevelopmentCard = ({ proposal, handleUpvote, handleDownvote }) => {
   const { title, description, bannerImg, _id, upvotes, downvotes } = proposal;
+
   return (
-    <div className="rounded-2xl w-fit shadow-xl max-w-[400px]">
+    <div className="rounded-2xl w-fit border max-w-[400px] lg:mb-40">
       <div className="h-[280px] overflow-hidden cursor-pointer rounded-t-2xl">
         <div
           className="w-full h-full bg-cover bg-no-repeat hover:scale-125 transition-all duration-300"
@@ -13,7 +14,7 @@ const DevelopmentCard = ({ proposal, handleUpvote, handleDownvote }) => {
       </div>
       <div className="space-y-4 p-4">
         <h3 className="text-2xl md:text-3xl ">{title}</h3>
-        <p>{description.slice(0, 200)} ...</p>
+        <p>{description.slice(0, 100)} ...</p>
 
         {/* upvote and downvote buttons */}
         <div className="flex items-center justify-between">

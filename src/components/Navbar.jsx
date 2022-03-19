@@ -66,7 +66,7 @@ const Navbar = ({ navigation }) => {
       className={`
           ${
             changeHeader
-              ? '-mt-32 fixed z-50 top-0 left-0 w-full  shadow-md'
+              ? '-mt-32 fixed z-50 top-0 left-0 w-full  shadow-md '
               : 'mt-0 fixed z-50 top-0 left-0 w-full'
           } ${
         headerBgWhite ? 'bg-slate-900 text-white' : 'bg-slate-900 text-white'
