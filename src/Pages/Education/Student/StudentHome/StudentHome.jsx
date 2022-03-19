@@ -32,7 +32,7 @@ const StudentHome = () => {
 
       {/* top blogs */}
       <div className="lg:mx-[100px] ">
-        <h3 className="py-6 text-center md:text-left">
+        <h3 className="py-6  md:text-left text-xl lg:text-4xl mx-5 lg:mx-0">
           Top Categories <hr />
         </h3>
 
@@ -40,8 +40,8 @@ const StudentHome = () => {
       </div>
 
       {/* top blogs */}
-      <div className="lg:mx-[100px] my-[200px]">
-        <h3>
+      <div className="lg:mx-[100px] lg:my-[200px] my-20 w-full">
+        <h3 className="text-xl lg:text-4xl mx-5 lg:mx-0">
           Top Blogs <hr />
         </h3>
         <div className="flex flex-wrap items-center gap-6 lg:mt-10">
@@ -51,8 +51,8 @@ const StudentHome = () => {
         </div>
       </div>
 
-      <div className="mx-[100px] lg:mb-40">
-        <h3 className="py-6 text-center md:text-left">
+      <div className="lg:mx-[100px] mx-5 lg:mb-40 mb-20">
+        <h3 className="py-6  md:text-left">
           Top Videos <hr />
         </h3>
         <div className="flex flex-wrap items-center gap-6">

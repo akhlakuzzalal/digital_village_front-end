@@ -1,7 +1,7 @@
 import { Popover, Transition } from '@headlessui/react';
 import React, { Fragment, useEffect, useState } from 'react';
+import { FaPhoneVolume, FaRegCommentDots } from 'react-icons/fa';
 import { FiSun } from 'react-icons/fi';
-import {FaRegCommentDots,FaPhoneVolume}  from "react-icons/fa";
 import {
   MdClose,
   MdDarkMode,
@@ -67,7 +67,7 @@ const Navbar = ({ navigation }) => {
       className={`
           ${
             changeHeader
-              ? '-mt-32 fixed z-50 top-0 left-0 w-full  shadow-md'
+              ? '-mt-32 fixed z-50 top-0 left-0 w-full  shadow-md '
               : 'mt-0 fixed z-50 top-0 left-0 w-full'
           } ${
         headerBgWhite ? 'bg-slate-900 text-white' : 'bg-slate-900 text-white'
@@ -178,7 +178,6 @@ const Navbar = ({ navigation }) => {
               className="relative flex cursor-pointer"
               onClick={() => navigate('/notifications')}
             >
-              
               <span className="bg-info w-6 h-6 rounded-full text-white font-bold flex items-center justify-center  poppins absolute -right-1 -top-1">
                 2
               </span>
@@ -200,8 +199,8 @@ const Navbar = ({ navigation }) => {
               <UserMenu />
             )}
           </div>
-                   {/* dark mood handler */}
-         <div className="cursor-pointer ">
+          {/* dark mood handler */}
+          <div className="cursor-pointer ">
             {mood === 'dark' ? (
               <FiSun size={40} onClick={() => dispatch(setMood('light'))} />
             ) : (
@@ -209,18 +208,18 @@ const Navbar = ({ navigation }) => {
             )}
           </div>
 
-          
-         <div className='md:ml-24'>
-              <Link to='join'>
-                <FaRegCommentDots className='text-white font-bold md:ml-24 animate-pulse' size={35}/>
-                <div className='flex md:ml-10'>
-                <FaPhoneVolume size={30} className="animate-bounce"/>
-                    <span className="mx-auto"> 16215</span>
-                  
-                </div>
-             
-                </Link>
-         </div>
+          <div className="md:ml-24">
+            <Link to="join">
+              <FaRegCommentDots
+                className="text-white font-bold md:ml-24 animate-pulse"
+                size={35}
+              />
+              <div className="flex md:ml-10">
+                <FaPhoneVolume size={30} className="animate-bounce" />
+                <span className="mx-auto"> 16215</span>
+              </div>
+            </Link>
+          </div>
         </div>
       </nav>
     </header>
