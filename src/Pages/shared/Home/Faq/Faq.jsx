@@ -71,6 +71,7 @@ const Faq1 = () => {
             className="w-full md:hidden block "
           />
         </div>
+
         <div className=" md:w-7/12 lg:w-8/12 w-full md:mt-0 sm:mt-14 mt-10">
           {/* <!-- Digital Section --> */}
 

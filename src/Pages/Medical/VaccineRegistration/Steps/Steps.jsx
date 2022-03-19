@@ -7,7 +7,7 @@ const Steps = () => {
       <div className="border-l-8 border-indigo-700 p-0 md:p-5 ml-20 my-20">
         <h3 className="text-indigo-700">Steps of vaccination</h3>
       </div>
-      <div className="flex flex-col justify-between items-center px-0 md:px-20">
+      <div className="flex flex-col  md:flex-row justify-between items-center px-0 md:px-20">
         <div className="p-0 md:p-2 w-full md:w-1/3">
           <FcApproval
             style={{

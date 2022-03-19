@@ -31,7 +31,7 @@ const Banner = () => {
           <h3 justify-center items-center>
             <span style={{ color: '#10217d' }}>Your health, </span> our priority
           </h3>
-          <p className=" my-2 md:my-6">
+          <p className=" my-2 text-justify md:text-left md:my-6">
             From preventive care and checkups, to immunizations and exams, our
             primary care physicians and providers work to keep you and your
             whole family healthy and strong each and every day.{' '}
