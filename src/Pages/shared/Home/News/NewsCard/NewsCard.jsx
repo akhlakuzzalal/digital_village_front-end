@@ -3,7 +3,6 @@ import { ImCalendar } from 'react-icons/im';
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URI } from '../../../../../api/axios';
 const NewsCard = ({ n }) => {
-  console.log('this is newses', n);
   const navigate = useNavigate();
   return (
     <div className="rounded-2xl w-fit shadow-xl max-w-[400px] mb-10 dark:dark-card-bg">

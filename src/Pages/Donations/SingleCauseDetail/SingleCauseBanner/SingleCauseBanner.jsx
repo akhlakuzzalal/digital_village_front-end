@@ -1,14 +1,13 @@
 import React from 'react';
 import banner from '../../../../assets/donation/donate.jpg';
-const PageSection = () => {
+const SingleCauseBanner = () => {
   return (
     <div
       className="w-full bg-gray-400  bg-no-repeat mt-[64px]"
       style={{
         backgroundBlendMode: 'multiply',
         backgroundPosition: 'center center',
-        backgroundImage:
-          `url(${banner})`,
+        backgroundImage: `url(${banner})`,
       }}
     >
       <div className="p-10  py-20  flex  flex-col  flex-wrap  justify-center  content-center">
@@ -23,4 +22,4 @@ const PageSection = () => {
   );
 };
 
-export default PageSection;
+export default SingleCauseBanner;

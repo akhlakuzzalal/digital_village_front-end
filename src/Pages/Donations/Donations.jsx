@@ -1,14 +1,14 @@
 import React from 'react';
 import AllCauses from './AllCauses/AllCauses';
-import AboutDonation from './DonateItems/AboutDonation';
-import DonateBanner from './DonateItems/DonateBanner';
+import DonationAbout from './DonationAbout/DonationAbout';
+import DonationBanner from './DonationBanner/DonationBanner';
 
 const Donations = () => {
   return (
     <>
-      <DonateBanner />
+      <DonationBanner />
       <AllCauses />
-      <AboutDonation />
+      <DonationAbout />
     </>
   );
 };

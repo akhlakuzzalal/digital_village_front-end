@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import axios from '../../../api/axios';
 import FileUpload from '../../../Components/FileUpload';
 import { updateACause } from '../../../redux/slices/Donations/donationSlice';
 const UpdateCause = () => {
@@ -24,7 +25,7 @@ const UpdateCause = () => {
     setFile(acceptedFiles[0]);
   }, []);
 
-  const handleUpdateCause = (data) => {
+  const handleUpdateCause = async (data) => {
     const formData = new FormData();
     formData.append('file', file);
     formData.append(
@@ -33,15 +34,23 @@ const UpdateCause = () => {
         ...data,
       })
     );
-    dispatch(updateACause({ id, formData })).then(() => {
+
+    const response = await axios.put(
+      `/donationCause/update/?id=${id}`,
+      formData
+    );
+    console.log(response.data);
+    if (response?.data?._id) {
+      dispatch(updateACause(response.data));
       Swal.fire({
         title: 'Donation Cause has been updated',
         confirmButtonText: 'Okay',
       });
-    });
+    }
   };
 
   useEffect(() => {
+    console.log(cause?.image);
     setFile(cause?.image);
   }, [cause?.image]);
 
@@ -84,8 +93,8 @@ const UpdateCause = () => {
           {...register('description', {
             required: 'Description is Required',
             minLength: {
-              value: 200,
-              message: 'Minimum Required length is 200',
+              value: 50,
+              message: 'Minimum Required length is 50',
             },
             maxLength: {
               value: 1500,

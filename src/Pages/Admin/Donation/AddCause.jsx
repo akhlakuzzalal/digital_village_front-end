@@ -131,12 +131,8 @@ const AddCause = () => {
               message: 'Minimum Required Goal is 500',
             },
             max: {
-              value: 500000,
+              value: 50000,
               message: 'Maximum allowed age is 50000',
-            },
-            pattern: {
-              value: /^[0-5._%+-]*$/,
-              message: 'Only numbers are allowed',
             },
           })}
           type="number"

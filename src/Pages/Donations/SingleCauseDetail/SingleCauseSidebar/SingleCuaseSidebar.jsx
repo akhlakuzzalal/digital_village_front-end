@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllCuases } from '../../../redux/slices/Donations/donationSlice';
-import Cardcausesidber from './causeCardSidebar';
+import { Link } from 'react-router-dom';
+import { BASE_URI } from '../../../../api/axios';
+import { fetchAllCuases } from '../../../../redux/slices/Donations/donationSlice';
+import SingleCauseSideCard from './SingleCauseSideCard/causeCardSidebar';
 
-const Cuasesidber = () => {
+const SingleCauseSidebar = () => {
   const causes = useSelector((state) => state.donation.causes);
   // console.log(causes);
 
@@ -22,19 +24,19 @@ const Cuasesidber = () => {
           tristique. Vestibulum ut finibus leo. In hac habitasse platea
           dictumst.
         </p>
-        <a
-          href="/about"
+        <Link
+          to="/about"
           class="w-full bg-primary hover:bg-opacity-80 text-white font-bold text-sm uppercase rounded flex items-center justify-center px-2 py-3 mt-4"
         >
           More About
-        </a>
+        </Link>
       </div>
       {/* Donation card */}
       <div class="w-full bg-white shadow flex flex-col my-4 p-6">
         <p class="text-xl font-semibold pb-5">Donation</p>
         <div class="grid grid-cols-1 gap-3 overflow-y-auto h-96">
           {causes?.map((item) => {
-            return <Cardcausesidber key={item._id} {...item} />;
+            return <SingleCauseSideCard key={item._id} {...item} />;
           })}
         </div>
       </div>
@@ -42,7 +44,24 @@ const Cuasesidber = () => {
       <div class="w-full bg-white shadow flex flex-col my-4 p-6">
         <p class="text-xl font-semibold pb-5">Donation Photo</p>
         <div class="grid grid-cols-3 gap-3">
-          <img
+          {causes.slice(0, 9).map((cause) => (
+            // eslint-disable-next-line jsx-a11y/img-redundant-alt
+            <img
+              class="hover:opacity-75"
+              src={`${BASE_URI}/${cause?.image?.path}`}
+              alt={cause?.image?.name}
+            />
+          ))}
+        </div>
+      </div>
+    </aside>
+  );
+};
+
+export default SingleCauseSidebar;
+
+{
+  /* <img
             class="hover:opacity-75"
             src="https://source.unsplash.com/collection/1346951/150x150?sig=1"
             alt="fgdg"
@@ -86,11 +105,5 @@ const Cuasesidber = () => {
             class="hover:opacity-75"
             src="https://source.unsplash.com/collection/1346951/150x150?sig=9"
             alt="fgdg"
-          />
-        </div>
-      </div>
-    </aside>
-  );
-};
-
-export default Cuasesidber;
+          /> */
+}

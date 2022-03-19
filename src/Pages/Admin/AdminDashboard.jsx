@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
 import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
-import { BsCalendar2EventFill } from 'react-icons/bs';
-import {
-  FaConnectdevelop,
-  FaHandsHelping,
-  FaShopify,
-  FaUsers,
-} from 'react-icons/fa';
+import { FaHandsHelping, FaShopify, FaUsers } from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
-import { GiNewspaper } from 'react-icons/gi';
 import { IoLogoDesignernews } from 'react-icons/io';
 import {
   MdManageAccounts,
   MdOutlineManageAccounts,
   MdOutlineMedicalServices,
-  MdRateReview,
 } from 'react-icons/md';
 import { RiLightbulbFlashFill } from 'react-icons/ri';
 import { Outlet } from 'react-router-dom';
@@ -29,66 +21,44 @@ const links = [
     path: '/admin/allusers',
   },
   {
-    name: 'Events',
-    icon: <BsCalendar2EventFill size={30} />,
-    path: '/admin/events',
-    nestedPath: [
-      {
-        name: 'Add Event',
-        icon: <AiFillFileAdd size={30} />,
-        path: '/admin/add-events',
-      },
-      {
-        name: 'Delete Event',
-        icon: <AiFillDelete size={30} />,
-        path: '/admin/manageEvents',
-      },
-    ],
-  },
-
-  {
-    name: 'Add Review',
-    icon: <MdRateReview size={30} />,
-    path: '/admin/add-review',
+    name: 'Add Event',
+    icon: <AiFillFileAdd size={30} />,
+    path: '/admin/add-events',
   },
   {
-    name: 'Donation',
+    name: 'Delete Event',
+    icon: <AiFillDelete size={30} />,
+    path: '/admin/manageEvents',
+  },
+  {
+    name: 'Donars',
     icon: <BiDonateHeart size={30} />,
     path: '/admin/manageAllDonars',
-    nestedPath: [
-      {
-        name: 'Add a Cause',
-        icon: <FcImport size={30} />,
-        path: '/admin/addcause',
-      },
-      {
-        name: 'All Cuases',
-        icon: <FcDonate size={30} />,
-        path: '/admin/allcauses',
-      },
-      {
-        name: 'All Help Request',
-        icon: <FaHandsHelping size={30} />,
-        path: '/admin/requestapply',
-      },
-    ],
   },
   {
-    name: 'Development',
-    icon: <FaConnectdevelop size={30} />,
-    path: '/admin/development',
-    nestedPath: [
-      {
-        name: 'Add development',
-        icon: <RiLightbulbFlashFill size={30} />,
-        path: '/admin/addDevelopment',
-      },
-      {
-        name: 'Manage Development',
-        icon: <MdManageAccounts size={30} />,
-        path: '/admin/manageDevelopmet',
-      },
-    ],
+    name: 'Add a Cause',
+    icon: <FcImport size={30} />,
+    path: '/admin/addcause',
+  },
+  {
+    name: 'Donation Cuases',
+    icon: <FcDonate size={30} />,
+    path: '/admin/allcauses',
+  },
+  {
+    name: 'Help Requests',
+    icon: <FaHandsHelping size={30} />,
+    path: '/admin/requestapply',
+  },
+  {
+    name: 'Add development',
+    icon: <RiLightbulbFlashFill size={30} />,
+    path: '/admin/addDevelopment',
+  },
+  {
+    name: 'Manage Development',
+    icon: <MdManageAccounts size={30} />,
+    path: '/admin/manageDevelopmet',
   },
   {
     name: 'Market',
@@ -96,39 +66,19 @@ const links = [
     path: '/admin/market',
   },
   {
-    name: 'Medical',
+    name: 'Add appointment',
     icon: <MdOutlineMedicalServices size={30} />,
     path: '/admin/addAppointment',
-    nestedPath: [
-      {
-        name: 'Add appointment',
-        icon: <MdOutlineMedicalServices size={30} />,
-        path: '/admin/addAppointment',
-      },
-      // {
-      //   name: 'Add vaccines',
-      //   icon: <MdManageAccounts size={30} />,
-      //   path: '#',
-      // },
-    ],
   },
-
   {
-    name: 'newsDashboard',
-    icon: <GiNewspaper size={30} />,
-    path: '/admin/newsDashboard',
-    nestedPath: [
-      {
-        name: 'Add-News',
-        icon: <IoLogoDesignernews size={30} />,
-        path: '/admin/addNews',
-      },
-      {
-        name: 'Manage-News',
-        icon: <MdOutlineManageAccounts size={30} />,
-        path: '/admin/manageNews',
-      },
-    ],
+    name: 'Add-News',
+    icon: <IoLogoDesignernews size={30} />,
+    path: '/admin/addNews',
+  },
+  {
+    name: 'Manage-News',
+    icon: <MdOutlineManageAccounts size={30} />,
+    path: '/admin/manageNews',
   },
 ];
 

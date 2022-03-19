@@ -23,7 +23,6 @@ import Eventmanagement from './Pages/Admin/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/Market/MarketManagement';
 import AddNews from './Pages/Admin/News/AddNews/AddNews';
 import ManageNews from './Pages/Admin/News/ManageNews/ManageNews';
-import NewsDashboard from './Pages/Admin/News/NewsDashboard';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import Donations from './Pages/Donations/Donations';
@@ -229,9 +228,8 @@ function App() {
               <Route path="market" element={<MarketManagement />} />
               <Route path="add-events" element={<AddEvents />} />
               <Route path="add-review" element={<AddReview />} />
-              <Route path="newsDashboard" element={<NewsDashboard />} />
-              <Route path="addNews" element={<AddNews />} />
               <Route path="manageNews" element={<ManageNews />} />
+              <Route path="addNews" element={<AddNews />} />
               <Route path="addAppointment" element={<AddAppointment />} />
               <Route path="status" element={<StatusCheck />} />
               <Route path="requestapply" element={<AllApply />} />

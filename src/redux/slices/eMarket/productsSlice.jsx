@@ -12,7 +12,12 @@ export const fetchAllProducts = createAsyncThunk(
         }&search=${pagination.search}&roles=${JSON.stringify([2000])}`
       )
       .then((response) => response.data);
-    console.log(response);
+    console.log(
+      `/eMarket/Products/?page=${pagination.currPage}&size=${
+        pagination.size
+      }&search=${pagination.search}&roles=${JSON.stringify([2000])}`
+    );
+
     return {
       products: response.products,
       count: response.count,

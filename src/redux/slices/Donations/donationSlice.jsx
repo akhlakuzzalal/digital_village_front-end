@@ -23,19 +23,19 @@ export const addACuase = createAsyncThunk(
   }
 );
 
-// update cuase
-export const updateACause = createAsyncThunk(
-  'cuases/updateACause',
-
-  async ({ id, formData }) => {
-    const response = await axios.put(
-      `/donationCause/update/?id=${id}`,
-      formData
-    );
-    return {
-      id,
-      response,
-    };
+export const giveDonation = createAsyncThunk(
+  'causes/giveDonation',
+  async ({ data, uId, causeId }) => {
+    console.log(data, uId, causeId);
+    const response = await axios
+      .put('/donationCause/take', {
+        ...data,
+        donarId: uId,
+        causeId,
+      })
+      .then((response) => response.data);
+    console.log(response);
+    return response;
   }
 );
 
@@ -62,10 +62,17 @@ const donationSlice = createSlice({
   name: 'causes',
   initialState: {
     causes: [],
-    updatecause: {},
   },
 
-  reducers: {},
+  reducers: {
+    updateACause: (state, { payload }) => {
+      const updatedCause = payload;
+      const AllCausesAfterRemovingThePrev = state.causes.filter(
+        (cause) => cause._id !== payload._id
+      );
+      state.causes = [...AllCausesAfterRemovingThePrev, updatedCause];
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchAllCuases.fulfilled, (state, { payload }) => {
       state.causes = payload;
@@ -73,12 +80,14 @@ const donationSlice = createSlice({
     builder.addCase(addACuase.fulfilled, (state, { payload }) => {
       state.causes.push(payload);
     });
-    builder.addCase(updateACause.fulfilled, (state, { payload }) => {
-      const updatedCause = payload.response[0];
-      const AllCausesAfterRemovingThePrev = state.causes.filter(
-        (cause) => cause._id !== payload.id
-      );
-      state.causes = [...AllCausesAfterRemovingThePrev, updatedCause];
+    builder.addCase(giveDonation.fulfilled, (state, { payload }) => {
+      console.log(payload);
+      if (payload._id) {
+        const AllCausesAfterRemovingThePrev = state.causes.filter(
+          (cause) => cause._id !== payload._id
+        );
+        state.causes = [...AllCausesAfterRemovingThePrev, payload];
+      }
     });
 
     //delete
@@ -93,6 +102,6 @@ const donationSlice = createSlice({
   },
 });
 
-// export const { removeFromCause } = donationSlice.actions;
+export const { updateACause } = donationSlice.actions;
 
 export default donationSlice.reducer;
