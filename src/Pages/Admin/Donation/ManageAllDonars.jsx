@@ -1,7 +1,15 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { HiTrash } from 'react-icons/hi';
 
 const ManageAllDonars = () => {
+  const [allDonars, setAllDonars] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('/donationCause/allDonarInfo')
+      .then((response) => console.log(response.data));
+  }, []);
   return (
     <div className="flex flex-col my-3">
       <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -32,24 +40,22 @@ const ManageAllDonars = () => {
                     scope="col"
                     className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
                   >
-                    Info
+                    Category
                   </th>
                   <th
                     scope="col"
                     className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
                   >
-                    Email
+                    Donar
                   </th>
                   <th
                     scope="col"
                     className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
                   >
-                    Status
+                    Amount
                   </th>
                   <th scope="col" className="relative px-6 py-3">
-                    <span className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider">
-                      Action
-                    </span>
+                    Details
                   </th>
                 </tr>
               </thead>

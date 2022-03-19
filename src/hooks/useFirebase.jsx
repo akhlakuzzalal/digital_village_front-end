@@ -82,11 +82,11 @@ const useFirebase = () => {
           dateOfBirth: user?.dateOfBirth || 'unknown',
           emailVerified: authUser?.emailVerified,
         };
-        dispatch(setUser(newUser));
-        console.log('print hello');
-        if (uId) {
-          dispatch(getSingleUserInfo({ id: uId }));
-        }
+        dispatch(setUser(newUser)).then(() => {
+          if (uId) {
+            dispatch(getSingleUserInfo({ id: uId }));
+          }
+        });
       } else {
         dispatch(setUser({}));
       }
@@ -100,6 +100,7 @@ const useFirebase = () => {
     setIsLoading(true);
     try {
       await signOut(auth);
+      localStorage.setItem('persist:digital_village_storage', {});
       logoutFromDB();
     } catch (error) {
       console.log(error);
