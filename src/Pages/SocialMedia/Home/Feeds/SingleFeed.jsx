@@ -1,13 +1,30 @@
-import React from 'react';
-import { AiOutlineComment, AiOutlineShareAlt } from 'react-icons/ai';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import {
+  AiOutlineCloseCircle,
+  AiOutlineComment,
+  AiOutlineShareAlt,
+} from 'react-icons/ai';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { GiSelfLove } from 'react-icons/gi';
 import { useSelector } from 'react-redux';
 import { BASE_URI } from '../../../../api/axios';
 
-const SingleFeed = ({ feed, users }) => {
+const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
+  const [openMenu, setOpenMenu] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
   const user = users.find((user) => user.email === feed.userEmail);
   const socialUser = useSelector((state) => state.social.user);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const handleEditPost = (data) => {
+    updatePost(data, feed?._id, socialUser?.email);
+    setOpenEdit(false);
+  };
   return (
     <div className="px-6 py-5 shadow-xl rounded-lg space-y-2 dark:dark-card-bg">
       {/* post Heading */}
@@ -39,13 +56,76 @@ const SingleFeed = ({ feed, users }) => {
             </p>
           </div>
         </div>
-        <div className="shadow-2xl p-3 bg-slate-300 rounded-full cursor-pointer">
-          <BsThreeDotsVertical />
+        {/* menu */}
+        <div className="relative">
+          {/* menu Icon */}
+          <div
+            onClick={() => setOpenMenu(!openMenu)}
+            className="shadow-2xl p-3 bg-slate-300 rounded-full cursor-pointer"
+          >
+            <BsThreeDotsVertical />
+          </div>
+          {/* Menu option */}
+          {socialUser?.email === feed?.userEmail && (
+            <div
+              className={`shadow-lg absolute top-9 right-0 bg-slate-200 pt-5 w-32 px-2 space-y-2 ${
+                openMenu ? 'visible' : 'hidden'
+              }`}
+              style={{
+                clipPath:
+                  'polygon(83% 0, 100% 16%, 100% 60%, 100% 100%, 0 100%, 0 17%, 66% 16%)',
+              }}
+            >
+              <p
+                onClick={() => {
+                  setOpenEdit(true);
+                  setOpenMenu(false);
+                }}
+                className="cursor-pointer font-semibold hover:bg-primary hover:text-white"
+              >
+                Edit post
+              </p>
+              <p
+                onClick={() => deletePost(feed?._id, socialUser.email)}
+                className="cursor-pointer font-semibold hover:bg-primary hover:text-white"
+              >
+                Delete Post
+              </p>
+            </div>
+          )}
         </div>
       </div>
       {/* post details */}
       <div className="border-b-2 border-primary pb-5">
-        <p>{feed?.post}</p>
+        {openEdit ? (
+          <form className="relative" onSubmit={handleSubmit(handleEditPost)}>
+            <textarea
+              {...register('post')}
+              className="w-full outline-0 border border-slate-400 rounded-lg"
+              rows="4"
+              defaultValue={feed?.post}
+              placeholder="Think anyThing  about it?"
+            ></textarea>
+            <input
+              className="py-4 text-white bg-primary rounded-lg w-full cursor-pointer hover:bg-opacity-80 hover:text-slate-800 transition-all duration-300"
+              type="submit"
+              value="Share with villagers"
+            />
+            <div className="absolute top-0 right-0 cursor-pointer">
+              <AiOutlineCloseCircle
+                size={30}
+                className="text-primary"
+                onClick={() => {
+                  setOpenEdit(false);
+                  reset();
+                }}
+              />
+            </div>
+          </form>
+        ) : (
+          <p>{feed?.post}</p>
+        )}
+
         {feed?.photo?.path && (
           <img
             className="w-full h-64"

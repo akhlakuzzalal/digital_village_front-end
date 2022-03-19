@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
 import axios from '../../../api/axios';
@@ -8,6 +9,7 @@ import {
 } from '../../../redux/slices/socialSlice/socialSlice';
 
 const useSocialMedia = () => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   // handle add Friend
   const addFriend = async (userID, requestedUserID) => {
@@ -85,10 +87,57 @@ const useSocialMedia = () => {
     }
   };
 
+  // delete Post
+  const deletePost = (id, email) => {
+    setLoading(true);
+    swal({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this imaginary file!',
+      icon: 'warning',
+
+      buttons: true,
+    }).then((willConfirm) => {
+      if (willConfirm) {
+        axios
+          .delete(`/social/deletePost?id=${id}&email=${email}`)
+          .then((res) => {
+            if (res?.data?.deletedCount === 1) {
+              swal('Confirmed!', {
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              setLoading(false);
+            }
+          });
+      }
+    });
+  };
+
+  // update Post
+  const updatePost = (post, id, email) => {
+    setLoading(true);
+    axios
+      .put(`/social/updatePost?id=${id}&email=${email}`, post)
+      .then((res) => {
+        if (res.data.update) {
+          swal('Updated Your Post!', {
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setLoading(false);
+          return 1;
+        }
+      });
+  };
   return {
     addFriend,
     acceptFriend,
     cancelRequest,
+    deletePost,
+    updatePost,
+    loading,
   };
 };
 
