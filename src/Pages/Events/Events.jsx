@@ -8,8 +8,8 @@ const Events = () => {
     location.pathname === '/events/' || location.pathname === '/events';
 
   return (
-    <div>
-      <div className="px-4 md:px-12 lg:px-36 space-y-6 bg-white py-36 dark:bg-black">
+    <div className="mb-20">
+      <div className="px-4 md:px-12 lg:px-36 space-y-6 bg-white py-36 dark:bg-black ">
         <div>
           <h1>Events</h1>
           <p className="lg:w-1/2 py-3">
