@@ -8,7 +8,6 @@ const Status = () => {
   const email = user?.email;
   useEffect(() => {
     axios.get(`/vaccine/findInfo?email=${email}`).then((response) => {
-      console.log(response.data);
       if (response.data && response.data.length > 0) {
         setInfo(response.data[0]);
       }
@@ -19,12 +18,12 @@ const Status = () => {
       <div>
         <div class="p-0 md:p-4">
           <div class="bg-white p-0 md:p-4 rounded-md">
-            {info.length > 0 ? (
+            <div>
+              <h2 class="mb-4 text-xl font-bold text-blue-900 text-center">
+                Your Status
+              </h2>
               <div>
-                <h2 class="mb-4 text-xl font-bold text-blue-900 text-center">
-                  Your Status
-                </h2>
-                <div>
+                {info?._id ? (
                   <div>
                     <div class="flex justify-between bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-md py-2  px-0 pmd:px-4 text-white font-bold text-md">
                       <div className="w-1/3 py-2">
@@ -53,14 +52,13 @@ const Status = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="flex justify-center items-center">
+                    <h3 className="text-gray-500">You haven't register yet!</h3>
+                  </div>
+                )}
               </div>
-            ) : (
-              <div className="flex justify-center items-center">
-                {' '}
-                <h3>You Haven't Registered yet</h3>
-              </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
