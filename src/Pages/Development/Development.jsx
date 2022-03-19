@@ -21,8 +21,16 @@ const Development = () => {
     >
       <DevelopmentBanner />
       <DevelopmentAbout />
-      <div className="mx-10 mt-36">
-        <h3>Development Proposal</h3>
+      <div className="mx-[100px] mt-36">
+        <div className=" text-center mb-32">
+          <h3>Development Proposal</h3>
+          <p className="px-400px">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas
+            inventore qui magni voluptatem dolor, velit mollitia porro pariatur
+            minima maxime sed molestias autem eos voluptatum molestiae eaque
+            reiciendis repellendus cupiditate!
+          </p>
+        </div>
         <div className="grid grid-cols-3 gap-6">
           {proposals?.map((proposal) => (
             <DevelopmentCard

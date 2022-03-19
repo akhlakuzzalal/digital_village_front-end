@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import axios from '../../../../../api/axios';
+import Comments from '../../../../Education/DetailVideo/Comments/Comments';
 
 const NewsDetails = () => {
   const { id } = useParams();
@@ -90,9 +91,11 @@ const NewsDetails = () => {
             </div>
           </div>
 
-          {/* <div>
-            <Reply />
-          </div> */}
+          <Comments
+            postId={id}
+            updateComment={updateComment}
+            commentLists={commentLists}
+          />
         </div>
 
         <div className="px-5  md:border-l-4 md:pl-8 pt-5">

@@ -67,7 +67,7 @@ const services = [
     image:
       'https://weirdguru.com/wp-content/uploads/2020/12/custom-ecommerce-website-development-vector-image.png',
     detail:
-      'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
+      'E-Market  is a nice platform for buying daily necessities.The main objective  is to connect the rural people with e-commerce and gaining their trust.',
     desc: 'Digital Village Service!',
     controlData: 'e-market',
   },

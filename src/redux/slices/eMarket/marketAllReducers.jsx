@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import cartSlice from './cartSlice';
 import cartTotalSlice from './cartTotalSlice';
-import modalSlice from './modalSlicle';
+import modalSlice from './modalSlice';
 import productsSlice from './productsSlice';
 
 export const marketAllReducers = combineReducers({

@@ -14,7 +14,7 @@ export const fetchAllCuases = createAsyncThunk(
 );
 
 // add cuase
-export const addAnCuase = createAsyncThunk(
+export const addACuase = createAsyncThunk(
   'cuases/postAnCuase',
   async (event) => {
     const response = await axios
@@ -24,8 +24,8 @@ export const addAnCuase = createAsyncThunk(
   }
 );
 // update cuase
-export const updateAnCuase = createAsyncThunk(
-  'cuases/updateAnCuase',
+export const updateACause = createAsyncThunk(
+  'cuases/updateACause',
 
   async (data) => {
     console.log(data);
@@ -34,8 +34,8 @@ export const updateAnCuase = createAsyncThunk(
   }
 );
 // delete cuase
-export const deleteAnCuase = createAsyncThunk(
-  'cuases/deleteAnCuase',
+export const deleteACause = createAsyncThunk(
+  'cuases/deleteACause',
   async (id) => {
     await axios.delete(`/donation/deletecuase/?id=${id}`);
     return id;
@@ -65,10 +65,10 @@ const donationSlice = createSlice({
       state.causes = payload;
     });
     // //add cuase
-    builder.addCase(addAnCuase.fulfilled, (state, { payload }) => {
+    builder.addCase(addACuase.fulfilled, (state, { payload }) => {
       state.causes.push(payload);
     });
-    builder.addCase(updateAnCuase.fulfilled, (state, { payload }) => {
+    builder.addCase(updateACause.fulfilled, (state, { payload }) => {
       const prevCause = state.causes.find((cause) => cause._id === payload.id);
       // state.causes={...prevCause, ...data}
       const updateCause = { ...prevCause, ...payload };
@@ -79,7 +79,7 @@ const donationSlice = createSlice({
     });
 
     //delete
-    builder.addCase(deleteAnCuase.fulfilled, (state, { payload }) => {
+    builder.addCase(deleteACause.fulfilled, (state, { payload }) => {
       console.log(payload);
       state.causes = state.causes.filter((cause) => cause._id !== payload);
     });

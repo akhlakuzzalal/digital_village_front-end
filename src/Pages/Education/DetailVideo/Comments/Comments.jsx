@@ -28,7 +28,7 @@ const Comments = ({ postId, updateComment, commentLists }) => {
   };
 
   return (
-    <div className="px-3">
+    <div className="px-6">
       <h3 className="my-6 text-sm md:text-xl lg:text-2xl">
         Share your feedback
       </h3>

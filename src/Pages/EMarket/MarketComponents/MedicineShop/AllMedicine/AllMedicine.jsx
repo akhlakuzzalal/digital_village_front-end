@@ -1,6 +1,6 @@
 import React from 'react';
-import PopularMedicine from './PopularMedicine';
-import RegularMedicine from './RegularMedicine';
+import PopularMedicine from './PopularMedicine/PopularMedicine';
+import RegularMedicine from './RegularMedicine/RegularMedicine';
 
 const AllMedicine = () => {
   const medicines = [1, 2, 3, 4, 5, 6, 7, 8];
