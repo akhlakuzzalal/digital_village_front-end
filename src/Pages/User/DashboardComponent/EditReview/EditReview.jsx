@@ -1,12 +1,15 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useEffect, useState } from 'react';
+import { useForm} from 'react-hook-form';
+import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import axios from '../../../../api/axios';
 import useFirebase from '../../../../hooks/useFirebase';
-import MyReview from '../MyReview/MyReview';
 
-const Review = () => {
-  const { user } = useFirebase();
+
+const EditReview = () => {
+    const {id}=useParams();
+    const [review, setReview] = useState([]);
+    const { user } = useFirebase();
   const {
     register,
     formState: { errors },
@@ -15,47 +18,58 @@ const Review = () => {
     trigger,
   } = useForm();
 
-  const handleAddReview = (data) => {
+  const handleEditReview =async (data) => {
     data.email = user?.email;
-    const result = axios.post('/userReview/addReview', data);
+     const response =await axios.put(`/userReview/updateReview?id=${id}`, data)
+     reset();
+     console.log(response.data);
+     if (response?.data?.success) {
+       Swal.fire({
+         title: 'updated successfully',
+         confirmButtonText: 'Okay',
+       });
+     }
+};
 
-    reset();
-    console.log(data);
-    Swal.fire({
-      icon: 'success',
-      title: 'Your Review is Successfully Save',
-      showConfirmButton: false,
-      timer: 1500,
+
+
+  useEffect(() => {
+    axios.get(`/userReview/allReview`).then((response) => {
+      setReview(response.data);
     });
-  };
+  }, [id]);
+  const result=review.filter(data=>data._id===id)
 
   return (
     <div className="bg-cover h-[100%]  w-[100%]bg-no-repeat md:pb-10 "
     style={{
       backgroundImage: `url(https://st2.depositphotos.com/3467927/6010/i/600/depositphotos_60107233-stock-photo-businessman-pushing-button-five-star.jpg)`,
     }}>
-      <div className=" pb-10 pt-14 md:pt-24  dark:dark-card-bg  rounded-2xl">
+      <div className=" pb-10 pt-14 md:pt-24 lg:flex   dark:dark-card-bg  rounded-2xl">
         {/* add Review form */}
-        <div className="w-full">
-          <h1 className=" text-center pt-12  text-4xl md:text-5xl text-white ">Add Review</h1>
+        <div className="w-full px-10">
+          <h1 className=" text-center pt-12  text-4xl md:text-5xl text-white ">Edit Review</h1>
           <form
-            className=" space-y-6 w-full md:w-1/2 mx-auto mt-10"
-            onSubmit={handleSubmit(handleAddReview)}
+            className=" space-y-6 w-full md:w-1/2 mx-auto mt-10 "
+            onSubmit={handleSubmit(handleEditReview)}
           >
             {/* email */}
             <input
               className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-              {...register('name')}
+              {...register('name',{
+                required: 'Diplay Name required',
+                required:true
+                
+              })}
               placeholder="Name"
-              defaultValue={user?.displayName}
-              required
+              defaultValue={result[0]?.name}
             />
             <input
               className="px-7 py-10 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
               {...register('description', {
                 required: 'Description is Required',
                 minLength: {
-                  value: 20,
+                  value: 10,
                   message: 'Minimum Required length is 50',
                 },
                 maxLength: {
@@ -67,6 +81,7 @@ const Review = () => {
               onKeyUp={() => {
                 trigger('description');
               }}
+              defaultValue={result[0]?.description}
             />
             {errors.description && (
               <small className="text-danger">
@@ -76,12 +91,12 @@ const Review = () => {
 
             <input
               className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-              {...register('image', { required: 'Image is Required' })}
+              {...register('image', {required: 'Image is Required' })}
               onKeyUp={() => {
                 trigger('image');
               }}
               placeholder="Image URL"
-              required
+              defaultValue={result[0]?.image}
             />
             {errors.image && (
               <small className="text-danger">{errors.image.message}</small>
@@ -91,6 +106,7 @@ const Review = () => {
               className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
               {...register('rating', {
                 required: 'Rating is Required',
+                
                 min: {
                   value: 1,
                   message: 'Minimum Required rating is 1',
@@ -108,7 +124,7 @@ const Review = () => {
                 trigger('rating');
               }}
               placeholder="Rating in between one to five"
-              required
+              defaultValue={result[0]?.rating}
             />
             {errors.rating && (
               <small className="text-danger">{errors.rating.message}</small>
@@ -123,14 +139,11 @@ const Review = () => {
           </form>
         </div>
 
-        {/* My Review */}
+        
       </div>
-      <div className=' py-10 md:mt-10'>
-        <h1 className="text-center pb-4 text-white">My Review</h1>
-        <MyReview />
-      </div>
+     
     </div>
   );
 };
 
-export default Review;
+export default EditReview;

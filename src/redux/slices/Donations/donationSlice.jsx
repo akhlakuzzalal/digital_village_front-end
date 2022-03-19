@@ -1,43 +1,49 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../../api/axios';
 
-// create the thunk
+// fetch all causes
 export const fetchAllCuases = createAsyncThunk(
   'cuases/fetchAllCuases',
   async () => {
     const response = await axios
-      .get('/donation/cuases')
+      .get('/donationCause/all')
       .then((response) => response.data);
-    // console.log(response);
     return response;
   }
 );
 
 // add cuase
 export const addACuase = createAsyncThunk(
-  'cuases/postAnCuase',
-  async (event) => {
+  'cuases/addACuase',
+  async (formData) => {
     const response = await axios
-      .post('/donation/addcuase', event)
+      .post('/donationCause/add', formData)
       .then((response) => response.data);
     return response;
   }
 );
-// update cuase
-export const updateACause = createAsyncThunk(
-  'cuases/updateACause',
 
-  async (data) => {
-    console.log(data);
-    await axios.put(`/donation/updatecuase/?id=${data.id}`, data);
-    return data;
+export const giveDonation = createAsyncThunk(
+  'causes/giveDonation',
+  async ({ data, uId, causeId }) => {
+    console.log(data, uId, causeId);
+    const response = await axios
+      .put('/donationCause/take', {
+        ...data,
+        donarId: uId,
+        causeId,
+      })
+      .then((response) => response.data);
+    console.log(response);
+    return response;
   }
 );
+
 // delete cuase
 export const deleteACause = createAsyncThunk(
   'cuases/deleteACause',
   async (id) => {
-    await axios.delete(`/donation/deletecuase/?id=${id}`);
+    await axios.delete(`/donationCause/delete/?id=${id}`);
     return id;
   }
 );
@@ -56,26 +62,32 @@ const donationSlice = createSlice({
   name: 'causes',
   initialState: {
     causes: [],
-    updatecause: {},
   },
 
-  reducers: {},
+  reducers: {
+    updateACause: (state, { payload }) => {
+      const updatedCause = payload;
+      const AllCausesAfterRemovingThePrev = state.causes.filter(
+        (cause) => cause._id !== payload._id
+      );
+      state.causes = [...AllCausesAfterRemovingThePrev, updatedCause];
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchAllCuases.fulfilled, (state, { payload }) => {
       state.causes = payload;
     });
-    // //add cuase
     builder.addCase(addACuase.fulfilled, (state, { payload }) => {
       state.causes.push(payload);
     });
-    builder.addCase(updateACause.fulfilled, (state, { payload }) => {
-      const prevCause = state.causes.find((cause) => cause._id === payload.id);
-      // state.causes={...prevCause, ...data}
-      const updateCause = { ...prevCause, ...payload };
-      const removeCause = state.causes.filter(
-        (cause) => cause._id !== payload.id
-      );
-      state.causes = [...removeCause, updateCause];
+    builder.addCase(giveDonation.fulfilled, (state, { payload }) => {
+      console.log(payload);
+      if (payload._id) {
+        const AllCausesAfterRemovingThePrev = state.causes.filter(
+          (cause) => cause._id !== payload._id
+        );
+        state.causes = [...AllCausesAfterRemovingThePrev, payload];
+      }
     });
 
     //delete
@@ -90,6 +102,6 @@ const donationSlice = createSlice({
   },
 });
 
-// export const { removeFromCause } = donationSlice.actions;
+export const { updateACause } = donationSlice.actions;
 
 export default donationSlice.reducer;

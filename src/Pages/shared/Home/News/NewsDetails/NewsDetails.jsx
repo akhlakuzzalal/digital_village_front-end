@@ -6,7 +6,7 @@ import { Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import axios from '../../../../../api/axios';
+import axios, { BASE_URI } from '../../../../../api/axios';
 import Comments from '../../../../Education/DetailVideo/Comments/Comments';
 
 const NewsDetails = () => {
@@ -33,7 +33,6 @@ const NewsDetails = () => {
   }, [id]);
 
   const result = news.filter((data) => data?._id === id);
-  console.log(result);
 
   return (
     <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
@@ -45,7 +44,7 @@ const NewsDetails = () => {
           <a href="/#">
             <img
               className="rounded-t-lg w-full mx-auto"
-              src={result[0]?.image}
+              src={`${BASE_URI}/${result[0]?.bannerImg?.path}`}
               alt=""
             />
           </a>

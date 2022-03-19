@@ -23,11 +23,10 @@ import Eventmanagement from './Pages/Admin/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/Market/MarketManagement';
 import AddNews from './Pages/Admin/News/AddNews/AddNews';
 import ManageNews from './Pages/Admin/News/ManageNews/ManageNews';
-import NewsDashboard from './Pages/Admin/News/NewsDashboard';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
-import CaseSingle from './Pages/Donations/Causes/CaseSingle';
 import Donations from './Pages/Donations/Donations';
+import SingleCauseDetail from './Pages/Donations/SingleCauseDetail/SingleCauseDetail';
 import BlogDetails from './Pages/Education/BlogDetails/BlogDetails';
 import DetailVideo from './Pages/Education/DetailVideo/DetailVideo';
 import Education from './Pages/Education/Education';
@@ -82,12 +81,14 @@ import Contact from './Pages/shared/Contact/Contact';
 import Footer from './Pages/shared/Home/Footer/Footer';
 import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
+import EditNews from './Pages/shared/Home/News/EditNews/EditNews';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import AddReview from './Pages/shared/Home/Reviews/AddReview/AddReview';
 import NotFound from './Pages/shared/NotFound/NotFound';
 import BoardHome from './Pages/SocialMedia/Connections/BoardComponent/BoardHome.jsx';
 import ConnectionBoard from './Pages/SocialMedia/Connections/ConnectionBoard';
 import SocialHome from './Pages/SocialMedia/Home/SocialHome';
+import EditReview from './Pages/User/DashboardComponent/EditReview/EditReview';
 import Profile from './Pages/User/DashboardComponent/Profile/Profile';
 import Review from './Pages/User/DashboardComponent/Review/Review';
 import UserDashboard from './Pages/User/UserDashboard';
@@ -129,6 +130,7 @@ function App() {
               <Route path="review" element={<Review />} />
               <Route path="donarpaymente" element={<DonarPaymente />} />
               <Route path="requestapply" element={<HelpRequestApply />} />
+              <Route path="editReview/:id" element={<EditReview />} />
               <Route
                 path="createDonationCause"
                 element={<CreateDonationCause />}
@@ -195,7 +197,7 @@ function App() {
 
             {/* DONATION RELATED ROUTES */}
             <Route path="donation" element={<Donations />} />
-            <Route path="causedetails/:id" element={<CaseSingle />} />
+            <Route path="causedetails/:id" element={<SingleCauseDetail />} />
 
             {/* VILLAGE MARKET RELATED ROUTES */}
             <Route path="e-market" element={<EMarket />} />
@@ -225,13 +227,14 @@ function App() {
               <Route path="development" element={<DevelopmentDashboard />} />
               <Route path="development" element={<DevelopmentManage />} />
               <Route path="manageDevelopmet" element={<DevelopmentManage />} />
+              <Route path="editDevelopment/:id" element={<EditBlog />} />
               <Route path="addDevelopment" element={<AddDevelopment />} />
               <Route path="market" element={<MarketManagement />} />
               <Route path="add-events" element={<AddEvents />} />
               <Route path="add-review" element={<AddReview />} />
-              <Route path="newsDashboard" element={<NewsDashboard />} />
-              <Route path="addNews" element={<AddNews />} />
               <Route path="manageNews" element={<ManageNews />} />
+              <Route path="addNews" element={<AddNews />} />
+              <Route path="editNews/:id" element={<EditNews />} />
               <Route path="addAppointment" element={<AddAppointment />} />
               <Route path="status" element={<StatusCheck />} />
               <Route path="requestapply" element={<AllApply />} />

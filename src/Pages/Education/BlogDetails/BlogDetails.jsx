@@ -84,7 +84,9 @@ const BlogDetails = () => {
       className="mt-[80px] flex"
       style={{ minHeight: 'calc(100vh - 700px)' }}
     >
-      <div className="col-span-5 w-4/5 space-y-6 px-12">
+      <div className='grid  grid-cols-1 md:grid-cols-3 px-12 my-5'> 
+      <div className="col-span-2 px-6 md:px-36 ">
+        <div className='x-6'>
         <div>
           <img
             src={`${BASE_URI}/${blog?.bannerImg?.path}`}
@@ -101,7 +103,8 @@ const BlogDetails = () => {
             </div>
           ))}
         </div>
-        <div>{parse(blog?.content)}</div>
+        <p>{parse(blog?.content)}</p>
+        </div>
         <div>
           <Comments
             postId={id}
@@ -111,13 +114,14 @@ const BlogDetails = () => {
         </div>
       </div>
 
-      <div className="flex-1 mt-6">
-        <div className="space-y-6">
+      <div className=" mt-6">
+        <div className="">
           <h3>Featured Blogs</h3>
           {blogs?.map((blog) => (
             <BlogSideCard blog={blog} />
           ))}
         </div>
+      </div>
       </div>
     </div>
   );

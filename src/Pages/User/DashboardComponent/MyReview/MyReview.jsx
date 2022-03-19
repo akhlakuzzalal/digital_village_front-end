@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import axios from '../../../../api/axios';
 import Rating from '../../../../Components/Rating';
@@ -8,6 +9,7 @@ const MyReview = () => {
   const [review, setReview] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useFirebase();
+  const navigate=useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -39,10 +41,7 @@ const MyReview = () => {
       }
     });
   };
-  //   const changeRating=( newRating, name )=>{
-  //     this.setState({
-  //       rating: newRating
-  //     })};
+
   return (
     <>
       <article className="grid grid-cols-1 md:grid-cols-4 justify-evenly items-center gap-6 px-12 md:mx-24 md:my-24">
@@ -58,13 +57,13 @@ const MyReview = () => {
                 {data?.name}
               </h5>
               <span class="text-sm text-gray-500 dark:text-gray-400 p-4">
-                {data?.description.slice(0, 200)}...
+                {data?.description.slice(0,40)}...
               </span>
               <div className="flex">
                 <Rating rating={data?.rating} />
               </div>
               <div class="flex mt-4 space-x-3 lg:mt-6">
-                <button class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <button onClick={()=>navigate(`/userdashboard/editReview/${data._id}`)} class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                   {' '}
                   Update
                 </button>
