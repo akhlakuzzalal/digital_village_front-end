@@ -54,7 +54,9 @@ const Status = () => {
                   </div>
                 ) : (
                   <div className="flex justify-center items-center">
-                    <h3 className="text-gray-500">You haven't register yet!</h3>
+                    <h3 className="text-gray-500">
+                      You haven't registered yet!
+                    </h3>
                   </div>
                 )}
               </div>
