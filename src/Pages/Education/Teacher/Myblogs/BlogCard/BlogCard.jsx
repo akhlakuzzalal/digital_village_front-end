@@ -29,7 +29,7 @@ const BlogCard = ({ blog }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl p-4 relative max-w-[400px] shadow-2xl">
+    <div className="bg-white rounded-xl p-4 relative max-w-[400px] shadow-2xl dark:dark-card-bg">
       <div className="absolute top-20 text-sm left-0 z-20 font-primary rounded-lg">
         {blog?.isVerified ? (
           <button className="w-90 flex items-center justify-center py-2 border border-transparent text-sm rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 px-6">

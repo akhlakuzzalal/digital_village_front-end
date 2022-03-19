@@ -85,13 +85,13 @@ const Faq1 = () => {
 
                   {active && data.id === active ? (
                     <AiOutlineMinusSquare
-                      className="hover:rotate-180 transition duration-700 ease-in-out"
+                      className="hover:rotate-180 transition duration-700 ease-in-out dark:text-dark_text"
                       size={30}
                       onClick={() => setActive('')}
                     />
                   ) : (
                     <GoDiffAdded
-                      className="hover:rotate-180 transition duration-700 ease-in-out"
+                      className="hover:rotate-180 transition duration-700 ease-in-out dark:text-dark_text"
                       size={30}
                       onClick={() => setActive(data?.id)}
                     />
