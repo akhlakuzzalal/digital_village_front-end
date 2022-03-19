@@ -16,8 +16,8 @@ const PublishBlog = () => {
     handleSubmit,
     reset,
     trigger,
-    formState: { errors }
-  } = useForm ();
+    formState: { errors },
+  } = useForm();
 
   const handleEditorChange = (e) => {
     setContent(e.target.getContent());
@@ -57,7 +57,9 @@ const PublishBlog = () => {
 
   return (
     <div className="flex flex-col justify-center items-center min-h-full mb-12 space-y-6">
-      <h1 className='text-center text-xl md:text-6xl text-blue-800 py-6 md:py-12'>Publish your blog now</h1>
+      <h1 className="text-center text-xl md:text-3xl text-blue-800 py-6 md:py-12">
+        Publish your blog now
+      </h1>
       <form
         onSubmit={handleSubmit(handlePublishBlogs)}
         className="space-y-6 mx-auto pl-10 md:pl-0"
@@ -67,9 +69,9 @@ const PublishBlog = () => {
             {/* title of the blog */}
             <input
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('title', { required: "Title is Required" })}
+              {...register('title', { required: 'Title is Required' })}
               onKeyUp={() => {
-                trigger("title");
+                trigger('title');
               }}
               placeholder="Title of your blog"
             />
@@ -89,20 +91,21 @@ const PublishBlog = () => {
             {/* about the blog */}
             <textarea
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('about', { required: "About is Required",
-              minLength: {
-                value: 50,
-                message: "Minimum Required length is 50",
-              },
-              maxLength: {
-                value: 100,
-                message: "Maximum allowed length is 100",
-              }
-             })}
-             placeholder="Write what this blog teaches within 50 words"
-             onKeyUp={() => {
-              trigger("about");
-            }}
+              {...register('about', {
+                required: 'About is Required',
+                minLength: {
+                  value: 50,
+                  message: 'Minimum Required length is 50',
+                },
+                maxLength: {
+                  value: 100,
+                  message: 'Maximum allowed length is 100',
+                },
+              })}
+              placeholder="Write what this blog teaches within 50 words"
+              onKeyUp={() => {
+                trigger('about');
+              }}
             ></textarea>
             {errors.about && (
               <small className="text-danger">{errors.about.message}</small>
@@ -112,9 +115,9 @@ const PublishBlog = () => {
             <input
               type="text"
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('tags', { required: "Tags is Required" })}
+              {...register('tags', { required: 'Tags is Required' })}
               onKeyUp={() => {
-                trigger("tags");
+                trigger('tags');
               }}
               placeholder="Add tags with space seperated"
             />
