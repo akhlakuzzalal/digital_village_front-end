@@ -1,7 +1,8 @@
 import React from 'react';
 
 const TeacherAnalytics = () => {
-  return <div>this is teacher analytics</div>;
+  return 
+  <div>this is teacher analytics</div>;
 };
 
 export default TeacherAnalytics;

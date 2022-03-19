@@ -44,7 +44,7 @@ const CauseCard = (props) => {
       <div className="flex flex-col flex-grow">
         {/* title and description */}
         <div className="flex flex-col space-y-1 my-4">
-          <h2 className="text-gray-900 font-semibold text-lg">{title}</h2>
+          <h2 className="text-gray-900 font-semibold text-lg dark:text-dark_text">{title}</h2>
 
           <p className="text-gray-500 text-sm">{description.slice(0, 110)}</p>
         </div>
@@ -62,7 +62,7 @@ const CauseCard = (props) => {
         </button>
       </div>
       <div class="py-5">
-        <p class="text-gray-600">Raised {percent.toFixed(0)}% completed</p>
+        <p class="text-gray-600 dark:text-dark_text">Raised {percent.toFixed(0)}% completed</p>
         <Progress
           percent={percent.toFixed(0)}
           theme={{
