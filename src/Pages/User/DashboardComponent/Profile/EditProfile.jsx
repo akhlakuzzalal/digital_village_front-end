@@ -87,7 +87,7 @@ const EditProfile = ({
                 required: 'this is required',
               })}
             >
-              <option>{user?.maritalStatus || 'choose one'}</option>
+              <option>{user?.gender || 'choose one'}</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="others">Others</option>

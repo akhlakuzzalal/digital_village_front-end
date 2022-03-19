@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { allSocialUser } from '../../../../redux/slices/socialSlice/socialSlice';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import SingleUser from './SingleUser';
 
 const BoardHome = () => {
-  const user = useSelector((state) => state.user.user);
   const noConnection = useSelector((state) => state.social.noConnection);
   const friends = useSelector((state) => state.social.friends);
   const requested = useSelector((state) => state.social.requested);
   const requesting = useSelector((state) => state.social.requesting);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(allSocialUser(user?.email));
-  }, [user]);
+
   return (
     <div className="space-y-3">
       {/* Suggest */}

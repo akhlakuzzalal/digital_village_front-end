@@ -31,7 +31,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const redirect_uri = location?.state?.form || '/';
-  console.log(redirect_uri);
+  console.log(redirect_uri, 'hello');
 
   const {
     setAuthError,
@@ -47,6 +47,7 @@ const Login = () => {
       .then(() => {
         loginToDB(email, password);
         setAuthError('');
+        console.log('hello world');
         swal({
           text: `You have successfully logged in`,
           icon: 'success',

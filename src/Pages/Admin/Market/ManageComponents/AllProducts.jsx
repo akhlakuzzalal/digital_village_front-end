@@ -11,7 +11,7 @@ const AllProducts = () => {
   const products = useSelector((state) => state.market.products.products);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchAllProducts());
+    dispatch(fetchAllProducts({}));
   }, []);
   // update Product
   const [selectedProduct, setSelectedProduct] = useState({});
@@ -19,6 +19,7 @@ const AllProducts = () => {
     setSelectedProduct(product);
     dispatch(setShowModal(true));
   };
+
   return (
     <div className="mx-12 my-10">
       <h3 className="text-base text-center md:text-left md:text-2xl mb-4 md:ml-20">
