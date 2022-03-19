@@ -81,12 +81,14 @@ import Contact from './Pages/shared/Contact/Contact';
 import Footer from './Pages/shared/Home/Footer/Footer';
 import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
+import EditNews from './Pages/shared/Home/News/EditNews/EditNews';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import AddReview from './Pages/shared/Home/Reviews/AddReview/AddReview';
 import NotFound from './Pages/shared/NotFound/NotFound';
 import BoardHome from './Pages/SocialMedia/Connections/BoardComponent/BoardHome.jsx';
 import ConnectionBoard from './Pages/SocialMedia/Connections/ConnectionBoard';
 import SocialHome from './Pages/SocialMedia/Home/SocialHome';
+import EditReview from './Pages/User/DashboardComponent/EditReview/EditReview';
 import Profile from './Pages/User/DashboardComponent/Profile/Profile';
 import Review from './Pages/User/DashboardComponent/Review/Review';
 import UserDashboard from './Pages/User/UserDashboard';
@@ -128,6 +130,7 @@ function App() {
               <Route path="review" element={<Review />} />
               <Route path="donarpaymente" element={<DonarPaymente />} />
               <Route path="requestapply" element={<HelpRequestApply />} />
+              <Route path="editReview/:id" element={<EditReview />} />
               <Route
                 path="createDonationCause"
                 element={<CreateDonationCause />}
@@ -224,12 +227,14 @@ function App() {
               <Route path="development" element={<DevelopmentDashboard />} />
               <Route path="development" element={<DevelopmentManage />} />
               <Route path="manageDevelopmet" element={<DevelopmentManage />} />
+              <Route path="editDevelopment/:id" element={<EditBlog />} />
               <Route path="addDevelopment" element={<AddDevelopment />} />
               <Route path="market" element={<MarketManagement />} />
               <Route path="add-events" element={<AddEvents />} />
               <Route path="add-review" element={<AddReview />} />
               <Route path="manageNews" element={<ManageNews />} />
               <Route path="addNews" element={<AddNews />} />
+              <Route path="editNews/:id" element={<EditNews />} />
               <Route path="addAppointment" element={<AddAppointment />} />
               <Route path="status" element={<StatusCheck />} />
               <Route path="requestapply" element={<AllApply />} />
