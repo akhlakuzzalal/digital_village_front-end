@@ -83,6 +83,7 @@ const useFirebase = () => {
           emailVerified: authUser?.emailVerified,
         };
         dispatch(setUser(newUser));
+        console.log('print hello');
         if (uId) {
           dispatch(getSingleUserInfo({ id: uId }));
         }
@@ -92,7 +93,7 @@ const useFirebase = () => {
       setIsLoading(false); // as the user state changed so we are not in loading state
     });
     return () => unsubscribed;
-  }, [auth, user?.dateOfBirth]);
+  }, [auth]);
 
   //process user logout
   const logout = async () => {

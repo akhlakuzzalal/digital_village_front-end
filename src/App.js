@@ -23,11 +23,10 @@ import Eventmanagement from './Pages/Admin/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/Market/MarketManagement';
 import AddNews from './Pages/Admin/News/AddNews/AddNews';
 import ManageNews from './Pages/Admin/News/ManageNews/ManageNews';
-import NewsDashboard from './Pages/Admin/News/NewsDashboard';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
-import CaseSingle from './Pages/Donations/Causes/CaseSingle';
 import Donations from './Pages/Donations/Donations';
+import SingleCauseDetail from './Pages/Donations/SingleCauseDetail/SingleCauseDetail';
 import BlogDetails from './Pages/Education/BlogDetails/BlogDetails';
 import DetailVideo from './Pages/Education/DetailVideo/DetailVideo';
 import Education from './Pages/Education/Education';
@@ -195,7 +194,7 @@ function App() {
 
             {/* DONATION RELATED ROUTES */}
             <Route path="donation" element={<Donations />} />
-            <Route path="causedetails/:id" element={<CaseSingle />} />
+            <Route path="causedetails/:id" element={<SingleCauseDetail />} />
 
             {/* VILLAGE MARKET RELATED ROUTES */}
             <Route path="e-market" element={<EMarket />} />
@@ -229,9 +228,8 @@ function App() {
               <Route path="market" element={<MarketManagement />} />
               <Route path="add-events" element={<AddEvents />} />
               <Route path="add-review" element={<AddReview />} />
-              <Route path="newsDashboard" element={<NewsDashboard />} />
-              <Route path="addNews" element={<AddNews />} />
               <Route path="manageNews" element={<ManageNews />} />
+              <Route path="addNews" element={<AddNews />} />
               <Route path="addAppointment" element={<AddAppointment />} />
               <Route path="status" element={<StatusCheck />} />
               <Route path="requestapply" element={<AllApply />} />

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Links = ({ link, showText, showTooltip, setShowTooltip }) => {
   const [showNestedMenu, setShowNestedMenu] = useState(true);
-  const location = useLocation();
-  const pathname = location.pathname;
 
   return (
     <div>

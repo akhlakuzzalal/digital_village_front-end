@@ -9,7 +9,7 @@ import RichTextEditor from '../../../../../Components/RichTextEditor';
 const EditBlog = () => {
   const { id } = useParams();
   const [singleBlog, setSingleBlog] = useState({});
-
+  const [file, setFile] = useState({});
   const [content, setContent] = useState('Start writing');
 
   const {
@@ -22,8 +22,6 @@ const EditBlog = () => {
   const handleEditorChange = (e) => {
     setContent(e.target.getContent());
   };
-
-  const [file, setFile] = useState({});
 
   const onDrop = useCallback((acceptedFiles) => {
     setFile(acceptedFiles[0]);
