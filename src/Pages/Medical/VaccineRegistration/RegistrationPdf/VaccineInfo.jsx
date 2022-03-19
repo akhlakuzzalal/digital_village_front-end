@@ -36,7 +36,7 @@ const VaccineInfo = () => {
 
   const generatePDF = (singleInfo) => {
     // initialize jsPDF
-    console.log(singleInfo);
+
     const doc = new jsPDF();
 
     // // define the columns we want and their titles
@@ -81,17 +81,24 @@ const VaccineInfo = () => {
         <h3 className=" text-xl md:text-2xl text-center my-2 text-blue-900 ">
           YOUR INFORMATION
         </h3>
+        {info?._id ? (
+          <div>
+            <RegistrationPdf info={info} />
 
-        <RegistrationPdf info={info} />
-
-        <div className="flex  justify-center ">
-          <button
-            className="border-2 bg-blue-900  text-white py-2 px-2 md:px-5 "
-            onClick={() => generatePDF(info)}
-          >
-            Download <BsDownload style={{ display: 'inline' }} />
-          </button>
-        </div>
+            <div className="flex  justify-center ">
+              <button
+                className="border-2 bg-blue-900  text-white py-2 px-2 md:px-5 "
+                onClick={() => generatePDF(info)}
+              >
+                Download <BsDownload style={{ display: 'inline' }} />
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="flex justify-center items-center">
+            <h3 className="text-gray-500">You haven't registered yet!</h3>
+          </div>
+        )}
       </div>
       <div className="w-fit mx-0 md:mx-auto">
         <Lottie

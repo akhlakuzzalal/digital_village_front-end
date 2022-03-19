@@ -31,7 +31,7 @@ const services = [
     image: medical,
     detail:
       'Medical services means Medically Necessary services, including, as the context requires, Confinement, treatments, procedures, tests, examinations .',
-    desc: 'Digital Village Service!',
+    desc: 'Making health care better together',
     controlData: 'medical',
   },
   {
@@ -40,7 +40,7 @@ const services = [
     image: event,
     detail:
       'Check out some amazing free events in village to take away all the fun experiences. There can be a lot that  might be offering but all the events  make it unique, distinctive and different from others.',
-    desc: 'Digital Village Service!',
+    desc: 'Exclusive events, priceless learning',
     controlData: 'events',
   },
   {
@@ -68,7 +68,7 @@ const services = [
       'https://weirdguru.com/wp-content/uploads/2020/12/custom-ecommerce-website-development-vector-image.png',
     detail:
       'E-Market  is a nice platform for buying daily necessities.The main objective  is to connect the rural people with e-commerce and gaining their trust.',
-    desc: 'Digital Village Service!',
+    desc: 'We make online selling superbly easy',
     controlData: 'e-market',
   },
 ];

@@ -64,7 +64,7 @@ const DetailVideo = () => {
 
   return (
     <div
-      className="mt-[80px] px-4"
+      className="mt-[130px] px-4 mb-32 lg:mx-10"
       style={{ minHeight: 'calc(100vh - 700px)' }}
     >
       {/* video and video side card */}
@@ -82,13 +82,31 @@ const DetailVideo = () => {
           <div className="px-2 space-y-6 mt-6">
             <div className="space-y-3">
               {/* video title */}
-              <div className="w-5/6">
-                <h3>{video?.title}</h3>
+              <div className="flex justify-between">
+                <div className="w-5/6">
+                  <h3>{video?.title}</h3>
+                </div>
+                <div className="flex items-center space-x-6 mr-20 dark:text-white">
+                  <LikeDislikes videoId={id} uId={uId} />
+                  {isFavouritted ? (
+                    <BsBookmarkFill
+                      className="cursor-pointer"
+                      size={30}
+                      onClick={handleRemoveFromFavourite}
+                    />
+                  ) : (
+                    <BsBookmark
+                      size={30}
+                      onClick={handleAddToFavourite}
+                      className="cursor-pointer"
+                    />
+                  )}
+                </div>
               </div>
               {/* like, dislike and favourite button */}
               <div className="flex items-center justify-between">
                 <div className="flex flex-col md:flex-row items-center space-x-2 w-full">
-                  <div className="w-full md:w-1/2">
+                  <div className="w-full md:w-1/2 mt-20">
                     <img
                       className="h-16 rounded-2xl"
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNDgyaDCaoDZJx8N9BBE6eXm5uXuObd6FPeg&usqp=CAU"
@@ -96,24 +114,8 @@ const DetailVideo = () => {
                     />
                     <p className="text-sm md:text-xl lg:text-2xl">
                       Published by <br />
-                      {video?.author}
+                      <p className="text-xl">{video?.author}</p>
                     </p>
-                  </div>
-                  <div className="flex items-center space-x-6 mr-20 dark:text-white">
-                    <LikeDislikes videoId={id} uId={uId} />
-                    {isFavouritted ? (
-                      <BsBookmarkFill
-                        className="cursor-pointer"
-                        size={30}
-                        onClick={handleRemoveFromFavourite}
-                      />
-                    ) : (
-                      <BsBookmark
-                        size={30}
-                        onClick={handleAddToFavourite}
-                        className="cursor-pointer"
-                      />
-                    )}
                   </div>
                 </div>
               </div>

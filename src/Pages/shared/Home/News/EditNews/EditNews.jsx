@@ -6,10 +6,10 @@ import axios from '../../../../../api/axios';
 import FileUpload from '../../../../../Components/FileUpload';
 import RichTextEditor from '../../../../../Components/RichTextEditor';
 
-const EditBlog = () => {
+const EditNews = () => {
   const { id } = useParams();
-  const [singleBlog, setSingleBlog] = useState({});
-  const [file, setFile] = useState({});
+  const [singleNews, setSingleNews] = useState({});
+  const [file, setFile] = useState({});  
   const [content, setContent] = useState('Start writing');
 
   const {
@@ -23,23 +23,26 @@ const EditBlog = () => {
     setContent(e.target.getContent());
   };
 
+  
+
   const onDrop = useCallback((acceptedFiles) => {
     setFile(acceptedFiles[0]);
   }, []);
 
-  const handleEditBlog = async (data) => {
+  const handleEditNews = async (data) => {
+    console.log(file)
     const formData = new FormData();
     formData.append('file', file);
     formData.append(
-      'blog',
+      'news',
       JSON.stringify({
         ...data,
         content,
-        tags: data?.tags.split(' '),
+       
       })
     );
 
-    const response = await axios.put(`/teacher/editABlog/?id=${id}`, formData);
+    const response = await axios.put(`/news/editNews/?id=${id}`, formData);
     console.log(response.data);
     if (response?.data?.success) {
       Swal.fire({
@@ -49,31 +52,36 @@ const EditBlog = () => {
     }
   };
 
+  
+
   useEffect(() => {
-    axios.get(`/teacher/getSingleBlog?id=${id}`).then((response) => {
-      setSingleBlog(response?.data); // fetch the previous blog
+    axios.get(`/news/getSingleNews?id=${id}`).then((response) => {
+      setSingleNews(response?.data);
+      console.log(response?.data);
       setFile(response?.data?.bannerImg);
+    
     });
   }, [id]);
+  
 
   return (
-    <div className="flex flex-col py-12 md:py-36 pl-14 md:pl- pr-4 md:pr-8 justify-center items-center min-h-full space-y-6">
-      <h1 className='text-2xl md:text-6xl text-center md:text-left'>Edit your blog now</h1>
-      {singleBlog?.title && (
+    <div className="flex flex-col py-12 md:py-36 pl-6 pr-4 md:pr-8 justify-center items-center min-h-full space-y-6">
+      <h1 className='text-base md:text-6xl text-center md:text-left'>Edit your News Now</h1>
+      {singleNews?.title && (
         <form
-          onSubmit={handleSubmit(handleEditBlog)}
+          onSubmit={handleSubmit(handleEditNews)}
           className="space-y-6 mx-auto w-full "
         >
           <div className="flex flex-wrap gap-4 items-center justify-evenly">
             <div className="space-y-6 flex-1">
               {/* title of the blog */}
               <div>
-                <p className="py-2">Blog title</p>
+                <p className="py-2">News title</p>
                 <input
-                  className="w-full px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary  transition-all duration-300 rounded-xl"
+                  className="w-full px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary  transition-all duration-300 rounded-xl"
                   {...register('title', {
                     required: 'Title is Required',
-                    value: singleBlog?.title,
+                    value: singleNews?.title,
                   })}
                   onKeyUp={() => {
                     trigger('title');
@@ -93,14 +101,14 @@ const EditBlog = () => {
                 />
               </div>
 
-              {/* about the blog */}
+              {/* about the News */}
               <div>
-                <p className="py-2">Blog about</p>
+                <p className="py-2">News Description</p>
                 <textarea
-                  className="w-full px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary  transition-all duration-300 rounded-xl"
-                  {...register('about', {
+                  className="w-full px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary  transition-all duration-300 rounded-xl"
+                  {...register('description', {
                     required: 'About is Required',
-                    value: singleBlog?.about,
+                    value: singleNews?.description,
                     minLength: {
                       value: 50,
                       message: 'Minimum Required length is 50',
@@ -111,44 +119,62 @@ const EditBlog = () => {
                     },
                   })}
                   onKeyUp={() => {
-                    trigger('about');
+                    trigger('description');
                   }}
                 ></textarea>
-                {errors.about && (
-                  <small className="text-danger">{errors.about.message}</small>
+                {errors.description && (
+                  <small className="text-danger">{errors.description.message}</small>
                 )}
               </div>
 
               {/* tags */}
               <div>
-                <p className="py-2">Blog Tags</p>
+                <p className="py-2">Publish Date</p>
                 <input
                   type="text"
-                  className="w-full px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary  transition-all duration-300 rounded-xl"
-                  {...register('tags', {
-                    required: 'Tags is Required',
-                    value: singleBlog?.tags?.join(' '),
+                  className="w-full px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary  transition-all duration-300 rounded-xl"
+                  {...register('publishDate', {
+                    required: 'Publish Date is Required',
+                    value: singleNews?.publishDate,
                   })}
                   onKeyUp={() => {
-                    trigger('tags');
+                    trigger('publishDate');
+                  }}
+                />
+                {errors.publishDate && (
+                  <small className="text-danger">{errors.tags.message}</small>
+                )}
+              </div>
+
+              <div>
+                <p className="py-2">News Time</p>
+                <input
+                  type="text"
+                  className="w-full px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary  transition-all duration-300 rounded-xl"
+                  {...register('publishTime', {
+                    required: 'PublishTime is Required',
+                    value: singleNews?.publishTime,
+                  })}
+                  onKeyUp={() => {
+                    trigger('publishTime');
                   }}
                 />
                 {errors.tags && (
-                  <small className="text-danger">{errors.tags.message}</small>
+                  <small className="text-danger">{errors.publishTime.message}</small>
                 )}
               </div>
             </div>
 
             {/* text editor for writing blogs */}
             <RichTextEditor
-              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
               handleEditorChange={handleEditorChange}
-              message={singleBlog?.content}
+              message={singleNews?.content}
             />
           </div>
           {/* submit button */}
           <input
-            className="btn bg-primary rounded-lg w-full cursor-pointer hover:bg-opacity-80 -pl-1  transition-all duration-300"
+            className="btn bg-primary rounded-lg py-6 w-full cursor-pointer hover:bg-opacity-80 -pl-1  transition-all duration-300"
             type="submit"
             value="Submit"
           />
@@ -158,4 +184,4 @@ const EditBlog = () => {
   );
 };
 
-export default EditBlog;
+export default EditNews;
