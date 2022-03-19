@@ -1,5 +1,7 @@
 import React from 'react';
-import { MdPersonAddAlt1 } from 'react-icons/md';
+import { AiOutlineMessage } from 'react-icons/ai';
+import { GiCancel } from 'react-icons/gi';
+import { MdDoneOutline, MdPersonAddAlt1 } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 import { BASE_URI } from '../../../../api/axios';
 import useSocialMedia from '../../utilities/useSocialMedia';
@@ -12,12 +14,16 @@ const SingleUser = ({ user, as }) => {
       <div className="w-full flex justify-center ">
         {user?.photo?.path && user?.photo?.path !== '' ? (
           <img
-            className="w-4/5 h-40"
+            className="w-36 h-36 rounded-full"
             src={`${BASE_URI}/${user.photo.path}`}
             alt="user profile pic"
           />
         ) : (
-          <img className="w-4/5 h-40" src="" alt="user profile pic" />
+          <img
+            className="w-36 h-36 rounded-full"
+            src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+            alt="user profile pic"
+          />
         )}
       </div>
       <div className="px-6 py-4">
@@ -33,7 +39,7 @@ const SingleUser = ({ user, as }) => {
               onClick={() => cancelRequest(socialUser._id, user._id)}
               className="flex items-center cursor-pointer bg-primary justify-center px-4 py-2 rounded-lg space-x-2"
             >
-              <MdPersonAddAlt1 size={20} color={'white'} />
+              <GiCancel size={20} color={'white'} />
               <p>Cancel Request</p>
             </div>
           </div>
@@ -44,13 +50,13 @@ const SingleUser = ({ user, as }) => {
             onClick={() => acceptFriend(socialUser._id, user._id)}
             className="flex items-center cursor-pointer bg-primary justify-center px-4 py-2 rounded-lg space-x-2"
           >
-            <MdPersonAddAlt1 size={20} color={'white'} />
+            <MdDoneOutline size={20} color={'white'} />
             <p>Accept Request</p>
           </div>
         )}
         {as === 'friend' && (
           <div className="flex items-center cursor-pointer bg-primary justify-center px-4 py-2 rounded-lg space-x-2">
-            <MdPersonAddAlt1 size={20} color={'white'} />
+            <AiOutlineMessage size={20} color={'white'} />
             <p>Send Message</p>
           </div>
         )}
