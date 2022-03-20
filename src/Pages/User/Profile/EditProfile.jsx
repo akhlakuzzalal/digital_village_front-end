@@ -40,7 +40,7 @@ const EditProfile = ({
             <FileUpload
               onDrop={onDrop}
               file={file}
-              message="Upload your Profile"
+              message="Upload your Profile pic"
             />
           </div>
           {/* about yourself */}
@@ -119,7 +119,7 @@ const EditProfile = ({
             <p className="py-2">Marital Status</p>
             <select
               className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-              {...register('maritialStatus', {
+              {...register('maritalStatus', {
                 required: 'this is required',
               })}
             >

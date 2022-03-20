@@ -37,12 +37,13 @@ const Profile = () => {
     },
     [previewFile]
   );
+
   const handleUpdateUser = async (data) => {
     const formData = new FormData();
     formData.append('file', file);
     // update without profile image
     if (data.employmentStatus === 'choose one') delete data.employmentStatus;
-    if (data.maritialStatus === 'choose one') delete data.maritialStatus;
+    if (data.maritalStatus === 'choose one') delete data.maritalStatus;
     if (data.religion === 'choose one') delete data.religion;
     if (data.gender === 'choose one') delete data.gender;
 

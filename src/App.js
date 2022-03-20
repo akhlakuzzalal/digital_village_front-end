@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Chat from './Components/ChattingApp/Chat/Chat';
 import Join from './Components/ChattingApp/Join/Join';
 import ScrollToTop from './Components/ScrollToTop';
+import UnAuthorized from './Components/UnAuthorized';
 import { AuthProvider } from './context/AuthProvider';
 import {
   default as AdminDashboard,
@@ -90,34 +91,29 @@ import Profile from './Pages/User/Profile/Profile';
 import EditReview from './Pages/User/Review/EditReview/EditReview';
 import Review from './Pages/User/Review/Review';
 import UserDashboard from './Pages/User/UserDashboard';
+import AdminRoute from './SecureRoutes/AdminRoute';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
 
-const Roles = {
+export const Roles = {
   User: 1000,
   Admin: 5000,
 };
 
-function App() {
-  return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Header />
-        <ScrollToTop>
-          <Routes>
-            {/* ALL PUBLIC ROUTES */}
-            <Route path="/" element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="register" element={<Register />} />
-            <Route path="login" element={<Login />} />
-            {/* TESTING */}
-            <Route
-              element={
-                <PrivateRoute allowedRoles={[Roles.User, Roles.Admin]} />
-              }
-            >
-              <Route path="allUsers" element={<AllUsers />} />
-            </Route>
+const App = () => (
+  <AuthProvider>
+    <BrowserRouter>
+      <Header />
+      <ScrollToTop>
+        <Routes>
+          {/* ALL PUBLIC ROUTES */}
+          <Route path="/" element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+
+          <Route element={<PrivateRoute />}>
+            <Route path="allUsers" element={<AllUsers />} />
             {/* notification route */}
             <Route path="notifications" element={<Notification />} />
 
@@ -149,6 +145,7 @@ function App() {
               <Route path="publishVideo" element={<PublishVideo />} />
               <Route path="analytics" element={<TeacherAnalytics />} />
             </Route>
+
             {/* routes for student */}
             <Route path="student" element={<Student />}>
               <Route path="home" element={<StudentHome />} />
@@ -206,7 +203,15 @@ function App() {
             {/* landing page of medical */}
             <Route path="medical" element={<Medical />} />
 
-            {/* Admin dashboard routes */}
+            {/* Social Media Routes */}
+            <Route path="social" element={<SocialHome />} />
+            <Route path="connection" element={<ConnectionBoard />}>
+              <Route path="home" element={<BoardHome />} />
+            </Route>
+          </Route>
+
+          {/* Admin dashboard routes */}
+          <Route element={<AdminRoute allowedRoles={[Roles.Admin]} />}>
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
@@ -232,21 +237,17 @@ function App() {
               <Route path="status" element={<StatusCheck />} />
               <Route path="allHelpRequests" element={<AllHelpRequests />} />
             </Route>
+          </Route>
 
-            {/* Social Media Routes */}
-            <Route path="social" element={<SocialHome />} />
-            <Route path="connection" element={<ConnectionBoard />}>
-              <Route path="home" element={<BoardHome />} />
-            </Route>
-
-            {/* NOT FOUND ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </ScrollToTop>
-        <Footer />
-      </BrowserRouter>
-    </AuthProvider>
-  );
-}
+          {/* unauthorized route */}
+          <Route path="unauthorized" element={<UnAuthorized />} />
+          {/* NOT FOUND ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </ScrollToTop>
+      <Footer />
+    </BrowserRouter>
+  </AuthProvider>
+);
 
 export default App;
