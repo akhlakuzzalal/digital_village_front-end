@@ -31,7 +31,7 @@ const UserAppointments = () => {
           <Calender onChange={onChange} />
         </div>
         <div className=" mx-0 md:mx-auto">
-          <UserAppointment appointment={appointment} />
+          <UserAppointment appointment={appointment} date={date} />
         </div>
       </div>
     </div>
