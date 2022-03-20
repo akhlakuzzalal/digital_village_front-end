@@ -169,6 +169,7 @@ function App() {
 
             {/* medical related routes */}
             <Route path="medicalDashboard" element={<MedicalDashboard />}>
+              <Route path="medical" element={<Medical />} />
               <Route path="vaccine" element={<VaccineRegistration />} />
               <Route path="options" element={<VaccineOptions />} />
               <Route path="status" element={<Status />} />
@@ -208,9 +209,6 @@ function App() {
             <Route path="marketdashboard" element={<MarketDashboard />}>
               <Route path="myorder" element={<MyOrder />} />
             </Route>
-
-            {/* landing page of medical */}
-            <Route path="medical" element={<Medical />} />
 
             {/* Admin dashboard routes */}
             <Route path="admin" element={<AdminDashboard />}>
