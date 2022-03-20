@@ -7,9 +7,9 @@ import { useNavigate } from 'react-router-dom';
 import { Progress } from 'react-sweet-progress';
 import 'react-sweet-progress/lib/style.css';
 import swal from 'sweetalert';
-import { BASE_URI } from '../../../api/axios';
-import { deleteACause } from '../../../redux/slices/Donations/donationSlice';
-import calculatePercentage from '../../../utilities/calculatePercentage';
+import { BASE_URI } from '../../../../../api/axios';
+import { deleteACause } from '../../../../../redux/slices/Donations/donationSlice';
+import calculatePercentage from '../../../../../utilities/calculatePercentage';
 
 const Cause = ({ _id, title, image, goal, raised, category }) => {
   const dispatch = useDispatch();

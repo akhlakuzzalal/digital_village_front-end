@@ -7,12 +7,12 @@ import {
 import { MdEmail } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import { BASE_URI } from '../../../../api/axios';
+import { BASE_URI } from '../../../api/axios';
 import {
   getSingleUserInfo,
   updateUser,
   updateUserWithoutProfileImg,
-} from '../../../../redux/slices/user/userSlice';
+} from '../../../redux/slices/user/userSlice';
 import EditProfile from './EditProfile';
 
 const Profile = () => {

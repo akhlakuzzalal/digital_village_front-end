@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { BiArrowBack } from 'react-icons/bi';
 import { useSelector } from 'react-redux';
-import FileUpload from '../../../../Components/FileUpload';
+import FileUpload from '../../../Components/FileUpload';
 
 const EditProfile = ({
   setUpdateProfile,

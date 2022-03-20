@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
 import Chat from './Components/ChattingApp/Chat/Chat';
 import Join from './Components/ChattingApp/Join/Join';
 import ScrollToTop from './Components/ScrollToTop';
@@ -10,15 +9,12 @@ import {
 } from './Pages/Admin/AdminDashboard';
 import AllUsers from './Pages/Admin/AllUsers/AllUsers';
 import AddDevelopment from './Pages/Admin/Development/AddDevelopment/AddDevelopment';
-import DevelopmentManage from './Pages/Admin/Development/DevelopmentManage/DevelopmentManage';
-import AddCause from './Pages/Admin/Donation/AddCause';
-import AllApply from './Pages/Admin/Donation/AllApply';
-import AllCauses from './Pages/Admin/Donation/AllCauses';
-import CreateDonationCause from './Pages/Admin/Donation/CreateDonationCause';
-import DonarPaymente from './Pages/Admin/Donation/DonarPaymente';
-import HelpRequestApply from './Pages/Admin/Donation/HelpRequestApply';
-import ManageAllDonars from './Pages/Admin/Donation/ManageAllDonars';
-import UpdateCause from './Pages/Admin/Donation/UpdateCause';
+import ManageDevelopment from './Pages/Admin/Development/ManageDevelopment/ManageDevelopment';
+import AddCause from './Pages/Admin/Donation/AddCause/AddCause';
+import AllCauses from './Pages/Admin/Donation/AllCauses/AllCauses';
+import AllHelpRequests from './Pages/Admin/Donation/AllHelpRequests/AllHelpRequests';
+import ManageAllDonars from './Pages/Admin/Donation/ManageAllDonars/ManageAllDonars';
+import UpdateCause from './Pages/Admin/Donation/updateCause/UpdateCause';
 import Eventmanagement from './Pages/Admin/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/Market/MarketManagement';
 import AddNews from './Pages/Admin/News/AddNews/AddNews';
@@ -88,9 +84,11 @@ import NotFound from './Pages/shared/NotFound/NotFound';
 import BoardHome from './Pages/SocialMedia/Connections/BoardComponent/BoardHome.jsx';
 import ConnectionBoard from './Pages/SocialMedia/Connections/ConnectionBoard';
 import SocialHome from './Pages/SocialMedia/Home/SocialHome';
-import EditReview from './Pages/User/DashboardComponent/EditReview/EditReview';
-import Profile from './Pages/User/DashboardComponent/Profile/Profile';
-import Review from './Pages/User/DashboardComponent/Review/Review';
+import MyDonations from './Pages/User/Donation/MyDonations';
+import MyHelpRequests from './Pages/User/Donation/MyHelpRequests';
+import Profile from './Pages/User/Profile/Profile';
+import EditReview from './Pages/User/Review/EditReview/EditReview';
+import Review from './Pages/User/Review/Review';
 import UserDashboard from './Pages/User/UserDashboard';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
 
@@ -126,15 +124,11 @@ function App() {
             {/* user routes */}
             <Route path="userdashboard" element={<UserDashboard />}>
               <Route path="profile" element={<Profile />} />
-              <Route path="my-event-booking" element={<MyBookedEvents />} />
+              <Route path="myBookedEvents" element={<MyBookedEvents />} />
               <Route path="review" element={<Review />} />
-              <Route path="donarpaymente" element={<DonarPaymente />} />
-              <Route path="requestapply" element={<HelpRequestApply />} />
+              <Route path="myDonations" element={<MyDonations />} />
+              <Route path="myHelpRequests" element={<MyHelpRequests />} />
               <Route path="editReview/:id" element={<EditReview />} />
-              <Route
-                path="createDonationCause"
-                element={<CreateDonationCause />}
-              />
             </Route>
 
             {/* EDUCATION RELATED ROUTES */}
@@ -185,7 +179,7 @@ function App() {
               <Route path="upcoming-events" element={<UpcomingEvents />} />
               <Route path="archived-events" element={<ArchivedEvents />} />
             </Route>
-            <Route></Route>
+
             <Route path="eventDetails/:id" element={<EventDetails />} />
 
             {/* DEVELOPMENT RELATED ROUTES */}
@@ -225,8 +219,7 @@ function App() {
               <Route path="updatecause/:id" element={<UpdateCause />} />
               <Route path="manageAllDonars" element={<ManageAllDonars />} />
               <Route path="development" element={<DevelopmentDashboard />} />
-              <Route path="development" element={<DevelopmentManage />} />
-              <Route path="manageDevelopmet" element={<DevelopmentManage />} />
+              <Route path="manageDevelopmet" element={<ManageDevelopment />} />
               <Route path="editDevelopment/:id" element={<EditBlog />} />
               <Route path="addDevelopment" element={<AddDevelopment />} />
               <Route path="market" element={<MarketManagement />} />
@@ -237,7 +230,7 @@ function App() {
               <Route path="editNews/:id" element={<EditNews />} />
               <Route path="addAppointment" element={<AddAppointment />} />
               <Route path="status" element={<StatusCheck />} />
-              <Route path="requestapply" element={<AllApply />} />
+              <Route path="allHelpRequests" element={<AllHelpRequests />} />
             </Route>
 
             {/* Social Media Routes */}

@@ -23,6 +23,7 @@ export const addACuase = createAsyncThunk(
   }
 );
 
+// give the donation money that you want
 export const giveDonation = createAsyncThunk(
   'causes/giveDonation',
   async ({ data, uId, causeId }) => {
@@ -46,16 +47,6 @@ export const deleteACause = createAsyncThunk(
     return id;
   }
 );
-
-// export const fetchDonarPayment = createAsyncThunk(
-//   'cuases/fetchDonarPayment',
-//   async () => {
-//     const response = await axios
-//       .get('/donation/donarpayment')
-//       .then((response) => response.data);
-//     return response;
-//   }
-// );
 
 const donationSlice = createSlice({
   name: 'causes',
