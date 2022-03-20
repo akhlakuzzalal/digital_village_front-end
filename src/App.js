@@ -64,9 +64,9 @@ import UpcomingEvents from './Pages/Events/UpcomingEvents/UpcomingEvents';
 import AddAppointment from './Pages/Medical/DoctorsAppointment/AddAppointment/AddAppointment';
 import DoctorsAppointment from './Pages/Medical/DoctorsAppointment/DoctorsAppointment';
 import UserAppointments from './Pages/Medical/DoctorsAppointment/UserAppointments/UserAppointments';
-import MedicalDashboard from './Pages/Medical/MedicalDashboard';
+import Medical from './Pages/Medical/Medical';
+import MedicalHome from './Pages/Medical/MedicalHome';
 import FrequentlyAsked from './Pages/Medical/VaccineRegistration/FrequentlyAsked/FrequentlyAsked';
-import Medical from './Pages/Medical/VaccineRegistration/Medical';
 import RegForm from './Pages/Medical/VaccineRegistration/RegForm/RegForm';
 import VaccineInfo from './Pages/Medical/VaccineRegistration/RegistrationPdf/VaccineInfo';
 import Status from './Pages/Medical/VaccineRegistration/Status/Status';
@@ -168,8 +168,8 @@ function App() {
             <Route path="blogDetails/:id" element={<BlogDetails />} />
 
             {/* medical related routes */}
-            <Route path="medicalDashboard" element={<MedicalDashboard />}>
-              <Route path="medical" element={<Medical />} />
+            <Route path="medical" element={<Medical />}>
+              <Route path="medical" element={<MedicalHome />} />
               <Route path="vaccine" element={<VaccineRegistration />} />
               <Route path="options" element={<VaccineOptions />} />
               <Route path="status" element={<Status />} />

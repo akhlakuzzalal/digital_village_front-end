@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { AiOutlineMinusSquare } from 'react-icons/ai';
-import { GoDiffAdded } from 'react-icons/go';
+import { HiLightBulb } from 'react-icons/hi';
 import { ImCheckmark } from 'react-icons/im';
 import mediBanner from './../../../assets/medical/mediBanner.png';
 
@@ -191,23 +190,28 @@ const Services = () => {
                 {datas.map((data) => (
                   <div>
                     <div>
-                      <div className=" flex justify-between items-center cursor-pointer bg-blue-900 p-2  rounded-lg">
-                        <h3 className=" font-semibold text-xl text-white">
-                          {data.title}
-                        </h3>
-
+                      <div className=" flex justify-between items-center cursor-pointer bg-blue-900 p-4 my-1  rounded-lg">
                         {active && data.id === active ? (
-                          <AiOutlineMinusSquare
-                            className="hover:rotate-180 transition duration-700 ease-in-out text-white"
-                            size={30}
-                            onClick={() => setActive('')}
-                          />
+                          <div>
+                            <HiLightBulb
+                              className="inline  transition duration-700 ease-in-out text-[#ffff00]"
+                              size={30}
+                              onClick={() => setActive('')}
+                            />
+                            <h3 className=" inline font-semibold text-xl text-white">
+                              {data.title}
+                            </h3>
+                          </div>
                         ) : (
-                          <GoDiffAdded
-                            className="hover:rotate-180 transition duration-700 ease-in-out text-white"
-                            size={30}
-                            onClick={() => setActive(data?.id)}
-                          />
+                          <div onClick={() => setActive(data?.id)}>
+                            <HiLightBulb
+                              className=" inline transition duration-700 ease-in-out text-white"
+                              size={30}
+                            />
+                            <h3 className=" inline font-semibold text-xl text-white">
+                              {data.title}
+                            </h3>
+                          </div>
                         )}
                       </div>
                       <p

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { AiOutlineMinusSquare } from 'react-icons/ai';
-import { GoDiffAdded } from 'react-icons/go';
+import { FaQuestion } from 'react-icons/fa';
+import { MdQuestionAnswer } from 'react-icons/md';
 import Lottie from 'react-lottie';
 import useMediaQuery from '../../../../hooks/useMediaQuery';
 import animationData from '../../../../lotties/faq.json';
@@ -61,7 +61,7 @@ const FrequentlyAsked = () => {
   };
 
   return (
-    <div className=" 2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6  px-0 my-28">
+    <div className=" 2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6  px-0 ">
       <h2 className=" font-bolder text-xl md:text-3xl  lg:text-4xl text-blue-900  lg:leading-9 md:leading-7 leading-9  dark:text-dark_text">
         Frequently Asked Questions
       </h2>
@@ -87,24 +87,35 @@ const FrequentlyAsked = () => {
           {datas.map((data) => (
             <div>
               <div>
-                <div className=" flex justify-between items-center cursor-pointer">
-                  <h3 className=" font-semibold text-xl leading-5 text-gray-800">
-                    {data.title}
-                  </h3>
-
+                <div className=" cursor-pointer">
                   {active && data.id === active ? (
-                    <AiOutlineMinusSquare
-                      className="hover:rotate-180 transition duration-700 ease-in-out text-blue-900"
-                      custome
-                      size={30}
+                    <div
                       onClick={() => setActive('')}
-                    />
+                      className="flex justify-between items-center "
+                    >
+                      <h3 className=" w-4/5 font-semibold text-xl leading-5 text-gray-800">
+                        {data.title}
+                      </h3>
+                      <MdQuestionAnswer
+                        className=" transition duration-700 ease-in-out text-blue-900"
+                        custome
+                        size={30}
+                      />
+                    </div>
                   ) : (
-                    <GoDiffAdded
-                      className="hover:rotate-180 transition duration-700 ease-in-out text-blue-900"
-                      size={30}
+                    <div
                       onClick={() => setActive(data?.id)}
-                    />
+                      className="flex justify-between items-center "
+                    >
+                      <h3 className=" w-4/5 font-semibold text-xl leading-5 text-gray-800">
+                        {data.title}
+                      </h3>
+                      <FaQuestion
+                        className=" transition duration-700 ease-in-out text-blue-900"
+                        custome
+                        size={30}
+                      />
+                    </div>
                   )}
                 </div>
                 <p
