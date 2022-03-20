@@ -25,7 +25,7 @@ const datas = [
   },
   {
     id: '4',
-    title: 'gynecologists',
+    title: 'Gynecologists',
     description:
       "disease management for female.Often called OB/GYNs, these doctors focus on women' health, including pregnancy and childbirth. They do Pap smears, pelvic exams, and pregnancy checkups. OB/GYNs are trained in both areas. But some of them may focus on women's reproductive health (gynecologists), and others specialize in caring for pregnant women (obstetricians).",
   },
@@ -180,11 +180,11 @@ const Services = () => {
           <section class="text-gray-700">
             <div class="container px-5 py-8 mx-auto">
               <div class="text-center">
-                <h1 class=" text-2xl md:text-5xl font-bold text-center title-font pb-6 text-gray-900 ">
+                <h3 class=" text-3xl font-bold text-center title-font pb-6 text-blue-900 ">
                   Our Departments
-                </h1>
+                </h3>
               </div>
-              <div className=" md:w-7/12 lg:w-8/12 w-full md:mt-0 sm:mt-14 mt-10">
+              <div className=" flex  flex-col justify-center md:w-7/12 lg:w-8/12 w-full md:mt-0 sm:mt-14 mt-10">
                 {/* <!-- Digital Section --> */}
 
                 {datas.map((data) => (
@@ -227,129 +227,12 @@ const Services = () => {
                   </div>
                 ))}
               </div>
-              {/* <div class="w-full flex flex-wrap  sm:mx-auto sm:mb-2 -mx-2">
-                <div class="w-full  py-2">
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold  bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      Cardiologists
-                    </summary>
-
-                    <span>
-                      For cardiovascular conditions.They’re experts on the heart
-                      and blood vessels. You might see them for heart failure, a
-                      heart attack, high blood pressure, or an irregular
-                      heartbeat.
-                    </span>
-                  </details>
-
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      Family physician
-                    </summary>
-
-                    <span>
-                      For people of all ages.They care for the whole family,
-                      including children, adults, and the elderly. They do
-                      routine checkups and screening tests, give you flu and
-                      immunization shots, and manage diabetes and other ongoing
-                      medical conditions.
-                    </span>
-                  </details>
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold  bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      Ophthalmologists
-                    </summary>
-
-                    <span>specialize in eye and vision care.</span>
-                  </details>
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold  bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      gynecologists
-                    </summary>
-
-                    <span>
-                      disease management for female.Often called OB/GYNs, these
-                      doctors focus on women's health, including pregnancy and
-                      childbirth. They do Pap smears, pelvic exams, and
-                      pregnancy checkups. OB/GYNs are trained in both areas. But
-                      some of them may focus on women's reproductive health
-                      (gynecologists), and others specialize in caring for
-                      pregnant women (obstetricians).
-                    </span>
-                  </details>
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      Dermatologists
-                    </summary>
-
-                    <span>
-                      For diseases of the skin.Have problems with your skin,
-                      hair, nails? Do you have moles, scars, acne, or skin
-                      allergies? Dermatologists can help.
-                    </span>
-                  </details>
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold  bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      Neurologists
-                    </summary>
-
-                    <span>
-                      For the nerves, spine, and brain.These are specialists in
-                      the nervous system, which includes the brain, spinal cord,
-                      and nerves. They treat strokes, brain and spinal tumors,
-                      epilepsy, Parkinson's disease, and Alzheimer's disease.
-                    </span>
-                  </details>
-                </div>
-              </div> */}
             </div>
           </section>
         </div>
         <div className=" px-8 ">
           <form class="">
-            <p class="text-center pb-4 text-base md:text-2xl font-bolder text-blue-600">
+            <p class="text-center pb-4 text-base  font-bolder text-gray-600">
               We are here to hear from you
             </p>
             <div class="flex flex-wrap -mx-3 mb-2">

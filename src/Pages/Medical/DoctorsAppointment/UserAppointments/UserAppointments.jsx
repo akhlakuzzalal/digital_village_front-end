@@ -21,7 +21,7 @@ const UserAppointments = () => {
   }, [date, email]);
 
   return (
-    <div>
+    <div className=" my-5">
       <Procedure />
       <h3 className="text-center  text-xl md:text-3xl text-blue-900 my-10">
         Your appointments

@@ -11,7 +11,7 @@ const UserAppointment = ({ appointment, date }) => {
   const selectedDate = new Date(date).toLocaleDateString();
 
   return (
-    <>
+    <div className="my-5">
       {appointment?.length > 0 ? (
         <div className="flex flex-col ">
           <h4 className="my-5 text-blue-900">
@@ -86,7 +86,7 @@ const UserAppointment = ({ appointment, date }) => {
           </h3>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
