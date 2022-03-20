@@ -82,11 +82,7 @@ const useFirebase = () => {
           dateOfBirth: user?.dateOfBirth || 'unknown',
           emailVerified: authUser?.emailVerified,
         };
-        dispatch(setUser(newUser)).then(() => {
-          if (uId) {
-            dispatch(getSingleUserInfo({ id: uId }));
-          }
-        });
+        dispatch(setUser(newUser));
       } else {
         dispatch(setUser({}));
       }
@@ -135,6 +131,8 @@ const useFirebase = () => {
       dispatch(setRoles([...roles, response?.data?.roles]));
       dispatch(setToken(response?.data?.accessToken));
       dispatch(setUId(response?.data?.uId));
+
+      dispatch(getSingleUserInfo({ id: response?.data?.uId })); // get the user all info for profile page
       console.log(response?.data?.message);
     } catch (error) {
       console.log(error.message);

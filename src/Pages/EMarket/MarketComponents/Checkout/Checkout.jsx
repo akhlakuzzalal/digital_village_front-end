@@ -17,7 +17,7 @@ const Checkout = () => {
           <CustomerOrder></CustomerOrder>
         </div>
       </div>
-      <PayModal price={120} id={2} returnPage={'e-market'}></PayModal>
+      <PayModal price={120} id={2} returnPage={'e-market'} />
     </div>
   );
 };
