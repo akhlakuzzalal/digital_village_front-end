@@ -6,6 +6,8 @@ const NewsSideCard = ({ n }) => {
   return (
     <div className="flex  items-center rounded-lg shadow-xl mb-4 px-3 py-3 space-x-6  bg-opacity-20 dark:dark-card-bg">
       {/* image */}
+
+      
       <div className="w-1/2 h-[100px] overflow-hidden cursor-pointer">
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"

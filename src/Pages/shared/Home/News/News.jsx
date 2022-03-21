@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Autoplay } from 'swiper';
 // Import Swiper styles
 import 'swiper/css';
@@ -19,9 +19,9 @@ const News = () => {
 
   return (
     <div className="container my-20 mx-auto px-4 ">
-      <p className="text-center">Our News</p>
+      <p className="text-center text-4xl">Our News</p>
       <h1 className=" text-2xl   text-center font-bold py-2   text-primary">
-        Latest News
+        Latest News   
       </h1>
       <div className="flex md:my-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 pt-10  pb-10">
@@ -60,7 +60,8 @@ const News = () => {
           </div>
 
           {/* news sidebar */}
-          <div className="hidden  lg:flex flex-col justify-center">
+          <div className="hidden  lg:flex flex-col justify-center -mt-14">
+          <Link to="/allNews"><span className='ml-8 border-b-4 text-blue-600 pt-10 text-xl '>See All News...</span></Link>
             {news.slice(0, 3).map((n) => (
               <NewsSideCard key={n._id} n={n} />
             ))}
