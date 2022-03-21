@@ -17,9 +17,9 @@ export const getAllUsers = createAsyncThunk(
 );
 export const getSingleUserInfo = createAsyncThunk(
   'user/getSingleUserInfo',
-  async ({ id }) => {
+  async (email) => {
     const response = await axios
-      .get(`/user/singleUserInfo?id=${id}`)
+      .get(`/user/singleUserInfo/?email=${email}`)
       .then((response) => response.data);
     return response;
   }

@@ -3,32 +3,16 @@ import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import Links from './Links/Links';
 const NewSidebar = ({ links, setIsOpen }) => {
   const [showText, setShowText] = useState(false);
-  const [showTooltip, setShowTooltip] = useState(false);
 
   return (
     <div
-      className={`bg-slate-900 text-white mt-[80px] z-30 fixed ${
+      className={`min-h-full mt-[80px] overflow-y-scroll bg-slate-900 text-white z-30 ${
         showText && 'min-w-[200px]'
       }`}
-      style={{ height: 'calc(100vh - 88px)' }}
     >
-      {/* Links of the dashboard */}
-      <ul className="mt-3 space-y-1">
-        {links.map((link) => (
-          <li key={link.name}>
-            <Links
-              link={link}
-              showText={showText}
-              showTooltip={showTooltip}
-              setShowTooltip={setShowTooltip}
-            />
-          </li>
-        ))}
-      </ul>
-
       {/* icon for closing and opening */}
       {showText ? (
-        <div className="sticky text-right bottom-4 w-full rounded-lg text-white opacity-60 hover:opacity-100 bg-slate-900">
+        <div className="text-right w-full rounded-lg text-white opacity-60 hover:opacity-100 bg-slate-900">
           <BsArrowLeft
             size={30}
             className="cursor-pointer ml-auto m-3"
@@ -39,7 +23,7 @@ const NewSidebar = ({ links, setIsOpen }) => {
           />
         </div>
       ) : (
-        <div className="sticky text-right bottom-4 w-full rounded-lg text-white opacity-60 hover:opacity-100 bg-slate-900">
+        <div className="text-right w-full rounded-lg text-white opacity-60 hover:opacity-100 bg-slate-900">
           <BsArrowRight
             size={30}
             className="cursor-pointer ml-auto m-3"
@@ -50,6 +34,15 @@ const NewSidebar = ({ links, setIsOpen }) => {
           />
         </div>
       )}
+
+      {/* Links of the dashboard */}
+      <ul className="mt-3 space-y-1">
+        {links.map((link) => (
+          <li key={link.name}>
+            <Links link={link} showText={showText} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

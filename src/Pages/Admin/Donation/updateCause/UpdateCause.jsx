@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import axios from '../../../api/axios';
-import FileUpload from '../../../Components/FileUpload';
-import { updateACause } from '../../../redux/slices/Donations/donationSlice';
+import axios from '../../../../api/axios';
+import FileUpload from '../../../../Components/FileUpload';
+import { updateACause } from '../../../../redux/slices/Donations/donationSlice';
 const UpdateCause = () => {
   const { id } = useParams();
   const causes = useSelector((state) => state.donation.causes);

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllCuases } from '../../../redux/slices/Donations/donationSlice';
-import Cause from './Cause';
+import { fetchAllCuases } from '../../../../redux/slices/Donations/donationSlice';
+import Cause from './Cause/Cause';
 
 const AllCauses = () => {
   const causes = useSelector((state) => state.donation.causes);

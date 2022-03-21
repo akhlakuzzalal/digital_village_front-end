@@ -9,57 +9,16 @@ const DonarForm = ({ cause }) => {
   const uId = useSelector((state) => state.user.uId);
   const dispatch = useDispatch();
 
-  const {
-    register,
-    handleSubmit,
-    trigger,
-    formState: { errors },
-  } = useForm();
-
-  // const purchase = (data) => {
-  //   const info = {
-  //     product_name: title,
-  //     product_profile: category,
-  //     product_image: image,
-  //     total_amount: goal,
-  //     cus_name: user?.displayName,
-  //     cus_email: user?.email,
-  //   };
-  //   fetch(`https://digital-village.herokuapp.com/sslpayment/init`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'content-type': 'application/json',
-  //     },
-  //     body: JSON.stringify(data),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       window.location.replace(data);
-  //     });
-  //   dispatch(setPayModal(true));
-  //   swal({
-  //     position: 'top-end',
-  //     icon: 'success',
-  //     title: 'Your payment has been successfull',
-  //     showConfirmButton: false,
-  //     timer: 1500,
-  //   });
-  // };
+  const { register, handleSubmit } = useForm();
 
   const handleGiveDonation = async (data) => {
     dispatch(giveDonation({ data, uId, causeId: cause?._id })).then(() => {
       Swal.fire({
-        title: 'updated successfully',
+        title:
+          'Your payment is under review. Please complete the payment with stripe. Otherwise it will be discarded.',
         confirmButtonText: 'Okay',
       });
     });
-    // const response = await axios.put('/donationCause/take', {
-    //   ...data,
-    //   donarId: uId,
-    //   causeId: cause?._id,
-    // });
-    // console.log(response.data);
   };
 
   return (
@@ -82,7 +41,7 @@ const DonarForm = ({ cause }) => {
         <input
           className="bg-primary text-sm hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
           type="submit"
-          value="Ready for Donation Payment"
+          value="Donate now"
         />
       </form>
       <PayModal price={60} id={12} returnPage="donation" />

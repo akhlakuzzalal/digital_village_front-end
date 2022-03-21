@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllNotifications } from '../../redux/slices/notification/notificationSlice';
+import { fetchUserSpecificNotification } from '../../redux/slices/notification/notificationSlice';
 import note from './../../assets/notification/notification.png';
 import DetailNotification from './DetailNotification/DetailNotification';
 import SingleNotification from './SingleNotification/SingleNotification';
 
 const Notification = () => {
+  const user = useSelector((state) => state.user.user);
+
   const notifications = useSelector(
     (state) => state.notifications.notifications
   );
@@ -17,8 +19,10 @@ const Notification = () => {
 
   const dispatch = useDispatch();
 
+  console.log(notifications);
+
   useEffect(() => {
-    dispatch(fetchAllNotifications());
+    dispatch(fetchUserSpecificNotification(user.email));
   }, []);
 
   return (
@@ -28,12 +32,16 @@ const Notification = () => {
     >
       {/* notification cards */}
       <div className="w-100 md:w-1/2 space-y-4 flex-1">
-        {notifications.map((notification, i) => (
-          <SingleNotification
-            key={notification._id}
-            notification={notification}
-          ></SingleNotification>
-        ))}
+        {notifications && notifications.length >= 1 ? (
+          notifications.map((notification, i) => (
+            <SingleNotification
+              key={notification._id}
+              notification={notification}
+            ></SingleNotification>
+          ))
+        ) : (
+          <p className="text-center">No notifications available</p>
+        )}
       </div>
 
       {/* notification details */}

@@ -7,12 +7,12 @@ import {
 import { MdEmail } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import { BASE_URI } from '../../../../api/axios';
+import { BASE_URI } from '../../../api/axios';
 import {
   getSingleUserInfo,
   updateUser,
   updateUserWithoutProfileImg,
-} from '../../../../redux/slices/user/userSlice';
+} from '../../../redux/slices/user/userSlice';
 import EditProfile from './EditProfile';
 
 const Profile = () => {
@@ -37,12 +37,13 @@ const Profile = () => {
     },
     [previewFile]
   );
+
   const handleUpdateUser = async (data) => {
     const formData = new FormData();
     formData.append('file', file);
     // update without profile image
     if (data.employmentStatus === 'choose one') delete data.employmentStatus;
-    if (data.maritialStatus === 'choose one') delete data.maritialStatus;
+    if (data.maritalStatus === 'choose one') delete data.maritalStatus;
     if (data.religion === 'choose one') delete data.religion;
     if (data.gender === 'choose one') delete data.gender;
 
@@ -55,7 +56,7 @@ const Profile = () => {
 
     if (file?.path) {
       dispatch(updateUser({ id: uId, formData })).then(() => {
-        dispatch(getSingleUserInfo({ id: uId }));
+        dispatch(getSingleUserInfo(user.email));
         Swal.fire({
           title: 'updated successfully',
           confirmButtonText: 'Okay',
@@ -63,7 +64,7 @@ const Profile = () => {
       });
     } else {
       dispatch(updateUserWithoutProfileImg({ id: uId, data })).then(() => {
-        dispatch(getSingleUserInfo({ id: uId }));
+        dispatch(getSingleUserInfo(user.email));
         Swal.fire({
           title: 'updated successfully',
           confirmButtonText: 'Okay',
@@ -83,7 +84,7 @@ const Profile = () => {
 
   useEffect(() => {
     previewFile.forEach((f) => URL.revokeObjectURL(f.preview));
-    dispatch(getSingleUserInfo({ id: uId }));
+    dispatch(getSingleUserInfo(user.email));
   }, [previewFile, uId]);
 
   return (
@@ -131,7 +132,7 @@ const Profile = () => {
           </div>
         ) : (
           <div className="col-start-5 col-end-12 mt-10 md:mt-0">
-            <h2 className="heading_md">{user?.name}</h2>
+            <h2 className="heading_md dark:text-white">{user?.name}</h2>
             <p className="pt-3">{user?.occupation}</p>
             <p className="font-semibold mb-10">#id : villager{uId}</p>
             {/* <div className="my-6">
@@ -168,7 +169,7 @@ const Profile = () => {
                 <span className="mr-4">
                   <BsArrowReturnRight />
                 </span>
-                Marital status : {user?.maritialStatus || 'unavailable'}
+                Marital status : {user?.maritalStatus || 'unavailable'}
               </p>
               <p className="flex items-center py-2">
                 <span className="mr-4">

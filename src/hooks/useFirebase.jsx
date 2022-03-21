@@ -28,7 +28,6 @@ const useFirebase = () => {
   const [authError, setAuthError] = useState('');
   const roles = useSelector((state) => state.user.roles);
   const token = useSelector((state) => state.user.token);
-  const uId = useSelector((state) => state.user.uId);
 
   const dispatch = useDispatch();
 
@@ -46,7 +45,7 @@ const useFirebase = () => {
         const newUser = {
           name: user.displayName,
           email: user.email,
-          dateOfBirth: 'unknown',
+          dateOfBirth: 'unavailable',
           password: 'noneedofpassword',
           emailVerified: user.emailVerified,
         };
@@ -83,10 +82,7 @@ const useFirebase = () => {
           emailVerified: authUser?.emailVerified,
         };
         dispatch(setUser(newUser));
-        console.log('print hello');
-        if (uId) {
-          dispatch(getSingleUserInfo({ id: uId }));
-        }
+        dispatch(getSingleUserInfo(authUser?.email));
       } else {
         dispatch(setUser({}));
       }
@@ -100,6 +96,7 @@ const useFirebase = () => {
     setIsLoading(true);
     try {
       await signOut(auth);
+      localStorage.setItem('persist:digital_village_storage', {});
       logoutFromDB();
     } catch (error) {
       console.log(error);
@@ -115,6 +112,7 @@ const useFirebase = () => {
     dispatch(setToken(response?.data?.accessToken));
     dispatch(setUId(response?.data?.uId));
     dispatch(setUser(newUser));
+    dispatch(getSingleUserInfo(newUser.email));
     console.log(response?.data);
   };
 
@@ -134,7 +132,10 @@ const useFirebase = () => {
       dispatch(setRoles([...roles, response?.data?.roles]));
       dispatch(setToken(response?.data?.accessToken));
       dispatch(setUId(response?.data?.uId));
+
+      dispatch(getSingleUserInfo(email)); // get the user all info for profile page
       console.log(response?.data?.message);
+      console.log(user);
     } catch (error) {
       console.log(error.message);
       setAuthError(error.message);
