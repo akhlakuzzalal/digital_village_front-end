@@ -204,7 +204,10 @@ function App() {
             <Route path="e-market" element={<EMarket />} />
             <Route path="cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
-            <Route path="productdetails/:id" element={<ProductDetails />} />
+            <Route
+              path="productdetails/:id/:item"
+              element={<ProductDetails />}
+            />
             <Route path="medicinestore" element={<MedicineShop />} />
             <Route path="marketdashboard" element={<MarketDashboard />}>
               <Route path="myorder" element={<MyOrder />} />

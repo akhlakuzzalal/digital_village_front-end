@@ -8,8 +8,16 @@ import useCart from './Cart/useCart';
 
 const ProductDetails = () => {
   const { handleAddCart } = useCart();
-  const { id } = useParams();
-  const products = useSelector((state) => state.market.products.products);
+  const { id, item } = useParams();
+  const medicines = useSelector((state) => state.market.products.medicines);
+
+  const marketProducts = useSelector((state) => state.market.products.products);
+  let products;
+  if (item === 'product') {
+    products = marketProducts;
+  } else {
+    products = medicines;
+  }
   const product = products.find((p) => p._id === id);
   const { name, price, brand, img, description, rating } = product;
 
@@ -47,14 +55,16 @@ const ProductDetails = () => {
               onClick={() => handleAddCart(id, name, img, price)}
               className="btn bg-primary px-4 py-2 my-2"
             >
-             <span className='text-white font-bolder '> Add to cart</span>
+              <span className="text-white font-bolder "> Add to cart</span>
             </button>
           </div>
         </div>
       </div>
       {/* Rating & comments of a product */}
       <div className="w-10/12 mx-auto mt-6">
-        <h6 className="md:mb-10 text-blue-600 text-base md:text-xl">Ratings and reviews of {name}</h6>
+        <h6 className="md:mb-10 text-blue-600 text-base md:text-xl">
+          Ratings and reviews of {name}
+        </h6>
         {/* Rating */}
         <h6 className="md:mt-6 ml-0 md:ml-10 inline border-b-2 border-gray-700">
           Rating
