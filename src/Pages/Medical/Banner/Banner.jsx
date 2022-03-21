@@ -19,7 +19,7 @@ const Banner = () => {
 
   return (
     <div
-      className="mt-[80px] mb-10 md:mb-24 w-[100%]"
+      className=" mb-10 md:mb-24 w-[100%]"
       style={{
         backgroundColor: '#f7f8fa',
       }}

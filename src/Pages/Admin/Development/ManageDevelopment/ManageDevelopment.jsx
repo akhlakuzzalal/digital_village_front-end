@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 import axios, { BASE_URI } from '../../../../api/axios';
 
-const DevelopmentManage = () => {
+const ManageDevelopment = () => {
   const [development, setDevelopment] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -89,4 +89,4 @@ const DevelopmentManage = () => {
   );
 };
 
-export default DevelopmentManage;
+export default ManageDevelopment;

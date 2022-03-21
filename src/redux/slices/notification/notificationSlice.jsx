@@ -12,6 +12,16 @@ export const fetchAllNotifications = createAsyncThunk(
   }
 );
 
+export const fetchUserSpecificNotification = createAsyncThunk(
+  'notifications/fetchUserSpecificNotification',
+  async (email) => {
+    const response = await axios
+      .get(`/notification/userSpecificNotifciations/?email=${email}`)
+      .then((response) => response.data);
+    return response;
+  }
+);
+
 const notificationSlice = createSlice({
   name: 'notifications',
   initialState: {
@@ -30,6 +40,14 @@ const notificationSlice = createSlice({
     builder.addCase(fetchAllNotifications.fulfilled, (state, { payload }) => {
       state.notifications = payload;
     });
+    builder.addCase(
+      fetchUserSpecificNotification.fulfilled,
+      (state, { payload }) => {
+        if (payload && payload.length >= 1) {
+          state.notifications = payload;
+        }
+      }
+    );
   },
 });
 

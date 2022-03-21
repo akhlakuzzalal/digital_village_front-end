@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
-import axios from '../../../../api/axios';
-import useFirebase from '../../../../hooks/useFirebase';
-import MyReview from '../MyReview/MyReview';
+import axios from '../../../api/axios';
+import useFirebase from '../../../hooks/useFirebase';
+import MyReview from './MyReview/MyReview';
 
 const Review = () => {
   const { user } = useFirebase();
@@ -30,14 +30,18 @@ const Review = () => {
   };
 
   return (
-    <div className="bg-cover h-[100%]  w-[100%]bg-no-repeat md:pb-10 "
-    style={{
-      backgroundImage: `url(https://st2.depositphotos.com/3467927/6010/i/600/depositphotos_60107233-stock-photo-businessman-pushing-button-five-star.jpg)`,
-    }}>
+    <div
+      className="bg-cover h-[100%]  w-[100%]bg-no-repeat md:pb-10 "
+      style={{
+        backgroundImage: `url(https://st2.depositphotos.com/3467927/6010/i/600/depositphotos_60107233-stock-photo-businessman-pushing-button-five-star.jpg)`,
+      }}
+    >
       <div className=" pb-10 pt-14 md:pt-24  dark:dark-card-bg  rounded-2xl">
         {/* add Review form */}
         <div className="w-full">
-          <h1 className=" text-center pt-12  text-4xl md:text-5xl text-white ">Add Review</h1>
+          <h1 className=" text-center pt-12  text-4xl md:text-5xl text-white ">
+            Add Review
+          </h1>
           <form
             className=" space-y-6 w-full md:w-1/2 mx-auto mt-10"
             onSubmit={handleSubmit(handleAddReview)}
@@ -125,7 +129,7 @@ const Review = () => {
 
         {/* My Review */}
       </div>
-      <div className=' py-10 md:mt-10'>
+      <div className=" py-10 md:mt-10">
         <h1 className="text-center pb-4 text-white">My Review</h1>
         <MyReview />
       </div>

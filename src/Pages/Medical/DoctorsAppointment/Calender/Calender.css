@@ -1,9 +1,9 @@
 .sdp {
-  --theme-color: #8b5cf6 !important; /* violet color */
+  --theme-color: #000000 !important; /* violet color */
   /* --theme-width: 100% !important; */
-  --selected-date-color: #000000 !important;
+  --selected-date-color: #ff0000 !important;
   background: #021580 !important;
-  color: #ffffff !important;
+  color: #000000 !important;
 
   --disabled-color: rgb(126, 121, 121) !important;
 

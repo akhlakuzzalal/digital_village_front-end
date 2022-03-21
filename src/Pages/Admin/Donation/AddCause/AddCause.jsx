@@ -2,8 +2,8 @@ import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import FileUpload from '../../../Components/FileUpload';
-import { addACuase } from '../../../redux/slices/Donations/donationSlice';
+import FileUpload from '../../../../Components/FileUpload';
+import { addACuase } from '../../../../redux/slices/Donations/donationSlice';
 
 const AddCause = () => {
   const dispatch = useDispatch();

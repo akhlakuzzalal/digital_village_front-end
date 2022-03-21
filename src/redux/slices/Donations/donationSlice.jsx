@@ -23,10 +23,10 @@ export const addACuase = createAsyncThunk(
   }
 );
 
+// give the donation money that you want
 export const giveDonation = createAsyncThunk(
   'causes/giveDonation',
   async ({ data, uId, causeId }) => {
-    console.log(data, uId, causeId);
     const response = await axios
       .put('/donationCause/take', {
         ...data,
@@ -48,16 +48,6 @@ export const deleteACause = createAsyncThunk(
   }
 );
 
-// export const fetchDonarPayment = createAsyncThunk(
-//   'cuases/fetchDonarPayment',
-//   async () => {
-//     const response = await axios
-//       .get('/donation/donarpayment')
-//       .then((response) => response.data);
-//     return response;
-//   }
-// );
-
 const donationSlice = createSlice({
   name: 'causes',
   initialState: {
@@ -66,6 +56,7 @@ const donationSlice = createSlice({
 
   reducers: {
     updateACause: (state, { payload }) => {
+      console.log('this is payload', payload);
       const updatedCause = payload;
       const AllCausesAfterRemovingThePrev = state.causes.filter(
         (cause) => cause._id !== payload._id
@@ -92,13 +83,8 @@ const donationSlice = createSlice({
 
     //delete
     builder.addCase(deleteACause.fulfilled, (state, { payload }) => {
-      console.log(payload);
       state.causes = state.causes.filter((cause) => cause._id !== payload);
     });
-    //  //Payment add
-    //  builder.addCase(fetchDonarPayment.fulfilled, (state, { payload }) => {
-    //   state.causes.push(payload);
-    // });
   },
 });
 

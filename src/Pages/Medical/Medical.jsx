@@ -4,8 +4,8 @@ import { FaClinicMedical } from 'react-icons/fa';
 import { GiLoveInjection, GiMedicines } from 'react-icons/gi';
 import { RiUserHeartFill } from 'react-icons/ri';
 import { Outlet, useLocation } from 'react-router-dom';
-import NewSidebar from './../../Components/Sidebar/NewSidebar';
-import VaccineRegistration from './VaccineRegistration/VaccineRegistration';
+import NewSidebar from '../../Components/Sidebar/NewSidebar';
+import MedicalHome from './MedicalHome';
 
 const links = [
   {
@@ -21,27 +21,26 @@ const links = [
   {
     name: 'Vaccine Registration',
     icon: <GiLoveInjection size={30} />,
-    path: '/medicalDashboard/vaccine',
+    path: '/medical/vaccine',
   },
   {
     name: 'Doctor Appointment',
     icon: <AiOutlineMedicineBox size={30} />,
-    path: '/medicalDashboard/appointment',
+    path: '/medical/appointment',
   },
   {
     name: 'Your Appointment',
     icon: <RiUserHeartFill size={30} />,
-    path: '/medicalDashboard/userAppointments',
+    path: '/medical/userAppointments',
   },
 ];
 
-const MedicalDashboard = () => {
+const Medical = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const location = useLocation();
   const initial =
-    location.pathname === '/medicalDashboard' ||
-    location.pathname === '/medicalDashboard/';
+    location.pathname === '/medical' || location.pathname === '/medical/';
 
   return (
     <div className="flex">
@@ -53,10 +52,10 @@ const MedicalDashboard = () => {
         className={`mt-[85px] flex-1 ${isOpen ? 'ml-[273px]' : 'ml-[82px]'}`}
       >
         {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
-        {initial ? <VaccineRegistration /> : <Outlet />}
+        {initial ? <MedicalHome /> : <Outlet />}
       </div>
     </div>
   );
 };
 
-export default MedicalDashboard;
+export default Medical;
