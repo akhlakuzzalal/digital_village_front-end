@@ -63,7 +63,6 @@ const Navbar = ({ navigation }) => {
   const location = useLocation();
   const path = location.pathname;
   const shwoFixedHeader = location.pathname.indexOf('admin') !== -1;
-  console.log(path);
 
   return (
     <header

@@ -17,9 +17,9 @@ export const getAllUsers = createAsyncThunk(
 );
 export const getSingleUserInfo = createAsyncThunk(
   'user/getSingleUserInfo',
-  async ({ id }) => {
+  async (email) => {
     const response = await axios
-      .get(`/user/singleUserInfo?id=${id}`)
+      .get(`/user/singleUserInfo/?email=${email}`)
       .then((response) => response.data);
     return response;
   }
@@ -88,6 +88,7 @@ const userSlice = createSlice({
       }
     });
     builder.addCase(getSingleUserInfo.fulfilled, (state, { payload }) => {
+      console.log('this is payload', payload);
       if (payload && payload.length >= 1) {
         state.user = payload[0];
       }
