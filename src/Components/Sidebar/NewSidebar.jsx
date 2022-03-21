@@ -6,7 +6,7 @@ const NewSidebar = ({ links, setIsOpen }) => {
 
   return (
     <div
-      className={`min-h-full mt-[80px] overflow-y-scroll bg-slate-900 text-white z-30 ${
+      className={`min-h-full top-[80px] fixed bg-slate-900 text-white z-30 ${
         showText && 'min-w-[200px]'
       }`}
     >

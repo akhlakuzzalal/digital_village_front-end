@@ -87,9 +87,13 @@ const userSlice = createSlice({
         state.pageCount = pageNumber;
       }
     });
+    // single user info
     builder.addCase(getSingleUserInfo.fulfilled, (state, { payload }) => {
       if (payload && payload.length >= 1) {
         state.user = payload[0];
+        state.roles = [payload[0].roles];
+        state.uId = payload[0]._id;
+        state.token = payload[0].token;
       }
     });
     builder.addCase(updateUser.fulfilled, (state, { payload }) => {

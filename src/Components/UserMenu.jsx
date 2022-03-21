@@ -21,7 +21,8 @@ const UserMenu = () => {
     ? roles.map((role) => Object.values(role)).flat()
     : [];
 
-  const IsAdmin = rolesArray?.find((role) => [5000]?.includes(role));
+  const IsAdmin = rolesArray?.includes(5000);
+  console.log(rolesArray, roles, IsAdmin, 'roles Check');
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
