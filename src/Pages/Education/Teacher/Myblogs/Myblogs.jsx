@@ -65,7 +65,7 @@ const Myblogs = () => {
   }, [user?.email]);
 
   return (
-    <article className="flex flex-wrap justify-evenly items-center gap-6">
+    <article className="flex flex-wrap justify-evenly items-center gap-2 lg:h-[100vh]">
       {myBlogs.map((blog) => (
         <BlogCard key={blog._id} blog={blog} />
       ))}

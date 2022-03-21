@@ -177,7 +177,6 @@ const App = () => (
               <Route path="upcoming-events" element={<UpcomingEvents />} />
               <Route path="archived-events" element={<ArchivedEvents />} />
             </Route>
-
             <Route path="eventDetails/:id" element={<EventDetails />} />
 
             {/* DEVELOPMENT RELATED ROUTES */}

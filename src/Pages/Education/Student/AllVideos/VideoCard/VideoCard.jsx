@@ -8,7 +8,7 @@ const VideoCard = ({ video, children }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="border lg:w-fit lg:rounded-2xl dark:dark-card-bg w-full">
+    <div className="border lg:w-[350px] lg:h-[350px] lg:rounded-2xl dark:dark-card-bg w-full">
       <div
         className="space-y-4 cursor-pointer group hover:bg-slate-100 dark:hover:dark-card-bg"
         onClick={() => navigate(`/detailvideo/${video?._id}`)}

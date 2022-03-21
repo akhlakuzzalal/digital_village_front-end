@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import img from '../../../../assets/events/blue_celeste_search3.png';
 import Pagination from '../../../../Components/Pagination';
 import {
   fetchBlogs,
@@ -32,14 +33,14 @@ const AllBlogs = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 min-h-[130vh]">
+      <img className="w-full h-[300px] " src={img} alt="" />
       <Search handleSearch={handleSearch} />
 
-      <h3 className="text-center py-6 text-xl md:text-6xl lg:text-6xl mt-3">
+      <h3 className="text-center py-6 text-xl md:text-4xl lg:text-4xl mt-3">
         Available Blogs
       </h3>
-
-      <article className="flex flex-wrap justify-evenly items-center gap-6">
+      <article className="flex flex-wrap justify-evenly items-center gap-6 lg:mx-[100px]">
         {blogs.map((blog) => (
           <BlogCard key={blog._id} blog={blog} />
         ))}
