@@ -1,33 +1,20 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
-import swal from 'sweetalert';
-import axios from '../../../../api/axios';
+import { useDispatch } from 'react-redux';
+import { addAnAppointment } from '../../../../redux/slices/medical/medicalSlice';
 
 const AddAppointment = () => {
-  const user = useSelector((state) => state.user.user);
-
   const {
     formState: { errors },
     register,
     handleSubmit,
     trigger,
   } = useForm();
+  const dispatch = useDispatch();
 
   const handleAddAppointment = (data) => {
-    axios
-      .post('/availableAppointment/saveAppointment', data)
-      .then((response) => {
-        if (response?.data) {
-          swal('appointment added', {
-            icon: 'success',
-          });
-        } else {
-          swal('failed to add', {
-            icon: 'error',
-          });
-        }
-      });
+    dispatch(addAnAppointment(data));
+    alert('successfully added');
   };
 
   return (

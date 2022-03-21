@@ -26,7 +26,7 @@ const VaccineOptions = () => {
             </Link>
 
             <Link
-              to="/medicalDashboard/regForm"
+              to="/medical/regForm"
               className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white "
               style={{
                 backgroundColor: '#10217d',
@@ -67,7 +67,7 @@ const VaccineOptions = () => {
             </Link>
 
             <Link
-              to="/medicalDashboard/regForm"
+              to="/medical/regForm"
               className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white "
               style={{
                 backgroundColor: '#10217d',
@@ -108,7 +108,7 @@ const VaccineOptions = () => {
             </Link>
 
             <Link
-              to="/medicalDashboard/regForm"
+              to="/medical/regForm"
               className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white "
               style={{
                 backgroundColor: '#10217d',
