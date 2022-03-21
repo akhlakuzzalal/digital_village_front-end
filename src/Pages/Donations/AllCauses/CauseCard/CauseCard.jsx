@@ -66,28 +66,28 @@ const CauseCard = ({
       </div>
 
       {/* progress bar */}
-      <div class="py-5">
+      <div class="py-4">
         <p class="text-gray-600 dark:text-dark_text">Raised {percent.toFixed(0)}% completed</p>
-        <Progress
+        <Progress 
           percent={percent.toFixed(0)}
           theme={{
             error: {
-              symbol: percent.toFixed(0) + '%',
+              // symbol: percent.toFixed(0) + '%',
               trailColor: 'red',
               color: 'red',
             },
             default: {
-              symbol: percent.toFixed(0) + '%',
+              // symbol: percent.toFixed(0) + '%',
               trailColor: 'lightblue',
               color: 'blue',
             },
             active: {
-              symbol: `${percent.toFixed(0) + '%'}`,
+              // symbol: `${percent.toFixed(0) + '%'}`,
               trailColor: 'purple',
               color: '#f55767',
             },
             success: {
-              symbol: percent.toFixed(0) + '%✅',
+              // symbol: percent.toFixed(0) +'%✅',
               trailColor: 'lime',
               color: 'green',
             },
