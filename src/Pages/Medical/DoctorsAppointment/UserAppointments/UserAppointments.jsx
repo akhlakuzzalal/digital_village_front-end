@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import axios from '../../../../api/axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { showUserAppointment } from '../../../../redux/slices/medical/medicalSlice';
 import Calender from './../Calender/Calender';
 import Procedure from './Procedure';
 import UserAppointment from './UserAppointment';
@@ -14,10 +14,21 @@ const UserAppointments = () => {
     console.log(date.toDateString());
     setDate(date);
   };
+  // useEffect(() => {
+  //   axios
+  //     .get(`/appointment/findUserAppointment?email=${email}&date=${date}`)
+  //     .then((response) => setAppointment(response.data));
+  // }, [date, email]);
+  const selectedAppointment = useSelector(
+    (state) => state.medical.userAppointment
+  );
+
+  const dispatch = useDispatch();
+
+  console.log(selectedAppointment);
+
   useEffect(() => {
-    axios
-      .get(`/appointment/findUserAppointment?email=${email}&date=${date}`)
-      .then((response) => setAppointment(response.data));
+    dispatch(showUserAppointment({ email, date }));
   }, [date, email]);
 
   return (
@@ -31,7 +42,7 @@ const UserAppointments = () => {
           <Calender onChange={onChange} />
         </div>
         <div className=" mx-0 md:mx-auto">
-          <UserAppointment appointment={appointment} date={date} />
+          <UserAppointment appointment={selectedAppointment} date={date} />
         </div>
       </div>
     </div>

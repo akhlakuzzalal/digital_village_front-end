@@ -8,6 +8,7 @@ export const fetchAllAvailableAppointments = createAsyncThunk(
     const response = await axios
       .get('/availableAppointment/getAppointment')
       .then((response) => response.data);
+    console.log(response);
     return response;
   }
 );
@@ -25,10 +26,15 @@ export const addAnAppointment = createAsyncThunk(
 // show user appointment event
 export const showUserAppointment = createAsyncThunk(
   'events/showAppointment',
-  async (email, date) => {
+  async ({ email, date }) => {
+    console.log(email);
+
+    const sDate = new Date(date).toLocaleDateString();
+    console.log(sDate);
     const response = await axios
-      .get(`/appointment/findUserAppointment?email=${email}&date=${date}`)
+      .get(`/appointment/findUserAppointment?email=${email}&date=${sDate}`)
       .then((response) => response.data);
+    console.log(response);
     return response;
   }
 );
@@ -56,7 +62,7 @@ const medicalSlice = createSlice({
   name: 'medical',
   initialState: {
     allAvailableAppointment: [],
-    upcomingEvents: [],
+    userAppointment: [],
     archivedEvents: [],
   },
 
@@ -83,8 +89,8 @@ const medicalSlice = createSlice({
         (appointment) => appointment._id !== payload
       );
     });
-    builder.addCase(showUserAppointment.fulfilled, (state, { payload }) => {
-      state.allAvailableAppointment.filter(
+    builder.addCase(showUserAppointment.fulfilled, (state, payload) => {
+      state.userAppointment = state.allAvailableAppointment.filter(
         (appointment) =>
           appointment.email !== payload.email &&
           appointment.date !== payload.date
