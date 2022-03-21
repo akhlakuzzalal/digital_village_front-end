@@ -1,11 +1,8 @@
 import React from 'react';
-import { BsFillCartCheckFill } from 'react-icons/bs';
 import Lottie from 'react-lottie';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import animationData from '../../../lotties/market-banner.json';
 const MarketBanner = () => {
-  const cart = useSelector((state) => state.market.cart.cart);
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -32,15 +29,15 @@ const MarketBanner = () => {
         </div>
         {/* 2nd column */}
         <div className="flex relative w-full flex-col col-span-2 md:col-span-1 justify-center items-center ">
-          <div className="space-x-3 mb-10">
+          <div className="space-x-3 mb-10 absolute top-6">
             <Link to="/marketdashboard">
-              <p className="inline right-4"> Dashboard</p>
+              <p className="inline right-4 font-semibold"> Dashboard</p>
             </Link>
             <Link to="/medicinestore">
-              <p className="inline right-2">Medicine Store</p>
+              <p className="inline right-2 font-semibold">Medicine Store</p>
             </Link>
           </div>
-          <h3 className="md:animate-bounce text-xl md:text-4xl mx-2">
+          <h3 className="md:animate-bounce text-xl md:text-3xl mx-2 md:mx-0">
             Welcome to Village market
           </h3>
           <p className="mx-2">You can buy the available product from here</p>
@@ -54,18 +51,6 @@ const MarketBanner = () => {
               isClickToPauseDisabled={true}
               width={'60%'}
             />
-          </div>
-          <div className="mt-7 mx-10">
-            <Link to="/cart">
-              <div className="fixed right-5 top-[86px]">
-                <div className="relative">
-                  <BsFillCartCheckFill className="text-5xl text-[rgb(255,166,0)]" />{' '}
-                  <small className=" font-extrabold text-black text-lg absolute -top-1 -right-2">
-                    {cart.length}
-                  </small>
-                </div>
-              </div>
-            </Link>
           </div>
         </div>
       </div>

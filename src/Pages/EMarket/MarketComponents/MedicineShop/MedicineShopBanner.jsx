@@ -26,7 +26,6 @@ const MedicineShopBanner = () => {
         </div>
         <div className="relative flex flex-col justify-center items-center w-11/12 mx-auto">
           <div className="md:absolute top-0 mt-6 text-black font-semibold">
-            <Link to="/cart">Cart</Link>
             <Link className="mx-4" to="/marketdashboard">
               Dashboard
             </Link>
@@ -35,7 +34,9 @@ const MedicineShopBanner = () => {
           <h4 className="font-bold text-base pt-6 md:pt-0 md:text-2xl transition duration-600 ease animate-bounce">
             All necessary medicine is here now
           </h4>
-          <p className='text-sm md:text-base'>Buy personal and protective eqipment easily</p>
+          <p className="text-sm md:text-base">
+            Buy personal and protective eqipment easily
+          </p>
         </div>
         <div className="hidden w-11/12 md:flex justify-center h-[300px] mb-12">
           <Lottie
