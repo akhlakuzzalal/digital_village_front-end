@@ -8,7 +8,7 @@ import {
   MdMenuOpen,
 } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 import logo from '../assets/logo.png';
 import { setMood } from '../redux/slices/mood/MoodSlice';
@@ -60,16 +60,15 @@ const Navbar = ({ navigation }) => {
     }
   }, [mood]);
 
+  const location = useLocation();
+  const path = location.pathname;
+  const shwoFixedHeader = location.pathname.indexOf('admin') !== -1;
+  console.log(path);
+
   return (
     <header
-      className={`
-          ${
-            changeHeader
-              ? '-mt-32 fixed z-50 top-0 left-0 w-full  shadow-md '
-              : 'mt-0 fixed z-50 top-0 left-0 w-full'
-          } ${
-        headerBgWhite ? 'bg-slate-900 text-white' : 'bg-slate-900 text-white'
-      }`}
+      className={`fixed z-50 top-0 left-0 w-full bg-slate-900 text-white
+          ${shwoFixedHeader ? 'mt-0' : changeHeader ? '-mt-32' : 'mt-0'}`} // change this to make a fixed header
     >
       <nav className="flex items-center justify-between max-w-screen-xl mx-auto px-6 py-3">
         {/* logo */}
