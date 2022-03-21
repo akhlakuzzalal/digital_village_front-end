@@ -57,11 +57,13 @@ const MarketBanner = () => {
           </div>
           <div className="mt-7 mx-10">
             <Link to="/cart">
-              <div className="flex">
-                <BsFillCartCheckFill className="text-5xl text-[rgb(255,166,0)]" />{' '}
-                <small className=" font-extrabold text-black text-lg">
-                  {cart.length}
-                </small>
+              <div className="fixed right-5 top-[86px]">
+                <div className="relative">
+                  <BsFillCartCheckFill className="text-5xl text-[rgb(255,166,0)]" />{' '}
+                  <small className=" font-extrabold text-black text-lg absolute -top-1 -right-2">
+                    {cart.length}
+                  </small>
+                </div>
               </div>
             </Link>
           </div>
