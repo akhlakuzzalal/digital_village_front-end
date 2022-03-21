@@ -15,7 +15,7 @@ import medical from './../../../../assets/services/medical.png';
 import ServiceBoard from './ServiceBoard/ServiceBoard';
 import ServiceExplore from './ServiceExplore/ServiceExplore';
 
-const educations="https://w7.pngwing.com/pngs/310/448/png-transparent-study-skills-education-learning-computer-icons-sc-logo-angle-hat-teacher.png"
+
 
 const services = [
   {
@@ -24,7 +24,7 @@ const services = [
     image: education,
     detail:
       'Digital Learning is a service provided by us to improve the literacy rate of our village. We offers full free and quality education.',
-    desc: 'Free and Quality education',
+    desc: 'Free and Quality education to here',
     controlData: 'education',
   },
   {
@@ -55,12 +55,12 @@ const services = [
     controlData: 'donation',
   },
   {
-    icon: <FcHome className="text-center" size={70} />,
+    icon: <FcHome className="text-center"  size={70} />,
     name: 'Development',
     image: development,
     detail:
       'Our proud team working hard for the poor village people and improve their life style.we take somme village development work to develop various area ',
-    desc: 'Propose your thoughts here',
+    desc: 'Propose your thoughts here to go',
     controlData: 'development',
   },
   {
