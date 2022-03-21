@@ -14,7 +14,7 @@ const ServiceBoard = ({
       onClick={() => setControl(controlData)}
       className={`${
         control === controlData &&
-        'outline outline-primary dark:outline-dark_secondary'
+        'outline outline-blue-600 hover:translate-50 dark:outline-dark_secondary'
       } flex justify-center items-center rounded-md cursor-pointer p-4 shadow-lg mx-3 min-w-[250px] space-x-3 dark:dark-card-bg`}
     >
       <div className="shrink-0 ">{icon}</div>
