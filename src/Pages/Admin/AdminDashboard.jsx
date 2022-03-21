@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
 import { BsCalendar2EventFill } from 'react-icons/bs';
-import { FaConnectdevelop, FaHandsHelping, FaShopify, FaUsers } from 'react-icons/fa';
+import {
+  FaConnectdevelop,
+  FaHandsHelping,
+  FaShopify,
+  FaUsers,
+} from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
 import { GiNewspaper } from 'react-icons/gi';
 import { IoLogoDesignernews } from 'react-icons/io';
@@ -34,7 +39,7 @@ const links = [
         path: '/admin/add-events',
       },
       {
-        name: 'Delete Event',
+        name: 'Manage Event',
         icon: <AiFillDelete size={30} />,
         path: '/admin/manageEvents',
       },

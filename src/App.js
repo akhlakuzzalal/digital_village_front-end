@@ -60,6 +60,7 @@ import ArchivedEvents from './Pages/Events/ArchivedEvents/ArchivedEvents';
 import EventDetails from './Pages/Events/EventDetails/EventDetails';
 import Events from './Pages/Events/Events';
 import ManageEvents from './Pages/Events/ManageEvents/ManageEvents';
+import UpdateEvent from './Pages/Events/ManageEvents/UpdateEvent/UpdateEvent';
 import MyBookedEvents from './Pages/Events/MyBookedEvents/MyBookedEvents';
 import UpcomingEvents from './Pages/Events/UpcomingEvents/UpcomingEvents';
 import AddAppointment from './Pages/Medical/DoctorsAppointment/AddAppointment/AddAppointment';
@@ -183,7 +184,9 @@ function App() {
               <Route path="upcoming-events" element={<UpcomingEvents />} />
               <Route path="archived-events" element={<ArchivedEvents />} />
             </Route>
-            <Route></Route>
+            <Route path="updateEvent" element={<UpdateEvent />}>
+              {' '}
+            </Route>
             <Route path="eventDetails/:id" element={<EventDetails />} />
 
             {/* DEVELOPMENT RELATED ROUTES */}

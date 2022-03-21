@@ -48,7 +48,7 @@ const BlogCard = ({ blog }) => {
   }, [uId, isFavouritted, blog._id]);
 
   return (
-    <div className="bg-white dark:dark-card-bg rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between max-w-[400px] shadow-2xl">
+    <div className="bg-white dark:dark-card-bg rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between max-w-[400px] border">
       {/* image  */}
       <div
         className="overflow-hidden rounded-xl h-52 cursor-pointer"
