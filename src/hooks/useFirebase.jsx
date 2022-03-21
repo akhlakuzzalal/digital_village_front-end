@@ -82,6 +82,7 @@ const useFirebase = () => {
           emailVerified: authUser?.emailVerified,
         };
         dispatch(setUser(newUser));
+        dispatch(getSingleUserInfo(authUser?.email));
       } else {
         dispatch(setUser({}));
       }

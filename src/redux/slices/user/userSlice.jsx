@@ -88,7 +88,6 @@ const userSlice = createSlice({
       }
     });
     builder.addCase(getSingleUserInfo.fulfilled, (state, { payload }) => {
-      console.log('this is payload', payload);
       if (payload && payload.length >= 1) {
         state.user = payload[0];
       }
