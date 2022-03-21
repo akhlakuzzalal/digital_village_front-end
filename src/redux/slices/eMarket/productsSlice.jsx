@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../../api/axios';
 
-// fetch all notification from database
+// fetch all products from database
 export const fetchAllProducts = createAsyncThunk(
   'e-market',
   async (pagination) => {
