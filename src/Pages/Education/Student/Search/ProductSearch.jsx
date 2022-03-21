@@ -9,15 +9,7 @@ const ProductSearch = ({ handleSearch }) => {
     formState: { errors },
   } = useForm();
   return (
-    <div
-      // style={{
-      //   backgroundImage: `url(${img})`,
-      //   backgroundRepeat: 'no-repeat',
-      //   width: '1750px',
-      // }}
-
-      className=" lg:mx-[100px] "
-    >
+    <div className=" lg:mx-[100px] ">
       <img className="w-full h-[200px]" src={img} alt="" />
       <form
         onSubmit={handleSubmit(handleSearch)}
