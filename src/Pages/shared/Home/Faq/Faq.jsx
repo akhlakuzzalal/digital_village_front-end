@@ -5,40 +5,40 @@ import { GoDiffAdded } from 'react-icons/go';
 const datas = [
   {
     id: '1',
-    title: 'Digital Learning',
+    title: 'What is Digital Learning?',
     description:
-      'Digital Learning is a service provided by us to improve the literacy rate of our village. We offers full free and quality education.',
+      'Digital Learning is "learning facilitated by technology that gives students some element of control over time, place, path and/or pace.',
   },
 
   {
     id: '2',
-    title: 'Medical',
+    title: 'How can I register my self for vaccine?',
     description:
-      'Medical services means Medically Necessary services, including, as the context requires, Confinement, treatments, procedures, tests, examinations .',
+      'You need to go to vaccine registration page where you have to put your valid information. When your application is approved you will get date by sms. you can also check status in website.',
   },
   {
     id: '3',
-    title: 'Events',
+    title: 'How can we know about future events?',
     description:
-      'Check out some amazing free events in village to take away all the fun experiences. There can be a lot that might be offering but all the events make it unique, distinctive and different from others.',
+      'You can go to event section and click to upcomming event to know abou future events.',
   },
   {
     id: '4',
-    title: 'Donations',
+    title: 'Can I get donation?',
     description:
-      'We are covering every major country worldwide. The shipment leaves from US as it is our headquarter. Some extra information you probably need to add here so that the customer is clear of their wanted expectations.',
+      'Yes, if you eligible for donation you can get donation. for that go to donation page click get help request button fillup the form. Then the authority will evalute your application ',
   },
   {
     id: '5',
-    title: 'Development',
+    title: 'What is the purpose of  Development?',
     description:
-      'We are covering every major country worldwide. The shipment leaves from US as it is our headquarter. Some extra information you probably need to add here so that the customer is clear of their wanted expectations.',
+      'Our proud team working hard for the poor village people and improve their life style.we take somme village development work to develop various area',
   },
   {
     id: '6',
-    title: 'E-Market',
+    title: 'What is objective of E-Market?',
     description:
-      'We are covering every major country worldwide. The shipment leaves from US as it is our headquarter. Some extra information you probably need to add here so that the customer is clear of their wanted expectations.',
+      'E-Market is a nice platform for buying daily necessities.The main objective is to connect the rural people with e-commerce and gaining their trust.',
   },
 ];
 
@@ -71,6 +71,7 @@ const Faq1 = () => {
             className="w-full md:hidden block "
           />
         </div>
+
         <div className=" md:w-7/12 lg:w-8/12 w-full md:mt-0 sm:mt-14 mt-10">
           {/* <!-- Digital Section --> */}
 
@@ -84,13 +85,13 @@ const Faq1 = () => {
 
                   {active && data.id === active ? (
                     <AiOutlineMinusSquare
-                      className="hover:rotate-180 transition duration-700 ease-in-out"
+                      className="hover:rotate-180 transition duration-700 ease-in-out dark:text-dark_text"
                       size={30}
                       onClick={() => setActive('')}
                     />
                   ) : (
                     <GoDiffAdded
-                      className="hover:rotate-180 transition duration-700 ease-in-out"
+                      className="hover:rotate-180 transition duration-700 ease-in-out dark:text-dark_text"
                       size={30}
                       onClick={() => setActive(data?.id)}
                     />

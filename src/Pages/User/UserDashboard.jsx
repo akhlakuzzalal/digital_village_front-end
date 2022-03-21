@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { MdOutlineAppRegistration, MdOutlineProductionQuantityLimits, MdReviews } from 'react-icons/md';
+import {
+  MdOutlineAppRegistration,
+  MdOutlineProductionQuantityLimits,
+  MdReviews,
+} from 'react-icons/md';
 import { RiDashboard2Line } from 'react-icons/ri';
 import { SiHomebridge } from 'react-icons/si';
 import { Outlet, useLocation } from 'react-router-dom';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
-import Profile from './DashboardComponent/Profile/Profile';
+import Profile from './Profile/Profile';
 const links = [
   {
     name: 'Profile',
@@ -14,17 +18,17 @@ const links = [
   {
     name: 'Events',
     icon: <MdOutlineProductionQuantityLimits size={30} />,
-    path: '/userdashboard/my-event-booking',
+    path: '/userdashboard/myBookedEvents',
   },
   {
     name: 'Donation',
     icon: <RiDashboard2Line size={30} />,
-    path: '/userdashboard/donarpaymente',
+    path: '/userdashboard/myDonations',
   },
   {
-    name: 'My Apply',
+    name: 'My Help Requests',
     icon: <MdOutlineAppRegistration size={30} />,
-    path: '/userdashboard/requestapply',
+    path: '/userdashboard/myHelpRequests',
   },
   {
     name: 'Review',

@@ -1,9 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { HiLightBulb } from 'react-icons/hi';
 import { ImCheckmark } from 'react-icons/im';
-import background from './../../../assets/medical/department.jpg';
 import mediBanner from './../../../assets/medical/mediBanner.png';
 
+const datas = [
+  {
+    id: '1',
+    title: ' Cardiologists',
+    description:
+      'For cardiovascular conditions.They’re experts on the heart and blood vessels. You might see them for heart failure, a heart attack, high blood pressure, or an irregular heartbeat.',
+  },
+
+  {
+    id: '2',
+    title: 'Family physician',
+    description:
+      'For people of all ages.They care for the whole family, including children, adults, and the elderly. They do routine checkups and screening tests, give you flu and immunization shots, and manage diabetes and other ongoing medical conditions.',
+  },
+  {
+    id: '3',
+    title: 'Ophthalmologists',
+    description:
+      'An ophthalmologist is a medical or osteopathic doctor who specializes in eye and vision care. Ophthalmologists differ from optometrists and opticians in their levels of training and in what they can diagnose and treat.',
+  },
+  {
+    id: '4',
+    title: 'Gynecologists',
+    description:
+      "disease management for female.Often called OB/GYNs, these doctors focus on women' health, including pregnancy and childbirth. They do Pap smears, pelvic exams, and pregnancy checkups. OB/GYNs are trained in both areas. But some of them may focus on women's reproductive health (gynecologists), and others specialize in caring for pregnant women (obstetricians).",
+  },
+  {
+    id: '5',
+    title: 'Dermatologists',
+    description:
+      ' For diseases of the skin.Have problems with your skin, hair, nails? Do you have moles, scars, acne, or skin allergies? Dermatologists can help.',
+  },
+  {
+    id: '6',
+    title: 'Neurologists',
+    description:
+      "For the nerves, spine, and brain.These are specialists in the nervous system, which includes the brain, spinal cord, and nerves. They treat strokes, brain and spinal tumors, epilepsy, Parkinson's disease, and Alzheimer's disease.",
+  },
+];
+
 const Services = () => {
+  const [active, setActive] = useState('');
   return (
     <div>
       <div className=" grid grid-cols-1 md:grid-cols-2 justify-center my-10 items-center">
@@ -11,12 +52,14 @@ const Services = () => {
           <img src={mediBanner} alt="" />
         </div>
         <div className="px-5 mt-6 md:mt-0">
-          <h3 className=" text-center md:text-5xl text-blue-600">Our Services</h3>
+          <h3 className=" text-center md:text-5xl text-blue-600">
+            Our Services
+          </h3>
           <p className="my-5 text-justify px-5  " style={{ fontSize: '20px' }}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis
-            ullam consectetur autem accusantium porro? Aspernatur, totam
-            accusamus, molestias est architecto sed laborum officiis atque
-            cumque incidunt alias, porro dolor voluptatum quos vero repudiandae
+            Treatment here, truly human experience. You’re cared for as a person
+            first.The more patients we treat each year prepares us to treat the
+            one who matters most—you.Count on our experts to deliver an accurate
+            diagnosis and the right plan for you the first time.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 justify-start items-center mx-6">
             <div className="px-2 ">
@@ -137,133 +180,59 @@ const Services = () => {
           <section class="text-gray-700">
             <div class="container px-5 py-8 mx-auto">
               <div class="text-center">
-                <h1 class=" text-2xl md:text-5xl font-bold text-center title-font pb-6 text-gray-900 ">
+                <h3 class=" text-3xl font-bold text-center title-font pb-6 text-blue-900 ">
                   Our Departments
-                </h1>
+                </h3>
               </div>
-              <div class="w-full flex flex-wrap  sm:mx-auto sm:mb-2 -mx-2">
-                <div class="w-full  py-2">
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold  bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      Cardiologists
-                    </summary>
+              <div className=" flex  flex-col justify-center md:w-7/12 lg:w-8/12 w-full md:mt-0 sm:mt-14 mt-10">
+                {/* <!-- Digital Section --> */}
 
-                    <span>
-                      For cardiovascular conditions.They’re experts on the heart
-                      and blood vessels. You might see them for heart failure, a
-                      heart attack, high blood pressure, or an irregular
-                      heartbeat.
-                    </span>
-                  </details>
-
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      Family physician
-                    </summary>
-
-                    <span>
-                      For people of all ages.They care for the whole family,
-                      including children, adults, and the elderly. They do
-                      routine checkups and screening tests, give you flu and
-                      immunization shots, and manage diabetes and other ongoing
-                      medical conditions.
-                    </span>
-                  </details>
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold  bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      Ophthalmologists
-                    </summary>
-
-                    <span>specialize in eye and vision care.</span>
-                  </details>
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold  bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      gynecologists
-                    </summary>
-
-                    <span>
-                      disease management for female.Often called OB/GYNs, these
-                      doctors focus on women's health, including pregnancy and
-                      childbirth. They do Pap smears, pelvic exams, and
-                      pregnancy checkups. OB/GYNs are trained in both areas. But
-                      some of them may focus on women's reproductive health
-                      (gynecologists), and others specialize in caring for
-                      pregnant women (obstetricians).
-                    </span>
-                  </details>
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      Dermatologists
-                    </summary>
-
-                    <span>
-                      For diseases of the skin.Have problems with your skin,
-                      hair, nails? Do you have moles, scars, acne, or skin
-                      allergies? Dermatologists can help.
-                    </span>
-                  </details>
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold  bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      Neurologists
-                    </summary>
-
-                    <span>
-                      For the nerves, spine, and brain.These are specialists in
-                      the nervous system, which includes the brain, spinal cord,
-                      and nerves. They treat strokes, brain and spinal tumors,
-                      epilepsy, Parkinson's disease, and Alzheimer's disease.
-                    </span>
-                  </details>
-                </div>
+                {datas.map((data) => (
+                  <div>
+                    <div>
+                      <div className=" flex justify-between items-center cursor-pointer bg-blue-900 p-4 my-1  rounded-lg">
+                        {active && data.id === active ? (
+                          <div>
+                            <HiLightBulb
+                              className="inline  transition duration-700 ease-in-out text-[#ffff00]"
+                              size={30}
+                              onClick={() => setActive('')}
+                            />
+                            <h3 className=" inline font-semibold text-xl text-white">
+                              {data.title}
+                            </h3>
+                          </div>
+                        ) : (
+                          <div onClick={() => setActive(data?.id)}>
+                            <HiLightBulb
+                              className=" inline transition duration-700 ease-in-out text-white"
+                              size={30}
+                            />
+                            <h3 className=" inline font-semibold text-xl text-white">
+                              {data.title}
+                            </h3>
+                          </div>
+                        )}
+                      </div>
+                      <p
+                        className={
+                          'font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 ' +
+                          (data.id === active ? 'block' : 'hidden')
+                        }
+                      >
+                        {data?.description}
+                      </p>
+                    </div>
+                    <hr className="  bg-gray-200" />
+                  </div>
+                ))}
               </div>
             </div>
           </section>
         </div>
         <div className=" px-8 ">
           <form class="">
-            <p class="text-center pb-4 text-base md:text-2xl font-bolder text-blue-600">
+            <p class="text-center pb-4 text-base  font-bolder text-gray-600">
               We are here to hear from you
             </p>
             <div class="flex flex-wrap -mx-3 mb-2">

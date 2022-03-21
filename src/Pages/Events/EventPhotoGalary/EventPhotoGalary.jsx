@@ -9,7 +9,9 @@ const EventPhotoGalary = () => {
   return (
     <div className="mt-32">
       <div className="text-center">
-        <h4 className="text-3xl">Our Photo gallery of Events</h4>
+        <h4 className="text-3xl dark:text-white">
+          Our Photo gallery of Events
+        </h4>
         <p className="px-300px">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, ipsa!
           Quis ex sapiente possimus quisquam atque fuga aliquid beatae quos?

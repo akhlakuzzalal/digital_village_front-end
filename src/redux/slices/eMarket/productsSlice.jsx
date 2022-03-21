@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../../api/axios';
 
-// fetch all notification from database
+// fetch all products from database
 export const fetchAllProducts = createAsyncThunk(
   'e-market',
   async (pagination) => {
@@ -12,7 +12,12 @@ export const fetchAllProducts = createAsyncThunk(
         }&search=${pagination.search}&roles=${JSON.stringify([2000])}`
       )
       .then((response) => response.data);
-    console.log(response);
+    console.log(
+      `/eMarket/Products/?page=${pagination.currPage}&size=${
+        pagination.size
+      }&search=${pagination.search}&roles=${JSON.stringify([2000])}`
+    );
+
     return {
       products: response.products,
       count: response.count,
@@ -22,6 +27,13 @@ export const fetchAllProducts = createAsyncThunk(
     };
   }
 );
+// fetch all  medicines
+export const fetchAllMedicines = createAsyncThunk('getMedicines', async () => {
+  const responce = await axios
+    .get('/emarket/medicines')
+    .then((res) => res.data);
+  return responce;
+});
 
 // Add a Product
 export const addProduct = createAsyncThunk('addProduct', async (data) => {
@@ -50,6 +62,7 @@ const productSlice = createSlice({
   name: 'products',
   initialState: {
     products: [],
+    medicines: [],
     pageCount: 0,
     currPage: 0,
   },
@@ -71,6 +84,11 @@ const productSlice = createSlice({
         state.currPage = 0;
       }
       state.pageCount = pageNumber;
+    });
+    // get all Medicines
+    builder.addCase(fetchAllMedicines.fulfilled, (state, { payload }) => {
+      console.log(payload);
+      state.medicines = payload;
     });
     // Add a product
     builder.addCase(addProduct.fulfilled, (state, { payload }) => {

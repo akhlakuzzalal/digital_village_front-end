@@ -23,7 +23,7 @@ const AllUsers = () => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm();
+  } = useForm()
 
   const axiosInterceptor = useAxiosInterceptor();
 

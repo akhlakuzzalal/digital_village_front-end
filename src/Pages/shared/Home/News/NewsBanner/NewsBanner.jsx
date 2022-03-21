@@ -70,28 +70,30 @@ const NewsBanner = () => {
     return (
         <div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-1 md:mx-5'>
-                <div className='relative'>
-                    <div className='  overflow-hidden' >
-                        <p className='absolute bottom-32 mb-5 px-2 ml-6 font-bold  text-white text-left bg-green-600 '>Latest News</p>
-                        <p className='absolute bottom-2 text-white font-bold text-xl md:text-2xl leading-none text-left px-3 '>What do decisions made at a summit in Glasgow mean for a woman in a village on the front line of climate change?
+                    <div className='  overflow-hidden relative' >
+                        <img className=' absolute w-full h-96 hover:scale-150 cursor-pointer transition-all duration-700 ease-in-out ' src="https://images.unsplash.com/photo-1528726164383-33c4a223b78c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dmlsbGFnZSUyMHBlb3BsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
+
+                        <div className='absolute bottom-0'>
+                        <p className=' mb-5 px-2 ml-6 font-bold  text-white text-left bg-green-600 w-36 '>Latest News</p>
+                        <p className='  text-white font-bold text-xl md:text-2xl leading-none text-left px-3 '>What do decisions made at a summit in Glasgow mean for a woman in a village on the front line of climate change?
                         <br />
                         <span className='text-red-600 text-xl '>1,February,2022</span>
                         </p>
-
-                        <img className='w-full h-96 hover:scale-150 cursor-pointer transition-all duration-500 ease-in-out ' src="https://images.unsplash.com/photo-1528726164383-33c4a223b78c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dmlsbGFnZSUyMHBlb3BsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
-                    </div>
-                   
-                </div>
+                        </div>
+                     </div>
 
 
                 <div className='grid grid-cols-1  md:grid-cols-2'>
                 <div className=' relative md:mx-5'>
                     <div className='overflow-hidden relative '>
+                    <img className=' h-48 w-96 hover:scale-150 cursor-pointer transition-all  duration-500 mb-1 ease-in-out' src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201908/e_learning_new_0.png?HdQc4PgJXVKd6bGfZsdga3gn0GWvcPMv&size=770:433" alt="" />
                     
+
+                    <div>
                     <p className='absolute bottom-16 px-2 ml-6 font-bold  text-white text-center  bg-purple-600 '>Learning News</p>
                         <p className='absolute bottom-2 text-white font-bold mx-2  text-left mt-4 '>Lessons for At-Home Learning from MacArthur’s Digital Learning</p>
+                    </div>
 
-                        <img className=' h-48 w-96 hover:scale-150 cursor-pointer transition-all  duration-500 mb-1 ease-in-out' src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201908/e_learning_new_0.png?HdQc4PgJXVKd6bGfZsdga3gn0GWvcPMv&size=770:433" alt="" />
                         
                     </div>
 
@@ -105,6 +107,11 @@ const NewsBanner = () => {
                         
                     </div>
 
+
+
+
+                    
+
                 </div>
 
                 <div className='relative'>
@@ -117,6 +124,7 @@ const NewsBanner = () => {
                         <img className=' h-48 w-96 hover:scale-150 cursor-pointer transition-all duration-500 mb-1 ease-in-out' src="https://www.elmens.com/wp-content/uploads/2020/04/charity.jpg" alt="" />
                         
                     </div>
+                    
 
                     <div className='overflow-hidden relative '>
                    

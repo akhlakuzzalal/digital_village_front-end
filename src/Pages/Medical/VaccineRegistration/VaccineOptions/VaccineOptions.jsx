@@ -6,7 +6,7 @@ import polio from './../../../../assets/medical/polio.jpg';
 
 const VaccineOptions = () => {
   return (
-    <div className="text-center  my-32">
+    <div className="text-center min-h-screen my-10">
       <h3 className="text-blue-900  py-3 ">Vaccine Registration</h3>
       <div className="flex flex-wrap justify-center items-center m-2">
         <div
@@ -20,15 +20,11 @@ const VaccineOptions = () => {
           </Link>
           <div className="p-5">
             <Link to="#">
-              <h5 className="mb-2 text-1xl md:text-2xl  font-bold tracking-tight text-blue-900 dark:text-white">
+              <h5 className="mb-2 text-xl  font-bold tracking-tight text-blue-900 dark:text-white">
                 Covid-19 Vaccination
               </h5>
             </Link>
-            <p className="mb-3 text-center  hover:text-justify font-normal text-gray-700 dark:text-gray-400">
-              Equitable access to safe and effective vaccines is critical to
-              ending the COVID-19 pandemic, so it is hugely encouraging to see
-              so many vaccines proving and going into development.
-            </p>
+
             <Link
               to="/medicalDashboard/regForm"
               className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white "
@@ -65,16 +61,11 @@ const VaccineOptions = () => {
           </Link>
           <div className="p-5">
             <Link to="#">
-              <h5 className="mb-2 text-1xl md:text-2xl  font-bold tracking-tight text-blue-900 dark:text-white">
+              <h5 className="mb-2 text-xl  font-bold tracking-tight text-blue-900 dark:text-white">
                 Hepatitis A Vaccination
               </h5>
             </Link>
-            <p className="mb-3 text-center  hover:text-justify font-normal text-gray-700 dark:text-gray-400">
-              Hepatitis A is a liver disease caused by the hepatitis A virus
-              (HAV). Hepatitis A can affect anyone. Vaccines are available for
-              long-term prevention of HAV infection in persons 1 year of age and
-              older.
-            </p>
+
             <Link
               to="/medicalDashboard/regForm"
               className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white "
@@ -111,16 +102,11 @@ const VaccineOptions = () => {
           </Link>
           <div className="p-5">
             <Link to="#">
-              <h5 className="mb-2 text-1xl md:text-2xl  font-bold tracking-tight text-blue-900 dark:text-white">
+              <h5 className="mb-2 text-xl  font-bold tracking-tight text-blue-900 dark:text-white">
                 Polio Vaccination
               </h5>
             </Link>
-            <p className="mb-3 text-center  hover:text-justify font-normal text-gray-700 dark:text-gray-400">
-              Polio, or poliomyelitis, is a crippling and potentially deadly
-              disease. It is caused by the poliovirus. The virus spreads from
-              person to person and can invade an infected person’s brain and
-              spinal cord
-            </p>
+
             <Link
               to="/medicalDashboard/regForm"
               className="inline-flex items-center py-2 px-3 text-sm   font-medium text-center text-white "

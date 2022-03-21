@@ -1,21 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
+import useFirebase from '../hooks/useFirebase';
 
-const PrivateRoute = ({ allowedRoles }) => {
-  const { roles } = useAuth();
-
+const PrivateRoute = () => {
+  const { isLoading } = useFirebase();
   const user = useSelector((state) => state.user.user);
 
   const location = useLocation();
 
-  const rolesArray = roles.map((role) => Object.values(role)).flat();
+  if (isLoading) {
+    return <p className="mt-[88px]">...Loading</p>;
+  }
 
-  return rolesArray?.find((role) => allowedRoles?.includes(role)) ? (
+  return user?.email && !isLoading ? (
     <Outlet />
-  ) : user?.email ? (
-    <Navigate to="/unauthorized" state={{ from: location }} replace />
   ) : (
     <Navigate to="/login" state={{ from: location }} replace />
   );

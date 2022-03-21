@@ -40,8 +40,8 @@ const AddEvents = () => {
               {...register('title', {
                 required: 'title is Required',
                 maxLength: {
-                  value: 25,
-                  message: "First Name shouldn't exceed 15 words",
+                  value: 100,
+                  message: "First Name shouldn't exceed 100 words",
                 },
               })}
               onKeyUp={() => {
@@ -112,7 +112,6 @@ const AddEvents = () => {
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
               {...register('place', {
                 required: 'Address is Required',
-                pattern: /^[A-Za-z]+$/i,
                 maxLength: 50,
               })}
               onKeyUp={() => {

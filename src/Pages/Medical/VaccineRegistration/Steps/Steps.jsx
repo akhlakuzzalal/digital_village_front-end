@@ -7,7 +7,7 @@ const Steps = () => {
       <div className="border-l-8 border-indigo-700 p-0 md:p-5 ml-20 my-20">
         <h3 className="text-indigo-700">Steps of vaccination</h3>
       </div>
-      <div className="flex flex-col justify-between items-center px-0 md:px-20">
+      <div className="flex flex-col  md:flex-row justify-between items-center px-0 md:px-20">
         <div className="p-0 md:p-2 w-full md:w-1/3">
           <FcApproval
             style={{
@@ -16,7 +16,7 @@ const Steps = () => {
             }}
           />
           <h6>Online Registration</h6>
-          <p>
+          <p className="text-justify">
             One have to give your NID information and Contact no to register for
             vaccination. All the Information should be valid otherwise one
             cannot register for Vaccination{' '}
@@ -30,7 +30,7 @@ const Steps = () => {
             }}
           />
           <h6>SMS Notification</h6>
-          <p>
+          <p className="text-justify">
             After registration. one have to wait for the sms will be sent by
             authority including the date and place of the vaccination at the
             given number during registration{' '}
@@ -44,7 +44,7 @@ const Steps = () => {
             }}
           />
           <h6>Online Registration</h6>
-          <p>
+          <p className="text-justify">
             After getting SMS one have to download the information card and go
             to the given center at given date. Showing the Information card one
             can take vaccine{' '}

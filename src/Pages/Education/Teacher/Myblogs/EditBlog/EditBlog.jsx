@@ -9,7 +9,7 @@ import RichTextEditor from '../../../../../Components/RichTextEditor';
 const EditBlog = () => {
   const { id } = useParams();
   const [singleBlog, setSingleBlog] = useState({});
-
+  const [file, setFile] = useState({});
   const [content, setContent] = useState('Start writing');
 
   const {
@@ -22,8 +22,6 @@ const EditBlog = () => {
   const handleEditorChange = (e) => {
     setContent(e.target.getContent());
   };
-
-  const [file, setFile] = useState({});
 
   const onDrop = useCallback((acceptedFiles) => {
     setFile(acceptedFiles[0]);
@@ -59,8 +57,8 @@ const EditBlog = () => {
   }, [id]);
 
   return (
-    <div className="flex flex-col  justify-center items-center min-h-full space-y-6">
-      <h1>Edit your blog now</h1>
+    <div className="flex flex-col py-12 md:py-36 pl-14 md:pl- pr-4 md:pr-8 justify-center items-center min-h-full space-y-6">
+      <h1 className='text-2xl md:text-6xl text-center md:text-left'>Edit your blog now</h1>
       {singleBlog?.title && (
         <form
           onSubmit={handleSubmit(handleEditBlog)}
@@ -150,7 +148,7 @@ const EditBlog = () => {
           </div>
           {/* submit button */}
           <input
-            className="btn bg-primary rounded-lg w-full cursor-pointer hover:bg-opacity-80  transition-all duration-300"
+            className="btn bg-primary rounded-lg w-full cursor-pointer hover:bg-opacity-80 -pl-1  transition-all duration-300"
             type="submit"
             value="Submit"
           />

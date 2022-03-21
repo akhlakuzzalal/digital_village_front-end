@@ -4,8 +4,6 @@ import Rating from './../../../../../Components/Rating';
 
 const Review = ({ reviews }) => {
   const { name, description, rating } = reviews;
-  console.log(description);
-  console.log(reviews);
 
   return (
     <div className="md:pb-12">

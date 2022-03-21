@@ -26,8 +26,8 @@ const Reviews = () => {
           WHAT PEOPLE SAY ABOUT US
         </h1>
         <p className="px-10 md:px-[100px] text-justify md:text-center">
-          Lorem Ipsum has been the industry's standard dummy text ever since the
-          1500s, when an unknown printer took
+          Our goal is transforming an analog Village into a digital one.See what
+          our valuable users say about us.
         </p>
       </div>
 

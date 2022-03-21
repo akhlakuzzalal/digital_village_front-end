@@ -17,9 +17,9 @@ export const getAllUsers = createAsyncThunk(
 );
 export const getSingleUserInfo = createAsyncThunk(
   'user/getSingleUserInfo',
-  async ({ id }) => {
+  async (email) => {
     const response = await axios
-      .get(`/user/singleUserInfo?id=${id}`)
+      .get(`/user/singleUserInfo/?email=${email}`)
       .then((response) => response.data);
     return response;
   }
@@ -87,9 +87,13 @@ const userSlice = createSlice({
         state.pageCount = pageNumber;
       }
     });
+    // single user info
     builder.addCase(getSingleUserInfo.fulfilled, (state, { payload }) => {
       if (payload && payload.length >= 1) {
         state.user = payload[0];
+        state.roles = [payload[0].roles];
+        state.uId = payload[0]._id;
+        state.token = payload[0].token;
       }
     });
     builder.addCase(updateUser.fulfilled, (state, { payload }) => {

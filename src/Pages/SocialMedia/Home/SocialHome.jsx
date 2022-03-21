@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import useMediaQuery from '../../../hooks/useMediaQuery';
+import { allSocialUser } from '../../../redux/slices/socialSlice/socialSlice';
 import Feeds from './Feeds/Feeds';
 import LeftSideMenu from './LeftSideMenu/LeftSideMenu';
 import PublishFeed from './PublishFeed/PublishFeed';
 import RightSide from './RightSide/RightSide';
 
 const SocialHome = () => {
+  const user = useSelector((state) => state.user.user);
   const isDesktop = useMediaQuery('(min-width: 900px)');
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(allSocialUser(user?.email));
+  }, [user]);
   return (
     <div
       className="mt-[80px] mb-36 md:mb-24"

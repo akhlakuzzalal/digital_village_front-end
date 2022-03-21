@@ -33,7 +33,7 @@ const AddAppointment = () => {
   return (
     <div
       className="add-events-main my-40 lg:flex  lg:mx-32 md:mx-32 
-        mx-0 border rounded-2xl"
+        mx-0 border rounded-2xl "
     >
       <div>
         <h1 className="ml-10 mt-6 text-3xl ">Give Your Information</h1>
@@ -79,31 +79,13 @@ const AddAppointment = () => {
             <small className="text-danger">{errors.description.message}</small>
           )}
           <input
-            type="time"
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
             {...register('time', { required: true })}
             placeholder="time to time"
           />
           <input
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-            {...register('price', {
-              required: 'price is Required',
-              min: {
-                value: 5,
-                message: 'Minimum Required price is 5',
-              },
-              max: {
-                value: 500000,
-                message: 'Maximum allowed price is 50000',
-              },
-              pattern: {
-                value: /^[0-9]*$/,
-                message: 'Only numbers are allowed',
-              },
-            })}
-            onKeyUp={() => {
-              trigger('price');
-            }}
+            {...register('price', { required: true })}
             placeholder="Cost($)"
           />
           {errors.price && (
