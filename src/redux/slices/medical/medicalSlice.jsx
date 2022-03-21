@@ -12,16 +12,16 @@ export const fetchAllAvailableAppointments = createAsyncThunk(
   }
 );
 
-// add event
-// export const addAnEvent = createAsyncThunk(
-//   'events/postAnEvent',
-//   async (event) => {
-//     const response = await axios
-//       .post('/event/addEvent', event)
-//       .then((response) => response.data);
-//     return response;
-//   }
-// );
+// add appontment
+export const addAnAppointment = createAsyncThunk(
+  'medical/postAnAppointment',
+  async (appointment) => {
+    const response = await axios
+      .post('/availableAppointment/saveAppointment', appointment)
+      .then((response) => response.data);
+    return response;
+  }
+);
 // delete event
 // export const deleteAnEvent = createAsyncThunk(
 //   'events/deleteAnEvent',
@@ -68,9 +68,9 @@ const medicalSlice = createSlice({
         state.allAvailableAppointment = payload;
       }
     );
-    //   builder.addCase(fetchUpcomingEvents.fulfilled, (state, { payload }) => {
-    //     state.upcomingEvents = payload;
-    //   });
+    // builder.addCase(fetchUpcomingEvents.fulfilled, (state, { payload }) => {
+    //   state.upcomingEvents = payload;
+    // });
     //   builder.addCase(fetchArchivedEvents.fulfilled, (state, { payload }) => {
     //     state.archivedEvents = payload;
     //   });
@@ -78,9 +78,11 @@ const medicalSlice = createSlice({
     //   builder.addCase(addAnEvent.fulfilled, (state, { payload }) => {
     //     state.allEvents.push(payload);
     //   });
-    //   builder.addCase(deleteAnEvent.fulfilled, (state, { payload }) => {
-    //     state.allEvents.filter((event) => event._id !== payload);
-    //   });
+    builder.addCase(addAnAppointment.fulfilled, (state, { payload }) => {
+      state.allAvailableAppointment.filter(
+        (appointment) => appointment._id !== payload
+      );
+    });
   },
 });
 
