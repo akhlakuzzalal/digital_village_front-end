@@ -27,6 +27,13 @@ export const fetchAllProducts = createAsyncThunk(
     };
   }
 );
+// fetch all  medicines
+export const fetchAllMedicines = createAsyncThunk('getMedicines', async () => {
+  const responce = await axios
+    .get('/emarket/medicines')
+    .then((res) => res.data);
+  return responce;
+});
 
 // Add a Product
 export const addProduct = createAsyncThunk('addProduct', async (data) => {
@@ -55,6 +62,7 @@ const productSlice = createSlice({
   name: 'products',
   initialState: {
     products: [],
+    medicines: [],
     pageCount: 0,
     currPage: 0,
   },
@@ -76,6 +84,11 @@ const productSlice = createSlice({
         state.currPage = 0;
       }
       state.pageCount = pageNumber;
+    });
+    // get all Medicines
+    builder.addCase(fetchAllMedicines.fulfilled, (state, { payload }) => {
+      console.log(payload);
+      state.medicines = payload;
     });
     // Add a product
     builder.addCase(addProduct.fulfilled, (state, { payload }) => {
