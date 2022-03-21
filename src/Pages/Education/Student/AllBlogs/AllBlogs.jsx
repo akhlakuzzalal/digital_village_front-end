@@ -38,6 +38,7 @@ const AllBlogs = () => {
       <h3 className="text-center py-6 text-xl md:text-6xl lg:text-6xl mt-3">
         Available Blogs
       </h3>
+
       <article className="flex flex-wrap justify-evenly items-center gap-6">
         {blogs.map((blog) => (
           <BlogCard key={blog._id} blog={blog} />

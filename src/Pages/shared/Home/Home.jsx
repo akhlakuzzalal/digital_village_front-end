@@ -1,5 +1,4 @@
 import React from 'react';
-import Analyticale from './Analyticale/Analyticale.js';
 import Banner from './Banner/Banner';
 import Faq from './Faq/Faq.jsx';
 import News from './News/News';
@@ -13,7 +12,6 @@ const Home = () => {
       <Service />
       <News />
       <Reviews />
-      <Analyticale />
       <Faq />
     </div>
   );

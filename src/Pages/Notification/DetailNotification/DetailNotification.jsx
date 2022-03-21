@@ -6,7 +6,7 @@ const DetailNotification = ({ selectedNotification }) => {
     <div className="bg-slate-100 rounded-lg p-6 shadow-xl h-full">
       <h3>{selectedNotification?.title}</h3>
       <small>Date: {selectedNotification?.date} </small>
-      <p>{selectedNotification?.description}</p>
+      <p>{selectedNotification?.message}</p>
     </div>
   );
 };

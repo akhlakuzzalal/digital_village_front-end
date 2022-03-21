@@ -1,61 +1,89 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserSpecificNotification } from '../../redux/slices/notification/notificationSlice';
+import Pagination from '../../Components/Pagination';
+import {
+  fetchUserSpecificNotification,
+  setNotificationCurrPage,
+} from '../../redux/slices/notification/notificationSlice';
 import note from './../../assets/notification/notification.png';
 import DetailNotification from './DetailNotification/DetailNotification';
 import SingleNotification from './SingleNotification/SingleNotification';
 
 const Notification = () => {
+  const pageCount = useSelector((state) => state.notifications.pageCount);
+  const currPage = useSelector((state) => state.notifications.currPage);
   const user = useSelector((state) => state.user.user);
+  const [selectedNotification, setSelectedNotification] = useState({});
+  const size = 4;
 
   const notifications = useSelector(
     (state) => state.notifications.notifications
   );
 
-  // get the currently selected notifcation from redux store
-  const selectedNotification = useSelector(
-    (state) => state.notifications.selectedNotification
-  );
+  const handleSetSelectedNotification = (id) => {
+    const [selected] = notifications.filter(
+      (notification) => notification._id === id
+    );
+    setSelectedNotification(selected);
+  };
 
   const dispatch = useDispatch();
 
-  console.log(notifications);
-
   useEffect(() => {
-    dispatch(fetchUserSpecificNotification(user.email));
-  }, []);
+    dispatch(
+      fetchUserSpecificNotification({
+        email: user.email,
+        pageCount,
+        currPage,
+        size,
+      })
+    );
+    console.log(pageCount, 'this is pagecount');
+  }, [user.email, pageCount, currPage, size]);
 
   return (
-    <div
-      className="flex flex-wrap justify-center p-4 mt-[80px]"
-      style={{ minHeight: 'calc(100vh - 700px)' }}
-    >
-      {/* notification cards */}
-      <div className="w-100 md:w-1/2 space-y-4 flex-1">
-        {notifications && notifications.length >= 1 ? (
-          notifications.map((notification, i) => (
-            <SingleNotification
-              key={notification._id}
-              notification={notification}
-            ></SingleNotification>
-          ))
-        ) : (
-          <p className="text-center">No notifications available</p>
-        )}
+    <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
+      <div className="flex flex-wrap justify-center p-4 ">
+        {/* notification cards */}
+        <div className="w-100 md:w-1/2 space-y-4 flex-1">
+          {notifications && notifications.length >= 1 ? (
+            notifications.map((notification) => (
+              <SingleNotification
+                key={notification._id}
+                notification={notification}
+                active={selectedNotification._id}
+                handleSetSelectedNotification={handleSetSelectedNotification}
+              />
+            ))
+          ) : (
+            <p className="text-center">No notifications available</p>
+          )}
+        </div>
+
+        {/* notification details */}
+        <div className="w-100 md:w-1/2 p-2">
+          {Object.keys(selectedNotification).length === 0 ? (
+            <div>
+              <img
+                className="w-full"
+                src={note}
+                alt="notification not selected"
+              />
+            </div>
+          ) : (
+            <DetailNotification
+              selectedNotification={selectedNotification}
+            ></DetailNotification>
+          )}
+        </div>
       </div>
 
-      {/* notification details */}
-      <div className="w-100 md:w-1/2 p-2">
-        {Object.keys(selectedNotification).length === 0 ? (
-          <div className="min-h-screen">
-            <img className="w-full" src={note} alt="" />
-          </div>
-        ) : (
-          <DetailNotification
-            selectedNotification={selectedNotification}
-          ></DetailNotification>
-        )}
-      </div>
+      {/* pagination */}
+      <Pagination
+        currPage={currPage}
+        setCurrPage={setNotificationCurrPage}
+        pageCount={pageCount}
+      />
     </div>
   );
 };
