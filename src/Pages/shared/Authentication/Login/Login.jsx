@@ -30,8 +30,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const redirect_uri = location?.state?.form || '/';
-  console.log(redirect_uri, 'hello');
+  const redirect_uri = location?.state?.from || '/';
 
   const {
     setAuthError,
@@ -68,7 +67,7 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    processSignInWithGoogle(navigate, redirect_uri);
+    processSignInWithGoogle(location, navigate);
   };
 
   // clear error messages

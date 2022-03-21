@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import img from '../../../../assets/events/blue_celeste_search3.png';
 import Pagination from '../../../../Components/Pagination';
 import {
   fetchVideos,
@@ -7,7 +8,6 @@ import {
 } from '../../../../redux/slices/video/videoSlice';
 import Search from '../Search/Search';
 import VideoCard from './VideoCard/VideoCard';
-
 const Allvideos = () => {
   const pageCount = useSelector((state) => state.videos.pageCount);
   const currPage = useSelector((state) => state.videos.currPage);
@@ -37,10 +37,11 @@ const Allvideos = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <Search handleSearch={handleSearch} />
-      <h3 className="text-center py-6">Available Videos</h3>
-      <div className="flex flex-wrap gap-4 justify-evenly p-6">
+    <div className="space-y-6  min-h-[150vh] ">
+      <img className="w-full h-[300px] " src={img} alt="" />
+      <Search className="mt-20 " handleSearch={handleSearch} />
+      <h3 className=" py-6 text-center">Available Videos</h3>
+      <div className="flex flex-wrap gap-4  p-6 lg:mx-[100px]">
         {videos.map((video) => (
           <VideoCard key={video._id} video={video} />
         ))}

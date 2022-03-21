@@ -43,10 +43,10 @@ const Register = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const redirect_uri = location?.state?.form || '/';
+  const redirect_uri = location?.state?.from || '/';
 
   const handleGoogleRegister = () => {
-    processSignInWithGoogle(navigate);
+    processSignInWithGoogle(location, navigate);
   };
 
   const user = useSelector((state) => state.user.user);

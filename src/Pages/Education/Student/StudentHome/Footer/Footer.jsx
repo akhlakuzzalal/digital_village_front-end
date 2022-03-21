@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Analyticale = () => {
+// will modify it later
+const Footer = () => {
   return (
-    <div className=" bg-gray-50 py-10 mx-20 my-8 rounded-lg hidden">
+    <div className=" bg-gray-50 py-10 mx-20 my-8 rounded-lg">
       <div className="flex flex-wrap mb-10 ">
         <div className="mx-auto w-96">
           <img
@@ -123,4 +124,4 @@ const Analyticale = () => {
   );
 };
 
-export default Analyticale;
+export default Footer;

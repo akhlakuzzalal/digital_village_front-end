@@ -19,7 +19,7 @@ const BlogCard = ({ blog }) => {
       icon: 'warning',
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(deleteABlog(blog._id));
+        dispatch(deleteABlog(blog?._id));
         Swal.fire({
           title: 'deleted Successfully.',
           icon: 'success',
@@ -59,7 +59,7 @@ const BlogCard = ({ blog }) => {
         {/* title and description */}
         <div className="flex flex-col space-y-1 my-4">
           <h2 className="text-gray-700 font-primary text-lg">{blog?.title}</h2>
-          <p className="text-gray-500 text-sm">{blog?.about.slice(0,50)}</p>
+          <p className="text-gray-500 text-sm">{blog?.about.slice(0, 50)}</p>
         </div>
       </div>
 

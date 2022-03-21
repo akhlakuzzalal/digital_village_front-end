@@ -56,11 +56,9 @@ const CauseCard = ({ cause }) => {
       </div>
 
       {/* progress bar */}
-      <div class="py-5">
-        <p class="text-gray-600 dark:text-dark_text">
-          Raised {percent.toFixed(0)}% completed
-        </p>
-        <Progress
+      <div class="py-4">
+        <p class="text-gray-600 dark:text-dark_text">Raised {percent.toFixed(0)}% completed</p>
+        <Progress 
           percent={percent.toFixed(0)}
           theme={{
             error: {

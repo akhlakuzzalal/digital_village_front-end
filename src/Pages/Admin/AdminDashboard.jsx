@@ -32,7 +32,7 @@ const links = [
     path: '/admin/add-events',
   },
   {
-    name: 'Delete Event',
+    name: 'Manage Event',
     icon: <AiFillDelete size={30} />,
     path: '/admin/manageEvents',
   },
