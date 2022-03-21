@@ -14,17 +14,17 @@ const links = [
   {
     name: 'Add People',
     icon: <MdPersonAddAlt1 size={30} />,
-    path: '/',
+    path: '/connection/addFriend',
   },
   {
     name: 'Requesting',
     icon: <MdPending size={30} />,
-    path: '/',
+    path: '/connection/requesting',
   },
   {
     name: 'Wait for connection',
     icon: <FcAcceptDatabase size={30} />,
-    path: '/',
+    path: '/connection/requested',
   },
 ];
 

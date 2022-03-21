@@ -81,7 +81,7 @@ const Navbar = ({ navigation }) => {
           onClick={() => navigate('/')}
         >
           <img
-            className="w-full cursor-pointer"
+            className="w-16 h-16 md:w-full cursor-pointer"
             src={isDesktop ? laptop_logo : mobile_logo}
             alt="logo"
           />
