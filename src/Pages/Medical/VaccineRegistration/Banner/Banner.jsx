@@ -94,7 +94,7 @@ const Banner = () => {
           </div>
         </div>
         <div className=" w-full md:w-1/2 flex flex-col justify-center items-center ">
-          <Link to="/medicalDashboard/status" className="w-full">
+          <Link to="/medical/status" className="w-full">
             <div
               className="flex  justify-start items-center p-10  border-l-8 hover:bottom-2 border-indigo-700 hover:border-slate-900 rounded-lg mx-0 md:mx-4 w-full my-1"
               style={{ background: 'rgba(135, 87, 247,.9)' }}

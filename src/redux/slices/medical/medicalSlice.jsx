@@ -22,16 +22,16 @@ export const addAnAppointment = createAsyncThunk(
     return response;
   }
 );
-// delete event
-// export const deleteAnEvent = createAsyncThunk(
-//   'events/deleteAnEvent',
-//   async (id) => {
-//     const response = await axios
-//       .delete(`/event/deleteEvent/?id=${id}`)
-//       .then((response) => response.data);
-//     return response;
-//   }
-// );
+// show user appointment event
+export const showUserAppointment = createAsyncThunk(
+  'events/showAppointment',
+  async (email, date) => {
+    const response = await axios
+      .get(`/appointment/findUserAppointment?email=${email}&date=${date}`)
+      .then((response) => response.data);
+    return response;
+  }
+);
 
 // export const fetchUpcomingEvents = createAsyncThunk(
 //   'events/fetchUpcomingEvents',
@@ -81,6 +81,13 @@ const medicalSlice = createSlice({
     builder.addCase(addAnAppointment.fulfilled, (state, { payload }) => {
       state.allAvailableAppointment.filter(
         (appointment) => appointment._id !== payload
+      );
+    });
+    builder.addCase(showUserAppointment.fulfilled, (state, { payload }) => {
+      state.allAvailableAppointment.filter(
+        (appointment) =>
+          appointment.email !== payload.email &&
+          appointment.date !== payload.date
       );
     });
   },
