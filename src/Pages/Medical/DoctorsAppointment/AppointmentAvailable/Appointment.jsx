@@ -3,6 +3,7 @@ import Lottie from 'react-lottie';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import axios from '../../../../api/axios';
 import useMediaQuery from '../../../../hooks/useMediaQuery';
 import animationData from './../../../../lotties/medicalService.json';
@@ -31,14 +32,14 @@ const Appointment = (props) => {
 
   const handleAlert = () => {
     const data = { name, email, service, date, time, price };
-    swal({
+    Swal({
       title: 'Want to proceed?',
-      // text: 'Once deleted, you will not be able to recover this imaginary file!',
+      showDenyButton: true,
+      confirmButtonText: 'Okay',
+      denyButtonText: `Cancel`,
       icon: 'warning',
-
-      buttons: true,
-    }).then((willConfirm) => {
-      if (willConfirm) {
+    }).then((result) => {
+      if (result.isConfirmed) {
         axios.post('/appointment/addAppointment', data).then((response) => {
           swal('Done, Now you can pay to confirm your bookings', {
             icon: 'success',

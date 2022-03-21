@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../../api/axios';
 
-// create the thunk
+// fetch all blogs
 export const fetchBlogs = createAsyncThunk(
   'blogs/fetchBlogs',
   async (pagination) => {

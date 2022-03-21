@@ -7,12 +7,12 @@ import {
 import { MdEmail } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import { BASE_URI } from '../../../../api/axios';
+import { BASE_URI } from '../../../api/axios';
 import {
   getSingleUserInfo,
   updateUser,
   updateUserWithoutProfileImg,
-} from '../../../../redux/slices/user/userSlice';
+} from '../../../redux/slices/user/userSlice';
 import EditProfile from './EditProfile';
 
 const Profile = () => {
@@ -37,12 +37,13 @@ const Profile = () => {
     },
     [previewFile]
   );
+
   const handleUpdateUser = async (data) => {
     const formData = new FormData();
     formData.append('file', file);
     // update without profile image
     if (data.employmentStatus === 'choose one') delete data.employmentStatus;
-    if (data.maritialStatus === 'choose one') delete data.maritialStatus;
+    if (data.maritalStatus === 'choose one') delete data.maritalStatus;
     if (data.religion === 'choose one') delete data.religion;
     if (data.gender === 'choose one') delete data.gender;
 

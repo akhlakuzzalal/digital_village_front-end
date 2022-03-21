@@ -7,49 +7,50 @@ const NewSidebar = ({ links, setIsOpen }) => {
 
   return (
     <div
-      className={`bg-slate-900 text-white mt-[80px] z-30 fixed ${
+      className={`bg-slate-900 min-h-full overflow-y-scroll text-white mt-[80px] z-30 fixed ${
         showText && 'min-w-[200px]'
       }`}
-      style={{ height: 'calc(100vh - 88px)' }}
     >
-      {/* Links of the dashboard */}
-      <ul className="mt-3 space-y-1">
-        {links.map((link) => (
-          <li key={link.name}>
-            <Links
-              link={link}
-              showText={showText}
-              showTooltip={showTooltip}
-              setShowTooltip={setShowTooltip}
+      <div className="h-full">
+        {/* icon for closing and opening */}
+        {showText ? (
+          <div className="text-right w-full rounded-lg text-white opacity-60 hover:opacity-100 bg-slate-900">
+            <BsArrowLeft
+              size={30}
+              className="cursor-pointer ml-auto m-3"
+              onClick={() => {
+                setShowText(false);
+                setIsOpen(false);
+              }}
             />
-          </li>
-        ))}
-      </ul>
+          </div>
+        ) : (
+          <div className="text-right w-full rounded-lg text-white opacity-60 hover:opacity-100 bg-slate-900">
+            <BsArrowRight
+              size={30}
+              className="cursor-pointer ml-auto m-3"
+              onClick={() => {
+                setShowText(true);
+                setIsOpen(true);
+              }}
+            />
+          </div>
+        )}
 
-      {/* icon for closing and opening */}
-      {showText ? (
-        <div className="sticky text-right bottom-4 w-full rounded-lg text-white opacity-60 hover:opacity-100 bg-slate-900">
-          <BsArrowLeft
-            size={30}
-            className="cursor-pointer ml-auto m-3"
-            onClick={() => {
-              setShowText(false);
-              setIsOpen(false);
-            }}
-          />
-        </div>
-      ) : (
-        <div className="sticky text-right bottom-4 w-full rounded-lg text-white opacity-60 hover:opacity-100 bg-slate-900">
-          <BsArrowRight
-            size={30}
-            className="cursor-pointer ml-auto m-3"
-            onClick={() => {
-              setShowText(true);
-              setIsOpen(true);
-            }}
-          />
-        </div>
-      )}
+        {/* Links of the dashboard */}
+        <ul className="mt-3 space-y-1">
+          {links.map((link) => (
+            <li key={link.name}>
+              <Links
+                link={link}
+                showText={showText}
+                showTooltip={showTooltip}
+                setShowTooltip={setShowTooltip}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

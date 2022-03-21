@@ -48,7 +48,7 @@ const links = [
   {
     name: 'Help Requests',
     icon: <FaHandsHelping size={30} />,
-    path: '/admin/requestapply',
+    path: '/admin/allHelpRequests',
   },
   {
     name: 'Add development',

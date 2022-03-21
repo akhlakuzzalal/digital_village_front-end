@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllCuases } from '../../../redux/slices/Donations/donationSlice';
 import CauseCard from './CauseCard/CauseCard';
 
-const Causes = () => {
+const AllCauses = () => {
   const causes = useSelector((state) => state.donation.causes);
-  console.log(causes ,"causes");
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAllCuases());
-    
+    console.log('hello');
   }, []);
+  console.log(causes, 'causes');
 
   return (
     <section
@@ -30,12 +31,12 @@ const Causes = () => {
         id="donation"
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6"
       >
-        {causes?.map((item) => {
-          return <CauseCard key={item._id} {...item} />;
+        {causes?.map((cause) => {
+          return <CauseCard key={cause._id} cause={cause} />;
         })}
       </div>
     </section>
   );
 };
 
-export default Causes;
+export default AllCauses;

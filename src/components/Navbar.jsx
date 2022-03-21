@@ -1,7 +1,6 @@
 import { Popover, Transition } from '@headlessui/react';
 import React, { Fragment, useEffect, useState } from 'react';
 import { FiSun } from 'react-icons/fi';
-import {FaRegCommentDots,FaPhoneVolume}  from "react-icons/fa";
 import {
   MdClose,
   MdDarkMode,
@@ -9,7 +8,7 @@ import {
   MdMenuOpen,
 } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 import logo from '../assets/logo.png';
 import { setMood } from '../redux/slices/mood/MoodSlice';
@@ -24,7 +23,6 @@ const Navbar = ({ navigation }) => {
 
   const user = useSelector((state) => state.user.user);
 
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   //header change function
   const onChangeHeader = () => {
     const scrollTop =
@@ -67,7 +65,7 @@ const Navbar = ({ navigation }) => {
       className={`
           ${
             changeHeader
-              ? '-mt-32 fixed z-50 top-0 left-0 w-full  shadow-md'
+              ? '-mt-32 fixed z-50 top-0 left-0 w-full  shadow-md '
               : 'mt-0 fixed z-50 top-0 left-0 w-full'
           } ${
         headerBgWhite ? 'bg-slate-900 text-white' : 'bg-slate-900 text-white'
@@ -88,7 +86,7 @@ const Navbar = ({ navigation }) => {
             {/* mobile menu icon when links hidden */}
             <div className="-mr-2 flex items-center justify-end md:hidden">
               <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                <span className="sr-only">Open main menu</span>
+                <span className="sr-only">Open menu bar</span>
                 <MdMenuOpen className="h-6 w-6" aria-hidden="true" />
               </Popover.Button>
             </div>
@@ -108,23 +106,23 @@ const Navbar = ({ navigation }) => {
               >
                 <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                   <div className="px-5 pt-4 flex items-center justify-between">
-                    <div className="-mr-2">
+                    <div className="-mr-1 sm:-mr-2">
                       {/* mobile menu icon when links shown */}
                       <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                         <span className="sr-only">Close main menu</span>
-                        <MdClose className="h-6 w-6" aria-hidden="true" />
+                        <MdClose className="h-5 w-5" aria-hidden="true" />
                       </Popover.Button>
                     </div>
                   </div>
 
                   {/* nav links on small divice */}
-                  <div className="px-2 pt-2 pb-3 space-y-1">
+                  <div className="px-2 pt-2 pb-3 space-y-2">
                     {navigation.map((item) =>
                       item.name.includes('#') ? (
                         <NavLink
                           key={item.name}
                           to={item.href}
-                          className="block px-3 py-2 rounded-md text-lg font-bold text-gray-700 hover:text-primary"
+                          className="block px-3 rounded-md text-lg font-bold text-gray-700 hover:text-primary"
                         >
                           {item.name}
                         </NavLink>
@@ -133,12 +131,24 @@ const Navbar = ({ navigation }) => {
                           smooth
                           key={item.name}
                           to={item.href}
-                          className="block px-3 py-2 rounded-md text-lg font-bold text-gray-700 hover:text-primary"
+                          className="block px-3 rounded-md text-lg font-bold text-gray-700 hover:text-primary"
                         >
                           {item.name}
                         </NavHashLink>
                       )
                     )}
+                    <NavLink
+                      to=""
+                      className="block px-3 rounded-md text-lg font-bold text-gray-700 hover:text-primary"
+                    >
+                      Notification
+                    </NavLink>
+                    <NavLink
+                      to=""
+                      className="block px-3 rounded-md text-lg font-bold text-gray-700 hover:text-primary"
+                    >
+                      Sign Out
+                    </NavLink>
                   </div>
                 </div>
               </Popover.Panel>
@@ -152,7 +162,7 @@ const Navbar = ({ navigation }) => {
                   <NavLink
                     key={item.name}
                     to={item.href}
-                    className="font-bold text-white text-lg hover:text-primary"
+                    className="lg:font-bold text-white lg:text-lg hover:text-primary"
                   >
                     {item.name}
                   </NavLink>
@@ -161,7 +171,7 @@ const Navbar = ({ navigation }) => {
                     smooth
                     key={item.name}
                     to={item.href}
-                    className="font-bold text-white text-lg hover:text-primary"
+                    className="lg:font-bold text-white lg:text-lg hover:text-primary"
                   >
                     {item.name}
                   </NavHashLink>
@@ -173,12 +183,12 @@ const Navbar = ({ navigation }) => {
 
         {/* Notification and SignIn SignOut button */}
         <div className="flex items-center space-x-2 order-3 mr-6">
-          <div className="flex items-center justify-center space-x-3 mx-3">
+          {/* Notification */}
+          <div className="hidden sm:flex items-center justify-center space-x-3 mx-3">
             <div
               className="relative flex cursor-pointer"
               onClick={() => navigate('/notifications')}
             >
-              
               <span className="bg-info w-6 h-6 rounded-full text-white font-bold flex items-center justify-center  poppins absolute -right-1 -top-1">
                 2
               </span>
@@ -188,6 +198,8 @@ const Navbar = ({ navigation }) => {
               />
             </div>
           </div>
+
+          {/* sign in / out */}
           <div className="flex items-center justify-end space-x-6">
             {!user?.email ? (
               <button
@@ -200,27 +212,15 @@ const Navbar = ({ navigation }) => {
               <UserMenu />
             )}
           </div>
-                   {/* dark mood handler */}
-         <div className="cursor-pointer ">
+
+          {/* dark mood handler */}
+          <div className="cursor-pointer ">
             {mood === 'dark' ? (
               <FiSun size={40} onClick={() => dispatch(setMood('light'))} />
             ) : (
               <MdDarkMode size={40} onClick={() => dispatch(setMood('dark'))} />
             )}
           </div>
-
-          
-         <div className='md:ml-24'>
-              <Link to='join'>
-                <FaRegCommentDots className='text-white font-bold md:ml-24 animate-pulse' size={35}/>
-                <div className='flex md:ml-10'>
-                <FaPhoneVolume size={30} className="animate-bounce"/>
-                    <span className="mx-auto"> 16215</span>
-                  
-                </div>
-             
-                </Link>
-         </div>
         </div>
       </nav>
     </header>

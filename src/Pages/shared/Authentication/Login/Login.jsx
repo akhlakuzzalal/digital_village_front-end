@@ -77,9 +77,12 @@ const Login = () => {
   };
 
   return (
-    <div className="flex" style={{ minHeight: 'calc(100vh - 100px)' }}>
+    <div
+      className="flex lg:h-[100vh] lg:my-20"
+      style={{ minHeight: 'calc(100vh - 100px)' }}
+    >
       <div className="flex-1 px-3">
-        <div className="pt-36 md:mx-10 text-center lg:mx-48 space-y-4 mb-3">
+        <div className="pt-36 md:mx-10 text-center lg:mx-40 space-y-4 mb-3">
           <h3 className="capitalize">Welcome to digital village</h3>
           <p className="space-x-2">
             <span>Don't Have an account?</span>

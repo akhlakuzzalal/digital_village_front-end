@@ -15,15 +15,20 @@ const Development = () => {
   }, []);
 
   return (
-    <div
-      className="mt-[80px]"
-      style={{ minHeight: 'calc(100vh - 700px) bg-gray-100' }}
-    >
+    <div className="mt-[80px] h-full">
       <DevelopmentBanner />
       <DevelopmentAbout />
-      <div className="mx-10 mt-36">
-        <h3>Development Proposal</h3>
-        <div className="grid grid-cols-3 gap-6">
+      <div className="lg:mx-[100px] lg:mt-36">
+        <div className=" text-center mb-32 space-y-5">
+          <h3>Propose For Development</h3>
+          <p className="lg:px-40">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas
+            inventore qui magni voluptatem dolor, velit mollitia porro pariatur
+            minima maxime sed molestias autem eos voluptatum molestiae eaque
+            reiciendis repellendus cupiditate!
+          </p>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-20">
           {proposals?.map((proposal) => (
             <DevelopmentCard
               proposal={proposal}
@@ -32,6 +37,25 @@ const Development = () => {
               key={proposal._id}
             />
           ))}
+        </div>
+
+        <div className="text-center space-y-5">
+          <h3 className="">Our Latest Developed Projects </h3>
+          <p className="lg:px-40">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
+            recusandae natus repellendus officiis eius saepe ea hic deserunt
+            laudantium ducimus!
+          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-20">
+            {proposals?.map((proposal) => (
+              <DevelopmentCard
+                proposal={proposal}
+                handleUpvote={handleUpvote}
+                handleDownvote={handleDownvote}
+                key={proposal._id}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -83,10 +83,6 @@ const useFirebase = () => {
           emailVerified: authUser?.emailVerified,
         };
         dispatch(setUser(newUser));
-        console.log('print hello');
-        if (uId) {
-          dispatch(getSingleUserInfo({ id: uId }));
-        }
       } else {
         dispatch(setUser({}));
       }
@@ -100,6 +96,7 @@ const useFirebase = () => {
     setIsLoading(true);
     try {
       await signOut(auth);
+      localStorage.setItem('persist:digital_village_storage', {});
       logoutFromDB();
     } catch (error) {
       console.log(error);
@@ -134,6 +131,8 @@ const useFirebase = () => {
       dispatch(setRoles([...roles, response?.data?.roles]));
       dispatch(setToken(response?.data?.accessToken));
       dispatch(setUId(response?.data?.uId));
+
+      dispatch(getSingleUserInfo({ id: response?.data?.uId })); // get the user all info for profile page
       console.log(response?.data?.message);
     } catch (error) {
       console.log(error.message);

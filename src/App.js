@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
 import Chat from './Components/ChattingApp/Chat/Chat';
 import Join from './Components/ChattingApp/Join/Join';
 import ScrollToTop from './Components/ScrollToTop';
+import UnAuthorized from './Components/UnAuthorized';
 import { AuthProvider } from './context/AuthProvider';
 import {
   default as AdminDashboard,
@@ -10,15 +10,12 @@ import {
 } from './Pages/Admin/AdminDashboard';
 import AllUsers from './Pages/Admin/AllUsers/AllUsers';
 import AddDevelopment from './Pages/Admin/Development/AddDevelopment/AddDevelopment';
-import DevelopmentManage from './Pages/Admin/Development/DevelopmentManage/DevelopmentManage';
-import AddCause from './Pages/Admin/Donation/AddCause';
-import AllApply from './Pages/Admin/Donation/AllApply';
-import AllCauses from './Pages/Admin/Donation/AllCauses';
-import CreateDonationCause from './Pages/Admin/Donation/CreateDonationCause';
-import DonarPaymente from './Pages/Admin/Donation/DonarPaymente';
-import HelpRequestApply from './Pages/Admin/Donation/HelpRequestApply';
-import ManageAllDonars from './Pages/Admin/Donation/ManageAllDonars';
-import UpdateCause from './Pages/Admin/Donation/UpdateCause';
+import ManageDevelopment from './Pages/Admin/Development/ManageDevelopment/ManageDevelopment';
+import AddCause from './Pages/Admin/Donation/AddCause/AddCause';
+import AllCauses from './Pages/Admin/Donation/AllCauses/AllCauses';
+import AllHelpRequests from './Pages/Admin/Donation/AllHelpRequests/AllHelpRequests';
+import ManageAllDonars from './Pages/Admin/Donation/ManageAllDonars/ManageAllDonars';
+import UpdateCause from './Pages/Admin/Donation/updateCause/UpdateCause';
 import Eventmanagement from './Pages/Admin/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/Market/MarketManagement';
 import AddNews from './Pages/Admin/News/AddNews/AddNews';
@@ -64,9 +61,9 @@ import UpcomingEvents from './Pages/Events/UpcomingEvents/UpcomingEvents';
 import AddAppointment from './Pages/Medical/DoctorsAppointment/AddAppointment/AddAppointment';
 import DoctorsAppointment from './Pages/Medical/DoctorsAppointment/DoctorsAppointment';
 import UserAppointments from './Pages/Medical/DoctorsAppointment/UserAppointments/UserAppointments';
-import Medical from './Pages/Medical/Medical';
 import MedicalDashboard from './Pages/Medical/MedicalDashboard';
 import FrequentlyAsked from './Pages/Medical/VaccineRegistration/FrequentlyAsked/FrequentlyAsked';
+import Medical from './Pages/Medical/VaccineRegistration/Medical';
 import RegForm from './Pages/Medical/VaccineRegistration/RegForm/RegForm';
 import VaccineInfo from './Pages/Medical/VaccineRegistration/RegistrationPdf/VaccineInfo';
 import Status from './Pages/Medical/VaccineRegistration/Status/Status';
@@ -88,53 +85,46 @@ import NotFound from './Pages/shared/NotFound/NotFound';
 import BoardHome from './Pages/SocialMedia/Connections/BoardComponent/BoardHome.jsx';
 import ConnectionBoard from './Pages/SocialMedia/Connections/ConnectionBoard';
 import SocialHome from './Pages/SocialMedia/Home/SocialHome';
-import EditReview from './Pages/User/DashboardComponent/EditReview/EditReview';
-import Profile from './Pages/User/DashboardComponent/Profile/Profile';
-import Review from './Pages/User/DashboardComponent/Review/Review';
+import MyDonations from './Pages/User/Donation/MyDonations';
+import MyHelpRequests from './Pages/User/Donation/MyHelpRequests';
+import Profile from './Pages/User/Profile/Profile';
+import EditReview from './Pages/User/Review/EditReview/EditReview';
+import Review from './Pages/User/Review/Review';
 import UserDashboard from './Pages/User/UserDashboard';
+import AdminRoute from './SecureRoutes/AdminRoute';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
 
-const Roles = {
+export const Roles = {
   User: 1000,
   Admin: 5000,
 };
 
-function App() {
-  return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Header />
-        <ScrollToTop>
-          <Routes>
-            {/* ALL PUBLIC ROUTES */}
-            <Route path="/" element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="register" element={<Register />} />
-            <Route path="login" element={<Login />} />
-            {/* TESTING */}
-            <Route
-              element={
-                <PrivateRoute allowedRoles={[Roles.User, Roles.Admin]} />
-              }
-            >
-              <Route path="allUsers" element={<AllUsers />} />
-            </Route>
+const App = () => (
+  <AuthProvider>
+    <BrowserRouter>
+      <Header />
+      <ScrollToTop>
+        <Routes>
+          {/* ALL PUBLIC ROUTES */}
+          <Route path="/" element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+
+          <Route element={<PrivateRoute />}>
+            <Route path="allUsers" element={<AllUsers />} />
             {/* notification route */}
             <Route path="notifications" element={<Notification />} />
 
             {/* user routes */}
             <Route path="userdashboard" element={<UserDashboard />}>
               <Route path="profile" element={<Profile />} />
-              <Route path="my-event-booking" element={<MyBookedEvents />} />
+              <Route path="myBookedEvents" element={<MyBookedEvents />} />
               <Route path="review" element={<Review />} />
-              <Route path="donarpaymente" element={<DonarPaymente />} />
-              <Route path="requestapply" element={<HelpRequestApply />} />
+              <Route path="myDonations" element={<MyDonations />} />
+              <Route path="myHelpRequests" element={<MyHelpRequests />} />
               <Route path="editReview/:id" element={<EditReview />} />
-              <Route
-                path="createDonationCause"
-                element={<CreateDonationCause />}
-              />
             </Route>
 
             {/* EDUCATION RELATED ROUTES */}
@@ -155,6 +145,7 @@ function App() {
               <Route path="publishVideo" element={<PublishVideo />} />
               <Route path="analytics" element={<TeacherAnalytics />} />
             </Route>
+
             {/* routes for student */}
             <Route path="student" element={<Student />}>
               <Route path="home" element={<StudentHome />} />
@@ -185,7 +176,7 @@ function App() {
               <Route path="upcoming-events" element={<UpcomingEvents />} />
               <Route path="archived-events" element={<ArchivedEvents />} />
             </Route>
-            <Route></Route>
+
             <Route path="eventDetails/:id" element={<EventDetails />} />
 
             {/* DEVELOPMENT RELATED ROUTES */}
@@ -212,7 +203,15 @@ function App() {
             {/* landing page of medical */}
             <Route path="medical" element={<Medical />} />
 
-            {/* Admin dashboard routes */}
+            {/* Social Media Routes */}
+            <Route path="social" element={<SocialHome />} />
+            <Route path="connection" element={<ConnectionBoard />}>
+              <Route path="home" element={<BoardHome />} />
+            </Route>
+          </Route>
+
+          {/* Admin dashboard routes */}
+          <Route element={<AdminRoute allowedRoles={[Roles.Admin]} />}>
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="events" element={<Eventmanagement />} />
@@ -225,8 +224,7 @@ function App() {
               <Route path="updatecause/:id" element={<UpdateCause />} />
               <Route path="manageAllDonars" element={<ManageAllDonars />} />
               <Route path="development" element={<DevelopmentDashboard />} />
-              <Route path="development" element={<DevelopmentManage />} />
-              <Route path="manageDevelopmet" element={<DevelopmentManage />} />
+              <Route path="manageDevelopmet" element={<ManageDevelopment />} />
               <Route path="editDevelopment/:id" element={<EditBlog />} />
               <Route path="addDevelopment" element={<AddDevelopment />} />
               <Route path="market" element={<MarketManagement />} />
@@ -237,23 +235,19 @@ function App() {
               <Route path="editNews/:id" element={<EditNews />} />
               <Route path="addAppointment" element={<AddAppointment />} />
               <Route path="status" element={<StatusCheck />} />
-              <Route path="requestapply" element={<AllApply />} />
+              <Route path="allHelpRequests" element={<AllHelpRequests />} />
             </Route>
+          </Route>
 
-            {/* Social Media Routes */}
-            <Route path="social" element={<SocialHome />} />
-            <Route path="connection" element={<ConnectionBoard />}>
-              <Route path="home" element={<BoardHome />} />
-            </Route>
-
-            {/* NOT FOUND ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </ScrollToTop>
-        <Footer />
-      </BrowserRouter>
-    </AuthProvider>
-  );
-}
+          {/* unauthorized route */}
+          <Route path="unauthorized" element={<UnAuthorized />} />
+          {/* NOT FOUND ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </ScrollToTop>
+      <Footer />
+    </BrowserRouter>
+  </AuthProvider>
+);
 
 export default App;
