@@ -20,6 +20,7 @@ import Eventmanagement from './Pages/Admin/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/Market/MarketManagement';
 import AddNews from './Pages/Admin/News/AddNews/AddNews';
 import ManageNews from './Pages/Admin/News/ManageNews/ManageNews';
+import SendNotification from './Pages/Admin/SendNotification/SendNotification';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import Donations from './Pages/Donations/Donations';
@@ -214,6 +215,7 @@ const App = () => (
           <Route element={<AdminRoute allowedRoles={[Roles.Admin]} />}>
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
+              <Route path="sendNotification" element={<SendNotification />} />
               <Route path="events" element={<Eventmanagement />} />
               <Route path="add-events" element={<AddEvents />} />
               <Route path="manageEvents" element={<ManageEvents />} />

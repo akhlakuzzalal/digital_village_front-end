@@ -12,36 +12,35 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
 import logo from '../assets/logo.png';
 import { setMood } from '../redux/slices/mood/MoodSlice';
+import { fetchUserSpecificNotification } from '../redux/slices/notification/notificationSlice';
 import UserMenu from './UserMenu';
 
 const Navbar = ({ navigation }) => {
   const [changeHeader, setChangeHeader] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
-  const [headerBgWhite, setHeaderBgWhite] = useState(false);
-
   const navigate = useNavigate();
 
   const user = useSelector((state) => state.user.user);
+  const notifications = useSelector(
+    (state) => state.notifications.notifications
+  );
+
+  useEffect(() => {
+    dispatch(fetchUserSpecificNotification(user?.email));
+  }, [user?.email]);
 
   //header change function
   const onChangeHeader = () => {
     const scrollTop =
       window.pageYOff || window.document.documentElement.scrollTop;
     if (scrollTop > lastScrollTop) {
-      if (scrollTop === 0) {
-        setHeaderBgWhite(false);
-      }
       setChangeHeader(true);
       setLastScrollTop(scrollTop);
     } else if (scrollTop < lastScrollTop) {
-      if (scrollTop === 0) {
-        setHeaderBgWhite(false);
-      }
       setChangeHeader(false);
     } else {
       setChangeHeader(false);
       setLastScrollTop(scrollTop);
-      setHeaderBgWhite(true);
     }
   };
 
@@ -61,7 +60,6 @@ const Navbar = ({ navigation }) => {
   }, [mood]);
 
   const location = useLocation();
-  const path = location.pathname;
   const shwoFixedHeader = location.pathname.indexOf('admin') !== -1;
 
   return (
@@ -188,7 +186,7 @@ const Navbar = ({ navigation }) => {
               onClick={() => navigate('/notifications')}
             >
               <span className="bg-info w-6 h-6 rounded-full text-white font-bold flex items-center justify-center  poppins absolute -right-1 -top-1">
-                2
+                {(notifications && notifications.length) || 0}
               </span>
               <MdEditNotifications
                 size={40}
