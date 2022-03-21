@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../../api/axios';
 
 // fetch all causes
-export const fetchAllCuases = createAsyncThunk(
-  'cuases/fetchAllCuases',
+export const fetchAllCauses = createAsyncThunk(
+  'cuases/fetchAllCauses',
   async () => {
     const response = await axios
       .get('/donationCause/all')
@@ -111,7 +111,7 @@ const donationSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchAllCuases.fulfilled, (state, { payload }) => {
+    builder.addCase(fetchAllCauses.fulfilled, (state, { payload }) => {
       state.causes = payload;
     });
     builder.addCase(addACuase.fulfilled, (state, { payload }) => {
