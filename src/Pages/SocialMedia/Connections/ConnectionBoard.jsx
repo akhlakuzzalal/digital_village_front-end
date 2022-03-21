@@ -38,7 +38,9 @@ const ConnectionBoard = () => {
     <div className="flex">
       <NewSidebar links={links} setIsOpen={setIsOpen} />
       <div
-        className={`mt-[90px] flex-1 ${isOpen ? 'ml-[273px]' : 'ml-[82px]'}`}
+        className={`mt-[90px] flex-1 ${
+          isOpen ? 'md:ml-[273px]' : 'md:ml-[82px]'
+        }`}
       >
         {initial ? <BoardHome /> : <Outlet />}
       </div>

@@ -35,7 +35,7 @@ const AllProducts = () => {
   };
 
   return (
-    <div className="mx-12 my-10">
+    <div className="mx-2 md:mx-12 my-10">
       <h3 className="text-base text-center md:text-left md:text-2xl mb-4 md:ml-20">
         Found{' '}
         <span className="h-5 w-5 px-2 text-white  rounded-full bg-blue-600">
