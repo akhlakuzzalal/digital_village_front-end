@@ -16,7 +16,7 @@ const AllNews = () => {
   return (
     <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <NewsBanner />
-      <BreakingNews />
+      <BreakingNews news={news}/>
       <div className="grid grid-cols-1 gap-4 mx-auto md:mx-10 mt-14 md:grid-cols-4">
         <div className="mx-5">
           <NewsSidebar />
