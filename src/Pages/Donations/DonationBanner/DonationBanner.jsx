@@ -37,6 +37,7 @@ const DonationBanner = () => {
     });
   };
   const onSubmit = () => {
+
     setShowModal(false);
     handleAlert();
     reset();
@@ -51,7 +52,7 @@ const DonationBanner = () => {
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blue Gray-200 rounded-t">
-                  <h3 className="text-2xl font-semibold ">
+                  <h3 className="text-2xl font-semibold text-green-400">
                     Donate! <span>Help Request</span>
                   </h3>
                   <button
@@ -118,6 +119,25 @@ const DonationBanner = () => {
                         placeholder="date"
                         {...register('date', { required: true })}
                       />
+                      {/* category */}
+                      <select
+                      className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
+                      {...register('category', {
+                      required: 'this is required',
+                      })}
+                      >
+                      <option className="bg-green-500 text-pink-500" defaultValue="choose one">choose one</option>
+                      <option value="Education">Education</option>
+                      <option value="Health">Health</option>
+                      <option value="Water">Water</option>
+                      <option value="Agriculture">Agriculture</option>
+                      <option value="Food">Food</option>
+                      <option value="Development">Development</option>
+                      <option value="Others">others</option>
+                      </select>
+                      {errors.category && (
+                      <small className="text-danger">{errors.category.message}</small>
+                      )}
                       <input
                         type="number"
                         className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
