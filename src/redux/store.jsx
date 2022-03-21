@@ -16,6 +16,7 @@ import DevelopmentSlice from './slices/Developmet/DevelopmentSlice';
 import donationSlice from './slices/Donations/donationSlice';
 import { marketAllReducers } from './slices/eMarket/marketAllReducers';
 import eventReducer from './slices/event/eventSlice';
+import medicalSlice from './slices/medical/medicalSlice';
 import MoodSlice from './slices/mood/MoodSlice';
 import notificationReducer from './slices/notification/notificationSlice';
 import PayModalSlice from './slices/payModal/PayModalSlice';
@@ -37,6 +38,7 @@ const reducers = combineReducers({
   mood: MoodSlice,
   development: DevelopmentSlice,
   social: socialSlice,
+  medical: medicalSlice,
 });
 
 const persistConfig = {
