@@ -15,6 +15,8 @@ import medical from './../../../../assets/services/medical.png';
 import ServiceBoard from './ServiceBoard/ServiceBoard';
 import ServiceExplore from './ServiceExplore/ServiceExplore';
 
+const educations="https://w7.pngwing.com/pngs/310/448/png-transparent-study-skills-education-learning-computer-icons-sc-logo-angle-hat-teacher.png"
+
 const services = [
   {
     icon: <FcGraduationCap className="text-center" size={70} />,
