@@ -38,7 +38,6 @@ const Notification = () => {
         size,
       })
     );
-    console.log(pageCount, 'this is pagecount');
   }, [user.email, pageCount, currPage, size]);
 
   return (
