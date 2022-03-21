@@ -34,7 +34,7 @@ const Banner = () => {
             We have loads of resources created by the village teacher for
             sharing knowledge amongst the village students.
           </p>
-          <button className="px-10 py-4 bg-[blue] text-white">
+          <button className="px-10 py-4 bg-[blue] text-white rounded-lg">
             Learn More
           </button>
         </div>
