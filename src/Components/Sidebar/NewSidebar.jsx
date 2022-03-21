@@ -3,54 +3,46 @@ import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import Links from './Links/Links';
 const NewSidebar = ({ links, setIsOpen }) => {
   const [showText, setShowText] = useState(false);
-  const [showTooltip, setShowTooltip] = useState(false);
 
   return (
     <div
-      className={`bg-slate-900 min-h-full overflow-y-scroll text-white mt-[80px] z-30 fixed ${
+      className={`min-h-full mt-[80px] overflow-y-scroll bg-slate-900 text-white z-30 ${
         showText && 'min-w-[200px]'
       }`}
     >
-      <div className="h-full">
-        {/* icon for closing and opening */}
-        {showText ? (
-          <div className="text-right w-full rounded-lg text-white opacity-60 hover:opacity-100 bg-slate-900">
-            <BsArrowLeft
-              size={30}
-              className="cursor-pointer ml-auto m-3"
-              onClick={() => {
-                setShowText(false);
-                setIsOpen(false);
-              }}
-            />
-          </div>
-        ) : (
-          <div className="text-right w-full rounded-lg text-white opacity-60 hover:opacity-100 bg-slate-900">
-            <BsArrowRight
-              size={30}
-              className="cursor-pointer ml-auto m-3"
-              onClick={() => {
-                setShowText(true);
-                setIsOpen(true);
-              }}
-            />
-          </div>
-        )}
+      {/* icon for closing and opening */}
+      {showText ? (
+        <div className="text-right w-full rounded-lg text-white opacity-60 hover:opacity-100 bg-slate-900">
+          <BsArrowLeft
+            size={30}
+            className="cursor-pointer ml-auto m-3"
+            onClick={() => {
+              setShowText(false);
+              setIsOpen(false);
+            }}
+          />
+        </div>
+      ) : (
+        <div className="text-right w-full rounded-lg text-white opacity-60 hover:opacity-100 bg-slate-900">
+          <BsArrowRight
+            size={30}
+            className="cursor-pointer ml-auto m-3"
+            onClick={() => {
+              setShowText(true);
+              setIsOpen(true);
+            }}
+          />
+        </div>
+      )}
 
-        {/* Links of the dashboard */}
-        <ul className="mt-3 space-y-1">
-          {links.map((link) => (
-            <li key={link.name}>
-              <Links
-                link={link}
-                showText={showText}
-                showTooltip={showTooltip}
-                setShowTooltip={setShowTooltip}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
+      {/* Links of the dashboard */}
+      <ul className="mt-3 space-y-1">
+        {links.map((link) => (
+          <li key={link.name}>
+            <Links link={link} showText={showText} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

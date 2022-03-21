@@ -13,7 +13,7 @@ const RegularProduct = ({ product, handleAddToCart }) => {
           color={'white'}
           className="mb-3 bg-[#666666] p-1 rounded-sm cursor-pointer"
         />
-        <Link to={`/productdetails/${_id}`}>
+        <Link to={`/productdetails/${_id}/product`}>
           <BsFillEyeFill
             size={30}
             color={'white'}

@@ -6,6 +6,7 @@ import { FcDonate, FcImport } from 'react-icons/fc';
 import { IoLogoDesignernews } from 'react-icons/io';
 import {
   MdManageAccounts,
+  MdOutlineEditNotifications,
   MdOutlineManageAccounts,
   MdOutlineMedicalServices,
 } from 'react-icons/md';
@@ -19,6 +20,11 @@ const links = [
     name: 'All Users',
     icon: <FaUsers size={30} />,
     path: '/admin/allusers',
+  },
+  {
+    name: 'Notification',
+    icon: <MdOutlineEditNotifications size={30} />,
+    path: '/admin/sendNotification',
   },
   {
     name: 'Add Event',

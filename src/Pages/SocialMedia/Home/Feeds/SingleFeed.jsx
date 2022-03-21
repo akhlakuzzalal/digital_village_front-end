@@ -15,12 +15,7 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
   const [openEdit, setOpenEdit] = useState(false);
   const user = users.find((user) => user.email === feed.userEmail);
   const socialUser = useSelector((state) => state.social.user);
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const handleEditPost = (data) => {
     updatePost(data, feed?._id, socialUser?.email);
     setOpenEdit(false);
@@ -40,7 +35,7 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
               />
             ) : (
               <img
-                src="http://source.unsplash.com/100x100/?woman"
+                src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
                 className="rounded-full"
                 alt=""
               />
@@ -57,16 +52,16 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
           </div>
         </div>
         {/* menu */}
-        <div className="relative">
-          {/* menu Icon */}
-          <div
-            onClick={() => setOpenMenu(!openMenu)}
-            className="shadow-2xl p-3 bg-slate-300 rounded-full cursor-pointer"
-          >
-            <BsThreeDotsVertical />
-          </div>
-          {/* Menu option */}
-          {socialUser?.email === feed?.userEmail && (
+        {socialUser?.email === feed?.userEmail && (
+          <div className="relative">
+            {/* menu Icon */}
+            <div
+              onClick={() => setOpenMenu(!openMenu)}
+              className="shadow-2xl p-3 bg-slate-300 rounded-full cursor-pointer"
+            >
+              <BsThreeDotsVertical />
+            </div>
+            {/* Menu option */}
             <div
               className={`shadow-lg absolute top-9 right-0 bg-slate-200 pt-5 w-32 px-2 space-y-2 ${
                 openMenu ? 'visible' : 'hidden'
@@ -92,8 +87,8 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
                 Delete Post
               </p>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
       {/* post details */}
       <div className="border-b-2 border-primary pb-5">

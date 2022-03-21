@@ -28,7 +28,6 @@ const useFirebase = () => {
   const [authError, setAuthError] = useState('');
   const roles = useSelector((state) => state.user.roles);
   const token = useSelector((state) => state.user.token);
-  const uId = useSelector((state) => state.user.uId);
 
   const dispatch = useDispatch();
 
@@ -46,7 +45,7 @@ const useFirebase = () => {
         const newUser = {
           name: user.displayName,
           email: user.email,
-          dateOfBirth: 'unknown',
+          dateOfBirth: 'unavailable',
           password: 'noneedofpassword',
           emailVerified: user.emailVerified,
         };
@@ -83,6 +82,7 @@ const useFirebase = () => {
           emailVerified: authUser?.emailVerified,
         };
         dispatch(setUser(newUser));
+        dispatch(getSingleUserInfo(authUser?.email));
       } else {
         dispatch(setUser({}));
       }
@@ -112,6 +112,7 @@ const useFirebase = () => {
     dispatch(setToken(response?.data?.accessToken));
     dispatch(setUId(response?.data?.uId));
     dispatch(setUser(newUser));
+    dispatch(getSingleUserInfo(newUser.email));
     console.log(response?.data);
   };
 
@@ -132,8 +133,9 @@ const useFirebase = () => {
       dispatch(setToken(response?.data?.accessToken));
       dispatch(setUId(response?.data?.uId));
 
-      dispatch(getSingleUserInfo({ id: response?.data?.uId })); // get the user all info for profile page
+      dispatch(getSingleUserInfo(email)); // get the user all info for profile page
       console.log(response?.data?.message);
+      console.log(user);
     } catch (error) {
       console.log(error.message);
       setAuthError(error.message);

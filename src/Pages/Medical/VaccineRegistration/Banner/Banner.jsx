@@ -86,7 +86,7 @@ const Banner = () => {
               </div>
             </div>
             <Link
-              to="/medicalDashboard/options"
+              to="/medical/options"
               className="p-2 rounded-lg text-white bg-indigo-700"
             >
               <button>Register Now</button>
@@ -110,7 +110,7 @@ const Banner = () => {
               <h6>Your Status</h6>
             </div>
           </Link>
-          <Link to="/medicalDashboard/pdf" className="w-full">
+          <Link to="/medical/pdf" className="w-full">
             <div
               className="flex  justify-start items-center p-10   border-l-8 hover:bottom-2 border-indigo-700 hover:border-slate-900 rounded-lg mx-0 md:mx-4 w-full my-1"
               style={{ background: 'rgba(135, 87, 247,.9)' }}
@@ -126,7 +126,7 @@ const Banner = () => {
               <h6>Your Information</h6>
             </div>
           </Link>
-          <Link to="/medicalDashboard/faq" className="w-full">
+          <Link to="/medical/faq" className="w-full">
             <div
               className="flex  justify-start items-center p-10  border-l-8 hover:bottom-2 border-indigo-700 hover:border-slate-900 rounded-lg mx-0 md:mx-4 w-full my-1"
               style={{ background: 'rgba(135, 87, 247,.9)' }}

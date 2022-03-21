@@ -125,9 +125,9 @@ const EditProfile = ({
             >
               <option>{user?.maritalStatus || 'choose one'}</option>
               <option value="married">Married</option>
-              <option value="holidays">Unmarried</option>
+              <option value="unmarried">Unmarried</option>
             </select>
-            {errors.maritialStatus && (
+            {errors.maritalStatus && (
               <small className="text-danger">
                 {errors.maritialStatus.message}
               </small>

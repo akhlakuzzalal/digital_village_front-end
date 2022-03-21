@@ -20,6 +20,7 @@ import Eventmanagement from './Pages/Admin/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/Market/MarketManagement';
 import AddNews from './Pages/Admin/News/AddNews/AddNews';
 import ManageNews from './Pages/Admin/News/ManageNews/ManageNews';
+import SendNotification from './Pages/Admin/SendNotification/SendNotification';
 import AllNews from './Pages/AllNews/AllNews';
 import Development from './Pages/Development/Development';
 import Donations from './Pages/Donations/Donations';
@@ -61,9 +62,9 @@ import UpcomingEvents from './Pages/Events/UpcomingEvents/UpcomingEvents';
 import AddAppointment from './Pages/Medical/DoctorsAppointment/AddAppointment/AddAppointment';
 import DoctorsAppointment from './Pages/Medical/DoctorsAppointment/DoctorsAppointment';
 import UserAppointments from './Pages/Medical/DoctorsAppointment/UserAppointments/UserAppointments';
-import MedicalDashboard from './Pages/Medical/MedicalDashboard';
+import Medical from './Pages/Medical/Medical';
+import MedicalHome from './Pages/Medical/MedicalHome';
 import FrequentlyAsked from './Pages/Medical/VaccineRegistration/FrequentlyAsked/FrequentlyAsked';
-import Medical from './Pages/Medical/VaccineRegistration/Medical';
 import RegForm from './Pages/Medical/VaccineRegistration/RegForm/RegForm';
 import VaccineInfo from './Pages/Medical/VaccineRegistration/RegistrationPdf/VaccineInfo';
 import Status from './Pages/Medical/VaccineRegistration/Status/Status';
@@ -159,7 +160,8 @@ const App = () => (
             <Route path="blogDetails/:id" element={<BlogDetails />} />
 
             {/* medical related routes */}
-            <Route path="medicalDashboard" element={<MedicalDashboard />}>
+            <Route path="medical" element={<Medical />}>
+              <Route path="medical" element={<MedicalHome />} />
               <Route path="vaccine" element={<VaccineRegistration />} />
               <Route path="options" element={<VaccineOptions />} />
               <Route path="status" element={<Status />} />
@@ -194,12 +196,16 @@ const App = () => (
             <Route path="e-market" element={<EMarket />} />
             <Route path="cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
-            <Route path="productdetails/:id" element={<ProductDetails />} />
+            <Route
+              path="productdetails/:id/:item"
+              element={<ProductDetails />}
+            />
             <Route path="medicinestore" element={<MedicineShop />} />
             <Route path="marketdashboard" element={<MarketDashboard />}>
               <Route path="myorder" element={<MyOrder />} />
             </Route>
 
+            {/* Admin dashboard routes */}
             {/* landing page of medical */}
             <Route path="medical" element={<Medical />} />
 
@@ -214,6 +220,7 @@ const App = () => (
           <Route element={<AdminRoute allowedRoles={[Roles.Admin]} />}>
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
+              <Route path="sendNotification" element={<SendNotification />} />
               <Route path="events" element={<Eventmanagement />} />
               <Route path="add-events" element={<AddEvents />} />
               <Route path="manageEvents" element={<ManageEvents />} />

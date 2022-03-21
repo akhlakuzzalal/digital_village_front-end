@@ -56,7 +56,7 @@ const Profile = () => {
 
     if (file?.path) {
       dispatch(updateUser({ id: uId, formData })).then(() => {
-        dispatch(getSingleUserInfo({ id: uId }));
+        dispatch(getSingleUserInfo(user.email));
         Swal.fire({
           title: 'updated successfully',
           confirmButtonText: 'Okay',
@@ -64,7 +64,7 @@ const Profile = () => {
       });
     } else {
       dispatch(updateUserWithoutProfileImg({ id: uId, data })).then(() => {
-        dispatch(getSingleUserInfo({ id: uId }));
+        dispatch(getSingleUserInfo(user.email));
         Swal.fire({
           title: 'updated successfully',
           confirmButtonText: 'Okay',
@@ -84,7 +84,7 @@ const Profile = () => {
 
   useEffect(() => {
     previewFile.forEach((f) => URL.revokeObjectURL(f.preview));
-    dispatch(getSingleUserInfo({ id: uId }));
+    dispatch(getSingleUserInfo(user.email));
   }, [previewFile, uId]);
 
   return (
@@ -132,7 +132,7 @@ const Profile = () => {
           </div>
         ) : (
           <div className="col-start-5 col-end-12 mt-10 md:mt-0">
-            <h2 className="heading_md">{user?.name}</h2>
+            <h2 className="heading_md dark:text-white">{user?.name}</h2>
             <p className="pt-3">{user?.occupation}</p>
             <p className="font-semibold mb-10">#id : villager{uId}</p>
             {/* <div className="my-6">
@@ -169,7 +169,7 @@ const Profile = () => {
                 <span className="mr-4">
                   <BsArrowReturnRight />
                 </span>
-                Marital status : {user?.maritialStatus || 'unavailable'}
+                Marital status : {user?.maritalStatus || 'unavailable'}
               </p>
               <p className="flex items-center py-2">
                 <span className="mr-4">

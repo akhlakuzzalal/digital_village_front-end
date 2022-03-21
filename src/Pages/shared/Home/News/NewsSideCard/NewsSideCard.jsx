@@ -9,9 +9,7 @@ const NewsSideCard = ({ n }) => {
       <div className="w-1/2 h-[100px] overflow-hidden cursor-pointer">
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-          src={`${BASE_URI}/${n?.bannerImg?.path}`}
-          alt={n?.title}
-        />
+          src={`${BASE_URI}/${n?.bannerImg?.path}`} alt={n?.title}/>
       </div>
 
       {/* title and description */}
