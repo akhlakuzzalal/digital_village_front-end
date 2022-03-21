@@ -3,7 +3,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { BsGoogle } from 'react-icons/bs';
 import Lottie from 'react-lottie';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import useAuth from '../../../../hooks/useAuth';
@@ -50,7 +50,6 @@ const Register = () => {
   };
 
   const user = useSelector((state) => state.user.user);
-  const dispatch = useDispatch();
 
   const handleRegister = async ({
     firstName,

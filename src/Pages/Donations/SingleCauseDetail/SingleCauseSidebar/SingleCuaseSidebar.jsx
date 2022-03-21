@@ -2,16 +2,15 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { BASE_URI } from '../../../../api/axios';
-import { fetchAllCuases } from '../../../../redux/slices/Donations/donationSlice';
+// import { fetchAllCauses } from '../../../../redux/slices/Donations/donationSlice';
 import SingleCauseSideCard from './SingleCauseSideCard/causeCardSidebar';
 
 const SingleCauseSidebar = () => {
   const causes = useSelector((state) => state.donation.causes);
-  // console.log(causes);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchAllCuases());
+    // dispatch(fetchAllCauses());
   }, []);
   return (
     <aside class="w-full md:w-1/3 flex flex-col items-center px-3">
@@ -59,51 +58,3 @@ const SingleCauseSidebar = () => {
 };
 
 export default SingleCauseSidebar;
-
-{
-  /* <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=1"
-            alt="fgdg"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=2"
-            alt="fgdg"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=3"
-            alt="fgdg"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=4"
-            alt="fgdg"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=5"
-            alt="fgdg"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=6"
-            alt="fgdg"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=7"
-            alt="fgdg"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=8"
-            alt="fgdg"
-          />
-          <img
-            class="hover:opacity-75"
-            src="https://source.unsplash.com/collection/1346951/150x150?sig=9"
-            alt="fgdg"
-          /> */
-}
