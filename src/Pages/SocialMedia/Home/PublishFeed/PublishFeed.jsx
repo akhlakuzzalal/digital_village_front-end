@@ -8,7 +8,7 @@ const PublishFeed = () => {
   const [open, setOpen] = useState(false);
   const socialUser = useSelector((state) => state.social.user);
   return (
-    <div className="w-full mt-4 rounded-xl p-3 shadow-xl dark:dark-card-bg mb-6">
+    <div className="w-full mt-8 md:mt-4 rounded-xl p-3 shadow-xl dark:dark-card-bg mb-6">
       <div className="flex align-top border-b-2 border-slate-700">
         {/* avatar */}
         <div class="mr-2 w-12 h-12 relative flex justify-center items-center rounded-full bg-gray-500 text-xl text-white">
