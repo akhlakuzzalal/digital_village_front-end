@@ -30,7 +30,7 @@ const SocialHome = () => {
           <LeftSideMenu />
         </div>
         {/* small Screen */}
-        <div className="ml-1 mt-2 cursor-pointer grid-cols-7 absolute top-1 left-1 z-50">
+        <div className="ml-1 mt-2 cursor-pointer grid-cols-7 block md:hidden absolute top-1 left-1 z-50">
           <CgMenuGridO onClick={() => setMenuOpen(!menuopen)} size={27} />
           <div
             className={`${

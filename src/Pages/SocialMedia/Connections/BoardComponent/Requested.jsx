@@ -8,7 +8,7 @@ const Requested = () => {
     <div>
       <h3>Requested</h3>
       {requested && requested?.length > 0 ? (
-        <div className="grid grid-cols-5 gap-6">
+        <div className="md:grid md:grid-cols-5 gap-6">
           {requested &&
             requested?.map((user) => (
               <SingleUser key={user._id} user={user} as="requested" />

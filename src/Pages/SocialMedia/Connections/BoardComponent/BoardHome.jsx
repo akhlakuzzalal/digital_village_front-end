@@ -12,7 +12,7 @@ const BoardHome = () => {
     <div className="space-y-3">
       {/* Suggest */}
       <h3>Suggestion</h3>
-      <div className="grid grid-cols-5 gap-6">
+      <div className="md:grid md:grid-cols-5 gap-6">
         {noConnection &&
           noConnection.map((user) => (
             <SingleUser key={user._id} user={user} as="suggest" />
@@ -21,7 +21,7 @@ const BoardHome = () => {
       {/* friends */}
       <h3>Friends</h3>
       {friends && friends.length > 0 ? (
-        <div className="grid grid-cols-5 gap-6">
+        <div className="md:grid md:grid-cols-5 gap-6">
           {friends.map((user) => (
             <SingleUser key={user._id} user={user} as="friend" />
           ))}
@@ -34,7 +34,7 @@ const BoardHome = () => {
       {/* Requesting */}
       <h3>Requesting</h3>
       {requesting && requesting?.length > 0 ? (
-        <div className="grid grid-cols-5 gap-6">
+        <div className="md:grid md:grid-cols-5 gap-6">
           {requesting.map((user) => (
             <SingleUser key={user._id} user={user} as="requesting" />
           ))}
@@ -47,7 +47,7 @@ const BoardHome = () => {
       {/* Requested */}
       <h3>Requested</h3>
       {requested && requested?.length > 0 ? (
-        <div className="grid grid-cols-5 gap-6">
+        <div className="md:grid md:grid-cols-5 gap-6">
           {friends &&
             requested?.map((user) => (
               <SingleUser key={user._id} user={user} as="requested" />

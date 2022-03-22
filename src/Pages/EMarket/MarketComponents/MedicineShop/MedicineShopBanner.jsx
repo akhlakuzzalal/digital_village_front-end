@@ -35,7 +35,7 @@ const MedicineShopBanner = () => {
             <Link to="/e-market">Village market</Link>
           </div>
           {/* small Screen */}
-          <div className="ml-1 mt-2 cursor-pointer">
+          <div className="ml-1 mt-2 cursor-pointer block md:hidden">
             <CgMenuGridO onClick={() => setMenuOpen(!menuopen)} size={27} />
             <div
               className={`${

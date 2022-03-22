@@ -32,7 +32,7 @@ const MarketBanner = () => {
         {/* 2nd column */}
         <div className="flex relative w-full flex-col col-span-3 md:col-span-1 md:justify-center md:items-center ">
           {/* small Screen */}
-          <div className="ml-1 mt-2 cursor-pointer">
+          <div className="ml-1 mt-2 cursor-pointer block md:hidden">
             <CgMenuGridO onClick={() => setMenuOpen(!menuopen)} size={27} />
             <div
               className={`${
