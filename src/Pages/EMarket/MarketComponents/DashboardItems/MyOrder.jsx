@@ -5,40 +5,95 @@ const MyOrder = () => {
   return (
     <div className="mt-[80px] mb-36 md:mb-24">
       <h3 className="text-center pt-12">My Orders</h3>
-      <div className="w-full  px-10 md:px-6 ">
-        {orders.map((order) => (
-          <div
-            key={order}
-            className=" py-5 border px-5 rounded-xl mx-auto ml-6  md:mx-24 mt-6"
-          >
-            <div className="w-full border-b-2 border-gray-900">
-              <h6 className="text-sm md:text-base">
-                Order id: <span className="text-red-600 ">#8745867gkjh</span>
-              </h6>
-              <p>
-                Order placed on{' '}
-                <span className="text-blue-600">12/02/2022</span>
-              </p>
-            </div>
-            <div className="flex items-start justify-around py-2">
-              <div className="w-6 md:w-32 ">
-                <img
-                  className="w-full"
-                  src="https://www.techlandbd.com/image/cache/catalog/Headphone-Headset/w820bt%20black/edifier-w820bt-headphone-price-in-bd-black-500x500.jpg"
-                  alt=""
-                />
-              </div>
-              <h6 className="text-sm md:text-xl">Product name</h6>
-              <p className="text-sm md:text-xl mx-2">Qty: 1</p>
-              <p className="text-sm md:text-base    md:px-4 md:py-1 rounded-full text-white bg-blue-500">
-                Stutus
-              </p>
-              <p className="text-sm md:text-xl">
-                Delevered: <span className="text-red-600">15/01/2022</span>
-              </p>
-            </div>
-          </div>
-        ))}
+      <div className="py-2 inline-block min-w-full sm:px-4 lg:px-8">
+        <div className="rounded-lg">
+          <table className="max-w-screen-xl mx-auto">
+            {/* Table Heading */}
+            <thead className="hidden lg:block bg-indigo-500 font-primary">
+              <tr className="grid grid-cols-1 lg:grid-cols-6 place-items-center">
+                <th
+                  scope="col"
+                  className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
+                >
+                  Name
+                </th>
+                <th
+                  scope="col"
+                  className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
+                >
+                  Category
+                </th>
+                <th
+                  scope="col"
+                  className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
+                >
+                  Details
+                </th>
+                <th
+                  scope="col"
+                  className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
+                >
+                  Message
+                </th>
+                <th
+                  scope="col"
+                  className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
+                >
+                  Status
+                </th>
+                <th scope="col" className="relative px-6 py-3">
+                  <span className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider">
+                    Action
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            {/* Table Body */}
+            <tbody className="space-y-2">
+              {orders?.map((order) => (
+                <tr
+                  key={order}
+                  className="bg-white shadow-md md:shadow-none border-b font-primary text-sm grid grid-cols-1 lg:grid-cols-6 place-items-center"
+                >
+                  <td className="text-sm text-gray-600 px-6 py-4 break-all">
+                    Product Name
+                    <td className="text-sm text-gray-600 py-2whitespace-nowrap">
+                      Brand
+                    </td>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <td className="text-sm text-gray-500 px-6 py-4 break-all">
+                      Categorie
+                    </td>
+                  </td>
+                  <td className="text-sm text-gray-600 px-6 py-4 whitespace-nowrap">
+                    sylhet,bangladesh
+                    <td className="text-sm text-gray-500 py-2 whitespace-nowrap">
+                      Mon Mar 14 2022
+                    </td>
+                  </td>
+                  <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">
+                    <button className="px-6 py-2 font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white border border-blue-500 hover:border-transparent">
+                      Details
+                    </button>
+                  </td>
+                  <td className="text-sm px-6 py-4 whitespace-nowrap">
+                    <span className="bg-yellow-500 text-white px-4 py-1 rounded-full font-primary">
+                      Pending
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap flex flex-col h-24 items-center justify-center">
+                    <div className="flex items-center justify-center space-x-3">
+                      <button className="bg-green-500  px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300">
+                        Approve
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

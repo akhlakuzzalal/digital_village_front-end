@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllCuases } from '../../../redux/slices/Donations/donationSlice';
+import { fetchAllCauses } from '../../../redux/slices/Donations/donationSlice';
 import CauseCard from './CauseCard/CauseCard';
 
 const AllCauses = () => {
@@ -9,10 +9,8 @@ const AllCauses = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAllCuases());
-    console.log('hello');
+    dispatch(fetchAllCauses());
   }, []);
-  console.log(causes, 'causes');
 
   return (
     <section

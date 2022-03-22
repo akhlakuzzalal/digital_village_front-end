@@ -62,20 +62,22 @@ const Navbar = ({ navigation }) => {
   }, [mood]);
 
   const location = useLocation();
-  const shwoFixedHeader = location.pathname.indexOf('admin') !== -1;
+  const showFixedHeader =
+    location.pathname.indexOf('admin') !== -1 ||
+    location.pathname.indexOf('userdashboard') !== -1;
 
   return (
     <header
-      className={`fixed z-50 top-0 left-0 w-full bg-slate-900 text-white
-          ${shwoFixedHeader ? 'mt-0' : changeHeader ? '-mt-32' : 'mt-0'}`} // change this to make a fixed header
+      className={`fixed z-50 top-0 left-0 w-full bg-slate-900 text-white h-[80px] flex justify-evenly items-center
+          ${showFixedHeader ? 'mt-0' : changeHeader ? '-mt-32' : 'mt-0'}`} // change this to make a fixed header
     >
       <nav className="flex items-center justify-between max-w-screen-xl mx-auto px-6 py-3">
         {/* logo */}
         <div
-          className="flex grow md:grow-0 items-center justify-start order-1"
+          className="flex grow md:grow-0 w-14 h-14 items-center justify-start order-1 hidden"
           onClick={() => navigate('/')}
         >
-          <img className="w-14 cursor-pointer" src={logo} alt="logo" />
+          <img className="w-full cursor-pointer" src={logo} alt="logo" />
         </div>
 
         {/* Nav links */}

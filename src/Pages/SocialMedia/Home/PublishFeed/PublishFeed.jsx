@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { MdPermMedia } from 'react-icons/md';
-import { VscReactions } from 'react-icons/vsc';
 import { useSelector } from 'react-redux';
 import { BASE_URI } from '../../../../api/axios';
 import PublisheModal from './PublisheModal';
@@ -9,7 +8,7 @@ const PublishFeed = () => {
   const [open, setOpen] = useState(false);
   const socialUser = useSelector((state) => state.social.user);
   return (
-    <div className="w-full mt-4 rounded-xl p-3 shadow-xl dark:dark-card-bg mb-6">
+    <div className="w-full mt-8 md:mt-4 rounded-xl p-3 shadow-xl dark:dark-card-bg mb-6">
       <div className="flex align-top border-b-2 border-slate-700">
         {/* avatar */}
         <div class="mr-2 w-12 h-12 relative flex justify-center items-center rounded-full bg-gray-500 text-xl text-white">
@@ -46,10 +45,6 @@ const PublishFeed = () => {
           >
             <MdPermMedia size={20} />
             <p className="inline">Media</p>
-          </div>
-          <div className="flex items-center space-x-2 bg-slate-200 dark:bg-slate-500 rounded-full shadow-md px-4 py-2 w-min cursor-pointer">
-            <VscReactions size={20} />
-            <p className="inline">Activity</p>
           </div>
         </div>
       </div>

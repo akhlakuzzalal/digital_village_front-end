@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import {
-  AiOutlineCloseCircle,
-  AiOutlineComment,
-  AiOutlineShareAlt,
-} from 'react-icons/ai';
+import { AiOutlineCloseCircle, AiOutlineComment } from 'react-icons/ai';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { GiSelfLove } from 'react-icons/gi';
 import { useSelector } from 'react-redux';
@@ -123,7 +119,7 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
 
         {feed?.photo?.path && (
           <img
-            className="w-full h-64"
+            className="w-full h-44 md:h-64"
             src={`${BASE_URI}/${feed?.photo?.path}`}
             alt=""
           />
@@ -132,7 +128,7 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
       {/* post Footer */}
       <div className="my-6 flex justify-between items-center">
         {/* Avatars of liked People */}
-        <div className="flex items-center">
+        <div className="hidden md:flex items-center">
           <div class="-space-x-4">
             <img
               class="relative z-30 inline object-cover w-8 h-8 border-2 border-white rounded-full"
@@ -160,9 +156,6 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
           </div>
           <div className="flex items-center">
             <AiOutlineComment size={25} className="cursor-pointer" /> <p>20</p>
-          </div>
-          <div className="flex items-center">
-            <AiOutlineShareAlt size={25} className="cursor-pointer" /> <p>20</p>
           </div>
         </div>
       </div>

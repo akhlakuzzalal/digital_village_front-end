@@ -8,6 +8,7 @@ export const fetchAllAvailableAppointments = createAsyncThunk(
     const response = await axios
       .get('/availableAppointment/getAppointment')
       .then((response) => response.data);
+    console.log(response);
     return response;
   }
 );
@@ -23,31 +24,17 @@ export const addAnAppointment = createAsyncThunk(
   }
 );
 // show user appointment event
-export const showUserAppointment = createAsyncThunk(
-  'events/showAppointment',
-  async (email, date) => {
-    const response = await axios
-      .get(`/appointment/findUserAppointment?email=${email}&date=${date}`)
-      .then((response) => response.data);
-    return response;
-  }
-);
+// export const showUserAppointment = createAsyncThunk(
+//   'events/showAppointment',
+//   async ({ email, date }) => {
+//     console.log(email);
 
-// export const fetchUpcomingEvents = createAsyncThunk(
-//   'events/fetchUpcomingEvents',
-//   async () => {
+//     const sDate = new Date(date).toLocaleDateString();
+//     console.log(sDate);
 //     const response = await axios
-//       .get('/event/upcomingEvents')
+//       .get(`/appointment/findUserAppointment?email=${email}&date=${sDate}`)
 //       .then((response) => response.data);
-//     return response;
-//   }
-// );
-// export const fetchArchivedEvents = createAsyncThunk(
-//   'events/fetchArchivedEvents',
-//   async () => {
-//     const response = await axios
-//       .get('/event/archivedEvents')
-//       .then((response) => response.data);
+//     console.log(response);
 //     return response;
 //   }
 // );
@@ -56,7 +43,7 @@ const medicalSlice = createSlice({
   name: 'medical',
   initialState: {
     allAvailableAppointment: [],
-    upcomingEvents: [],
+    userAppointment: [],
     archivedEvents: [],
   },
 
@@ -68,28 +55,20 @@ const medicalSlice = createSlice({
         state.allAvailableAppointment = payload;
       }
     );
-    // builder.addCase(fetchUpcomingEvents.fulfilled, (state, { payload }) => {
-    //   state.upcomingEvents = payload;
-    // });
-    //   builder.addCase(fetchArchivedEvents.fulfilled, (state, { payload }) => {
-    //     state.archivedEvents = payload;
-    //   });
-    //   //add event
-    //   builder.addCase(addAnEvent.fulfilled, (state, { payload }) => {
-    //     state.allEvents.push(payload);
-    //   });
+
     builder.addCase(addAnAppointment.fulfilled, (state, { payload }) => {
       state.allAvailableAppointment.filter(
         (appointment) => appointment._id !== payload
       );
     });
-    builder.addCase(showUserAppointment.fulfilled, (state, { payload }) => {
-      state.allAvailableAppointment.filter(
-        (appointment) =>
-          appointment.email !== payload.email &&
-          appointment.date !== payload.date
-      );
-    });
+    // builder.addCase(showUserAppointment.fulfilled, (state, payload) => {
+    //   const user = state.allAvailableAppointment.filter(
+    //     (appointment) =>
+    //       appointment.email === payload.email &&
+    //       appointment.date === payload.date
+    //   );
+    //   console.log(user);
+    // });
   },
 });
 

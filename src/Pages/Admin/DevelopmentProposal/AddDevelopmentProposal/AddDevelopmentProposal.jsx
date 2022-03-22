@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import axios from '../../../../api/axios';
 import FileUpload from '../../../../Components/FileUpload';
 
-const AddDevelopment = () => {
+const AddDevelopmentProposal = () => {
   const user = useSelector((state) => state.user.user);
 
   const {
@@ -25,15 +25,14 @@ const AddDevelopment = () => {
     const formData = new FormData();
     formData.append('file', file);
     formData.append(
-      'development',
+      'developmentProposal',
       JSON.stringify({
         ...data,
       })
     );
 
-    const response = await axios.post('/development/addDevelopment', formData);
-
-    if (response && response.data.length >= 1) {
+    const response = await axios.post('/developmentProposal/add', formData);
+    if (response.data.title) {
       Swal.fire({
         title: 'successfully added your development proposal',
         confirmButtonText: 'Okay',
@@ -42,7 +41,7 @@ const AddDevelopment = () => {
     } else {
       Swal.fire({
         icon: 'error',
-        title: 'successfully added your development proposal',
+        title: 'Something went wrong',
         confirmButtonText: 'Okay',
       });
     }
@@ -107,4 +106,4 @@ const AddDevelopment = () => {
   );
 };
 
-export default AddDevelopment;
+export default AddDevelopmentProposal;

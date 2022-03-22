@@ -1,10 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Lottie from 'react-lottie';
 import { useSelector } from 'react-redux';
 import axios from '../../../../api/axios';
 import FileUpload from '../../../../Components/FileUpload';
+import useMediaQuery from '../../../../hooks/useMediaQuery';
+import animationData from '../../../../lotties/video.json';
 import { giveAlert } from '../../../../utilities/alert';
-
 const PublishVideo = () => {
   const [file, setFile] = useState({});
   const user = useSelector((state) => state.user.user);
@@ -44,6 +46,18 @@ const PublishVideo = () => {
     } else {
       giveAlert('Failed to publish', 'error');
     }
+  };
+  // lottie
+  const isTablet = useMediaQuery('(min-width: 656px)');
+  const isDesktop = useMediaQuery('(min-width: 900px)');
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
   };
 
   return (
@@ -117,6 +131,13 @@ const PublishVideo = () => {
           value="Publish"
         />
       </form>
+
+      <Lottie
+        options={defaultOptions}
+        isClickToPauseDisabled={true}
+        height={isDesktop ? 900 : isTablet ? 200 : 100}
+        width={isDesktop ? 600 : isTablet ? 200 : 100}
+      />
     </div>
   );
 };

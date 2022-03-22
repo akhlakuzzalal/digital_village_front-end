@@ -4,11 +4,17 @@ import axios from 'axios';
 // create the thunk
 export const fetchAllEvent = createAsyncThunk(
   'events/fetchAllEvents',
-  async () => {
+  async (pagination) => {
     const response = await axios
-      .get('/event/allEvent')
+      .get(
+        `/event/allEvent/?page=${pagination.pageCount}&size=${pagination.size}`
+      )
       .then((response) => response.data);
-    return response;
+    console.log(response);
+    return {
+      count: response.count,
+      allEvents: response.allEvents,
+    };
   }
 );
 
@@ -52,18 +58,43 @@ export const fetchArchivedEvents = createAsyncThunk(
   }
 );
 
+// export const updateAEvent = createAsyncThunk(
+//   'updateProduct',
+//   async (data) => {
+//     await axios.put(`/event/updateEvent/${data._id}`, data);
+//     return data;
+//   }
+// );
+
 const eventSlice = createSlice({
   name: 'events',
   initialState: {
     allEvents: [],
     upcomingEvents: [],
     archivedEvents: [],
+    allEventsPageCount: 0,
+    allEventsCurrPage: 0,
   },
 
-  reducers: {},
+  reducers: {
+    setAllEventsCurrPage: (state, { payload }) => {
+      state.allEventsCurrPage = payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchAllEvent.fulfilled, (state, { payload }) => {
       state.allEvents = payload;
+      if (payload.allEvents && payload.allEvents.length >= 1) {
+        state.allEvents = payload.allEvents;
+      }
+
+      const count = payload.count;
+
+      const pageNumber = Math.ceil(count / payload.size);
+
+      if (pageNumber || pageNumber === 0) {
+        state.pageCount = pageNumber;
+      }
     });
     builder.addCase(fetchUpcomingEvents.fulfilled, (state, { payload }) => {
       state.upcomingEvents = payload;
@@ -81,6 +112,6 @@ const eventSlice = createSlice({
   },
 });
 
-export const { setSelectedEvent } = eventSlice.actions;
+export const { setSelectedEvent, setAllEventsCurrPage } = eventSlice.actions;
 
 export default eventSlice.reducer;

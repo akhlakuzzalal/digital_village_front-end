@@ -43,9 +43,9 @@ const ManageNews = () => {
   
 
   return (
-    <article className="flex flex-wrap justify-evenly items-center gap-6 md:mx-24 md:my-24">
+    <article className="flex flex-wrap mx-5 justify-evenly items-center gap-6 md:mx-24 md:my-24">
       {news.map((n) => (
-        <div className="bg-white rounded-xl p-4 relative max-w-[400px] shadow-2xl">
+        <div className="bg-white rounded-xl p-4 relative max-w-[370px] shadow-2xl">
           <div className="overflow-hidden rounded-xl h-52 cursor-pointer">
             <img
               className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"

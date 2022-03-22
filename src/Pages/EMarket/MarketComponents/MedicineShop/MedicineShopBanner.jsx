@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { CgMenuGridO } from 'react-icons/cg';
 import Lottie from 'react-lottie';
 import { Link } from 'react-router-dom';
 import animationData from '../../../../lotties/medicine.json';
@@ -12,9 +13,10 @@ const MedicineShopBanner = () => {
       preserveAspectRatio: 'xMidYMid slice',
     },
   };
+  const [menuopen, setMenuOpen] = useState(false);
   return (
     <div
-      className="bg-no-repeat bg-opacity-0 bg-cover h-[170px] md:h-[300px] mb-12"
+      className="bg-no-repeat bg-opacity-0 bg-cover pb-5 md:h-[300px] mb-12"
       style={{ backgroundImage: 'url(https://i.ibb.co/dgJJWWp/medical.png)' }}
     >
       <div className="grid grid-cols-1 md:grid-cols-3">
@@ -24,18 +26,36 @@ const MedicineShopBanner = () => {
             alt=""
           />
         </div>
-        <div className="relative flex flex-col justify-center items-center w-11/12 mx-auto">
-          <div className="md:absolute top-0 mt-6 text-black font-semibold">
-            <Link to="/cart">Cart</Link>
+        <div className="relative flex flex-col justify-center md:items-center w-11/12 mx-auto">
+          {/* Large Sacreen */}
+          <div className="md:absolute hidden md:block top-0 mt-6 text-black font-semibold">
             <Link className="mx-4" to="/marketdashboard">
               Dashboard
             </Link>
             <Link to="/e-market">Village market</Link>
           </div>
-          <h4 className="font-bold text-base pt-6 md:pt-0 md:text-2xl transition duration-600 ease animate-bounce">
-            All necessary medicine is here now
+          {/* small Screen */}
+          <div className="ml-1 mt-2 cursor-pointer block md:hidden">
+            <CgMenuGridO onClick={() => setMenuOpen(!menuopen)} size={27} />
+            <div
+              className={`${
+                menuopen ? 'absolute' : 'hidden'
+              } bg-slate-300 px-2 py-3 space-y-2`}
+            >
+              <Link className="block" to={'/marketdashboard'}>
+                Dashboard
+              </Link>
+              <Link className="block" to={'/e-market'}>
+                Village Market
+              </Link>
+            </div>
+          </div>
+          <h4 className="font-bold text-base md:pt-0 md:text-2xl transition duration-600 ease md:animate-bounce">
+            Medicine Shop
           </h4>
-          <p className='text-sm md:text-base'>Buy personal and protective eqipment easily</p>
+          <p className="text-sm md:text-base">
+            Buy personal and protective eqipment easily
+          </p>
         </div>
         <div className="hidden w-11/12 md:flex justify-center h-[300px] mb-12">
           <Lottie

@@ -18,7 +18,6 @@ const UserMenu = () => {
 
   const isTablet = useMediaQuery('(min-width: 775px)');
   const user = useSelector((state) => state.user.user);
-  // const isUser = user.name.includes('user');
 
   const rolesArray = roles
     ? roles.map((role) => Object.values(role)).flat()
