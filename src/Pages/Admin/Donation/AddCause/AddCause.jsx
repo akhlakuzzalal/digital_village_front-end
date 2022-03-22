@@ -16,7 +16,6 @@ const AddCause = () => {
     handleSubmit,
     formState: { errors },
     reset,
-    trigger,
   } = useForm();
 
   const onDrop = useCallback((acceptedFiles) => {

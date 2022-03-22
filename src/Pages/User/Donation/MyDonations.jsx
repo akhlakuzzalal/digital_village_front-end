@@ -3,6 +3,15 @@ import { FaDonate, FaFilePdf, FaHandsHelping } from 'react-icons/fa';
 import { FcApproval } from 'react-icons/fc';
 
 const MyDonations = () => {
+  // const applys = useSelector((state) => state.donation.applys);
+
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchAllRequest());
+  //   console.log('applys show');
+  // }, []);
+  // console.log(applys, 'applys');
   return (
     <section
       className="max-w-6xl mx-auto px-3 mt-[88px]"

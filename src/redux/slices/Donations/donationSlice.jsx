@@ -60,8 +60,8 @@ export const fetchAllRequest = createAsyncThunk(
 );
 
 // add help apply
-export const addAHelpApply = createAsyncThunk(
-  'cuases/addAHelpApply',
+export const addAHelpRequest = createAsyncThunk(
+  'cuases/addAHelpRequest',
   async (formData) => {
     const response = await axios
       .post('/donationRequest/helprequest', formData)
@@ -147,9 +147,9 @@ const donationSlice = createSlice({
     // builder.addCase(fetchAllRequest.fulfilled, (state, { payload }) => {
     //   state.applys = payload;
     // });
-    // builder.addCase(addAHelpApply.fulfilled, (state, { payload }) => {
-    //   state.applys.push(payload);
-    // });
+    builder.addCase(addAHelpRequest.fulfilled, (state, { payload }) => {
+      state.applys.push(payload);
+    });
     // builder.addCase(getRequestGive.fulfilled, (state, { payload }) => {
     //   console.log(payload);
     //   if (payload._id) {
