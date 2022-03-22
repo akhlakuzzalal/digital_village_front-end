@@ -16,6 +16,7 @@ const EditNews = () => {
     register,
     handleSubmit,
     trigger,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -45,11 +46,16 @@ const EditNews = () => {
     const response = await axios.put(`/news/editNews/?id=${id}`, formData);
     console.log(response.data);
     if (response?.data?.success) {
+      
       Swal.fire({
         title: 'updated successfully',
         confirmButtonText: 'Okay',
+      
       });
+      reset()
+      
     }
+    
   };
 
   
@@ -80,6 +86,7 @@ const EditNews = () => {
                 <input
                   className="w-full px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary  transition-all duration-300 rounded-xl"
                   {...register('title', {
+                    required:true,
                     required: 'Title is Required',
                     value: singleNews?.title,
                   })}
@@ -111,12 +118,9 @@ const EditNews = () => {
                     value: singleNews?.description,
                     minLength: {
                       value: 50,
-                      message: 'Minimum Required length is 50',
+                      message: 'Minimum Required length is 50 ',
                     },
-                    maxLength: {
-                      value: 100,
-                      message: 'Maximum allowed length is 100',
-                    },
+                   
                   })}
                   onKeyUp={() => {
                     trigger('description');
@@ -176,7 +180,7 @@ const EditNews = () => {
           <input
             className="btn bg-primary rounded-lg py-6 w-full cursor-pointer hover:bg-opacity-80 -pl-1  transition-all duration-300"
             type="submit"
-            value="Submit"
+            value="Update News"
           />
         </form>
       )}
