@@ -61,14 +61,7 @@ const AllHelpRequests = () => {
                     totam dolores necessitatibus molestias aliquid quos eligendi
                     consequuntur placeat, odio sapiente debitis repudiandae
                     numquam fuga doloribus quisquam asperiores tempore explicabo
-                    officia. Saepe sunt suscipit praesentium quod dicta
-                    voluptatum, eum tenetur consequuntur ex nisi labore
-                    voluptates fugiat eveniet, consequatur officiis aperiam eius
-                    repellat. Optio esse eligendi voluptatum labore. Nam
-                    explicabo deleniti omnis voluptas voluptate adipisci labore
-                    veniam doloremque quod aliquid dolores nemo eius inventore
-                    sint, neque saepe architecto. Quos, alias nulla quas cum
-                    exercitationem harum sit id earum!
+                   
                   </p>
                 </div>
                 {/*footer*/}

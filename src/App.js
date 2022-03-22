@@ -83,7 +83,10 @@ import EditNews from './Pages/shared/Home/News/EditNews/EditNews';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import AddReview from './Pages/shared/Home/Reviews/AddReview/AddReview';
 import NotFound from './Pages/shared/NotFound/NotFound';
+import AddFriend from './Pages/SocialMedia/Connections/BoardComponent/AddFriend.jsx';
 import BoardHome from './Pages/SocialMedia/Connections/BoardComponent/BoardHome.jsx';
+import Requested from './Pages/SocialMedia/Connections/BoardComponent/Requested';
+import Requesting from './Pages/SocialMedia/Connections/BoardComponent/Requesting';
 import ConnectionBoard from './Pages/SocialMedia/Connections/ConnectionBoard';
 import SocialHome from './Pages/SocialMedia/Home/SocialHome';
 import MyDonations from './Pages/User/Donation/MyDonations';
@@ -212,10 +215,14 @@ const App = () => (
             <Route path="social" element={<SocialHome />} />
             <Route path="connection" element={<ConnectionBoard />}>
               <Route path="home" element={<BoardHome />} />
+              <Route path="addFriend" element={<AddFriend />} />
+              <Route path="requesting" element={<Requesting />} />
+              <Route path="requested" element={<Requested />} />
             </Route>
           </Route>
 
-          {/* Admin dashboard routes */}
+          {/* 
+          Admin dashboard routes */}
           <Route element={<AdminRoute allowedRoles={[Roles.Admin]} />}>
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />

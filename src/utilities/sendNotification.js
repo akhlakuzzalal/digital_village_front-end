@@ -2,13 +2,10 @@ import axios from '../api/axios';
 
 const sendNotification = async ({ title, email, message }) => {
   const response = await axios
-    .post('/notification/add')
+    .post('/notification/add', { title, email, message })
     .then((resposne) => resposne.data);
 
-  console.log(response);
-  if (response.title) {
-    console.log('Notification send successfully');
-  }
+  return response;
 };
 
 export default sendNotification;

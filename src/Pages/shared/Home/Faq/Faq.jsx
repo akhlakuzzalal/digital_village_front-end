@@ -63,12 +63,7 @@ const Faq1 = () => {
           <img
             src={faq}
             alt="Img of Glass bottle"
-            className="w-full md:block hidden"
-          />
-          <img
-            src={faq}
-            alt="Img of Glass bottle"
-            className="w-full md:hidden block "
+            className="w-full md:block hidden h-[500px]"
           />
         </div>
 

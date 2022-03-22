@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import axios from '../../../../api/axios';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllAvailableAppointments } from '../../../../redux/slices/medical/medicalSlice';
 import Appointment from './Appointment';
 const AppointmentAvailable = ({ date }) => {
-  const [appointments, setAppointments] = useState([]);
+  const allAppoinment = useSelector(
+    (state) => state.medical.allAvailableAppointment
+  );
 
+  const dispatch = useDispatch();
   useEffect(() => {
-    axios
-      .get('/availableAppointment/getAppointment')
-      .then((res) => setAppointments(res.data));
+    dispatch(fetchAllAvailableAppointments());
   }, []);
 
   return (
@@ -16,7 +18,7 @@ const AppointmentAvailable = ({ date }) => {
         Available Appointment <br /> on {date.toDateString()}
       </h3>
       <div className="flex flex-wrap justify-center items-center p-0 md:p-2 my-5 ">
-        {appointments.map((appointment) => (
+        {allAppoinment.map((appointment) => (
           <Appointment appointment={appointment} date={date} />
         ))}
       </div>

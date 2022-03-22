@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { BiChevronDown } from 'react-icons/bi';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URI } from '../api/axios';
 import useAuth from '../hooks/useAuth';
 import useMediaQuery from '../hooks/useMediaQuery';
+import { clearTheNotificationSlice } from '../redux/slices/notification/notificationSlice';
 import Transition from './Transition';
 
 const UserMenu = () => {
@@ -12,6 +13,8 @@ const UserMenu = () => {
   const roles = useSelector((state) => state.user.roles);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const isTablet = useMediaQuery('(min-width: 775px)');
   const user = useSelector((state) => state.user.user);
@@ -21,8 +24,8 @@ const UserMenu = () => {
     ? roles.map((role) => Object.values(role)).flat()
     : [];
 
+  console.log(rolesArray);
   const IsAdmin = rolesArray?.includes(5000);
-  console.log(rolesArray, roles, IsAdmin, 'roles Check');
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
@@ -56,6 +59,7 @@ const UserMenu = () => {
   const handleLogout = async () => {
     await logout();
     navigate('/');
+    dispatch(clearTheNotificationSlice());
   };
 
   return (
@@ -113,16 +117,15 @@ const UserMenu = () => {
         >
           <ul>
             {IsAdmin ? (
-              <li className="hover:bg-green-500">
-                <Link
-                  className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                  to="/admin"
-                >
-                  Admin
-                </Link>
-              </li>
-            ) : (
-              <li className="hover:bg-green-500">
+              <>
+                <li className="hover:bg-green-500">
+                  <Link
+                    className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                    to="/admin"
+                  >
+                    Admininstration
+                  </Link>
+                </li>
                 <li className="hover:bg-green-500">
                   <Link
                     className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
@@ -132,6 +135,16 @@ const UserMenu = () => {
                     Profile
                   </Link>
                 </li>
+              </>
+            ) : (
+              <li className="hover:bg-green-500">
+                <Link
+                  className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                  to="/userdashboard"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                >
+                  Profile
+                </Link>
               </li>
             )}
             <li className="hover:bg-green-500">

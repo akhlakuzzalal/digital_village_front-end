@@ -9,7 +9,7 @@ import logo from '../../../../assets/logo.png';
 const Footer = () => {
   const location = useLocation();
   return location.pathname.includes('/social') ? null : (
-    <footer className="hidden pt-16 bg-slate-900">
+    <footer className="pt-16 bg-slate-900">
       <div className="text-center rounded-xl mx-auto text-white">
         <div className="space-y-3 px-3 ">
           {/* subscribe text */}

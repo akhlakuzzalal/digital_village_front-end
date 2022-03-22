@@ -10,7 +10,9 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
-import logo from '../assets/logo.png';
+import laptop_logo from '../assets/laptop_logo.png';
+import mobile_logo from '../assets/mobile_logo.png';
+import useMediaQuery from '../hooks/useMediaQuery';
 import { setMood } from '../redux/slices/mood/MoodSlice';
 import { fetchUserSpecificNotification } from '../redux/slices/notification/notificationSlice';
 import UserMenu from './UserMenu';
@@ -18,16 +20,19 @@ import UserMenu from './UserMenu';
 const Navbar = ({ navigation }) => {
   const [changeHeader, setChangeHeader] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
+  const user = useSelector((state) => state.user.user);
+  const isDesktop = useMediaQuery('(min-width: 900px)');
   const navigate = useNavigate();
 
-  const user = useSelector((state) => state.user.user);
-  const notifications = useSelector(
-    (state) => state.notifications.notifications
-  );
+  const notificationCount = useSelector((state) => state.notifications.count);
 
   useEffect(() => {
-    dispatch(fetchUserSpecificNotification(user?.email));
-  }, [user?.email]);
+    dispatch(
+      fetchUserSpecificNotification({
+        email: user.email,
+      })
+    );
+  }, [user.email]);
 
   //header change function
   const onChangeHeader = () => {
@@ -60,12 +65,14 @@ const Navbar = ({ navigation }) => {
   }, [mood]);
 
   const location = useLocation();
-  const shwoFixedHeader = location.pathname.indexOf('admin') !== -1;
+  const showFixedHeader =
+    location.pathname.indexOf('admin') !== -1 ||
+    location.pathname.indexOf('userdashboard') !== -1;
 
   return (
     <header
       className={`fixed z-50 top-0 left-0 w-full bg-slate-900 text-white
-          ${shwoFixedHeader ? 'mt-0' : changeHeader ? '-mt-32' : 'mt-0'}`} // change this to make a fixed header
+          ${showFixedHeader ? 'mt-0' : changeHeader ? '-mt-32' : 'mt-0'}`} // change this to make a fixed header
     >
       <nav className="flex items-center justify-between max-w-screen-xl mx-auto px-6 py-3">
         {/* logo */}
@@ -73,7 +80,11 @@ const Navbar = ({ navigation }) => {
           className="flex grow md:grow-0 items-center justify-start order-1"
           onClick={() => navigate('/')}
         >
-          <img className="w-14 cursor-pointer" src={logo} alt="logo" />
+          <img
+            className="w-16 h-16 md:w-full cursor-pointer"
+            src={isDesktop ? laptop_logo : mobile_logo}
+            alt="logo"
+          />
         </div>
 
         {/* Nav links */}
@@ -186,7 +197,7 @@ const Navbar = ({ navigation }) => {
               onClick={() => navigate('/notifications')}
             >
               <span className="bg-info w-6 h-6 rounded-full text-white font-bold flex items-center justify-center  poppins absolute -right-1 -top-1">
-                {(notifications && notifications.length) || 0}
+                {notificationCount || 0}
               </span>
               <MdEditNotifications
                 size={40}

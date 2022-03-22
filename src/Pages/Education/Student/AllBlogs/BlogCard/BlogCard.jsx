@@ -87,7 +87,7 @@ const BlogCard = ({ blog }) => {
             )}
           </div>
           {/* title and description */}
-          <p className="text-gray-500 text-sm">{blog?.about}</p>
+          <p className="text-gray-500 text-sm">{blog?.about.slice(0, 30)}</p>
         </div>
       </div>
     </div>

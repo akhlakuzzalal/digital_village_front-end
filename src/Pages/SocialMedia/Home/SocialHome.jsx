@@ -23,16 +23,16 @@ const SocialHome = () => {
     >
       <div className="grid grid-cols-7 gap-6">
         {/* Left Side */}
-        <div className="col-span-2">
+        <div className="hidden md:block md:col-span-2">
           <LeftSideMenu />
         </div>
         {/* Middle of the Home */}
-        <div className="col-span-3">
+        <div className="col-span-7 px-7 md:py-0 md:col-span-3">
           <PublishFeed />
           <Feeds />
         </div>
         {/* Right Side */}
-        <div className="col-span-2 relative">
+        <div className="hidden md:block md:col-span-2 relative">
           <RightSide />
         </div>
       </div>

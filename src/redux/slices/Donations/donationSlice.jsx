@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../../api/axios';
 
 // fetch all causes
-export const fetchAllCuases = createAsyncThunk(
-  'cuases/fetchAllCuases',
+export const fetchAllCauses = createAsyncThunk(
+  'cuases/fetchAllCauses',
   async () => {
     const response = await axios
       .get('/donationCause/all')
@@ -47,7 +47,53 @@ export const deleteACause = createAsyncThunk(
     return id;
   }
 );
+              // help requester Apply get donation 
+// fetch all causes
+export const fetchAllRequest = createAsyncThunk(
+  'cuases/fetchAllRequest',
+  async () => {
+    const response = await axios
+      .get('/request/all')
+      .then((response) => response.data);
+    return response;
+  }
+);
 
+// add help apply
+export const addAHelpApply = createAsyncThunk(
+  'cuases/addAHelpApply',
+  async (formData) => {
+    const response = await axios
+      .post('/helpapply/add', formData)
+      .then((response) => response.data);
+    return response;
+  }
+);
+// give the donation money that you want
+export const getRequestGive = createAsyncThunk(
+  'causes/getRequestGive',
+  async ({ data, uId, applyId }) => {
+    const response = await axios
+      .put('/getrequest/give', {
+        ...data,
+        requesterId: uId,
+        applyId,
+      })
+      .then((response) => response.data);
+    console.log(response);
+    return response;
+  }
+);
+
+// delete request
+export const deleteARequest = createAsyncThunk(
+  'cuases/deleteARequest',
+  async (id) => {
+    await axios.delete(`/requestapply/delete/?id=${id}`);
+    return id;
+  }
+);
+// donation slice 
 const donationSlice = createSlice({
   name: 'causes',
   initialState: {
@@ -65,7 +111,7 @@ const donationSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchAllCuases.fulfilled, (state, { payload }) => {
+    builder.addCase(fetchAllCauses.fulfilled, (state, { payload }) => {
       state.causes = payload;
     });
     builder.addCase(addACuase.fulfilled, (state, { payload }) => {
