@@ -47,8 +47,10 @@ const PublishVideo = () => {
   };
 
   return (
-    <div className="flex flex-col mb-10 items-center justify-center space-y-6 pl-16 md:pl-0 pr-4 md:pr-0 mx-auto">
-      <h1 className='text-center  text-xl md:text-6xl lg:text-6xl pt-4 md:py-8'>Publish your video now</h1>
+    <div className="flex flex-col mb-10 items-center justify-center space-y-6 pl-16 md:pl-0 pr-4 md:pr-0 mx-auto min-h-[100vh]">
+      <h1 className="text-center  text-xl md:text-6xl lg:text-6xl pt-4 md:py-8">
+        Publish your video now
+      </h1>
       <form
         onSubmit={handleSubmit(handlePublishVideo)}
         className="space-y-6 flex flex-col w-full md:w-[500px]"

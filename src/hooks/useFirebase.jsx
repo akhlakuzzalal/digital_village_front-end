@@ -35,7 +35,7 @@ const useFirebase = () => {
 
   const googleProvider = new GoogleAuthProvider();
 
-  const processSignInWithGoogle = (navigate) => {
+  const processSignInWithGoogle = (location, navigate) => {
     setIsLoading(true); // user trying to log with google
 
     return signInWithPopup(auth, googleProvider)
@@ -51,9 +51,8 @@ const useFirebase = () => {
         };
 
         // REGISTER USER IN DATABASE
-        registerToDB(newUser);
+        registerToDB(newUser, location, navigate);
 
-        navigate('/');
         setIsLoading(false);
       })
       .catch((error) => setAuthError(error.message));
@@ -106,14 +105,17 @@ const useFirebase = () => {
     }
   };
 
-  const registerToDB = async (newUser) => {
+  const registerToDB = async (newUser, location, navigate) => {
     const response = await axios.post('/auth/register', newUser);
     dispatch(setRoles([...roles, response?.data?.roles]));
     dispatch(setToken(response?.data?.accessToken));
     dispatch(setUId(response?.data?.uId));
     dispatch(setUser(newUser));
     dispatch(getSingleUserInfo(newUser.email));
-    console.log(response?.data);
+
+    const redirect_uri = location?.state?.from || '/';
+    console.log(location?.state, 'hello world');
+    navigate(redirect_uri);
   };
 
   const loginToDB = async (email, password) => {

@@ -49,12 +49,15 @@ const EventDetails = () => {
             />
             <div className="flex">
               <h1 className="mt-20 ">{eventItem[0]?.title}</h1>
-              <button
-                onClick={handleBookEvent}
-                className="flex bg-[blue] text-white lg:px-10 md:px-10 px-1  mt-[90px] ml-10 py-3  rounded"
-              >
-                Book This Event <FaLocationArrow className=" ml-2 w-[30px] " />
-              </button>
+              {eventItem[0]?.eventType === 'upcoming' && (
+                <button
+                  onClick={handleBookEvent}
+                  className="flex bg-[blue] text-white lg:px-10 md:px-10 px-1  mt-[90px] ml-10 py-3  rounded"
+                >
+                  Book This Event{' '}
+                  <FaLocationArrow className=" ml-2 w-[30px] " />
+                </button>
+              )}
             </div>
           </div>
           <div className="mt-20">

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { MdPermMedia } from 'react-icons/md';
-import { VscReactions } from 'react-icons/vsc';
 import { useSelector } from 'react-redux';
 import { BASE_URI } from '../../../../api/axios';
 import PublisheModal from './PublisheModal';
@@ -46,10 +45,6 @@ const PublishFeed = () => {
           >
             <MdPermMedia size={20} />
             <p className="inline">Media</p>
-          </div>
-          <div className="flex items-center space-x-2 bg-slate-200 dark:bg-slate-500 rounded-full shadow-md px-4 py-2 w-min cursor-pointer">
-            <VscReactions size={20} />
-            <p className="inline">Activity</p>
           </div>
         </div>
       </div>

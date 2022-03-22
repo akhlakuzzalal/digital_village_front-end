@@ -1,9 +1,10 @@
 import React from 'react';
+import { AiFillEdit } from 'react-icons/ai';
 import { MdDoubleArrow } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 import { deleteAnEvent } from '../../../redux/slices/event/eventSlice';
-
 const ManageEventsCard = ({
   event: { _id, title, type, image, date, time, place },
   setDeleteEvent,
@@ -46,12 +47,21 @@ const ManageEventsCard = ({
             </p>
           </div>
         </div>
-        <button
-          className="lg:mx-[100px] md:mx-[40px] mx-20 text-primary mb-5 flex"
-          onClick={() => handleAlert(_id)}
-        >
-          Delete <MdDoubleArrow className="w-full mt-1" />
-        </button>
+        <div className="flex justify-between mx-5">
+          <button
+            className="  text-primary  flex"
+            onClick={() => handleAlert(_id)}
+          >
+            Delete <MdDoubleArrow className="w-full mt-1" />
+          </button>
+          <Link to="/updateEvent">
+            <AiFillEdit
+              size={30}
+              color={'white'}
+              className="mb-3 bg-[#666666] p-1 rounded-sm cursor-pointer"
+            />
+          </Link>
+        </div>
       </div>
     </div>
   );

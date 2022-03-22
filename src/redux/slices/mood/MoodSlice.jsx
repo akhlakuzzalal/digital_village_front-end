@@ -3,12 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 const MoodSlice = createSlice({
   name: 'mood',
   initialState: {
-    // mood: `${
-    //   window.matchMedia('(prefers-color-scheme: dark)').matches
-    //     ? 'dark'
-    //     : 'light'
-    // }`,
-    mood: 'dark',
+    mood: `${
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light'
+    }`,
   },
   reducers: {
     setMood: (state, { payload }) => {

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import AllEvents from './AllEvents/AllEvents';
+import EventCoordinator from './EventCoordinator/EventCoordinator';
+import EventPhotoGalary from './EventPhotoGalary/EventPhotoGalary';
 const Events = () => {
   const location = useLocation();
 
@@ -8,8 +10,8 @@ const Events = () => {
     location.pathname === '/events/' || location.pathname === '/events';
 
   return (
-    <div>
-      <div className="px-4 md:px-12 lg:px-36 space-y-6 bg-white py-36 dark:bg-black">
+    <div className="mb-20">
+      <div className="px-4 md:px-12 lg:px-36 space-y-6 bg-white dark:bg-slate-900 py-36  ">
         <div>
           <h1>Events</h1>
           <p className="lg:w-1/2 py-3">
@@ -39,6 +41,13 @@ const Events = () => {
       <div>{isMatched && <AllEvents></AllEvents>}</div>
 
       <Outlet />
+
+      <div>
+        <EventPhotoGalary />
+      </div>
+      <div className="my-20">
+        <EventCoordinator></EventCoordinator>
+      </div>
     </div>
   );
 };
