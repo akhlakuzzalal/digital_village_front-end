@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineMinusSquare } from 'react-icons/ai';
-import { GoDiffAdded } from 'react-icons/go';
+import { BsPlusSquare } from 'react-icons/bs';
 import Lottie from 'react-lottie';
 import useMediaQuery from '../../../../hooks/useMediaQuery';
 import animationData from '../../../../lotties/landingFaq.json';
@@ -89,23 +89,35 @@ const Faq1 = () => {
           {datas.map((data) => (
             <div>
               <div>
-                <div className=" flex justify-between items-center cursor-pointer">
-                  <h3 className=" font-semibold text-xl leading-5 text-gray-800">
-                    {data.title}
-                  </h3>
-
+                <div className=" cursor-pointer">
                   {active && data.id === active ? (
-                    <AiOutlineMinusSquare
-                      className="hover:rotate-180 transition duration-700 ease-in-out dark:text-dark_text"
-                      size={30}
+                    <div
                       onClick={() => setActive('')}
-                    />
+                      className="flex justify-between items-center "
+                    >
+                      <h3 className=" w-4/5 font-semibold text-xl leading-5 text-gray-800">
+                        {data.title}
+                      </h3>
+                      <AiOutlineMinusSquare
+                        className=" transition duration-700 ease-in-out text-blue-900"
+                        custome
+                        size={30}
+                      />
+                    </div>
                   ) : (
-                    <GoDiffAdded
-                      className="hover:rotate-180 transition duration-700 ease-in-out dark:text-dark_text"
-                      size={30}
+                    <div
                       onClick={() => setActive(data?.id)}
-                    />
+                      className="flex justify-between items-center "
+                    >
+                      <h3 className=" w-4/5 font-semibold text-xl leading-5 text-gray-800">
+                        {data.title}
+                      </h3>
+                      <BsPlusSquare
+                        className=" transition duration-700 ease-in-out text-blue-900"
+                        custome
+                        size={30}
+                      />
+                    </div>
                   )}
                 </div>
                 <p
