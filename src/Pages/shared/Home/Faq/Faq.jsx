@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { AiOutlineMinusSquare } from 'react-icons/ai';
 import { GoDiffAdded } from 'react-icons/go';
+import Lottie from 'react-lottie';
+import useMediaQuery from '../../../../hooks/useMediaQuery';
+import animationData from '../../../../lotties/landingFaq.json';
 
 const datas = [
   {
@@ -44,6 +47,17 @@ const datas = [
 
 const Faq1 = () => {
   const [active, setActive] = useState('');
+  const isTablet = useMediaQuery('(min-width: 656px)');
+  const isDesktop = useMediaQuery('(min-width: 900px)');
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
 
   return (
     <div className=" 2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6  px-4">
@@ -60,16 +74,13 @@ const Faq1 = () => {
       </div>
       <div className=" flex md:flex-row flex-col md:space-x-8 md:mt-16 mt-8">
         <div className=" md:w-5/12 lg:w-4/12 w-full mb-4  ">
-          <img
-            src="https://myexam.allen.ac.in/wp-content/uploads/2015/10/Digital-India-2.jpg"
-            alt="Img of Glass bottle"
-            className="w-full md:block hidden"
-          />
-          <img
-            src="https://myexam.allen.ac.in/wp-content/uploads/2015/10/Digital-India-2.jpg"
-            alt="Img of Glass bottle"
-            className="w-full md:hidden block "
-          />
+          <div className="w-fit mx-auto">
+            <Lottie
+              options={defaultOptions}
+              isClickToPauseDisabled={true}
+              width={isDesktop ? 400 : isTablet ? 300 : 250}
+            />
+          </div>
         </div>
 
         <div className=" md:w-7/12 lg:w-8/12 w-full md:mt-0 sm:mt-14 mt-10">
