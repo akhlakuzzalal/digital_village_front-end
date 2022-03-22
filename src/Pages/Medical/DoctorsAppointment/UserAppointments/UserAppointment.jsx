@@ -4,8 +4,8 @@ import PayModal from '../../../../Components/Pay/PayModal';
 import { setPayModal } from '../../../../redux/slices/payModal/PayModalSlice';
 
 const UserAppointment = ({ appointment, date }) => {
-  console.log(appointment);
-  console.log(date.toString());
+  // console.log(appointment);
+  // console.log(date.toString());
 
   const dispatch = useDispatch();
   const selectedDate = new Date(date).toLocaleDateString();
