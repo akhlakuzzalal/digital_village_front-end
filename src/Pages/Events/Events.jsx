@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import AllEvents from './AllEvents/AllEvents';
+import EventCoordinator from './EventCoordinator/EventCoordinator';
 import EventPhotoGalary from './EventPhotoGalary/EventPhotoGalary';
 const Events = () => {
   const location = useLocation();
@@ -43,6 +44,9 @@ const Events = () => {
 
       <div>
         <EventPhotoGalary />
+      </div>
+      <div className="my-20">
+        <EventCoordinator></EventCoordinator>
       </div>
     </div>
   );

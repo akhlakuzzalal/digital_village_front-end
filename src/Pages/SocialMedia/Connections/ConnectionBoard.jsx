@@ -14,17 +14,17 @@ const links = [
   {
     name: 'Add People',
     icon: <MdPersonAddAlt1 size={30} />,
-    path: '/',
+    path: '/connection/addFriend',
   },
   {
     name: 'Requesting',
     icon: <MdPending size={30} />,
-    path: '/',
+    path: '/connection/requesting',
   },
   {
     name: 'Wait for connection',
     icon: <FcAcceptDatabase size={30} />,
-    path: '/',
+    path: '/connection/requested',
   },
 ];
 
@@ -38,7 +38,9 @@ const ConnectionBoard = () => {
     <div className="flex">
       <NewSidebar links={links} setIsOpen={setIsOpen} />
       <div
-        className={`mt-[90px] flex-1 ${isOpen ? 'ml-[273px]' : 'ml-[82px]'}`}
+        className={`mt-[90px] flex-1 ${
+          isOpen ? 'md:ml-[273px]' : 'md:ml-[82px]'
+        }`}
       >
         {initial ? <BoardHome /> : <Outlet />}
       </div>

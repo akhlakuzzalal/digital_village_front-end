@@ -24,6 +24,7 @@ const UserMenu = () => {
     ? roles.map((role) => Object.values(role)).flat()
     : [];
 
+  console.log(rolesArray);
   const IsAdmin = rolesArray?.includes(5000);
 
   const trigger = useRef(null);

@@ -41,7 +41,6 @@ const notificationSlice = createSlice({
   },
   reducers: {
     setNotificationCurrPage: (state, { payload }) => {
-      console.log('payload coming', payload);
       state.currPage = payload;
     },
     clearTheNotificationSlice: (state, { payload }) => {
@@ -58,7 +57,6 @@ const notificationSlice = createSlice({
     builder.addCase(
       fetchUserSpecificNotification.fulfilled,
       (state, { payload }) => {
-        console.table(payload);
         state.notifications = payload.notifications;
         const count = payload.count;
 
