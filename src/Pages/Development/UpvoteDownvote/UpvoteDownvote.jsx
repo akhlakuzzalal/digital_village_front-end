@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BiDownvote, BiUpvote } from 'react-icons/bi';
 import Swal from 'sweetalert2';
-import axios from '../../../../api/axios';
+import axios from '../../../api/axios';
 
 const UpvoteDownvote = ({ developmentProposalId, uId }) => {
   const [Upvotes, setUpvotes] = useState(0);
@@ -9,59 +9,44 @@ const UpvoteDownvote = ({ developmentProposalId, uId }) => {
   const [UpvoteAction, setUpvoteAction] = useState(null);
   const [DownVoteAction, setDownVoteAction] = useState(null);
 
-  let data = { developmentProposalId, uId };
+  console.log('hello');
 
   useEffect(() => {
-    axios.post('/upvote/all', data).then((response) => {
+    let necessaryData = { developmentProposalId, uId };
+    axios.post('/upvote/all', necessaryData).then((response) => {
       if (response.data.success) {
         // set the number of upvotes for this development proposal
-        setUpvotes(response.data.length);
-
-        if (response.data.length === 0) {
-          setUpvoteAction(null);
-        }
+        setUpvotes(response.data.upvotes.length);
 
         // change upvote action
-        response.data.map((upvote) => {
+        response.data.upvotes.map((upvote) => {
           if (upvote.uId === uId) {
             setUpvoteAction('upvoted');
-          } else {
-            setUpvoteAction(null);
           }
         });
       } else {
-        Swal.fire({
-          title: 'Something went wrong',
-          confirmButtonText: 'Try again',
-        });
+        console.log('failed to get all upvotes');
       }
     });
 
-    axios.post('/downvote/all', data).then((response) => {
+    axios.post('/downvote/all', necessaryData).then((response) => {
       if (response.data.success) {
         // set the number of downvotes for this development proposal
-        setDownvotes(response.data.length);
+        setDownvotes(response.data.downvotes.length);
 
-        if (response.data.length === 0) {
-          setDownVoteAction(null);
-        }
-
-        //if I already click this upvote button or not
-        response.data.map((downvote) => {
+        //if I already clicked the upvote button or not
+        response.data.downvotes.map((downvote) => {
           if (downvote.uId === uId) {
             setDownVoteAction('downvoted');
-          } else {
-            setDownVoteAction(null);
           }
         });
       } else {
-        Swal.fire({
-          title: 'Something went wrong',
-          confirmButtonText: 'Try again',
-        });
+        console.log('Failed to get all downvotes');
       }
     });
-  }, [data, uId]);
+  }, [uId, developmentProposalId]);
+
+  let data = { developmentProposalId, uId };
 
   const onUpvote = () => {
     if (UpvoteAction === null) {
@@ -100,6 +85,7 @@ const UpvoteDownvote = ({ developmentProposalId, uId }) => {
   const onDownvote = () => {
     if (DownVoteAction === null) {
       axios.post('/downvote/add', data).then((response) => {
+        console.log('this is downvote adding', response.data);
         if (response.data.success) {
           setDownvotes(Downvotes + 1);
           setDownVoteAction('downvoted');

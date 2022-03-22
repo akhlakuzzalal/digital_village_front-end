@@ -12,7 +12,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import blogReducer from './slices/blog/blogSlice';
-import DevelopmentSlice from './slices/DevelopmetProposal/DevelopmentProposalSlice';
+import DevelopmentProposalSlice from './slices/DevelopmetProposal/DevelopmentProposalSlice';
 import donationSlice from './slices/Donations/donationSlice';
 import { marketAllReducers } from './slices/eMarket/marketAllReducers';
 import eventReducer from './slices/event/eventSlice';
@@ -36,7 +36,7 @@ const reducers = combineReducers({
   events: eventReducer,
   donation: donationSlice,
   mood: MoodSlice,
-  development: DevelopmentSlice,
+  developmentProposals: DevelopmentProposalSlice,
   social: socialSlice,
   medical: medicalSlice,
 });

@@ -2,29 +2,30 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../../api/axios';
 
 // fectch All Development
-export const fetchAllDevelopmentProposal = createAsyncThunk(
-  'allDevelopment',
+export const fetchAllDevelopmentProposals = createAsyncThunk(
+  'developmentProposals/fetchAllDevelopmentProposals',
   async () => {
-    const responce = axios
-      .get('/developmentProposal/allDevelopment')
-      .then((responce) => responce.data);
-    return responce;
+    const response = axios
+      .get('/developmentProposal/all')
+      .then((response) => response.data);
+    return response;
   }
 );
 
 const developmentSlice = createSlice({
-  name: 'proposals',
+  name: 'developmentProposals',
   initialState: {
-    proposals: [],
-    alert: {},
+    developmentProposals: [],
   },
   reducers: {},
   extraReducers: (builder) => {
     //   get all development
     builder.addCase(
-      fetchAllDevelopmentProposal.fulfilled,
+      fetchAllDevelopmentProposals.fulfilled,
       (state, { payload }) => {
-        state.proposals = payload;
+        if (payload && payload.length >= 1) {
+          state.developmentProposals = payload;
+        }
       }
     );
   },
