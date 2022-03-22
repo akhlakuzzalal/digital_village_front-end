@@ -9,6 +9,9 @@ import { deleteAnEvent } from '../../../redux/slices/event/eventSlice';
 const ManageEventsCard = ({
   event: { _id, title, type, image, date, time, place },
   setDeleteEvent,
+  description,
+  category,
+  eventType,
 }) => {
   const dispatch = useDispatch();
 
@@ -43,9 +46,7 @@ const ManageEventsCard = ({
     reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+
   const handleAlertevent = () => {
     swal({
       position: 'center',
@@ -62,12 +63,13 @@ const ManageEventsCard = ({
   // };
   const handleUpdateEvent = (data) => {
     console.log(data);
-    axios.put(`/event/updateEvent/${_id}`, { body: JSON.stringify(data) });
+    axios.put(`/event/updateEvent/${_id}`, data);
     setShowModal(false);
     handleAlertevent();
     reset();
   };
-  return (
+  //localhost:5000/event/updateEvent/
+  http: return (
     <>
       {showModal ? (
         <>
@@ -108,6 +110,7 @@ const ManageEventsCard = ({
                           trigger('title');
                         }}
                         placeholder="Title"
+                        defaultValue={title}
                       />
                       {errors.title && (
                         <small className="text-danger">
@@ -128,6 +131,7 @@ const ManageEventsCard = ({
                           },
                         })}
                         placeholder="Description"
+                        defaultValue={description}
                         onKeyUp={() => {
                           trigger('description');
                         }}
@@ -142,6 +146,7 @@ const ManageEventsCard = ({
                         className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
                         {...register('date', { required: true })}
                         placeholder="date"
+                        defaultValue={date}
                       />
                       <input
                         className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
@@ -152,6 +157,7 @@ const ManageEventsCard = ({
                           trigger('image');
                         }}
                         placeholder="Add a image Link"
+                        defaultValue={image}
                       />
                       {errors.image && (
                         <small className="text-danger">
@@ -167,6 +173,7 @@ const ManageEventsCard = ({
                           trigger('category');
                         }}
                         placeholder="Category"
+                        defaultValue={category}
                       />
                       {errors.category && (
                         <small className="text-danger">
@@ -177,6 +184,7 @@ const ManageEventsCard = ({
                         className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
                         {...register('time', { required: true })}
                         placeholder="Time"
+                        defaultValue={time}
                       />
                       <input
                         className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
@@ -188,6 +196,7 @@ const ManageEventsCard = ({
                           trigger('place');
                         }}
                         placeholder="Full address"
+                        defaultValue={place}
                       />
                       {errors.place && (
                         <small className="text-danger">
@@ -198,6 +207,7 @@ const ManageEventsCard = ({
                         className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
                         {...register('eventType', { required: true })}
                         placeholder="EventType (Upcoming or Archived) "
+                        defaultValue={eventType}
                       />
 
                       {/* submit button */}
@@ -206,24 +216,24 @@ const ManageEventsCard = ({
                         <p className="text-danger">{errors.amount.message}</p>
                       )}
                     </div>
+                    <div className="flex items-center justify-end p-2 border-t border-solid border-blueGray-200 rounded-b">
+                      <button
+                        className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="button"
+                        onClick={() => setShowModal(false)}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="submit"
+                      >
+                        Update
+                      </button>
+                    </div>
                   </form>
                 </div>
                 {/*footer*/}
-                <div className="flex items-center justify-end p-2 border-t border-solid border-blueGray-200 rounded-b">
-                  <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="submit"
-                  >
-                    Update
-                  </button>
-                </div>
               </div>
             </div>
           </div>
