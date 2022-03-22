@@ -126,31 +126,36 @@ const UpvoteDownvote = ({ developmentProposalId, uId }) => {
         {/* upvote button */}
         {UpvoteAction === 'upvoted' ? (
           <button
-            className="btn py-2 bg-success flex items-center space-x-2"
+            className="btn px-6 py-2 bg-success flex items-center space-x-1"
             onClick={onUpvote}
           >
             <span>{Upvotes}</span> <BiUpvote size={30} />
           </button>
         ) : (
           <button
-            className="btn py-2 bg-success flex items-center space-x-2"
+            className="btn px-6 py-2 bg-success flex items-center space-x-1"
             onClick={onUpvote}
           >
             <span>{Upvotes}</span> <BiUpvote size={30} />
           </button>
         )}
 
+        {/* detail button */}
+        <button className="btn px-12 py-2 bg-rose-600 flex items-center space-x-1">
+          Details
+        </button>
+
         {/* downvote button */}
         {DownVoteAction === 'downvoted' ? (
           <button
-            className="btn py-2 bg-danger flex items-center space-x-2"
+            className="btn px-6 py-2 bg-danger flex items-center space-x-1"
             onClick={onDownvote}
           >
             <span>{Downvotes}</span> <BiDownvote size={30} />
           </button>
         ) : (
           <button
-            className="btn py-2 bg-danger flex items-center space-x-2"
+            className="btn px-6 py-2 bg-danger flex items-center space-x-1"
             onClick={onDownvote}
           >
             <span>{Downvotes}</span> <BiDownvote size={30} />

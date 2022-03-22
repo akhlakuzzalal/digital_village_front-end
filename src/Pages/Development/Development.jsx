@@ -31,7 +31,11 @@ const Development = () => {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-20">
           {developmentProposals?.map((proposal) => (
-            <DevelopmentCard proposal={proposal} key={proposal._id} />
+            <DevelopmentCard
+              proposal={proposal}
+              key={proposal._id}
+              showUpvoteDownVote={true}
+            />
           ))}
         </div>
 
@@ -44,7 +48,11 @@ const Development = () => {
           </p>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-20">
             {developmentProposals?.map((proposal) => (
-              <DevelopmentCard proposal={proposal} key={proposal._id} />
+              <DevelopmentCard
+                proposal={proposal}
+                key={proposal._id}
+                showUpvoteDownVote={false}
+              />
             ))}
           </div>
         </div>

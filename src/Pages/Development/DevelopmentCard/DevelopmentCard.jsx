@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { BASE_URI } from '../../../api/axios';
 import UpvoteDownvote from '../UpvoteDownvote/UpvoteDownvote';
 
-const DevelopmentCard = ({ proposal }) => {
+const DevelopmentCard = ({ proposal, showUpvoteDownVote }) => {
   const uId = useSelector((state) => state.user.uId);
   return (
     <div className="rounded-2xl w-fit border max-w-[400px] lg:mb-40">
@@ -18,7 +18,16 @@ const DevelopmentCard = ({ proposal }) => {
         <h3 className="text-2xl md:text-3xl ">{proposal?.title}</h3>
         <p>{proposal?.description && proposal.description.slice(0, 100)} ...</p>
 
-        <UpvoteDownvote developmentProposalId={proposal._id} uId={uId} />
+        {showUpvoteDownVote && (
+          <UpvoteDownvote developmentProposalId={proposal._id} uId={uId} />
+        )}
+
+        {/* detail button */}
+        {!showUpvoteDownVote && (
+          <button className="btn w-fit mx-auto px-12 py-2 bg-rose-600">
+            Details
+          </button>
+        )}
       </div>
     </div>
   );
