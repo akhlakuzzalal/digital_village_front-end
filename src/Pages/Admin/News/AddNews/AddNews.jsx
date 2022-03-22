@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import swal from 'sweetalert';
 import axios from '../../../../api/axios';
 import FileUpload from '../../../../Components/FileUpload';
 import RichTextEditor from '../../../../Components/RichTextEditor';
@@ -38,7 +39,11 @@ const AddNews = () => {
     );
 
     const response = await axios.post('/news/addNews', formData);
-    console.log(response.data);
+
+        if(response.data.length){
+          swal("Added this News", "Successfully added this News !", "success");
+          reset()
+        }
   };
 
   return (
@@ -48,13 +53,14 @@ const AddNews = () => {
         backgroundImage: `url(https://images.unsplash.com/photo-1551406483-3731d1997540?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80)`,
       }}
     >
-      <div className="mx-5 md:mx-48 px-10 py-6">
-        <h1 className="text-center my-8 text-white">Publish News</h1>
+      <div className='w-full'>
+      <div className="px-10   md:mx-auto w-full md:w-1/2 py-6">
+        <h1 className="text-center mt-10 pb-8 text-4xl md:text-6xl text-white">Publish News</h1>
         <form onSubmit={handleSubmit(handlePublishNews)} className="space-y-6">
           <div className="flex flex-wrap gap-4 items-center justify-evenly">
             {/* title of the News */}
             <input
-              className="md:px-7 mx-2 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              className="md:px-7 mx-2 py-6 px-5 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
               {...register('title', { required: true })}
               placeholder="Title of the news"
             />
@@ -70,7 +76,7 @@ const AddNews = () => {
 
             {/* about the News */}
             <textarea
-              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
               {...register('description', { required: true })}
               placeholder="Write the description in short"
             />
@@ -78,14 +84,14 @@ const AddNews = () => {
             {/* Publishd Date */}
             <input
               type="Date"
-              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
               {...register('publishDate', { required: true })}
               placeholder="Write your News Publish Date"
             />
 
             <input
               type="time"
-              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
               {...register('publishTime', { required: true })}
               placeholder="Write your News Publish Time"
             />
@@ -93,18 +99,19 @@ const AddNews = () => {
 
           {/* text editor for writing blogs */}
           <RichTextEditor
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+            className=" py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
             handleEditorChange={handleEditorChange}
             message="Start writing the blog"
           />
 
           {/* submit button */}
           <input
-            className="btn bg-white text-black rounded-lg w-full cursor-pointer hover:bg-opacity-80  transition-all duration-700 hover:bg-blue-600 hover:text-white"
+            className="btn bg-white text-black rounded-lg w-full  cursor-pointer hover:bg-opacity-80  transition-all duration-700 hover:bg-blue-600 hover:text-white"
             type="submit"
             value="Publish Your News"
           />
         </form>
+      </div>
       </div>
     </div>
   );

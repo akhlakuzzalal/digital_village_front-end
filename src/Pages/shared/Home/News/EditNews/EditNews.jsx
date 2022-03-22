@@ -16,6 +16,7 @@ const EditNews = () => {
     register,
     handleSubmit,
     trigger,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -49,6 +50,7 @@ const EditNews = () => {
         title: 'updated successfully',
         confirmButtonText: 'Okay',
       });
+      reset();
     }
   };
 

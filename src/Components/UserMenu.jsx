@@ -26,10 +26,6 @@ const UserMenu = () => {
 
   console.log(rolesArray);
   const IsAdmin = rolesArray?.includes(5000);
-<<<<<<< HEAD
-
-=======
->>>>>>> 14ff6febc0ae20a06db10d062468db1666be08d1
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
