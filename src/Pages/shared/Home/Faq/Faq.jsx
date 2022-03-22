@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { AiOutlineMinusSquare } from 'react-icons/ai';
-import { GoDiffAdded } from 'react-icons/go';
-import faq from '../../../../assets/events/faq.png';
+import { BsPlusSquare } from 'react-icons/bs';
+import Lottie from 'react-lottie';
+import useMediaQuery from '../../../../hooks/useMediaQuery';
+import animationData from '../../../../lotties/landingFaq.json';
+
 const datas = [
   {
     id: '1',
@@ -44,6 +47,17 @@ const datas = [
 
 const Faq1 = () => {
   const [active, setActive] = useState('');
+  const isTablet = useMediaQuery('(min-width: 656px)');
+  const isDesktop = useMediaQuery('(min-width: 900px)');
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
 
   return (
     <div className=" 2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6  px-4 lg:my-20">
@@ -60,11 +74,13 @@ const Faq1 = () => {
 
       <div className=" flex md:flex-row flex-col md:space-x-8 md:mt-16 mt-8">
         <div className=" md:w-5/12 lg:w-4/12 w-full mb-4  ">
-          <img
-            src={faq}
-            alt="Img of Glass bottle"
-            className="w-full md:block hidden h-[500px]"
-          />
+          <div className="w-fit mx-auto">
+            <Lottie
+              options={defaultOptions}
+              isClickToPauseDisabled={true}
+              width={isDesktop ? 400 : isTablet ? 300 : 250}
+            />
+          </div>
         </div>
 
         <div className=" md:w-7/12 lg:w-8/12 w-full md:mt-0 sm:mt-14 mt-10">
@@ -73,23 +89,35 @@ const Faq1 = () => {
           {datas.map((data) => (
             <div>
               <div>
-                <div className=" flex justify-between items-center cursor-pointer">
-                  <h3 className=" font-semibold text-xl leading-5 text-gray-800">
-                    {data.title}
-                  </h3>
-
+                <div className=" cursor-pointer">
                   {active && data.id === active ? (
-                    <AiOutlineMinusSquare
-                      className="hover:rotate-180 transition duration-700 ease-in-out dark:text-dark_text"
-                      size={30}
+                    <div
                       onClick={() => setActive('')}
-                    />
+                      className="flex justify-between items-center "
+                    >
+                      <h3 className=" w-4/5 font-semibold text-xl leading-5 text-gray-800">
+                        {data.title}
+                      </h3>
+                      <AiOutlineMinusSquare
+                        className=" transition duration-700 ease-in-out text-blue-900"
+                        custome
+                        size={30}
+                      />
+                    </div>
                   ) : (
-                    <GoDiffAdded
-                      className="hover:rotate-180 transition duration-700 ease-in-out dark:text-dark_text"
-                      size={30}
+                    <div
                       onClick={() => setActive(data?.id)}
-                    />
+                      className="flex justify-between items-center "
+                    >
+                      <h3 className=" w-4/5 font-semibold text-xl leading-5 text-gray-800">
+                        {data.title}
+                      </h3>
+                      <BsPlusSquare
+                        className=" transition duration-700 ease-in-out text-blue-900"
+                        custome
+                        size={30}
+                      />
+                    </div>
                   )}
                 </div>
                 <p
