@@ -38,7 +38,7 @@ const NewSidebar = ({ links, setIsOpen }) => {
       </div>
       <div className="h-[calc(100vh-80px)] overflow-y-auto">
         {/* Links of the dashboard */}
-        <ul className="mt-3 space-y-1">
+        <ul className="mt-3 space-y-1 pb-20">
           {links.map((link) => (
             <li key={link.name}>
               <Links link={link} showText={showText} />
