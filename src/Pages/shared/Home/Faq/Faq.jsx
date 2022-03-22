@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AiOutlineMinusSquare } from 'react-icons/ai';
 import { GoDiffAdded } from 'react-icons/go';
-
+import faq from '../../../../assets/events/faq.png';
 const datas = [
   {
     id: '1',
@@ -46,27 +46,27 @@ const Faq1 = () => {
   const [active, setActive] = useState('');
 
   return (
-    <div className=" 2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6  px-4">
-      <h2 className=" font-bolder text-xl md:text-3xl  lg:text-4xl text-blue-600  lg:leading-9 md:leading-7 leading-9  dark:text-dark_text">
-        Frequently Asked Questions
-      </h2>
-      <div className=" flex md:justify-between md:items-start md:flex-row flex-col justify-start items-start">
-        <div className=" ">
-          <p className=" font-normal text-base leading-6 text-gray-600 lg:w-8/12 md:w-9/12 pt-4 ">
-            Here are few of the most frequently asked questions by our valueable
-            customers
-          </p>
-        </div>
+    <div className=" 2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6  px-4 lg:my-20">
+      <div className="pb-10">
+        <h2 className=" font-bolder text-xl md:text-3xl  lg:text-4xl   lg:leading-9 md:leading-7 leading-9  dark:text-dark_text text-center">
+          Frequently Asked Questions
+        </h2>
+
+        <p className=" font-normal text-center leading-6 text-gray-600 pt-4 ">
+          Here are few of the most frequently asked questions by our valueable
+          customers
+        </p>
       </div>
+
       <div className=" flex md:flex-row flex-col md:space-x-8 md:mt-16 mt-8">
         <div className=" md:w-5/12 lg:w-4/12 w-full mb-4  ">
           <img
-            src="https://myexam.allen.ac.in/wp-content/uploads/2015/10/Digital-India-2.jpg"
+            src={faq}
             alt="Img of Glass bottle"
             className="w-full md:block hidden"
           />
           <img
-            src="https://myexam.allen.ac.in/wp-content/uploads/2015/10/Digital-India-2.jpg"
+            src={faq}
             alt="Img of Glass bottle"
             className="w-full md:hidden block "
           />

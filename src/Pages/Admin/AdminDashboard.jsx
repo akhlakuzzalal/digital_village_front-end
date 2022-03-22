@@ -104,7 +104,7 @@ const AdminDashboard = () => {
       <div className="flex">
         <NewSidebar links={links} setIsOpen={setIsOpen} />
         <div
-          className={`mt-[80px] flex-1 ${isOpen ? 'ml-[273px]' : 'ml-[82px]'}`}
+          className={`mt-[80px] flex-1 ${isOpen ? 'ml-[273px]' : 'ml-[0px]'}`}
         >
           <Outlet />
         </div>
