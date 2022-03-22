@@ -9,8 +9,8 @@ import {
   default as DevelopmentDashboard,
 } from './Pages/Admin/AdminDashboard';
 import AllUsers from './Pages/Admin/AllUsers/AllUsers';
-import AddDevelopment from './Pages/Admin/Development/AddDevelopment/AddDevelopment';
-import ManageDevelopment from './Pages/Admin/Development/ManageDevelopment/ManageDevelopment';
+import AddDevelopmentProposal from './Pages/Admin/DevelopmentProposal/AddDevelopmentProposal/AddDevelopmentProposal';
+import ManageDevelopmentProposals from './Pages/Admin/DevelopmentProposal/ManageDevelopmentProposals/ManageDevelopmentProposals';
 import AddCause from './Pages/Admin/Donation/AddCause/AddCause';
 import AllCauses from './Pages/Admin/Donation/AllCauses/AllCauses';
 import AllHelpRequests from './Pages/Admin/Donation/AllHelpRequests/AllHelpRequests';
@@ -231,9 +231,15 @@ const App = () => (
               <Route path="updatecause/:id" element={<UpdateCause />} />
               <Route path="manageAllDonars" element={<ManageAllDonars />} />
               <Route path="development" element={<DevelopmentDashboard />} />
-              <Route path="manageDevelopmet" element={<ManageDevelopment />} />
+              <Route
+                path="manageDevelopmentProposals"
+                element={<ManageDevelopmentProposals />}
+              />
               <Route path="editDevelopment/:id" element={<EditBlog />} />
-              <Route path="addDevelopment" element={<AddDevelopment />} />
+              <Route
+                path="addDevelopmentProposal"
+                element={<AddDevelopmentProposal />}
+              />
               <Route path="market" element={<MarketManagement />} />
               <Route path="add-events" element={<AddEvents />} />
               <Route path="add-review" element={<AddReview />} />

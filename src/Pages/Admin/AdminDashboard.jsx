@@ -59,12 +59,12 @@ const links = [
   {
     name: 'Add development',
     icon: <RiLightbulbFlashFill size={30} />,
-    path: '/admin/addDevelopment',
+    path: '/admin/addDevelopmentProposal',
   },
   {
     name: 'Manage Development',
     icon: <MdManageAccounts size={30} />,
-    path: '/admin/manageDevelopmet',
+    path: '/admin/manageDevelopmentProposals',
   },
   {
     name: 'Market',

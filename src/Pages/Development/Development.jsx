@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllDevelopment } from '../../redux/slices/Developmet/DevelopmentSlice';
+import { fetchAllDevelopmentProposal } from '../../redux/slices/DevelopmetProposal/DevelopmentProposalSlice';
 import DevelopmentAbout from './DevelopmentAbout/DevelopmentAbout';
 import DevelopmentBanner from './DevelopmentBanner/DevelopmentBanner';
 import DevelopmentCard from './DevelopmentCard/DevelopmentCard';
-import useDevelopment from './utilities/useDevelopment';
 const Development = () => {
   const dispatch = useDispatch();
   const proposals = useSelector((state) => state.development.proposals);
-  const { handleUpvote, handleDownvote } = useDevelopment();
   useEffect(() => {
-    dispatch(fetchAllDevelopment());
+    dispatch(fetchAllDevelopmentProposal());
     console.log(proposals);
   }, []);
 
@@ -30,12 +28,7 @@ const Development = () => {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-20">
           {proposals?.map((proposal) => (
-            <DevelopmentCard
-              proposal={proposal}
-              handleUpvote={handleUpvote}
-              handleDownvote={handleDownvote}
-              key={proposal._id}
-            />
+            <DevelopmentCard proposal={proposal} key={proposal._id} />
           ))}
         </div>
 
@@ -48,12 +41,7 @@ const Development = () => {
           </p>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-20">
             {proposals?.map((proposal) => (
-              <DevelopmentCard
-                proposal={proposal}
-                handleUpvote={handleUpvote}
-                handleDownvote={handleDownvote}
-                key={proposal._id}
-              />
+              <DevelopmentCard proposal={proposal} key={proposal._id} />
             ))}
           </div>
         </div>
