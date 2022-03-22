@@ -5,7 +5,7 @@ import img3 from '../../../assets/events/e-g-3.jpg';
 import img4 from '../../../assets/events/e-g-4.png';
 import img5 from '../../../assets/events/e-g-5.jpg';
 import img from '../../../assets/events/e-g.png';
-const EventPhotoGalary = () => {
+const EventPhotoGallary = () => {
   return (
     <div className="mt-32">
       <div className="text-center">
@@ -73,4 +73,4 @@ const EventPhotoGalary = () => {
   );
 };
 
-export default EventPhotoGalary;
+export default EventPhotoGallary;

@@ -34,7 +34,7 @@ const AddEvents = () => {
             className=" space-y-6 lg:mx-10 mx-3  mt-10 w-[300px] lg:w-[800px]"
             onSubmit={handleSubmit(handleAddEvent)}
           >
-            {/* email */}
+            {/*  */}
             <input
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
               {...register('title', {

@@ -41,7 +41,7 @@ const Allvideos = () => {
       <img className="w-full h-[300px] " src={img} alt="" />
       <Search className="mt-20 " handleSearch={handleSearch} />
       <h3 className=" py-6 text-center">Available Videos</h3>
-      <div className="flex flex-wrap gap-4  p-6 lg:mx-[100px]">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4  p-6 lg:mx-[100px]">
         {videos.map((video) => (
           <VideoCard key={video._id} video={video} />
         ))}

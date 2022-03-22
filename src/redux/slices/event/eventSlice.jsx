@@ -52,6 +52,14 @@ export const fetchArchivedEvents = createAsyncThunk(
   }
 );
 
+// export const updateAEvent = createAsyncThunk(
+//   'updateProduct',
+//   async (data) => {
+//     await axios.put(`/event/updateEvent/${data._id}`, data);
+//     return data;
+//   }
+// );
+
 const eventSlice = createSlice({
   name: 'events',
   initialState: {
