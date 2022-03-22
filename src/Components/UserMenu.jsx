@@ -18,13 +18,11 @@ const UserMenu = () => {
 
   const isTablet = useMediaQuery('(min-width: 775px)');
   const user = useSelector((state) => state.user.user);
-  // const isUser = user.name.includes('user');
 
   const rolesArray = roles
     ? roles.map((role) => Object.values(role)).flat()
     : [];
 
-  console.log(rolesArray);
   const IsAdmin = rolesArray?.includes(5000);
 
   const trigger = useRef(null);
