@@ -223,7 +223,7 @@ const App = () => (
 
           {/* 
           Admin dashboard routes */}
-          {/* <Route element={<AdminRoute allowedRoles={[Roles.Admin]} />}> */}
+          <Route element={<AdminRoute allowedRoles={[Roles.Admin]} />}>
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="allusers" element={<AllUsers />} />
               <Route path="sendNotification" element={<SendNotification />} />
@@ -250,7 +250,7 @@ const App = () => (
               <Route path="status" element={<StatusCheck />} />
               <Route path="allHelpRequests" element={<AllHelpRequests />} />
             </Route>
-          {/* </Route> */}
+          </Route>
 
           {/* unauthorized route */}
           <Route path="unauthorized" element={<UnAuthorized />} />
