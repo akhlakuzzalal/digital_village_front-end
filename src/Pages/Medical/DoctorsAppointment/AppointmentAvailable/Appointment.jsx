@@ -28,11 +28,12 @@ const Appointment = (props) => {
   };
 
   const navigate = useNavigate();
-  const redirect_uri = '/medicalDashboard/userAppointments';
+  const redirect_uri = '/medical/userAppointments';
 
   const handleAlert = () => {
     const data = { name, email, service, date, time, price };
-    Swal({
+    console.log(data);
+    new Swal({
       title: 'Want to proceed?',
       showDenyButton: true,
       confirmButtonText: 'Okay',
