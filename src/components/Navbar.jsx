@@ -10,9 +10,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
-import laptop_logo from '../assets/laptop_logo.png';
-import mobile_logo from '../assets/mobile_logo.png';
-import useMediaQuery from '../hooks/useMediaQuery';
+import logo from '../assets/logo.png';
 import { setMood } from '../redux/slices/mood/MoodSlice';
 import { fetchUserSpecificNotification } from '../redux/slices/notification/notificationSlice';
 import UserMenu from './UserMenu';
@@ -21,7 +19,6 @@ const Navbar = ({ navigation }) => {
   const [changeHeader, setChangeHeader] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const user = useSelector((state) => state.user.user);
-  const isDesktop = useMediaQuery('(min-width: 900px)');
   const navigate = useNavigate();
 
   const notificationCount = useSelector((state) => state.notifications.count);
@@ -71,20 +68,16 @@ const Navbar = ({ navigation }) => {
 
   return (
     <header
-      className={`fixed z-50 top-0 left-0 w-full bg-slate-900 text-white
+      className={`fixed z-50 top-0 left-0 w-full bg-slate-900 text-white h-[80px] flex justify-evenly items-center
           ${showFixedHeader ? 'mt-0' : changeHeader ? '-mt-32' : 'mt-0'}`} // change this to make a fixed header
     >
       <nav className="flex items-center justify-between max-w-screen-xl mx-auto px-6 py-3">
         {/* logo */}
         <div
-          className="flex grow md:grow-0 items-center justify-start order-1"
+          className="flex grow md:grow-0 w-14 h-14 items-center justify-start order-1 hidden"
           onClick={() => navigate('/')}
         >
-          <img
-            className="w-full cursor-pointer"
-            src={isDesktop ? laptop_logo : mobile_logo}
-            alt="logo"
-          />
+          <img className="w-full cursor-pointer" src={logo} alt="logo" />
         </div>
 
         {/* Nav links */}

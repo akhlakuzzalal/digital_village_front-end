@@ -46,15 +46,12 @@ const UserDashboard = () => {
     location.pathname === '/userdashboard/';
 
   return (
-    <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div className="flex">
       {/* Sidebar */}
       <NewSidebar setIsOpen={setIsOpen} links={links} />
 
       {/* contents */}
-      <div
-        className={`mt-[80px] flex-1 ${isOpen ? 'ml-[273px]' : 'ml-[82px]'}`}
-      >
-        {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
+      <div className={`mt-[80px] flex-1`}>
         {initial ? <Profile /> : <Outlet />}
       </div>
     </div>

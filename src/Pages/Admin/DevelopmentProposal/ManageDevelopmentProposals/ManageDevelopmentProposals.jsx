@@ -6,21 +6,12 @@ import axios, { BASE_URI } from '../../../../api/axios';
 
 const ManageDevelopmentProposal = () => {
   const [development, setDevelopment] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
-    axios
-      .get('/development/allDevelopment')
-      .then((response) => {
-        setDevelopment(response.data);
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        setIsLoading(false);
-        console.log(data);
-      });
-  }, [isLoading]);
+    axios.get('/developmentProposal/all').then((response) => {
+      setDevelopment(response.data);
+    });
+  }, []);
 
   const handleDelete = (id) => {
     swal({
@@ -28,7 +19,6 @@ const ManageDevelopmentProposal = () => {
       confirm: 'You want to delete this development proposal',
       dangerMode: true,
     }).then(() => {
-      setIsLoading(true);
       axios.delete(`/development/deleteDevelopment/${id}`).then((response) => {
         if (response?.data?.deletedCount) {
           Swal.fire({
@@ -43,7 +33,6 @@ const ManageDevelopmentProposal = () => {
           });
         }
       });
-      setIsLoading(false);
     });
   };
 
@@ -54,7 +43,7 @@ const ManageDevelopmentProposal = () => {
           <div className="overflow-hidden rounded-xl h-52 cursor-pointer">
             <img
               className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-              src={`${BASE_URI}/${data?.bannerImg.path}`}
+              src={`${BASE_URI}/${data?.image?.path}`}
               alt={''}
             />
           </div>

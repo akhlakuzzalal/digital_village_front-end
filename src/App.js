@@ -8,6 +8,7 @@ import {
   default as AdminDashboard,
   default as DevelopmentDashboard,
 } from './Pages/Admin/AdminDashboard';
+import AdminHome from './Pages/Admin/AdminHome/AdminHome';
 import AllUsers from './Pages/Admin/AllUsers/AllUsers';
 import AddDevelopmentProposal from './Pages/Admin/DevelopmentProposal/AddDevelopmentProposal/AddDevelopmentProposal';
 import ManageDevelopmentProposals from './Pages/Admin/DevelopmentProposal/ManageDevelopmentProposals/ManageDevelopmentProposals';
@@ -219,6 +220,7 @@ const App = () => (
           Admin dashboard routes */}
           <Route element={<AdminRoute allowedRoles={[Roles.Admin]} />}>
             <Route path="admin" element={<AdminDashboard />}>
+              <Route path="home" element={<AdminHome />} />
               <Route path="allusers" element={<AllUsers />} />
               <Route path="sendNotification" element={<SendNotification />} />
               <Route path="events" element={<Eventmanagement />} />
