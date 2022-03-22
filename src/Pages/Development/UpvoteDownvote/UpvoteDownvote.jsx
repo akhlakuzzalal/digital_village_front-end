@@ -14,6 +14,7 @@ const UpvoteDownvote = ({ developmentProposalId, uId }) => {
   useEffect(() => {
     let necessaryData = { developmentProposalId, uId };
     axios.post('/upvote/all', necessaryData).then((response) => {
+      console.log(response.data);
       if (response.data.success) {
         // set the number of upvotes for this development proposal
         setUpvotes(response.data.upvotes.length);
@@ -30,6 +31,7 @@ const UpvoteDownvote = ({ developmentProposalId, uId }) => {
     });
 
     axios.post('/downvote/all', necessaryData).then((response) => {
+      console.log(response.data);
       if (response.data.success) {
         // set the number of downvotes for this development proposal
         setDownvotes(response.data.downvotes.length);
@@ -122,20 +124,38 @@ const UpvoteDownvote = ({ developmentProposalId, uId }) => {
       {/* upvote and downvote buttons */}
       <div className="flex items-center justify-between">
         {/* upvote button */}
-        <button
-          className="btn py-2 bg-success flex items-center space-x-2"
-          onClick={onUpvote}
-        >
-          <span>{Upvotes}</span> <BiUpvote size={30} />
-        </button>
+        {UpvoteAction === 'upvoted' ? (
+          <button
+            className="btn py-2 bg-success flex items-center space-x-2"
+            onClick={onUpvote}
+          >
+            <span>{Upvotes}</span> <BiUpvote size={30} />
+          </button>
+        ) : (
+          <button
+            className="btn py-2 bg-success flex items-center space-x-2"
+            onClick={onUpvote}
+          >
+            <span>{Upvotes}</span> <BiUpvote size={30} />
+          </button>
+        )}
 
         {/* downvote button */}
-        <button
-          className="btn py-2 bg-danger flex items-center space-x-2"
-          onClick={onDownvote}
-        >
-          <span>{Downvotes}</span> <BiDownvote size={30} />
-        </button>
+        {DownVoteAction === 'downvoted' ? (
+          <button
+            className="btn py-2 bg-danger flex items-center space-x-2"
+            onClick={onDownvote}
+          >
+            <span>{Downvotes}</span> <BiDownvote size={30} />
+          </button>
+        ) : (
+          <button
+            className="btn py-2 bg-danger flex items-center space-x-2"
+            onClick={onDownvote}
+          >
+            <span>{Downvotes}</span> <BiDownvote size={30} />
+          </button>
+        )}
       </div>
     </>
   );
