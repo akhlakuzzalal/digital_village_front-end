@@ -37,7 +37,7 @@ const NewsDetails = () => {
   return (
     <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <div className="grid grid-cols-1 md:grid-cols-4 mx-auto md:mx-10">
-        <div className=" col-span-3 mx-10 bg-white rounded-lg  pb-10    dark:bg-gray-800 dark:border-gray-700">
+        <div className=" col-span-3 mx-10 bg-white rounded-lg  pb-10    dark:bg-gray-800 dark:border-gray-700 ">
           <hr />
           <br />
 
@@ -99,19 +99,22 @@ const NewsDetails = () => {
           />
         </div>
 
-        <div className="px-5  md:border-l-4 md:pl-8 pt-5">
+        <div className="px-5  md:border-l-4 md:pl-8 pt-5 dark:bg-dark_primary 
+  ">
           <p className="text-gray-400 hover:text-blue-600">LATEST ARTICLES</p>
           {news.map((data) => (
             <Link to={`/newsDetails/${data?._id}`}>
-              <li className="text-sm md:text-base p-3 my-3 border rounded-lg flex list-non hover:text-blue-800 hover:bg-gray-100 hover:opacity-90 dark:text-white">
+              <li className="text-sm md:text-base p-3 my-3 border rounded-lg flex list-non hover:text-blue-800 hover:bg-gray-100 hover:opacity-90 hover:dark:bg-gray-800
+  dark:text-dark_text">
                 <SiGooglenews className="mr-2" />
                 {data?.title.slice(0,40)}..
               </li>
             </Link>
           ))}
 
-          <div className="grid grid-cols-1 my-10">
-            <h5 className="text-gray-400 my-5 border-t-4 hover:text-blue-600 pt-5">
+          <div className="grid grid-cols-1 my-10 dark:bg-dark_primary 
+  dark:text-dark_text">
+            <h5 className="text-gray-400 my-5 border-t-4 hover:text-blue-600 pt-5 dark:text-dark_text">
               RECOMMENDED
             </h5>
             <div className=" ">
@@ -153,7 +156,7 @@ const NewsDetails = () => {
 
                         <p>{n.description.slice(0, 20)} ...</p>
                         <Link to={`/newsDetails/${n._id}`}>
-                          <button className="text-primary text-lg hover:text-black transition-all duration-500 border-b-2 border-b-primary">
+                          <button className="text-primary text-lg hover:text-black transition-all duration-500 border-b-2 border-b-primary hover:dark:text-dark_text">
                             Read More
                           </button>
                         </Link>

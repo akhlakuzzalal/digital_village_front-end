@@ -43,13 +43,15 @@ const BreakingNews = ({news}) => {
          
             
             {
-              news.map(n=><li className="border rounded-lg my-6 px-2 hover:bg-gray-100 hover:opacity-80">
+              news.map(n=><li className="border rounded-lg my-6 px-2 hover:bg-gray-100 hover:opacity-80 hover:dark:bg-dark_primary 
+              ">
                 
                     <Link to={`/newsDetails/${n._id}`}>
-                    <h5 className="font-bolder text-base md:text-xl text-left mb-2 hover:text-blue-600">
+                    <h5 className="font-bolder text-base md:text-xl text-left mb-2 hover:text-blue-600
+  dark:text-dark_text">
                     {n?.title.slice(0,35)}...
                   </h5>
-                  <span>
+                  <span className='dark:text-dark_text'>
                   {n?.description.slice(0,30)}.
                   </span>
                     </Link>
