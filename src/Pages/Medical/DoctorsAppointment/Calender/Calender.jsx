@@ -7,8 +7,8 @@ const Calender = ({ onChange }) => {
   //   console.log(date.toString());
   // };
   return (
-    <div className="flex justify-center items-center ">
-      <DatePicker onChange={onChange} className="dark:dark-card-bg"/>
+    <div className="flex justify-center items-center w-3/4 pl-10 md:w-full md:pl-0">
+      <DatePicker onChange={onChange} className="dark:dark-card-bg" />
     </div>
   );
 };
