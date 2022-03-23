@@ -24,11 +24,11 @@ const Banner = () => {
         backgroundColor: '#f7f8fa',
       }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center p-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center pl-14 pr-2 py-0 md:p-10">
         {/* banner description */}
-        <div className=" flex flex-col  justify-center items-center place-self-center lg:mt-24 order-2 md:order-1 text-center lg:text-left p-5">
-          <h1 className=" text-4xl md:text-5xl my-0 md:my-3">Quality Care</h1>
-          <h3 justify-center items-center>
+        <div className=" flex flex-col  justify-center items-center place-self-center lg:mt-24 order-2 md:order-1 text-center lg:text-left p-2 md:p-5">
+          <h1 className=" text-2xl md:text-5xl my-0 md:my-3">Quality Care</h1>
+          <h3 className="text-lg md:text-2xl">
             <span style={{ color: '#10217d' }}>Your health, </span> our priority
           </h3>
           <p className=" my-2 text-justify md:text-left md:my-6">
@@ -37,12 +37,12 @@ const Banner = () => {
             whole family healthy and strong each and every day.{' '}
           </p>
           <div className="flex items-start">
-            <NavHashLink smooth to="/medicalDashboard">
+            <NavHashLink smooth to="/medical/appointment">
               <button
-                className="btn rounded-lg px-6 "
+                className="btn text-md md:text-lg rounded-lg px-6 "
                 style={{ backgroundColor: '#10217d' }}
               >
-                Explore
+                Appointment
               </button>
             </NavHashLink>
           </div>
@@ -54,7 +54,7 @@ const Banner = () => {
             <Lottie
               options={defaultOptions}
               isClickToPauseDisabled={true}
-              width={isDesktop ? 600 : isTablet ? 400 : 250}
+              width={isDesktop ? 600 : isTablet ? 400 : 200}
             />
           </div>
         </div>

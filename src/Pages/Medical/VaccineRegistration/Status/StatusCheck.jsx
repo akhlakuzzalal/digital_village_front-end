@@ -47,39 +47,55 @@ const StatusCheck = () => {
                 Approve application
               </h2>
               <div>
-                <div>
-                  <div class="flex justify-between bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-md py-2 px-4 text-white font-bold text-md">
-                    <div className="w-1/3">
-                      <span>Name</span>
-                    </div>
-                    <div className="w-1/3">
-                      <span>Email</span>
-                    </div>
+                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                  <div className="inline-block py-2 min-w-full px-0 lg:px-8">
+                    <div className="overflow-hidden shadow-md sm:rounded-lg">
+                      <table className="min-w-full">
+                        <thead className="bg-gray-50 dark:bg-gray-700">
+                          <tr className="bg-blue-900 ">
+                            <th
+                              scope="col"
+                              className="py-3 px-0 md:px-6 text-xs  tracking-wider text-left text-white uppercase dark:text-gray-400"
+                            >
+                              Name
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-0 md:px-6 text-xs   text-left text-white uppercase dark:text-gray-400"
+                            >
+                              Email
+                            </th>
+                            <th
+                              scope="col"
+                              className="py-3 px-0 md:px-6 text-xs   text-left text-white uppercase dark:text-gray-400"
+                            >
+                              Edit
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {info?.map((row) => (
+                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                              <td className="py-4 px-0 md:px-6 text-xs text-gray-900 dark:text-white">
+                                {row.name}
+                              </td>
+                              <td className="py-4 px-0 md:px-6 text-x text-gray-500 dark:text-gray-400">
+                                {row.email}
+                              </td>
 
-                    <div className="w-1/3">
-                      <span>Edit</span>
+                              <td className="py-4 px-0 md:px-6 text-xs text-gray-500 dark:text-gray-400">
+                                <button
+                                  className="border-2 g bg-blue-900  text-white py-2 px-5"
+                                  onClick={() => handleStatus(row)}
+                                >
+                                  Approve
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
                     </div>
-                  </div>
-                  <div>
-                    {info.map((row) => (
-                      <div class="flex justify-between border-2 text-sm font-normal mt-4 space-x-4">
-                        <div className="w-1/3">
-                          <span>{row.name}</span>
-                        </div>
-                        <div>
-                          <span>{row.email}</span>
-                        </div>
-
-                        <div class="w-1/3">
-                          <button
-                            className="border-2 g bg-blue-900  text-white py-2 px-5"
-                            onClick={() => handleStatus(row)}
-                          >
-                            Approve
-                          </button>
-                        </div>
-                      </div>
-                    ))}
                   </div>
                 </div>
               </div>

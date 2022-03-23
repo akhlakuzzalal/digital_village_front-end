@@ -17,7 +17,7 @@ const RegForm = () => {
   const email = user.email;
   const name = user.name;
   const navigate = useNavigate();
-  const redirect_uri = '/medicalDashboard/pdf';
+  const redirect_uri = '/medical/pdf';
 
   const onSubmit = (data) => {
     console.log(data);
