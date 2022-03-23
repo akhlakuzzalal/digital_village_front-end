@@ -48,11 +48,13 @@ const EventDetails = () => {
               alt=""
             />
             <div className="flex justify-between items-center ">
-              <h1 className="mt-20 tex-lg md:text-xl lg:text-2xl">{eventItem[0]?.title}</h1>
+              <h1 className="mt-20 tex-lg md:text-xl lg:text-2xl">
+                {eventItem[0]?.title}
+              </h1>
               {eventItem[0]?.eventType === 'upcoming' && (
                 <button
                   onClick={handleBookEvent}
-                  className="flex bg-[blue] text-white lg:px-10 md:px-10 px-1  mt-[90px] ml-10 py-3  rounded"
+                  className="flex bg-[blue] text-white lg:px-10 md:px-10 px-1  mt-[90px] ml-3 py-3  rounded"
                 >
                   Book This Event{' '}
                   <FaLocationArrow className=" ml-2 w-[30px] " />
@@ -64,14 +66,14 @@ const EventDetails = () => {
             <div className="bg-gray-100 p-7 border-l-4 flex items-center gap-6 lg:gap-20 px-5 lg:px-32 dark:bg-dark_primary">
               <div>
                 <p>Dtae</p>
-                <h3 className="text-xl">{eventItem[0]?.date}</h3>
+                <h3 className="lg:text-xl text-sm">{eventItem[0]?.date}</h3>
               </div>
               <div>
                 <p>Time</p>
                 <p className="text-sm">{eventItem[0]?.time}</p>
               </div>
               <div>
-                <h5 className='dark:text-dark_text'>Community Center</h5>
+                <h5 className="dark:text-dark_text">Community Center</h5>
 
                 <p className="text-sm">{eventItem[0]?.place}</p>
               </div>

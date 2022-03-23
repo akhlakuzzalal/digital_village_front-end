@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   MdOutlineAppRegistration,
   MdOutlineProductionQuantityLimits,
   MdReviews,
 } from 'react-icons/md';
-import { RiDashboard2Line } from 'react-icons/ri';
+import { RiDashboard2Line, RiLightbulbFlashFill } from 'react-icons/ri';
 import { SiHomebridge } from 'react-icons/si';
 import { Outlet, useLocation } from 'react-router-dom';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
@@ -14,6 +14,16 @@ const links = [
     name: 'Profile',
     icon: <SiHomebridge size={30} />,
     path: '/userdashboard/profile',
+  },
+  {
+    name: 'Add development',
+    icon: <RiLightbulbFlashFill size={30} />,
+    path: '/userdashboard/addDevelopmentProposal',
+  },
+  {
+    name: 'My Development Proposals',
+    icon: <RiLightbulbFlashFill size={30} />,
+    path: '/userdashboard/myDevelopmentProposals',
   },
   {
     name: 'Events',
@@ -38,8 +48,6 @@ const links = [
 ];
 
 const UserDashboard = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   const location = useLocation();
   const initial =
     location.pathname === '/userdashboard' ||
@@ -48,10 +56,10 @@ const UserDashboard = () => {
   return (
     <div className="flex">
       {/* Sidebar */}
-      <NewSidebar setIsOpen={setIsOpen} links={links} />
+      <NewSidebar links={links} />
 
       {/* contents */}
-      <div className={`mt-[80px] flex-1`}>
+      <div className={`mt-[80px] ml-[65px] flex-1`}>
         {initial ? <Profile /> : <Outlet />}
       </div>
     </div>

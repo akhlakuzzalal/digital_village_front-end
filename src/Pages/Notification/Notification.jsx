@@ -41,10 +41,10 @@ const Notification = () => {
   }, [user.email, pageCount, currPage, size]);
 
   return (
-    <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div className="mt-[80px] " style={{ minHeight: 'calc(100vh - 700px)' }}>
       <div className="flex flex-wrap justify-center p-4 ">
         {/* notification cards */}
-        <div className="w-100 md:w-1/2 space-y-4 flex-1">
+        <div className="w-full md:w-1/2 space-y-4 flex-1">
           {notifications && notifications.length >= 1 ? (
             notifications.map((notification) => (
               <SingleNotification
@@ -60,7 +60,7 @@ const Notification = () => {
         </div>
 
         {/* notification details */}
-        <div className="w-100 md:w-1/2 p-2">
+        <div className="w-full md:w-1/2 p-2">
           {Object.keys(selectedNotification).length === 0 ? (
             <div>
               <img

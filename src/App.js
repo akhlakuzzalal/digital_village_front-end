@@ -11,7 +11,6 @@ import {
 } from './Pages/Admin/AdminDashboard';
 import AdminHome from './Pages/Admin/AdminHome/AdminHome';
 import AllUsers from './Pages/Admin/AllUsers/AllUsers';
-import AddDevelopmentProposal from './Pages/Admin/DevelopmentProposal/AddDevelopmentProposal/AddDevelopmentProposal';
 import ManageDevelopmentProposals from './Pages/Admin/DevelopmentProposal/ManageDevelopmentProposals/ManageDevelopmentProposals';
 import AddCause from './Pages/Admin/Donation/AddCause/AddCause';
 import AllCauses from './Pages/Admin/Donation/AllCauses/AllCauses';
@@ -49,6 +48,7 @@ import TeacherAnalytics from './Pages/Education/Teacher/TeacherAnalytics/Teacher
 import EMarket from './Pages/EMarket/EMarket';
 import Cart from './Pages/EMarket/MarketComponents/Cart/Cart';
 import Checkout from './Pages/EMarket/MarketComponents/Checkout/Checkout';
+import ConfirmPayment from './Pages/EMarket/MarketComponents/ConFirmPayments/ConfirmPayment.jsx';
 import MyOrder from './Pages/EMarket/MarketComponents/DashboardItems/MyOrder';
 import MedicineShop from './Pages/EMarket/MarketComponents/MedicineShop/MedicineShop';
 import ProductDetails from './Pages/EMarket/MarketComponents/ProductDetails';
@@ -83,7 +83,6 @@ import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
 import EditNews from './Pages/shared/Home/News/EditNews/EditNews';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
-import AddReview from './Pages/shared/Home/Reviews/AddReview/AddReview';
 import NotFound from './Pages/shared/NotFound/NotFound';
 import AddFriend from './Pages/SocialMedia/Connections/BoardComponent/AddFriend.jsx';
 import BoardHome from './Pages/SocialMedia/Connections/BoardComponent/BoardHome.jsx';
@@ -91,6 +90,8 @@ import Requested from './Pages/SocialMedia/Connections/BoardComponent/Requested'
 import Requesting from './Pages/SocialMedia/Connections/BoardComponent/Requesting';
 import ConnectionBoard from './Pages/SocialMedia/Connections/ConnectionBoard';
 import SocialHome from './Pages/SocialMedia/Home/SocialHome';
+import AddDevelopmentProposal from './Pages/User/DevelopmentProposal/AddDevelopmentProposal/AddDevelopmentProposal';
+import MyDevelopmentProposals from './Pages/User/DevelopmentProposal/MyDevelopmentProposals/MyDevelopmentProposals';
 import MyDonations from './Pages/User/Donation/MyDonations';
 import MyHelpRequests from './Pages/User/Donation/MyHelpRequests';
 import Profile from './Pages/User/Profile/Profile';
@@ -118,7 +119,7 @@ const App = () => (
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
 
-          <Route element={<PrivateRoute />}> 
+          <Route element={<PrivateRoute />}>
             <Route path="allUsers" element={<AllUsers />} />
             {/* notification route */}
             <Route path="notifications" element={<Notification />} />
@@ -126,6 +127,14 @@ const App = () => (
             {/* user routes */}
             <Route path="userdashboard" element={<UserDashboard />}>
               <Route path="profile" element={<Profile />} />
+              <Route
+                path="addDevelopmentProposal"
+                element={<AddDevelopmentProposal />}
+              />
+              <Route
+                path="myDevelopmentProposals"
+                element={<MyDevelopmentProposals />}
+              />
               <Route path="myBookedEvents" element={<MyBookedEvents />} />
               <Route path="review" element={<Review />} />
               <Route path="myDonations" element={<MyDonations />} />
@@ -200,6 +209,7 @@ const App = () => (
             <Route path="e-market" element={<EMarket />} />
             <Route path="cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
+            <Route path="confirmpay" element={<ConfirmPayment />} />
             <Route
               path="productdetails/:id/:item"
               element={<ProductDetails />}
@@ -223,9 +233,9 @@ const App = () => (
             </Route>
           </Route>
 
-          {/* 
-          Admin dashboard routes */}
-          {/* <Route element={<AdminRoute allowedRoles={[Roles.Admin]} />}> */}
+          {/* Admin dashboard routes */}
+
+          <Route element={<AdminRoute allowedRoles={[Roles.Admin]} />}>
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="home" element={<AdminHome />} />
               <Route path="allusers" element={<AllUsers />} />
@@ -234,7 +244,6 @@ const App = () => (
               <Route path="add-events" element={<AddEvents />} />
               <Route path="manageEvents" element={<ManageEvents />} />
               <Route path="market" element={<MarketManagement />} />
-              <Route path="add-review" element={<AddReview />} />
               <Route path="addcause" element={<AddCause />} />
               <Route path="allcauses" element={<AllCauses />} />
               <Route path="updatecause/:id" element={<UpdateCause />} />
@@ -245,13 +254,8 @@ const App = () => (
                 element={<ManageDevelopmentProposals />}
               />
               <Route path="editDevelopment/:id" element={<EditBlog />} />
-              <Route
-                path="addDevelopmentProposal"
-                element={<AddDevelopmentProposal />}
-              />
               <Route path="market" element={<MarketManagement />} />
               <Route path="add-events" element={<AddEvents />} />
-              <Route path="add-review" element={<AddReview />} />
               <Route path="manageNews" element={<ManageNews />} />
               <Route path="addNews" element={<AddNews />} />
               <Route path="editNews/:id" element={<EditNews />} />
@@ -259,7 +263,7 @@ const App = () => (
               <Route path="status" element={<StatusCheck />} />
               <Route path="allHelpRequests" element={<AllHelpRequests />} />
             </Route>
-          {/* </Route> */}
+          </Route>
 
           {/* unauthorized route */}
           <Route path="unauthorized" element={<UnAuthorized />} />

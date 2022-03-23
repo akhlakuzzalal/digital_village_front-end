@@ -61,10 +61,10 @@ const PublisheModal = ({ open, setOpen }) => {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-full md:w-1/3 my-6 mx-auto max-w-3xl">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none   dark:bg-dark_primary dark:text-dark_text">
                 {/*body*/}
                 <div className="relative p-6 flex-auto space-y-4">
-                  <h6 className="border-b-2 border-slate-700">
+                  <h6 className="border-b-2 border-slate-700    dark:border-slate-200">
                     Create a new post
                   </h6>
                   {/* avatar & user name */}

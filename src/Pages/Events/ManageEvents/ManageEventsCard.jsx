@@ -7,11 +7,19 @@ import swal from 'sweetalert';
 import axios from '../../../api/axios';
 import { deleteAnEvent } from '../../../redux/slices/event/eventSlice';
 const ManageEventsCard = ({
-  event: { _id, title, type, image, date, time, place },
+  event: {
+    _id,
+    title,
+    type,
+    image,
+    date,
+    time,
+    place,
+    description,
+    category,
+    eventType,
+  },
   setDeleteEvent,
-  description,
-  category,
-  eventType,
 }) => {
   const dispatch = useDispatch();
 
@@ -202,12 +210,20 @@ const ManageEventsCard = ({
                           {errors.place.message}
                         </small>
                       )}
-                      <input
+                      {/* <input
                         className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
                         {...register('eventType', { required: true })}
                         placeholder="EventType (Upcoming or Archived) "
                         defaultValue={eventType}
-                      />
+                      /> */}
+
+                      <select
+                        className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+                        {...register('eventType')}
+                      >
+                        <option value="upcoming">upcoming</option>
+                        <option value="archived">archived</option>
+                      </select>
 
                       {/* submit button */}
 

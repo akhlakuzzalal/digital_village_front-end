@@ -11,7 +11,6 @@ import {
   MdOutlineManageAccounts,
   MdOutlineMedicalServices,
 } from 'react-icons/md';
-import { RiLightbulbFlashFill } from 'react-icons/ri';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
@@ -63,11 +62,6 @@ const links = [
     path: '/admin/allHelpRequests',
   },
   {
-    name: 'Add development',
-    icon: <RiLightbulbFlashFill size={30} />,
-    path: '/admin/addDevelopmentProposal',
-  },
-  {
     name: 'Manage Development',
     icon: <MdManageAccounts size={30} />,
     path: '/admin/manageDevelopmentProposals',
@@ -105,9 +99,9 @@ const AdminDashboard = () => {
   return (
     <div>
       <Navbar navigation={navigation} />
-      <div className="flex">
+      <div className="">
         <NewSidebar links={links} />
-        <div className={`mt-[80px] ml-[65px] flex-1`}>
+        <div className={`mt-[80px] ml-[70px] w-full`}>
           <Outlet />
         </div>
       </div>

@@ -10,7 +10,7 @@ const SingleUser = ({ user, as }) => {
   const socialUser = useSelector((state) => state.social.user);
   const { addFriend, cancelRequest, acceptFriend } = useSocialMedia();
   return (
-    <div className="group relative max-w- mx-5 md:mx-0  rounded-xl overflow-hidden shadow-md hover:scale-105 duration-500 dark:bg-white">
+    <div className="group relative max-w- mx-5 md:mx-0  rounded-xl overflow-hidden shadow-md hover:scale-105 duration-500   dark:bg-dark_primary">
       <div className="w-full flex justify-center ">
         {user?.photo?.path && user?.photo?.path !== '' ? (
           <img
@@ -27,7 +27,7 @@ const SingleUser = ({ user, as }) => {
         )}
       </div>
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2 text-center">{user.name}</div>
+        <div className="font-bold text-xl mb-2 text-center    dark:text-dark_text">{user.name}</div>
         {as === 'requesting' && (
           <div className="space-y-3">
             <div className="flex items-center cursor-pointer bg-primary justify-center px-4 py-2 rounded-lg space-x-2">
