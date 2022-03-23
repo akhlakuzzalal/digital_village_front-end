@@ -31,7 +31,7 @@ const VideoCard = ({ video }) => {
   return (
     <div className="shadow-xl w-fit rounded-2xl dark:border-2 dark:border-cyan-300">
       <div
-        className="space-y-4 cursor-pointer group hover:bg-slate-100 dark:hover:bg-slate-900"
+        className="space-y-4 cursor-pointer group hover:bg-slate-100 dark:bg-dark_primary"
         onClick={() => navigate(`/detailvideo/${video?._id}`)}
       >
         <video
@@ -40,7 +40,7 @@ const VideoCard = ({ video }) => {
         ></video>
         <div className="flex justify-between px-3">
           <div className="space-y-2">
-            <h3 className="text-xl w-2/3">{video?.title}</h3>
+            <h3 className="text-xl w-2/3 dark:text-dark_text">{video?.title}</h3>
             <div className="flex text-yellow-400">
               <Rating rating={video?.rating} />
             </div>
@@ -52,7 +52,7 @@ const VideoCard = ({ video }) => {
         <p className="px-3">{video?.publishDate}</p>
       </div>
       {/* card footer  */}
-      <div className="flex items-center justify-between p-3">
+      <div className="flex items-center justify-between p-3 dark:bg-dark_primary">
         <button
           className="w-100 flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           onClick={() => navigate(`/teacher/editVideo/${video._id}`)}
