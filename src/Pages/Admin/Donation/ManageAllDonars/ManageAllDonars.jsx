@@ -11,7 +11,7 @@ const ManageAllDonars = () => {
   }, []);
 
   return (
-    <div className="my-3">
+    <div className="my-3 ">
       <div className="overflow-x-auto">
         <h3 className="text-center text-gray-800 text-sm md:text-lg lg:text-2xl">
           All Donars payment
@@ -43,14 +43,14 @@ const ManageAllDonars = () => {
                 allDonarInfo.map((donarInfo) => (
                   <tr
                     key={donarInfo?.causeInfo?.image?.path}
-                    className="bg-white border-b font-primary text-sm grid grid-cols-2 col-start-5 col-end-12 place-items-center"
+                    className="bg-white border-b font-primary text-sm grid grid-cols-2 col-start-5 col-end-12 place-items-center dark:bg-dark_primary"
                   >
                     {/* cause info */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center  dark:text-dark_text ">
                       {/* cause title */}
-                      <div>{donarInfo?.causeInfo?.title}</div>
+                      <div className=' dark:text-dark_text'>{donarInfo?.causeInfo?.title}</div>
                       {/* cause category */}
-                      <div>{donarInfo?.causeInfo?.category}</div>
+                      <div className=' dark:text-dark_text'>{donarInfo?.causeInfo?.category}</div>
                     </td>
 
                     {/* donar info */}
@@ -106,21 +106,21 @@ const ManageAllDonars = () => {
                               </td>
 
                               {/* donar info */}
-                              <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">
+                              <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap  dark:text-dark_text">
                                 {donar?.donar?.name}
-                                <td className="text-sm text-gray-600 py-2 whitespace-nowrap">
+                                <td className="text-sm text-gray-600 py-2 whitespace-nowrap  dark:text-dark_text">
                                   {donar?.donar?.email}
                                 </td>
                               </td>
 
                               {/* amount */}
-                              <td className="text-sm px-6 py-4 whitespace-nowrap">
+                              <td className="text-sm px-6 py-4 whitespace-nowrap  dark:text-dark_text">
                                 {donar?.amount}
                               </td>
                               {/* action */}
                               <td className="px-6 py-4 whitespace-nowrap flex flex-col h-24 items-center justify-center">
                                 <div className="flex items-center justify-center space-x-3">
-                                  <button className="bg-green-500  px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300">
+                                  <button className="bg-green-500  px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300 ">
                                     Details
                                   </button>
                                 </div>
