@@ -39,7 +39,7 @@ const ManageDevelopmentProposal = () => {
   return (
     <article className="flex flex-wrap justify-evenly items-center gap-6">
       {development.map((data) => (
-        <div className="bg-white rounded-xl p-4 relative max-w-[400px] shadow-2xl">
+        <div className="bg-white rounded-xl p-4 relative max-w-[400px] shadow-2xl dark:bg-dark_primary ">
           <div className="overflow-hidden rounded-xl h-52 cursor-pointer">
             <img
               className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
@@ -51,10 +51,10 @@ const ManageDevelopmentProposal = () => {
           <div className="flex flex-col flex-grow">
             {/* title and description */}
             <div className="flex flex-col space-y-1 my-4">
-              <h2 className="text-gray-700 font-primary text-lg">
+              <h2 className="text-gray-700 font-primary text-lg dark:text-white">
                 {data?.title.slice(0, 30)}...
               </h2>
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-500 text-sm dark:text-gray-300">
                 {data?.description.slice(0, 30)}
               </p>
             </div>
