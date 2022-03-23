@@ -59,7 +59,7 @@ const UserDashboard = () => {
       <NewSidebar links={links} />
 
       {/* contents */}
-      <div className={`mt-[80px] flex-1`}>
+      <div className={`mt-[80px] ml-[65px] flex-1`}>
         {initial ? <Profile /> : <Outlet />}
       </div>
     </div>

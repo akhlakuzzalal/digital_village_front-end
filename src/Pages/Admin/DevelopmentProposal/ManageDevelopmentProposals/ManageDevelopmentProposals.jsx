@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
 import { useDispatch, useSelector } from 'react-redux';
-import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 import axios, { BASE_URI } from '../../../../api/axios';
 import { fetchAllDevelopmentProposals } from '../../../../redux/slices/DevelopmetProposal/DevelopmentProposalSlice';
@@ -25,27 +24,72 @@ const ManageDevelopmentProposal = () => {
     setShowModal(true);
   };
 
-  const handleDelete = (id) => {
-    swal({
+  const handleDeleteDevelopmentProposal = (id) => {
+    Swal.fire({
+      title: 'Are you sure? you want to delete this development Proposal',
+      showDenyButton: true,
+      confirmButtonText: 'Delete',
+      denyButtonText: `Cancel`,
       icon: 'warning',
-      confirm: 'Are you sure? You want to delete this development proposal',
-      dangerMode: true,
-    }).then(() => {
-      axios.delete(`/development/deleteDevelopment/${id}`).then((response) => {
-        if (response?.data?.deletedCount) {
-          Swal.fire({
-            icon: 'success',
-            title: 'Your Development Proposal has been deleted!',
-            confirmButtonText: 'Okay',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`/developmentProposal/remove/?id=${id}`)
+          .then((response) => {
+            if (response?.data?.deletedCount) {
+              Swal.fire({
+                icon: 'success',
+                title: 'Your Development Proposal has been deleted!',
+                confirmButtonText: 'Okay',
+              });
+              dispatch(fetchAllDevelopmentProposals());
+            } else {
+              Swal.fire({
+                title: 'Something went wrong',
+                icon: 'error',
+                confirmButtonText: 'Okay',
+              });
+            }
           });
-        } else {
-          Swal.fire({
-            title: 'Something went wrong',
-            icon: 'error',
-            confirmButtonText: 'Okay',
+      }
+    });
+  };
+
+  const handleChangeStatus = (id, isAccepted, isRejected) => {
+    Swal.fire({
+      title: `Are you sure? you want to ${
+        isAccepted ? 'accept' : 'reject'
+      } this proposal`,
+      showDenyButton: true,
+      confirmButtonText: 'Update',
+      denyButtonText: `Cancel`,
+      icon: 'warning',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .put(`/developmentProposal/updateStatus/?id=${id}`, {
+            isAccepted,
+            isRejected,
+          })
+          .then((response) => {
+            if (response?.data?.email) {
+              Swal.fire({
+                icon: 'success',
+                title: `This Proposal has been added in the ${
+                  isAccepted ? 'accepted' : 'rejected'
+                } proposal list`,
+                confirmButtonText: 'Okay',
+              });
+              dispatch(fetchAllDevelopmentProposals());
+            } else {
+              Swal.fire({
+                title: 'Something went wrong',
+                icon: 'error',
+                confirmButtonText: 'Okay',
+              });
+            }
           });
-        }
-      });
+      }
     });
   };
 
@@ -216,33 +260,53 @@ const ManageDevelopmentProposal = () => {
 
                           {/* status */}
                           <td className="text-sm px-6 py-4 whitespace-nowrap">
-                            {false ? (
-                              <span className="bg-yellow-500 p-2 text-white rounded-full font-primary">
-                                Pending
-                              </span>
-                            ) : (
+                            {proposal.isAccepted ? (
                               <span className="bg-green-500 p-2 text-white rounded-full font-primary">
                                 accepted
+                              </span>
+                            ) : proposal.isRejected ? (
+                              <span className="bg-red-500 p-2 text-white rounded-full font-primary">
+                                Rejected
+                              </span>
+                            ) : (
+                              <span className="bg-yellow-500 p-2 text-white rounded-full font-primary">
+                                Pending
                               </span>
                             )}
                           </td>
 
                           {/* action */}
                           <td className="text-sm px-6 py-4 whitespace-nowrap">
-                            {false ? (
-                              <button className="bg-green-500  px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300">
-                                Accept
+                            {proposal.isAccepted ? (
+                              <button
+                                className="bg-red-600 px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300"
+                                onClick={() =>
+                                  handleChangeStatus(proposal._id, false, true)
+                                }
+                              >
+                                Reject
                               </button>
                             ) : (
-                              <button className="bg-red-600 px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300">
-                                Reject
+                              <button
+                                className="bg-green-500  px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300"
+                                onClick={() =>
+                                  handleChangeStatus(proposal._id, true, false)
+                                }
+                              >
+                                Accept
                               </button>
                             )}
                           </td>
 
                           {/* delete */}
                           <td className="text-sm px-6 py-4 whitespace-nowrap">
-                            <FaTrashAlt size={30} className="text-red-600" />
+                            <FaTrashAlt
+                              size={30}
+                              className="text-red-600 cursor-pointer"
+                              onClick={() =>
+                                handleDeleteDevelopmentProposal(proposal._id)
+                              }
+                            />
                           </td>
                         </tr>
                       ))}

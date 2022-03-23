@@ -57,13 +57,31 @@ const AddDevelopmentProposal = () => {
         <h1 className="md:text-5xl text-xl text-center pt-3 md:py-4 text-primary font-bolder">
           Give Your Development Proposal
         </h1>
-        <div className="  ">
-          {/* title of your proposal */}
+        <div>
           <input
             className="px-7 py-6 my-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('title', { required: true })}
+            {...register('name', { required: true })}
+            defaultValue={user.name}
             placeholder="Title of your Development Proposal"
           />
+
+          <input
+            className="px-7 py-6 my-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+            {...register('email', { required: true })}
+            defaultValue={user.email}
+            placeholder="Title of your Development Proposal"
+          />
+          {/* title of your proposal */}
+          <div>
+            <input
+              className="px-7 py-6 my-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('title', { required: 'this is required' })}
+              placeholder="Title of your Development Proposal"
+            />
+            {errors.title && (
+              <p className="text-danger">{errors.title.message}</p>
+            )}
+          </div>
 
           {/* file upload */}
           <div className="w-full mb-2">
@@ -75,11 +93,16 @@ const AddDevelopmentProposal = () => {
           </div>
 
           {/* description for your proposal */}
-          <textarea
-            className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('description', { required: true })}
-            placeholder="Write your development proposal"
-          />
+          <div>
+            <textarea
+              className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('description', { required: 'this is required' })}
+              placeholder="Write your development proposal"
+            />
+            {errors.description && (
+              <p className="text-danger">{errors.description.message}</p>
+            )}
+          </div>
         </div>
 
         {/* submit button */}

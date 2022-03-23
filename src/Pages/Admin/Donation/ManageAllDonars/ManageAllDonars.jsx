@@ -8,6 +8,7 @@ const ManageAllDonars = () => {
     axios.get('/donationCause/allDonarInfo').then((response) => {
       setAllDonarInfo(response.data);
     });
+    console.log(allDonarInfo);
   }, []);
 
   return (
