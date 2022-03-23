@@ -99,7 +99,7 @@ const Faq1 = () => {
                         {data.title}
                       </h3>
                       <AiOutlineMinusSquare
-                        className=" transition duration-700 ease-in-out text-blue-900"
+                        className=" transition duration-700 ease-in-out text-blue-900 dark:bg-dark_primary dark:text-dark_secondary"
                         custome
                         size={30}
                       />
@@ -113,7 +113,7 @@ const Faq1 = () => {
                         {data.title}
                       </h3>
                       <BsPlusSquare
-                        className=" transition duration-700 ease-in-out text-blue-900"
+                        className=" transition duration-700 ease-in-out text-blue-900 dark:bg-dark_primary dark:text-dark_secondary"
                         custome
                         size={30}
                       />

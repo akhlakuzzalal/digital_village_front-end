@@ -5,7 +5,7 @@ const Request = ({setShowModal, apply}) => {
 
     return (
         <tbody >
-                  <tr className="bg-white border-b font-primary text-sm grid grid-cols-1 lg:grid-cols-6 place-items-center">
+            <tr className="bg-white border-b font-primary text-sm grid grid-cols-1 lg:grid-cols-6 place-items-center">
                     <td className="text-sm text-gray-600 px-6 py-4 break-all">
                       shorifzaman
                       <td className="text-sm text-gray-600 py-2whitespace-nowrap">

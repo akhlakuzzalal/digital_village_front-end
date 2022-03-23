@@ -31,7 +31,8 @@ const Footer = () => {
               {/* subscribe button */}
               <button
                 style={{ borderRadius: '0px 10px 0px 0px', color: 'white' }}
-                className="hover:bg-[#1515aa] bg-[blue] px-20  py-5"
+                className="hover:bg-[#1515aa] bg-[blue] px-20  py-5          dark:text-dark_text
+                dark:bg-secondary"
               >
                 Send
               </button>
@@ -99,7 +100,8 @@ const Footer = () => {
                       borderRadius: '0px 10px 0px 10px',
                       color: 'white',
                     }}
-                    className="mb-3 bg-[#3500D3] py-6 px-3 "
+                    className="mb-3 bg-[#3500D3] py-6 px-3dark:text-dark_text
+                    dark:bg-secondary"
                   >
                     +88010000000
                   </li>
