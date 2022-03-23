@@ -5,7 +5,7 @@ import Services from './Services/Services';
 
 const MedicalHome = () => {
   return (
-    <div className="" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div className="md:m-0" style={{ minHeight: 'calc(100vh - 700px)' }}>
       <Banner />
       <Features />
 

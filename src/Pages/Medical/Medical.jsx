@@ -48,7 +48,7 @@ const Medical = () => {
       <NewSidebar setIsOpen={setIsOpen} links={links} />
 
       {/* contents */}
-      <div className={`mt-[80px] flex-1 `}>
+      <div className={`mt-[80px] flex-1  `}>
         {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
         {initial ? <MedicalHome /> : <Outlet />}
       </div>

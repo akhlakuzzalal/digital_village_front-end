@@ -4,7 +4,7 @@ import PayModal from '../../../../Components/Pay/PayModal';
 import { setPayModal } from '../../../../redux/slices/payModal/PayModalSlice';
 
 const UserAppointment = ({ appointment, date }) => {
-  // console.log(appointment);
+  console.log(appointment);
   // console.log(date.toString());
 
   const dispatch = useDispatch();
@@ -63,13 +63,22 @@ const UserAppointment = ({ appointment, date }) => {
                           {row.price}
                         </td>
                         <td className="py-4 px-0 md:px-6 text-xs text-gray-500 dark:text-gray-400">
-                          <button
-                            onClick={() => dispatch(setPayModal(true))}
-                            className="bg-blue-900 border-1 rounded-md text-white py-1 px-4"
-                          >
-                            Pay
-                          </button>
+                          {row.payment ? (
+                            'Paid'
+                          ) : (
+                            <button
+                              onClick={() => dispatch(setPayModal(true))}
+                              className="bg-blue-900 border-1 rounded-md text-white py-1 px-4"
+                            >
+                              pay
+                            </button>
+                          )}
                         </td>
+                        <PayModal
+                          price={row.price}
+                          id={row._id}
+                          returnPage={'medical'}
+                        />
                       </tr>
                     ))}
                   </tbody>
@@ -77,7 +86,6 @@ const UserAppointment = ({ appointment, date }) => {
               </div>
             </div>
           </div>
-          <PayModal price={200} id={34} returnPage={'medical'} />
         </div>
       ) : (
         <div>

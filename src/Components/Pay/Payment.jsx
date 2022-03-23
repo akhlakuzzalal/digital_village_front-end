@@ -38,7 +38,7 @@ function Payment({ price, id, returnPage }) {
     <div>
       {clientSecret ? (
         <Elements stripe={stripePromise} options={options}>
-          <CheckoutForm returnPage={returnPage} />
+          <CheckoutForm returnPage={returnPage} price={price} id={id} />
         </Elements>
       ) : (
         <>

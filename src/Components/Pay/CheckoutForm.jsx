@@ -4,9 +4,9 @@ import {
   useStripe,
 } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
-import { BASE_URI } from '../../api/axios';
+import axios, { BASE_URI } from '../../api/axios';
 
-const CheckoutForm = ({ returnPage }) => {
+const CheckoutForm = ({ returnPage, price, id }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -33,6 +33,18 @@ const CheckoutForm = ({ returnPage }) => {
           break;
         case 'processing':
           setMessage('Your payment is processing.');
+          const payment = {
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+
+            transaction: paymentIntent.client_secret.slice('_secret')[0],
+          };
+          axios
+            .put('/appointment/updateInfo', payment)
+
+            .then((response) => {
+              console.log(response.data);
+            });
           break;
         case 'requires_payment_method':
           setMessage('Your payment was not successful, please try again.');
