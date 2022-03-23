@@ -26,11 +26,11 @@ const SingleCauseSideCard = ({ _id, title, image, category }) => {
         <span class="absolute h-4 w-4 bg-green-400 rounded-full bottom-0 right-0 border-2 border-white"></span>
       </div>
       <div class="flex-grow p-3">
-        <div class="font-semibold text-gray-700">{title}</div>
-        <div class="text-sm text-gray-500">{category}</div>
+        <div class="font-semibold text-gray-700 dark:text-dark_text hover:dark:text-gray-700">{title}</div>
+        <div class="text-sm text-gray-500 dark:text-gray-300 hover:dark:text-gray-500">{category}</div>
       </div>
       <div class="p-2">
-        <span class="block h-4 w-4 bg-blue-400 rounded-full bottom-0 right-0"></span>
+        <span class="block h-4 w-4 bg-blue-300 rounded-full bottom-0 right-0"></span>
       </div>
     </div>
   );

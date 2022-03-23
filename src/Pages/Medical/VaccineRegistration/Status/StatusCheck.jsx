@@ -43,7 +43,7 @@ const StatusCheck = () => {
         <div class="p-4">
           <div class="bg-white p-4 rounded-md">
             <div>
-              <h2 class="mb-4 text-xl font-bold text-gray-700">
+              <h2 class="mb-4 text-xl font-bold text-gray-700 dark:text-dark_text">
                 Approve application
               </h2>
               <div>

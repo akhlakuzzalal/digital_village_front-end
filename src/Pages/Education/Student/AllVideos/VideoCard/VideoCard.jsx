@@ -10,7 +10,7 @@ const VideoCard = ({ video, children }) => {
   return (
     <div className="border lg:w-[350px] lg:h-[350px] lg:rounded-2xl dark:dark-card-bg w-full">
       <div
-        className="space-y-4 cursor-pointer group hover:bg-slate-100 dark:hover:dark-card-bg"
+        className="space-y-4 cursor-pointer group hover:bg-slate-100 dark:bg-dark_primary"
         onClick={() => navigate(`/detailvideo/${video?._id}`)}
       >
         <video
@@ -19,7 +19,7 @@ const VideoCard = ({ video, children }) => {
         ></video>
         <div className="flex justify-between px-3">
           <div className="space-y-2">
-            <h3 className="text-xl">{video?.title}</h3>
+            <h3 className="text-xl dark:text-dark_text">{video?.title}</h3>
             <div className="flex text-yellow-400">
               <Rating rating={video?.rating} />
             </div>
@@ -31,7 +31,7 @@ const VideoCard = ({ video, children }) => {
         </div>
       </div>
       <div className="flex justify-between p-3">
-        <p className="">{video?.publishDate}</p>
+        <p className=" dark:text-dark_text">{video?.publishDate}</p>
         <div>{children}</div>
       </div>
     </div>

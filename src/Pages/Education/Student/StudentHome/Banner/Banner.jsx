@@ -16,7 +16,8 @@ const Banner = () => {
   };
 
   return (
-    <div className="flex flex-wrap lg:h-[80vh] bg-gray-50 mx-5 lg:mx-0">
+    <div className="flex flex-wrap lg:h-[80vh] bg-gray-50 mx-5 lg:mx-0
+    dark:bg-dark_primary">
       <div
         // style={{
         //   backgroundImage: `url(${background})`,
@@ -34,14 +35,14 @@ const Banner = () => {
             We have loads of resources created by the village teacher for
             sharing knowledge amongst the village students.
           </p>
-          <button className="px-10 py-4 bg-[blue] text-white rounded-lg">
+          <button className="px-10 py-4 bg-[blue] text-white rounded-lg dark:text-dark_text dark:bg-secondary">
             Learn More
           </button>
         </div>
       </div>
       {/* lottie files */}
       <div className="w-full md:w-1/2 pointer-events-none order-1 md:order-2 ">
-        <div className="w-fit lg:mx-auto  mr-8">
+        <div className="w-fit lg:mx-auto  mr-6">
           <Lottie
             options={defaultOptions}
             isClickToPauseDisabled={true}

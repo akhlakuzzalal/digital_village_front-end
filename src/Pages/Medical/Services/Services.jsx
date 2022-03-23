@@ -71,8 +71,13 @@ const Services = () => {
                     marginRight: '4px',
                   }}
                 />
-                <div className="w-4/5">
-                  <span style={{ fontSize: '18px' }}>Online Consultation</span>
+                <div>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Online Consultation
+                  </span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -83,8 +88,13 @@ const Services = () => {
                     marginRight: '4px',
                   }}
                 />
-                <div className="w-4/5">
-                  <span style={{ fontSize: '18px' }}>Offline Consultation</span>
+                <div>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Offline Consultation
+                  </span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -95,8 +105,13 @@ const Services = () => {
                     marginRight: '4px',
                   }}
                 />
-                <div className="w-4/5">
-                  <span style={{ fontSize: '18px' }}>Online Appointment</span>
+                <div>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Online Appointment
+                  </span>
                 </div>
               </div>
 
@@ -108,8 +123,13 @@ const Services = () => {
                     marginRight: '4px',
                   }}
                 />
-                <div className="w-4/5">
-                  <span style={{ fontSize: '18px' }}>Lab Test</span>
+                <div>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Lab Test
+                  </span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -120,8 +140,13 @@ const Services = () => {
                     marginRight: '4px',
                   }}
                 />
-                <div className="w-4/5">
-                  <span style={{ fontSize: '18px' }}>Ambulance facilities</span>
+                <div>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Ambulance facilities
+                  </span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -132,8 +157,13 @@ const Services = () => {
                     marginRight: '4px',
                   }}
                 />
-                <div className="w-4/5">
-                  <span style={{ fontSize: '18px' }}>Emergency Department</span>
+                <div>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Emergency Department
+                  </span>
                 </div>
               </div>
             </div>

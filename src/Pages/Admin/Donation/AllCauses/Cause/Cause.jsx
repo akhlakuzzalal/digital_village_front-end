@@ -59,7 +59,7 @@ const Cause = ({ _id, title, image, goal, raised, category }) => {
       <div className="flex flex-col flex-grow">
         {/* title and description */}
         <div className="flex flex-col space-y-1 my-4">
-          <h2 className="text-gray-900 font-medium text-sm md:text-md lg:text-xl">
+          <h2 className="text-gray-900 font-medium text-sm md:text-md lg:text-xl dark:text-dark_text">
             {title}
           </h2>
         </div>

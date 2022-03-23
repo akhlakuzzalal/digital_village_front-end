@@ -47,8 +47,10 @@ const EventDetails = () => {
               src={eventItem[0]?.image}
               alt=""
             />
-            <div className="flex">
-              <h1 className="mt-20 ">{eventItem[0]?.title}</h1>
+            <div className="flex justify-between items-center ">
+              <h1 className="mt-20 tex-lg md:text-xl lg:text-2xl">
+                {eventItem[0]?.title}
+              </h1>
               {eventItem[0]?.eventType === 'upcoming' && (
                 <button
                   onClick={handleBookEvent}
@@ -61,7 +63,7 @@ const EventDetails = () => {
             </div>
           </div>
           <div className="mt-20">
-            <div className="bg-gray-100 lg:p-7 border flex items-center gap-3 lg:gap-20 px-5 lg:px-32">
+            <div className="bg-gray-100 p-7 border-l-4 flex items-center gap-6 lg:gap-20 px-5 lg:px-32 dark:bg-dark_primary">
               <div>
                 <p>Dtae</p>
                 <h3 className="lg:text-xl text-sm">{eventItem[0]?.date}</h3>
@@ -71,7 +73,7 @@ const EventDetails = () => {
                 <p className="text-sm">{eventItem[0]?.time}</p>
               </div>
               <div>
-                <h5>Community Center</h5>
+                <h5 className="dark:text-dark_text">Community Center</h5>
 
                 <p className="text-sm">{eventItem[0]?.place}</p>
               </div>
@@ -102,7 +104,7 @@ const EventDetails = () => {
         {/* Right side */}
         <div className="right-main ">
           <div className="lg:ml-36">
-            <h4 className="my-5 text-xl">Calender</h4>
+            <h4 className="my-5 text-xl dark:text-dark_text">Calender</h4>
             <Calender className="w-[500px] lg:w-0 md:w-full" />
 
             <p className="my-4 text-primary">

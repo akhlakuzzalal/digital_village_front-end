@@ -65,7 +65,7 @@ const BlogCard = ({ blog }) => {
         <div className="flex flex-col space-y-1 my-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-gray-700 font-primary text-lg">
+              <h2 className="text-gray-700 font-primary text-lg dark:text-dark_text">
                 {blog?.title}
               </h2>
               <div className="flex gap-2">
@@ -74,7 +74,7 @@ const BlogCard = ({ blog }) => {
             </div>
             {isFavouritted ? (
               <BsBookmarkFill
-                className="cursor-pointer"
+                className="cursor-pointer dark:dark:text-primary"
                 size={30}
                 onClick={handleRemoveFromFavourite}
               />
@@ -82,12 +82,12 @@ const BlogCard = ({ blog }) => {
               <BsBookmark
                 size={30}
                 onClick={handleAddToFavourite}
-                className="cursor-pointer"
+                className="cursor-pointer dark:text-primary"
               />
             )}
           </div>
           {/* title and description */}
-          <p className="text-gray-500 text-sm">{blog?.about.slice(0, 30)}</p>
+          <p className="text-gray-500 text-sm dark:text-dark_text">{blog?.about.slice(0, 30)}</p>
         </div>
       </div>
     </div>

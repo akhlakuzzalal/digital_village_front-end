@@ -14,7 +14,6 @@ const AddCause = () => {
     handleSubmit,
     formState: { errors },
     reset,
-    trigger,
   } = useForm();
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -45,7 +44,7 @@ const AddCause = () => {
   };
   // title image description category goal date author
   return (
-    <div className="justify-center items-center min-h-full space-y-10">
+    <div className="justify-center items-center min-h-full space-y-10 dark:bg-dark_primary">
       <h3 className="text-center space-y-2">Add a new Cause</h3>
       <form
         onSubmit={handleSubmit(handleAddCause)}

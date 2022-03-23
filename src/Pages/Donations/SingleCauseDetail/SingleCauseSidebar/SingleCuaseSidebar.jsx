@@ -15,7 +15,7 @@ const SingleCauseSidebar = () => {
   return (
     <aside class="w-full md:w-1/3 flex flex-col items-center px-3">
       {/* About */}
-      <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+      <div class="w-full bg-white shadow flex flex-col my-4 p-6  dark:bg-dark_primary">
         <p class="text-xl font-semibold pb-5">About Us</p>
         <p class="pb-2 text-gray-700 ">
           Digital village is a more service online platform.sit amet,
@@ -31,7 +31,7 @@ const SingleCauseSidebar = () => {
         </Link>
       </div>
       {/* Donation card */}
-      <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+      <div class="w-full bg-white shadow flex flex-col my-4 p-6  dark:bg-dark_primary">
         <p class="text-xl font-semibold pb-5">Donation</p>
         <div class="grid grid-cols-1 gap-3 overflow-y-auto h-96">
           {causes?.map((item) => {
@@ -40,7 +40,7 @@ const SingleCauseSidebar = () => {
         </div>
       </div>
       {/* photo */}
-      <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+      <div class="w-full bg-white shadow flex flex-col my-4 p-6  dark:bg-dark_primary">
         <p class="text-xl font-semibold pb-5">Donation Photo</p>
         <div class="grid grid-cols-3 gap-3">
           {causes.slice(0, 9).map((cause) => (

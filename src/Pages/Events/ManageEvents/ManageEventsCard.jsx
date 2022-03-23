@@ -256,7 +256,7 @@ const ManageEventsCard = ({
         </>
       ) : null}
 
-      <div className="border rounded-xl lg:w-[260px] w-full">
+      <div className="border rounded-xl w-[260px] dark:bg-dark_primary">
         <img className="h-[200px] w-[400px]" src={image} alt={title} />
         <div>
           <div className=" p-4 md:p-10">

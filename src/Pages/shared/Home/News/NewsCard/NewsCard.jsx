@@ -26,7 +26,7 @@ const NewsCard = ({ n }) => {
         <h3 className="text-xl ">{n.title.slice(0, 43)}...</h3>
         <p>{n.description.slice(0, 50)} ...</p>
         <Link to={`/newsDetails/${n._id}`}>
-          <button className="text-primary text-lg hover:text-black transition-all duration-500 border-b-2 border-b-primary">
+          <button className="text-primary text-lg hover:text-black transition-all duration-500 border-b-2 border-b-primary dark:bg-dark_primary hover:dark:text-dark_text">
             Read More
           </button>
         </Link>
