@@ -14,7 +14,7 @@ const Search = ({ handleSearch }) => {
       className="flex items-center border-2 p-1 border-gray-200 sm:w-3/4 mx-2 mt-3 sm:mx-auto rounded-xl lg:w-[600px]"
     >
       <input
-        className="w-full rounded-sm pl-4 pr-2 text-2xl outline-none dark:bg-black dark:text-white"
+        className="w-full rounded-sm pl-4 pr-2 text-2xl outline-none dark:bg-black dark:text-white "
         {...register('search', { required: 'Search is Required' })}
         onKeyUp={() => {
           trigger('search');
