@@ -9,9 +9,10 @@ import EventCard from '../EventCard/EventCard';
 
 const AllEvents = () => {
   const allEvent = useSelector((state) => state.events.allEvents);
+  console.log(allEvent);
   const pageCount = useSelector((state) => state.events.allEventsPageCount);
   const currPage = useSelector((state) => state.events.allEventsCurrPage);
-  const size = 10;
+  const size = 6;
 
   const dispatch = useDispatch();
 
@@ -24,7 +25,7 @@ const AllEvents = () => {
         <h1 className="mb-20">All Events</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
           {allEvent &&
-            allEvent.map((event) => (
+            allEvent?.map((event) => (
               <EventCard key={event._id} event={event} />
             ))}
         </div>

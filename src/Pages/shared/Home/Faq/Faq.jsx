@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { AiOutlineMinusSquare } from 'react-icons/ai';
-import { GoDiffAdded } from 'react-icons/go';
+import { BsPlusSquare } from 'react-icons/bs';
+import Lottie from 'react-lottie';
+import useMediaQuery from '../../../../hooks/useMediaQuery';
+import animationData from '../../../../lotties/landingFaq.json';
 
 const datas = [
   {
@@ -44,32 +47,40 @@ const datas = [
 
 const Faq1 = () => {
   const [active, setActive] = useState('');
+  const isTablet = useMediaQuery('(min-width: 656px)');
+  const isDesktop = useMediaQuery('(min-width: 900px)');
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
 
   return (
-    <div className=" 2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6  px-4">
-      <h2 className=" font-bolder text-xl md:text-3xl  lg:text-4xl text-blue-600  lg:leading-9 md:leading-7 leading-9  dark:text-dark_text">
-        Frequently Asked Questions
-      </h2>
-      <div className=" flex md:justify-between md:items-start md:flex-row flex-col justify-start items-start">
-        <div className=" ">
-          <p className=" font-normal text-base leading-6 text-gray-600 lg:w-8/12 md:w-9/12 pt-4 ">
-            Here are few of the most frequently asked questions by our valueable
-            customers
-          </p>
-        </div>
+    <div className=" 2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6  px-4 lg:my-20">
+      <div className="pb-10">
+        <h2 className=" font-bolder text-xl md:text-3xl  lg:text-4xl   lg:leading-9 md:leading-7 leading-9  dark:text-dark_text text-center">
+          Frequently Asked Questions
+        </h2>
+
+        <p className=" font-normal text-center leading-6 text-gray-600 pt-4 ">
+          Here are few of the most frequently asked questions by our valueable
+          customers
+        </p>
       </div>
+
       <div className=" flex md:flex-row flex-col md:space-x-8 md:mt-16 mt-8">
         <div className=" md:w-5/12 lg:w-4/12 w-full mb-4  ">
-          <img
-            src="https://myexam.allen.ac.in/wp-content/uploads/2015/10/Digital-India-2.jpg"
-            alt="Img of Glass bottle"
-            className="w-full md:block hidden"
-          />
-          <img
-            src="https://myexam.allen.ac.in/wp-content/uploads/2015/10/Digital-India-2.jpg"
-            alt="Img of Glass bottle"
-            className="w-full md:hidden block "
-          />
+          <div className="w-fit mx-auto">
+            <Lottie
+              options={defaultOptions}
+              isClickToPauseDisabled={true}
+              width={isDesktop ? 400 : isTablet ? 300 : 250}
+            />
+          </div>
         </div>
 
         <div className=" md:w-7/12 lg:w-8/12 w-full md:mt-0 sm:mt-14 mt-10">
@@ -78,23 +89,35 @@ const Faq1 = () => {
           {datas.map((data) => (
             <div>
               <div>
-                <div className=" flex justify-between items-center cursor-pointer">
-                  <h3 className=" font-semibold text-xl leading-5 text-gray-800">
-                    {data.title}
-                  </h3>
-
+                <div className=" cursor-pointer">
                   {active && data.id === active ? (
-                    <AiOutlineMinusSquare
-                      className="hover:rotate-180 transition duration-700 ease-in-out dark:text-dark_text"
-                      size={30}
+                    <div
                       onClick={() => setActive('')}
-                    />
+                      className="flex justify-between items-center "
+                    >
+                      <h3 className=" w-4/5 font-semibold text-xl leading-5 text-gray-800">
+                        {data.title}
+                      </h3>
+                      <AiOutlineMinusSquare
+                        className=" transition duration-700 ease-in-out text-blue-900"
+                        custome
+                        size={30}
+                      />
+                    </div>
                   ) : (
-                    <GoDiffAdded
-                      className="hover:rotate-180 transition duration-700 ease-in-out dark:text-dark_text"
-                      size={30}
+                    <div
                       onClick={() => setActive(data?.id)}
-                    />
+                      className="flex justify-between items-center "
+                    >
+                      <h3 className=" w-4/5 font-semibold text-xl leading-5 text-gray-800">
+                        {data.title}
+                      </h3>
+                      <BsPlusSquare
+                        className=" transition duration-700 ease-in-out text-blue-900"
+                        custome
+                        size={30}
+                      />
+                    </div>
                   )}
                 </div>
                 <p

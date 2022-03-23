@@ -88,7 +88,7 @@ const EMarket = () => {
             <Search handleSearch={handleSearch} /> */}
 
               {/* products */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 my-6">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6 my-6">
                 {products?.map((product) => (
                   <RegularProduct
                     key={product._id}
@@ -111,7 +111,7 @@ const EMarket = () => {
       <Link to="/cart">
         <div className="fixed right-6 top-24">
           <div className="relative bg-slate-400 rounded-full p-3">
-            <BsCartCheckFill size={35} className="text-[rgb(255,166,0)]" />
+            <BsCartCheckFill size={30} className="text-[rgb(255,166,0)]" />
             <div className="absolute flex items-center justify-center top-1 -right-2 bg-green-300 rounded-full p-[1px] w-6 h-6 border-2 border-white">
               <p className="font-extrabold text-black text-center">
                 {cart.length}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import AllEvents from './AllEvents/AllEvents';
 import EventCoordinator from './EventCoordinator/EventCoordinator';
-import EventPhotoGalary from './EventPhotoGalary/EventPhotoGalary';
+import EventPhotoGallary from './EventPhotoGalary/EventPhotoGallary';
 const Events = () => {
   const location = useLocation();
 
@@ -24,8 +24,6 @@ const Events = () => {
         {/* event page navigation */}
         <div>
           <ul className="flex items-center gap-3 md:gap-10">
-            <p>Icon</p>
-
             <li className="text-primary">
               <Link to="/events/all-events">All</Link>
             </li>
@@ -43,10 +41,10 @@ const Events = () => {
       <Outlet />
 
       <div>
-        <EventPhotoGalary />
+        <EventPhotoGallary />
       </div>
       <div className="my-20">
-        <EventCoordinator></EventCoordinator>
+        <EventCoordinator />
       </div>
     </div>
   );

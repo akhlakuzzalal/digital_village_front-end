@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
 import { FaHandsHelping, FaShopify, FaUsers } from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
+import { ImStatsDots } from 'react-icons/im';
 import { IoLogoDesignernews } from 'react-icons/io';
 import {
   MdManageAccounts,
@@ -16,6 +17,11 @@ import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
 
 const links = [
+  {
+    name: 'Home',
+    icon: <ImStatsDots size={30} />,
+    path: '/admin/home',
+  },
   {
     name: 'All Users',
     icon: <FaUsers size={30} />,
@@ -59,12 +65,12 @@ const links = [
   {
     name: 'Add development',
     icon: <RiLightbulbFlashFill size={30} />,
-    path: '/admin/addDevelopment',
+    path: '/admin/addDevelopmentProposal',
   },
   {
     name: 'Manage Development',
     icon: <MdManageAccounts size={30} />,
-    path: '/admin/manageDevelopmet',
+    path: '/admin/manageDevelopmentProposals',
   },
   {
     name: 'Market',
@@ -96,18 +102,12 @@ const navigation = [
 ];
 
 const AdminDashboard = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <div style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div>
       <Navbar navigation={navigation} />
       <div className="flex">
-        <NewSidebar links={links} setIsOpen={setIsOpen} />
-        <div
-          className={`mt-[80px] flex-1 ${
-            isOpen ? 'md:ml-[273px]' : 'md:ml-[82px]'
-          }`}
-        >
+        <NewSidebar links={links} />
+        <div className={`mt-[80px] ml-[65px] flex-1`}>
           <Outlet />
         </div>
       </div>
