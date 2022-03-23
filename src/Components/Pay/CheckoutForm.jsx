@@ -4,7 +4,11 @@ import {
   useStripe,
 } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import Lottie from 'react-lottie';
 import axios, { BASE_URI } from '../../api/axios';
+import useMediaQuery from '../../hooks/useMediaQuery';
+// import animationData from '../lotties/airplane.json';
+import animationData from '../../lotties/circle.json';
 
 const CheckoutForm = ({ returnPage, price, id }) => {
   const stripe = useStripe();
@@ -12,6 +16,17 @@ const CheckoutForm = ({ returnPage, price, id }) => {
 
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const isTablet = useMediaQuery('(min-width: 656px)');
+  const isDesktop = useMediaQuery('(min-width: 900px)');
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
 
   useEffect(() => {
     if (!stripe) {
@@ -92,7 +107,17 @@ const CheckoutForm = ({ returnPage, price, id }) => {
         type="submit"
       >
         <span id="button-text">
-          {isLoading ? <div id="spinner">Loading....</div> : 'Pay now'}
+          {isLoading ? (
+            <div className="w-fit mx-auto min-h-screen flex justify-center items-center">
+              <Lottie
+                options={defaultOptions}
+                isClickToPauseDisabled={true}
+                width={isDesktop ? 400 : isTablet ? 300 : 200}
+              />
+            </div>
+          ) : (
+            'Pay now'
+          )}
         </span>
       </button>
       {/* Show any error or success messages */}

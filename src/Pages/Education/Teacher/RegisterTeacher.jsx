@@ -52,7 +52,7 @@ const RegisterTeacher = () => {
         >
           {/* name */}
           <input
-            className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
+            className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg "
             {...register('name', { required: true, value: user?.name })}
             required
             disabled
@@ -71,6 +71,11 @@ const RegisterTeacher = () => {
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
             {...register('qualification', {
               required: 'Qualification is Required',
+              pattern: {
+                value: /^[A-Za-z]+$/,
+                message:
+                  'Invalid! Qualification: HSC, BSC, MSC or something else ',
+              },
             })}
             onKeyUp={() => {
               trigger('qualification');
