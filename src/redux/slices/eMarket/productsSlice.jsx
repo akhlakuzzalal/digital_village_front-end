@@ -2,10 +2,11 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Pagination } from 'swiper';
 import axios from '../../../api/axios';
 
-// fetch all products from database
+// fetch products from database
 export const fetchAllProducts = createAsyncThunk(
   'e-market',
   async (pagination) => {
+    console.log(pagination.role);
     const response = await axios
       .get(
         `/eMarket/Products/?page=${pagination.currPage}&size=${
@@ -18,7 +19,7 @@ export const fetchAllProducts = createAsyncThunk(
     console.log(
       `/eMarket/Products/?page=${pagination.currPage}&size=${
         pagination.size
-      }&search=${pagination.search}&roles=${JSON.stringify([pagination.role])}`
+      }&search=${pagination.search}&roles=${JSON.stringify([5000])}`
     );
 
     return {
@@ -30,12 +31,17 @@ export const fetchAllProducts = createAsyncThunk(
     };
   }
 );
-// fetch all  medicines
+// fetch  medicines
 export const fetchAllMedicines = createAsyncThunk('getMedicines', async () => {
   const responce = await axios
     .get('/emarket/medicines')
     .then((res) => res.data);
   return responce;
+});
+// fetch all Products for admin
+export const fetchAdminProducts = createAsyncThunk('getadmindata', async () => {
+  const response = await axios.get('/emarket/admin').then((res) => res.data);
+  return response;
 });
 
 // Add a Product
@@ -64,7 +70,6 @@ export const updateAProduct = createAsyncThunk(
 const productSlice = createSlice({
   name: 'products',
   initialState: {
-    roducts: [],
     products: [],
     medicines: [],
     pageCount: 0,
@@ -81,6 +86,7 @@ const productSlice = createSlice({
   extraReducers: (builder) => {
     // get all data
     builder.addCase(fetchAllProducts.fulfilled, (state, { payload }) => {
+      console.log(payload);
       state.products = payload.products;
       const count = payload.count;
       const pageNumber = Math.ceil(count / payload.size);
@@ -89,9 +95,12 @@ const productSlice = createSlice({
       }
       state.pageCount = pageNumber;
     });
+    // get Admin Products
+    builder.addCase(fetchAdminProducts.fulfilled, (state, { payload }) => {
+      state.products = payload;
+    });
     // get all Medicines
     builder.addCase(fetchAllMedicines.fulfilled, (state, { payload }) => {
-      console.log(payload);
       state.medicines = payload;
     });
     // Add a product
