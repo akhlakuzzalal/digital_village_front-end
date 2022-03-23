@@ -72,7 +72,7 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '18px' }}>Online Consultation</span>
+                  <span className='dark:text-dark_text' style={{ fontSize: '18px' }}>Online Consultation</span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -84,7 +84,7 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '18px' }}>Offline Consultation</span>
+                  <span className='dark:text-dark_text' style={{ fontSize: '18px' }}>Offline Consultation</span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -96,7 +96,7 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '18px' }}>Online Appointment</span>
+                  <span className='dark:text-dark_text' style={{ fontSize: '18px' }}>Online Appointment</span>
                 </div>
               </div>
 
@@ -109,7 +109,7 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '18px' }}>Lab Test</span>
+                  <span  className='dark:text-dark_text' style={{ fontSize: '18px' }}>Lab Test</span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -121,7 +121,7 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '18px' }}>Ambulance facilities</span>
+                  <span className='dark:text-dark_text' style={{ fontSize: '18px' }}>Ambulance facilities</span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -133,7 +133,7 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '18px' }}>Emergency Department</span>
+                  <span className='dark:text-dark_text' style={{ fontSize: '18px' }}>Emergency Department</span>
                 </div>
               </div>
             </div>

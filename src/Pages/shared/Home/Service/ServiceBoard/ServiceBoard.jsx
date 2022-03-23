@@ -35,7 +35,7 @@ const ServiceBoard = ({
           control === controlData && 'outline outline-primary'
         } flex justify-center items-center rounded-md cursor-pointer p-4 shadow-lg mx-3 min-w-[250px] space-x-3 dark:bg-dark_primary`}
       >
-        <div className="shrink-0 dark:text-danger">{icon}</div>
+        <div className="shrink-0 text-blue-600 dark:text-dark_text">{icon}</div>
         <div className="space-y-2">
           {/* name */}
           <div className="text-xl font-medium text-black dark:text-dark_text ">{name}</div>
