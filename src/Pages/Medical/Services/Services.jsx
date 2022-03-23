@@ -55,7 +55,10 @@ const Services = () => {
           <h3 className=" text-center md:text-5xl text-blue-600">
             Our Services
           </h3>
-          <p className="my-5 text-justify px-5  " style={{ fontSize: '20px' }}>
+          <p
+            className="my-5 text-justify px-2 md:px-5  "
+            style={{ fontSize: '20px' }}
+          >
             Treatment here, truly human experience. You’re cared for as a person
             first.The more patients we treat each year prepares us to treat the
             one who matters most—you.Count on our experts to deliver an accurate
@@ -230,7 +233,7 @@ const Services = () => {
             </div>
           </section>
         </div>
-        <div className=" px-8 ">
+        <div className=" flex justify-center px-8 ">
           <form class="">
             <p class="text-center pb-4 text-base  font-bolder text-gray-600">
               We are here to hear from you

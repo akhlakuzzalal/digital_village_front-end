@@ -24,9 +24,9 @@ const Banner = () => {
         backgroundColor: '#f7f8fa',
       }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center p-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center p-2 md:p-10">
         {/* banner description */}
-        <div className=" flex flex-col  justify-center items-center place-self-center lg:mt-24 order-2 md:order-1 text-center lg:text-left p-5">
+        <div className=" flex flex-col  justify-center items-center place-self-center lg:mt-24 order-2 md:order-1 text-center lg:text-left p-2 md:p-5">
           <h1 className=" text-4xl md:text-5xl my-0 md:my-3">Quality Care</h1>
           <h3 justify-center items-center>
             <span style={{ color: '#10217d' }}>Your health, </span> our priority
@@ -37,12 +37,12 @@ const Banner = () => {
             whole family healthy and strong each and every day.{' '}
           </p>
           <div className="flex items-start">
-            <NavHashLink smooth to="/medicalDashboard">
+            <NavHashLink smooth to="/medical/appointment">
               <button
                 className="btn rounded-lg px-6 "
                 style={{ backgroundColor: '#10217d' }}
               >
-                Explore
+                Book Appointment
               </button>
             </NavHashLink>
           </div>
