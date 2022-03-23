@@ -38,7 +38,7 @@ const MyBookedEvents = () => {
 
   return (
     <div className=" w-full min-h-[100vh]">
-      <h3 className=" text-lg lg:mx-20 my-10 ">
+      <h3 className=" text-lg lg:mx-20 my-10 ml-[70px] ">
         Welcome <span className="text-primary">{user?.name}</span> your all
         booking events
       </h3>
