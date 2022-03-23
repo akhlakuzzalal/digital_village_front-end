@@ -20,13 +20,13 @@ const Step1 = () => {
       <div className=" grid grid-cols-1 md:grid-cols-2 justify-center items-center py-2 px-2 md:px-10 ">
         {/* banner description */}
         <div className=" flex flex-col  justify-start items-start   order-2 md:order-1 text-left  ">
-          <h3 className="text-start text-xl md:text-2xl ">
-            Step <span className=" text-xl md:text-4xl text-blue-900">1</span>
+          <h3 className="text-start text-lg md:text-2xl ">
+            Step <span className=" text-xl md:text-4xl text-blue-900 ">1</span>
           </h3>
-          <h6 className="text-left text-md text-blue-900">
+          <h6 className=" text-start text-sm text-blue-900">
             Select appointments
           </h6>
-          <p className="text-left text-sm ">
+          <p className=" text-start text-sm w-2/3 md:w-full ">
             Using the calender select your appointments according to specific
             date
           </p>

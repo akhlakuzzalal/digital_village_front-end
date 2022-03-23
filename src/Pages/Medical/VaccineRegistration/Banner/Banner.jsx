@@ -10,7 +10,7 @@ import bg from './../../../../assets/medical/bg.jpg';
 const Banner = () => {
   return (
     <div
-      className="py-20 px-0 md:px-5 min-h-screen flex justify-center items-center"
+      className="py-20 px-20 md:px-5 min-h-screen flex justify-center items-center"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundPosition: 'center',
