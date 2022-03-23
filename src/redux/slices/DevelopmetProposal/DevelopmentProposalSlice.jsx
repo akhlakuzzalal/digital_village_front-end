@@ -12,10 +12,21 @@ export const fetchAllDevelopmentProposals = createAsyncThunk(
   }
 );
 
+export const fetchMyDevelopmentProposals = createAsyncThunk(
+  'developmentProposals/fetchMyDevelopmentProposals',
+  async (email) => {
+    const response = axios
+      .get(`/developmentProposal/all/?email=${email}`)
+      .then((response) => response.data);
+    return response;
+  }
+);
+
 const developmentSlice = createSlice({
   name: 'developmentProposals',
   initialState: {
     developmentProposals: [],
+    myDevelopmentProposals: [],
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -28,7 +39,18 @@ const developmentSlice = createSlice({
         }
       }
     );
+    // get my development proposals
+    builder.addCase(
+      fetchMyDevelopmentProposals.fulfilled,
+      (state, { payload }) => {
+        if (payload && payload.length >= 1) {
+          state.myDevelopmentProposals = payload;
+        }
+      }
+    );
   },
 });
+
+export const { setMyDevelopmentProposal } = developmentSlice.actions;
 
 export default developmentSlice.reducer;

@@ -12,6 +12,7 @@ const UserMenu = () => {
   const { logout } = useAuth();
   const roles = useSelector((state) => state.user.roles);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -19,11 +20,12 @@ const UserMenu = () => {
   const isTablet = useMediaQuery('(min-width: 775px)');
   const user = useSelector((state) => state.user.user);
 
-  const rolesArray = roles
-    ? roles.map((role) => Object.values(role)).flat()
-    : [];
-
-  const IsAdmin = rolesArray?.includes(5000);
+  useEffect(() => {
+    const rolesArray = roles
+      ? roles.map((role) => Object.values(role)).flat()
+      : [];
+    setIsAdmin(rolesArray?.includes(5000));
+  }, [roles]);
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
@@ -114,7 +116,7 @@ const UserMenu = () => {
           onBlur={() => setDropdownOpen(false)}
         >
           <ul>
-            {IsAdmin ? (
+            {isAdmin ? (
               <>
                 <li className="hover:bg-green-500">
                   <Link
