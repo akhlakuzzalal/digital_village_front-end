@@ -131,7 +131,6 @@ const AddEvents = () => {
             <select
               className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
               {...register('eventType')}
-              value="EventType"
             >
               <option value="upcoming">upcoming</option>
               <option value="archived">archived</option>

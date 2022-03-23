@@ -52,7 +52,7 @@ const EventDetails = () => {
               {eventItem[0]?.eventType === 'upcoming' && (
                 <button
                   onClick={handleBookEvent}
-                  className="flex bg-[blue] text-white lg:px-10 md:px-10 px-1  mt-[90px] ml-10 py-3  rounded"
+                  className="flex bg-[blue] text-white lg:px-10 md:px-10 px-1  mt-[90px] ml-3 py-3  rounded"
                 >
                   Book This Event{' '}
                   <FaLocationArrow className=" ml-2 w-[30px] " />
@@ -61,10 +61,10 @@ const EventDetails = () => {
             </div>
           </div>
           <div className="mt-20">
-            <div className="bg-gray-100 p-7 border-l-4 flex items-center gap-6 lg:gap-20 px-5 lg:px-32">
+            <div className="bg-gray-100 lg:p-7 border flex items-center gap-3 lg:gap-20 px-5 lg:px-32">
               <div>
                 <p>Dtae</p>
-                <h3 className="text-xl">{eventItem[0]?.date}</h3>
+                <h3 className="lg:text-xl text-sm">{eventItem[0]?.date}</h3>
               </div>
               <div>
                 <p>Time</p>
