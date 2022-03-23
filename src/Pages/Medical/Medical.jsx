@@ -16,7 +16,7 @@ const links = [
   {
     name: 'Medicine Store',
     icon: <GiMedicines size={30} />,
-    path: '/medicinestore',
+    path: 'e-market/medicinestore',
   },
   {
     name: 'Vaccine Registration',
