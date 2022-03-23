@@ -11,7 +11,6 @@ import {
   MdOutlineManageAccounts,
   MdOutlineMedicalServices,
 } from 'react-icons/md';
-import { RiLightbulbFlashFill } from 'react-icons/ri';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
@@ -61,11 +60,6 @@ const links = [
     name: 'Help Requests',
     icon: <FaHandsHelping size={30} />,
     path: '/admin/allHelpRequests',
-  },
-  {
-    name: 'Add development',
-    icon: <RiLightbulbFlashFill size={30} />,
-    path: '/admin/addDevelopmentProposal',
   },
   {
     name: 'Manage Development',
