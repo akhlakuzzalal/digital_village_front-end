@@ -11,7 +11,6 @@ import {
 } from './Pages/Admin/AdminDashboard';
 import AdminHome from './Pages/Admin/AdminHome/AdminHome';
 import AllUsers from './Pages/Admin/AllUsers/AllUsers';
-import AddDevelopmentProposal from './Pages/Admin/DevelopmentProposal/AddDevelopmentProposal/AddDevelopmentProposal';
 import ManageDevelopmentProposals from './Pages/Admin/DevelopmentProposal/ManageDevelopmentProposals/ManageDevelopmentProposals';
 import AddCause from './Pages/Admin/Donation/AddCause/AddCause';
 import AllCauses from './Pages/Admin/Donation/AllCauses/AllCauses';
@@ -90,12 +89,15 @@ import Requested from './Pages/SocialMedia/Connections/BoardComponent/Requested'
 import Requesting from './Pages/SocialMedia/Connections/BoardComponent/Requesting';
 import ConnectionBoard from './Pages/SocialMedia/Connections/ConnectionBoard';
 import SocialHome from './Pages/SocialMedia/Home/SocialHome';
+import AddDevelopmentProposal from './Pages/User/DevelopmentProposal/AddDevelopmentProposal/AddDevelopmentProposal';
+import MyDevelopmentProposals from './Pages/User/DevelopmentProposal/MyDevelopmentProposals/MyDevelopmentProposals';
 import MyDonations from './Pages/User/Donation/MyDonations';
 import MyHelpRequests from './Pages/User/Donation/MyHelpRequests';
 import Profile from './Pages/User/Profile/Profile';
 import EditReview from './Pages/User/Review/EditReview/EditReview';
 import Review from './Pages/User/Review/Review';
 import UserDashboard from './Pages/User/UserDashboard';
+import AdminRoute from './SecureRoutes/AdminRoute';
 import PrivateRoute from './SecureRoutes/PrivateRoute';
 
 export const Roles = {
@@ -124,15 +126,19 @@ const App = () => (
             {/* user routes */}
             <Route path="userdashboard" element={<UserDashboard />}>
               <Route path="profile" element={<Profile />} />
+              <Route
+                path="addDevelopmentProposal"
+                element={<AddDevelopmentProposal />}
+              />
+              <Route
+                path="myDevelopmentProposals"
+                element={<MyDevelopmentProposals />}
+              />
               <Route path="myBookedEvents" element={<MyBookedEvents />} />
               <Route path="review" element={<Review />} />
               <Route path="myDonations" element={<MyDonations />} />
               <Route path="myHelpRequests" element={<MyHelpRequests />} />
               <Route path="editReview/:id" element={<EditReview />} />
-              <Route
-                path="addDevelopmentProposal"
-                element={<AddDevelopmentProposal />}
-              />
             </Route>
 
             {/* EDUCATION RELATED ROUTES */}
@@ -225,37 +231,37 @@ const App = () => (
             </Route>
           </Route>
 
-          {/* 
-          Admin dashboard routes */}
-          {/* <Route element={<AdminRoute allowedRoles={[Roles.Admin]} />}> */}
-          <Route path="admin" element={<AdminDashboard />}>
-            <Route path="home" element={<AdminHome />} />
-            <Route path="allusers" element={<AllUsers />} />
-            <Route path="sendNotification" element={<SendNotification />} />
-            <Route path="events" element={<Eventmanagement />} />
-            <Route path="add-events" element={<AddEvents />} />
-            <Route path="manageEvents" element={<ManageEvents />} />
-            <Route path="market" element={<MarketManagement />} />
-            <Route path="addcause" element={<AddCause />} />
-            <Route path="allcauses" element={<AllCauses />} />
-            <Route path="updatecause/:id" element={<UpdateCause />} />
-            <Route path="manageAllDonars" element={<ManageAllDonars />} />
-            <Route path="development" element={<DevelopmentDashboard />} />
-            <Route
-              path="manageDevelopmentProposals"
-              element={<ManageDevelopmentProposals />}
-            />
-            <Route path="editDevelopment/:id" element={<EditBlog />} />
-            <Route path="market" element={<MarketManagement />} />
-            <Route path="add-events" element={<AddEvents />} />
-            <Route path="manageNews" element={<ManageNews />} />
-            <Route path="addNews" element={<AddNews />} />
-            <Route path="editNews/:id" element={<EditNews />} />
-            <Route path="addAppointment" element={<AddAppointment />} />
-            <Route path="status" element={<StatusCheck />} />
-            <Route path="allHelpRequests" element={<AllHelpRequests />} />
+          {/* Admin dashboard routes */}
+
+          <Route element={<AdminRoute allowedRoles={[Roles.Admin]} />}>
+            <Route path="admin" element={<AdminDashboard />}>
+              <Route path="home" element={<AdminHome />} />
+              <Route path="allusers" element={<AllUsers />} />
+              <Route path="sendNotification" element={<SendNotification />} />
+              <Route path="events" element={<Eventmanagement />} />
+              <Route path="add-events" element={<AddEvents />} />
+              <Route path="manageEvents" element={<ManageEvents />} />
+              <Route path="market" element={<MarketManagement />} />
+              <Route path="addcause" element={<AddCause />} />
+              <Route path="allcauses" element={<AllCauses />} />
+              <Route path="updatecause/:id" element={<UpdateCause />} />
+              <Route path="manageAllDonars" element={<ManageAllDonars />} />
+              <Route path="development" element={<DevelopmentDashboard />} />
+              <Route
+                path="manageDevelopmentProposals"
+                element={<ManageDevelopmentProposals />}
+              />
+              <Route path="editDevelopment/:id" element={<EditBlog />} />
+              <Route path="market" element={<MarketManagement />} />
+              <Route path="add-events" element={<AddEvents />} />
+              <Route path="manageNews" element={<ManageNews />} />
+              <Route path="addNews" element={<AddNews />} />
+              <Route path="editNews/:id" element={<EditNews />} />
+              <Route path="addAppointment" element={<AddAppointment />} />
+              <Route path="status" element={<StatusCheck />} />
+              <Route path="allHelpRequests" element={<AllHelpRequests />} />
+            </Route>
           </Route>
-          {/* </Route> */}
 
           {/* unauthorized route */}
           <Route path="unauthorized" element={<UnAuthorized />} />

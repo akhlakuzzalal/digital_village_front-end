@@ -3,7 +3,7 @@ import { BiDownvote, BiUpvote } from 'react-icons/bi';
 import Swal from 'sweetalert2';
 import axios from '../../../api/axios';
 
-const UpvoteDownvote = ({ developmentProposalId, uId }) => {
+const UpvoteDownvote = ({ developmentProposalId, uId, proposal }) => {
   const [Upvotes, setUpvotes] = useState(0);
   const [Downvotes, setDownvotes] = useState(0);
   const [UpvoteAction, setUpvoteAction] = useState(null);
@@ -119,6 +119,14 @@ const UpvoteDownvote = ({ developmentProposalId, uId }) => {
     }
   };
 
+  const handleShowDetail = () => {
+    Swal.fire({
+      title: 'Detail of the development proposal',
+      html: proposal?.description,
+      confirmButtonText: 'Close',
+    });
+  };
+
   return (
     <>
       {/* upvote and downvote buttons */}
@@ -141,7 +149,10 @@ const UpvoteDownvote = ({ developmentProposalId, uId }) => {
         )}
 
         {/* detail button */}
-        <button className="btn px-12 py-2 bg-rose-600 flex items-center space-x-1">
+        <button
+          className="btn px-12 py-2 bg-rose-600 flex items-center space-x-1"
+          onClick={handleShowDetail}
+        >
           Details
         </button>
 

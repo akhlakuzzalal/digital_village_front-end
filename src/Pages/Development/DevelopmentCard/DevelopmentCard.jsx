@@ -1,10 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 import { BASE_URI } from '../../../api/axios';
 import UpvoteDownvote from '../UpvoteDownvote/UpvoteDownvote';
 
 const DevelopmentCard = ({ proposal, showUpvoteDownVote }) => {
   const uId = useSelector((state) => state.user.uId);
+
+  const handleShowDetail = () => {
+    Swal.fire({
+      title: 'Detail of the development proposal',
+      html: proposal?.description,
+      confirmButtonText: 'Close',
+    });
+  };
+
   return (
     <div className="rounded-2xl w-fit border max-w-[400px] lg:mb-40">
       <div className="h-[280px] overflow-hidden rounded-t-2xl">
@@ -19,12 +29,19 @@ const DevelopmentCard = ({ proposal, showUpvoteDownVote }) => {
         <p>{proposal?.description && proposal.description.slice(0, 100)} ...</p>
 
         {showUpvoteDownVote && (
-          <UpvoteDownvote developmentProposalId={proposal._id} uId={uId} />
+          <UpvoteDownvote
+            developmentProposalId={proposal._id}
+            uId={uId}
+            proposal={proposal}
+          />
         )}
 
         {/* detail button */}
         {!showUpvoteDownVote && (
-          <button className="btn w-fit mx-auto px-12 py-2 bg-rose-600">
+          <button
+            className="btn w-fit mx-auto px-12 py-2 bg-rose-600"
+            onClick={handleShowDetail}
+          >
             Details
           </button>
         )}

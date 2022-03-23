@@ -101,7 +101,7 @@ const AdminDashboard = () => {
       <Navbar navigation={navigation} />
       <div className="flex">
         <NewSidebar links={links} />
-        <div className={`mt-[80px] ml-[65px] flex-1`}>
+        <div className={`mt-[80px] ml-[70px] flex-1`}>
           <Outlet />
         </div>
       </div>

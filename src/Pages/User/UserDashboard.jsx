@@ -21,6 +21,11 @@ const links = [
     path: '/userdashboard/addDevelopmentProposal',
   },
   {
+    name: 'My Development Proposals',
+    icon: <RiLightbulbFlashFill size={30} />,
+    path: '/userdashboard/myDevelopmentProposals',
+  },
+  {
     name: 'Events',
     icon: <MdOutlineProductionQuantityLimits size={30} />,
     path: '/userdashboard/myBookedEvents',

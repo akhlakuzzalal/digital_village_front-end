@@ -38,6 +38,7 @@ const AddDevelopmentProposal = () => {
         confirmButtonText: 'Okay',
       });
       reset();
+      setFile({});
     } else {
       Swal.fire({
         icon: 'error',
