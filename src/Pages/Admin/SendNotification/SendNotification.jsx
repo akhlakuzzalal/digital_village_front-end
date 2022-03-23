@@ -36,7 +36,7 @@ const SendNotification = () => {
     }
   };
   return (
-    <div className="flex flex-col mb-10 items-center justify-center space-y-6 pl-16 md:pl-0 pr-4 md:pr-0 mx-auto">
+    <div className="flex flex-col items-center justify-center space-y-6 mx-auto">
       <h1 className="text-center  text-xl md:text-6xl lg:text-6xl pt-4 md:py-8">
         Send Notification
       </h1>

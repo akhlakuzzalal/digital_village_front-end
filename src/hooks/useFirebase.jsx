@@ -114,7 +114,6 @@ const useFirebase = () => {
     dispatch(getSingleUserInfo(newUser.email));
 
     const redirect_uri = location?.state?.from || '/';
-    console.log(location?.state, 'hello world');
     navigate(redirect_uri);
   };
 
@@ -137,7 +136,7 @@ const useFirebase = () => {
 
       dispatch(getSingleUserInfo(email)); // get the user all info for profile page
       console.log(response?.data?.message);
-      console.log(user);
+      console.log(user, 'this is the user');
     } catch (error) {
       console.log(error.message);
       setAuthError(error.message);

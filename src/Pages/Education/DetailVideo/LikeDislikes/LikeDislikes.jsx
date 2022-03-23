@@ -5,6 +5,7 @@ import {
   AiOutlineDislike,
   AiOutlineLike,
 } from 'react-icons/ai';
+import Swal from 'sweetalert2';
 import axios from '../../../../api/axios';
 
 const LikeDislikes = ({ videoId, blogId, commentId, uId }) => {
@@ -12,6 +13,49 @@ const LikeDislikes = ({ videoId, blogId, commentId, uId }) => {
   const [Dislikes, setDislikes] = useState(0);
   const [LikeAction, setLikeAction] = useState(null);
   const [DislikeAction, setDislikeAction] = useState(null);
+
+  useEffect(() => {
+    let necessaryData = {};
+    if (videoId) {
+      necessaryData = { videoId, uId };
+    } else if (blogId) {
+      necessaryData = { blogId, uId };
+    } else {
+      necessaryData = { commentId, uId };
+    }
+    axios.post('/like/all', necessaryData).then((response) => {
+      if (response.data.success) {
+        // number of likes for the video / blog / comment
+        console.log(response.data);
+        setLikes(response.data.likes.length);
+
+        // Like button is allready clicked or not
+        response.data.likes.map((like) => {
+          if (like.uId === uId) {
+            setLikeAction('liked');
+          }
+        });
+      } else {
+        console.log('failed to get all likes');
+      }
+    });
+
+    axios.post('/disLike/all', necessaryData).then((response) => {
+      if (response.data.success) {
+        //How many likes does this video or comment have
+        setDislikes(response.data.dislikes.length);
+
+        //if I already click this like button or not
+        response.data.dislikes.map((dislike) => {
+          if (dislike.uId === uId) {
+            setDislikeAction('disliked');
+          }
+        });
+      } else {
+        console.log('Failed to get dislikes');
+      }
+    });
+  }, [uId, videoId, blogId, commentId]);
 
   let data = {};
 
@@ -22,51 +66,6 @@ const LikeDislikes = ({ videoId, blogId, commentId, uId }) => {
   } else {
     data = { commentId, uId };
   }
-
-  useEffect(() => {
-    axios.post('/like/all', data).then((response) => {
-      if (response.data.success) {
-        // How many likes does this video or comment have
-        console.log(response.data);
-        setLikes(response.data.likes.length);
-
-        if (response.data.likes.length === 0) {
-          setLikeAction(null);
-        }
-
-        //if I already click this like button or not
-        response.data.likes.map((like) => {
-          if (like.uId === uId) {
-            setLikeAction('liked');
-          } else {
-            setLikeAction(null);
-          }
-        });
-      } else {
-        alert('Failed to get likes');
-      }
-    });
-
-    axios.post('/disLike/all', data).then((response) => {
-      if (response.data.success) {
-        //How many likes does this video or comment have
-        setDislikes(response.data.dislikes.length);
-
-        if (response.data.dislikes.length === 0) {
-          setDislikeAction(null);
-        }
-
-        //if I already click this like button or not
-        response.data.dislikes.map((dislike) => {
-          if (dislike.uId === uId) {
-            setDislikeAction('disliked');
-          }
-        });
-      } else {
-        alert('Failed to get dislikes');
-      }
-    });
-  }, [data, uId]);
 
   const onLike = () => {
     if (LikeAction === null) {
@@ -81,7 +80,10 @@ const LikeDislikes = ({ videoId, blogId, commentId, uId }) => {
             setDislikes(Dislikes - 1);
           }
         } else {
-          alert('Failed to decrease like');
+          Swal.fire({
+            title: 'Something went wrong',
+            confirmButtonText: 'Try again',
+          });
         }
       });
     } else {
@@ -90,7 +92,10 @@ const LikeDislikes = ({ videoId, blogId, commentId, uId }) => {
           setLikes(Likes - 1);
           setLikeAction(null);
         } else {
-          alert('Failed to decrease the like');
+          Swal.fire({
+            title: 'Something went wrong',
+            confirmButtonText: 'Try again',
+          });
         }
       });
     }
@@ -103,13 +108,16 @@ const LikeDislikes = ({ videoId, blogId, commentId, uId }) => {
           setDislikes(Dislikes + 1);
           setDislikeAction('disliked');
 
-          // if dislike button is already clicked
+          // if the dislike button is already clicked
           if (LikeAction !== null) {
             setLikeAction(null);
             setLikes(Likes - 1);
           }
         } else {
-          alert('Failed to increase dislike');
+          Swal.fire({
+            title: 'Something went wrong',
+            confirmButtonText: 'Try again',
+          });
         }
       });
     } else {
@@ -118,7 +126,10 @@ const LikeDislikes = ({ videoId, blogId, commentId, uId }) => {
           setDislikes(Dislikes - 1);
           setDislikeAction(null);
         } else {
-          alert('Failed to decrease dislike');
+          Swal.fire({
+            title: 'Something went wrong',
+            confirmButtonText: 'Try again',
+          });
         }
       });
     }

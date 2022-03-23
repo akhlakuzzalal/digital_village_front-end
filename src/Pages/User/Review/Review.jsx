@@ -17,7 +17,9 @@ const Review = () => {
 
   const handleAddReview = (data) => {
     data.email = user?.email;
-    const result = axios.post('/userReview/addReview', data);
+    const response = axios.post('/userReview/addReview', data)
+    .then(response=>console.log(response.data))
+    
 
     reset();
     console.log(data);

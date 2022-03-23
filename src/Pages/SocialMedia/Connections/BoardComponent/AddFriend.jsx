@@ -7,7 +7,7 @@ const AddFriend = () => {
   return (
     <div>
       <h3>Suggestion</h3>
-      <div className="grid grid-cols-5 gap-6">
+      <div className="md:grid md:grid-cols-5 gap-6">
         {noConnection &&
           noConnection.map((user) => (
             <SingleUser key={user._id} user={user} as="suggest" />
