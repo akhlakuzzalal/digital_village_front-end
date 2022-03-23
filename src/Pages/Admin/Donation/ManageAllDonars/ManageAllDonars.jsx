@@ -1,139 +1,170 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { BASE_URI } from '../../../../api/axios';
 
 const ManageAllDonars = () => {
-  const [allDonarInfo, setAllDonarInfo] = useState([]);
+  const [allInfo, setAllInfo] = useState([]);
 
   useEffect(() => {
     axios.get('/donationCause/allDonarInfo').then((response) => {
-      setAllDonarInfo(response.data);
+      setAllInfo(response.data);
     });
-    console.log(allDonarInfo);
   }, []);
+  console.log(allInfo);
 
   return (
-    <div className="my-3">
-      <div className="overflow-x-auto">
+    <div className="flex flex-col justify-center my-3 px-4">
+      {/* header info */}
+      <div>
         <h3 className="text-center text-gray-800 text-sm md:text-lg lg:text-2xl">
           All Donars payment
         </h3>
         <p className="text-center text-gray-600 font-normal text-sm lg:text-lg">
           Admin can manage all donars payment here
         </p>
-        <div className="py-2">
-          <table className="w-fit mx-auto">
-            <thead className="hidden lg:block bg-indigo-500 font-primary">
-              <tr className="grid grid-cols-2 place-items-center">
-                <th
-                  scope="col"
-                  className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
-                >
-                  Cause
-                </th>
-                <th
-                  scope="col"
-                  className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
-                >
-                  Donar
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {allDonarInfo &&
-                allDonarInfo.length >= 1 &&
-                allDonarInfo.map((donarInfo) => (
-                  <tr
-                    key={donarInfo?.causeInfo?.image?.path}
-                    className="bg-white border-b font-primary text-sm grid grid-cols-2 col-start-5 col-end-12 place-items-center"
-                  >
-                    {/* cause info */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center">
-                      {/* cause title */}
-                      <div>{donarInfo?.causeInfo?.title}</div>
-                      {/* cause category */}
-                      <div>{donarInfo?.causeInfo?.category}</div>
-                    </td>
+      </div>
 
-                    {/* donar info */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                      <div>
-                        {/* header */}
-                        <div className="hidden lg:block bg-purple-500 font-primary">
-                          <tr className="grid grid-cols-1 lg:grid-cols-4 place-items-center">
-                            <th
-                              scope="col"
-                              className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
-                            >
-                              Image
-                            </th>
-                            <th
-                              scope="col"
-                              className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
-                            >
-                              Donar
-                            </th>
-                            <th
-                              scope="col"
-                              className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
-                            >
-                              Amount
-                            </th>
-                            <th
-                              scope="col"
-                              className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
-                            >
-                              Action
-                            </th>
-                          </tr>
-                        </div>
-                        {/* info */}
-                        {donarInfo?.donarInfo &&
-                          donarInfo.donarInfo.length <= 1 &&
-                          donarInfo?.donarInfo.map((donar) => (
-                            <div key={donar.donar._id}>
-                              {console.log(donar, 'd')}
-                              {/* image */}
-                              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                                <img
-                                  className="w-48 lg:w-24 rounded-lg"
-                                  src={
-                                    donar?.donar?.photo?.name
-                                      ? donar?.donar?.photo?.path
-                                      : 'https://www.autosbangla.com/images/mercedes-benz/mercedes-benz-gle-450-img.jpg'
-                                  }
-                                  alt={donar?.donar?.photo?.name}
-                                />
-                              </td>
-
-                              {/* donar info */}
-                              <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">
-                                {donar?.donar?.name}
-                                <td className="text-sm text-gray-600 py-2 whitespace-nowrap">
-                                  {donar?.donar?.email}
-                                </td>
-                              </td>
-
-                              {/* amount */}
-                              <td className="text-sm px-6 py-4 whitespace-nowrap">
-                                {donar?.amount}
-                              </td>
-                              {/* action */}
-                              <td className="px-6 py-4 whitespace-nowrap flex flex-col h-24 items-center justify-center">
-                                <div className="flex items-center justify-center space-x-3">
-                                  <button className="bg-green-500  px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300">
-                                    Details
-                                  </button>
-                                </div>
-                              </td>
-                            </div>
-                          ))}
-                      </div>
-                    </td>
+      {/* table */}
+      <div className="flex flex-col w-full lg:w-full">
+        <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="overlfow-hidden">
+              <table className="min-w-full">
+                <thead className="bg-indigo-500 font-primary">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="text-xs font-medium text-white px-6 py-3 text-left uppercase"
+                    >
+                      Cause
+                    </th>
+                    <th
+                      scope="col"
+                      className="text-xs font-medium text-white px-6 py-3 text-left uppercase"
+                    >
+                      Donar
+                    </th>
                   </tr>
-                ))}
-            </tbody>
-          </table>
+                </thead>
+                <tbody>
+                  {allInfo &&
+                    allInfo.length >= 1 &&
+                    allInfo.map((info) => (
+                      <tr
+                        key={info?.causeInfo?.image?.path}
+                        className="border-b font-primary text-sm"
+                      >
+                        {/* cause info */}
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center">
+                          {/* cause title */}
+                          <div>{info?.causeInfo?.title}</div>
+                          {/* cause category */}
+                          <div>{info?.causeInfo?.category}</div>
+                        </td>
+
+                        {/* donar info */}
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center min-w-[500px]">
+                          <div>
+                            {/* header */}
+                            <tr className="grid grid-cols-5 place-items-center bg-purple-500 font-primary">
+                              <th
+                                scope="col"
+                                className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
+                              >
+                                Image
+                              </th>
+                              <th
+                                scope="col"
+                                className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
+                              >
+                                Donar
+                              </th>
+                              <th
+                                scope="col"
+                                className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
+                              >
+                                Amount
+                              </th>
+                              <th
+                                scope="col"
+                                className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
+                              >
+                                Status
+                              </th>
+                              <th
+                                scope="col"
+                                className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
+                              >
+                                Action
+                              </th>
+                            </tr>
+
+                            {/* info */}
+                            {info?.donarInfo &&
+                              info.donarInfo.length >= 1 &&
+                              info?.donarInfo.map((donar) => (
+                                <div
+                                  key={donar.donar._id}
+                                  className="grid grid-cols-5 place-items-center"
+                                >
+                                  {/* image */}
+                                  <div className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
+                                    <img
+                                      className="w-16 h-16 rounded-lg"
+                                      src={
+                                        donar?.donar?.photo?.name
+                                          ? `${BASE_URI}/${donar?.donar?.photo?.path}`
+                                          : 'https://www.autosbangla.com/images/mercedes-benz/mercedes-benz-gle-450-img.jpg'
+                                      }
+                                      alt={donar?.donar?.photo?.name}
+                                    />
+                                  </div>
+
+                                  {/* donar info */}
+                                  <div className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    {donar?.donar?.name}
+                                    <td className="text-sm text-gray-600 py-2 whitespace-nowrap">
+                                      {donar?.donar?.email}
+                                    </td>
+                                  </div>
+
+                                  {/* amount */}
+                                  <div className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    {donar?.amount}
+                                  </div>
+
+                                  {/* status */}
+                                  <div className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    {true ? (
+                                      <span className="bg-green-500 px-3 py-2 text-white rounded-full font-primary">
+                                        paid
+                                      </span>
+                                    ) : (
+                                      <span className="bg-red-500 px-3 py-2 text-white rounded-full font-primary">
+                                        unpaid
+                                      </span>
+                                    )}
+                                  </div>
+
+                                  {/* action */}
+                                  <div className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    <div className="flex items-center justify-center space-x-3">
+                                      <button className="bg-green-500  px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300">
+                                        Certificate
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

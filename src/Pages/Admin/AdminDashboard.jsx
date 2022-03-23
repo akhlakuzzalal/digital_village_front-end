@@ -99,9 +99,9 @@ const AdminDashboard = () => {
   return (
     <div>
       <Navbar navigation={navigation} />
-      <div className="flex">
+      <div className="">
         <NewSidebar links={links} />
-        <div className={`mt-[80px] ml-[70px] flex-1`}>
+        <div className={`mt-[80px] ml-[70px] w-full`}>
           <Outlet />
         </div>
       </div>
