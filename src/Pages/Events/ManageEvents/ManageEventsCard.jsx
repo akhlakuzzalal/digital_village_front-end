@@ -68,8 +68,7 @@ const ManageEventsCard = ({
     handleAlertevent();
     reset();
   };
-  //localhost:5000/event/updateEvent/
-  http: return (
+  return (
     <>
       {showModal ? (
         <>
@@ -241,7 +240,7 @@ const ManageEventsCard = ({
         </>
       ) : null}
 
-      <div className="border rounded-xl w-[260px]">
+      <div className="border rounded-xl w-[260px] dark:bg-dark_primary">
         <img className="h-[200px] w-[400px]" src={image} alt={title} />
         <div>
           <div className=" p-4 md:p-10">
