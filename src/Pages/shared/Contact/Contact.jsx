@@ -59,12 +59,12 @@ const Contact = () => {
         </div> */}
       </div>
 
-      <div className="md:pt-52">
+      <div className="pt-20 md:pt-30">
         <div className="lg:pr-8">
           <h3 className="text-center ml-2 md:ml-0 lg:ml-0 text-2xl font-semibold mt-16 mb-3 text-gray-500 hover:text-red-500">
             FOLLOW OUR INFO
           </h3>
-          <h1 className="text-3xl md:text-5xl lg:text-5xl text-center font-bold ml-4 md:ml-0 lg:ml-0 hover:text-blue-600">
+          <h1 className="text-2xl md:text-5xl lg:text-5xl text-center font-bold  hover:text-blue-600">
             Contact information
           </h1>
           <h4 className="text-center lg:px-[300px] px-5 ">
@@ -168,12 +168,12 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="mt-20 mx-auto bg-white pt-10">
+      <div className=" mx-auto bg-white pt-10">
         <h5 className="text-center">DON’T HASITATE TO CONTACT WITH US</h5>
-        <h1 className="text-3xl md:text-5xl lg:text-5xl text-center font-bold hover:text-blue-600">
+        <h1 className="text-2xl md:text-5xl lg:text-5xl text-center font-bold hover:text-blue-600">
           Now Very Easy
         </h1>
-        <h4 className=" mt-5 lg:px-[300px] container text-center px-3">
+        <h4 className=" md:mt-5 lg:px-[300px] container text-center px-3">
           Our approach to SEO is uniquely built around what we know works…and
           what we know doesn’t work. With over 200 verified factors in
           playworks…and what we know doesn’t work. With over 200 verified
@@ -181,12 +181,12 @@ const Contact = () => {
         </h4>
       </div>
 
-      <div className="lg:flex lg:px-20 py-20 bg-white">
+      <div className="lg:flex lg:px-20 md:py-20 bg-white">
         <div>
           <img className="h-[500px]" src={img} alt="" />
         </div>
         <form
-          className=" md:grid grid-cols-1 md:grid-cols-2 gap-5 mt-16 mx-10 lg:mx-0"
+          className=" md:grid grid-cols-1 md:grid-cols-2 gap-5 md:mt-16 mx-10 lg:mx-0"
           onSubmit={handleSubmit(sendEmail)}
         >
           <input
@@ -215,6 +215,7 @@ const Contact = () => {
             onKeyUp={() => {
               trigger('number');
             }}
+            placeholder="Type Your Number"
           />
           {errors.number && (
             <small className="text-danger">{errors.number.message}</small>

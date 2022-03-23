@@ -40,14 +40,14 @@ const RegisterTeacher = () => {
     },
   };
   return (
-    <div className=" min-h-[100vh] my-40">
-      <h3 className="text-center text-xl md:text-4xl  mt-10 pt-5 text-blue-800">
+    <div className=" min-h-[100vh] ">
+      <h3 className="text-center text-xl md:text-5xl  mt-36 pb-10  text-blue-800">
         Please fill up the form to be a part of our mission
       </h3>
 
-      <div className="lg:flex">
+      <div className="grid grid-cols-1 md:grid-cols-2 ">
         <form
-          className="space-y-6 w-2/2 md:w-1/2 lg:mt-[400px]  mx-auto"
+          className="space-y-6 mx-auto md:px-10 my-auto"
           onSubmit={handleSubmit(handleTeacherRegistration)}
         >
           {/* name */}
@@ -144,12 +144,16 @@ const RegisterTeacher = () => {
             value="Register as a Teacher"
           />
         </form>
-        <Lottie
+            <div className='md:-mt-64'>
+            <Lottie
+        className="w-full"
           options={defaultOptions}
           isClickToPauseDisabled={true}
-          height={isDesktop ? 900 : isTablet ? 200 : 100}
+          height={isDesktop ? 900 : isTablet ? 600 : 100}
           width={isDesktop ? 600 : isTablet ? 200 : 100}
+          
         />
+            </div>
       </div>
     </div>
   );

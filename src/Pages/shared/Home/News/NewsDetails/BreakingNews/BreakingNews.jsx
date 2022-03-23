@@ -47,10 +47,10 @@ const BreakingNews = ({news}) => {
                 
                     <Link to={`/newsDetails/${n._id}`}>
                     <h5 className="font-bolder text-base md:text-xl text-left mb-2 hover:text-blue-600">
-                    {n?.title.slice(0,35)}...
+                    {n?.title.slice(0,30)}...
                   </h5>
                   <span>
-                  {n?.description.slice(0,30)}.
+                  {n?.description.slice(0,25)}...
                   </span>
                     </Link>
               </li>
