@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 import FileUpload from '../../../../Components/FileUpload';
 import { addACuase } from '../../../../redux/slices/Donations/donationSlice';
@@ -8,8 +8,6 @@ import { addACuase } from '../../../../redux/slices/Donations/donationSlice';
 const AddCause = () => {
   const dispatch = useDispatch();
   const [file, setFile] = useState({});
-  const user = useSelector((state) => state.user.user);
-  const roles = useSelector((state) => state.user.roles);
 
   const {
     register,
@@ -33,9 +31,6 @@ const AddCause = () => {
         ...data,
         raised: 0,
         date: new Date().toLocaleDateString(),
-        requesterName: user?.name,
-        requesterEmail: user?.email,
-        isVerified: roles.includes(5000),
       })
     );
 

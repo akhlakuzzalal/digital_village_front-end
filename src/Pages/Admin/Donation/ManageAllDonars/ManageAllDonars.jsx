@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { BASE_URI } from '../../../../api/axios';
 
 const ManageAllDonars = () => {
@@ -10,7 +11,48 @@ const ManageAllDonars = () => {
       setAllInfo(response.data);
     });
   }, []);
-  console.log(allInfo);
+
+  const handleUpdatePaymentStatusOfDonar = (donarId, causeId, isPaid) => {
+    axios.put('/donationCause/updateDonarPaymentStatus');
+    Swal.fire({
+      title: `Are you sure? you want to ${
+        isPaid ? 'give' : 'remove'
+      } certificate`,
+      showDenyButton: true,
+      confirmButtonText: 'Yes',
+      denyButtonText: 'Cancel',
+      icon: 'info',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .put('/donationCause/updateDonarPaymentStatus', {
+            donarId,
+            causeId,
+            isPaid,
+          })
+          .then((response) => {
+            if (response?.data?.title) {
+              Swal.fire({
+                icon: 'success',
+                title: `successfully certificate ${
+                  isPaid ? 'given' : 'removed'
+                }`,
+                confirmButtonText: 'Okay',
+              });
+              axios.get('/donationCause/allDonarInfo').then((response) => {
+                setAllInfo(response.data);
+              });
+            } else {
+              Swal.fire({
+                title: 'Something went wrong',
+                icon: 'error',
+                confirmButtonText: 'Okay',
+              });
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div className="flex flex-col justify-center my-3 px-4">
@@ -95,7 +137,7 @@ const ManageAllDonars = () => {
                                 scope="col"
                                 className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
                               >
-                                Action
+                                Certificate
                               </th>
                             </tr>
 
@@ -136,7 +178,7 @@ const ManageAllDonars = () => {
 
                                   {/* status */}
                                   <div className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                                    {true ? (
+                                    {donar?.isPaid ? (
                                       <span className="bg-green-500 px-3 py-2 text-white rounded-full font-primary">
                                         paid
                                       </span>
@@ -150,9 +192,33 @@ const ManageAllDonars = () => {
                                   {/* action */}
                                   <div className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                                     <div className="flex items-center justify-center space-x-3">
-                                      <button className="bg-green-500  px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300">
-                                        Certificate
-                                      </button>
+                                      {donar?.isPaid ? (
+                                        <button
+                                          className="bg-red-500  px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300 cursor-pointer"
+                                          onClick={() =>
+                                            handleUpdatePaymentStatusOfDonar(
+                                              donar.donar._id,
+                                              info?.causeInfo?._id,
+                                              false
+                                            )
+                                          }
+                                        >
+                                          Remove
+                                        </button>
+                                      ) : (
+                                        <button
+                                          className="bg-green-500  px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300"
+                                          onClick={() =>
+                                            handleUpdatePaymentStatusOfDonar(
+                                              donar.donar._id,
+                                              info?.causeInfo?._id,
+                                              true
+                                            )
+                                          }
+                                        >
+                                          Give
+                                        </button>
+                                      )}
                                     </div>
                                   </div>
                                 </div>
