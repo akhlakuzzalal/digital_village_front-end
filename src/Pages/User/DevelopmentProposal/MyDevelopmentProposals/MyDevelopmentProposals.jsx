@@ -4,20 +4,21 @@ import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import axios, { BASE_URI } from '../../../../api/axios';
-import { fetchAllDevelopmentProposals } from '../../../../redux/slices/DevelopmetProposal/DevelopmentProposalSlice';
+import { fetchMyDevelopmentProposals } from '../../../../redux/slices/DevelopmetProposal/DevelopmentProposalSlice';
 
-const ManageDevelopmentProposal = () => {
+const MyDevelopmentProposals = () => {
   const [showModal, setShowModal] = useState(false);
   const [proposalDescription, setProposalDescription] = useState('');
 
-  const developmentProposals = useSelector(
-    (state) => state.developmentProposals.developmentProposals
+  const myDevelopmentProposals = useSelector(
+    (state) => state.developmentProposals.myDevelopmentProposals
   );
+  const user = useSelector((state) => state.user.user);
 
   const dispatch = useDispatch();
 
   const handleShowDetail = (id) => {
-    const proposal = developmentProposals.find(
+    const proposal = myDevelopmentProposals.find(
       (proposal) => proposal._id === id
     );
     setProposalDescription(proposal.description);
@@ -42,45 +43,7 @@ const ManageDevelopmentProposal = () => {
                 title: 'Your Development Proposal has been deleted!',
                 confirmButtonText: 'Okay',
               });
-              dispatch(fetchAllDevelopmentProposals());
-            } else {
-              Swal.fire({
-                title: 'Something went wrong',
-                icon: 'error',
-                confirmButtonText: 'Okay',
-              });
-            }
-          });
-      }
-    });
-  };
-
-  const handleChangeStatus = (id, isAccepted, isRejected) => {
-    Swal.fire({
-      title: `Are you sure? you want to ${
-        isAccepted ? 'accept' : 'reject'
-      } this proposal`,
-      showDenyButton: true,
-      confirmButtonText: 'Update',
-      denyButtonText: `Cancel`,
-      icon: 'warning',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axios
-          .put(`/developmentProposal/updateStatus/?id=${id}`, {
-            isAccepted,
-            isRejected,
-          })
-          .then((response) => {
-            if (response?.data?.email) {
-              Swal.fire({
-                icon: 'success',
-                title: `This Proposal has been added in the ${
-                  isAccepted ? 'accepted' : 'rejected'
-                } proposal list`,
-                confirmButtonText: 'Okay',
-              });
-              dispatch(fetchAllDevelopmentProposals());
+              dispatch(fetchMyDevelopmentProposals(user.email));
             } else {
               Swal.fire({
                 title: 'Something went wrong',
@@ -94,7 +57,7 @@ const ManageDevelopmentProposal = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchAllDevelopmentProposals());
+    dispatch(fetchMyDevelopmentProposals(user.email));
   }, []);
 
   return (
@@ -149,7 +112,7 @@ const ManageDevelopmentProposal = () => {
           </p>
         </div>
 
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-[768px] lg:w-full">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
               <div className="overlfow-hidden">
@@ -190,19 +153,13 @@ const ManageDevelopmentProposal = () => {
                         scope="col"
                         className="text-xs font-medium text-white px-6 py-3 text-left uppercase"
                       >
-                        Action
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-xs font-medium text-white px-6 py-3 text-left uppercase"
-                      >
                         Delete
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    {developmentProposals &&
-                      developmentProposals.map((proposal) => (
+                    {myDevelopmentProposals &&
+                      myDevelopmentProposals.map((proposal) => (
                         <tr
                           key={proposal._id}
                           className="border-b font-primary text-sm "
@@ -275,29 +232,6 @@ const ManageDevelopmentProposal = () => {
                             )}
                           </td>
 
-                          {/* action */}
-                          <td className="text-sm px-6 py-4 whitespace-nowrap">
-                            {proposal.isAccepted ? (
-                              <button
-                                className="bg-red-600 px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300"
-                                onClick={() =>
-                                  handleChangeStatus(proposal._id, false, true)
-                                }
-                              >
-                                Reject
-                              </button>
-                            ) : (
-                              <button
-                                className="bg-green-500  px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300"
-                                onClick={() =>
-                                  handleChangeStatus(proposal._id, true, false)
-                                }
-                              >
-                                Accept
-                              </button>
-                            )}
-                          </td>
-
                           {/* delete */}
                           <td className="text-sm px-6 py-4 whitespace-nowrap">
                             <FaTrashAlt
@@ -321,4 +255,4 @@ const ManageDevelopmentProposal = () => {
   );
 };
 
-export default ManageDevelopmentProposal;
+export default MyDevelopmentProposals;

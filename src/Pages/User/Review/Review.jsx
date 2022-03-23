@@ -1,63 +1,91 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import axios from '../../../api/axios';
-import useFirebase from '../../../hooks/useFirebase';
 import MyReview from './MyReview/MyReview';
 
 const Review = () => {
-  const { user } = useFirebase();
+  const user = useSelector((state) => state.user.user);
+  const [review, setReview] = useState([]);
+
   const {
     register,
     formState: { errors },
     reset,
     handleSubmit,
-    trigger,
   } = useForm();
 
   const handleAddReview = (data) => {
+    data.name = user?.name;
     data.email = user?.email;
-    const response = axios.post('/userReview/addReview', data)
-    .then(response=>console.log(response.data))
-    
+    axios.post('/userReview/addReview', data).then((response) => {
+      if (response.data.message) {
+        Swal.fire({
+          icon: 'info',
+          title: response.data.message,
+          confirmButtonText: 'Okay',
+        });
+        return;
+      }
+      if (response.data.email) {
+        axios
+          .get(`/userReview/singleReview/${user?.email}`)
+          .then((response) => {
+            setReview(response.data);
+          });
 
-    reset();
-    console.log(data);
-    Swal.fire({
-      icon: 'success',
-      title: 'Your Review is Successfully Save',
-      showConfirmButton: false,
-      timer: 1500,
+        Swal.fire({
+          icon: 'success',
+          title: 'Your Review is Successfully Save',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        reset();
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Something went wrong',
+          confirmButtonText: 'Try again',
+        });
+      }
     });
   };
 
   return (
-    <div
-      className="bg-cover h-[100%]  w-[100%]bg-no-repeat md:pb-10 "
-      style={{
-        backgroundImage: `url(https://st2.depositphotos.com/3467927/6010/i/600/depositphotos_60107233-stock-photo-businessman-pushing-button-five-star.jpg)`,
-      }}
-    >
+    <div>
       <div className=" pb-10 pt-14 md:pt-24  dark:dark-card-bg  rounded-2xl">
         {/* add Review form */}
         <div className="w-full">
-          <h1 className=" text-center pt-12  text-4xl md:text-5xl text-white ">
-            Add Review
+          <h1 className="md:text-5xl text-xl text-center pt-3 md:py-4 text-primary font-bolder">
+            Give your review about us
           </h1>
           <form
             className=" space-y-6 w-full md:w-1/2 mx-auto mt-10"
             onSubmit={handleSubmit(handleAddReview)}
           >
+            {/* name */}
+            <input
+              className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
+              {...register('name', {
+                value: user?.name,
+              })}
+              defaultValue={user?.name}
+              disabled
+            />
+
             {/* email */}
             <input
               className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-              {...register('name')}
-              placeholder="Name"
-              defaultValue={user?.displayName}
-              required
+              {...register('email', {
+                value: user?.email,
+              })}
+              defaultValue={user?.email}
+              disabled
             />
-            <input
-              className="px-7 py-10 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
+
+            <textarea
+              className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
               {...register('description', {
                 required: 'Description is Required',
                 minLength: {
@@ -70,9 +98,6 @@ const Review = () => {
                 },
               })}
               placeholder="Description"
-              onKeyUp={() => {
-                trigger('description');
-              }}
             />
             {errors.description && (
               <small className="text-danger">
@@ -81,20 +106,7 @@ const Review = () => {
             )}
 
             <input
-              className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-              {...register('image', { required: 'Image is Required' })}
-              onKeyUp={() => {
-                trigger('image');
-              }}
-              placeholder="Image URL"
-              required
-            />
-            {errors.image && (
-              <small className="text-danger">{errors.image.message}</small>
-            )}
-
-            <input
-              className="px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
+              className="px-7 py-4 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
               {...register('rating', {
                 required: 'Rating is Required',
                 min: {
@@ -110,9 +122,6 @@ const Review = () => {
                   message: 'Only numbers are allowed',
                 },
               })}
-              onKeyUp={() => {
-                trigger('rating');
-              }}
               placeholder="Rating in between one to five"
               required
             />
@@ -122,7 +131,7 @@ const Review = () => {
 
             {/* submit button */}
             <input
-              className="bg-primary hover:bg-opacity-80 px-20 py-6 rounded-lg text-xl  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
+              className="bg-primary hover:bg-opacity-80 px-20 py-4 rounded-lg text-xl  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
               type="submit"
               value="Submit Review"
             />
@@ -131,9 +140,10 @@ const Review = () => {
 
         {/* My Review */}
       </div>
-      <div className=" py-10 md:mt-10">
+
+      <div className="py-10 md:mt-10">
         <h1 className="text-center pb-4 text-white">My Review</h1>
-        <MyReview />
+        <MyReview review={review} setReview={setReview} />
       </div>
     </div>
   );

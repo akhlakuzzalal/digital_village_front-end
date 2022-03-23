@@ -19,16 +19,16 @@ const Banner = () => {
 
   return (
     <div
-      className="mb-10 md:mb-24 w-[100%]"
-      style={{
-        backgroundColor: '#f7f8fa',
-      }}
+      className="mb-10 md:mb-24 w-[100%] dark:bg-dark_primary bg-gray-300"
+      // style={{
+      //   backgroundColor: '#f7f8fa',
+      // }}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center pl-14 pr-2 py-0 md:p-10">
         {/* banner description */}
-        <div className=" flex flex-col  justify-center items-center place-self-center lg:mt-24 order-2 md:order-1 text-center lg:text-left p-2 md:p-5">
-          <h1 className=" text-2xl md:text-5xl my-0 md:my-3">Quality Care</h1>
-          <h3 className="text-lg md:text-2xl">
+        <div className=" flex flex-col  justify-center items-center place-self-center lg:mt-24 order-2 md:order-1 text-center lg:text-left p-5">
+          <h1 className=" text-4xl md:text-5xl my-0 md:my-3">Quality Care</h1>
+          <h3 className="justify-center items-center">
             <span style={{ color: '#10217d' }}>Your health, </span> our priority
           </h3>
           <p className=" my-2 text-justify md:text-left md:my-6">

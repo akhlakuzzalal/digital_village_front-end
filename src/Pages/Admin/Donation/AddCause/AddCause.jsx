@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 import FileUpload from '../../../../Components/FileUpload';
 import { addACuase } from '../../../../redux/slices/Donations/donationSlice';
@@ -8,15 +8,12 @@ import { addACuase } from '../../../../redux/slices/Donations/donationSlice';
 const AddCause = () => {
   const dispatch = useDispatch();
   const [file, setFile] = useState({});
-  const user = useSelector((state) => state.user.user);
-  const roles = useSelector((state) => state.user.roles);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-    trigger,
   } = useForm();
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -33,9 +30,6 @@ const AddCause = () => {
         ...data,
         raised: 0,
         date: new Date().toLocaleDateString(),
-        requesterName: user?.name,
-        requesterEmail: user?.email,
-        isVerified: roles.includes(5000),
       })
     );
 
@@ -50,7 +44,7 @@ const AddCause = () => {
   };
   // title image description category goal date author
   return (
-    <div className="justify-center items-center min-h-full space-y-10">
+    <div className="justify-center items-center min-h-full space-y-10 dark:bg-dark_primary">
       <h3 className="text-center space-y-2">Add a new Cause</h3>
       <form
         onSubmit={handleSubmit(handleAddCause)}

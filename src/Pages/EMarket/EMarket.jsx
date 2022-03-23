@@ -38,6 +38,7 @@ const EMarket = () => {
         currPage,
         size,
         search,
+        role: 2000,
       })
     );
   }, [currPage, pageCount, size, search]);

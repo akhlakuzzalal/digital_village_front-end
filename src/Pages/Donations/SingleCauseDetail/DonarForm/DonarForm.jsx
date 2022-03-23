@@ -22,7 +22,7 @@ const DonarForm = ({ cause }) => {
   };
 
   return (
-    <div>
+    <div className=''>
       <form onSubmit={handleSubmit(handleGiveDonation)} className="space-y-6">
         <select
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"

@@ -39,7 +39,7 @@ const SingleCauseDetail = () => {
                 alt={cause?.title}
               />
             </div>
-            <div className="bg-white flex flex-col justify-start p-6">
+            <div className="bg-white flex flex-col justify-start p-6 dark:bg-dark_primary">
               <a
                 href="/"
                 className="text-blue-700 text-sm font-bold uppercase pb-4"
@@ -48,20 +48,20 @@ const SingleCauseDetail = () => {
               </a>
               <a
                 href="/"
-                className=" text-sm md:text-3xl lg:text-4xl font-bold hover:text-gray-700 pb-4"
+                className=" text-sm md:text-3xl lg:text-4xl font-bold hover:text-gray-700 pb-4 dark:text-dark_text"
               >
                 {cause?.title}
               </a>
-              <p href="/" className="text-sm pb-3 text-gray-500">
+              <p href="/" className="text-sm pb-3 text-gray-500 dark:text-gray-300">
                 By{' '}
                 <a
                   href="/"
-                  className="font-semibold text-gray-800 hover:text-gray-800"
+                  className="font-semibold dark:text-dark_text text-gray-800 hover:text-gray-800"
                 >
                   Digital Village
                 </a>
                 ,{' '}
-                <span className="text-gray-500 text-sm">
+                <span className="text-gray-500 text-sm dark:text-gray-300">
                   Published on April 25th, 2022
                 </span>
               </p>
@@ -69,11 +69,12 @@ const SingleCauseDetail = () => {
               <div className="flex flex-col md:flex-row items-center justify-between pt-3 md:space-y-0 space-y-2">
                 <button className="w-100 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-r-indigo-500 border-l-indigo-500">
                   <FaHandsHelping className="text-2xl text-red-400" />
-                  RAISED {cause?.raised}
+                  <span className='dark:text-dark_text'> RAISED {cause?.raised}</span>
                 </button>
                 <button className="w-100 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-l-indigo-500 border-r-indigo-500">
-                  <FaDonate className="text-2xl text-red-400"></FaDonate>GOAL{' '}
-                  {cause?.goal}
+                  <FaDonate className="text-2xl text-red-400"></FaDonate>{' '}
+                  <span className='dark:text-dark_text'>GOAL {cause?.goal}</span>
+                  
                 </button>
               </div>
               <div className="flex flex-col space-y-1 my-3">
@@ -111,7 +112,7 @@ const SingleCauseDetail = () => {
             </div>
           </div>
 
-          <div className="bg-white flex flex-col justify-center items-center w-full shadow my-4 p-6">
+          <div className="bg-white flex flex-col justify-center items-center w-full shadow my-4 p-6  dark:bg-dark_primary">
             <div className="py-3">
               <p>
                 If you would like to contribute money, click on the{' '}

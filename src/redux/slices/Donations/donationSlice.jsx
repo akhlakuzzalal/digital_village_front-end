@@ -53,28 +53,28 @@ export const fetchAllRequest = createAsyncThunk(
   'cuases/fetchAllRequest',
   async () => {
     const response = await axios
-      .get('/request/all')
+      .get('/donationRequest/requestapply')
       .then((response) => response.data);
     return response;
   }
 );
 
 // add help apply
-export const addAHelpApply = createAsyncThunk(
-  'cuases/addAHelpApply',
+export const addAHelpRequest = createAsyncThunk(
+  'cuases/addAHelpRequest',
   async (formData) => {
     const response = await axios
-      .post('/helpapply/add', formData)
+      .post('/donationRequest/helprequest', formData)
       .then((response) => response.data);
     return response;
   }
 );
-// give the donation money that you want
+// request the donation money that you want
 export const getRequestGive = createAsyncThunk(
   'causes/getRequestGive',
   async ({ data, uId, applyId }) => {
     const response = await axios
-      .put('/getrequest/give', {
+      .put('/donationRequest/requestpay', {
         ...data,
         requesterId: uId,
         applyId,
@@ -89,7 +89,7 @@ export const getRequestGive = createAsyncThunk(
 export const deleteARequest = createAsyncThunk(
   'cuases/deleteARequest',
   async (id) => {
-    await axios.delete(`/requestapply/delete/?id=${id}`);
+    await axios.delete(`/donationRequest/deleterequest/?id=${id}`);
     return id;
   }
 );
@@ -98,11 +98,12 @@ const donationSlice = createSlice({
   name: 'causes',
   initialState: {
     causes: [],
+    applys: [],
   },
 
   reducers: {
     updateACause: (state, { payload }) => {
-      console.log('this is payload', payload);
+      // console.log('this is payload', payload);
       const updatedCause = payload;
       const AllCausesAfterRemovingThePrev = state.causes.filter(
         (cause) => cause._id !== payload._id
@@ -110,6 +111,17 @@ const donationSlice = createSlice({
       state.causes = [...AllCausesAfterRemovingThePrev, updatedCause];
     },
   },
+  // request apply update pay
+  // reducers: {
+  //   updateARequest: (state, { payload }) => {
+  //     // console.log('this is payload', payload);
+  //     const updatedrequest = payload;
+  //     const AllRequestAfterRemovingThePrev = state.applys.filter(
+  //       (apply) => apply._id !== payload._id
+  //     );
+  //     state.applys = [...AllRequestAfterRemovingThePrev, updatedrequest];
+  //   },
+  // },
   extraReducers: (builder) => {
     builder.addCase(fetchAllCauses.fulfilled, (state, { payload }) => {
       state.causes = payload;
@@ -131,9 +143,30 @@ const donationSlice = createSlice({
     builder.addCase(deleteACause.fulfilled, (state, { payload }) => {
       state.causes = state.causes.filter((cause) => cause._id !== payload);
     });
+          // help request apply
+    // builder.addCase(fetchAllRequest.fulfilled, (state, { payload }) => {
+    //   state.applys = payload;
+    // });
+    builder.addCase(addAHelpRequest.fulfilled, (state, { payload }) => {
+      state.applys.push(payload);
+    });
+    // builder.addCase(getRequestGive.fulfilled, (state, { payload }) => {
+    //   console.log(payload);
+    //   if (payload._id) {
+    //     const AllCausesAfterRemovingThePrev = state.applys.filter(
+    //       (apply) => apply._id !== payload._id
+    //     );
+    //     state.applys = [...AllCausesAfterRemovingThePrev, payload];
+    //   }
+    // });
+
+    // //delete
+    // builder.addCase(deleteARequest.fulfilled, (state, { payload }) => {
+    //   state.applys = state.applys.filter((apply) => apply._id !== payload);
+    // });
   },
 });
 
-export const { updateACause } = donationSlice.actions;
+export const { updateACause , updateARequest} = donationSlice.actions;
 
 export default donationSlice.reducer;

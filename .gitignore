@@ -6,6 +6,7 @@
 /.pnp
 .pnp.js
 src/tests
+mycss.css
 
 # testing
 /coverage

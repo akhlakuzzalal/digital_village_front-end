@@ -22,7 +22,7 @@ const BlogSideCard = ({ blog }) => {
       <div className="flex flex-col space-y-3">
         <p>{blog?.title.slice(0.2)}...</p>
         <button
-          className="text-primary text-lg hover:text-black transition-all duration-500 border-b-2 border-b-primary"
+          className="text-primary text-lg hover:text-black transition-all duration-500 border-b-2 border-b-primary hover:dark:text-dark_text"
           onClick={() => navigate(`/blogDetails/${blog?._id}`)}
         >
           Read More

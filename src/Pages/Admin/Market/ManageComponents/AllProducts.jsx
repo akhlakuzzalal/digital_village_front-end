@@ -1,31 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from '../../../../api/axios';
 import { setShowModal } from '../../../../redux/slices/eMarket/modalSlice';
+import {
+  fetchAllMedicines,
+  fetchAllProducts,
+} from '../../../../redux/slices/eMarket/productsSlice';
 import AddProducts from './AddProducts';
 import SingleProduct from './SingleProduct';
 import UpdateProduct from './UpdateProduct';
 
 const AllProducts = () => {
   const [sidebar, setSidebar] = useState();
-  const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
   // pagination
   const [search, setSearch] = useState('');
   const pageCount = useSelector((state) => state.market.products.pageCount);
   const currPage = useSelector((state) => state.market.products.currPage);
+  const products = useSelector((state) => state.market.products.products);
   const size = 8;
   useEffect(() => {
-    axios
-      .get(
-        `/eMarket/Products/?page=${currPage}&size=${size}&search=${search}&roles=${JSON.stringify(
-          [5000]
-        )}`
-      )
-      .then((res) => {
-        setProducts(res.data.products);
-        console.log(res.data);
-      });
+    dispatch(fetchAllProducts({ currPage, size, search, role: 5000 }));
+    dispatch(fetchAllMedicines());
   }, [pageCount, search, currPage]);
   // update Product
   const [selectedProduct, setSelectedProduct] = useState({});
@@ -33,7 +28,6 @@ const AllProducts = () => {
     setSelectedProduct(product);
     dispatch(setShowModal(true));
   };
-
   return (
     <div className="mx-2 md:mx-12 my-10">
       <h3 className="text-base text-center md:text-left md:text-2xl mb-4 md:ml-20">
