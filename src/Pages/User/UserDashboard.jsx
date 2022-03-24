@@ -59,7 +59,7 @@ const UserDashboard = () => {
       <NewSidebar links={links} />
 
       {/* contents */}
-      <div className="mt-[80px] w-[calc(100vw-54px)] ml-auto bg-red-500">
+      <div className="mt-[80px] w-[calc(100vw-54px)] ml-auto">
         {initial ? <Profile /> : <Outlet />}
       </div>
     </div>

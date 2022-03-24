@@ -4,7 +4,6 @@ import { FaBloggerB } from 'react-icons/fa';
 import { IoIosHome } from 'react-icons/io';
 import { RiDashboard2Line, RiVideoFill } from 'react-icons/ri';
 import { Outlet, useLocation } from 'react-router-dom';
-import Navbar from '../../../Components/Navbar';
 import NewSidebar from '../../../Components/Sidebar/NewSidebar';
 import StudentHome from './StudentHome/StudentHome';
 
@@ -41,24 +40,14 @@ const links = [
   },
 ];
 
-// Navbar dynamic
-const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Service', href: '/#service' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
-  { name: 'Admin', href: '/admin' },
-];
-
 const Student = () => {
   const location = useLocation();
 
   return (
     <div>
-      <Navbar navigation={navigation} />
       <div className="">
         <NewSidebar links={links} />
-        <div className="mt-[80px] w-[calc(100vw-50px)] px-3 ml-auto">
+        <div className="mt-[80px] w-[calc(100vw-54px)] px-3 ml-auto overflow-hidden">
           {location?.pathname === '/student' ||
           location?.pathname === '/student/' ? (
             <StudentHome />

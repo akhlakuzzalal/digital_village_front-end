@@ -88,7 +88,7 @@ const Profile = () => {
   }, [previewFile, uId]);
 
   return (
-    <div className={`w-full `}>
+    <div className="w-full">
       <div className="lg:flex justify-center gap-12">
         <div>
           {/* profile preview image */}

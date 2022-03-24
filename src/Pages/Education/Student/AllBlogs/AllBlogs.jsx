@@ -40,7 +40,7 @@ const AllBlogs = () => {
       <h3 className="text-center py-6 text-xl md:text-4xl lg:text-4xl mt-3">
         Available Blogs
       </h3>
-      <article className="grid grid-cols-1 lg:grid-cols-3 justify-evenly items-center gap-6 lg:mx-[100px]">
+      <article className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-6">
         {blogs.map((blog) => (
           <BlogCard key={blog._id} blog={blog} />
         ))}
