@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setPayModal } from '../../redux/slices/payModal/PayModalSlice';
 import Payment from './Payment';
 
-export default function PayModal({ price, id, returnPage }) {
+export default function PayModal({ price, id, returnPage, address = {} }) {
   const payModal = useSelector((state) => state.pay.payModal);
   const dispatch = useDispatch();
   return (
@@ -21,6 +21,7 @@ export default function PayModal({ price, id, returnPage }) {
                     price={price}
                     id={id}
                     returnPage={returnPage}
+                    address={address}
                   ></Payment>
                 </div>
                 {/* close button for modal */}
