@@ -106,7 +106,7 @@ const AddNews = () => {
 
           {/* submit button */}
           <input
-            className="btn bg-white text-black rounded-lg w-full  cursor-pointer hover:bg-opacity-80  transition-all duration-700 hover:bg-blue-600 hover:text-white"
+            className="bg-primary hover:bg-opacity-80 px-20 py-2 rounded-lg  sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
             type="submit"
             value="Publish Your News"
           />

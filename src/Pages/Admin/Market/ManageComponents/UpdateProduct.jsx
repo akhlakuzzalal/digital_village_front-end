@@ -30,7 +30,7 @@ const UpdateProduct = ({ product }) => {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none dark:bg-dark_primary">
                 {/*body*/}
                 <div className="justify-center items-center min-h-full  space-y-10 p-4">
                   <h3 className="text-center space-y-2">Update Your Product</h3>

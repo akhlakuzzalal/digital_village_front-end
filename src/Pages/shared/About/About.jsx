@@ -27,9 +27,9 @@ const About = () => {
       <div className=" lg:flex  mt-20 lg:mt-48 lg:mx-[100px] mx-5">
         <div className="lg:flex">
           <div>
-            <div className=" lg:w-[300px] w-[100%] border rounded py-8 mb-6">
+            <div className=" lg:w-[300px] w-[100%] border rounded py-8 mb-6 dark:bg-dark_primary">
               <img
-                className="ml-5 h-10 w-10   "
+                className="ml-5 h-10 w-10 dark:text-gray-200 "
                 src="http://cdn.onlinewebfonts.com/svg/img_142809.png"
                 alt=""
               />
@@ -49,7 +49,7 @@ const About = () => {
                 </Link>
               </div>
             </div>
-            <div className="w-[100%] lg:w-[300px] border rounded py-8">
+            <div className="w-[100%] lg:w-[300px] border rounded py-8 dark:bg-dark_primary">
               <img
                 className="ml-5 h-10 w-10   "
                 src="https://uxwing.com/wp-content/themes/uxwing/download/21-medical-science-lab/medical.png"
@@ -72,7 +72,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="lg:mt-[100px] lg:ml-10">
+          <div className="lg:mt-[100px] lg:ml-10 dark:bg-dark_primary">
             <div className=" lg:w-[300px] w-[100%] border rounded py-8 mb-6">
               <img
                 className="ml-5 h-10 w-10   "
@@ -95,7 +95,7 @@ const About = () => {
                 </Link>
               </div>
             </div>
-            <div className="w-[100%] lg:w-[300px] border rounded py-8">
+            <div className="w-[100%] lg:w-[300px] border rounded py-8 dark:bg-dark_primary">
               <img
                 className="ml-5 h-10 w-10   "
                 src="https://cdn-icons-png.flaticon.com/128/3349/3349234.png"
@@ -134,21 +134,21 @@ const About = () => {
           <ul>
             <li className="flex mb-2">
               <IoMdArrowDropdownCircle className="mt-1 " />
-              <p className="w-11/12 mt-2 pl-2">
+              <p className="w-11/12 mt-2 pl-2 dark:text-gray-300">
                 WE believe that Digital village is a great combination to solve
                 some of the problems of villagers.
               </p>
             </li>
             <li className="flex mb-2">
               <IoMdArrowDropdownCircle className="mt-1 " />
-              <p className=" w-11/12 mt-2 pl-2">
+              <p className=" w-11/12 mt-2 pl-2 dark:text-gray-300">
                 Easy steps to find opporyunities.Simple payment method and
                 comfortable services.
               </p>
             </li>
             <li className="flex mb-10">
               <IoMdArrowDropdownCircle className="mt-1 " />
-              <p className=" w-11/12 mt-2 pl-2">
+              <p className=" w-11/12 mt-2 pl-2 dark:text-gray-300">
                 Connecting a large number of people to create a community to
                 grow together.
               </p>
@@ -157,16 +157,16 @@ const About = () => {
 
           <Link
             to="/"
-            className="flex hover:bg-[blue] border border-[blue] border-5 hover:text-white rounded  py-2 md:py-3 px-20 "
+            className="flex hover:bg-[blue] border border-[blue] border-5 hover:text-white rounded  py-2 md:py-3 px-20 dark:text-dark_text dark:hover:bg-[blue] dark:bg-dark_primary"
           >
             View More <MdOutlineDoubleArrow className="mt-1" />
           </Link>
         </div>
       </div>
 
-      <div className="bg-gray-100 lg:py-32 lg:flex mt-6 md:mt-[50px] lg:px-[200px] lg:space-x-8 ">
+      <div className="bg-gray-100 lg:py-32 lg:flex mt-6 md:mt-[50px] lg:px-[200px] lg:space-x-8 dark:bg-dark_primary">
         <div
-          className=" lg:w-[300px] w-[100%]  border flex-col items-center justify-center py-8 "
+          className=" lg:w-[300px] w-[100%]  border flex-col items-center justify-center py-8 dark:text-gray-300 "
           style={{ background: 'rgb(151, 197, 252)' }}
         >
           <GiHumanPyramid className="h-[100px] w-52 text-center mx-auto" />
@@ -179,7 +179,7 @@ const About = () => {
           className=" lg:w-[300px]  w-[100%]   flex-col items-center justify-center py-8 border"
           style={{ background: 'rgb(151, 197, 252)' }}
         >
-          <GiTeacher className="h-[100px] w-52 text-center mx-auto   lg:ml-5" />
+          <GiTeacher className="dark:text-gray-300 h-[100px] w-52 text-center mx-auto   lg:ml-5" />
           <div className="text-center">
             <h1>30+</h1>
             <p>Teachers</p>
@@ -189,7 +189,7 @@ const About = () => {
           className=" lg:w-[300px]  w-[100%]  flex-col items-center justify-center py-8 border"
           style={{ background: 'rgb(151, 197, 252)' }}
         >
-          <IoMdMedical className="h-[100px] w-52 text-center mx-auto " />
+          <IoMdMedical className="dark:text-gray-300 h-[100px] w-52 text-center mx-auto " />
           <div className="text-center">
             <h1>30+</h1>
             <p>Doctors</p>
@@ -199,7 +199,7 @@ const About = () => {
           className=" lg:w-[300px] w-[100%]   flex-col items-center justify-center py-8 border"
           style={{ background: 'rgb(151, 197, 252)' }}
         >
-          <FaHandsHelping className="h-[100px] w-52 text-center mx-auto" />
+          <FaHandsHelping className="dark:text-gray-300 h-[100px] w-52 text-center mx-auto" />
           <div className="text-center">
             <h1>300+</h1>
             <p>Donors</p>
@@ -223,21 +223,21 @@ const About = () => {
 
           <ul>
             <li className="flex md:mb-2">
-              <IoMdArrowDropdownCircle className="mt-1 " />
+              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8 dark:text-gray-300" />
               <p className="mt-2 pl-2 w-11/12">
                 One platform for the large village population to be connected
                 and shine together.
               </p>
             </li>
             <li className="flex mb-2">
-              <IoMdArrowDropdownCircle className="mt-1 " />
+              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8 dark:text-gray-300" />
               <p className="mt-2 pl-2 w-11/12">
                 We are trying to modern technologies to make life easier and
                 solve village proplems
               </p>
             </li>
             <li className="flex mb-10">
-              <IoMdArrowDropdownCircle className="mt-1 " />
+              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8 dark:text-gray-300" />
               <p className="mt-2 pl-2 w-11/12">
                 Digital village is on the way to complete our mission of
                 transforming an analog village into digital one.
