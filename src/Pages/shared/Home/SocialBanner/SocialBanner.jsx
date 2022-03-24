@@ -28,7 +28,7 @@ const SocialBanner = () => {
           }}
         >
           {/* banner description */}
-          <div className="w-full mx-auto lg:mx-0 place-self-center mt-6 lg:mt-52 order-1 text-center lg:text-left lg:ml-80"
+          <div className="w-full mx-auto lg:mx-0 place-self-center mt-6 lg:mt-48 order-1 text-center lg:text-left lg:ml-80"
           >
             <h1 className='text-xl md:text-2xl dark:text-gray-100'>Digital Village Social Media</h1>
             <p className="pb-3 w-5/6 md:w-4/6  mx-auto lg:mx-0 text-lg md:text-xl text-center md:text-left font-extralight mt-3 text-gray-600 dark:text-gray-300">
