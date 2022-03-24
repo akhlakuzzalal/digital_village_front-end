@@ -1,6 +1,10 @@
+import emailjs from '@emailjs/browser';
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { HiLightBulb } from 'react-icons/hi';
 import { ImCheckmark } from 'react-icons/im';
+import { useSelector } from 'react-redux';
+import swal from 'sweetalert';
 import mediBanner from './../../../assets/medical/mediBanner.png';
 
 const datas = [
@@ -44,7 +48,37 @@ const datas = [
 ];
 
 const Services = () => {
+  const user = useSelector((state) => state.user.user);
+  const email = user.email;
+  const name = user.name;
   const [active, setActive] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+  const sendEmail = (formData) => {
+    console.log(formData);
+
+    emailjs
+      .send(
+        'service_nbv08xi',
+        'template_qw32pvu',
+        formData,
+        'user_NT0NiFlR59zCf04Pr6LZF'
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    swal('Successfully!', 'Your message is sent successfully!', 'success');
+    reset();
+  };
   return (
     <div>
       <div className=" grid grid-cols-1 md:grid-cols-2 justify-center my-10 items-center pl-10 pr-0 md:pr-4">
@@ -263,61 +297,70 @@ const Services = () => {
             </div>
           </section>
         </div>
-        <div className=" flex justify-center md:px-8 ">
-          <form class=" pl-10 md:0">
-            <p class="text-center pb-4 text-base  font-bolder text-gray-600">
-              We are here to hear from you
-            </p>
-            <div class="flex flex-wrap -mx-3 mb-2">
-              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <input
-                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                  id="grid-first-name"
-                  type="text"
-                  placeholder="First Name"
-                />
-              </div>
-              <div class="w-full md:w-1/2 px-3">
-                <input
-                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  id="grid-last-name"
-                  type="text"
-                  placeholder="Last Name"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap -mx-3 mb-2">
-              <div class="w-full px-3">
-                <input
-                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  id="email"
-                  type="email"
-                  placeholder="Your Email"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap -mx-3 mb-2">
-              <div class="w-full px-3">
+        <div className="  ">
+          <p class="text-center  text-base  font-bolder text-gray-600">
+            We are here to hear from you
+          </p>
+          <div className=" flex justify-center md:px-8 ">
+            <form
+              className=" space-y-6 mx-10 mt-10"
+              onSubmit={handleSubmit(sendEmail)}
+            >
+              <input
+                className=" w-full  bg-gray-100 px-5 outline-none border-2 py-5 focus:border-primary  rounded mb-5 lg:mb-0"
+                {...register('name', { required: 'Name is Required' })}
+                value={name}
+              />
+              {errors.name && (
+                <small className="text-danger">{errors.name.message}</small>
+              )}
+
+              <input
+                className=" w-full mb-5 lg:mb-0 outline-none border-2 bg-gray-100 focus:border-primary px-5 rounded py-5 "
+                type="email"
+                {...register('email', {
+                  required: 'Email is Required',
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: 'Invalid email address',
+                  },
+                })}
+                value={email}
+              />
+              {errors.email && (
+                <small className="text-danger">{errors.email.message}</small>
+              )}
+
+              <div className="col-span-2">
                 <textarea
-                  class=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none"
-                  id="message"
-                  placeholder="Your Message"
+                  className=" w-full bg-gray-100 py-8 px-5 outline-none border-2 focus:border-primary"
+                  {...register('message', {
+                    required: 'Message is Required',
+                    minLength: {
+                      value: 10,
+                      message: 'Minimum Required length is 10',
+                    },
+                    maxLength: {
+                      value: 50,
+                      message: 'Maximum allowed length is 50 ',
+                    },
+                  })}
+                  placeholder="Write your message"
                 ></textarea>
+                {errors.message && (
+                  <small className="text-danger">
+                    {errors.message.message}
+                  </small>
+                )}
               </div>
-            </div>
-            <div class="flex justify-center items-center">
-              <div class="md:w-1/3">
-                <button
-                  class="shadow focus:shadow-outline focus:outline-none  text-white font-bold py-3 px-5 md:px-3 rounded-lg text-md md:text-lg"
-                  type="button"
-                  style={{ backgroundColor: '#10217d' }}
-                >
-                  Send Message
-                </button>
-              </div>
-              <div class="md:w-2/3"></div>
-            </div>
-          </form>
+
+              <input
+                className="bg-blue-900  px-6 md:w-2/6   py-2 text-white mx-auto lg:ml-0 rounded-md"
+                type="submit"
+                value="Send"
+              />
+            </form>
+          </div>
         </div>
       </div>
     </div>
