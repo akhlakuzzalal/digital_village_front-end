@@ -19,9 +19,9 @@ const NewsCard = ({ n }) => {
       <div className="space-y-4 p-6">
           <div>
           <p className="text-gray-600 flex items-center space-x-2">
-          <ImCalendar className="text-primary" /> <span>{n.date}</span>
+          <ImCalendar className="text-primary" /> <span>{n.publishDate}</span>
           <h5 className="text-blue-600 font-bold ml-5">
-            Time: <span className="text-red-600">{n.time}</span>
+            Time: <span className="text-red-600">{n.publishTime}</span>
           </h5>
         </p>
         <h3 className="text-xl ">{n.title.slice(0, 43)}...</h3>

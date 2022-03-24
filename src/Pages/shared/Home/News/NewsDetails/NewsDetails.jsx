@@ -31,6 +31,7 @@ const NewsDetails = () => {
       }
     });
   }, [id]);
+  console.log(news);
 
   const result = news.filter((data) => data?._id === id);
 
@@ -44,19 +45,19 @@ const NewsDetails = () => {
           <a href="/#">
             <img
               className="rounded-t-lg w-full mx-auto"
-              src={`${BASE_URI}/${result?.bannerImg?.path}`} alt={result?.title}            />
-          </a>
+              src={`${BASE_URI}/${result[0]?.bannerImg?.path}`}
+              alt={result[0]?.title}/>          </a>
           <div className=" border-b-4 border-black pb-24">
             <p className=" mt-5">
               Publish Date:
               <span className="text-red-600 mr-5 md:mr-5">
                 {' '}
-                {result[0]?.date}
+                {result[0]?.publishDate}
               </span>
               <span>
                 {' '}
                 Publish Time:
-                <span className="text-red-600"> {result[0]?.time}</span>
+                <span className="text-red-600"> {result[0]?.publishTime}</span>
               </span>
             </p>
 
