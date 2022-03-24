@@ -94,7 +94,7 @@ const UserAppointment = ({ appointment, date }) => {
         </div>
       ) : (
         <div>
-          <h3 className="text-gray-400 text-center text-lg md:text-xl pl-5 md:pl-0">
+          <h3 className="text-gray-400 text-center text-sm md:text-xl pl-5 md:pl-0">
             You have no appointment on {selectedDate}
           </h3>
         </div>

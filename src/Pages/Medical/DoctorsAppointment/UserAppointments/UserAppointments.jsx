@@ -26,7 +26,7 @@ const UserAppointments = () => {
       <h3 className="text-center  text-lg md:text-3xl text-blue-900 my-10">
         Your appointments
       </h3>
-      <div className="flex flex-col items-center pl-5 md:pl-0  md:flex-row md:justify-center items-center ">
+      <div className="flex flex-col items-center pl-5 md:pl-0  md:flex-row md:justify-center  ">
         <div className="flex flex-col  md:flex-row md:justify-center md:items-center w-1/2 ">
           <Calender onChange={onChange} />
         </div>

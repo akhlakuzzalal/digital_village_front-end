@@ -79,7 +79,7 @@ const Appointment = (props) => {
           <p className=" text-sm md:text-lg ">Cost : {price} </p>
           <Link
             to="#"
-            class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-black rounded-lg my-2 "
+            class="inline-flex items-center p-2 text-sm font-medium text-center text-white bg-black rounded-lg my-2 "
             style={{
               backgroundColor: '#10217d',
               color: 'white',
