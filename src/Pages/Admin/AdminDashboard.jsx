@@ -93,13 +93,14 @@ const navigation = [
   { name: 'Service', href: '/#service' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
+  { name: 'Social', href: '/social' },
 ];
 
 const AdminDashboard = () => {
   return (
     <div>
       <Navbar navigation={navigation} />
-      <div className="">
+      <div>
         <NewSidebar links={links} />
         <div className={`mt-[80px] ml-[70px] w-full`}>
           <Outlet />

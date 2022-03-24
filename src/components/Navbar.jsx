@@ -69,7 +69,8 @@ const Navbar = ({ navigation }) => {
   const location = useLocation();
   const showFixedHeader =
     location.pathname.indexOf('admin') !== -1 ||
-    location.pathname.indexOf('userdashboard') !== -1;
+    location.pathname.indexOf('userdashboard') !== -1 ||
+    location.pathname.indexOf('teacher') !== -1;
 
   // log out
   const handleLogout = async () => {

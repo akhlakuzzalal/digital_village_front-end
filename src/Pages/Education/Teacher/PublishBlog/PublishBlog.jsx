@@ -62,7 +62,7 @@ const PublishBlog = () => {
       </h1>
       <form
         onSubmit={handleSubmit(handlePublishBlogs)}
-        className="space-y-6 mx-auto pl-10 md:pl-0"
+        className="space-y-6 mx-auto md:pl-0"
       >
         <div className="gap-4 items-center justify-evenly">
           <div className="space-y-6">
