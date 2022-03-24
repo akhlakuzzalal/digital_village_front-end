@@ -14,7 +14,6 @@ const PublishVideo = () => {
   const {
     register,
     handleSubmit,
-    trigger,
     reset,
     formState: { errors },
   } = useForm();
@@ -61,83 +60,91 @@ const PublishVideo = () => {
   };
 
   return (
-    <div className="flex flex-col mb-10 items-center justify-center space-y-6 pl-16 md:pl-0 pr-4 md:pr-0 mx-auto min-h-[100vh]">
+    <div className="flex flex-col mb-10 items-center justify-center space-y-6 mx-auto min-h-[100vh]">
       <h1 className="text-center  text-xl md:text-6xl lg:text-6xl pt-4 md:py-8">
         Publish your video now
       </h1>
-      <form
-        onSubmit={handleSubmit(handlePublishVideo)}
-        className="space-y-6 flex flex-col w-full md:w-[500px]"
-      >
-        {/* title for your video */}
-        <input
-          className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('title', { required: 'Title is Required' })}
-          onKeyUp={() => {
-            trigger('title');
-          }}
-          placeholder="Title for your video"
-        />
-        {errors.title && (
-          <small className="text-danger">{errors.title.message}</small>
-        )}
 
-        {/* file upload */}
-        <div>
-          <FileUpload onDrop={onDrop} file={file} message="Upload Your video" />
+      <div className="lg:flex w-full items-center justify-center mx-auto">
+        <form
+          onSubmit={handleSubmit(handlePublishVideo)}
+          className="space-y-6 w-full md:w-[500px] lg:w-[700px] mx-auto px-3"
+        >
+          {/* title for your video */}
+          <div>
+            <input
+              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('title', { required: 'Title is Required' })}
+              placeholder="Title for your video"
+            />
+            {errors.title && (
+              <small className="text-danger">{errors.title.message}</small>
+            )}
+          </div>
+
+          {/* file upload */}
+          <div>
+            <FileUpload
+              onDrop={onDrop}
+              file={file}
+              message="Upload Your video"
+            />
+          </div>
+
+          {/* description of your video */}
+          <div>
+            <textarea
+              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('about', {
+                required: 'about is Required',
+                minLength: {
+                  value: 50,
+                  message: 'Minimum Required length is 50',
+                },
+                maxLength: {
+                  value: 100,
+                  message: 'Maximum allowed length is 100',
+                },
+              })}
+              placeholder="Write a description within 50 words"
+            ></textarea>
+            {errors.desc && (
+              <small className="text-danger">{errors.desc.message}</small>
+            )}
+          </div>
+
+          {/* tags */}
+          <div>
+            <input
+              type="text"
+              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('tags', { required: 'Tags is Required' })}
+              placeholder="Add tags with space seperated"
+            />
+            {errors.tags && (
+              <small className="text-danger">{errors.tags.message}</small>
+            )}
+          </div>
+
+          {/* submit button */}
+          <input
+            className="bg-primary text-base hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
+            type="submit"
+            value="Publish"
+          />
+        </form>
+
+        {/* video publishing lottie */}
+        <div className="hidden lg:block w-full pointer-events-none lg:-mr-32">
+          <div className="w-fit mx-auto">
+            <Lottie
+              options={defaultOptions}
+              isClickToPauseDisabled={true}
+              width={isDesktop ? 550 : isTablet ? 400 : 200}
+            />
+          </div>
         </div>
-
-        {/* description of your video */}
-        <textarea
-          className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('about', {
-            required: 'about is Required',
-            minLength: {
-              value: 50,
-              message: 'Minimum Required length is 50',
-            },
-            maxLength: {
-              value: 100,
-              message: 'Maximum allowed length is 100',
-            },
-          })}
-          placeholder="Write a description within 50 words"
-          onKeyUp={() => {
-            trigger('about');
-          }}
-        ></textarea>
-        {errors.desc && (
-          <small className="text-danger">{errors.desc.message}</small>
-        )}
-
-        {/* tags */}
-        <input
-          type="text"
-          className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('tags', { required: 'Tags is Required' })}
-          onKeyUp={() => {
-            trigger('tags');
-          }}
-          placeholder="Add tags with space seperated"
-        />
-        {errors.tags && (
-          <small className="text-danger">{errors.tags.message}</small>
-        )}
-
-        {/* submit button */}
-        <input
-          className="bg-primary text-base hover:bg-opacity-80 px-4 md:px-20  py-3 rounded-lg sm:mb-20 w-full mx-auto mb-20 cursor-pointer text-white"
-          type="submit"
-          value="Publish"
-        />
-      </form>
-
-      <Lottie
-        options={defaultOptions}
-        isClickToPauseDisabled={true}
-        height={isDesktop ? 900 : isTablet ? 200 : 100}
-        width={isDesktop ? 600 : isTablet ? 200 : 100}
-      />
+      </div>
     </div>
   );
 };

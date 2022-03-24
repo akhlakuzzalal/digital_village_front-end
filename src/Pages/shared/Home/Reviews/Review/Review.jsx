@@ -19,7 +19,9 @@ const Review = ({ reviews }) => {
           <Rating rating={rating} />
         </div>
 
-        <p className="Neutral-500 md:heading_sm px-0 md:px-8">{description}.</p>
+        <p className="Neutral-500 md:heading_sm px-0 md:px-8">
+          {description && description.slice(0, 30)}.
+        </p>
         <p className="text-primary">- {name}</p>
       </div>
     </div>

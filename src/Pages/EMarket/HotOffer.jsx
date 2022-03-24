@@ -4,13 +4,13 @@ const HotOffer = () => {
   return (
     <div className=" lg:flex lg:my-40 lg:mx-20 mx-5">
       <div className="lg:px-20 lg:w-[50%] w-full space-y-8 mt-[100px]">
-        <h5 className="lg:text-6xl text-xl">Special fresh tomato </h5>
+        <h5 className="lg:text-6xl text-xl dark:text-dark_text">Special fresh tomato </h5>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
           architecto veritatis officia dolores iure voluptatibus nam blanditiis
           maiores perferendis rerum.
         </p>
-        <button className="bg-indigo-200 px-10 py-3">Add To Cart</button>
+        {/* <button className="bg-indigo-200 px-10 py-3">Add To Cart</button> */}
       </div>
       <div>
         {' '}

@@ -3,6 +3,7 @@ import AllCauses from './AllCauses/AllCauses';
 import TeamVolunteer from './DonateItems/TeamVolunteer';
 import DonationAbout from './DonationAbout/DonationAbout';
 import DonationBanner from './DonationBanner/DonationBanner';
+import AllEvents from './Events/AllEvents';
 
 const Donations = () => {
   return (
@@ -11,6 +12,7 @@ const Donations = () => {
       <AllCauses />
       <DonationAbout />
       <TeamVolunteer />
+      <AllEvents/>
     </>
   );
 };

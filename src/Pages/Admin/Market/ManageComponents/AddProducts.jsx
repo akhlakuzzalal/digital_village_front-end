@@ -18,7 +18,8 @@ const AddProducts = ({ sidebar, setSidebar }) => {
   };
   return (
     <div
-      className={`absolute w-3/4 md:w-2/4 top-[90px] rounded-xl bg-slate-400 right-1  ${
+      className={`absolute w-3/4 md:w-2/4 top-[90px] rounded-xl bg-slate-400 right-1 dark:bg-dark_primary
+      ${
         sidebar
           ? 'block md:translate-x-0'
           : 'hidden md:block md:translate-x-full'

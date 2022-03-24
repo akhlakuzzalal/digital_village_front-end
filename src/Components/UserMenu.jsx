@@ -9,12 +9,11 @@ import { clearTheNotificationSlice } from '../redux/slices/notification/notifica
 import Transition from './Transition';
 
 const UserMenu = () => {
-  const { logout } = useAuth();
   const roles = useSelector((state) => state.user.roles);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const { logout } = useAuth();
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
 
   const isTablet = useMediaQuery('(min-width: 775px)');
@@ -123,7 +122,7 @@ const UserMenu = () => {
                     className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
                     to="/admin"
                   >
-                    Admininstration
+                    Admin
                   </Link>
                 </li>
                 <li className="hover:bg-green-500">
@@ -148,16 +147,15 @@ const UserMenu = () => {
               </li>
             )}
             <li className="hover:bg-green-500">
-              <Link
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                to="/"
+              <div
+                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3 cursor-pointer"
                 onClick={() => {
                   setDropdownOpen(!dropdownOpen);
                   handleLogout();
                 }}
               >
                 Sign Out
-              </Link>
+              </div>
             </li>
           </ul>
         </div>

@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShowModal } from '../../../../redux/slices/eMarket/modalSlice';
-import {
-  fetchAllMedicines,
-  fetchAllProducts,
-} from '../../../../redux/slices/eMarket/productsSlice';
+import { fetchAdminProducts } from '../../../../redux/slices/eMarket/productsSlice';
 import AddProducts from './AddProducts';
 import SingleProduct from './SingleProduct';
 import UpdateProduct from './UpdateProduct';
@@ -13,15 +10,10 @@ const AllProducts = () => {
   const [sidebar, setSidebar] = useState();
   const dispatch = useDispatch();
   // pagination
-  const [search, setSearch] = useState('');
-  const pageCount = useSelector((state) => state.market.products.pageCount);
-  const currPage = useSelector((state) => state.market.products.currPage);
   const products = useSelector((state) => state.market.products.products);
-  const size = 8;
   useEffect(() => {
-    dispatch(fetchAllProducts({ currPage, size, search, role: 5000 }));
-    dispatch(fetchAllMedicines());
-  }, [pageCount, search, currPage]);
+    dispatch(fetchAdminProducts());
+  }, []);
   // update Product
   const [selectedProduct, setSelectedProduct] = useState({});
   const updateProduct = (product) => {

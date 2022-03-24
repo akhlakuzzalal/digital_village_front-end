@@ -8,7 +8,7 @@ const SingleProduct = ({ product, updateProduct }) => {
   const { name, img, price, _id } = product;
   const { deleteProduct } = useMarketAdminDashboard();
   return (
-    <div className="group relative max-w-sm rounded-xl overflow-hidden shadow-md hover:scale-105 duration-500 dark:bg-white">
+    <div className="group relative max-w-sm rounded-xl overflow-hidden shadow-md hover:scale-105 duration-500 dark:bg-dark_primary ">
       <div className="absolute invisible  top-2/4 left-2 group-hover:visible transition-all ease-in duration-100">
         <AiFillDelete
           onClick={() => deleteProduct(_id)}
@@ -30,7 +30,7 @@ const SingleProduct = ({ product, updateProduct }) => {
         <h6 className="text-yellow-500 dark:text-yellow-500 text-center">
           $ {price}
         </h6>
-        <div className="font-bold text-xl mb-2 text-center">{name}</div>
+        <div className="font-bold text-xl mb-2 text-center dark:text-dark_text">{name}</div>
       </div>
     </div>
   );

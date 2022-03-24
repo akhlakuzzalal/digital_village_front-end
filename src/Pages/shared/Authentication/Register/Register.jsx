@@ -111,12 +111,12 @@ const Register = () => {
 
   return (
     <div
-      className="flex items-center justify-center lg:h-[110vh] "
+      className="flex justify-center lg:h-[100vh] lg:my-20"
       style={{ minHeight: 'calc(100vh - 100px)' }}
     >
-      <div className="flex-1 px-4">
-        <div className="pt-24 md:mx-10 text-center lg:mx-48 space-y-4 mb-3">
-          <h3 className=" text-center ">Create an Account</h3>
+      <div className="flex-1 px-3 max-w-[500px] mx-auto">
+        <div className="pt-36 space-y-4 mb-3 pl-2 md:flex flex-col items-center">
+          <h3 className="capitalize">Welcome to digital village</h3>
           <p className="space-x-2">
             <span>Already Registered?</span>
             <Link to="/login">
@@ -127,16 +127,13 @@ const Register = () => {
           {/* google sign in button */}
           <button
             onClick={handleGoogleRegister}
-            className="btn bg-primary flex items-center text-sm rounded-lg mx-auto hover:bg-opacity-80 transition-all duration-300 w-full"
+            className="btn bg-primary flex items-center justify-center text-sm rounded-lg mx-auto hover:bg-opacity-80 transition-all duration-300 w-full space-x-2"
           >
-            <BsGoogle
-              className="h-8 w-8 hover:scale-125 mx-3"
-              aria-hidden="true"
-            />
+            <BsGoogle className="h-8 w-8 hover:scale-125" aria-hidden="true" />
             <p className="text-center">Sign Up With Google</p>
           </button>
 
-          <p>or</p>
+          <p className="text-center">or</p>
         </div>
 
         <form

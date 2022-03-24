@@ -43,7 +43,7 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
           <div>
             <h6>{user?.name}</h6>
             <p>
-              10:12 <span className="text-slate-600">11/12/2021 </span>
+              10:12 <span className="text-slate-600">11/03/2022 </span>
             </p>
           </div>
         </div>
@@ -126,7 +126,7 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
         )}
       </div>
       {/* post Footer */}
-      <div className="my-6 flex justify-between items-center">
+      <div className="my-6 justify-between items-center hidden">
         {/* Avatars of liked People */}
         <div className="hidden md:flex items-center">
           <div class="-space-x-4">

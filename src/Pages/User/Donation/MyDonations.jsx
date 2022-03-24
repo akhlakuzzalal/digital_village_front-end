@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaDonate, FaFilePdf, FaHandsHelping } from 'react-icons/fa';
+import { FaFilePdf} from 'react-icons/fa';
 import { FcApproval } from 'react-icons/fc';
 
 const MyDonations = () => {
@@ -23,8 +23,8 @@ const MyDonations = () => {
       <p className="text-center text-gray-600 font-normal text-sm lg:text-lg  mx-auto ml-12">
         You can donate the available from here and Get Help Request
       </p>
-      <div className="col-span-3 flex flex-col space-y-2 ml-14 lg:ml-10 md:ml-20 py-4">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 bg-white rounded-lg shadow-xl p-3 box-border">
+      <div className="col-span-3 flex flex-col space-y-2 ml-10 lg:ml-10 md:ml-20 py-4">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 bg-white rounded-lg shadow-xl p-3 box-border dark:bg-dark_primary">
           {/* {/_ image _/} */}
           <div className="col-span-1">
             <img
@@ -36,11 +36,11 @@ const MyDonations = () => {
 
           {/* {/_ details _/} */}
           <div className="col-span-2">
-            <p className="text-gray-500 text-sm">Category:Donation</p>
-            <h1 className="text-gray-700 text-sm md:text-lg lg:text-2xl font-primary">
+            <p className="text-gray-500 text-sm break-all">Category:Donation</p>
+            <h1 className="text-gray-700 text-sm md:text-lg lg:text-2xl font-primary break-all">
               Need Help For Treatment
             </h1>
-            <p className="text-gray-500 text-sm">Email: zaman@amin.com</p>
+            <p className="text-gray-500 text-sm break-all">Email: zaman@amin.com</p>
             <p className="text-gray-500 text-sm">date: Mon Mar 14 2022</p>
 
             {/* {/_ others info _/} */}
@@ -53,20 +53,10 @@ const MyDonations = () => {
                   </span>
                 </div>
               </div>
-              {/* {/_ duration _/} */}
+              {/* {/_ message _/} */}
               <div className="flex items-center space-x-3">
-                <FaHandsHelping className="text-red-500 text-xl" />
                 <div className="flex flex-col">
-                  <p className="text-sm font-primary text-gray-700">Raised</p>
-                  <span className="text-sm text-gray-500">5000 $</span>
-                </div>
-              </div>
-              {/* {/_ group _/} */}
-              <div className="flex items-center space-x-3">
-                <FaDonate className="text-red-500 text-2xl" />
-                <div className="flex flex-col">
-                  <p className="text-sm font-primary text-gray-700">Goal</p>
-                  <span className="text-sm text-gray-500">8000 $</span>
+                  <p className="text-sm font-primary text-gray-700 break-all">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, pariatur itaque consectetur laudantium quisquam et consequuntur. </p>
                 </div>
               </div>
               {/* {/_ price _/} */}
@@ -86,7 +76,7 @@ const MyDonations = () => {
             </button>
           </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 bg-white rounded-lg shadow-xl p-3 box-border">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 bg-white rounded-lg shadow-xl p-3 box-border dark:bg-dark_primary">
           {/* {/_ image _/} */}
           <div className="col-span-1">
             <img
@@ -98,11 +88,11 @@ const MyDonations = () => {
 
           {/* {/_ details _/} */}
           <div className="col-span-2">
-            <p className="text-gray-500 text-sm">Category:Donation</p>
-            <h1 className="text-gray-700 text-sm md:text-lg lg:text-2xl font-primary">
+            <p className="text-gray-500 text-sm break-all">Category:Donation</p>
+            <h1 className="text-gray-700 text-sm md:text-lg lg:text-2xl font-primary break-all">
               Need Help For Treatment
             </h1>
-            <p className="text-gray-500 text-sm">Email: zaman@amin.com</p>
+            <p className="text-gray-500 text-sm break-all">Email: zaman@amin.com</p>
             <p className="text-gray-500 text-sm">date: Mon Mar 14 2022</p>
 
             {/* {/_ others info _/} */}
@@ -115,20 +105,10 @@ const MyDonations = () => {
                   </span>
                 </div>
               </div>
-              {/* {/_ duration _/} */}
+              {/* {/_ message _/} */}
               <div className="flex items-center space-x-3">
-                <FaHandsHelping className="text-red-500 text-xl" />
                 <div className="flex flex-col">
-                  <p className="text-sm font-primary text-gray-700">Raised</p>
-                  <span className="text-sm text-gray-500">5000 $</span>
-                </div>
-              </div>
-              {/* {/_ group _/} */}
-              <div className="flex items-center space-x-3">
-                <FaDonate className="text-red-500 text-2xl" />
-                <div className="flex flex-col">
-                  <p className="text-sm font-primary text-gray-700">Goal</p>
-                  <span className="text-sm text-gray-500">8000 $</span>
+                  <p className="text-sm font-primary text-gray-700 break-all">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, pariatur itaque consectetur laudantium quisquam et consequuntur. </p>
                 </div>
               </div>
               {/* {/_ price _/} */}
@@ -148,7 +128,7 @@ const MyDonations = () => {
             </button>
           </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 bg-white rounded-lg shadow-xl p-3 box-border">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 bg-white rounded-lg shadow-xl p-3 box-border dark:bg-dark_primary">
           {/* {/_ image _/} */}
           <div className="col-span-1">
             <img
@@ -160,11 +140,11 @@ const MyDonations = () => {
 
           {/* {/_ details _/} */}
           <div className="col-span-2">
-            <p className="text-gray-500 text-sm">Category:Donation</p>
-            <h1 className="text-gray-700 text-sm md:text-lg lg:text-2xl font-primary">
+            <p className="text-gray-500 text-sm break-all">Category:Donation</p>
+            <h1 className="text-gray-700 text-sm md:text-lg lg:text-2xl font-primary break-all">
               Need Help For Treatment
             </h1>
-            <p className="text-gray-500 text-sm">Email: zaman@amin.com</p>
+            <p className="text-gray-500 text-sm break-all">Email: zaman@amin.com</p>
             <p className="text-gray-500 text-sm">date: Mon Mar 14 2022</p>
 
             {/* {/_ others info _/} */}
@@ -177,20 +157,10 @@ const MyDonations = () => {
                   </span>
                 </div>
               </div>
-              {/* {/_ duration _/} */}
+              {/* {/_ message _/} */}
               <div className="flex items-center space-x-3">
-                <FaHandsHelping className="text-red-500 text-xl" />
                 <div className="flex flex-col">
-                  <p className="text-sm font-primary text-gray-700">Raised</p>
-                  <span className="text-sm text-gray-500">5000 $</span>
-                </div>
-              </div>
-              {/* {/_ group _/} */}
-              <div className="flex items-center space-x-3">
-                <FaDonate className="text-red-500 text-2xl" />
-                <div className="flex flex-col">
-                  <p className="text-sm font-primary text-gray-700">Goal</p>
-                  <span className="text-sm text-gray-500">8000 $</span>
+                  <p className="text-sm font-primary text-gray-700 break-all">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, pariatur itaque consectetur laudantium quisquam et consequuntur. </p>
                 </div>
               </div>
               {/* {/_ price _/} */}
