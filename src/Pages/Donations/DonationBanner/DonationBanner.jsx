@@ -30,15 +30,15 @@ const DonationBanner = () => {
   } = useForm();
 
   const helpRequestApply =  async (data) => {
-    // if (data.category === 'choose one') data.category = 'others';
+    if (data.category === 'choose one') data.category = 'others';
     const formData = new FormData();
     formData.append(
       'request',
       JSON.stringify({
         ...data,
-        date: new Date().toLocaleDateString(),
         requesterName: user?.name,
         requesterEmail: user?.email,
+        date: new Date().toLocaleDateString(),
         pay: 'pending',
       })
     );

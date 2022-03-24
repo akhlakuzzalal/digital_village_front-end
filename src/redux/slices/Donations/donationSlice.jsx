@@ -59,7 +59,7 @@ export const fetchAllRequest = createAsyncThunk(
   }
 );
 
-// add help apply
+// add help request apply
 export const addAHelpRequest = createAsyncThunk(
   'cuases/addAHelpRequest',
   async (formData) => {

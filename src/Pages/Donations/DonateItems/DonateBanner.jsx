@@ -19,6 +19,7 @@ const DonateBanner = () => {
   };
   const user = useSelector ((state) => state.user.user);
   const [showModal, setShowModal] = React.useState(false);
+  
   const { register, handleSubmit,trigger,reset, 
     formState: { errors },} = useForm();
 
