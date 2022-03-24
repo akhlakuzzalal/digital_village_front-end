@@ -28,8 +28,9 @@ const StudentHome = () => {
   return (
     <div className="w-full space-y-10">
       <Banner />
+      <StudentFooter />
       {/* top categories */}
-      <div className="pl-14 space-y-10">
+      <div className="md:pl-14 space-y-10">
         <div>
           <h3 className="py-6  md:text-left text-xl lg:text-4xl">
             Top Categories <hr />
@@ -54,14 +55,14 @@ const StudentHome = () => {
           <h3 className="py-6  md:text-left">
             Top Videos <hr />
           </h3>
-          <div className="flex flex-wrap items-center gap-6">
+          <div className="flex flex-wrap items-center gap-6 mb-10">
             {videos.slice(0, 6).map((video) => (
               <VideoCard key={video._id} video={video} />
             ))}
           </div>
         </div>
 
-        <StudentFooter />
+      
       </div>
     </div>
   );
