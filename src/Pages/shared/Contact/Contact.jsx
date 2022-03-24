@@ -85,10 +85,10 @@ const Contact = () => {
             </div>
             <div className="flex flex-col justify-between mr-7 leading-normal py-10 ml-5  ">
               <p className="mb-3 font-semibold  text-gray-700 dark:text-gray-400">
-                10:00am to 6:00pm
+                24/7
               </p>
               <p className="mb-3 font-semibold text-red-600 dark:text-gray-400mb-3 ">
-                Sunday Closed
+                Always open
               </p>
             </div>
           </div>
@@ -103,10 +103,10 @@ const Contact = () => {
             </div>
             <div className="flex flex-col justify-between mr-7 leading-normal py-10 ml-5 ">
               <p className="mb-3 font-semibold  text-gray-700 dark:text-gray-400">
-                13005 Greenville Avenue
+                1300, kacabazar, Manik Avenue
               </p>
               <p className="mb-3 font-semibold text-red-600 dark:text-gray-400mb-3 ">
-                California, TX 70240
+                Visit us
               </p>
             </div>
           </div>
@@ -121,10 +121,10 @@ const Contact = () => {
             </div>
             <div className="flex flex-col justify-between mr-7 leading-normal py-10 ml-5 ">
               <p className="mb-3 font-semibold  text-gray-700 dark:text-gray-400">
-                +1 000999 0099
+                +880 1777777777
               </p>
               <p className="mb-3 font-semibold text-red-600 dark:text-gray-400mb-3 ">
-                info@themerange.net
+                Let's talk to hep you
               </p>
             </div>
           </div>
@@ -133,16 +133,17 @@ const Contact = () => {
             <div className=" rounded-full">
               <img
                 className="lg:mr-0 object-cover rounded-full h-20 w-20  my-5 mr-8 md:mr-0"
-                src="https://www.kindpng.com/picc/m/336-3369375_contact-flower-mound-electrician-today-phone-icon-png.png"
+                src="https://www.pngfind.com/pngs/m/542-5421481_com-mail-icon-vector-png-transparent-png.png"
+                title="Image from freepnglogos.com"
                 alt=""
               />
             </div>
             <div className="flex flex-col justify-between mr-7 leading-normal py-10 ml-5 ">
               <p className="mb-3 font-semibold  text-gray-700 dark:text-gray-400">
-                +1 000999 0099
+                info@digitalvillage.com
               </p>
               <p className="mb-3 font-semibold text-red-600 dark:text-gray-400mb-3 ">
-                info@themerange.net
+                Mail us
               </p>
             </div>
           </div>
@@ -174,10 +175,8 @@ const Contact = () => {
           Now Very Easy
         </h1>
         <h4 className=" mt-5 lg:px-[300px] container text-center px-3">
-          Our approach to SEO is uniquely built around what we know works…and
-          what we know doesn’t work. With over 200 verified factors in
-          playworks…and what we know doesn’t work. With over 200 verified
-          factors in play.
+          Our approach to help you in every single way we can. We are 24/7
+          available. Contact us for any query. We are here to listen you.
         </h4>
       </div>
 

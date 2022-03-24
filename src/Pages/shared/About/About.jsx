@@ -223,22 +223,22 @@ const About = () => {
 
           <ul>
             <li className="flex md:mb-2">
-              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
-              <p className="mt-2 pl-2">
+              <IoMdArrowDropdownCircle className="mt-1 " />
+              <p className="mt-2 pl-2 w-11/12">
                 One platform for the large village population to be connected
                 and shine together.
               </p>
             </li>
             <li className="flex mb-2">
-              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
-              <p className="mt-2 pl-2">
+              <IoMdArrowDropdownCircle className="mt-1 " />
+              <p className="mt-2 pl-2 w-11/12">
                 We are trying to modern technologies to make life easier and
                 solve village proplems
               </p>
             </li>
             <li className="flex mb-10">
-              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
-              <p className="mt-2 pl-2">
+              <IoMdArrowDropdownCircle className="mt-1 " />
+              <p className="mt-2 pl-2 w-11/12">
                 Digital village is on the way to complete our mission of
                 transforming an analog village into digital one.
               </p>
