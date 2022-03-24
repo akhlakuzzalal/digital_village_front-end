@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PayModal from '../../../../Components/Pay/PayModal';
 import { setPayModal } from '../../../../redux/slices/payModal/PayModalSlice';
 
 const UserAppointment = ({ appointment, date }) => {
+  const [payOption, setPayOption] = useState('pay');
   console.log(appointment);
   // console.log(date.toString());
 
   const dispatch = useDispatch();
   const selectedDate = new Date(date).toLocaleDateString();
-
+  const handlePayment = (data) => {
+    if (data._id) {
+      setPayOption('paid');
+    }
+  };
   return (
     <div className="my-5">
       {appointment?.length > 0 ? (
@@ -70,12 +75,12 @@ const UserAppointment = ({ appointment, date }) => {
                               onClick={() => dispatch(setPayModal(true))}
                               className="bg-blue-900 border-1 rounded-md text-white py-1 px-4"
                             >
-                              pay
+                              Pay
                             </button>
                           )}
                         </td>
                         <PayModal
-                          price={row.price}
+                          price={10}
                           id={row._id}
                           returnPage={'medical'}
                         />
@@ -89,7 +94,7 @@ const UserAppointment = ({ appointment, date }) => {
         </div>
       ) : (
         <div>
-          <h3 className="text-gray-400 text-xl">
+          <h3 className="text-gray-400 text-center text-lg md:text-xl pl-5 md:pl-0">
             You have no appointment on {selectedDate}
           </h3>
         </div>

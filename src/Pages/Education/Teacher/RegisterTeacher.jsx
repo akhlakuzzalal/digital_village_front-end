@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import Lottie from 'react-lottie';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
+import axios from '../../../api/axios';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import animationData from '../../../lotties/teacher-registration.json';
 const RegisterTeacher = () => {
@@ -14,19 +16,23 @@ const RegisterTeacher = () => {
     register,
     handleSubmit,
     formState: { errors },
-    trigger,
     reset,
   } = useForm();
 
   const handleTeacherRegistration = async (data) => {
-    const newTeacher = { ...data, isVerified: false };
-    // const response = await axios.post('/teacher/addTeacher', newTeacher);
-    // console.log(response?.data);
+    const response = await axios.post('/teacher/addTeacher', data);
 
-    navigate('/teacher');
-    // after getting response from the teacher give him a message that he need to wait for verification.
-
-    // also set the roles in redux store after verifying from admin dashboard
+    if (response?.data?.email) {
+      swal({
+        text: `You have successfully registered as a teahcer`,
+        icon: 'success',
+        confirm: 'Go and Explore',
+        closeOnClickOutside: false,
+      }).then(() => {
+        navigate('/teacher/publishBlog');
+        reset();
+      });
+    }
   };
   const isTablet = useMediaQuery('(min-width: 656px)');
   const isDesktop = useMediaQuery('(min-width: 900px)');
@@ -40,14 +46,14 @@ const RegisterTeacher = () => {
     },
   };
   return (
-    <div className=" min-h-[100vh] ">
-      <h3 className="text-center text-xl md:text-5xl  mt-36 pb-10  text-blue-800">
+    <div className="mt-[80px]">
+      <h3 className="text-center text-xl md:text-4xl pt-14 pb-4 text-blue-800">
         Please fill up the form to be a part of our mission
       </h3>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 ">
+      <div className="lg:flex items-center justify-center px-3 md:px-8 lg:px-12">
         <form
-          className="space-y-6 mx-auto md:px-10 my-auto"
+          className="space-y-6 w-full"
           onSubmit={handleSubmit(handleTeacherRegistration)}
         >
           {/* name */}
@@ -67,29 +73,29 @@ const RegisterTeacher = () => {
           />
 
           {/* highest qualification */}
-          <input
-            className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-            {...register('qualification', {
-              required: 'Qualification is Required',
-              pattern: {
-                value: /^[A-Za-z]+$/,
-                message:
-                  'Invalid! Qualification: HSC, BSC, MSC or something else ',
-              },
-            })}
-            onKeyUp={() => {
-              trigger('qualification');
-            }}
-            placeholder="Highest qualification: HSC, BSC, MSC or something else"
-          />
-          {errors.qualification && (
-            <small className="text-danger">
-              {errors.qualification.message}
-            </small>
-          )}
+          <div className="w-full">
+            <p className="p-2">Highest qualification</p>
+            <select
+              className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
+              {...register('qualification', {
+                required: 'this is required',
+              })}
+            >
+              <option value="HSC">HSC</option>
+              <option value="BSC">BSC</option>
+              <option value="MSC">MSC</option>
+            </select>
+
+            {errors.qualification && (
+              <small className="text-danger">
+                {errors.qualification.message}
+              </small>
+            )}
+          </div>
 
           {/* gpa */}
           <input
+            type="number"
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
             {...register('gpa', {
               required: 'GPA is Required',
@@ -101,16 +107,9 @@ const RegisterTeacher = () => {
                 value: 5,
                 message: 'Maximum allowed age is 5',
               },
-              pattern: {
-                value: /^[0-5._%+-]*$/,
-                message: 'Only numbers are allowed',
-              },
             })}
             placeholder="Acquired GPA"
             required
-            onKeyUp={() => {
-              trigger('gpa');
-            }}
           />
 
           {errors.gpa && (
@@ -127,15 +126,12 @@ const RegisterTeacher = () => {
                 message: 'Minimum Required length is 10',
               },
               maxLength: {
-                value: 50,
-                message: 'Maximum allowed length is 150 ',
+                value: 500,
+                message: 'Maximum allowed length is 500',
               },
             })}
             placeholder="Write about yourself"
             required
-            onKeyUp={() => {
-              trigger('about');
-            }}
           ></textarea>
           {errors.about && (
             <small className="text-danger">{errors.about.message}</small>
@@ -149,16 +145,16 @@ const RegisterTeacher = () => {
             value="Register as a Teacher"
           />
         </form>
-            <div className='md:-mt-64'>
+        {/* register lottie */}
+        <div className="hidden lg:block w-full pointer-events-none -mt-80">
+          <div className="w-fit mx-auto">
             <Lottie
-        className="w-full"
-          options={defaultOptions}
-          isClickToPauseDisabled={true}
-          height={isDesktop ? 900 : isTablet ? 600 : 100}
-          width={isDesktop ? 600 : isTablet ? 200 : 100}
-          
-        />
-            </div>
+              options={defaultOptions}
+              isClickToPauseDisabled={true}
+              width={isDesktop ? 550 : isTablet ? 400 : 200}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

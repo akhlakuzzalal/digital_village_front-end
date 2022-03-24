@@ -21,8 +21,8 @@ const Development = () => {
       <DevelopmentAbout />
       <div className="lg:mx-[100px] lg:mt-36">
         <div className=" text-center mb-32 space-y-5">
-          <h3 className='text-xl md:text-4xl text-blue-600'>Propose For Development</h3>
-          <p className="lg:px-40">
+          <h3>Propose For Development</h3>
+          <p className="lg:px-40 dark:text-gray-300">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas
             inventore qui magni voluptatem dolor, velit mollitia porro pariatur
             minima maxime sed molestias autem eos voluptatum molestiae eaque
@@ -40,8 +40,8 @@ const Development = () => {
         </div>
 
         <div className="text-center space-y-5">
-          <h3 className="text-xl md:text-4xl text-blue-600">Our Latest Developed Projects </h3>
-          <p className="lg:px-40">
+          <h3 className="dark:text-gray-200">Our Latest Developed Projects </h3>
+          <p className="lg:px-40 dark:text-gray-300">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
             recusandae natus repellendus officiis eius saepe ea hic deserunt
             laudantium ducimus!

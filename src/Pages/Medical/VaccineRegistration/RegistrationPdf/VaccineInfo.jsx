@@ -96,7 +96,9 @@ const VaccineInfo = () => {
           </div>
         ) : (
           <div className="flex justify-center items-center">
-            <h3 className="text-gray-500">You haven't registered yet!</h3>
+            <h3 className="text-gray-500 pl-6 md:pl-0 text-sm md:text-5xl">
+              You haven't registered yet!
+            </h3>
           </div>
         )}
       </div>

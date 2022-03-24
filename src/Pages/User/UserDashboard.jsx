@@ -1,4 +1,5 @@
 import React from 'react';
+import { FcIdea } from 'react-icons/fc';
 import {
   MdOutlineAppRegistration,
   MdOutlineProductionQuantityLimits,
@@ -16,8 +17,8 @@ const links = [
     path: '/userdashboard/profile',
   },
   {
-    name: 'Add development',
-    icon: <RiLightbulbFlashFill size={30} />,
+    name: 'Add development proposal',
+    icon: <FcIdea size={30} />,
     path: '/userdashboard/addDevelopmentProposal',
   },
   {
@@ -54,12 +55,12 @@ const UserDashboard = () => {
     location.pathname === '/userdashboard/';
 
   return (
-    <div className="flex">
+    <div>
       {/* Sidebar */}
       <NewSidebar links={links} />
 
       {/* contents */}
-      <div className={`mt-[80px] ml-[65px] flex-1`}>
+      <div className="mt-[80px] w-[calc(100vw-54px)] ml-auto">
         {initial ? <Profile /> : <Outlet />}
       </div>
     </div>

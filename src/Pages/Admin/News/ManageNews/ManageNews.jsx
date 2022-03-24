@@ -45,7 +45,8 @@ const ManageNews = () => {
   return (
     <article className="flex flex-wrap mx-5 justify-evenly items-center gap-6 md:mx-24 md:my-24">
       {news.map((n) => (
-        <div className="bg-white rounded-xl p-4 relative max-w-[370px] shadow-2xl">
+        <div className="bg-white rounded-xl p-4 relative max-w-[370px] shadow-2xl dark:bg-dark_primary 
+        ">
           <div className="overflow-hidden rounded-xl h-52 cursor-pointer">
             <img
               className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
@@ -57,10 +58,12 @@ const ManageNews = () => {
           <div className="flex flex-col flex-grow">
             {/* title and description */}
             <div className="flex flex-col space-y-1 my-4">
-              <h2 className="text-gray-700 font-primary text-lg">
+              <h2 className="text-gray-700 font-primary text-lg  
+  dark:text-dark_text">
                 {n?.title.slice(0, 30)}...
               </h2>
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-500 text-sm
+  dark:text-dark_text">
                 {n?.description.slice(0, 30)}
               </p>
             </div>

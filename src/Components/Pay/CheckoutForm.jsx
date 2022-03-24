@@ -4,29 +4,17 @@ import {
   useStripe,
 } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
-import Lottie from 'react-lottie';
 import axios, { BASE_URI } from '../../api/axios';
-import useMediaQuery from '../../hooks/useMediaQuery';
-// import animationData from '../lotties/airplane.json';
-import animationData from '../../lotties/circle.json';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
-const CheckoutForm = ({ returnPage, price, id }) => {
+const CheckoutForm = ({ returnPage, price, id, address }) => {
   const stripe = useStripe();
   const elements = useElements();
 
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const isTablet = useMediaQuery('(min-width: 656px)');
-  const isDesktop = useMediaQuery('(min-width: 900px)');
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  };
+  const { setCart } = useLocalStorage();
 
   useEffect(() => {
     if (!stripe) {
@@ -81,6 +69,9 @@ const CheckoutForm = ({ returnPage, price, id }) => {
     }
 
     setIsLoading(true);
+    if (returnPage === 'e-market') {
+      setCart(id, address);
+    }
 
     const { error } = await stripe.confirmPayment({
       elements,
@@ -90,7 +81,6 @@ const CheckoutForm = ({ returnPage, price, id }) => {
       },
     });
 
-    console.log(message);
     if (error.type === 'card_error' || error.type === 'validation_error') {
       setMessage(error.message);
     } else {
@@ -109,11 +99,7 @@ const CheckoutForm = ({ returnPage, price, id }) => {
         <span id="button-text">
           {isLoading ? (
             <div className="w-fit mx-auto min-h-screen flex justify-center items-center">
-              <Lottie
-                options={defaultOptions}
-                isClickToPauseDisabled={true}
-                width={isDesktop ? 400 : isTablet ? 300 : 200}
-              />
+              <p>Please wait..</p>
             </div>
           ) : (
             'Pay now'

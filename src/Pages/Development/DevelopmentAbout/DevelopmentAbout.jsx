@@ -14,7 +14,7 @@ const DevelopmentAbout = () => {
 
   return (
     <div className="lg:mx-[100px]">
-      <div className="grid grid-cols-1 md:grid-cols-5 my-12 py-6 lg:space-x-6 px-5 md:px-auto">
+      <div className="grid grid-cols-2 md:grid-cols-5 my-12 py-6 lg:space-x-6 dark:bg-gray-400">
         <img
           className="md:ml-8 md:w-48 border-r-4 md:p-5 m-2 border "
           src="http://lightwire.webps.info/assets/themes/lightwire/images/logos/logo-3B.png"

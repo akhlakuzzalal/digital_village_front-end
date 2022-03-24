@@ -1,11 +1,13 @@
 import React from 'react';
+import { FaHandsHelping } from 'react-icons/fa';
 import { GiHumanPyramid, GiTeacher } from 'react-icons/gi';
-import { IoMdArrowDropdownCircle } from 'react-icons/io';
+import { IoMdArrowDropdownCircle, IoMdMedical } from 'react-icons/io';
 import { MdOutlineDoubleArrow } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import img from '../../../assets/events/who we are.jpg';
 const About = () => {
   return (
-    <div className="main">
+    <div>
       <div
         className="bg-cover h-[240px] w-[100%]bg-no-repeat  lg:h-[500px]  md:h-[500px]"
         style={{
@@ -25,9 +27,9 @@ const About = () => {
       <div className=" lg:flex  mt-20 lg:mt-48 lg:mx-[100px] mx-5">
         <div className="lg:flex">
           <div>
-            <div className=" lg:w-[300px] w-[100%] border rounded py-8 mb-6">
+            <div className=" lg:w-[300px] w-[100%] border rounded py-8 mb-6 dark:bg-dark_primary">
               <img
-                className="ml-5 h-10 w-10   "
+                className="ml-5 h-10 w-10 dark:text-gray-200 "
                 src="http://cdn.onlinewebfonts.com/svg/img_142809.png"
                 alt=""
               />
@@ -37,16 +39,17 @@ const About = () => {
                   Quality Education
                 </h1>
                 <p className="mb-3 ml-2 md:ml-1 text-gray-700 dark:text-gray-400">
-                  Urna porttitor rhoncus dolor purus non enim praesent elementum
+                  Our digital learning platform is a open source for the village
+                  learners to learn new things and grow.
                 </p>
-                <button className=" rounded text-blue-600 ml-1">
+                <Link to="/education" className=" rounded text-blue-600 ml-1">
                   <p className="flex">
-                    View More <MdOutlineDoubleArrow className="mt-1" />
+                    Explore <MdOutlineDoubleArrow className="mt-1" />
                   </p>
-                </button>
+                </Link>
               </div>
             </div>
-            <div className="w-[100%] lg:w-[300px] border rounded py-8">
+            <div className="w-[100%] lg:w-[300px] border rounded py-8 dark:bg-dark_primary">
               <img
                 className="ml-5 h-10 w-10   "
                 src="https://uxwing.com/wp-content/themes/uxwing/download/21-medical-science-lab/medical.png"
@@ -58,17 +61,18 @@ const About = () => {
                   Quality Medical Service
                 </h1>
                 <p className="mb-3 ml-2 md:ml-1 text-gray-700 dark:text-gray-400">
-                  Urna porttitor rhoncus dolor purus non enim praesent elementum
+                  We are providing quality medical service to solve health
+                  issues of villagers
                 </p>
-                <button className=" rounded text-blue-600 ml-1">
+                <Link to="/medical" className=" rounded text-blue-600 ml-1">
                   <p className="flex">
-                    View More <MdOutlineDoubleArrow className="mt-1" />
+                    Explore <MdOutlineDoubleArrow className="mt-1" />
                   </p>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
-          <div className="lg:mt-[100px] lg:ml-10">
+          <div className="lg:mt-[100px] lg:ml-10 dark:bg-dark_primary">
             <div className=" lg:w-[300px] w-[100%] border rounded py-8 mb-6">
               <img
                 className="ml-5 h-10 w-10   "
@@ -81,16 +85,17 @@ const About = () => {
                   E-Commerce
                 </h1>
                 <p className="mb-3 ml-2 md:ml-1 text-gray-700 dark:text-gray-400">
-                  Urna porttitor rhoncus dolor purus non enim praesent elementum
+                  Our E-commerce plaform is a great option for the villagers to
+                  purchase their daily needs
                 </p>
-                <button className=" rounded text-blue-600 ml-1">
+                <Link to="/e-market" className=" rounded text-blue-600 ml-1">
                   <p className="flex">
-                    View More <MdOutlineDoubleArrow className="mt-1" />
+                    Explore <MdOutlineDoubleArrow className="mt-1" />
                   </p>
-                </button>
+                </Link>
               </div>
             </div>
-            <div className="w-[100%] lg:w-[300px] border rounded py-8">
+            <div className="w-[100%] lg:w-[300px] border rounded py-8 dark:bg-dark_primary">
               <img
                 className="ml-5 h-10 w-10   "
                 src="https://cdn-icons-png.flaticon.com/128/3349/3349234.png"
@@ -102,13 +107,14 @@ const About = () => {
                   Donation
                 </h1>
                 <p className="mb-3 ml-2 md:ml-1 text-gray-700 dark:text-gray-400">
-                  Urna porttitor rhoncus dolor purus non enim praesent elementum
+                  Our donation team is continuously working to improve the life
+                  of villagers.
                 </p>
-                <button className=" rounded text-blue-600 ml-1">
+                <Link to="/donation" className=" rounded text-blue-600 ml-1">
                   <p className="flex">
-                    View More <MdOutlineDoubleArrow className="mt-1" />
+                    Explore <MdOutlineDoubleArrow className="mt-1" />
                   </p>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -120,70 +126,83 @@ const About = () => {
             We Provide best services for villagers
           </h1>
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam
-            similique minima dolores. Magnam similique neque inventore molestiae
-            rem enim
+            Our goal is to solve the problems of villagers.We want to connect
+            the government with village people through digitalization of the
+            village. we are trying to transform an analog village into a digital
+            one.
           </p>
           <ul>
             <li className="flex mb-2">
-              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
-              <p className="mt-2 pl-2">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem
-                ipsum, dolor sit amet consectetur adipisicing elit. Cumque,
-                vero.
+              <IoMdArrowDropdownCircle className="mt-1 " />
+              <p className="w-11/12 mt-2 pl-2 dark:text-gray-300">
+                WE believe that Digital village is a great combination to solve
+                some of the problems of villagers.
               </p>
             </li>
             <li className="flex mb-2">
-              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
-              <p className="mt-2 pl-2">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem
-                ipsum, dolor sit amet consectetur adipisicing elit. Cumque,
-                vero.
+              <IoMdArrowDropdownCircle className="mt-1 " />
+              <p className=" w-11/12 mt-2 pl-2 dark:text-gray-300">
+                Easy steps to find opporyunities.Simple payment method and
+                comfortable services.
               </p>
             </li>
             <li className="flex mb-10">
-              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
-              <p className="mt-2 pl-2">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem
-                ipsum, dolor sit amet consectetur adipisicing elit. Cumque,
-                vero.
+              <IoMdArrowDropdownCircle className="mt-1 " />
+              <p className=" w-11/12 mt-2 pl-2 dark:text-gray-300">
+                Connecting a large number of people to create a community to
+                grow together.
               </p>
             </li>
           </ul>
 
-          <button className="flex hover:bg-[blue] border border-[blue] border-5 hover:text-white rounded  py-2 md:py-3 px-20 ">
+          <Link
+            to="/"
+            className="flex hover:bg-[blue] border border-[blue] border-5 hover:text-white rounded  py-2 md:py-3 px-20 dark:text-dark_text dark:hover:bg-[blue] dark:bg-dark_primary"
+          >
             View More <MdOutlineDoubleArrow className="mt-1" />
-          </button>
+          </Link>
         </div>
       </div>
 
-      <div className="bg-gray-100 lg:py-32 lg:flex mt-6 md:mt-[50px] lg:px-[200px] lg:space-x-8 ">
-        <div className=" lg:w-[300px] w-[100%]  border flex-col items-center justify-center py-8">
+      <div className="bg-gray-100 lg:py-32 lg:flex mt-6 md:mt-[50px] lg:px-[200px] lg:space-x-8 dark:bg-dark_primary">
+        <div
+          className=" lg:w-[300px] w-[100%]  border flex-col items-center justify-center py-8 dark:text-gray-300 "
+          style={{ background: 'rgb(151, 197, 252)' }}
+        >
           <GiHumanPyramid className="h-[100px] w-52 text-center mx-auto" />
           <div className="text-center">
             <h1>300+</h1>
             <p>Villagers</p>
           </div>
         </div>
-        <div className=" lg:w-[300px]  w-[100%]   flex-col items-center justify-center py-8 border">
-          <GiHumanPyramid className="h-[100px] w-52 text-center mx-auto   lg:ml-5" />
+        <div
+          className=" lg:w-[300px]  w-[100%]   flex-col items-center justify-center py-8 border"
+          style={{ background: 'rgb(151, 197, 252)' }}
+        >
+          <GiTeacher className="dark:text-gray-300 h-[100px] w-52 text-center mx-auto   lg:ml-5" />
           <div className="text-center">
             <h1>30+</h1>
             <p>Teachers</p>
           </div>
         </div>
-        <div className=" lg:w-[300px]  w-[100%]  flex-col items-center justify-center py-8 border">
-          <GiTeacher className="h-[100px] w-52 text-center mx-auto " />
+        <div
+          className=" lg:w-[300px]  w-[100%]  flex-col items-center justify-center py-8 border"
+          style={{ background: 'rgb(151, 197, 252)' }}
+        >
+          <IoMdMedical className="dark:text-gray-300 h-[100px] w-52 text-center mx-auto " />
           <div className="text-center">
             <h1>30+</h1>
             <p>Doctors</p>
           </div>
         </div>
-        <div className=" lg:w-[300px] w-[100%]   flex-col items-center justify-center py-8 border">
-          <GiHumanPyramid className="h-[100px] w-52 text-center mx-auto" />
+        <div
+          className=" lg:w-[300px] w-[100%]   flex-col items-center justify-center py-8 border"
+          style={{ background: 'rgb(151, 197, 252)' }}
+        >
+          <FaHandsHelping className="dark:text-gray-300 h-[100px] w-52 text-center mx-auto" />
           <div className="text-center">
             <h1>300+</h1>
-            <p>Donner's</p>
+            <p>Donors</p>
           </div>
         </div>
       </div>
@@ -192,38 +211,36 @@ const About = () => {
         <div className="lg:w-1/2 w-[100%] space-y-5 md:mt-[110px]">
           <h1 className="text-lg">Who we are </h1>
           <h1 className="md:text-2xl text-xl">
-            To Change Your View For SEO Our Mission
+            To Change Your View For Opportunities Is Our Mission
           </h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-            tenetur tempore repudiandae cupiditate libero non beatae! Quo
-            perferendis excepturi quis hic exercitationem provident, incidunt
-            molestias numquam. Odit itaque nostrum eum!
+            The village people have to do a lot of manual work for accomplishing
+            any task related to the government. We want to connect the
+            government with village people through digitalization of the
+            village. The government will provide services through our platform,
+            and the villagers will enjoy it.
           </p>
 
           <ul>
             <li className="flex md:mb-2">
-              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
-              <p className="mt-2 pl-2">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem
-                ipsum, dolor sit amet consectetur adipisicing elit. Cumque,
-                vero.
+              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8 dark:text-gray-300" />
+              <p className="mt-2 pl-2 w-11/12">
+                One platform for the large village population to be connected
+                and shine together.
               </p>
             </li>
             <li className="flex mb-2">
-              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
-              <p className="mt-2 pl-2">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem
-                ipsum, dolor sit amet consectetur adipisicing elit. Cumque,
-                vero.
+              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8 dark:text-gray-300" />
+              <p className="mt-2 pl-2 w-11/12">
+                We are trying to modern technologies to make life easier and
+                solve village proplems
               </p>
             </li>
             <li className="flex mb-10">
-              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
-              <p className="mt-2 pl-2">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem
-                ipsum, dolor sit amet consectetur adipisicing elit. Cumque,
-                vero.
+              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8 dark:text-gray-300" />
+              <p className="mt-2 pl-2 w-11/12">
+                Digital village is on the way to complete our mission of
+                transforming an analog village into digital one.
               </p>
             </li>
           </ul>

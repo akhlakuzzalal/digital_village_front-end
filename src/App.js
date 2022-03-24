@@ -104,6 +104,7 @@ import PrivateRoute from './SecureRoutes/PrivateRoute';
 export const Roles = {
   User: 1000,
   Admin: 5000,
+  Teacher: 3000,
 };
 
 const App = () => (
@@ -151,14 +152,20 @@ const App = () => (
             <Route path="join" element={<Join />} />
 
             {/* routes for teacher */}
-            <Route path="teacher" element={<Teacher />}>
-              <Route path="myblogs" element={<Myblogs />} />
-              <Route path="editBlog/:id" element={<EditBlog />} />
-              <Route path="myvideos" element={<Myvideos />} />
-              <Route path="editVideo/:id" element={<EditVideo />} />
-              <Route path="publishBlog" element={<PublishBlog />} />
-              <Route path="publishVideo" element={<PublishVideo />} />
-              <Route path="analytics" element={<TeacherAnalytics />} />
+            <Route
+              element={
+                <AdminRoute allowedRoles={[Roles.Admin, Roles.Teacher]} />
+              }
+            >
+              <Route path="teacher" element={<Teacher />}>
+                <Route path="myPublishedBlogs" element={<Myblogs />} />
+                <Route path="editBlog/:id" element={<EditBlog />} />
+                <Route path="myPublishedVideos" element={<Myvideos />} />
+                <Route path="editVideo/:id" element={<EditVideo />} />
+                <Route path="publishBlog" element={<PublishBlog />} />
+                <Route path="publishVideo" element={<PublishVideo />} />
+                <Route path="analytics" element={<TeacherAnalytics />} />
+              </Route>
             </Route>
 
             {/* routes for student */}

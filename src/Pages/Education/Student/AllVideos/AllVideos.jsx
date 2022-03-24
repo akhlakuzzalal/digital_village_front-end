@@ -37,14 +37,13 @@ const Allvideos = () => {
   };
 
   return (
-    <div className="space-y-6  min-h-[150vh] ">
-      <img className="w-full h-[300px] " src={img} alt="" />
+    <div className="space-y-6">
+      <img className="w-full h-[300px]" src={img} alt="search" />
       <Search className="mt-20 " handleSearch={handleSearch} />
-      <h3 className=" py-6 text-center">Available Videos</h3>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4  p-6 lg:mx-[100px]">
-        {videos.map((video) => (
-          <VideoCard key={video._id} video={video} />
-        ))}
+      <h3 className="py-6 text-center">Available Videos</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
+        {videos &&
+          videos.map((video) => <VideoCard key={video._id} video={video} />)}
       </div>
       <Pagination
         currPage={currPage}

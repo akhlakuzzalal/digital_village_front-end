@@ -23,7 +23,7 @@ const datas = [
     id: '3',
     title: 'How can we know about future events?',
     description:
-      'You can go to event section and click to upcomming event to know abou future events.',
+      'You can go to event section and click to upcomming event to know about future events.',
   },
   {
     id: '4',
@@ -35,11 +35,11 @@ const datas = [
     id: '5',
     title: 'What is the purpose of  Development?',
     description:
-      'Our proud team working hard for the poor village people and improve their life style.we take somme village development work to develop various area',
+      'Our proud team working hard for the poor village people and improve their life style.we take somme village development proposals to develop various area',
   },
   {
     id: '6',
-    title: 'What is objective of E-Market?',
+    title: 'What is the objective of E-Market?',
     description:
       'E-Market is a nice platform for buying daily necessities.The main objective is to connect the rural people with e-commerce and gaining their trust.',
   },
@@ -61,14 +61,12 @@ const Faq1 = () => {
 
   return (
     <div className=" 2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6  px-4 lg:my-20">
-      <div className="pb-10">
-        <h2 className=" font-bolder text-xl md:text-3xl  lg:text-4xl   lg:leading-9 md:leading-7 leading-9  dark:text-dark_text text-center">
+      <div className="md:pt-[50px] mx-1">
+        <p className="text-center text-2xl text-blue-600 font-bolder">
           Frequently Asked Questions
-        </h2>
-
-        <p className=" font-normal text-center leading-6 text-gray-600 pt-4 ">
-          Here are few of the most frequently asked questions by our valueable
-          customers
+        </p>
+        <p className="hidden md:block px-10 md:px-[100px] text-justify md:text-center">
+          Here are few of the most frequently asked questions by the villagers
         </p>
       </div>
 
@@ -99,9 +97,9 @@ const Faq1 = () => {
                         {data.title}
                       </h3>
                       <AiOutlineMinusSquare
-                        className=" transition duration-700 ease-in-out text-blue-900 dark:bg-dark_primary dark:text-dark_secondary"
+                        className=" transition duration-700 ease-in-out text-blue-900 dark:bg-dark_primary dark:text-dark_secondary hover:rotate-180"
                         custome
-                        size={30}
+                        size={35}
                       />
                     </div>
                   ) : (
@@ -113,7 +111,7 @@ const Faq1 = () => {
                         {data.title}
                       </h3>
                       <BsPlusSquare
-                        className=" transition duration-700 ease-in-out text-blue-900 dark:bg-dark_primary dark:text-dark_secondary"
+                        className={`transition duration-700 ease-in-out text-blue-900 dark:bg-dark_primary dark:text-dark_secondary hover:rotate-180`}
                         custome
                         size={30}
                       />
