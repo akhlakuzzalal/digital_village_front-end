@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PayModal from '../../../../Components/Pay/PayModal';
+import { setPayModal } from '../../../../redux/slices/payModal/PayModalSlice';
 
 const UserAppointment = ({ appointment, date }) => {
   const [payOption, setPayOption] = useState('pay');
@@ -70,12 +71,11 @@ const UserAppointment = ({ appointment, date }) => {
                           {row.payment ? (
                             'Paid'
                           ) : (
-                            // () => dispatch(setPayModal(true))
                             <button
-                              onClick={() => handlePayment(row)}
+                              onClick={() => dispatch(setPayModal(true))}
                               className="bg-blue-900 border-1 rounded-md text-white py-1 px-4"
                             >
-                              {payOption}
+                              Pay
                             </button>
                           )}
                         </td>

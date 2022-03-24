@@ -19,8 +19,6 @@ const TeacherOrStudent = () => {
     setIsTeacher(rolesArray?.includes(3000));
   }, [roles]);
 
-  console.log(roles, isTeacher, 'hey this is');
-
   return (
     <div className="lg:h-[100vh] lg:py-10">
       <h1 className="text-center text-2xl md:text-6xl lg:text-6xl text-blue-600 py-5">
@@ -28,7 +26,7 @@ const TeacherOrStudent = () => {
       </h1>
       <div className="md:flex justify-center items-center  flex-wrap">
         <div className="flex flex-col justify-center px-3 items-center md:w-1/3 flex-wrap space-y-6 order-last md:order-first">
-          <Link to={isTeacher ? '/teacher' : '/registerTeacher'}>
+          <Link to={isTeacher ? '/teacher/publishBlog' : '/registerTeacher'}>
             <DecidingCard icon={<GiTeacher />} name="Teach" />
           </Link>
           <Link to="/student">

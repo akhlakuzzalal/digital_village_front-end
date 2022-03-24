@@ -29,7 +29,7 @@ const RegisterTeacher = () => {
         confirm: 'Go and Explore',
         closeOnClickOutside: false,
       }).then(() => {
-        navigate('/teacher');
+        navigate('/teacher/publishBlog');
         reset();
       });
     }
@@ -95,6 +95,7 @@ const RegisterTeacher = () => {
 
           {/* gpa */}
           <input
+            type="number"
             className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
             {...register('gpa', {
               required: 'GPA is Required',
@@ -105,10 +106,6 @@ const RegisterTeacher = () => {
               max: {
                 value: 5,
                 message: 'Maximum allowed age is 5',
-              },
-              pattern: {
-                value: /^[0-5._%+-]*$/,
-                message: 'Only numbers are allowed',
               },
             })}
             placeholder="Acquired GPA"
