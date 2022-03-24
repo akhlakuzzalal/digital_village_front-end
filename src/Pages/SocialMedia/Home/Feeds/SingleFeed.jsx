@@ -126,7 +126,7 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
         )}
       </div>
       {/* post Footer */}
-      <div className="my-6 flex justify-between items-center hidden">
+      <div className="my-6 justify-between items-center hidden">
         {/* Avatars of liked People */}
         <div className="hidden md:flex items-center">
           <div class="-space-x-4">
