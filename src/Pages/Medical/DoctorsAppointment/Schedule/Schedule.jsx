@@ -18,12 +18,7 @@ const Schedule = ({ onChange }) => {
   };
   return (
     <div className="my-5  ">
-      <h3
-        className="text-center text-sm md:text-3xl pt-12 pl-8"
-        style={{
-          color: '#10217d',
-        }}
-      >
+      <h3 className="text-center text-sm md:text-3xl pt-12 pl-8 text-blue-700">
         {' '}
         Take a schedule for a consultation
       </h3>

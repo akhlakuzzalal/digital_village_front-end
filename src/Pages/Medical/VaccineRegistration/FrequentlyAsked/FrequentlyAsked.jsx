@@ -62,7 +62,7 @@ const FrequentlyAsked = () => {
 
   return (
     <div className=" 2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6  px-0 ">
-      <h2 className=" font-bolder text-xl md:text-3xl  lg:text-4xl text-blue-900  lg:leading-9 md:leading-7 leading-9  dark:text-dark_text">
+      <h2 className=" font-bolder text-xl md:text-3xl  lg:text-4xl text-blue-700  lg:leading-9 md:leading-7 leading-9  dark:text-dark_text">
         Frequently Asked Questions
       </h2>
       <div className=" flex md:justify-between md:items-start md:flex-row flex-col justify-start items-start">
@@ -97,7 +97,7 @@ const FrequentlyAsked = () => {
                         {data.title}
                       </h3>
                       <MdQuestionAnswer
-                        className=" transition duration-700 ease-in-out text-blue-900"
+                        className=" transition duration-700 ease-in-out text-blue-700"
                         custome
                         size={30}
                       />
@@ -111,7 +111,7 @@ const FrequentlyAsked = () => {
                         {data.title}
                       </h3>
                       <FaQuestion
-                        className=" transition duration-700 ease-in-out text-blue-900"
+                        className=" transition duration-700 ease-in-out text-blue-700"
                         custome
                         size={30}
                       />

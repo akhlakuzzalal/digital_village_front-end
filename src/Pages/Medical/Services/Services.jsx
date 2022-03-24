@@ -86,7 +86,7 @@ const Services = () => {
           <img src={mediBanner} alt="" />
         </div>
         <div className="px-5 mt-6 md:mt-0">
-          <h3 className=" text-center md:text-5xl text-blue-600 ">
+          <h3 className=" text-center md:text-5xl text-blue-700 ">
             Our Services
           </h3>
           <p className="my-5 text-justify px-2 md:px-5  text-lg ">
@@ -99,8 +99,8 @@ const Services = () => {
             <div className="px-2 ">
               <div className="  flex justify-start items-center my-3">
                 <ImCheckmark
+                  className="text-blue-700"
                   style={{
-                    color: '#10217d',
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
@@ -116,8 +116,8 @@ const Services = () => {
               </div>
               <div className=" flex justify-start items-center my-3">
                 <ImCheckmark
+                  className="text-blue-700"
                   style={{
-                    color: '#10217d',
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
@@ -133,8 +133,8 @@ const Services = () => {
               </div>
               <div className=" flex justify-start items-center my-3">
                 <ImCheckmark
+                  className="text-blue-700"
                   style={{
-                    color: '#10217d',
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
@@ -151,8 +151,8 @@ const Services = () => {
 
               <div className=" flex justify-start items-center my-3">
                 <ImCheckmark
+                  className="text-blue-700"
                   style={{
-                    color: '#10217d',
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
@@ -168,8 +168,8 @@ const Services = () => {
               </div>
               <div className=" flex justify-start items-center my-3">
                 <ImCheckmark
+                  className="text-blue-700"
                   style={{
-                    color: '#10217d',
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
@@ -185,8 +185,8 @@ const Services = () => {
               </div>
               <div className=" flex justify-start items-center my-3">
                 <ImCheckmark
+                  className="text-blue-700"
                   style={{
-                    color: '#10217d',
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
@@ -204,9 +204,8 @@ const Services = () => {
             <div className="  flex justify-end">
               <ul class="w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white text-center">
                 <li
-                  class="py-2 px-4 w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600"
+                  class="py-2 px-4 w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600 bg-primary"
                   style={{
-                    backgroundColor: '#10217d',
                     color: 'white',
                     fontSize: '1.5em',
                   }}
@@ -244,7 +243,7 @@ const Services = () => {
           <section class="text-gray-700">
             <div class="container  pl-10 pr-0 md:pr-4 py-8 ">
               <div class="text-center flex flex-col justify-center items-center">
-                <h3 class=" text-xl md:text-3xl font-bold text-center title-font pb-6 text-blue-900 ">
+                <h3 class=" text-xl md:text-3xl font-bold text-center title-font pb-6 text-blue-700">
                   Our Departments
                 </h3>
               </div>
@@ -254,7 +253,7 @@ const Services = () => {
                 {datas.map((data) => (
                   <div>
                     <div>
-                      <div className=" flex justify-between items-center cursor-pointer bg-blue-900 p-4 my-1  rounded-lg">
+                      <div className=" flex justify-between items-center cursor-pointer bg-primary  p-4 my-1  rounded-lg">
                         {active && data.id === active ? (
                           <div className="flex justify-between items-center">
                             <HiLightBulb
@@ -297,8 +296,8 @@ const Services = () => {
             </div>
           </section>
         </div>
-        <div className="  ">
-          <p class="text-center  text-base  font-bolder text-gray-600">
+        <div className="pl-10 md:pl-0  ">
+          <p class="text-center  text-sm  font-bolder text-blue-700">
             We are here to hear from you
           </p>
           <div className=" flex justify-center md:px-8 ">
@@ -307,7 +306,7 @@ const Services = () => {
               onSubmit={handleSubmit(sendEmail)}
             >
               <input
-                className=" w-full  bg-gray-100 px-5 outline-none border-2 py-5 focus:border-primary  rounded mb-5 lg:mb-0"
+                className=" w-full  bg-gray-100 px-5 outline-none border-2 py-5 focus:border-primary  rounded mb-0 md:mb-5 lg:mb-0"
                 {...register('name', { required: 'Name is Required' })}
                 value={name}
               />
@@ -316,7 +315,7 @@ const Services = () => {
               )}
 
               <input
-                className=" w-full mb-5 lg:mb-0 outline-none border-2 bg-gray-100 focus:border-primary px-5 rounded py-5 "
+                className=" w-full mb-0 md:mb-5 lg:mb-0 outline-none border-2 bg-gray-100 focus:border-primary px-5 rounded py-5 "
                 type="email"
                 {...register('email', {
                   required: 'Email is Required',
@@ -355,7 +354,7 @@ const Services = () => {
               </div>
 
               <input
-                className="bg-blue-900  px-6 md:w-2/6   py-2 text-white mx-auto lg:ml-0 rounded-md"
+                className="bg-primary  px-6 md:w-2/6   py-2 text-white mx-auto lg:ml-0 rounded-md"
                 type="submit"
                 value="Send"
               />

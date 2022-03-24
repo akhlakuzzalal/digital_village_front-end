@@ -19,7 +19,7 @@ const Banner = () => {
     >
       <div className="w-2/3 pl-10 md:pl-0 flex flex-col md:flex-row justify-between items-center ">
         <div
-          style={{ background: 'rgba(135, 87, 247,.9)' }}
+          style={{ background: 'rgba(138,180,248,.9)' }}
           className=" w-full md:w-1/2  border-l-8 hover:bottom-2 border-indigo-700 hover:border-slate-900 rounded-lg  md:p-10 "
         >
           <div className="md:w-full flex justify-center items-center  p-4 my-5">
@@ -88,7 +88,7 @@ const Banner = () => {
             </div>
             <Link
               to="/medical/options"
-              className="p-2 rounded-lg text-white bg-indigo-700"
+              className="p-2 rounded-lg text-white bg-blue-700"
             >
               <button>Register Now</button>
             </Link>
@@ -97,8 +97,8 @@ const Banner = () => {
         <div className=" w-full md:w-1/2 flex flex-col justify-center items-center ">
           <Link to="/medical/status" className="w-full ">
             <div
-              className="flex  justify-start items-center p-10  border-l-8 hover:bottom-2 border-indigo-700 hover:border-slate-900 rounded-lg mx-0 md:mx-4 w-full my-1"
-              style={{ background: 'rgba(135, 87, 247,.9)' }}
+              className="flex  justify-start items-center p-10  border-l-8 hover:bottom-2 border-blue-700 hover:border-slate-900 rounded-lg mx-0 md:mx-4 w-full my-1"
+              style={{ background: 'rgba(138,180,248,.9)' }}
             >
               <GrStatusUnknown
                 className="hidden md:block"
@@ -114,8 +114,8 @@ const Banner = () => {
           </Link>
           <Link to="/medical/pdf" className="w-full">
             <div
-              className="flex  justify-start items-center p-10   border-l-8 hover:bottom-2 border-indigo-700 hover:border-slate-900 rounded-lg mx-0 md:mx-4 w-full my-1"
-              style={{ background: 'rgba(135, 87, 247,.9)' }}
+              className="flex  justify-start items-center p-10   border-l-8 hover:bottom-2 border-blue-700 hover:border-slate-900 rounded-lg mx-0 md:mx-4 w-full my-1"
+              style={{ background: 'rgba(138,180,248,.9)' }}
             >
               <GrContactInfo
                 className="hidden md:block"
@@ -133,8 +133,8 @@ const Banner = () => {
           </Link>
           <Link to="/medical/faq" className="w-full">
             <div
-              className="flex  justify-start items-center p-10  border-l-8 hover:bottom-2 border-indigo-700 hover:border-slate-900 rounded-lg mx-0 md:mx-4 w-full my-1"
-              style={{ background: 'rgba(135, 87, 247,.9)' }}
+              className="flex  justify-start items-center p-10  border-l-8 hover:bottom-2 border-blue-700 hover:border-slate-900 rounded-lg mx-0 md:mx-4 w-full my-1"
+              style={{ background: 'rgba(138,180,248,.9)' }}
             >
               <GrStatusUnknown
                 className="hidden md:block"

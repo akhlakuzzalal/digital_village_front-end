@@ -3,10 +3,7 @@ import { FcCallback, FcCustomerSupport } from 'react-icons/fc';
 const Hotline = () => {
   return (
     <div className="p-0 md:p-40">
-      <div
-        className="flex flex-col md:flex-row justify-between items-center border-l-8 hover:bottom-2 border-indigo-700 hover:border-slate-900  p-0 md:p-5 rounded-lg"
-        style={{ background: 'rgba(135, 87, 247,.6)' }}
-      >
+      <div className="flex flex-col md:flex-row justify-between items-center border-l-8 hover:bottom-2 border-blue-700 hover:border-slate-900  p-0 md:p-5 rounded-lg bg-primary">
         <div className="flex flex-col justify-center items-center p-0  md:p-5">
           <FcCustomerSupport
             style={{
