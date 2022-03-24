@@ -30,25 +30,25 @@ const UserAppointment = ({ appointment, date }) => {
                     <tr className="bg-blue-900 ">
                       <th
                         scope="col"
-                        className="py-3 px-0 md:px-6 text-xs  tracking-wider text-left text-white uppercase dark:text-gray-400"
+                        className="py-3 px-2 md:px-6 text-xs  tracking-wider text-left text-white uppercase dark:text-gray-400"
                       >
                         Service
                       </th>
                       <th
                         scope="col"
-                        className="py-3 px-0 md:px-6 text-xs   text-left text-white uppercase dark:text-gray-400"
+                        className="py-3 px-2 md:px-6 text-xs   text-left text-white uppercase dark:text-gray-400"
                       >
                         Time
                       </th>
                       <th
                         scope="col"
-                        className="py-3 px-0 md:px-6 text-xs   text-left text-white uppercase dark:text-gray-400"
+                        className="py-3 px-2 md:px-6 text-xs   text-left text-white uppercase dark:text-gray-400"
                       >
                         Cost
                       </th>
                       <th
                         scope="col"
-                        className="py-3 px-0 md:px-6 text-xs  text-left text-white uppercase dark:text-gray-400"
+                        className="py-3 px-2 md:px-6 text-xs  text-left text-white uppercase dark:text-gray-400"
                       >
                         Action
                       </th>

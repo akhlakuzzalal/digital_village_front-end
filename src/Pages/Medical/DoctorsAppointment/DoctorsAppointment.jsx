@@ -10,7 +10,7 @@ const DoctorsAppointment = () => {
   };
 
   return (
-    <div className=" p-5 md:p-0">
+    <div className=" md:p-0">
       <Schedule onChange={onChange} />
       <AppointmentAvailable date={date} />
     </div>
