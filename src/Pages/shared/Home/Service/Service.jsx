@@ -78,12 +78,6 @@ const Service = () => {
 
   return (
     <div className="space-y-6">
-      <div className="space-y-2 text-center">
-        <p className="md:text-2xl text-blue-600 font-bolder"></p>
-        <h1 className=" text-xl md:text-2xl  font-bold text-primary"></h1>
-        <p className="px-10 "></p>
-      </div>
-
       <div className="md:pt-[50px] mx-1">
         <p className="text-center text-2xl text-blue-600 font-bolder">
           Services

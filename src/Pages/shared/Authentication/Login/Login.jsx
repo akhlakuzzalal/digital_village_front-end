@@ -76,11 +76,11 @@ const Login = () => {
 
   return (
     <div
-      className="flex lg:h-[100vh] lg:my-20"
+      className="flex justify-center lg:h-[100vh] lg:my-20"
       style={{ minHeight: 'calc(100vh - 100px)' }}
     >
-      <div className="flex-1 px-3">
-        <div className="pt-36 md:mx-10 text-center lg:mx-40 space-y-4 mb-3">
+      <div className="flex-1 px-3 max-w-[500px] mx-auto">
+        <div className="pt-36 space-y-4 mb-3 pl-2 md:flex flex-col items-center">
           <h3 className="capitalize">Welcome to digital village</h3>
           <p className="space-x-2">
             <span>Don't Have an account?</span>
@@ -92,16 +92,13 @@ const Login = () => {
           {/* google sign in button */}
           <button
             onClick={handleGoogleLogin}
-            className="btn bg-primary flex items-center text-sm rounded-lg mx-auto hover:bg-opacity-80 transition-all duration-300 w-full"
+            className="btn bg-primary flex items-center justify-center rounded-lg mx-auto hover:bg-opacity-80 transition-all duration-300 w-full text-base md:text-lg space-x-2"
           >
-            <BsGoogle
-              className="h-8 w-8 hover:scale-110 hover:text-secondary mx-3"
-              aria-hidden="true"
-            />
-            <p className="text-center ">Continue With Google</p>
+            <BsGoogle className="h-8 w-8" aria-hidden="true" />
+            <p className="text-center">Continue With Google</p>
           </button>
 
-          <p>or</p>
+          <p className="text-center">or</p>
         </div>
 
         <form
