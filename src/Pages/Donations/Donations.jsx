@@ -1,16 +1,20 @@
 import React from 'react';
-import Causes from './Causes/Causes';
-import DonateBanner from './DonateItems/DonateBanner';
-import DonateCategory from './DonateItems/DonateCategory';
+import AllCauses from './AllCauses/AllCauses';
+import TeamVolunteer from './DonateItems/TeamVolunteer';
+import DonationAbout from './DonationAbout/DonationAbout';
+import DonationBanner from './DonationBanner/DonationBanner';
+import AllEvents from './Events/AllEvents';
 
 const Donations = () => {
-    return (
-        <>
-            <DonateBanner />
-            <Causes />
-            <DonateCategory/>
-        </>
-    );
+  return (
+    <>
+      <DonationBanner />
+      <AllCauses />
+      <DonationAbout />
+      <TeamVolunteer />
+      <AllEvents/>
+    </>
+  );
 };
 
 export default Donations;

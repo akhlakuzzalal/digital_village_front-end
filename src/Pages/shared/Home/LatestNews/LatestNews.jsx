@@ -6,6 +6,7 @@ import { Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { BASE_URI } from '../../../../api/axios';
 
 const LatestNews = () => {
   const [news, setNews] = useState([]);
@@ -56,15 +57,14 @@ const LatestNews = () => {
                     <img
                       className="rounded-t-lg w-100"
                       style={{ height: '280px' }}
-                      src={n.img}
-                      alt="village-news"
+                      src={`${BASE_URI}/${n?.bannerImg?.path}`} alt={n?.title}
                     />
                     <div className="dark:dark-card-bg">
                       <div className="p-4">
                         <h3 className=" heading_sm font-medium py-4">
-                          {n.title}
+                          {n?.title}
                         </h3>
-                        <p>{n.description.slice(0, 200)}</p>
+                        <p>{n?.description.slice(0, 200)}</p>
                         <div className="flex justify-between pt-3 font-medium">
                           <Link to="/newsdetails">
                             <button className="text-primary flex">

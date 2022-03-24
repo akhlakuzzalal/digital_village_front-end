@@ -3,62 +3,117 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { setPayModal } from '../../../../redux/slices/payModal/PayModalSlice';
 
-const BillingAddress = () => {
+const BillingAddress = ({ setAddress }) => {
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm();
-  const handleRegister = async ({ firstName, lastName, email, password }) => {
+  const {
+    register,
+    handleSubmit,
+    trigger,
+    formState: { errors },
+  } = useForm();
+  const handleRegister = async ({
+    firstName,
+    lastName,
+    email,
+    address,
+    postcode,
+    houseno,
+  }) => {
     const name = `${firstName} ${lastName}`;
-    console.log({ name, email, password });
+    const fullAddress = `House: ${houseno} ${address} PostCode: ${postcode}`;
+    setAddress({ name, email, fullAddress });
     dispatch(setPayModal(true));
   };
   return (
     <div>
-      <h6 className="mb-6">Billing Address</h6>
+      <h6 className="mb-6 pt-8 text-3xl">Shipping Address</h6>
       <form onSubmit={handleSubmit(handleRegister)} className="space-y-6">
         {/* name */}
-        <div className="flex gap-4">
+        <div className="flex flex-col md:flex-row w-full  gap-4">
           {/* first name */}
           <input
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('firstName', { required: true, maxLength: 20 })}
+            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary  w-full md:w-1/2 transition-all duration-300 rounded-xl"
+            {...register('firstName', {
+              required: 'Name is Required',
+              pattern: /^[A-Za-z]+$/i,
+              maxLength: 20,
+            })}
+            onKeyUp={() => {
+              trigger('firstName');
+            }}
             placeholder="First Name"
           />
-
+          {errors.firstName && (
+            <small className="text-danger">{errors.firstName.message}</small>
+          )}
           {/* last name */}
           <input
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('lastName', { pattern: /^[A-Za-z]+$/i })}
+            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full md:w-1/2 transition-all duration-300 rounded-xl"
+            {...register('lastName', {
+              required: 'Name is Required',
+              pattern: /^[A-Za-z]+$/i,
+              maxLength: 20,
+            })}
+            onKeyUp={() => {
+              trigger('lastName');
+            }}
             placeholder="Last Name"
           />
+          {errors.lastName && (
+            <small className="text-danger">{errors.lastName.message}</small>
+          )}
         </div>
 
         {/* email */}
         <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('email')}
+          {...register('email', {
+            required: 'required',
+            pattern: {
+              value:
+                /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+              message: 'Please provide correct email address.',
+            },
+          })}
           placeholder="Email"
+          type="email"
         />
 
+        {errors.email && <p className="text-danger">{errors.email.message}</p>}
         {/* Address */}
         <input
           className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-          {...register('address')}
-          placeholder="Address"
+          {...register('address', {
+            required: 'Address is Required',
+            maxLength: 200,
+          })}
+          placeholder="Full address"
         />
-
+        {errors.address && (
+          <small className="text-danger">{errors.address.message}</small>
+        )}
         {/* house no and zip code */}
         <div className="flex gap-4">
           {/* House no */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('houseno', { required: true, maxLength: 20 })}
-            placeholder="House No"
+            {...register('houseno', {
+              required: 'House no is Required',
+              maxLength: 20,
+            })}
+            onKeyUp={() => {
+              trigger('houseno');
+            }}
+            placeholder="House no"
           />
+          {errors.houseno && (
+            <small className="text-danger">{errors.houseno.message}</small>
+          )}
 
           {/* Post code */}
           <input
             className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('postcode', { required: true, maxLength: 20 })}
+            {...register('postcode', { required: true, maxLength: 10 })}
             placeholder="Post code"
           />
         </div>

@@ -1,38 +1,50 @@
 import React from 'react';
-import { BiDownvote, BiUpvote } from 'react-icons/bi';
+import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+import { BASE_URI } from '../../../api/axios';
+import UpvoteDownvote from '../UpvoteDownvote/UpvoteDownvote';
 
-const DevelopmentCard = ({
-  proposal: { name, desc, image, _id, upvotes, downvotes },
-  handleUpVote,
-  handleDownVote,
-}) => {
+const DevelopmentCard = ({ proposal, showUpvoteDownVote }) => {
+  const uId = useSelector((state) => state.user.uId);
+
+  const handleShowDetail = () => {
+    Swal.fire({
+      title: 'Detail of the development proposal',
+      html: proposal?.description,
+      confirmButtonText: 'Close',
+    });
+  };
+
   return (
-    <div className="rounded-2xl w-fit shadow-xl max-w-[400px]">
-      <div className="h-[280px] overflow-hidden cursor-pointer rounded-t-2xl">
-        <div
-          className="w-full h-full bg-cover bg-no-repeat hover:scale-125 transition-all duration-300"
-          style={{ backgroundImage: `url('${image}')` }}
-        ></div>
+    <div className="rounded-2xl w-fit border max-w-[400px] lg:mb-40 dark:bg-dark_primary ">
+      <div className="h-[280px] overflow-hidden rounded-t-2xl">
+        <img
+          className="w-full h-full bg-cover bg-no-repeat hover:scale-125 transition-all duration-300 overflow-hidden rounded-xl"
+          src={`${BASE_URI}/${proposal?.image?.path}`}
+          alt={proposal?.name}
+        ></img>
       </div>
       <div className="space-y-4 p-4">
-        <h3 className="text-2xl md:text-3xl ">{name}</h3>
-        <p>{desc.slice(0, 200)} ...</p>
+        <h3 className="text-2xl md:text-3xl dark:text-dark_text">{proposal?.title}</h3>
+        <p>{proposal?.description && proposal.description.slice(0, 100)} ...</p>
 
-        {/* upvote and downvote buttons */}
-        <div className="flex items-center justify-between">
+        {showUpvoteDownVote && (
+          <UpvoteDownvote
+            developmentProposalId={proposal._id}
+            uId={uId}
+            proposal={proposal}
+          />
+        )}
+
+        {/* detail button */}
+        {!showUpvoteDownVote && (
           <button
-            className="btn py-2 bg-success flex items-center space-x-2"
-            onClick={() => handleUpVote(_id)}
+            className="btn w-fit mx-auto px-12 py-2 bg-rose-600"
+            onClick={handleShowDetail}
           >
-            <span>{upvotes}</span> <BiUpvote size={30} />
+            Details
           </button>
-          <button
-            className="btn py-2 bg-danger flex items-center space-x-2"
-            onClick={() => handleDownVote(_id)}
-          >
-            <span>{downvotes}</span> <BiDownvote size={30} />
-          </button>
-        </div>
+        )}
       </div>
     </div>
   );

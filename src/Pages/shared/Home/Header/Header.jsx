@@ -8,12 +8,12 @@ const navigation = [
   { name: 'Service', href: '/#service' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
+  { name: 'Social', href: '/social' },
 ];
 
 const Header = () => {
   const location = useLocation();
   return location.pathname.includes('/teacher') ||
-    location.pathname.includes('/medical') ||
     location.pathname.includes('admin') ? null : (
     <Navbar navigation={navigation} />
   );

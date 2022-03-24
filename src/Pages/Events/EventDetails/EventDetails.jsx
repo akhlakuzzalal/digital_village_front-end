@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
+import { FaLocationArrow } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import Swal from 'sweetalert2/src/sweetalert2.js';
+import swal from 'sweetalert';
 import axios from '../../../../src/api/axios';
 import {
   fetchAllEvent,
   fetchUpcomingEvents,
 } from '../../../redux/slices/event/eventSlice';
-import Calender from '../../Medical/Dashboard/partials/dashboardItem/DoctorAppointment/Calender/Calender';
+import Calender from '../../Medical/DoctorsAppointment/Calender/Calender';
 const EventDetails = () => {
   const user = useSelector((state) => state.user.user);
   const { id } = useParams();
@@ -31,12 +32,9 @@ const EventDetails = () => {
 
   //to book events
   const handleBookEvent = () => {
-    // const url = `/event/participant?id=${eventItem[0]?._id}&email=${user.email}`
     axios.put(`/event/participant?id=${eventItem[0]?._id}&email=${user.email}`);
-    Swal.fire('Good job!', 'You clicked the button!', 'success');
+    swal('Good job!', 'Successfully booked !', 'success');
   };
-
-  // http://localhost:5000/event/participant?id=61793a64f536b7c2cd793&email=sabbirrrrr0911
 
   return (
     <div className="event-details-main py-48 px-5 lg:px-20">
@@ -44,21 +42,38 @@ const EventDetails = () => {
         {/* left side */}
         <div className="lg:col-span-2">
           <div>
-            <img className="w-full" src={eventItem[0]?.image} alt="" />
-            <h1 className="mt-20 hover:text-blue-600">{eventItem[0]?.title}</h1>
+            <img
+              className="w-full lg:h-[700px]"
+              src={eventItem[0]?.image}
+              alt=""
+            />
+            <div className="flex justify-between items-center ">
+              <h1 className="mt-20 tex-lg md:text-xl lg:text-2xl">
+                {eventItem[0]?.title}
+              </h1>
+              {eventItem[0]?.eventType === 'upcoming' && (
+                <button
+                  onClick={handleBookEvent}
+                  className="flex bg-[blue] text-white lg:px-10 md:px-10 px-1  mt-[90px] ml-3 py-3  rounded"
+                >
+                  Book This Event{' '}
+                  <FaLocationArrow className=" ml-2 w-[30px] " />
+                </button>
+              )}
+            </div>
           </div>
           <div className="mt-20">
-            <div className="bg-gray-100 p-7 border-l-4 flex items-center gap-6 lg:gap-20 px-5 lg:px-32">
+            <div className="bg-gray-100 p-7 border-l-4 flex items-center gap-6 lg:gap-20 px-5 lg:px-32 dark:bg-dark_primary">
               <div>
                 <p>Dtae</p>
-                <h3 className="text-xl">{eventItem[0]?.date}</h3>
+                <h3 className="lg:text-xl text-sm">{eventItem[0]?.date}</h3>
               </div>
               <div>
                 <p>Time</p>
                 <p className="text-sm">{eventItem[0]?.time}</p>
               </div>
               <div>
-                <h5>Community Center</h5>
+                <h5 className="dark:text-dark_text">Community Center</h5>
 
                 <p className="text-sm">{eventItem[0]?.place}</p>
               </div>
@@ -89,8 +104,8 @@ const EventDetails = () => {
         {/* Right side */}
         <div className="right-main ">
           <div className="lg:ml-36">
-            <h4 className="my-5 text-xl">Calender</h4>
-            <Calender className="w-full lg:w-0 md:w-full"></Calender>
+            <h4 className="my-5 text-xl dark:text-dark_text">Calender</h4>
+            <Calender className="w-[500px] lg:w-0 md:w-full" />
 
             <p className="my-4 text-primary">
               <Link to="/events">More Events</Link>
@@ -130,13 +145,6 @@ const EventDetails = () => {
           </div>
         </div>
       </div>
-
-      <button
-        onClick={handleBookEvent}
-        className="mt-20 bg-purple-300 py-5 px-10"
-      >
-        Book This Event
-      </button>
     </div>
   );
 };

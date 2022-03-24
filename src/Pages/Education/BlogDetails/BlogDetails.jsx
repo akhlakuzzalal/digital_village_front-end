@@ -1,6 +1,9 @@
-import React from 'react';
+import parse from 'html-react-parser';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Comments from '../../../Components/Comments/Comments';
+import axios, { BASE_URI } from '../../../api/axios';
+import Comments from '../DetailVideo/Comments/Comments';
 import BlogSideCard from '../Teacher/BlogSideCard/BlogSideCard';
 
 const blogs = [
@@ -57,45 +60,64 @@ const blogs = [
 const BlogDetails = () => {
   const { id } = useParams();
 
-  const blog = blogs.filter((blog) => blog?._id === id);
-  const mainBlog = blog[0];
+  const blogs = useSelector((state) => state.blogs.blogs);
+  const blog = blogs.filter((blog) => blog._id === id)[0];
+
+  const [commentLists, setCommentLists] = useState([]);
+
+  const updateComment = (newComment) => {
+    setCommentLists([...commentLists, newComment]);
+  };
+
+  useEffect(() => {
+    axios.get(`/comment/all/?id=${id}`).then((response) => {
+      if (response.data.success) {
+        setCommentLists(response.data.comments);
+      } else {
+        alert('Failed to get blog Info');
+      }
+    });
+  }, [id]);
 
   return (
     <div
-      className="mt-[80px] flex"
+      className="mt-[100px] lg:flex "
       style={{ minHeight: 'calc(100vh - 700px)' }}
     >
-      <div className="col-span-5 w-4/5 space-y-6 px-12">
+      <div className="col-span-5 lg:w-4/5 space-y-6 lg:px-12 my-20 px-3">
         <div>
           <img
-            src={mainBlog?.bannerImg?.path}
-            alt={mainBlog?.title}
-            className="w-full"
+            src={`${BASE_URI}/${blog?.bannerImg?.path}`}
+            alt={blog?.title}
+            className="w-full lg:w-full lg:h-[70vh] h-[200px]"
           />
         </div>
-        <div>Authored by {mainBlog?.author}</div>
-        <div>author Email: {mainBlog?.email}</div>
+        <div className='dark:text-dark_text'>Authored by {blog?.author}</div>
+        <div className='dark:text-dark_text'>author Email: {blog?.email}</div>
         <div className="flex gap-4 items-center">
-          {mainBlog?.tags.map((tag) => (
+          {blog?.tags.map((tag) => (
             <div key={tag} className="bg-emerald-500 p-2 text-white">
               #{tag}
             </div>
           ))}
         </div>
-        <div>{mainBlog?.content}</div>
+        <p className="">{parse(blog?.content)}</p>
         <div>
-          <Comments />
+          <Comments
+            postId={id}
+            updateComment={updateComment}
+            commentLists={commentLists}
+          />
         </div>
       </div>
 
-      <div className="flex-1 mt-6">
+      <div className="flex-1 mt-6 lg:my-20 mx-5 lg:mx-0 mb-10">
         <div className="space-y-6">
           <h3>Featured Blogs</h3>
           {blogs?.map((blog) => (
             <BlogSideCard blog={blog} />
           ))}
         </div>
-        {/* <div>featured videos</div> */}
       </div>
     </div>
   );

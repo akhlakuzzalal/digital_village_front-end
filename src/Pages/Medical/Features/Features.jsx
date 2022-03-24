@@ -7,10 +7,10 @@ import { MdOutlineMedicalServices } from 'react-icons/md';
 const Features = () => {
   return (
     <>
-      <div className="w-full flex justify-center items-center my-20">
-        <div className="w-full flex justify-center items-center">
+      <div className="w-full flex justify-center items-center my-6 md:my-20">
+        <div className="grid grid-cols-1 md:grid-cols-4 justify-center pl-14 md:pl-10 pr-4 items-center">
           <div
-            class=" p-5 flex flex-col justify-center items-center mx-0 md:mx-4  shadow-lg border-2 rounded-md bg-white text-justify text-white"
+            class=" p-5 flex flex-col justify-center items-center mx-0 md:mx-4  shadow-lg border-2 rounded-md bg-white text-center md:text-justify text-white"
             style={{ backgroundColor: '#10217d' }}
           >
             <MdOutlineMedicalServices style={{ fontSize: '3em' }} />
@@ -18,7 +18,7 @@ const Features = () => {
             <p>preventive care and checkups, to immunizations and exams</p>
           </div>
           <div
-            className="p-5  flex flex-col justify-center items-center mx-0 md:mx-4 shadow-lg border-2 rounded-md bg-white text-justify text-white"
+            className="p-5  flex flex-col justify-center items-center mx-0 md:mx-4 shadow-lg border-2 rounded-md bg-white text-center md:text-justify  text-white"
             style={{ backgroundColor: '#10217d' }}
           >
             <AiOutlineClockCircle style={{ fontSize: '3em' }} />
@@ -26,7 +26,7 @@ const Features = () => {
             <p>preventive care and checkups, to immunizations and exams</p>
           </div>
           <div
-            className="p-5 flex flex-col justify-center items-center mx-0 md:mx-4  shadow-lg border-2 rounded-md bg-white text-justify text-white"
+            className="p-5 flex flex-col justify-center items-center mx-0 md:mx-4  shadow-lg border-2 rounded-md bg-white text-center md:text-justify  text-white"
             style={{ backgroundColor: '#10217d' }}
           >
             <BiBookAdd style={{ fontSize: '3em' }} />
@@ -34,7 +34,7 @@ const Features = () => {
             <p>preventive care and checkups, to immunizations and exams</p>
           </div>
           <div
-            className="p-5  flex flex-col justify-center items-center mx-0 md:mx-4 shadow-lg border-2 rounded-md bg-white text-justify text-white"
+            className="p-5  flex flex-col justify-center items-center mx-0 md:mx-4 shadow-lg border-2 rounded-md bg-white text-center md:text-justify  text-white"
             style={{ backgroundColor: '#10217d' }}
           >
             <ImLab style={{ fontSize: '3em' }} />

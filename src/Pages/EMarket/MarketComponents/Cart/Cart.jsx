@@ -9,6 +9,8 @@ import TableBody from './TableBody';
 const Cart = () => {
   const dispatch = useDispatch();
   const cartProduct = useSelector((state) => state.market.cart.cart);
+  const id = [];
+  cartProduct.map((p) => id.push(p._id));
 
   // pass cart products price in redux for calculate cartTotal
   useEffect(() => {
@@ -25,7 +27,7 @@ const Cart = () => {
   };
   return (
     <div
-      className="mt-[80px] w-11/12 mx-auto"
+      className="mt-[90px] w-11/12 mx-auto"
       style={{ minHeight: 'calc(100vh - 700px)' }}
     >
       <div className="flex flex-col">
@@ -38,25 +40,25 @@ const Cart = () => {
                   <tr>
                     <th
                       scope="col"
-                      className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase"
+                      className="py-3 px-6 text-xs font-medium tracking-wider text-left text-blue-700 uppercase"
                     >
                       Name
                     </th>
                     <th
                       scope="col"
-                      className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase"
+                      className="py-3 px-6 text-xs font-medium tracking-wider text-left text-blue-700 uppercase"
                     >
                       Image
                     </th>
                     <th
                       scope="col"
-                      className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase"
+                      className="py-3 px-6 text-xs font-medium tracking-wider text-left text-blue-700 uppercase"
                     >
                       Quantity
                     </th>
                     <th
                       scope="col"
-                      className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase"
+                      className="py-3 px-6 text-xs font-medium tracking-wider text-left text-blue-700 uppercase"
                     >
                       Unit price
                     </th>
@@ -77,8 +79,8 @@ const Cart = () => {
         </div>
       </div>
       {/* Cart totall */}
-      <div className="w-full grid grid-cols-2 gap-6 mt-10">
-        <div>
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:mt-8">
+        <div className="">
           <Lottie
             style={{ width: '50%' }}
             options={defaultOptions}
@@ -86,7 +88,7 @@ const Cart = () => {
             // height={isDesktop ? 300 : isTablet ? 300 : 300}
           />
         </div>
-        <div>
+        <div className="md:mt-12 mb-32">
           <CartTotal></CartTotal>
         </div>
       </div>

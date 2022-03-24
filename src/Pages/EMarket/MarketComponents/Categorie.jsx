@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 const Categorie = () => {
   return (
     <div className="my-10 px-6 md:px-12">
-      <h6 className="inline border-b-2 border-primary">Shop by categories</h6>
+      <h6 className="inline border-b-2 border-primary">Top categories</h6>
       <Swiper
         slidesPerGroup={1}
         autoplay={{

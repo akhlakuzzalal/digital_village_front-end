@@ -1,15 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import axios from '../../../api/axios';
 import Rating from '../../../Components/Rating';
+import Comments from '../../Education/DetailVideo/Comments/Comments';
 import useCart from './Cart/useCart';
 
 const ProductDetails = () => {
   const { handleAddCart } = useCart();
-  const { id } = useParams();
-  const products = useSelector((state) => state.market.products.products);
+  const { id, item } = useParams();
+  const medicines = useSelector((state) => state.market.products.medicines);
+
+  const marketProducts = useSelector((state) => state.market.products.products);
+  let products;
+  if (item === 'product') {
+    products = marketProducts;
+  } else {
+    products = medicines;
+  }
   const product = products.find((p) => p._id === id);
   const { name, price, brand, img, description, rating } = product;
+
+  const [commentLists, setCommentLists] = useState([]);
+
+  const updateComment = (newComment) => {
+    setCommentLists([...commentLists, newComment]);
+  };
+
+  useEffect(() => {
+    axios.get(`/comment/all/?id=${id}`).then((response) => {
+      if (response.data.success) {
+        setCommentLists(response.data.comments);
+      } else {
+        alert('Failed to get blog Info');
+      }
+    });
+  }, [id]);
 
   return (
     <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
@@ -27,21 +53,23 @@ const ProductDetails = () => {
             <p className="text-gray-600">{description}</p>
             <button
               onClick={() => handleAddCart(id, name, img, price)}
-              className="btn bg-primary px-4 py-2"
+              className="btn bg-primary px-4 py-2 my-2"
             >
-              Add to cart
+              <span className="text-white font-bolder "> Add to cart</span>
             </button>
           </div>
         </div>
       </div>
-      {/* Rating & Review of a product */}
+      {/* Rating & comments of a product */}
       <div className="w-10/12 mx-auto mt-6">
-        <h6 className="mb-10">Ratings and reviews of {name}</h6>
+        <h6 className="md:mb-10 text-blue-600 text-base md:text-xl">
+          Ratings and reviews of {name}
+        </h6>
         {/* Rating */}
-        <h6 className="mt-6 ml-0 md:ml-10 inline border-b-2 border-gray-700">
+        <h6 className="md:mt-6 ml-0 md:ml-10 inline border-b-2 border-gray-700">
           Rating
         </h6>
-        <div className="grid grid-cols-1 md:grid-cols-5 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-5 mt-2 md:mt-6">
           <div className="col-span-2 flex flex-col items-center justify-center">
             <h1>
               {rating}/ <span className="text-gray-600">5</span>{' '}
@@ -103,7 +131,7 @@ const ProductDetails = () => {
             </div>
             {/* 1 start */}
             <div className="flex items-center">
-              <h6>5</h6>
+              <h6>1</h6>
               <Rating rating={1} size={30} />
               <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 ml-4">
                 <div
@@ -115,72 +143,12 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
-        {/* Review */}
-        <div className="mt-10">
-          <h6 className="ml-0 md:ml-10 mb-6 inline border-b-2 border-gray-700">
-            Reviews
-          </h6>
-          {/* single review */}
-          <div className="md:w-11/12 mx-auto shadow-md px-10 py-5 rounded-lg mb-6">
-            <div className="flex justify-between">
-              <h6>User name</h6>
-              <p>12/02/2021</p>
-            </div>
-            <div className="flex items-center">
-              <h6>5</h6>
-              <Rating rating={1} />
-            </div>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est
-              corrupti necessitatibus inventore asperiores consequatur
-              perspiciatis facilis ad omnis ipsam, eos rem non porro dicta
-              dolore! Soluta veritatis eveniet quisquam magnam sapiente
-              perferendis, amet sed illo expedita, quia autem et perspiciatis
-              error reprehenderit, laborum corporis. Inventore, deserunt! Ullam
-              id architecto cupiditate!
-            </p>
-          </div>
-          {/* single review */}
-          <div className="md:w-11/12 mx-auto shadow-md px-10 py-5 rounded-lg mb-6">
-            <div className="flex justify-between">
-              <h6>User name</h6>
-              <p>12/02/2021</p>
-            </div>
-            <div className="flex items-center">
-              <h6>4</h6>
-              <Rating rating={1} />
-            </div>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est
-              corrupti necessitatibus inventore asperiores consequatur
-              perspiciatis facilis ad omnis ipsam, eos rem non porro dicta
-              dolore! Soluta veritatis eveniet quisquam magnam sapiente
-              perferendis, amet sed illo expedita, quia autem et perspiciatis
-              error reprehenderit, laborum corporis. Inventore, deserunt! Ullam
-              id architecto cupiditate!
-            </p>
-          </div>
-          {/* single review */}
-          <div className="md:w-11/12 mx-auto shadow-md px-10 py-5 rounded-lg mb-6">
-            <div className="flex justify-between">
-              <h6>User name</h6>
-              <p>12/02/2021</p>
-            </div>
-            <div className="flex items-center">
-              <h6>3</h6>
-              <Rating rating={1} />
-            </div>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est
-              corrupti necessitatibus inventore asperiores consequatur
-              perspiciatis facilis ad omnis ipsam, eos rem non porro dicta
-              dolore! Soluta veritatis eveniet quisquam magnam sapiente
-              perferendis, amet sed illo expedita, quia autem et perspiciatis
-              error reprehenderit, laborum corporis. Inventore, deserunt! Ullam
-              id architecto cupiditate!
-            </p>
-          </div>
-        </div>
+
+        <Comments
+          postId={id}
+          updateComment={updateComment}
+          commentLists={commentLists}
+        />
       </div>
     </div>
   );

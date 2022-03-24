@@ -1,104 +1,172 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "../../../api/axios";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from '../../../api/axios';
 
-
-// create the thunk
-export const fetchAllCuases = createAsyncThunk(
-  'cuases/fetchAllCuases',
+// fetch all causes
+export const fetchAllCauses = createAsyncThunk(
+  'cuases/fetchAllCauses',
   async () => {
     const response = await axios
-      .get('/donation/cuases')
+      .get('/donationCause/all')
       .then((response) => response.data);
-      // console.log(response);
     return response;
   }
 );
 
 // add cuase
-export const addAnCuase = createAsyncThunk(
-  'cuases/postAnCuase',
-  async (event) => {
+export const addACuase = createAsyncThunk(
+  'cuases/addACuase',
+  async (formData) => {
     const response = await axios
-      .post('/donation/addcuase', event)
+      .post('/donationCause/add', formData)
       .then((response) => response.data);
     return response;
   }
 );
-// update cuase
-export const updateAnCuase = createAsyncThunk(
-  'cuases/updateAnCuase',
 
-  async (data) => {
-    console.log(data);
-await axios.put(`/donation/updatecuase/?id=${data.id}` , data )
-    return data;
+// give the donation money that you want
+export const giveDonation = createAsyncThunk(
+  'causes/giveDonation',
+  async ({ data, uId, causeId }) => {
+    const response = await axios
+      .put('/donationCause/take', {
+        ...data,
+        donarId: uId,
+        causeId,
+      })
+      .then((response) => response.data);
+    console.log(response);
+    return response;
   }
 );
+
 // delete cuase
-export const deleteAnCuase = createAsyncThunk(
-  'cuases/deleteAnCuase',
+export const deleteACause = createAsyncThunk(
+  'cuases/deleteACause',
   async (id) => {
-     await axios
-      .delete(`/donation/deletecuase/?id=${id}`)
+    await axios.delete(`/donationCause/delete/?id=${id}`);
     return id;
   }
 );
+              // help requester Apply get donation 
+// fetch all causes
+export const fetchAllRequest = createAsyncThunk(
+  'cuases/fetchAllRequest',
+  async () => {
+    const response = await axios
+      .get('/donationRequest/requestapply')
+      .then((response) => response.data);
+    return response;
+  }
+);
 
-// export const fetchDonarPayment = createAsyncThunk(
-//   'cuases/fetchDonarPayment',
-//   async () => {
-//     const response = await axios
-//       .get('/donation/donarpayment')
-//       .then((response) => response.data);
-//     return response;
-//   }
-// );
+// add help apply
+export const addAHelpRequest = createAsyncThunk(
+  'cuases/addAHelpRequest',
+  async (formData) => {
+    const response = await axios
+      .post('/donationRequest/helprequest', formData)
+      .then((response) => response.data);
+    return response;
+  }
+);
+// request the donation money that you want
+export const getRequestGive = createAsyncThunk(
+  'causes/getRequestGive',
+  async ({ data, uId, applyId }) => {
+    const response = await axios
+      .put('/donationRequest/requestpay', {
+        ...data,
+        requesterId: uId,
+        applyId,
+      })
+      .then((response) => response.data);
+    console.log(response);
+    return response;
+  }
+);
 
-
+// delete request
+export const deleteARequest = createAsyncThunk(
+  'cuases/deleteARequest',
+  async (id) => {
+    await axios.delete(`/donationRequest/deleterequest/?id=${id}`);
+    return id;
+  }
+);
+// donation slice 
 const donationSlice = createSlice({
   name: 'causes',
   initialState: {
     causes: [],
-    updatecause:{},
+    applys: [],
   },
 
-  reducers: {},
+  reducers: {
+    updateACause: (state, { payload }) => {
+      // console.log('this is payload', payload);
+      const updatedCause = payload;
+      const AllCausesAfterRemovingThePrev = state.causes.filter(
+        (cause) => cause._id !== payload._id
+      );
+      state.causes = [...AllCausesAfterRemovingThePrev, updatedCause];
+    },
+  },
+  // request apply update pay
+  // reducers: {
+  //   updateARequest: (state, { payload }) => {
+  //     // console.log('this is payload', payload);
+  //     const updatedrequest = payload;
+  //     const AllRequestAfterRemovingThePrev = state.applys.filter(
+  //       (apply) => apply._id !== payload._id
+  //     );
+  //     state.applys = [...AllRequestAfterRemovingThePrev, updatedrequest];
+  //   },
+  // },
   extraReducers: (builder) => {
-    builder.addCase(fetchAllCuases.fulfilled, (state, { payload }) => {
+    builder.addCase(fetchAllCauses.fulfilled, (state, { payload }) => {
       state.causes = payload;
     });
-    // //add cuase
-    builder.addCase(addAnCuase.fulfilled, (state, { payload }) => {
+    builder.addCase(addACuase.fulfilled, (state, { payload }) => {
       state.causes.push(payload);
     });
-    //update
-    builder.addCase(updateAnCuase.fulfilled, (state, { payload }) =>  { 
-
-    const prevCause = state.causes.find(
-              (cause) => cause._id === payload.id
-            );
-            // state.causes={...prevCause, ...data}
-            const updateCause = {...prevCause, ...payload}
-            const removeCause = state.causes.filter((cause) => cause._id !== payload.id)
-            state.causes=[...removeCause,updateCause ]
-         
-    });
-    
-    //delete
-    builder.addCase(deleteAnCuase.fulfilled, (state, { payload }) =>  { 
+    builder.addCase(giveDonation.fulfilled, (state, { payload }) => {
       console.log(payload);
-      state.causes = state.causes.filter(
-              (cause) => cause._id !== payload
-            );
+      if (payload._id) {
+        const AllCausesAfterRemovingThePrev = state.causes.filter(
+          (cause) => cause._id !== payload._id
+        );
+        state.causes = [...AllCausesAfterRemovingThePrev, payload];
+      }
     });
-    //  //Payment add
-    //  builder.addCase(fetchDonarPayment.fulfilled, (state, { payload }) => {
-    //   state.causes.push(payload);
+
+    //delete
+    builder.addCase(deleteACause.fulfilled, (state, { payload }) => {
+      state.causes = state.causes.filter((cause) => cause._id !== payload);
+    });
+          // help request apply
+    // builder.addCase(fetchAllRequest.fulfilled, (state, { payload }) => {
+    //   state.applys = payload;
+    // });
+    builder.addCase(addAHelpRequest.fulfilled, (state, { payload }) => {
+      state.applys.push(payload);
+    });
+    // builder.addCase(getRequestGive.fulfilled, (state, { payload }) => {
+    //   console.log(payload);
+    //   if (payload._id) {
+    //     const AllCausesAfterRemovingThePrev = state.applys.filter(
+    //       (apply) => apply._id !== payload._id
+    //     );
+    //     state.applys = [...AllCausesAfterRemovingThePrev, payload];
+    //   }
+    // });
+
+    // //delete
+    // builder.addCase(deleteARequest.fulfilled, (state, { payload }) => {
+    //   state.applys = state.applys.filter((apply) => apply._id !== payload);
     // });
   },
-
 });
 
-// export const { removeFromCause } = donationSlice.actions;
+export const { updateACause , updateARequest} = donationSlice.actions;
 
 export default donationSlice.reducer;

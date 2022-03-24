@@ -3,13 +3,13 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { GiSelfLove } from 'react-icons/gi';
 import { MdDoneOutline } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import { setShowModal } from '../../../redux/slices/eMarket/modalSlicle';
-import useCart from './Cart/useCart';
+import { setShowModal } from '../../../redux/slices/eMarket/modalSlice';
+import cart from '../../../utilities/cart';
 
-export default function AddToCart({ product }) {
+const AddToCart = ({ product }) => {
   const { name, _id, img, price, description } = product;
   // add a product in cart
-  const { handleAddCart } = useCart();
+  const { handleAddCart } = cart();
   // redux state
   const showModal = useSelector((state) => state.market.modal.showModal);
   const dispatch = useDispatch();
@@ -20,9 +20,9 @@ export default function AddToCart({ product }) {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none  dark:bg-dark_primary">
                 {/*body*/}
-                <div className="relative p-6 flex-auto">
+                <div className="relative mx-6 py-6 flex-auto">
                   <div className="grid grid-cols-1 md:grid-cols-2">
                     <img className="w-full h-4/5" src={img} alt="" />
                     <div>
@@ -38,7 +38,10 @@ export default function AddToCart({ product }) {
                           className="px-8 py-2 bg-secondary rounded-full"
                           onClick={() => handleAddCart(_id, name, img, price)}
                         >
-                          Add to cart
+                          <span className="text-white font-bolder">
+                            {' '}
+                            Add to cart
+                          </span>
                         </button>
                         <GiSelfLove
                           className="cursor-pointer"
@@ -70,4 +73,6 @@ export default function AddToCart({ product }) {
       ) : null}
     </>
   );
-}
+};
+
+export default AddToCart;

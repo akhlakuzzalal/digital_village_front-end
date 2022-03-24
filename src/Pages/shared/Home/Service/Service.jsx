@@ -22,7 +22,7 @@ const services = [
     image: education,
     detail:
       'Digital Learning is a service provided by us to improve the literacy rate of our village. We offers full free and quality education.',
-    desc: 'Free and Quality education',
+    desc: 'Free and Quality education to here',
     controlData: 'education',
   },
   {
@@ -31,7 +31,7 @@ const services = [
     image: medical,
     detail:
       'Medical services means Medically Necessary services, including, as the context requires, Confinement, treatments, procedures, tests, examinations .',
-    desc: 'Digital Village Service!',
+    desc: 'Making health care better together',
     controlData: 'medical',
   },
   {
@@ -40,7 +40,7 @@ const services = [
     image: event,
     detail:
       'Check out some amazing free events in village to take away all the fun experiences. There can be a lot that  might be offering but all the events  make it unique, distinctive and different from others.',
-    desc: 'Digital Village Service!',
+    desc: 'Exclusive events, priceless learning',
     controlData: 'events',
   },
   {
@@ -58,7 +58,7 @@ const services = [
     image: development,
     detail:
       'Our proud team working hard for the poor village people and improve their life style.we take somme village development work to develop various area ',
-    desc: 'Propose your thoughts here',
+    desc: 'Propose your thoughts here to go',
     controlData: 'development',
   },
   {
@@ -67,8 +67,8 @@ const services = [
     image:
       'https://weirdguru.com/wp-content/uploads/2020/12/custom-ecommerce-website-development-vector-image.png',
     detail:
-      'Our project sector is e-governance. It will be a great platform to connect villagers with the village administration.',
-    desc: 'Digital Village Service!',
+      'E-Market  is a nice platform for buying daily necessities.The main objective  is to connect the rural people with e-commerce and gaining their trust.',
+    desc: 'We make online selling superbly easy',
     controlData: 'e-market',
   },
 ];
@@ -77,13 +77,22 @@ const Service = () => {
   const [control, setControl] = useState('education');
 
   return (
-    <>
-      {/* <h1 className=" text-5xl md:text-7xl pb-4 text-center mx-auto font-bold py-2 my-8  text-primary">
-        Services
-      </h1> */}
+    <div className="space-y-6">
+      <div className="md:pt-[50px] mx-1">
+        <p className="text-center text-2xl text-blue-600 font-bolder">
+          Services
+        </p>
+        <h1 className=" text-xl md:text-2xl  text-center font-bold py-2   text-primary">
+          Our valuable Services for village people
+        </h1>
+        <p className="hidden md:block px-10 md:px-[100px] text-justify md:text-center">
+          Serving people is our goal to achieve sustainable development for this
+          village
+        </p>
+      </div>
       <section
         id="service"
-        className="space-y-6 md:space-y-0 flex flex-wrap py-8 mt-10"
+        className="space-y-6 md:space-y-0 flex flex-wrap mt-10"
       >
         <div className="w-full lg:w-1/2 space-y-3 md:space-y-6 text-center md:text-left">
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
@@ -105,7 +114,7 @@ const Service = () => {
             )
         )}
       </section>
-    </>
+    </div>
   );
 };
 

@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { BsGoogle } from 'react-icons/bs';
 import Lottie from 'react-lottie';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import useAuth from '../../../../hooks/useAuth';
 import useMediaQuery from '../../../../hooks/useMediaQuery';
 import animationData from '../../../../lotties/registration.json';
@@ -29,7 +30,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const redirect_uri = location?.state?.form || '/';
+  const redirect_uri = location?.state?.from || '/';
 
   const {
     setAuthError,
@@ -37,15 +38,35 @@ const Login = () => {
     authError,
     processSignInWithGoogle,
     setIsLoading,
+    loginToDB,
   } = useAuth();
 
   const handleLogin = async ({ email, password }) => {
-    await processSignIn(email, password, location, navigate);
-    reset();
+    return processSignIn(email, password)
+      .then(() => {
+        loginToDB(email, password);
+        setAuthError('');
+        swal({
+          text: `You have successfully logged in`,
+          icon: 'success',
+          confirm: 'Go and Explore',
+          closeOnClickOutside: false,
+        }).then(() => navigate(redirect_uri));
+        reset();
+      })
+      .catch((error) => {
+        setAuthError(error.message);
+        swal({
+          text: error.message,
+          icon: 'error',
+        });
+        console.log(error);
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const handleGoogleLogin = () => {
-    processSignInWithGoogle(navigate, redirect_uri);
+    processSignInWithGoogle(location, navigate);
   };
 
   // clear error messages
@@ -54,9 +75,12 @@ const Login = () => {
   };
 
   return (
-    <div className="flex" style={{ minHeight: 'calc(100vh - 100px)' }}>
-      <div className="flex-1 px-3">
-        <div className="pt-36 md:mx-10 text-center lg:mx-48 space-y-4 mb-3">
+    <div
+      className="flex justify-center lg:h-[100vh] lg:my-20"
+      style={{ minHeight: 'calc(100vh - 100px)' }}
+    >
+      <div className="flex-1 px-3 max-w-[500px] mx-auto">
+        <div className="pt-36 space-y-4 mb-3 pl-2 md:flex flex-col items-center">
           <h3 className="capitalize">Welcome to digital village</h3>
           <p className="space-x-2">
             <span>Don't Have an account?</span>
@@ -68,16 +92,13 @@ const Login = () => {
           {/* google sign in button */}
           <button
             onClick={handleGoogleLogin}
-            className="btn bg-primary flex items-center text-sm rounded-lg mx-auto hover:bg-opacity-80 transition-all duration-300 w-full"
+            className="btn bg-primary flex items-center justify-center rounded-lg mx-auto hover:bg-opacity-80 transition-all duration-300 w-full text-base md:text-lg space-x-2"
           >
-            <BsGoogle
-              className="h-8 w-8 hover:scale-110 hover:text-secondary mx-3"
-              aria-hidden="true"
-            />
-            <p className="text-center ">Continue With Google</p>
+            <BsGoogle className="h-8 w-8" aria-hidden="true" />
+            <p className="text-center">Continue With Google</p>
           </button>
 
-          <p>or</p>
+          <p className="text-center">or</p>
         </div>
 
         <form
@@ -85,35 +106,50 @@ const Login = () => {
           className="space-y-6 max-w-[500px] mx-auto"
         >
           {/* email */}
-          <input
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('email', {
-              required: true,
-              pattern: {
-                value:
-                  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                message: 'Please provide correct email address.',
-              },
-            })}
-            placeholder="Email"
-            type="email"
-          />
-          {errors.email && (
-            <p className="text-error mb-2">{errors.email.message}</p>
-          )}
+          <div>
+            <input
+              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('email', {
+                required: 'required',
+                pattern: {
+                  value:
+                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                  message: 'Please provide correct email address.',
+                },
+              })}
+              placeholder="Email"
+              type="email"
+            />
+
+            {errors.email && (
+              <p className="text-danger">{errors.email.message}</p>
+            )}
+          </div>
 
           {/* password */}
-          <input
-            type="password"
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
-            {...register('password', {
-              required: true,
-              minLength: 6,
-              maxLength: 20,
-            })}
-            placeholder="Password"
-            required
-          />
+          <div>
+            <input
+              type="password"
+              className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+              {...register('password', {
+                required: 'required',
+                pattern: {
+                  value: /(?=.*[!@#$&%^*])/,
+                  message:
+                    'please provide atleast one special charaters (@, # etc.)',
+                },
+                minLength: {
+                  value: 6,
+                  message: 'Your password should be at least 6 characters',
+                },
+              })}
+              placeholder="Password"
+            />
+
+            {errors.password && (
+              <p className="text-danger">{errors.password.message}</p>
+            )}
+          </div>
 
           {/* submit button */}
           <input

@@ -1,25 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { HiLightBulb } from 'react-icons/hi';
 import { ImCheckmark } from 'react-icons/im';
-import background from './../../../assets/medical/department.jpg';
 import mediBanner from './../../../assets/medical/mediBanner.png';
 
+const datas = [
+  {
+    id: '1',
+    title: ' Cardiologists',
+    description:
+      'For cardiovascular conditions.They’re experts on the heart and blood vessels. You might see them for heart failure, a heart attack, high blood pressure, or an irregular heartbeat.',
+  },
+
+  {
+    id: '2',
+    title: 'Family physician',
+    description:
+      'For people of all ages.They care for the whole family, including children, adults, and the elderly. They do routine checkups and screening tests, give you flu and immunization shots, and manage diabetes and other ongoing medical conditions.',
+  },
+  {
+    id: '3',
+    title: 'Ophthalmologists',
+    description:
+      'An ophthalmologist is a medical or osteopathic doctor who specializes in eye and vision care. Ophthalmologists differ from optometrists and opticians in their levels of training and in what they can diagnose and treat.',
+  },
+  {
+    id: '4',
+    title: 'Gynecologists',
+    description:
+      "disease management for female.Often called OB/GYNs, these doctors focus on women' health, including pregnancy and childbirth. They do Pap smears, pelvic exams, and pregnancy checkups. OB/GYNs are trained in both areas. But some of them may focus on women's reproductive health (gynecologists), and others specialize in caring for pregnant women (obstetricians).",
+  },
+  {
+    id: '5',
+    title: 'Dermatologists',
+    description:
+      ' For diseases of the skin.Have problems with your skin, hair, nails? Do you have moles, scars, acne, or skin allergies? Dermatologists can help.',
+  },
+  {
+    id: '6',
+    title: 'Neurologists',
+    description:
+      "For the nerves, spine, and brain.These are specialists in the nervous system, which includes the brain, spinal cord, and nerves. They treat strokes, brain and spinal tumors, epilepsy, Parkinson's disease, and Alzheimer's disease.",
+  },
+];
+
 const Services = () => {
+  const [active, setActive] = useState('');
   return (
     <div>
-      <div className=" w-full flex justify-center items-center p-10">
-        <div className="w-full md:w-1/2">
+      <div className=" grid grid-cols-1 md:grid-cols-2 justify-center my-10 items-center pl-10 pr-0 md:pr-4">
+        <div className="">
           <img src={mediBanner} alt="" />
         </div>
-        <div className="w-full md:w-1/2">
-          <h3 className="text-center">Our Services</h3>
-          <p className="my-5" style={{ fontSize: '20px' }}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis
-            ullam consectetur autem accusantium porro? Aspernatur, totam
-            accusamus, molestias est architecto sed laborum officiis atque
-            cumque incidunt alias, porro dolor voluptatum quos vero repudiandae
+        <div className="px-5 mt-6 md:mt-0">
+          <h3 className=" text-center md:text-5xl text-blue-600 ">
+            Our Services
+          </h3>
+          <p className="my-5 text-justify px-2 md:px-5  text-lg ">
+            Treatment here, truly human experience. You’re cared for as a person
+            first.The more patients we treat each year prepares us to treat the
+            one who matters most—you.Count on our experts to deliver an accurate
+            diagnosis and the right plan for you the first time.
           </p>
-          <div className="flex justify-start items-center">
-            <div className="px-2 w-full md:w-1/2">
+          <div className="grid grid-cols-1 md:grid-cols-2 justify-start items-center mx-6">
+            <div className="px-2 ">
               <div className="  flex justify-start items-center my-3">
                 <ImCheckmark
                   style={{
@@ -29,7 +72,12 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '20px' }}>Online Consultation</span>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Online Consultation
+                  </span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -41,7 +89,12 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '20px' }}>Offline Consultation</span>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Offline Consultation
+                  </span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -53,7 +106,12 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '20px' }}>Online Appointment</span>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Online Appointment
+                  </span>
                 </div>
               </div>
 
@@ -66,7 +124,12 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '20px' }}>Lab Test</span>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Lab Test
+                  </span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -78,7 +141,12 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '20px' }}>Ambulance facilities</span>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Ambulance facilities
+                  </span>
                 </div>
               </div>
               <div className=" flex justify-start items-center my-3">
@@ -90,11 +158,16 @@ const Services = () => {
                   }}
                 />
                 <div>
-                  <span style={{ fontSize: '20px' }}>Emergency Department</span>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Emergency Department
+                  </span>
                 </div>
               </div>
             </div>
-            <div className=" w-full md:w-1/2 flex justify-end">
+            <div className="  flex justify-end">
               <ul class="w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white text-center">
                 <li
                   class="py-2 px-4 w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600"
@@ -132,148 +205,70 @@ const Services = () => {
           </div>
         </div>
       </div>
-      <div
-        className="w-full flex justify-center items-center p-10 "
-        style={{
-          backgroundImage: `ur${background})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-        }}
-      >
-        <div className="w-full md:w-1/2">
+      <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center ">
+        <div className=" ">
           <section class="text-gray-700">
-            <div class="container px-5 py-24 mx-auto">
-              <div class="text-center mb-20">
-                <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
+            <div class="container  pl-10 pr-0 md:pr-4 py-8 ">
+              <div class="text-center flex flex-col justify-center items-center">
+                <h3 class=" text-xl md:text-3xl font-bold text-center title-font pb-6 text-blue-900 ">
                   Our Departments
-                </h1>
+                </h3>
               </div>
-              <div class="w-full flex flex-wrap  sm:mx-auto sm:mb-2 -mx-2">
-                <div class="w-full  py-2">
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold  bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      Cardiologists
-                    </summary>
+              <div className=" flex  flex-col justify-center item-center pl-5 pr-1 md:full  w-full md:mt-0 sm:mt-14 mt-10">
+                {/* <!-- Digital Section --> */}
 
-                    <span>
-                      For cardiovascular conditions.They’re experts on the heart
-                      and blood vessels. You might see them for heart failure, a
-                      heart attack, high blood pressure, or an irregular
-                      heartbeat.
-                    </span>
-                  </details>
-
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      Family physician
-                    </summary>
-
-                    <span>
-                      For people of all ages.They care for the whole family,
-                      including children, adults, and the elderly. They do
-                      routine checkups and screening tests, give you flu and
-                      immunization shots, and manage diabetes and other ongoing
-                      medical conditions.
-                    </span>
-                  </details>
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold  bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      Ophthalmologists
-                    </summary>
-
-                    <span>specialize in eye and vision care.</span>
-                  </details>
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold  bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      gynecologists
-                    </summary>
-
-                    <span>
-                      disease management for female.Often called OB/GYNs, these
-                      doctors focus on women's health, including pregnancy and
-                      childbirth. They do Pap smears, pelvic exams, and
-                      pregnancy checkups. OB/GYNs are trained in both areas. But
-                      some of them may focus on women's reproductive health
-                      (gynecologists), and others specialize in caring for
-                      pregnant women (obstetricians).
-                    </span>
-                  </details>
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      Dermatologists
-                    </summary>
-
-                    <span>
-                      For diseases of the skin.Have problems with your skin,
-                      hair, nails? Do you have moles, scars, acne, or skin
-                      allergies? Dermatologists can help.
-                    </span>
-                  </details>
-                  <details class="mb-4">
-                    <summary
-                      class="font-semibold  bg-gray-200 rounded-md py-2 px-4"
-                      style={{
-                        backgroundColor: '#10217d',
-                        color: 'white',
-                        fontSize: '1.5em',
-                      }}
-                    >
-                      Neurologists
-                    </summary>
-
-                    <span>
-                      For the nerves, spine, and brain.These are specialists in
-                      the nervous system, which includes the brain, spinal cord,
-                      and nerves. They treat strokes, brain and spinal tumors,
-                      epilepsy, Parkinson's disease, and Alzheimer's disease.
-                    </span>
-                  </details>
-                </div>
+                {datas.map((data) => (
+                  <div>
+                    <div>
+                      <div className=" flex justify-between items-center cursor-pointer bg-blue-900 p-4 my-1  rounded-lg">
+                        {active && data.id === active ? (
+                          <div className="flex justify-between items-center">
+                            <HiLightBulb
+                              className="  transition duration-700 ease-in-out text-[#ffff00]"
+                              size={30}
+                              onClick={() => setActive('')}
+                            />
+                            <h3 className=" w-11/12 inline font-semibold text-lg text-white">
+                              {data.title}
+                            </h3>
+                          </div>
+                        ) : (
+                          <div
+                            onClick={() => setActive(data?.id)}
+                            className="flex items-center"
+                          >
+                            <HiLightBulb
+                              className=" transition duration-700 ease-in-out text-white"
+                              size={30}
+                            />
+                            <h3 className="  w-11/12  font-semibold text-lg text-white">
+                              {data.title}
+                            </h3>
+                          </div>
+                        )}
+                      </div>
+                      <p
+                        className={
+                          'font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 ' +
+                          (data.id === active ? 'block' : 'hidden')
+                        }
+                      >
+                        {data?.description}
+                      </p>
+                    </div>
+                    <hr className="  bg-gray-200" />
+                  </div>
+                ))}
               </div>
             </div>
           </section>
         </div>
-        <div className="w-full md:w-1/2 flex justify-center items-center">
-          <form class="w-full max-w-lg">
-            <p class="text-center my-2 text-gray-400">
-              we are here to hear from you
+        <div className=" flex justify-center md:px-8 ">
+          <form class=" pl-10 md:0">
+            <p class="text-center pb-4 text-base  font-bolder text-gray-600">
+              We are here to hear from you
             </p>
-            <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="flex flex-wrap -mx-3 mb-2">
               <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <input
                   class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
@@ -291,7 +286,7 @@ const Services = () => {
                 />
               </div>
             </div>
-            <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="flex flex-wrap -mx-3 mb-2">
               <div class="w-full px-3">
                 <input
                   class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -301,7 +296,7 @@ const Services = () => {
                 />
               </div>
             </div>
-            <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="flex flex-wrap -mx-3 mb-2">
               <div class="w-full px-3">
                 <textarea
                   class=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none"
@@ -310,14 +305,14 @@ const Services = () => {
                 ></textarea>
               </div>
             </div>
-            <div class="md:flex md:items-center">
+            <div class="flex justify-center items-center">
               <div class="md:w-1/3">
                 <button
-                  class="shadow focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                  class="shadow focus:shadow-outline focus:outline-none  text-white font-bold py-3 px-5 md:px-3 rounded-lg text-md md:text-lg"
                   type="button"
                   style={{ backgroundColor: '#10217d' }}
                 >
-                  Send
+                  Send Message
                 </button>
               </div>
               <div class="md:w-2/3"></div>

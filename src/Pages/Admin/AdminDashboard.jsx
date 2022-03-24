@@ -1,112 +1,90 @@
 import React from 'react';
 import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
-import { BsCalendar2EventFill } from 'react-icons/bs';
-import {
-  FaConnectdevelop,
-  FaFistRaised,
-  FaShopify,
-  FaUsers,
-} from 'react-icons/fa';
+import { FaHandsHelping, FaShopify, FaUsers } from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
-import { MdRateReview } from 'react-icons/md';
-import { Outlet, useLocation } from 'react-router-dom';
+import { IoLogoDesignernews } from 'react-icons/io';
+import {
+  MdManageAccounts,
+  MdOutlineEditNotifications,
+  MdOutlineManageAccounts,
+  MdOutlineMedicalServices,
+} from 'react-icons/md';
+import { Outlet } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
-// import Sidebar from '../../Components/Sidebar';
-// import WelcomeBanner from '../../Components/WelcomeBanner';
-// import Header from '../Education/Teacher/Dashboard/partials/Header';
 
+const x = 25;
 const links = [
+  // {
+  //   name: 'Home',
+  //   icon: <ImStatsDots size={25} />,
+  //   path: '/admin/home',
+  // },
   {
     name: 'All Users',
-    icon: <FaUsers size={30} />,
+    icon: <FaUsers size={x} />,
     path: '/admin/allusers',
   },
   {
-    name: 'Events',
-    icon: <BsCalendar2EventFill size={30} />,
-    path: '/admin/events',
-    nestedPath: [
-      {
-        name: 'Add Event',
-        icon: <AiFillFileAdd size={30} />,
-        path: '/admin/add-events',
-      },
-      {
-        name: 'Delete Event',
-        icon: <AiFillDelete size={30} />,
-        path: '/admin/manageEvents',
-      },
-    ],
-  },
-
-  {
-    name: 'Add Review',
-    icon: <MdRateReview size={30} />,
-    path: '/admin/add-review',
+    name: 'Notification',
+    icon: <MdOutlineEditNotifications size={x} />,
+    path: '/admin/sendNotification',
   },
   {
-    name: 'Donation',
-    icon: <BiDonateHeart size={30} />,
-    path: '/admin/paymentcauses',
-    nestedPath: [
-      {
-        name: 'All Payment',
-        icon: <FaFistRaised size={30} />,
-        path: '/admin/paymentcauses',
-      },
-      {
-        name: 'Add a Cause',
-        icon: <FcImport size={30} />,
-        path: '/admin/addcause',
-      },
-      {
-        name: 'All Cuases',
-        icon: <FcDonate size={30} />,
-        path: '/admin/allcauses',
-      },
-    ],
+    name: 'Add Event',
+    icon: <AiFillFileAdd size={x} />,
+    path: '/admin/add-events',
   },
   {
-    name: 'Development',
-    icon: <FaConnectdevelop size={30} />,
-    path: '/admin/development',
-    nestedPath: [
-      {
-        name: 'Add-Development',
-        icon: <BsCalendar2EventFill size={30} />,
-        path: '/admin/addDevelopment',
-      },
-      {
-        name: 'Manage-Development',
-        icon: <BsCalendar2EventFill size={30} />,
-        path: '/admin/manageDevelopmet',
-      },
-    ],
+    name: 'Manage Event',
+    icon: <AiFillDelete size={x} />,
+    path: '/admin/manageEvents',
+  },
+  {
+    name: 'Donars',
+    icon: <BiDonateHeart size={x} />,
+    path: '/admin/manageAllDonars',
+  },
+  {
+    name: 'Add a Cause',
+    icon: <FcImport size={x} />,
+    path: '/admin/addcause',
+  },
+  {
+    name: 'Donation Cuases',
+    icon: <FcDonate size={x} />,
+    path: '/admin/allcauses',
+  },
+  {
+    name: 'Help Requests',
+    icon: <FaHandsHelping size={x} />,
+    path: '/admin/allHelpRequests',
+  },
+  {
+    name: 'Manage Development',
+    icon: <MdManageAccounts size={x} />,
+    path: '/admin/manageDevelopmentProposals',
   },
   {
     name: 'Market',
-    icon: <FaShopify size={30} />,
+    icon: <FaShopify size={x} />,
     path: '/admin/market',
   },
-
   {
-    name: 'newsDashboard',
-    icon: <BsCalendar2EventFill size={30} />,
-    path: '/admin/newsDashboard',
-    nestedPath: [
-      {
-        name: 'Add-News',
-        icon: <BsCalendar2EventFill size={30} />,
-        path: '/admin/addNews',
-      },
-      {
-        name: 'Manage-News',
-        icon: <BsCalendar2EventFill size={30} />,
-        path: '/admin/manageNews',
-      },
-    ],
+    name: 'Add appointment',
+    icon: <MdOutlineMedicalServices size={x} />,
+    path: '/admin/addAppointment',
+  },
+  {
+    name: 'Add-News',
+    icon: <IoLogoDesignernews size={x} />,
+    path: '/admin/addNews',
+  },
+  {
+    name: 'Manage-News',
+    icon: <MdOutlineManageAccounts size={x} />,
+    path: '/admin/manageNews',
   },
 ];
 
@@ -115,19 +93,19 @@ const navigation = [
   { name: 'Service', href: '/#service' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
+  { name: 'Social', href: '/social' },
 ];
 
 const AdminDashboard = () => {
-  const location = useLocation();
-  const initial =
-    location.pathname === '/admindashboard' ||
-    location.pathname === '/admindashboard/';
-
   return (
-    <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div>
       <Navbar navigation={navigation} />
-      <NewSidebar links={links} />
-      <Outlet />
+      <div>
+        <NewSidebar links={links} />
+        <div className="mt-[80px] w-[calc(100vw-50px)] ml-auto overflow-hidden">
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
 };

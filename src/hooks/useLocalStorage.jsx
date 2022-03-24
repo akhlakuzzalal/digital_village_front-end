@@ -1,24 +1,46 @@
-import { useEffect, useState } from 'react';
+const useLocalStorage = () => {
+  const getDB = () => localStorage.getItem('cart');
+  const updateDb = (cart) => localStorage.setItem('cart', JSON.stringify(cart));
 
-const getLocalValue = (key, initValue) => {
-  const localValue = JSON.parse(localStorage.getItem(key));
-  if (localValue) return localValue;
+  // Set A new Cart to the Local Storage
+  const setCart = (id, address) => {
+    const exist = getDB();
+    let cart = {};
+    if (!exist) {
+      cart['items'] = JSON.stringify({ ids: id, address: address });
+    } else {
+      cart = JSON.parse(exist);
+      if (cart['items']) {
+        cart['items'] = JSON.stringify({ ids: id, address: address });
+      } else {
+        cart['items'] = JSON.stringify({ ids: id, address: address });
+      }
+    }
+    updateDb(cart);
+  };
 
-  if (initValue instanceof Function) return initValue();
+  // Delete a Cart From the Local Storage
+  const deleteDB = (name) => {
+    const exist = getDB();
+    if (!exist) {
+    } else {
+      const cart = JSON.parse(exist);
+      delete cart[name];
+      updateDb(cart);
+    }
+  };
 
-  return initValue;
+  // Get the cart from the Local Storage
+
+  const getSavedCart = () => {
+    const exist = getDB();
+    return exist ? JSON.parse(exist) : {};
+  };
+
+  return {
+    setCart,
+    deleteDB,
+    getSavedCart,
+  };
 };
-
-const useLocalStorage = (key, initValue) => {
-  const [data, setData] = useState(
-    JSON.parse(() => getLocalValue(key, initValue))
-  );
-
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(data));
-  }, [key, data]);
-
-  return [data, setData];
-};
-
 export default useLocalStorage;

@@ -16,21 +16,23 @@ const Reviews = () => {
   useEffect(() => {
     dispatch(fetchAllReview());
   }, []);
+  console.log(allReview);
   return (
-    <div className="bg-gray-50 dark:bg-black">
-      <div className="pt-[100px]">
-        <p className="text-center">TESTIMONIALS</p>
-        <h1 className=" text-2xl  text-center font-bold py-2   text-primary">
-          WHAT PEOPLE SAY ABOUT US
+    <div className="bg-gray-50 dark:bg-dark_bg mb-8">
+      <div className="md:pt-[50px] mx-1">
+        <p className="text-center text-2xl text-blue-600 font-bolder">
+          TESTIMONIALS
+        </p>
+        <h1 className=" text-xl md:text-2xl  text-center font-bold py-2   text-primary">
+          VILLAGERS REVIEW ABOUT US
         </h1>
-        <p className="px-[100px] text-center">
-          Lorem Ipsum has been the industry's standard dummy text ever since the
-          1500s, when an unknown printer took
+        <p className="hidden md:block px-10 md:px-[100px] text-justify md:text-center">
+          People's opinion is our top priority. See what the villagers think
+          about us.
         </p>
       </div>
 
       <Swiper
-        slidesPerView={2}
         slidesPerGroup={1}
         autoplay={{
           delay: 2500,
@@ -41,12 +43,12 @@ const Reviews = () => {
             spaceBetween: 0,
           },
           '@0.75': {
-            slidesPerView: 2,
-            spaceBetween: 20,
+            slidesPerView: 1,
+            spaceBetween: 5,
           },
           '@1.00': {
             slidesPerView: 2,
-            spaceBetween: 20,
+            spaceBetween: 5,
           },
           '@1.50': {
             slidesPerView: 4,

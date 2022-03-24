@@ -1,17 +1,30 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { BiChevronDown } from 'react-icons/bi';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { BASE_URI } from '../api/axios';
 import useAuth from '../hooks/useAuth';
-import Transition from '../Pages/Education/Teacher/Dashboard/utils/Transition';
-import UserAvatar from './../assets/user-avatar-32.png';
+import useMediaQuery from '../hooks/useMediaQuery';
+import { clearTheNotificationSlice } from '../redux/slices/notification/notificationSlice';
+import Transition from './Transition';
 
 const UserMenu = () => {
-  const { logout } = useAuth();
+  const roles = useSelector((state) => state.user.roles);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const { logout } = useAuth();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  const isTablet = useMediaQuery('(min-width: 775px)');
   const user = useSelector((state) => state.user.user);
-  const isUser = user.name.includes('user');
+
+  useEffect(() => {
+    const rolesArray = roles
+      ? roles.map((role) => Object.values(role)).flat()
+      : [];
+    setIsAdmin(rolesArray?.includes(5000));
+  }, [roles]);
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
@@ -29,7 +42,7 @@ const UserMenu = () => {
     };
     document.addEventListener('click', clickHandler);
     return () => document.removeEventListener('click', clickHandler);
-  });
+  }, [dropdownOpen]);
 
   // close if the esc key is pressed
   useEffect(() => {
@@ -39,42 +52,52 @@ const UserMenu = () => {
     };
     document.addEventListener('keydown', keyHandler);
     return () => document.removeEventListener('keydown', keyHandler);
-  });
+  }, [dropdownOpen]);
 
   // log out
   const handleLogout = async () => {
-    console.log(user);
     await logout();
-    console.log(user);
     navigate('/');
+    dispatch(clearTheNotificationSlice());
   };
 
   return (
     <div className="relative inline-flex">
-      <button
-        ref={trigger}
-        className="inline-flex justify-center items-center group"
-        aria-haspopup="true"
-        onClick={() => setDropdownOpen(!dropdownOpen)}
-        aria-expanded={dropdownOpen}
-      >
+      {isTablet ? (
+        <button
+          ref={trigger}
+          className="inline-flex justify-center items-center group"
+          aria-haspopup="true"
+          onClick={() => setDropdownOpen(!dropdownOpen)}
+          aria-expanded={dropdownOpen}
+        >
+          <img
+            className="w-8 h-8 rounded-full"
+            src={
+              user?.photo?.path
+                ? `${BASE_URI}/${user?.photo?.path}`
+                : 'https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg'
+            }
+            alt="User"
+          />
+          <div className="hidden md:flex items-center truncate">
+            <span className="truncate md:block ml-2 text-sm font-bold">
+              {user?.name}
+            </span>
+            <BiChevronDown size={25} />
+          </div>
+        </button>
+      ) : (
         <img
           className="w-8 h-8 rounded-full"
-          src={UserAvatar}
-          width="32"
-          height="32"
+          src={
+            user?.photo?.path
+              ? `${BASE_URI}/${user?.photo?.path}`
+              : 'https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg'
+          }
           alt="User"
         />
-        <div className="flex items-center truncate">
-          <span className="truncate ml-2 text-sm font-bold">{user.name}</span>
-          <svg
-            className="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400"
-            viewBox="0 0 12 12"
-          >
-            <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-          </svg>
-        </div>
-      </button>
+      )}
 
       <Transition
         className="origin-top-right z-10 absolute top-full right-0 min-w-44 bg-white border border-slate-200 py-1.5 rounded shadow-lg overflow-hidden mt-1"
@@ -91,40 +114,48 @@ const UserMenu = () => {
           onFocus={() => setDropdownOpen(true)}
           onBlur={() => setDropdownOpen(false)}
         >
-          <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
-            <div className="text-xs text-slate-500 italic">Administrator</div>
-          </div>
           <ul>
-            {user.name && isUser ? (
-              <li className="hover:bg-green-500">
-                <Link
-                  className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                  to="/userdashboard"
-                >
-                  Profile
-                </Link>
-              </li>
+            {isAdmin ? (
+              <>
+                <li className="hover:bg-green-500">
+                  <Link
+                    className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                    to="/admin"
+                  >
+                    Admin
+                  </Link>
+                </li>
+                <li className="hover:bg-green-500">
+                  <Link
+                    className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                    to="/userdashboard"
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                  >
+                    Profile
+                  </Link>
+                </li>
+              </>
             ) : (
               <li className="hover:bg-green-500">
                 <Link
                   className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                  to="/admin"
+                  to="/userdashboard"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
                 >
-                  Admin dashboard
+                  Profile
                 </Link>
               </li>
             )}
             <li className="hover:bg-green-500">
-              <Link
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                to="/"
+              <div
+                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3 cursor-pointer"
                 onClick={() => {
                   setDropdownOpen(!dropdownOpen);
                   handleLogout();
                 }}
               >
                 Sign Out
-              </Link>
+              </div>
             </li>
           </ul>
         </div>
