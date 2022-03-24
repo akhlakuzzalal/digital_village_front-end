@@ -28,11 +28,11 @@ const MedicineShopBanner = () => {
         </div>
         <div className="relative flex flex-col justify-center md:items-center w-11/12 mx-auto">
           {/* Large Sacreen */}
-          <div className="md:absolute hidden md:block top-0 mt-6 text-black font-semibold">
-            <Link className="mx-4" to="/marketdashboard">
+          <div className="md:absolute hidden md:block top-0 mt-6 text-black dark:text-dark_text font-semibold">
+            <Link className="mx-4 dark:text-dark_text" to="/marketdashboard">
               Dashboard
             </Link>
-            <Link to="/e-market">Village market</Link>
+            <Link className='dark:text-dark_text' to="/e-market">Village market</Link>
           </div>
           {/* small Screen */}
           <div className="ml-1 mt-2 cursor-pointer block md:hidden">
@@ -42,18 +42,18 @@ const MedicineShopBanner = () => {
                 menuopen ? 'absolute' : 'hidden'
               } bg-slate-300 px-2 py-3 space-y-2`}
             >
-              <Link className="block" to={'/marketdashboard'}>
+              <Link className="block dark:text-dark_text" to={'/marketdashboard'}>
                 Dashboard
               </Link>
-              <Link className="block" to={'/e-market'}>
+              <Link className="block dark:text-dark_text" to={'/e-market'}>
                 Village Market
               </Link>
             </div>
           </div>
-          <h4 className="font-bold text-base md:pt-0 md:text-2xl transition duration-600 ease md:animate-bounce">
+          <h4 className="font-bold text-base md:pt-0 md:text-2xl transition duration-600 ease md:animate-bounce dark:text-dark_text">
             Medicine Shop
           </h4>
-          <p className="text-sm md:text-base">
+          <p className="text-sm md:text-base dark:text-gray-300">
             Buy personal and protective eqipment easily
           </p>
         </div>

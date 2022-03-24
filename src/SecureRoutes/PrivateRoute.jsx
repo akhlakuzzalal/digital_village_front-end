@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import useFirebase from '../hooks/useFirebase';
 import useMediaQuery from '../hooks/useMediaQuery';
-import animationData from '../lotties/airplane.json';
-// import animationData from '../lotties/circle.json';
+// import animationData from '../lotties/airplane.json';
+import animationData from '../lotties/circle.json';
 
 const PrivateRoute = () => {
   const { isLoading } = useFirebase();

@@ -92,8 +92,8 @@ const BlogDetails = () => {
             className="w-full lg:w-full lg:h-[70vh] h-[200px]"
           />
         </div>
-        <div>Authored by {blog?.author}</div>
-        <div>author Email: {blog?.email}</div>
+        <div className='dark:text-dark_text'>Authored by {blog?.author}</div>
+        <div className='dark:text-dark_text'>author Email: {blog?.email}</div>
         <div className="flex gap-4 items-center">
           {blog?.tags.map((tag) => (
             <div key={tag} className="bg-emerald-500 p-2 text-white">

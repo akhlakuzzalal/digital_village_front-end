@@ -1,11 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Lottie from 'react-lottie';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import swal from 'sweetalert';
 import banner from '../../../assets/donation/donatebanner.jpg';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import animationData from '../../../lotties/donate.json';
+import { addAHelpRequest } from '../../../redux/slices/Donations/donationSlice';
 const DonationBanner = () => {
   const isTablet = useMediaQuery('(min-width: 655px)');
   const isDesktop = useMediaQuery('(min-width: 900px)');
@@ -19,6 +20,7 @@ const DonationBanner = () => {
   };
   const user = useSelector((state) => state.user.user);
   const [showModal, setShowModal] = React.useState(false);
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -27,19 +29,30 @@ const DonationBanner = () => {
     formState: { errors },
   } = useForm();
 
-  const handleAlert = () => {
-    swal({
-      position: 'top-end',
-      icon: 'success',
-      title: 'You request sumbit successfully',
-      showConfirmButton: false,
-      timer: 1500,
+  const helpRequestApply =  async (data) => {
+    // if (data.category === 'choose one') data.category = 'others';
+    const formData = new FormData();
+    formData.append(
+      'request',
+      JSON.stringify({
+        ...data,
+        date: new Date().toLocaleDateString(),
+        requesterName: user?.name,
+        requesterEmail: user?.email,
+        pay: 'pending',
+      })
+    );
+    dispatch(addAHelpRequest(formData)).then(() => {
+      swal({
+        position: 'top-end',
+        icon: 'success',
+        title: 'You request sumbit successfully',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      setShowModal(false);
+      reset();
     });
-  };
-  const onSubmit = () => {
-    setShowModal(false);
-    handleAlert();
-    reset();
   };
   return (
     <>
@@ -51,7 +64,7 @@ const DonationBanner = () => {
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blue Gray-200 rounded-t">
-                  <h3 className="text-2xl font-semibold ">
+                  <h3 className="text-2xl font-semibold text-green-400">
                     Donate! <span>Help Request</span>
                   </h3>
                   <button
@@ -66,7 +79,7 @@ const DonationBanner = () => {
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                   <form
-                    onSubmit={handleSubmit}
+                    onSubmit={handleSubmit(helpRequestApply)}
                     className="grid grid-cols-1 lg:grid-cols-1 gap-5 w-full"
                   >
                     <div className="flex flex-col space-y-2">
@@ -94,7 +107,7 @@ const DonationBanner = () => {
                       <textarea
                         className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
                         placeholder="Your Help Message"
-                        {...register('message', {
+                        {...register('description', {
                           required: 'Message is Required',
                           minLength: {
                             value: 20,
@@ -106,18 +119,37 @@ const DonationBanner = () => {
                           },
                         })}
                         onKeyUp={() => {
-                          trigger('message');
+                          trigger('description');
                         }}
                       />
-                      {errors.message && (
-                        <p className="text-danger">{errors.message.message}</p>
+                      {errors.description && (
+                        <p className="text-danger">{errors.description.message}</p>
                       )}
-                      <input
+                      {/* <input
                         className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
                         defaultValue={new Date().toLocaleString()}
                         placeholder="date"
                         {...register('date', { required: true })}
-                      />
+                      /> */}
+                      {/* category */}
+                      <select
+                      className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
+                      {...register('category', {
+                      required: 'this is required',
+                      })}
+                      >
+                      <option className="bg-green-500 text-pink-500" defaultValue="choose one">choose one</option>
+                      <option value="Education">Education</option>
+                      <option value="Health">Health</option>
+                      <option value="Water">Water</option>
+                      <option value="Agriculture">Agriculture</option>
+                      <option value="Food">Food</option>
+                      <option value="Development">Development</option>
+                      <option value="Others">others</option>
+                      </select>
+                      {errors.category && (
+                      <small className="text-danger">{errors.category.message}</small>
+                      )}
                       <input
                         type="number"
                         className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
@@ -148,8 +180,8 @@ const DonationBanner = () => {
                             message: 'Minimum Required amount is 49',
                           },
                           max: {
-                            value: 500,
-                            message: 'Maximum allowed amount is 500',
+                            value: 300,
+                            message: 'Maximum allowed amount is 300',
                           },
                           pattern: {
                             value: /^[0-9]*$/,
@@ -176,10 +208,9 @@ const DonationBanner = () => {
                   >
                     Cancel
                   </button>
-                  <button
+                  <button 
                     className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="submit"
-                    onClick={() => onSubmit()}
                   >
                     Request Doante
                   </button>

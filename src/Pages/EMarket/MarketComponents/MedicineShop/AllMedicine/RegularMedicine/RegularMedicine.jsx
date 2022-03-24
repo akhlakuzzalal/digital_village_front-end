@@ -33,7 +33,7 @@ const RegularMedicine = ({ medicine, handleAddToCart }) => {
         </div>
         <div className="px-6 py-4">
           <h6 className="text-yellow-500 text-center">$ {medicine?.price}</h6>
-          <div className="font-bold text-xl mb-2 text-center">
+          <div className="font-bold text-xl mb-2 text-center dark:text-dark_text">
             {medicine?.name}
           </div>
         </div>

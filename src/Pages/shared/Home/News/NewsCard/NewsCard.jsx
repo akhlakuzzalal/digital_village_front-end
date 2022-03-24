@@ -28,7 +28,7 @@ const NewsCard = ({ n }) => {
         <p>{n.description.slice(0, 40)} ...</p>
          </div>
         <Link to={`/newsDetails/${n._id}`}>
-          <button className="text-primary text-lg hover:text-black transition-all duration-500 border-b-2 border-b-primary">
+          <button className="text-primary text-lg hover:text-black transition-all duration-500 border-b-2 border-b-primary dark:bg-dark_primary hover:dark:text-dark_text">
             Read More
           </button>
         </Link>

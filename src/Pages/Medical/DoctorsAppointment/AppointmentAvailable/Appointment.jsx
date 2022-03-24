@@ -58,7 +58,7 @@ const Appointment = (props) => {
           borderBottom: '5px solid #10217d',
         }}
       >
-        <div class="m-0 md:m-5 bg-sky-50 border-1 border-sky-400 ">
+        <div class="m-0 md:m-5 bg-sky-50 border-1 border-sky-400 dark:bg-dark_primary ">
           <div className="w-fit mx-auto">
             <Lottie
               options={defaultOptions}

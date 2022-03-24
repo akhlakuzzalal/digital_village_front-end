@@ -1,6 +1,10 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React, { useEffect, useState } from 'react';
+import Lottie from 'react-lottie';
+import useMediaQuery from '../../hooks/useMediaQuery';
+// import animationData from '../lotties/airplane.json';
+import animationData from '../../lotties/circle.json';
 import CheckoutForm from './CheckoutForm';
 import './payment.css';
 
@@ -13,6 +17,17 @@ const stripePromise = loadStripe(
 
 function Payment({ price, id, returnPage }) {
   const [clientSecret, setClientSecret] = useState('');
+  const isTablet = useMediaQuery('(min-width: 656px)');
+  const isDesktop = useMediaQuery('(min-width: 900px)');
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     if (price) {
@@ -38,12 +53,16 @@ function Payment({ price, id, returnPage }) {
     <div>
       {clientSecret ? (
         <Elements stripe={stripePromise} options={options}>
-          <CheckoutForm returnPage={returnPage} />
+          <CheckoutForm returnPage={returnPage} price={price} id={id} />
         </Elements>
       ) : (
-        <>
-          <p>Loading .....</p>
-        </>
+        <div className="w-fit mx-auto min-h-screen flex justify-center items-center">
+          <Lottie
+            options={defaultOptions}
+            isClickToPauseDisabled={true}
+            width={isDesktop ? 400 : isTablet ? 300 : 200}
+          />
+        </div>
       )}
     </div>
   );
