@@ -214,6 +214,7 @@ const Contact = () => {
             onKeyUp={() => {
               trigger('number');
             }}
+            placeholder="Phone Number"
           />
           {errors.number && (
             <small className="text-danger">{errors.number.message}</small>

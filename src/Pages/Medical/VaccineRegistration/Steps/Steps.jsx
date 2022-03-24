@@ -4,8 +4,10 @@ import { FcApproval, FcHome, FcSms } from 'react-icons/fc';
 const Steps = () => {
   return (
     <div className="p-0 md:p-10">
-      <div className="border-l-8 border-indigo-700 p-0 md:p-5  md:ml-20 my-20 ">
-        <h3 className="text-indigo-700 pl-16 md:pl-0">Steps of vaccination</h3>
+      <div className="p-0 md:p-5  md:ml-20 my-20 pl-16 md:pl-0  ">
+        <h3 className="border-l-8 border-indigo-700  text-indigo-700 ">
+          Steps of vaccination
+        </h3>
       </div>
       <div className="flex flex-col  md:flex-row justify-between items-center px-10 md:px-20">
         <div className="p-8 md:p-2 w-full  flex flex-col  justify-center items-center md:w-1/3">
