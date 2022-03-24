@@ -5,12 +5,15 @@ import ManageEventsCard from './ManageEventsCard';
 const ManageEvents = () => {
   const allEvent = useSelector((state) => state.events.allEvents);
   const [deleteEvent, setDeleteEvent] = useState(0);
+  const [showModal, setShowModal] = React.useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllEvent());
     setDeleteEvent(0);
   }, [deleteEvent]);
+
+  console.log(allEvent, 'this is events');
 
   return (
     <div className="mx-0">
@@ -22,6 +25,8 @@ const ManageEvents = () => {
         {allEvent.map((event) => (
           <ManageEventsCard
             key={event._id}
+            showModal={showModal}
+            setShowModal={setShowModal}
             event={event}
             setDeleteEvent={setDeleteEvent}
           />
