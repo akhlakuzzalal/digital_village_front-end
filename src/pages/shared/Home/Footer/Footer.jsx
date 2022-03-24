@@ -3,9 +3,9 @@ import { FaFacebook, FaTwitterSquare } from 'react-icons/fa';
 import { GrInstagram } from 'react-icons/gr';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../../../../assets/digital_village_logo.png';
 import AppleStore from '../../../../assets/footer/appstore.png';
 import playStore from '../../../../assets/footer/playstore.png';
-import logo from '../../../../assets/logo.png';
 const Footer = () => {
   const location = useLocation();
   const isMatched =
@@ -15,7 +15,7 @@ const Footer = () => {
     location.pathname.indexOf('medical') !== -1;
   return (
     !isMatched && (
-      <footer className="pt-16 bg-slate-900">
+      <footer className="pt-16 mt-10 bg-slate-900">
         <div className="text-center rounded-xl mx-auto text-white">
           <div className="space-y-3 px-3 ">
             {/* subscribe text */}
@@ -46,16 +46,17 @@ const Footer = () => {
               <div className="mb-5 ">
                 <div className="text-lg mb-3 font-bold">
                   {/* logo */}
-                  <img
-                    style={{ height: '60px', width: '60px' }}
-                    src={logo}
-                    alt=""
-                  />
+                  <Link to="/">
+                    <img
+                      style={{ height: '60px', width: '60px' }}
+                      src={logo}
+                      alt=""
+                    />
+                  </Link>
                   <h3 className="mt-5">Digital Village</h3>
                 </div>
                 <p className="w-5/6">
-                  We provide quality services for the villagers and we try to
-                  educate them.
+                  Turning an analog village into a digital one
                 </p>
               </div>
 
@@ -100,7 +101,7 @@ const Footer = () => {
                       borderRadius: '0px 10px 0px 10px',
                       color: 'white',
                     }}
-                    className="mb-3 bg-[#3500D3] py-6 px-3dark:text-dark_text
+                    className="mb-3 bg-[#3500D3] py-6 px-3 dark:text-dark_text
                     dark:bg-secondary"
                   >
                     +88010000000
@@ -123,18 +124,24 @@ const Footer = () => {
             <div className="ml-auto flex">
               <Link to={{ pathname: 'https://web.facebook.com' }}>
                 <FaFacebook
-                  className="h-8 w-8 hover:scale-110 hover:text-[blue]"
+                  className="h-8 w-8 hover:scale-110 hover:text-primary cursor-pointer"
                   aria-hidden="true"
                 />
               </Link>
-              <GrInstagram
-                className="h-8 w-8 hover:scale-110 hover:text-[blue] mx-3"
-                aria-hidden="true"
-              />
-              <FaTwitterSquare
-                className="h-8 w-8 hover:scale-110 hover:text-[blue] mx-3"
-                aria-hidden="true"
-              />
+
+              <Link to={{ pathname: 'https://www.instagram.com/' }}>
+                <GrInstagram
+                  className="h-8 w-8 hover:scale-110 hover:text-primary mx-3 cursor-pointer"
+                  aria-hidden="true"
+                />
+              </Link>
+
+              <Link to={{ pathname: 'https://twitter.com/' }}>
+                <FaTwitterSquare
+                  className="h-8 w-8 hover:scale-110 hover:text-primary mx-3 cursor-pointer"
+                  aria-hidden="true"
+                />
+              </Link>
               <MessengerCustomerChat
                 pageId="104685378841819"
                 appId="720117475814303"

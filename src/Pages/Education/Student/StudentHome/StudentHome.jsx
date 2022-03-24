@@ -32,7 +32,7 @@ const StudentHome = () => {
         <Banner />
 
         {/* top blogs */}
-        <div className="lg:mx-[100px] ">
+        <div className="lg:mx-[100px]">
           <h3 className="py-6  md:text-left text-xl lg:text-4xl mx-5 lg:mx-0">
             Top Categories <hr />
           </h3>

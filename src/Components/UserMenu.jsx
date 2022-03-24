@@ -5,10 +5,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URI } from '../api/axios';
 import useAuth from '../hooks/useAuth';
 import useMediaQuery from '../hooks/useMediaQuery';
-import { clearTheNotificationSlice } from '../redux/slices/notification/notificationSlice';
 import Transition from './Transition';
 
-const UserMenu = () => {
+const UserMenu = ({ handleLogout }) => {
   const { logout } = useAuth();
   const roles = useSelector((state) => state.user.roles);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -25,6 +24,7 @@ const UserMenu = () => {
       ? roles.map((role) => Object.values(role)).flat()
       : [];
     setIsAdmin(rolesArray?.includes(5000));
+    console.log(roles, user);
   }, [roles]);
 
   const trigger = useRef(null);
@@ -54,13 +54,6 @@ const UserMenu = () => {
     document.addEventListener('keydown', keyHandler);
     return () => document.removeEventListener('keydown', keyHandler);
   }, [dropdownOpen]);
-
-  // log out
-  const handleLogout = async () => {
-    await logout();
-    navigate('/');
-    dispatch(clearTheNotificationSlice());
-  };
 
   return (
     <div className="relative inline-flex">
@@ -123,7 +116,7 @@ const UserMenu = () => {
                     className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
                     to="/admin"
                   >
-                    Admininstration
+                    Admin
                   </Link>
                 </li>
                 <li className="hover:bg-green-500">

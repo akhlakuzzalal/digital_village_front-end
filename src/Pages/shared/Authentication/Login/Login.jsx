@@ -46,7 +46,6 @@ const Login = () => {
       .then(() => {
         loginToDB(email, password);
         setAuthError('');
-        console.log('hello world');
         swal({
           text: `You have successfully logged in`,
           icon: 'success',

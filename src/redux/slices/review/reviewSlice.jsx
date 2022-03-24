@@ -6,9 +6,9 @@ export const fetchAllReview = createAsyncThunk(
   'reviews/fetchAllReview',
   async () => {
     const response = await axios
-      .get('/review/allReview')
+      .get('/userReview/all')
       .then((response) => response.data);
-  
+
     return response;
   }
 );
@@ -42,6 +42,7 @@ const reviewSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchAllReview.fulfilled, (state, { payload }) => {
+      console.log(payload);
       state.allReviews = payload;
     });
 
