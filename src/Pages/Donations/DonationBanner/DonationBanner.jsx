@@ -28,10 +28,24 @@ const DonationBanner = () => {
     reset,
     formState: { errors },
   } = useForm();
-
+  const handleAlert = () => {
+    swal({
+      position: 'top-end',
+      icon: 'success',
+      title:"You request sumbit successfully",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
+  const onSubmit = () => {
+    setShowModal(false)
+    handleAlert();
+    reset();
+  };
   const helpRequestApply =  async (data) => {
     if (data.category === 'choose one') data.category = 'others';
     const formData = new FormData();
+    console.log(formData);
     formData.append(
       'request',
       JSON.stringify({
@@ -43,15 +57,17 @@ const DonationBanner = () => {
       })
     );
     dispatch(addAHelpRequest(formData)).then(() => {
-      swal({
-        position: 'top-end',
-        icon: 'success',
-        title: 'You request sumbit successfully',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      setShowModal(false);
-      reset();
+      console.log(formData);
+      
+      // swal({
+      //   position: 'top-end',
+      //   icon: 'success',
+      //   title: 'You request sumbit successfully',
+      //   showConfirmButton: false,
+      //   timer: 1500,
+      // });
+      // setShowModal(false);
+      // reset();
     });
   };
   return (
@@ -110,8 +126,8 @@ const DonationBanner = () => {
                         {...register('description', {
                           required: 'Message is Required',
                           minLength: {
-                            value: 20,
-                            message: 'Minimum Required length is 20',
+                            value: 15,
+                            message: 'Minimum Required length is 15',
                           },
                           maxLength: {
                             value: 500,
@@ -176,12 +192,12 @@ const DonationBanner = () => {
                         {...register('amount', {
                           required: 'Amount is Required',
                           min: {
-                            value: 49,
-                            message: 'Minimum Required amount is 49',
+                            value: 50,
+                            message: 'Minimum Required amount is 50',
                           },
                           max: {
-                            value: 300,
-                            message: 'Maximum allowed amount is 300',
+                            value: 500,
+                            message: 'Maximum allowed amount is 500',
                           },
                           pattern: {
                             value: /^[0-9]*$/,
@@ -208,7 +224,7 @@ const DonationBanner = () => {
                   >
                     Cancel
                   </button>
-                  <button 
+                  <button onClick={onSubmit}
                     className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="submit"
                   >
