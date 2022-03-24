@@ -25,9 +25,9 @@ const About = () => {
       <div className=" lg:flex  mt-20 lg:mt-48 lg:mx-[100px] mx-5">
         <div className="lg:flex">
           <div>
-            <div className=" lg:w-[300px] w-[100%] border rounded py-8 mb-6">
+            <div className=" lg:w-[300px] w-[100%] border rounded py-8 mb-6 dark:bg-dark_primary">
               <img
-                className="ml-5 h-10 w-10   "
+                className="ml-5 h-10 w-10 dark:text-gray-200 "
                 src="http://cdn.onlinewebfonts.com/svg/img_142809.png"
                 alt=""
               />
@@ -46,7 +46,7 @@ const About = () => {
                 </button>
               </div>
             </div>
-            <div className="w-[100%] lg:w-[300px] border rounded py-8">
+            <div className="w-[100%] lg:w-[300px] border rounded py-8 dark:bg-dark_primary">
               <img
                 className="ml-5 h-10 w-10   "
                 src="https://uxwing.com/wp-content/themes/uxwing/download/21-medical-science-lab/medical.png"
@@ -68,7 +68,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="lg:mt-[100px] lg:ml-10">
+          <div className="lg:mt-[100px] lg:ml-10 dark:bg-dark_primary">
             <div className=" lg:w-[300px] w-[100%] border rounded py-8 mb-6">
               <img
                 className="ml-5 h-10 w-10   "
@@ -90,7 +90,7 @@ const About = () => {
                 </button>
               </div>
             </div>
-            <div className="w-[100%] lg:w-[300px] border rounded py-8">
+            <div className="w-[100%] lg:w-[300px] border rounded py-8 dark:bg-dark_primary">
               <img
                 className="ml-5 h-10 w-10   "
                 src="https://cdn-icons-png.flaticon.com/128/3349/3349234.png"
@@ -104,7 +104,7 @@ const About = () => {
                 <p className="mb-3 ml-2 md:ml-1 text-gray-700 dark:text-gray-400">
                   Urna porttitor rhoncus dolor purus non enim praesent elementum
                 </p>
-                <button className=" rounded text-blue-600 ml-1">
+                <button className=" rounded text-blue-600 ml-1 ">
                   <p className="flex">
                     View More <MdOutlineDoubleArrow className="mt-1" />
                   </p>
@@ -126,7 +126,7 @@ const About = () => {
           </p>
           <ul>
             <li className="flex mb-2">
-              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
+              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8 dark:text-gray-300" />
               <p className="mt-2 pl-2">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem
                 ipsum, dolor sit amet consectetur adipisicing elit. Cumque,
@@ -134,7 +134,7 @@ const About = () => {
               </p>
             </li>
             <li className="flex mb-2">
-              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
+              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8 dark:text-gray-300" />
               <p className="mt-2 pl-2">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem
                 ipsum, dolor sit amet consectetur adipisicing elit. Cumque,
@@ -142,7 +142,7 @@ const About = () => {
               </p>
             </li>
             <li className="flex mb-10">
-              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
+              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8 dark:text-gray-300" />
               <p className="mt-2 pl-2">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem
                 ipsum, dolor sit amet consectetur adipisicing elit. Cumque,
@@ -151,36 +151,36 @@ const About = () => {
             </li>
           </ul>
 
-          <button className="flex hover:bg-[blue] border border-[blue] border-5 hover:text-white rounded  py-2 md:py-3 px-20 ">
+          <button className="flex hover:bg-[blue] border border-[blue] border-5 hover:text-white rounded  py-2 md:py-3 px-20 dark:bg-dark_primary dark:hover:bg-[blue] dark:text-dark_text">
             View More <MdOutlineDoubleArrow className="mt-1" />
           </button>
         </div>
       </div>
 
-      <div className="bg-gray-100 lg:py-32 lg:flex mt-6 md:mt-[50px] lg:px-[200px] lg:space-x-8 ">
+      <div className="bg-gray-100 lg:py-32 lg:flex mt-6 md:mt-[50px] lg:px-[200px] lg:space-x-8 dark:bg-dark_primary ">
         <div className=" lg:w-[300px] w-[100%]  border flex-col items-center justify-center py-8">
-          <GiHumanPyramid className="h-[100px] w-52 text-center mx-auto" />
+          <GiHumanPyramid className="h-[100px] w-52 text-center mx-auto dark:text-gray-300" />
           <div className="text-center">
             <h1>300+</h1>
             <p>Villagers</p>
           </div>
         </div>
         <div className=" lg:w-[300px]  w-[100%]   flex-col items-center justify-center py-8 border">
-          <GiHumanPyramid className="h-[100px] w-52 text-center mx-auto   lg:ml-5" />
+          <GiHumanPyramid className="dark:text-gray-300 h-[100px] w-52 text-center mx-auto   lg:ml-5" />
           <div className="text-center">
             <h1>30+</h1>
             <p>Teachers</p>
           </div>
         </div>
         <div className=" lg:w-[300px]  w-[100%]  flex-col items-center justify-center py-8 border">
-          <GiTeacher className="h-[100px] w-52 text-center mx-auto " />
+          <GiTeacher className="dark:text-gray-300 h-[100px] w-52 text-center mx-auto " />
           <div className="text-center">
             <h1>30+</h1>
             <p>Doctors</p>
           </div>
         </div>
         <div className=" lg:w-[300px] w-[100%]   flex-col items-center justify-center py-8 border">
-          <GiHumanPyramid className="h-[100px] w-52 text-center mx-auto" />
+          <GiHumanPyramid className="dark:text-gray-300 h-[100px] w-52 text-center mx-auto" />
           <div className="text-center">
             <h1>300+</h1>
             <p>Donner's</p>
@@ -203,7 +203,7 @@ const About = () => {
 
           <ul>
             <li className="flex md:mb-2">
-              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
+              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8 dark:text-gray-300" />
               <p className="mt-2 pl-2">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem
                 ipsum, dolor sit amet consectetur adipisicing elit. Cumque,
@@ -211,7 +211,7 @@ const About = () => {
               </p>
             </li>
             <li className="flex mb-2">
-              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
+              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8 dark:text-gray-300" />
               <p className="mt-2 pl-2">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem
                 ipsum, dolor sit amet consectetur adipisicing elit. Cumque,
@@ -219,7 +219,7 @@ const About = () => {
               </p>
             </li>
             <li className="flex mb-10">
-              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8" />
+              <IoMdArrowDropdownCircle className="mt-1 h-8 w-8 dark:text-gray-300" />
               <p className="mt-2 pl-2">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem
                 ipsum, dolor sit amet consectetur adipisicing elit. Cumque,

@@ -59,7 +59,7 @@ const Contact = () => {
         </div> */}
       </div>
 
-      <div className="md:pt-52">
+      <div className="md:pt-16">
         <div className="lg:pr-8">
           <h3 className="text-center ml-2 md:ml-0 lg:ml-0 text-2xl font-semibold mt-16 mb-3 text-gray-500 hover:text-red-500">
             FOLLOW OUR INFO
@@ -67,7 +67,7 @@ const Contact = () => {
           <h1 className="text-3xl md:text-5xl lg:text-5xl text-center font-bold ml-4 md:ml-0 lg:ml-0 hover:text-blue-600">
             Contact information
           </h1>
-          <h4 className="text-center lg:px-[300px] px-5 ">
+          <h4 className="text-center lg:px-[300px] px-5 dark:text-gray-200 ">
             Give us a call or drop by anytime, we endeavour to answer all
             enquiries within 24 hours on business days.We will be happy to
             answer your questions.enquiries within 24 hours on business days.We
@@ -75,7 +75,7 @@ const Contact = () => {
           </h4>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-8 mt-10 lg:px-[200px]">
-          <div className="flex bg-gray-100 px-7 w-full my-1 ">
+          <div className="flex bg-gray-100 px-7 w-full my-1 dark:bg-dark_primary">
             <div className=" rounded-full">
               <img
                 className="lg:mr-0 object-cover rounded-full h-20 w-20  my-5 mr-8 md:mr-0"
@@ -93,7 +93,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="flex bg-gray-100 px-7 w-full my-1 ">
+          <div className="flex bg-gray-100 px-7 w-full my-1 dark:bg-dark_primary ">
             <div className=" rounded-full">
               <img
                 className="lg:mr-0 object-cover rounded-full h-20 w-20  my-5 mr-8 md:mr-0"
@@ -111,7 +111,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="flex bg-gray-100 px-7 w-full my-1 ">
+          <div className="flex bg-gray-100 px-7 w-full my-1 dark:bg-dark_primary ">
             <div className=" rounded-full">
               <img
                 className="lg:mr-0 object-cover rounded-full h-20 w-20  my-5 mr-8 md:mr-0"
@@ -129,7 +129,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="flex bg-gray-100 px-7 w-full my-1 ">
+          <div className="flex bg-gray-100 px-7 w-full my-1 dark:bg-dark_primary">
             <div className=" rounded-full">
               <img
                 className="lg:mr-0 object-cover rounded-full h-20 w-20  my-5 mr-8 md:mr-0"
@@ -168,12 +168,12 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="mt-20 mx-auto bg-white pt-10">
-        <h5 className="text-center">DON’T HASITATE TO CONTACT WITH US</h5>
-        <h1 className="text-3xl md:text-5xl lg:text-5xl text-center font-bold hover:text-blue-600">
+      <div className="mt-20 mx-auto bg-white pt-10 dark:bg-dark_primary">
+        <h5 className="text-center dark:text-gray-200 ">DON’T HASITATE TO CONTACT WITH US</h5>
+        <h1 className="text-3xl md:text-5xl lg:text-5xl text-center font-bold hover:text-blue-600 ">
           Now Very Easy
         </h1>
-        <h4 className=" mt-5 lg:px-[300px] container text-center px-3">
+        <h4 className="mt-5 lg:px-[300px] container text-center px-3 dark:text-gray-200 ">
           Our approach to SEO is uniquely built around what we know works…and
           what we know doesn’t work. With over 200 verified factors in
           playworks…and what we know doesn’t work. With over 200 verified
@@ -181,7 +181,7 @@ const Contact = () => {
         </h4>
       </div>
 
-      <div className="lg:flex lg:px-20 py-20 bg-white">
+      <div className="lg:flex lg:px-20 py-20 g-4 bg-white dark:bg-dark_primary">
         <div>
           <img className="h-[500px]" src={img} alt="" />
         </div>
@@ -245,7 +245,7 @@ const Contact = () => {
             placeholder="Write your Subject"
           />
 
-          <div className=" col-span-2">
+          <div className="col-span-2">
             <textarea
               className=" w-full bg-gray-100 py-8 px-5 outline-none border-2 focus:border-primary"
               {...register('message', {
