@@ -3,7 +3,6 @@ import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
 import { FaHandsHelping, FaShopify, FaUsers } from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
-import { ImStatsDots } from 'react-icons/im';
 import { IoLogoDesignernews } from 'react-icons/io';
 import {
   MdManageAccounts,
@@ -17,11 +16,11 @@ import NewSidebar from '../../Components/Sidebar/NewSidebar';
 
 const x = 25;
 const links = [
-  {
-    name: 'Home',
-    icon: <ImStatsDots size={25} />,
-    path: '/admin/home',
-  },
+  // {
+  //   name: 'Home',
+  //   icon: <ImStatsDots size={25} />,
+  //   path: '/admin/home',
+  // },
   {
     name: 'All Users',
     icon: <FaUsers size={x} />,

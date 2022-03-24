@@ -18,7 +18,12 @@ const Banner = () => {
   };
 
   return (
-    <div className="mb-10 md:mb-24 w-[100%] dark:bg-dark_primary bg-gray-300">
+    <div
+      className="mb-10 md:mb-24 w-[100%] dark:bg-dark_primary bg-gray-50"
+      // style={{
+      //   backgroundColor: '#f7f8fa',
+      // }}
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center pl-14 pr-2 py-0 md:p-10">
         {/* banner description */}
         <div className=" flex flex-col  justify-center items-center place-self-center lg:mt-24 order-2 md:order-1 text-center lg:text-left p-5">

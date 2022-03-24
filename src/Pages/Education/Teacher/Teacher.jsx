@@ -1,7 +1,6 @@
 import React from 'react';
 import { BsNewspaper, BsPencilSquare } from 'react-icons/bs';
 import { MdOndemandVideo, MdVideoSettings } from 'react-icons/md';
-import { SiGoogleanalytics } from 'react-icons/si';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../../Components/Navbar';
 import NewSidebar from '../../../Components/Sidebar/NewSidebar';
@@ -29,11 +28,11 @@ const links = [
     icon: <MdOndemandVideo size={30} />,
     path: '/teacher/myPublishedVideos',
   },
-  {
-    name: 'analytics',
-    icon: <SiGoogleanalytics size={30} />,
-    path: '/teacher/analytics',
-  },
+  // {
+  //   name: 'analytics',
+  //   icon: <SiGoogleanalytics size={30} />,
+  //   path: '/teacher/analytics',
+  // },
 ];
 
 // Navbar dynamic

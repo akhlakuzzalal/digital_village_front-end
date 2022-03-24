@@ -5,11 +5,11 @@ import Steps from './Steps/Steps';
 
 const VaccineRegistration = () => {
   return (
-    <>
+    <div className="">
       <Banner />
       <Steps />
       <Hotline />
-    </>
+    </div>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FcIdea } from 'react-icons/fc';
 import {
   MdOutlineAppRegistration,
   MdOutlineProductionQuantityLimits,
@@ -16,8 +17,8 @@ const links = [
     path: '/userdashboard/profile',
   },
   {
-    name: 'Add development',
-    icon: <RiLightbulbFlashFill size={30} />,
+    name: 'Add development proposal',
+    icon: <FcIdea size={30} />,
     path: '/userdashboard/addDevelopmentProposal',
   },
   {

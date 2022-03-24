@@ -6,12 +6,10 @@ const TeamVolunteer = () => {
     return (
         <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
     <div class="text-center pb-12">
-        <h2 class="text-base font-bold text-green-300">
-            We have the best equipment
-        </h2>
         <h1 class="font-bold text-xl md:text-2xl lg:text-3xl font-heading text-gray-900">
             Check our awesome Volunteers Team.
         </h1>
+        <p className="text-gray-600 text-center text-sm md:text-xl lg:text-2xl mt-2 py-6">We have the best equipment</p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center bg-gradient-to-r from-lime-300 bg-gradient-to-t from-blue-200 to-green-200">

@@ -16,7 +16,7 @@ const DevelopmentCard = ({ proposal, showUpvoteDownVote }) => {
   };
 
   return (
-    <div className="rounded-2xl w-fit border max-w-[400px] lg:mb-40">
+    <div className="rounded-2xl w-fit border max-w-[400px] lg:mb-40 dark:bg-dark_primary ">
       <div className="h-[280px] overflow-hidden rounded-t-2xl">
         <img
           className="w-full h-full bg-cover bg-no-repeat hover:scale-125 transition-all duration-300 overflow-hidden rounded-xl"
@@ -25,7 +25,7 @@ const DevelopmentCard = ({ proposal, showUpvoteDownVote }) => {
         ></img>
       </div>
       <div className="space-y-4 p-4">
-        <h3 className="text-2xl md:text-3xl ">{proposal?.title}</h3>
+        <h3 className="text-2xl md:text-3xl dark:text-dark_text">{proposal?.title}</h3>
         <p>{proposal?.description && proposal.description.slice(0, 100)} ...</p>
 
         {showUpvoteDownVote && (

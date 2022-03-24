@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 
 const CustomerOrder = () => {
   const cartProducts = useSelector((state) => state.market.cart.cart);
-  console.log(cartProducts);
   return (
     <div className="w-full">
       <h6 className="mb-6">Your ordered products</h6>
