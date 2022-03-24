@@ -70,7 +70,7 @@ const AllUsers = () => {
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blue Gray-200 rounded-t">
                   <h3 className="text-2xl font-semibold ">
-                    Change this user role
+                    Make this user an admin
                   </h3>
                   <button
                     className="p-2 ml-auto bg-transparent border-0 text-pink-900 opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -133,45 +133,46 @@ const AllUsers = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {allUsers.map((user) => (
-                      <tr key={user._id} className="hover:bg-cyan-50">
-                        <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                          <div className="flex items-center">
-                            <div className="flex-shrink-0 w-16 h-16">
-                              <img
-                                className="w-full h-full rounded-full"
-                                src={
-                                  user?.photo?.path
-                                    ? `${BASE_URI}/${user?.photo?.path}`
-                                    : 'https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg'
-                                }
-                                alt="user profile pic"
-                              />
+                    {allUsers &&
+                      allUsers.map((user) => (
+                        <tr key={user._id} className="hover:bg-cyan-50">
+                          <td className="px-5 py-5 border-b border-gray-200 text-sm">
+                            <div className="flex items-center">
+                              <div className="flex-shrink-0 w-16 h-16">
+                                <img
+                                  className="w-full h-full rounded-full"
+                                  src={
+                                    user?.photo?.path
+                                      ? `${BASE_URI}/${user?.photo?.path}`
+                                      : 'https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg'
+                                  }
+                                  alt="user profile pic"
+                                />
+                              </div>
+                              <div className="ml-3">
+                                <p className="text-gray-900 whitespace-no-wrap">
+                                  {user?.name}
+                                </p>
+                              </div>
                             </div>
-                            <div className="ml-3">
-                              <p className="text-gray-900 whitespace-no-wrap">
-                                {user?.name}
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {user?.email}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            Roles
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b max-w-[100px]">
-                          <button className="p-4 bg-rose-600 text-white rounded-2xl">
-                            Change
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
+                          </td>
+                          <td className="px-5 py-5 border-b border-gray-200 text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              {user?.email}
+                            </p>
+                          </td>
+                          <td className="px-5 py-5 border-b border-gray-200 text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              Roles
+                            </p>
+                          </td>
+                          <td className="px-5 py-5 border-b max-w-[100px]">
+                            <button className="p-4 bg-rose-600 text-white rounded-2xl">
+                              Change
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
                 <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">

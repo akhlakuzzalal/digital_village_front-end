@@ -103,7 +103,7 @@ const AdminDashboard = () => {
       <Navbar navigation={navigation} />
       <div>
         <NewSidebar links={links} />
-        <div className="mt-[80px] w-[calc(100vw-50px)] ml-auto bg-primary overflow-hidden">
+        <div className="mt-[80px] w-[calc(100vw-50px)] ml-auto overflow-hidden">
           <Outlet />
         </div>
       </div>
