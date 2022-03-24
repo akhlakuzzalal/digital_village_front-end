@@ -47,7 +47,7 @@ const FavouriteVideos = () => {
   return (
     <div className="space-y-6">
       <h3 className="text-center py-6">Favourite Videos</h3>
-      <div className="flex flex-wrap gap-4 justify-evenly p-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
         {favouriteVideos.map((video) => (
           <FavouriteVideoCard
             key={video._id}

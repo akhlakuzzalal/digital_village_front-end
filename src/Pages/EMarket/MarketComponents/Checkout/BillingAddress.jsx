@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { setPayModal } from '../../../../redux/slices/payModal/PayModalSlice';
 
-const BillingAddress = () => {
+const BillingAddress = ({ setAddress }) => {
   const dispatch = useDispatch();
   const {
     register,
@@ -11,14 +11,22 @@ const BillingAddress = () => {
     trigger,
     formState: { errors },
   } = useForm();
-  const handleRegister = async ({ firstName, lastName, email, password }) => {
+  const handleRegister = async ({
+    firstName,
+    lastName,
+    email,
+    address,
+    postcode,
+    houseno,
+  }) => {
     const name = `${firstName} ${lastName}`;
-    console.log({ name, email, password });
+    const fullAddress = `House: ${houseno} ${address} PostCode: ${postcode}`;
+    setAddress({ name, email, fullAddress });
     dispatch(setPayModal(true));
   };
   return (
     <div>
-      <h6 className="mb-6 pt-8 text-3xl">Billing Address</h6>
+      <h6 className="mb-6 pt-8 text-3xl">Shipping Address</h6>
       <form onSubmit={handleSubmit(handleRegister)} className="space-y-6">
         {/* name */}
         <div className="flex flex-col md:flex-row w-full  gap-4">

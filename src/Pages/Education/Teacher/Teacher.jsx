@@ -1,7 +1,6 @@
 import React from 'react';
 import { BsNewspaper, BsPencilSquare } from 'react-icons/bs';
 import { MdOndemandVideo, MdVideoSettings } from 'react-icons/md';
-import { SiGoogleanalytics } from 'react-icons/si';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../../Components/Navbar';
 import NewSidebar from '../../../Components/Sidebar/NewSidebar';
@@ -21,19 +20,19 @@ const links = [
   {
     name: 'My Blogs',
     icon: <BsNewspaper size={30} />,
-    path: '/teacher/myblogs',
+    path: '/teacher/myPublishedBlogs',
   },
 
   {
     name: 'My videos',
     icon: <MdOndemandVideo size={30} />,
-    path: '/teacher/myvideos',
+    path: '/teacher/myPublishedVideos',
   },
-  {
-    name: 'analytics',
-    icon: <SiGoogleanalytics size={30} />,
-    path: '/teacher/analytics',
-  },
+  // {
+  //   name: 'analytics',
+  //   icon: <SiGoogleanalytics size={30} />,
+  //   path: '/teacher/analytics',
+  // },
 ];
 
 // Navbar dynamic
@@ -51,11 +50,13 @@ const Teacher = () => {
     location.pathname === '/teacher' || location.pathname === '/teacher/';
 
   return (
-    <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div>
       <Navbar navigation={navigation} />
-      <NewSidebar links={links} />
-      <div className="mt-[80px] flex-1 ml-18 md:ml-20 lg:ml-24">
-        {isHomePage ? <TeacherAnalytics /> : <Outlet />}
+      <div className="">
+        <NewSidebar links={links} />
+        <div className="mt-[80px] w-[calc(100vw-50px)] px-3 ml-auto">
+          {isHomePage ? <TeacherAnalytics /> : <Outlet />}
+        </div>
       </div>
     </div>
   );

@@ -29,7 +29,7 @@ const VideoCard = ({ video }) => {
   };
 
   return (
-    <div className="shadow-xl w-fit rounded-2xl dark:border-2 dark:border-cyan-300">
+    <div className="shadow-xl w-fit rounded-2xl dark:border-2 dark:border-cyan-300 max-w-[400px]">
       <div
         className="space-y-4 cursor-pointer group hover:bg-slate-100 dark:bg-dark_primary"
         onClick={() => navigate(`/detailvideo/${video?._id}`)}
@@ -40,7 +40,9 @@ const VideoCard = ({ video }) => {
         ></video>
         <div className="flex justify-between px-3">
           <div className="space-y-2">
-            <h3 className="text-xl w-2/3 dark:text-dark_text">{video?.title}</h3>
+            <h3 className="text-xl w-2/3 dark:text-dark_text">
+              {video?.title}
+            </h3>
             <div className="flex text-yellow-400">
               <Rating rating={video?.rating} />
             </div>

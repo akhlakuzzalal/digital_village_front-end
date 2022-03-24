@@ -24,16 +24,14 @@ const StudentHome = () => {
     setBlogCurrPage(0);
     dispatch(fetchBlogs({}));
     dispatch(fetchVideos({}));
-    console.log('I am here');
   }, []);
   return (
-    <>
-      <div className="">
-        <Banner />
-
-        {/* top blogs */}
-        <div className="lg:mx-[100px] ">
-          <h3 className="py-6  md:text-left text-xl lg:text-4xl mx-5 lg:mx-0">
+    <div className="w-full space-y-10">
+      <Banner />
+      {/* top categories */}
+      <div className="pl-14 space-y-10">
+        <div>
+          <h3 className="py-6  md:text-left text-xl lg:text-4xl">
             Top Categories <hr />
           </h3>
 
@@ -41,7 +39,7 @@ const StudentHome = () => {
         </div>
 
         {/* top blogs */}
-        <div className="lg:mx-[100px] lg:my-[200px] my-20 w-full">
+        <div>
           <h3 className="text-xl lg:text-4xl mx-5 lg:mx-0 mb-4">
             Top Blogs <hr className="mt-3" />
           </h3>
@@ -52,7 +50,7 @@ const StudentHome = () => {
           </div>
         </div>
 
-        <div className="lg:mx-[100px] mx-5 lg:mb-40 mb-20">
+        <div>
           <h3 className="py-6  md:text-left">
             Top Videos <hr />
           </h3>
@@ -62,9 +60,10 @@ const StudentHome = () => {
             ))}
           </div>
         </div>
+
+        <StudentFooter />
       </div>
-      <StudentFooter />
-    </>
+    </div>
   );
 };
 

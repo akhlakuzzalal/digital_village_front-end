@@ -88,107 +88,118 @@ const Profile = () => {
   }, [previewFile, uId]);
 
   return (
-    <div className="md:grid md:grid-cols-12 gap-12">
-      <div className="col-start-1 col-end-5">
-        {/* profile preview image */}
-        <div className="w-full flex flex-col items-center">
-          {previewFile.length >= 1 ? (
-            image
-          ) : user?.photo?.path ? (
-            <img
-              src={`${BASE_URI}/${user?.photo?.path}`}
-              className="w-64 rounded-full h-64"
-              alt={user?.profile?.name}
-            />
-          ) : (
-            <img
-              className="w-64 rounded-full h-64"
-              src="https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg"
-              alt=""
-            />
-          )}
-          <button
-            onClick={() => setUpdateProfile(true)}
-            className="btn bg-warning my-6"
-          >
-            Edit Profile
-          </button>
+    <div className="w-full">
+      <div className="lg:flex justify-center gap-12">
+        <div>
+          {/* profile preview image */}
+          <div className="w-full flex flex-col items-center">
+            {previewFile.length >= 1 ? (
+              image
+            ) : user?.photo?.path ? (
+              <img
+                src={`${BASE_URI}/${user?.photo?.path}`}
+                className="w-64 rounded-full h-64"
+                alt={user?.profile?.name}
+              />
+            ) : (
+              <img
+                className="w-64 rounded-full h-64"
+                src="https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg"
+                alt=""
+              />
+            )}
+            <button
+              onClick={() => setUpdateProfile(true)}
+              className="btn bg-warning my-6"
+            >
+              Edit Profile
+            </button>
+          </div>
+
+          {/* user about info */}
+          <p className="text-center">{user?.about}</p>
         </div>
 
-        {/* user about info */}
-        <p className="text-center">{user?.about}</p>
-      </div>
-
-      {/* profile edit or user info */}
-      {updateProfile ? (
-        <div className="col-start-5 col-end-12">
-          <EditProfile
-            setUpdateProfile={setUpdateProfile}
-            handleUpdateProfile={handleUpdateUser}
-            onDrop={onDrop}
-            file={file}
-          />
-        </div>
-      ) : (
-        <div className="col-start-5 col-end-12 mt-10 md:mt-0">
-          <h2 className="heading_md dark:text-white">{user?.name}</h2>
-          <p className="pt-3">{user?.occupation}</p>
-          <p className="font-semibold mb-10">#id : villager{uId}</p>
-          {/* <div className="my-6">
+        {/* profile edit or user info */}
+        {updateProfile ? (
+          <div className="lg:w-1/2">
+            <EditProfile
+              setUpdateProfile={setUpdateProfile}
+              handleUpdateProfile={handleUpdateUser}
+              onDrop={onDrop}
+              file={file}
+            />
+          </div>
+        ) : (
+          <div className="mt-10 md:mt-0 lg:w-1/2">
+            <h2 className="heading_md dark:text-white">{user?.name}</h2>
+            <p className="pt-3">{user?.occupation}</p>
+            <p className="font-semibold mb-10 break-words">
+              #id : villager{uId}
+            </p>
+            {/* <div className="my-6">
               <button className="btn bg-primary mb-2">Send Message</button>
               <button className="btn bg-secondary mb-2">Contact User</button>
               <button className="btn bg-secondary mb-2">Report User</button>
             </div> */}
-          <h6 className="inline border-b-2 border-zinc-900">Profile details</h6>
-          <div className="mt-6">
-            <p className="flex items-center py-2">
-              <span className="mr-4">
-                <BsFillTelephoneFill />
-              </span>
-              Phone :{' '}
-              <span className="font-semibold">
-                {user?.phone || 'unavailable'}
-              </span>
-            </p>
-            <p className="flex items-center py-2">
-              <span className="mr-4">
-                <MdEmail />
-              </span>
-              Email: {user?.email}
-            </p>
-            <p className="flex items-center py-2">
-              <span className="mr-4">
-                <BsFillCalendarDateFill />
-              </span>
-              Date of Birth : {user?.dateOfBirth}
-            </p>
-            <p className="flex items-center py-2">
-              <span className="mr-4">
-                <BsArrowReturnRight />
-              </span>
-              Marital status : {user?.maritalStatus || 'unavailable'}
-            </p>
-            <p className="flex items-center py-2">
-              <span className="mr-4">
-                <BsArrowReturnRight />
-              </span>
-              Employment status : {user?.employmentStatus || 'unavailable'}
-            </p>
-            <p className="flex items-center py-2">
-              <span className="mr-4">
-                <BsArrowReturnRight />
-              </span>
-              Religion: {user?.religion || 'unavailable'}
-            </p>
-            <p className="flex items-center py-2">
-              <span className="mr-4">
-                <BsArrowReturnRight py-2 />
-              </span>
-              Gender: {user?.gender || 'unavailable'}
-            </p>
+            <h6 className="inline border-b-2 border-zinc-900">
+              Profile details
+            </h6>
+            <div className="mt-6">
+              <p className="flex items-center py-2">
+                <span className="mr-4">
+                  <BsFillTelephoneFill />
+                </span>
+                <div className="flex flex-wrap">
+                  <p>Phone :</p>
+                  <span className="font-semibold">
+                    {user?.phone || 'unavailable'}
+                  </span>
+                </div>
+              </p>
+              <p className="flex items-center py-2 text-sm md:text-base break-words">
+                <span className="mr-4">
+                  <MdEmail />
+                </span>
+                Email: {user?.email}
+              </p>
+              <p className="flex items-center py-2">
+                <span className="mr-4">
+                  <BsFillCalendarDateFill />
+                </span>
+                <div className="flex flex-wrap">
+                  <p>Date of Birth :</p>
+                  <p>{user?.dateOfBirth}</p>
+                </div>
+              </p>
+              <p className="flex items-center py-2">
+                <span className="mr-4">
+                  <BsArrowReturnRight />
+                </span>
+                Marital status : {user?.maritalStatus || 'unavailable'}
+              </p>
+              <p className="flex items-center py-2">
+                <span className="mr-4">
+                  <BsArrowReturnRight />
+                </span>
+                Employment status : {user?.employmentStatus || 'unavailable'}
+              </p>
+              <p className="flex items-center py-2">
+                <span className="mr-4">
+                  <BsArrowReturnRight />
+                </span>
+                Religion: {user?.religion || 'unavailable'}
+              </p>
+              <p className="flex items-center py-2">
+                <span className="mr-4">
+                  <BsArrowReturnRight py-2 />
+                </span>
+                Gender: {user?.gender || 'unavailable'}
+              </p>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

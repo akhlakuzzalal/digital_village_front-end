@@ -9,7 +9,7 @@ const FavouriteVideoCard = ({ video, handleRemoveFromFavourite }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="shadow-xl w-fit rounded-2xl dark:dark-card-bg">
+    <div className="shadow-xl w-fit rounded-2xl dark:border-2 dark:border-cyan-300 max-w-[400px]">
       <div
         className="space-y-4 cursor-pointer group hover:bg-slate-100 dark:hover:dark-card-bg"
         onClick={() => navigate(`/detailvideo/${video?._id}`)}

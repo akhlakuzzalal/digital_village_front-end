@@ -6,7 +6,7 @@ import Rating from '../../../../../Components/Rating';
 const FavouriteBlogCard = ({ blog, handleRemoveFromFavourite }) => {
   const navigate = useNavigate();
   return (
-    <div className="bg-white dark:dark-card-bg rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between max-w-[400px] shadow-2xl">
+    <div className="bg-white dark:dark-card-bg rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between shadow-2xl max-w-[400px] h-[400px]">
       {/* image  */}
       <div
         className="overflow-hidden rounded-xl h-52 cursor-pointer"

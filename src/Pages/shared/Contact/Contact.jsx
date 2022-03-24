@@ -36,28 +36,14 @@ const Contact = () => {
     reset();
   };
 
-  // const sendEmail = (e) => {
-  //           e.preventDefault();
-
-  //         };
-
   return (
-    <div className="">
+    <div style={{ minHeight: 'calc(100vh - 100px)' }}>
       <div
-        className="bg-cover h-[240px] w-[100%]bg-no-repeat  lg:h-[500px]  md:h-[500px]"
+        className="bg-cover h-[240px] w-full bg-no-repeat md:h-[500px]"
         style={{
           backgroundImage: `url(https://cdn01.grameenphone.com/sites/default/files/contact_us_1692_490.jpg)`,
         }}
-      >
-        {/* <div className="bg-primary lg:w-[500px] md:w-full mx-auto relative top-[200px] md:top-[400px] md:py-5">
-          <h1 className="text-2xl text-center text-white md:pt-16 font-bold">
-            Contact With Us
-          </h1>
-          <h3 className="text-center font-semibold my-3 text-xl md:text-2xl lg:text-lg text-white ">
-            Home / Contact Us
-          </h3>
-        </div> */}
-      </div>
+      ></div>
 
       <div className="md:pt-16">
         <div className="lg:pr-8">
@@ -85,10 +71,10 @@ const Contact = () => {
             </div>
             <div className="flex flex-col justify-between mr-7 leading-normal py-10 ml-5  ">
               <p className="mb-3 font-semibold  text-gray-700 dark:text-gray-400">
-                10:00am to 6:00pm
+                24/7
               </p>
               <p className="mb-3 font-semibold text-red-600 dark:text-gray-400mb-3 ">
-                Sunday Closed
+                Always open
               </p>
             </div>
           </div>
@@ -103,10 +89,10 @@ const Contact = () => {
             </div>
             <div className="flex flex-col justify-between mr-7 leading-normal py-10 ml-5 ">
               <p className="mb-3 font-semibold  text-gray-700 dark:text-gray-400">
-                13005 Greenville Avenue
+                1300, kacabazar, Manik Avenue
               </p>
               <p className="mb-3 font-semibold text-red-600 dark:text-gray-400mb-3 ">
-                California, TX 70240
+                Visit us
               </p>
             </div>
           </div>
@@ -121,10 +107,10 @@ const Contact = () => {
             </div>
             <div className="flex flex-col justify-between mr-7 leading-normal py-10 ml-5 ">
               <p className="mb-3 font-semibold  text-gray-700 dark:text-gray-400">
-                +1 000999 0099
+                +880 1777777777
               </p>
               <p className="mb-3 font-semibold text-red-600 dark:text-gray-400mb-3 ">
-                info@themerange.net
+                Let's talk to hep you
               </p>
             </div>
           </div>
@@ -133,16 +119,17 @@ const Contact = () => {
             <div className=" rounded-full">
               <img
                 className="lg:mr-0 object-cover rounded-full h-20 w-20  my-5 mr-8 md:mr-0"
-                src="https://www.kindpng.com/picc/m/336-3369375_contact-flower-mound-electrician-today-phone-icon-png.png"
+                src="https://www.pngfind.com/pngs/m/542-5421481_com-mail-icon-vector-png-transparent-png.png"
+                title="Image from freepnglogos.com"
                 alt=""
               />
             </div>
             <div className="flex flex-col justify-between mr-7 leading-normal py-10 ml-5 ">
               <p className="mb-3 font-semibold  text-gray-700 dark:text-gray-400">
-                +1 000999 0099
+                info@digitalvillage.com
               </p>
               <p className="mb-3 font-semibold text-red-600 dark:text-gray-400mb-3 ">
-                info@themerange.net
+                Mail us
               </p>
             </div>
           </div>
@@ -169,15 +156,15 @@ const Contact = () => {
       </div>
 
       <div className="mt-20 mx-auto bg-white pt-10 dark:bg-dark_primary">
-        <h5 className="text-center dark:text-gray-200 ">DON’T HASITATE TO CONTACT WITH US</h5>
+        <h5 className="text-center dark:text-gray-200 ">
+          DON’T HASITATE TO CONTACT WITH US
+        </h5>
         <h1 className="text-3xl md:text-5xl lg:text-5xl text-center font-bold hover:text-blue-600 ">
           Now Very Easy
         </h1>
-        <h4 className="mt-5 lg:px-[300px] container text-center px-3 dark:text-gray-200 ">
-          Our approach to SEO is uniquely built around what we know works…and
-          what we know doesn’t work. With over 200 verified factors in
-          playworks…and what we know doesn’t work. With over 200 verified
-          factors in play.
+        <h4 className=" mt-5 lg:px-[300px] container text-center px-3 dark:text-gray-200">
+          Our approach to help you in every single way we can. We are 24/7
+          available. Contact us for any query. We are here to listen you.
         </h4>
       </div>
 
@@ -192,9 +179,6 @@ const Contact = () => {
           <input
             className=" w-full  bg-gray-100 px-20  outline-none border-2 py-5 focus:border-primary  rounded mb-5 lg:mb-0"
             {...register('name', { required: 'Name is Required' })}
-            onKeyUp={() => {
-              trigger('name');
-            }}
             placeholder="Name"
           />
           {errors.name && (
@@ -212,9 +196,7 @@ const Contact = () => {
                 message: 'Invalid phone no',
               },
             })}
-            onKeyUp={() => {
-              trigger('number');
-            }}
+            placeholder="Phone Number"
           />
           {errors.number && (
             <small className="text-danger">{errors.number.message}</small>
@@ -229,9 +211,6 @@ const Contact = () => {
                 message: 'Invalid email address',
               },
             })}
-            onKeyUp={() => {
-              trigger('email');
-            }}
             placeholder="Enter Your Email"
           />
           {errors.email && (
@@ -260,9 +239,6 @@ const Contact = () => {
                 },
               })}
               placeholder="Write your message"
-              onKeyUp={() => {
-                trigger('message');
-              }}
             ></textarea>
             {errors.message && (
               <small className="text-danger">{errors.message.message}</small>

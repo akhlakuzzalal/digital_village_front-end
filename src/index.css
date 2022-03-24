@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-[#fefbff] overflow-x-hidden scroll-smooth font-serif dark:bg-dark_bg;
+    @apply bg-[#fefbff] overflow-x-hidden scroll-smooth font-serif dark:bg-dark_bg max-w-[2000px] mx-auto;
   }
 
   p {

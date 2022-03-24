@@ -210,7 +210,7 @@ const Services = () => {
           <section class="text-gray-700">
             <div class="container  pl-10 pr-0 md:pr-4 py-8 ">
               <div class="text-center flex flex-col justify-center items-center">
-                <h3 class=" text-3xl font-bold text-center title-font pb-6 text-blue-900 ">
+                <h3 class=" text-xl md:text-3xl font-bold text-center title-font pb-6 text-blue-900 ">
                   Our Departments
                 </h3>
               </div>
@@ -308,7 +308,7 @@ const Services = () => {
             <div class="flex justify-center items-center">
               <div class="md:w-1/3">
                 <button
-                  class="shadow focus:shadow-outline focus:outline-none  text-white font-bold py-3 px-5 rounded-lg text-md md:text-lg"
+                  class="shadow focus:shadow-outline focus:outline-none  text-white font-bold py-3 px-5 md:px-3 rounded-lg text-md md:text-lg"
                   type="button"
                   style={{ backgroundColor: '#10217d' }}
                 >
