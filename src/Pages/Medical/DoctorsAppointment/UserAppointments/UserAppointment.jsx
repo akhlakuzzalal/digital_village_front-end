@@ -75,7 +75,7 @@ const UserAppointment = ({ appointment, date }) => {
                           )}
                         </td>
                         <PayModal
-                          price={row.price}
+                          price={10}
                           id={row._id}
                           returnPage={'medical'}
                         />

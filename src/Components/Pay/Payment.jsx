@@ -15,7 +15,7 @@ const stripePromise = loadStripe(
   'pk_test_51JygH5GVNFdSlIWRfeUCO0c8Uc8oedk6gpNzRNkbP6wQvFCJwQ9tqEQaY6eOSPQzNDQJeQbGmFjDP0ym4E2pkBOJ00ltgQmsu7'
 );
 
-function Payment({ price, id, returnPage }) {
+function Payment({ price, id, returnPage, address }) {
   const [clientSecret, setClientSecret] = useState('');
   const isTablet = useMediaQuery('(min-width: 656px)');
   const isDesktop = useMediaQuery('(min-width: 900px)');
@@ -53,7 +53,12 @@ function Payment({ price, id, returnPage }) {
     <div>
       {clientSecret ? (
         <Elements stripe={stripePromise} options={options}>
-          <CheckoutForm returnPage={returnPage} price={price} id={id} />
+          <CheckoutForm
+            returnPage={returnPage}
+            price={price}
+            id={id}
+            address={address}
+          />
         </Elements>
       ) : (
         <div className="w-fit mx-auto min-h-screen flex justify-center items-center">

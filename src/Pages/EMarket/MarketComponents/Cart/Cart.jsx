@@ -9,6 +9,8 @@ import TableBody from './TableBody';
 const Cart = () => {
   const dispatch = useDispatch();
   const cartProduct = useSelector((state) => state.market.cart.cart);
+  const id = [];
+  cartProduct.map((p) => id.push(p._id));
 
   // pass cart products price in redux for calculate cartTotal
   useEffect(() => {
