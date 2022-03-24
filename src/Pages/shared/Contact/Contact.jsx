@@ -36,28 +36,14 @@ const Contact = () => {
     reset();
   };
 
-  // const sendEmail = (e) => {
-  //           e.preventDefault();
-
-  //         };
-
   return (
-    <div className="">
+    <div style={{ minHeight: 'calc(100vh - 100px)' }}>
       <div
-        className="bg-cover h-[240px] w-[100%]bg-no-repeat  lg:h-[500px]  md:h-[500px]"
+        className="bg-cover h-[240px] w-full bg-no-repeat md:h-[500px]"
         style={{
           backgroundImage: `url(https://cdn01.grameenphone.com/sites/default/files/contact_us_1692_490.jpg)`,
         }}
-      >
-        {/* <div className="bg-primary lg:w-[500px] md:w-full mx-auto relative top-[200px] md:top-[400px] md:py-5">
-          <h1 className="text-2xl text-center text-white md:pt-16 font-bold">
-            Contact With Us
-          </h1>
-          <h3 className="text-center font-semibold my-3 text-xl md:text-2xl lg:text-lg text-white ">
-            Home / Contact Us
-          </h3>
-        </div> */}
-      </div>
+      ></div>
 
       <div className="md:pt-16">
         <div className="lg:pr-8">
@@ -193,9 +179,6 @@ const Contact = () => {
           <input
             className=" w-full  bg-gray-100 px-20  outline-none border-2 py-5 focus:border-primary  rounded mb-5 lg:mb-0"
             {...register('name', { required: 'Name is Required' })}
-            onKeyUp={() => {
-              trigger('name');
-            }}
             placeholder="Name"
           />
           {errors.name && (
@@ -213,9 +196,6 @@ const Contact = () => {
                 message: 'Invalid phone no',
               },
             })}
-            onKeyUp={() => {
-              trigger('number');
-            }}
             placeholder="Phone Number"
           />
           {errors.number && (
@@ -231,9 +211,6 @@ const Contact = () => {
                 message: 'Invalid email address',
               },
             })}
-            onKeyUp={() => {
-              trigger('email');
-            }}
             placeholder="Enter Your Email"
           />
           {errors.email && (
@@ -262,9 +239,6 @@ const Contact = () => {
                 },
               })}
               placeholder="Write your message"
-              onKeyUp={() => {
-                trigger('message');
-              }}
             ></textarea>
             {errors.message && (
               <small className="text-danger">{errors.message.message}</small>

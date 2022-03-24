@@ -15,7 +15,7 @@ const Myvideos = () => {
 
   return (
     <div className="min-h-[100vh] lg:my-20">
-      <div className="flex flex-wrap gap-4 justify-evenly p-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-[400px] place-items-center">
         {videos.map((video) => (
           <VideoCard key={video._id} video={video} />
         ))}

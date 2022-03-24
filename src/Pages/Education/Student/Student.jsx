@@ -40,28 +40,21 @@ const links = [
   },
 ];
 
-// Navbar dynamic
-const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Service', href: '/#service' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
-  { name: 'Admin', href: '/admin' },
-];
-
 const Student = () => {
   const location = useLocation();
 
   return (
-    <div className="flex" style={{ minHeight: 'calc(100vh - 700px)' }}>
-      <NewSidebar links={links} />
-      <div className="mt-[80px] flex-1 ml-12 md:ml-16 lg:ml-20">
-        {location?.pathname === '/student' ||
-        location?.pathname === '/student/' ? (
-          <StudentHome />
-        ) : (
-          <Outlet />
-        )}
+    <div>
+      <div className="">
+        <NewSidebar links={links} />
+        <div className="mt-[80px] w-[calc(100vw-54px)] px-3 ml-auto overflow-hidden">
+          {location?.pathname === '/student' ||
+          location?.pathname === '/student/' ? (
+            <StudentHome />
+          ) : (
+            <Outlet />
+          )}
+        </div>
       </div>
     </div>
   );

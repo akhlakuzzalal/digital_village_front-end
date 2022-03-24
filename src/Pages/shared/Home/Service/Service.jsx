@@ -15,8 +15,6 @@ import medical from './../../../../assets/services/medical.png';
 import ServiceBoard from './ServiceBoard/ServiceBoard';
 import ServiceExplore from './ServiceExplore/ServiceExplore';
 
-
-
 const services = [
   {
     icon: <FcGraduationCap className="text-center" size={70} />,
@@ -55,7 +53,7 @@ const services = [
     controlData: 'donation',
   },
   {
-    icon: <FcHome className="text-center"  size={70} />,
+    icon: <FcHome className="text-center" size={70} />,
     name: 'Development',
     image: development,
     detail:
@@ -79,13 +77,22 @@ const Service = () => {
   const [control, setControl] = useState('education');
 
   return (
-    <>
-      {/* <h1 className=" text-5xl md:text-7xl pb-4 text-center mx-auto font-bold py-2 my-8  text-primary">
-        Services
-      </h1> */}
+    <div className="space-y-6">
+      <div className="md:pt-[50px] mx-1">
+        <p className="text-center text-2xl text-blue-600 font-bolder">
+          Services
+        </p>
+        <h1 className=" text-xl md:text-2xl  text-center font-bold py-2   text-primary">
+          Our valuable Services for village people
+        </h1>
+        <p className="hidden md:block px-10 md:px-[100px] text-justify md:text-center">
+          Serving people is our goal to achieve sustainable development for this
+          village
+        </p>
+      </div>
       <section
         id="service"
-        className="space-y-6 md:space-y-0 flex flex-wrap py-8 mt-10"
+        className="space-y-6 md:space-y-0 flex flex-wrap mt-10"
       >
         <div className="w-full lg:w-1/2 space-y-3 md:space-y-6 text-center md:text-left">
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
@@ -107,7 +114,7 @@ const Service = () => {
             )
         )}
       </section>
-    </>
+    </div>
   );
 };
 

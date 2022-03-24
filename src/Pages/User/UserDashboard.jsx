@@ -54,12 +54,12 @@ const UserDashboard = () => {
     location.pathname === '/userdashboard/';
 
   return (
-    <div className="flex">
+    <div>
       {/* Sidebar */}
       <NewSidebar links={links} />
 
       {/* contents */}
-      <div className={`mt-[80px] ml-[65px] flex-1`}>
+      <div className="mt-[80px] w-[calc(100vw-54px)] ml-auto">
         {initial ? <Profile /> : <Outlet />}
       </div>
     </div>

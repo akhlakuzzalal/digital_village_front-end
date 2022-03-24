@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import img from '../../../assets/events/who we are.jpg';
 const About = () => {
   return (
-    <div className="main">
+    <div>
       <div
         className="bg-cover h-[240px] w-[100%]bg-no-repeat  lg:h-[500px]  md:h-[500px]"
         style={{

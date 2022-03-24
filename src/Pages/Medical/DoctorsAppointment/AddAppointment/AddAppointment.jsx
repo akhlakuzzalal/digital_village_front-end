@@ -18,14 +18,11 @@ const AddAppointment = () => {
   };
 
   return (
-    <div
-      className="add-events-main my-40 lg:flex  lg:mx-32 md:mx-32 
-        mx-0 border rounded-2xl "
-    >
+    <div className="mt-16 lg:flex  lg:mx-32 md:mx-32 border rounded-2xl ">
       <div>
-        <h1 className="ml-10 mt-6 text-3xl ">Give Your Information</h1>
+        <h1 className="ml-2 md:ml-10 text-3xl mt-6">Give Your Information</h1>
         <form
-          className=" space-y-6 mx-10 mt-10"
+          className=" space-y-6 md:mx-10 mt-10 ml-2"
           onSubmit={handleSubmit(handleAddAppointment)}
         >
           <input

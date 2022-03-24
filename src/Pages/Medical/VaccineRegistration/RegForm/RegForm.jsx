@@ -42,7 +42,7 @@ const RegForm = () => {
   };
 
   return (
-    <div className="add-events-main my-40 lg:flex  lg:mx-32 md:mx-32 mx-0 border rounded-2xl">
+    <div className="my-40 lg:flex  lg:mx-32 md:mx-32 mx-0 border rounded-2xl">
       <div>
         <h3 className="ml-10 mt-6 text-blue-900 ">Give Your Information</h3>
         <form

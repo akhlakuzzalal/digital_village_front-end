@@ -16,16 +16,11 @@ const Banner = () => {
   };
 
   return (
-    <div className="flex flex-wrap lg:h-[80vh] bg-gray-50 mx-5 lg:mx-0
-    dark:bg-dark_primary">
-      <div
-        // style={{
-        //   backgroundImage: `url(${background})`,
-        //   backgroundRepeat: 'no-repeat',
-        //   height: '50vh',
-        // }}
-        className="w-full md:w-1/2 place-self-center lg:pl-6 space-y-7 order-2 md:order-1"
-      >
+    <div
+      className="flex flex-wrap lg:h-[80vh] bg-gray-50
+    dark:bg-dark_primary"
+    >
+      <div className="w-full md:w-1/2 place-self-center lg:pl-6 space-y-7 order-2 md:order-1">
         <div className="relative  space-y-7 lg:pl-7">
           <h1 className="text-[#2d3748] capitalize  text-sm md:text-2xl lg:text-5xl  ">
             Gain valuable knowledge
@@ -35,9 +30,6 @@ const Banner = () => {
             We have loads of resources created by the village teacher for
             sharing knowledge amongst the village students.
           </p>
-          <button className="px-10 py-4 bg-[blue] text-white rounded-lg dark:text-dark_text dark:bg-secondary">
-            Learn More
-          </button>
         </div>
       </div>
       {/* lottie files */}

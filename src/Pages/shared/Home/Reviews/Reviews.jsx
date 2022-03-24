@@ -16,18 +16,19 @@ const Reviews = () => {
   useEffect(() => {
     dispatch(fetchAllReview());
   }, []);
+  console.log(allReview);
   return (
     <div className="bg-gray-50 dark:bg-dark_bg mb-8">
-      <div className="md:pt-[50px]">
-        <p className="text-center md:text-2xl text-blue-600 font-bolder">
+      <div className="md:pt-[50px] mx-1">
+        <p className="text-center text-2xl text-blue-600 font-bolder">
           TESTIMONIALS
         </p>
         <h1 className=" text-xl md:text-2xl  text-center font-bold py-2   text-primary">
-          WHAT PEOPLE SAY ABOUT US
+          VILLAGERS REVIEW ABOUT US
         </h1>
-        <p className="px-10 md:px-[100px] text-justify md:text-center">
-          Our goal is transforming an analog Village into a digital one.See what
-          our valuable users say about us.
+        <p className="hidden md:block px-10 md:px-[100px] text-justify md:text-center">
+          People's opinion is our top priority. See what the villagers think
+          about us.
         </p>
       </div>
 
