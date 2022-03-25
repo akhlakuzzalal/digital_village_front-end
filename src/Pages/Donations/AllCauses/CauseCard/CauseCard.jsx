@@ -73,8 +73,8 @@ const CauseCard = ({ cause }) => {
             },
             active: {
               // symbol: `${percent.toFixed(0) + '%'}`,
-              trailColor: 'purple',
-              color: '#f55767',
+              trailColor: 'blue',
+              color: '#2b6cb0',
             },
             success: {
               // symbol: percent.toFixed(0) +'%✅',
@@ -86,14 +86,14 @@ const CauseCard = ({ cause }) => {
       </div>
       {/* Button */}
       <div className="flex items-center justify-between pt-3">
-        <button className="w-100 flex items-center justify-center px-3 bg-transparent border-1 border-red-500 text-red-500 text-lg rounded-lg space-x-1">
-          <FaHeart className="text-2xl text-red-400" />{' '}
-          <p>
+        <button className="w-100 flex items-center justify-center px-3 bg-transparent border-1 from-primary  hover:to-primary text-lg rounded-lg space-x-1">
+          <FaHeart className="text-2xl text-blue-400" />{' '}
+          <p className="text-2xl text-blue-700">
             {cause?.donars && cause?.donars.length >= 1 && cause?.donars.length}
           </p>
         </button>
         <button
-          className="w-100 flex items-center justify-center py-2 px-3 border border-transparent text-sm font-medium rounded-md btn bg-gradient-to-r from-primary via-secondary to-secondary hover:from-primary hover:via-secondary hover:to-primary shadow-xl"
+          className="w-100 flex items-center justify-center py-2 px-3 border border-transparent text-sm font-medium rounded-md btn text-gray-600 bg-gradient-to-r from-primary  hover:to-primary shadow-xl"
           onClick={() => navigate(`/causedetails/${cause?._id}`)}
         >
           <FcDonate className="text-2xl"></FcDonate> Donate
