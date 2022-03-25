@@ -3,6 +3,7 @@ import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
 import { FaHandsHelping, FaShopify, FaUsers } from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
+import { ImStatsDots } from 'react-icons/im';
 import { IoLogoDesignernews } from 'react-icons/io';
 import {
   MdManageAccounts,
@@ -10,17 +11,18 @@ import {
   MdOutlineManageAccounts,
   MdOutlineMedicalServices,
 } from 'react-icons/md';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
+import AdminHome from './AdminHome/AdminHome';
 
 const x = 25;
 const links = [
-  // {
-  //   name: 'Home',
-  //   icon: <ImStatsDots size={25} />,
-  //   path: '/admin/home',
-  // },
+  {
+    name: 'Home',
+    icon: <ImStatsDots size={25} />,
+    path: '/admin/home',
+  },
   {
     name: 'All Users',
     icon: <FaUsers size={x} />,
@@ -97,13 +99,21 @@ const navigation = [
 ];
 
 const AdminDashboard = () => {
+  const location = useLocation();
+
+  const isHomePage =
+    location.pathname === '/admin' || location.pathname === '/admin/';
+  const alternateHomePage =
+    location.pathname === '/admin' || location.pathname === '/admin/';
+
   return (
     <div>
       <Navbar navigation={navigation} />
       <div>
         <NewSidebar links={links} />
         <div className="mt-[80px] w-[calc(100vw-50px)] ml-auto overflow-hidden">
-          <Outlet />
+          {isHomePage ? <AdminHome /> : <Outlet />}
+          {/* {alternateHomePage ? <AllUsers /> : <Outlet />} */}
         </div>
       </div>
     </div>

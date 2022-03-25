@@ -52,7 +52,10 @@ const MyReview = ({ review, setReview }) => {
       <article className="grid grid-cols-1 md:grid-cols-4 justify-evenly items-center gap-6 px-12 md:mx-24 md:my-24">
         {review &&
           review.map((r) => (
-            <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <div
+              key={r._id}
+              class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+            >
               <div class="flex flex-col items-center pb-10 pt-4">
                 <img
                   class="mb-3 w-24 h-24 rounded-full shadow-lg"

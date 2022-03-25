@@ -16,7 +16,7 @@ const Reviews = () => {
   useEffect(() => {
     dispatch(fetchAllReview());
   }, []);
-  console.log(allReview);
+
   return (
     <div className="bg-gray-50 dark:bg-dark_bg mb-8">
       <div className="md:pt-[50px] mx-1">
