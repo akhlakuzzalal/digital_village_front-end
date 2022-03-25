@@ -181,9 +181,7 @@ const Contact = () => {
             {...register('name', { required: 'Name is Required' })}
             placeholder="Name"
           />
-          {errors.name && (
-            <small className="text-danger">{errors.name.message}</small>
-          )}
+         
 
           <input
             className=" w-full mb-5 lg:mb-0 py-5 lg:py-0 outline-none border-2 focus:border-primary bg-gray-100 px-20 rounded"
@@ -198,9 +196,7 @@ const Contact = () => {
             })}
             placeholder="Phone Number"
           />
-          {errors.number && (
-            <small className="text-danger">{errors.number.message}</small>
-          )}
+          
           <input
             className=" w-full mb-5 lg:mb-0 outline-none border-2 bg-gray-100 focus:border-primary px-20 rounded py-5 "
             type="email"
@@ -213,14 +209,12 @@ const Contact = () => {
             })}
             placeholder="Enter Your Email"
           />
-          {errors.email && (
-            <small className="text-danger">{errors.email.message}</small>
-          )}
+
 
           <input
             className=" w-full mb-5 lg:mb-0 outline-none border-2 bg-gray-100 px-20 focus:border-primary rounded py-5 lg:py-0"
-            type="email"
-            {...register('email', { required: true, maxLength: 20 })}
+            type="text"
+            {...register('subject')}
             placeholder="Write your Subject"
           />
 
@@ -234,15 +228,13 @@ const Contact = () => {
                   message: 'Minimum Required length is 10',
                 },
                 maxLength: {
-                  value: 50,
-                  message: 'Maximum allowed length is 50 ',
+                  value: 500,
+                  message: 'Maximum allowed length is 500 ',
                 },
               })}
               placeholder="Write your message"
             ></textarea>
-            {errors.message && (
-              <small className="text-danger">{errors.message.message}</small>
-            )}
+         
           </div>
 
           <input
