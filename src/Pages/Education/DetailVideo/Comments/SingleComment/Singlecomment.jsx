@@ -13,6 +13,7 @@ const SingleComment = ({ comment, updateComment, postId }) => {
     handleSubmit,
     trigger,
     formState: { errors },
+    reset,
   } = useForm();
 
   const handleCommentSubmit = (data) => {
@@ -26,6 +27,7 @@ const SingleComment = ({ comment, updateComment, postId }) => {
       if (response.data.success) {
         setOpenReply(!openReply);
         updateComment(...response.data.result);
+        reset();
       } else {
         Swal.fire({
           title: 'Failed to add Comment',
