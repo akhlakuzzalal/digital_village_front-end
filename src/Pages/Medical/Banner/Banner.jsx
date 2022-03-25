@@ -19,16 +19,23 @@ const Banner = () => {
 
   return (
     <div
-      className="mb-10 md:mb-24 w-[100%] dark:bg-dark_primary bg-gray-50"
+      // style={{
+      //   backgroundImage: `url(${background})"`,
+      //   backgroundRepeat: 'no-repeat',
+      //   width: '100vh',
+      // }}
+      className="mb-10 md:mb-24 w-[100%] lg:h-[100vh] dark:bg-dark_primary bg-gray-100 "
       // style={{
       //   backgroundColor: '#f7f8fa',
       // }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center pl-14 pr-2 py-0 md:p-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center pl-14 pr-2 py-0 md:p-10 space-y-6">
         {/* banner description */}
-        <div className=" flex flex-col  justify-center items-center place-self-center lg:mt-24 order-2 md:order-1 text-center lg:text-left p-5">
-          <h1 className=" text-4xl md:text-5xl my-0 md:my-3">Quality Care</h1>
-          <h3 className="justify-center items-center">
+        <div className=" lg:ml-[100px] lg:mt-[100px] space-y-3 mt-10 mx-6 lg-mx-0 ">
+          <h1 className=" text-2xl lg:text-4xl md:text-5xl my-0 md:my-3 ">
+            Quality Care
+          </h1>
+          <h3 className="justify-center items-center text-xl lg:text-3xl">
             <span style={{ color: '#10217d' }}>Your health, </span> our priority
           </h3>
           <p className=" my-2 text-justify md:text-left md:my-6">
@@ -38,11 +45,8 @@ const Banner = () => {
           </p>
           <div className="flex items-start">
             <NavHashLink smooth to="/medical/appointment">
-              <button
-                className="btn text-md md:text-lg rounded-lg px-6 "
-                style={{ backgroundColor: '#10217d' }}
-              >
-                Appointment
+              <button className="btn text-md md:text-lg rounded-lg px-6 border-4 text-black hover:text-white bg-primary">
+                Book Appointment
               </button>
             </NavHashLink>
           </div>
@@ -54,7 +58,7 @@ const Banner = () => {
             <Lottie
               options={defaultOptions}
               isClickToPauseDisabled={true}
-              width={isDesktop ? 600 : isTablet ? 400 : 200}
+              width={isDesktop ? 700 : isTablet ? 400 : 200}
             />
           </div>
         </div>
