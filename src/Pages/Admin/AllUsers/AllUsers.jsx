@@ -110,10 +110,6 @@ const AllUsers = () => {
                     </span>
                   </button>
                 </div>
-                {/*body*/}
-                <div className="relative p-6 flex-auto">
-                  <p>this is modal</p>
-                </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-2 border-t border-solid border-blueGray-200 rounded-b">
                   <button
@@ -199,11 +195,11 @@ const AllUsers = () => {
                           </td>
                           <td className="px-5 py-5 border-b border-gray-200 text-sm">
                             {user?.roles ? (
-                              <div>
+                              <div className="space-y-2">
                                 {Object.keys(user?.roles).map((u, i) => (
                                   <p
                                     key={i}
-                                    className="bg-info px-3 py-2 text-white rounded-full font-primary w-fit"
+                                    className="bg-info px-4 py-2 text-white rounded-full font-primary w-24 text-center"
                                   >
                                     {u}
                                   </p>

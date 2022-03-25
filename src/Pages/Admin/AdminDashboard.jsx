@@ -1,9 +1,12 @@
 import React from 'react';
-import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
+import {
+  AiFillDelete,
+  AiFillFileAdd,
+  AiTwotoneMedicineBox,
+} from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
 import { FaHandsHelping, FaShopify, FaUsers } from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
-import { ImStatsDots } from 'react-icons/im';
 import { IoLogoDesignernews } from 'react-icons/io';
 import {
   MdManageAccounts,
@@ -18,11 +21,11 @@ import AdminHome from './AdminHome/AdminHome';
 
 const x = 25;
 const links = [
-  {
-    name: 'Home',
-    icon: <ImStatsDots size={25} />,
-    path: '/admin/home',
-  },
+  // {
+  //   name: 'Home',
+  //   icon: <ImStatsDots size={25} />,
+  //   path: '/admin/home',
+  // },
   {
     name: 'All Users',
     icon: <FaUsers size={x} />,
@@ -77,6 +80,11 @@ const links = [
     name: 'Add appointment',
     icon: <MdOutlineMedicalServices size={x} />,
     path: '/admin/addAppointment',
+  },
+  {
+    name: 'Appointment Status',
+    icon: <AiTwotoneMedicineBox size={x} />,
+    path: '/admin/status',
   },
   {
     name: 'Add-News',
