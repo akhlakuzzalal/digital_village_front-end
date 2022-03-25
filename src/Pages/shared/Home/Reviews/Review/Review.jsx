@@ -2,8 +2,6 @@ import React from 'react';
 import Rating from './../../../../../Components/Rating';
 
 const Review = ({ reviews }) => {
-  console.log(reviews);
-
   return (
     <div className="md:pb-12">
       <div className="w-16 md:w-28 relative top-8 left-40 md:top-12 md:left-34 ">

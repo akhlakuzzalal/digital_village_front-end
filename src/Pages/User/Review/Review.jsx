@@ -16,8 +16,6 @@ const Review = () => {
     handleSubmit,
   } = useForm();
 
-  console.log(user);
-
   const handleAddReview = (data) => {
     data.name = user?.name;
     data.email = user?.email;
