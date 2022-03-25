@@ -5,7 +5,7 @@ import studentBanner from '../../../../../assets/education/StudentFooter.png'
 const Footer = () => {
   return (
     <div className="   rounded-lg ">
-      <div className="flex flex-wrap bg-gray-500 pb-10 ">
+      <div className="flex flex-wrap bg-slate-900 pb-10 ">
         <div className="mx-auto w-96">
           <img
             className="rounded-lg"
@@ -25,7 +25,7 @@ const Footer = () => {
                   />
                 </div>
                 <div className="ml-3 text-white md:pt-2 ">
-                  <h2 className="text-3xl text-red-600 font-bold">50+</h2>
+                  <h2 className="text-3xl  font-bold">50+</h2>
                   <h5>Teachers</h5>
                 </div>
               </div>
@@ -36,7 +36,7 @@ const Footer = () => {
                 alt=""
               />
               <div className="ml-3 text-white ">
-                <h2 className="text-3xl text-red-600 font-bold">950+</h2>
+                <h2 className="text-3xl  font-bold">950+</h2>
                 <h5>Student</h5>
               </div>
             </div>
@@ -46,7 +46,7 @@ const Footer = () => {
                 alt=""
               />
               <div className="ml-3 text-white ">
-                <h2 className="text-3xl text-red-600 font-bold">450+</h2>
+                <h2 className="text-3xl  font-bold">450+</h2>
                 <h5>Blogs Videos</h5>
               </div>
             </div>
@@ -56,7 +56,7 @@ const Footer = () => {
                 alt=""
               />
               <div className="ml-3 text-white">
-                <h2 className="text-3xl text-red-600 font-bold">500+</h2>
+                <h2 className="text-3xl font-bold">500+</h2>
                 <h4>Blog Post</h4>
               </div>
             </div>
