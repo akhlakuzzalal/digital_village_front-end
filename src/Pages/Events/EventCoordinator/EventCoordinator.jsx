@@ -9,7 +9,7 @@ const EventCoordinator = () => {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
       <div className="text-center pb-12">
-        <h2 className="text-base font-bold text-black">
+        <h2 className="text-base font-bold text-black dark:text-white">
           We have the best equipment
         </h2>
         <h1 className="font-bold text-xl md:text-2xl lg:text-3xl font-heading text-gray-900">
