@@ -19,6 +19,15 @@ const Review = () => {
   const handleAddReview = (data) => {
     data.name = user?.name;
     data.email = user?.email;
+    if (user?.photo?.path) {
+      data.photo = user.photo;
+    } else {
+      data.photo = {
+        name: user?.name,
+        path: 'https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg',
+      };
+    }
+
     axios.post('/userReview/addReview', data).then((response) => {
       if (response.data.message) {
         Swal.fire({
@@ -28,6 +37,7 @@ const Review = () => {
         });
         return;
       }
+      console.log(response);
       if (response.data.email) {
         axios
           .get(`/userReview/singleReview/${user?.email}`)
