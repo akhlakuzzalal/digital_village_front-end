@@ -17,7 +17,6 @@ import AllCauses from './Pages/Admin/Donation/AllCauses/AllCauses';
 import AllHelpRequests from './Pages/Admin/Donation/AllHelpRequests/AllHelpRequests';
 import ManageAllDonars from './Pages/Admin/Donation/ManageAllDonars/ManageAllDonars';
 import UpdateCause from './Pages/Admin/Donation/updateCause/UpdateCause';
-import Eventmanagement from './Pages/Admin/EventManagement/Eventmanagement';
 import MarketManagement from './Pages/Admin/Market/MarketManagement';
 import AddNews from './Pages/Admin/News/AddNews/AddNews';
 import ManageNews from './Pages/Admin/News/ManageNews/ManageNews';
@@ -247,7 +246,6 @@ const App = () => (
               <Route path="home" element={<AdminHome />} />
               <Route path="allusers" element={<AllUsers />} />
               <Route path="sendNotification" element={<SendNotification />} />
-              <Route path="events" element={<Eventmanagement />} />
               <Route path="add-events" element={<AddEvents />} />
               <Route path="manageEvents" element={<ManageEvents />} />
               <Route path="market" element={<MarketManagement />} />

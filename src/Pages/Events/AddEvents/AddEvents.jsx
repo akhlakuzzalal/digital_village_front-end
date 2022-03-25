@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
 import img from '../../../assets/events/Add events.PNG';
 import { addAnEvent } from '../../../redux/slices/event/eventSlice';
 const AddEvents = () => {
@@ -9,12 +10,19 @@ const AddEvents = () => {
     handleSubmit,
     trigger,
     formState: { errors },
+    reset,
   } = useForm();
   const dispatch = useDispatch();
 
   const handleAddEvent = (data) => {
-    dispatch(addAnEvent(data));
-    alert('successfully added');
+    dispatch(addAnEvent(data)).then(() => {
+      Swal.fire({
+        icon: 'success',
+        title: 'added successfully',
+        confirmButtonText: 'Okay',
+      });
+      reset();
+    });
   };
 
   return (
