@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaRegSmile } from 'react-icons/fa';
 import { GiCancel } from 'react-icons/gi';
 import { MdDoneOutline, MdPersonAddAlt1 } from 'react-icons/md';
 import { useSelector } from 'react-redux';
@@ -56,7 +57,10 @@ const SingleUser = ({ user, as }) => {
           </div>
         )}
         {as === 'friend' && (
-          <div className="flex items-center cursor-pointer bg-primary justify-center px-4 py-2 rounded-lg space-x-2"></div>
+          <div className="flex items-center cursor-pointer bg-primary justify-center px-4 py-2 rounded-lg space-x-2">
+            <FaRegSmile size={20} color={'white'} />
+            <p>Friend</p>
+          </div>
         )}
         {as === 'suggest' && (
           // Add Friend

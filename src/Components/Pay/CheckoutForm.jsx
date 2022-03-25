@@ -69,7 +69,7 @@ const CheckoutForm = ({ returnPage, price, id, address }) => {
     }
 
     setIsLoading(true);
-    if (returnPage === 'e-market') {
+    if (returnPage === 'confirmpay') {
       setCart(id, address);
     }
 
