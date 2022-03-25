@@ -20,24 +20,21 @@ const RegForm = () => {
   const redirect_uri = '/medical/pdf';
 
   const onSubmit = (data) => {
-    console.log(data);
     axios.post('/vaccine/addInfo', data).then(() => {
-      console.log(data);
       swal({
-        title: 'Make sure all the information  valid.Want to proceed?',
-        // text: 'Once deleted, you will not be able to recover this imaginary file!',
+        title:
+          'Make sure all the information is valid. Do you want to procceed',
         icon: 'warning',
 
         buttons: true,
       }).then((willConfirm) => {
         if (willConfirm) {
-          console.log('ok');
           swal('Registration Done.', {
             icon: 'success',
           });
+          navigate(redirect_uri);
         }
       });
-      navigate(redirect_uri);
     });
   };
 
@@ -120,7 +117,7 @@ const RegForm = () => {
             onKeyUp={() => {
               trigger('nid');
             }}
-            placeholder="NID"
+            placeholder="Village Id"
           />
           {errors.nid && (
             <small className="text-danger">{errors.nid.message}</small>
@@ -158,7 +155,11 @@ const RegForm = () => {
           {errors.address && (
             <small className="text-danger">{errors.address.message}</small>
           )}
-          <select {...register('center', { required: 'Name is Required' })}>
+
+          <select
+            className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+            {...register('center', { required: 'Name is Required' })}
+          >
             <option>Choose your center</option>
             <option value="center1">center1</option>
             <option value="center2">center2</option>
