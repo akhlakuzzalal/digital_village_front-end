@@ -39,7 +39,7 @@ const PublishVideo = () => {
     const response = await axios.post('/teacher/publishVideo', formData);
     console.log(response.data[0]);
     if (response.data[0]?.title) {
-      giveAlert('Your blog published successfully', 'success');
+      giveAlert('Your video published successfully', 'success');
       reset();
       setFile({});
     } else {

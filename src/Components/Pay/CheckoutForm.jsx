@@ -77,7 +77,7 @@ const CheckoutForm = ({ returnPage, price, id, address }) => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `${'http://localhost:3000'}/${'confirmpay'}`,
+        return_url: `${'http://localhost:3000'}/${returnPage}`,
       },
     });
 
@@ -98,7 +98,7 @@ const CheckoutForm = ({ returnPage, price, id, address }) => {
       >
         <span id="button-text">
           {isLoading ? (
-            <div className="w-fit mx-auto min-h-screen flex justify-center items-center">
+            <div className="w-fit mx-auto flex justify-center items-center">
               <p>Please wait..</p>
             </div>
           ) : (
