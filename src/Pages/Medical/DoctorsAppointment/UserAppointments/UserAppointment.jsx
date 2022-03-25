@@ -1,25 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import PayModal from '../../../../Components/Pay/PayModal';
 import { setPayModal } from '../../../../redux/slices/payModal/PayModalSlice';
 
 const UserAppointment = ({ appointment, date }) => {
-  const [payOption, setPayOption] = useState('pay');
-  console.log(appointment);
-  // console.log(date.toString());
-
   const dispatch = useDispatch();
   const selectedDate = new Date(date).toLocaleDateString();
-  const handlePayment = (data) => {
-    if (data._id) {
-      setPayOption('paid');
-    }
-  };
+
   return (
     <div className="my-5">
       {appointment?.length > 0 ? (
         <div className="flex flex-col ">
-          <h4 className="my-5 text-blue-900">
+          <h4 className="my-5 text-blue-700">
             {' '}
             Total Appointments:{appointment?.length}
           </h4>
@@ -28,28 +20,28 @@ const UserAppointment = ({ appointment, date }) => {
               <div className="overflow-hidden shadow-md sm:rounded-lg">
                 <table className="min-w-full">
                   <thead className="bg-gray-50 dark:bg-gray-700">
-                    <tr className="bg-blue-900 ">
+                    <tr className="bg-primary ">
                       <th
                         scope="col"
-                        className="py-3 px-0 md:px-6 text-xs  tracking-wider text-left text-white uppercase dark:text-gray-400"
+                        className="py-3 px-2 md:px-6 text-xs  tracking-wider text-left text-white uppercase dark:text-gray-400"
                       >
                         Service
                       </th>
                       <th
                         scope="col"
-                        className="py-3 px-0 md:px-6 text-xs   text-left text-white uppercase dark:text-gray-400"
+                        className="py-3 px-2 md:px-6 text-xs   text-left text-white uppercase dark:text-gray-400"
                       >
                         Time
                       </th>
                       <th
                         scope="col"
-                        className="py-3 px-0 md:px-6 text-xs   text-left text-white uppercase dark:text-gray-400"
+                        className="py-3 px-2 md:px-6 text-xs   text-left text-white uppercase dark:text-gray-400"
                       >
                         Cost
                       </th>
                       <th
                         scope="col"
-                        className="py-3 px-0 md:px-6 text-xs  text-left text-white uppercase dark:text-gray-400"
+                        className="py-3 px-2 md:px-6 text-xs  text-left text-white uppercase dark:text-gray-400"
                       >
                         Action
                       </th>
@@ -73,14 +65,14 @@ const UserAppointment = ({ appointment, date }) => {
                           ) : (
                             <button
                               onClick={() => dispatch(setPayModal(true))}
-                              className="bg-blue-900 border-1 rounded-md text-white py-1 px-4"
+                              className="bg-blue-700 border-1 rounded-md text-white py-1 px-4"
                             >
                               Pay
                             </button>
                           )}
                         </td>
                         <PayModal
-                          price={10}
+                          price={row.price}
                           id={row._id}
                           returnPage={'medical'}
                         />
@@ -94,7 +86,7 @@ const UserAppointment = ({ appointment, date }) => {
         </div>
       ) : (
         <div>
-          <h3 className="text-gray-400 text-center text-lg md:text-xl pl-5 md:pl-0">
+          <h3 className="text-gray-400 text-center text-sm md:text-xl pl-5 md:pl-0">
             You have no appointment on {selectedDate}
           </h3>
         </div>

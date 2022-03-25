@@ -29,7 +29,7 @@ const Banner = () => {
         <div className=" flex flex-col  justify-center items-center place-self-center lg:mt-24 order-2 md:order-1 text-center lg:text-left p-5">
           <h1 className=" text-4xl md:text-5xl my-0 md:my-3">Quality Care</h1>
           <h3 className="justify-center items-center">
-            <span style={{ color: '#10217d' }}>Your health, </span> our priority
+            <span className="text-blue-700">Your health, </span> our priority
           </h3>
           <p className=" my-2 text-justify md:text-left md:my-6">
             From preventive care and checkups, to immunizations and exams, our
@@ -38,10 +38,7 @@ const Banner = () => {
           </p>
           <div className="flex items-start">
             <NavHashLink smooth to="/medical/appointment">
-              <button
-                className="btn text-md md:text-lg rounded-lg px-6 "
-                style={{ backgroundColor: '#10217d' }}
-              >
+              <button className="btn bg-primary text-md md:text-lg rounded-lg px-6 ">
                 Appointment
               </button>
             </NavHashLink>
