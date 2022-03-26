@@ -15,7 +15,7 @@ import ManageDevelopmentProposals from './Pages/Admin/DevelopmentProposal/Manage
 import AddCause from './Pages/Admin/Donation/AddCause/AddCause';
 import AllCauses from './Pages/Admin/Donation/AllCauses/AllCauses';
 import AllHelpRequests from './Pages/Admin/Donation/AllHelpRequests/AllHelpRequests';
-import ManageAllDonars from './Pages/Admin/Donation/ManageAllDonars/ManageAllDonars';
+import ManageAllDonors from './Pages/Admin/Donation/ManageAllDonors/ManageAllDonors';
 import UpdateCause from './Pages/Admin/Donation/updateCause/UpdateCause';
 import MarketManagement from './Pages/Admin/Market/MarketManagement';
 import AddNews from './Pages/Admin/News/AddNews/AddNews';
@@ -252,7 +252,7 @@ const App = () => (
               <Route path="addcause" element={<AddCause />} />
               <Route path="allcauses" element={<AllCauses />} />
               <Route path="updatecause/:id" element={<UpdateCause />} />
-              <Route path="manageAllDonars" element={<ManageAllDonars />} />
+              <Route path="manageAllDonors" element={<ManageAllDonors />} />
               <Route path="development" element={<DevelopmentDashboard />} />
               <Route
                 path="manageDevelopmentProposals"
