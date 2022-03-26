@@ -17,14 +17,16 @@ const NewsCard = ({ n }) => {
         />
       </div>
       <div className="space-y-4 p-6">
-        <p className="text-gray-600 flex items-center space-x-2">
-          <ImCalendar className="text-primary" /> <span>{n.date}</span>
+          <div>
+          <p className="text-gray-600 flex items-center space-x-2">
+          <ImCalendar className="text-primary" /> <span>{n.publishDate}</span>
           <h5 className="text-blue-600 font-bold ml-5">
-            Time: <span className="text-red-600">{n.time}</span>
+            Time: <span className="text-red-600">{n.publishTime}</span>
           </h5>
         </p>
         <h3 className="text-xl ">{n.title.slice(0, 43)}...</h3>
-        <p>{n.description.slice(0, 50)} ...</p>
+        <p>{n.description.slice(0, 40)} ...</p>
+         </div>
         <Link to={`/newsDetails/${n._id}`}>
           <button className="text-primary text-lg hover:text-black transition-all duration-500 border-b-2 border-b-primary dark:bg-dark_primary hover:dark:text-dark_text">
             Read More

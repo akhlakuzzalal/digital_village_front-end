@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Pagination } from 'swiper';
 import axios from '../../../api/axios';
 
 // fetch products from database
@@ -11,15 +10,13 @@ export const fetchAllProducts = createAsyncThunk(
       .get(
         `/eMarket/Products/?page=${pagination.currPage}&size=${
           pagination.size
-        }&search=${pagination.search}&roles=${JSON.stringify([
-          Pagination.role,
-        ])}`
+        }&search=${pagination.search}&roles=${JSON.stringify([2000])}`
       )
       .then((response) => response.data);
     console.log(
       `/eMarket/Products/?page=${pagination.currPage}&size=${
         pagination.size
-      }&search=${pagination.search}&roles=${JSON.stringify([5000])}`
+      }&search=${pagination.search}&roles=${JSON.stringify([2000])}`
     );
 
     return {

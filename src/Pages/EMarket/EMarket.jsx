@@ -30,6 +30,7 @@ const EMarket = () => {
   const pageCount = useSelector((state) => state.market.products.pageCount);
   const currPage = useSelector((state) => state.market.products.currPage);
   const size = 8;
+  console.log(products, 'from market');
 
   useEffect(() => {
     dispatch(

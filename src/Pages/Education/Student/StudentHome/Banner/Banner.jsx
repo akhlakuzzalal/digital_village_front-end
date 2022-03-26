@@ -18,7 +18,7 @@ const Banner = () => {
   return (
     <div
       className="flex flex-wrap lg:h-[80vh] bg-gray-50
-    dark:bg-dark_primary"
+    dark:bg-dark_primary mb-0"
     >
       <div className="w-full md:w-1/2 place-self-center lg:pl-6 space-y-7 order-2 md:order-1">
         <div className="relative  space-y-7 lg:pl-7">

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
-import axios from '../../../../../api/axios';
+import Swal from 'sweetalert2';
+import axios, { BASE_URI } from '../../../../../api/axios';
 import LikeDislikes from '../../LikeDislikes/LikeDislikes';
 const SingleComment = ({ comment, updateComment, postId }) => {
   const uId = useSelector((state) => state.user.uId);
@@ -12,6 +13,7 @@ const SingleComment = ({ comment, updateComment, postId }) => {
     handleSubmit,
     trigger,
     formState: { errors },
+    reset,
   } = useForm();
 
   const handleCommentSubmit = (data) => {
@@ -25,8 +27,12 @@ const SingleComment = ({ comment, updateComment, postId }) => {
       if (response.data.success) {
         setOpenReply(!openReply);
         updateComment(...response.data.result);
+        reset();
       } else {
-        alert('Failed to save Comment');
+        Swal.fire({
+          title: 'Failed to add Comment',
+          icon: 'error',
+        });
         console.log(response);
       }
     });
@@ -38,8 +44,12 @@ const SingleComment = ({ comment, updateComment, postId }) => {
         <div>
           <img
             className="h-16 rounded-2xl"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNDgyaDCaoDZJx8N9BBE6eXm5uXuObd6FPeg&usqp=CAU"
-            alt="profile"
+            src={
+              comment?.commenter?.photo
+                ? `${BASE_URI}/${comment?.commenter?.photo?.path}`
+                : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNDgyaDCaoDZJx8N9BBE6eXm5uXuObd6FPeg&usqp=CAU'
+            }
+            alt={comment?.commenter?.photo?.name || 'profile'}
           />
         </div>
         <div>

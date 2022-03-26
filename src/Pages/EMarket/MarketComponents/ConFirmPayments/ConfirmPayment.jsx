@@ -1,12 +1,45 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
+import axios from '../../../../api/axios';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
+import { clearCart } from '../../../../redux/slices/eMarket/cartSlice';
+import { setPayModal } from '../../../../redux/slices/payModal/PayModalSlice';
 
 const ConfirmPayment = () => {
-  const { getSavedCart } = useLocalStorage();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { getSavedCart, deleteDB } = useLocalStorage();
   const cart = getSavedCart();
   const orders = useSelector((state) => state.market.cart.cart);
+  const user = useSelector((state) => state.user.user);
   const address = JSON.parse(cart.items).address;
+  const id = JSON.parse(cart.items).ids;
+  console.log(id);
+  const handleConfirmOrder = async () => {
+    const data = {
+      name: address?.name,
+      email: user?.email,
+      address: address?.fullAddress,
+      productID: id,
+    };
+    await axios.post('/emarket/order', data).then((res) => {
+      if (res.data === 'addOrder') {
+        swal({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        dispatch(setPayModal(false));
+        dispatch(clearCart());
+        deleteDB('items', 'address');
+        navigate('/marketdashboard');
+      }
+    });
+  };
   return (
     <div className="mt-[84px]">
       <h3 className="text-center">
@@ -79,7 +112,10 @@ const ConfirmPayment = () => {
         </div>
       </div>
       <div className="flex justify-center py-4">
-        <button className="bg-primary px-6 py-2 rounded-md">
+        <button
+          onClick={handleConfirmOrder}
+          className="bg-primary px-6 py-2 rounded-md"
+        >
           Confirm order
         </button>
       </div>

@@ -50,7 +50,7 @@ const Contact = () => {
           <h3 className="text-center ml-2 md:ml-0 lg:ml-0 text-2xl font-semibold mt-16 mb-3 text-gray-500 hover:text-red-500">
             FOLLOW OUR INFO
           </h3>
-          <h1 className="text-3xl md:text-5xl lg:text-5xl text-center font-bold ml-4 md:ml-0 lg:ml-0 hover:text-blue-600">
+          <h1 className="text-2xl md:text-5xl lg:text-5xl text-center font-bold  hover:text-blue-600">
             Contact information
           </h1>
           <h4 className="text-center lg:px-[300px] px-5 dark:text-gray-200 ">
@@ -173,7 +173,7 @@ const Contact = () => {
           <img className="h-[500px]" src={img} alt="" />
         </div>
         <form
-          className=" md:grid grid-cols-1 md:grid-cols-2 gap-5 mt-16 mx-10 lg:mx-0"
+          className=" md:grid grid-cols-1 md:grid-cols-2 gap-5 md:mt-16 mx-10 lg:mx-0"
           onSubmit={handleSubmit(sendEmail)}
         >
           <input
@@ -181,9 +181,7 @@ const Contact = () => {
             {...register('name', { required: 'Name is Required' })}
             placeholder="Name"
           />
-          {errors.name && (
-            <small className="text-danger">{errors.name.message}</small>
-          )}
+         
 
           <input
             className=" w-full mb-5 lg:mb-0 py-5 lg:py-0 outline-none border-2 focus:border-primary bg-gray-100 px-20 rounded"
@@ -198,9 +196,7 @@ const Contact = () => {
             })}
             placeholder="Phone Number"
           />
-          {errors.number && (
-            <small className="text-danger">{errors.number.message}</small>
-          )}
+          
           <input
             className=" w-full mb-5 lg:mb-0 outline-none border-2 bg-gray-100 focus:border-primary px-20 rounded py-5 "
             type="email"
@@ -213,14 +209,12 @@ const Contact = () => {
             })}
             placeholder="Enter Your Email"
           />
-          {errors.email && (
-            <small className="text-danger">{errors.email.message}</small>
-          )}
+
 
           <input
             className=" w-full mb-5 lg:mb-0 outline-none border-2 bg-gray-100 px-20 focus:border-primary rounded py-5 lg:py-0"
-            type="email"
-            {...register('email', { required: true, maxLength: 20 })}
+            type="text"
+            {...register('subject')}
             placeholder="Write your Subject"
           />
 
@@ -234,15 +228,13 @@ const Contact = () => {
                   message: 'Minimum Required length is 10',
                 },
                 maxLength: {
-                  value: 50,
-                  message: 'Maximum allowed length is 50 ',
+                  value: 500,
+                  message: 'Maximum allowed length is 500 ',
                 },
               })}
               placeholder="Write your message"
             ></textarea>
-            {errors.message && (
-              <small className="text-danger">{errors.message.message}</small>
-            )}
+         
           </div>
 
           <input

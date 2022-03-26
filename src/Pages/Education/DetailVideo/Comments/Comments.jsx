@@ -12,6 +12,7 @@ const Comments = ({ postId, updateComment, commentLists }) => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const handleCommentSubmit = async (data) => {
@@ -21,6 +22,7 @@ const Comments = ({ postId, updateComment, commentLists }) => {
     console.log('response after adding', response);
     if (response.data.success) {
       updateComment(...response.data.result);
+      reset();
     } else {
       console.log('return from backend', response);
       alert('Failed to save Comment');

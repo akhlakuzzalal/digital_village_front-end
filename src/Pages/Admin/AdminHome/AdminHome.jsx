@@ -1,163 +1,174 @@
 import React from 'react';
 import {
-  Area,
-  AreaChart,
-  Bar,
-  BarChart,
   CartesianGrid,
   Legend,
   Line,
   LineChart,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from 'recharts';
 
+const data = [
+  {
+    name: 'Page A',
+    uv: 4000,
+    pv: 2400,
+    amt: 2400,
+  },
+  {
+    name: 'Page B',
+    uv: 3000,
+    pv: 1398,
+    amt: 2210,
+  },
+  {
+    name: 'Page C',
+    uv: 2000,
+    pv: 9800,
+    amt: 2290,
+  },
+  {
+    name: 'Page D',
+    uv: 2780,
+    pv: 3908,
+    amt: 2000,
+  },
+  {
+    name: 'Page E',
+    uv: 1890,
+    pv: 4800,
+    amt: 2181,
+  },
+  {
+    name: 'Page F',
+    uv: 2390,
+    pv: 3800,
+    amt: 2500,
+  },
+  {
+    name: 'Page G',
+    uv: 3490,
+    pv: 4300,
+    amt: 2100,
+  },
+];
+
 const AdminHome = () => {
-  const areadata = [
-    {
-      name: 'Week 1',
-      new: 3,
-      active: 7,
-    },
-    {
-      name: 'Week 2',
-      new: 5,
-      active: 4,
-    },
-    {
-      name: 'Week 3',
-      new: 12,
-      active: 13,
-    },
-    {
-      name: 'Week 4',
-      new: 6,
-      active: 23,
-    },
-  ];
-  const donatedata = [
-    {
-      name: 'Week 1',
-      target: 4000,
-      achieve: 2400,
-    },
-    {
-      name: 'Week 2',
-      target: 3000,
-      achieve: 1398,
-    },
-    {
-      name: 'Week 3',
-      target: 2000,
-      achieve: 9800,
-    },
-    {
-      name: 'Week 4',
-      target: 2780,
-      achieve: 3908,
-    },
-  ];
-  const marketdata = [
-    {
-      name: '1',
-      ammount: 4000,
-    },
-    {
-      name: '2',
-      ammount: 3000,
-    },
-    {
-      name: '3',
-      ammount: 2000,
-    },
-    {
-      name: '4',
-      ammount: 2780,
-    },
-    {
-      name: '5',
-      ammount: 1890,
-    },
-    {
-      name: '6',
-      ammount: 2390,
-    },
-    {
-      name: '7',
-      ammount: 3490,
-    },
-  ];
   return (
-    <div className="grid grid-cols-2 gap-5 mt-6 mx-10">
-      {/* user Activity */}
-      <div className="space-y-3 p-4 shadow-md rounded-lg">
-        <h6>User activity of this monthe</h6>
-        <AreaChart
-          width={620}
-          height={250}
-          data={areadata}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-        >
-          <defs>
-            <linearGradient id="colortarget" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
-            </linearGradient>
-            <linearGradient id="colorachieve" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
-            </linearGradient>
-          </defs>
-          <XAxis dataKey="name" />
-          <YAxis />
-          <CartesianGrid strokeDasharray="3 3" />
-          <Tooltip />
-          <Area
-            type="monotone"
-            dataKey="new"
-            stroke="#8884d8"
-            fillOpacity={1}
-            fill="url(#colortarget)"
-          />
-          <Area
-            type="monotone"
-            dataKey="active"
-            stroke="#82ca9d"
-            fillOpacity={1}
-            fill="url(#colorachieve)"
-          />
-        </AreaChart>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="w-full h-72">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart
+            width={500}
+            height={300}
+            data={data}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="pv"
+              stroke="#8884d8"
+              activeDot={{ r: 8 }}
+            />
+            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
-      {/* donation Achivement */}
-      <div className="space-y-3 p-4 shadow-md rounded-lg">
-        <h6>Donation Target and Achive of this month</h6>
-        <BarChart width={620} height={250} data={donatedata}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="achieve" fill="#8884d8" />
-          <Bar dataKey="target" fill="#82ca9d" />
-        </BarChart>
+      <div className="w-full h-72">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart
+            width={500}
+            height={300}
+            data={data}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="pv"
+              stroke="#8884d8"
+              activeDot={{ r: 8 }}
+            />
+            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
-      {/* Product sale in this month */}
-      <div className="space-y-3 p-4 shadow-md rounded-lg">
-        <h6>Last 7 days sell from market</h6>
-        <LineChart
-          width={620}
-          height={250}
-          data={marketdata}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="ammount" stroke="#82ca9d" />
-        </LineChart>
+      <div className="w-full h-72">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart
+            width={500}
+            height={300}
+            data={data}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="pv"
+              stroke="#8884d8"
+              activeDot={{ r: 8 }}
+            />
+            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+      <div className="w-full h-72">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart
+            width={500}
+            height={300}
+            data={data}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="pv"
+              stroke="#8884d8"
+              activeDot={{ r: 8 }}
+            />
+            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );
