@@ -247,7 +247,7 @@ console.log(response?.data, "data ");
             <div className="items-center justify-between pt-2 gap-1 mx-auto space-y-6 sm:flex sm:items-center sm:py-3 sm:space-y-0 sm:space-x-4">
               <button
                 onClick={() => setShowModal(true, user._id)}
-                className="btn bg-gradient-to-r from-primary via-secondary to-secondary hover:from-primary hover:via-secondary hover:to-primary shadow-xl"
+                className="btn bg-gradient-to-r from-primary to-secondary hover:from-primary hover:to-primary shadow-xl"
               >
                 Get Help Request
               </button>

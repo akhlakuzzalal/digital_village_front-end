@@ -2,18 +2,22 @@ import React, { useEffect } from 'react';
 import {FaFilePdf } from 'react-icons/fa';
 import { FcApproval } from 'react-icons/fc';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMyRequest } from '../../../redux/slices/Donations/donationSlice';
+import { fetchAllRequest } from '../../../redux/slices/Donations/donationSlice';
 
 
 const MyHelpRequests = () => {
-  const user = useSelector((state) => state.user.user);
+  // const user = useSelector((state) => state.user.id);
   const applys = useSelector((state) => state.donation.applys);
 
-  console.log(applys, 'gggggggggggg');
+  // const requester = applys.filter((apply) => apply.id === user.id
+  // );
+  // console.log(requester,'gggggggggggg');
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchMyRequest(user.email));
-  }, []);
+      dispatch(fetchAllRequest());
+    }, []);
+    
 
   return (
     <section
@@ -27,19 +31,13 @@ const MyHelpRequests = () => {
         You can donate the available from here and Get Help Request
       </p>
       <div className="col-span-3 flex flex-col space-y-2 ml-10 lg:ml-10 md:ml-20 py-4">
-      {applys?.map((apply) => (
+      {applys &&
+      applys?.map((apply) => (
         <div key={apply._id} className="grid grid-cols-1 lg:grid-cols-4 gap-3 bg-white rounded-lg shadow-xl p-3 box-border dark:bg-dark_primary">
-          {/* {/_ image _/} */}
-          {/* <div className="col-span-1">
-            <img
-              className="w-full h-full rounded-lg"
-              src="http://primehostingindia.com/templatemonster/react/aidup/assets/img/donations/5.jpg"
-              alt="Mercedes-benz B Class 170"
-            />
-          </div> */}
+
 
           {/* {/_ details _/} */}
-          <div className="col-span-2">
+          <div className="col-span-3">
             <p className="text-gray-500 text-sm break-all">Category:Donation</p>
             <h1 className="text-gray-700 text-sm md:text-lg lg:text-2xl font-primary break-all">
               {apply.name}

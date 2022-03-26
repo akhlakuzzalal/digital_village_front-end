@@ -61,11 +61,11 @@ export const fetchAllRequest = createAsyncThunk(
 
 export const fetchMyRequest = createAsyncThunk(
   'cuases/fetchMyRequest',
-  async (email) => {
+  async () => {
     const response = axios
-      .get(`/donationRequest/requestapply/?email=${email}`)
+      .get(`/donationRequest/requestapply`)
       .then((response) => response.data);
-    return response;
+    return response ;
   }
 );
 // add help request apply
@@ -160,14 +160,9 @@ const donationSlice = createSlice({
     //   }
     // });
     // get my development proposals
-    builder.addCase(
-      fetchMyRequest.fulfilled,
-      (state, { payload }) => {
-        if (payload && payload.length >= 1) {
-          state.applys = payload;
-        }
-      }
-    );
+    builder.addCase(fetchMyRequest.fulfilled, (state, { payload }) => {
+        state.applys = payload;
+      });
 
     // //delete
     builder.addCase(deleteARequest.fulfilled, (state, { payload }) => {
