@@ -22,8 +22,8 @@ const Schedule = ({ onChange }) => {
         {' '}
         Take a schedule for a consultation
       </h3>
-      <div className="flex flex-col justify-center items-center">
-        <div className="flex  justify-items-center md:justify-center items-center w-2/3  md:w-full ">
+      <div className="flex flex-col justify-center items-center md:flex-row">
+        <div className="flex flex-col items-center mjustify-center md:flex-row ">
           {' '}
           <Calender onChange={onChange} />
         </div>
