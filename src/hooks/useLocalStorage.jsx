@@ -20,12 +20,13 @@ const useLocalStorage = () => {
   };
 
   // Delete a Cart From the Local Storage
-  const deleteDB = (name) => {
+  const deleteDB = (name, address) => {
     const exist = getDB();
     if (!exist) {
     } else {
       const cart = JSON.parse(exist);
       delete cart[name];
+      delete cart[address];
       updateDb(cart);
     }
   };

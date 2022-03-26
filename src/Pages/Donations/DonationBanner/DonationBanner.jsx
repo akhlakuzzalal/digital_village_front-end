@@ -2,7 +2,9 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import Lottie from 'react-lottie';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import axios from '../../../api/axios';
 import banner from '../../../assets/donation/donatebanner.jpg';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import animationData from '../../../lotties/donate.json';
@@ -20,7 +22,7 @@ const DonationBanner = () => {
   };
   const user = useSelector((state) => state.user.user);
   const [showModal, setShowModal] = React.useState(false);
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -29,30 +31,29 @@ const DonationBanner = () => {
     formState: { errors },
   } = useForm();
 
-  const helpRequestApply =  async (data) => {
-    // if (data.category === 'choose one') data.category = 'others';
-    const formData = new FormData();
-    formData.append(
-      'request',
-      JSON.stringify({
-        ...data,
-        date: new Date().toLocaleDateString(),
-        requesterName: user?.name,
-        requesterEmail: user?.email,
-        pay: 'pending',
-      })
-    );
-    dispatch(addAHelpRequest(formData)).then(() => {
+  const helpRequestApply = async (data) => {
+    console.log(data);
+    const requestData=  {
+          ...data,
+          requesterName: user?.name,
+          requesterEmail: user?.email,
+          date: new Date().toLocaleDateString(),
+          pay: false,
+        };
+    const response = await axios.post('/donationRequest/helprequest', requestData);
+console.log(response?.data, "data ");
+    if (response?.data && response?.data[0].requesterEmail) {
       swal({
-        position: 'top-end',
+        text: `You request sumbit successfully`,
         icon: 'success',
-        title: 'You request sumbit successfully',
-        showConfirmButton: false,
-        timer: 1500,
+        confirm: 'Go and Explore',
+        closeOnClickOutside: false,
+      }).then(() => {
+        setShowModal(false);
+        navigate('/userdashboard/myHelpRequests');
+        reset();
       });
-      setShowModal(false);
-      reset();
-    });
+    }
   };
   return (
     <>
@@ -110,8 +111,8 @@ const DonationBanner = () => {
                         {...register('description', {
                           required: 'Message is Required',
                           minLength: {
-                            value: 20,
-                            message: 'Minimum Required length is 20',
+                            value: 15,
+                            message: 'Minimum Required length is 15',
                           },
                           maxLength: {
                             value: 500,
@@ -176,12 +177,12 @@ const DonationBanner = () => {
                         {...register('amount', {
                           required: 'Amount is Required',
                           min: {
-                            value: 49,
-                            message: 'Minimum Required amount is 49',
+                            value: 50,
+                            message: 'Minimum Required amount is 50',
                           },
                           max: {
-                            value: 300,
-                            message: 'Maximum allowed amount is 300',
+                            value: 500,
+                            message: 'Maximum allowed amount is 500',
                           },
                           pattern: {
                             value: /^[0-9]*$/,
@@ -197,9 +198,7 @@ const DonationBanner = () => {
                         <p className="text-danger">{errors.amount.message}</p>
                       )}
                     </div>
-                  </form>
-                </div>
-                {/*footer*/}
+                    {/*footer*/}
                 <div className="flex items-center justify-end p-2 border-t border-solid border-blueGray-200 rounded-b">
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
@@ -215,6 +214,9 @@ const DonationBanner = () => {
                     Request Doante
                   </button>
                 </div>
+                  </form>
+                </div>
+                
               </div>
             </div>
           </div>

@@ -6,9 +6,9 @@ import Step4 from './Step4';
 
 const Procedure = () => {
   return (
-    <div className="">
+    <div className="p-4">
       <h3
-        className=" p-10 md:p-20 font-bolder text-lg md:text-xl text-center md:text-left lg:text-4xl text-blue-900
+        className="  md:p-20 font-bolder text-lg md:text-xl text-center md:text-left text-blue-700
          dark:text-dark_text"
       >
         4 easy steps to payment

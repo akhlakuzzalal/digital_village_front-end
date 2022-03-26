@@ -70,7 +70,7 @@ const Faq1 = () => {
         </p>
       </div>
 
-      <div className=" flex md:flex-row flex-col md:space-x-8 md:mt-16 mt-8">
+      <div className=" flex pointer-events-none md:flex-row flex-col md:space-x-8 md:mt-16 mt-8">
         <div className=" md:w-5/12 lg:w-4/12 w-full mb-4  ">
           <div className="w-fit mx-auto">
             <Lottie

@@ -1,20 +1,50 @@
 import React, { useEffect, useState } from 'react';
 import { FcSearch } from 'react-icons/fc';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllRequest } from '../../../../redux/slices/Donations/donationSlice';
+import { deleteARequest, fetchAllRequest } from '../../../../redux/slices/Donations/donationSlice';
 import { HiTrash } from 'react-icons/hi';
+import swal from 'sweetalert';
 
 const AllHelpRequests = () => {
+  const [reqDescription, setReqDescription] = useState('');
   const [showModal, setShowModal] = useState(false);
   const applys = useSelector((state) => state.donation.applys);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAllRequest());
-    console.log('applys show');
   }, []);
-  console.log(applys, 'applys');
+   // handing Delete Request
+   const handleDeleteRequest = (id) => {
+    swal({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this imaginary file!',
+      icon: 'warning',
+
+      buttons: true,
+    }).then((willConfirm) => {
+      if (willConfirm) {
+        dispatch(deleteARequest(id)).then(()=> {
+          dispatch(fetchAllRequest());
+          swal('Confirmed!', {
+            icon: 'success',
+          });
+        })
+      }
+    });
+  };
+
+  const handleShowDetail = (id) => {
+    const apply = applys.find(
+      (apply) => apply._id === id
+    );
+    setReqDescription(apply.description);
+    setShowModal(true);
+  };
+
+  // const handleUpdateCause = () => {
+  //   navigate(`/admin/updatecause/${_id}`);
+  // };
   return (
     <>
       {showModal ? (
@@ -40,39 +70,7 @@ const AllHelpRequests = () => {
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                   <p className=' text-gray-600 dark:text-dark_text'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Officiis incidunt numquam voluptate, laborum voluptates
-                    minus itaque? Dolores maiores veritatis eaque consequuntur
-                    iure est aspernatur ab error quia animi, ipsum id minus
-                    beatae laboriosam! Ducimus voluptates eos error labore
-                    voluptatibus hic, perferendis laudantium facere praesentium
-                    dicta provident adipisci voluptatem. Suscipit voluptatem
-                    numquam voluptatum porro quaerat vel repellat ipsa,
-                    repudiandae alias nobis doloremque nam exercitationem vero
-                    soluta repellendus sint nihil ducimus reiciendis! Voluptatem
-                    similique consequatur esse nihil autem in, sequi libero ad
-                    est enim, architecto excepturi quas modi neque soluta.
-                    Impedit omnis ipsa perferendis animi sed nemo sint? Hic,
-                    minima id porro fugiat ipsam eos voluptatem quidem maiores
-                    nesciunt. Praesentium rem, voluptatibus doloribus quo
-                    laborum cupiditate fugit odio! Quidem vel odit consectetur
-                    quod dolore, explicabo quis amet alias quia beatae ducimus
-                    laudantium quam quo odio! Doloremque quam illum minima
-                    perspiciatis pariatur mollitia sed nesciunt voluptas cum,
-                    maiores dolorum eius. Cumque modi quisquam accusamus impedit
-                    libero, dolore veniam? Vel quam at iusto eius, delectus
-                    libero dignissimos aliquid accusamus, cumque nisi quaerat
-                    dolores veritatis perferendis dolore deleniti tempore a
-                    error nesciunt iste, rem aperiam porro odio sit! Atque sint
-                    saepe debitis accusantium, minus magnam consequuntur
-                    officiis voluptas quam et at quas temporibus quos illo
-                    consequatur labore porro mollitia incidunt amet quasi. Error
-                    deserunt obcaecati voluptatem reiciendis, libero excepturi
-                    quod! Cumque dolor modi, a debitis corporis iure! Dolorum
-                    totam dolores necessitatibus molestias aliquid quos eligendi
-                    consequuntur placeat, odio sapiente debitis repudiandae
-                    numquam fuga doloribus quisquam asperiores tempore explicabo
-                   
+                   {reqDescription}
                   </p>
                 </div>
                 {/*footer*/}
@@ -100,7 +98,7 @@ const AllHelpRequests = () => {
           <p className="text-center text-gray-600 font-normal text-sm lg:text-lg">
             Admin can any request dynamically delete and update.
           </p>
-          <div class="flex items-center justify-between ml-20">
+          <div class="flex items-center justify-between ml-20 md:ml-52 lg:ml-52">
             <div class="flex bg-gray-50 items-center p-2 rounded-md border-blue-500 border-1">
               <FcSearch class="h-6 w-6 text-gray-400" />
               <input
@@ -114,7 +112,7 @@ const AllHelpRequests = () => {
           </div>
           <div className="py-2 inline-block min-w-full sm:px-4 lg:px-8">
             <div className="rounded-lg">
-              <table className="max-w-screen-xl mx-auto">
+              <table className="max-w-screen-2xl mx-auto">
                 <thead className="hidden lg:block bg-indigo-500 font-primary">
                   <tr className="grid grid-cols-1 lg:grid-cols-6 place-items-center">
                     <th
@@ -158,27 +156,29 @@ const AllHelpRequests = () => {
           return <Request key={apply._id} {...apply} />;
         })} */}
         <tbody >
-      <tr className="bg-white border-b font-primary text-sm grid grid-cols-1 lg:grid-cols-6 place-items-center dark:bg-dark_primary ">
+        {applys?.map((apply) => (
+      <tr key={apply._id} className="bg-white border-b font-primary text-sm grid grid-cols-1 lg:grid-cols-6 place-items-center dark:bg-dark_primary ">
         <td className="text-sm  dark:text-dark_text text-gray-600 px-6 py-4 break-all">
-          shorifzaman
+        {apply?.name}
           <td className="text-sm text-gray-600 py-2whitespace-nowrap  dark:text-dark_text">
-            zaman@amin.com
+            {apply?.emaill}
           </td>
         </td>
         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900  dark:text-dark_text">
           <td className=" dark:text-dark_text text-sm text-gray-500 px-6 py-4 break-all">
-            Donation
+            {apply?.category}
           </td>
         </td>
         <td className="text-sm text-gray-600 px-6 py-4 whitespace-nowrap  dark:text-dark_text">
-          sylhet,bangladesh
+          $ {apply?.amount}
+          {/* {apply?.phone} */}
           <td className="text-sm text-gray-500 py-2 whitespace-nowrap  dark:text-dark_text">
-            Mon Mar 14 2022
+            {apply?.date}
           </td>
         </td>
         <td className="text-sm  dark:text-dark_text text-gray-500 px-6 py-4 whitespace-nowrap">
           <button
-            onClick={() => setShowModal(true)}
+            onClick={() => handleShowDetail(apply._id)}
             className="px-6 py-2 font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white border border-blue-500 hover:border-transparent"
           >
             Details
@@ -199,13 +199,14 @@ const AllHelpRequests = () => {
         </td>
         <td className="px-6 py-4 whitespace-nowrap flex flex-col h-24 items-center justify-center">
           <div className="flex items-center justify-center space-x-3">
-            <HiTrash className="cursor-pointer text-2xl text-red-600" />
+            <HiTrash onClick={() => handleDeleteRequest(apply._id)} className="cursor-pointer text-2xl text-red-600" />
             <button className="bg-green-500  px-4 py-2 text-white font-primary rounded-lg text-sm ring-blue-300 focus:ring-4 transition duration-300">
               Approve
             </button>
           </div>
         </td>
       </tr>
+       ))}
       </tbody>
               </table>
             </div>
