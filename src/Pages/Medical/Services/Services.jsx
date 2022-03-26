@@ -1,10 +1,11 @@
 import emailjs from '@emailjs/browser';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { HiLightBulb } from 'react-icons/hi';
 import { ImCheckmark } from 'react-icons/im';
 import { useSelector } from 'react-redux';
 import swal from 'sweetalert';
+import OurDoctors from '../OurDoctors/OurDoctors';
+import TimeTable from './../../../assets/events/time table.jpg';
 import mediBanner from './../../../assets/medical/mediBanner.png';
 
 const datas = [
@@ -81,285 +82,281 @@ const Services = () => {
   };
   return (
     <div>
-      <div className=" grid grid-cols-1 md:grid-cols-2 justify-center my-10 items-center pl-10 pr-0 md:pr-4">
+      <div className="">
         <div className="">
-          <img src={mediBanner} alt="" />
-        </div>
-        <div className="px-5 mt-6 md:mt-0">
-          <h3 className=" text-center md:text-5xl text-blue-700 ">
+          <h3 className=" text-center md:text-5xl text-blue-600 ">
             Our Services
           </h3>
-          <p className="my-5 text-justify px-2 md:px-5  text-lg ">
+          <p className="my-5 lg:mx-[300px] text-center px-2 md:px-5  text-lg ">
             Treatment here, truly human experience. You’re cared for as a person
             first.The more patients we treat each year prepares us to treat the
             one who matters most—you.Count on our experts to deliver an accurate
             diagnosis and the right plan for you the first time.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 justify-start items-center mx-6">
-            <div className="px-2 ">
-              <div className="  flex justify-start items-center my-3">
-                <ImCheckmark
-                  className="text-blue-700"
-                  style={{
-                    fontSize: '1.5em',
-                    marginRight: '4px',
-                  }}
-                />
-                <div>
-                  <span
-                    className="dark:text-dark_text"
-                    style={{ fontSize: '18px' }}
-                  >
-                    Online Consultation
-                  </span>
-                </div>
-              </div>
-              <div className=" flex justify-start items-center my-3">
-                <ImCheckmark
-                  className="text-blue-700"
-                  style={{
-                    fontSize: '1.5em',
-                    marginRight: '4px',
-                  }}
-                />
-                <div>
-                  <span
-                    className="dark:text-dark_text"
-                    style={{ fontSize: '18px' }}
-                  >
-                    Offline Consultation
-                  </span>
-                </div>
-              </div>
-              <div className=" flex justify-start items-center my-3">
-                <ImCheckmark
-                  className="text-blue-700"
-                  style={{
-                    fontSize: '1.5em',
-                    marginRight: '4px',
-                  }}
-                />
-                <div>
-                  <span
-                    className="dark:text-dark_text"
-                    style={{ fontSize: '18px' }}
-                  >
-                    Online Appointment
-                  </span>
-                </div>
-              </div>
+        </div>
+        <div className="lg:flex lg:mx-[150px] justify-between">
+          <img src={mediBanner} alt="" />
 
-              <div className=" flex justify-start items-center my-3">
-                <ImCheckmark
-                  className="text-blue-700"
-                  style={{
-                    fontSize: '1.5em',
-                    marginRight: '4px',
-                  }}
-                />
-                <div>
-                  <span
-                    className="dark:text-dark_text"
-                    style={{ fontSize: '18px' }}
-                  >
-                    Lab Test
-                  </span>
-                </div>
-              </div>
-              <div className=" flex justify-start items-center my-3">
-                <ImCheckmark
-                  className="text-blue-700"
-                  style={{
-                    fontSize: '1.5em',
-                    marginRight: '4px',
-                  }}
-                />
-                <div>
-                  <span
-                    className="dark:text-dark_text"
-                    style={{ fontSize: '18px' }}
-                  >
-                    Ambulance facilities
-                  </span>
-                </div>
-              </div>
-              <div className=" flex justify-start items-center my-3">
-                <ImCheckmark
-                  className="text-blue-700"
-                  style={{
-                    fontSize: '1.5em',
-                    marginRight: '4px',
-                  }}
-                />
-                <div>
-                  <span
-                    className="dark:text-dark_text"
-                    style={{ fontSize: '18px' }}
-                  >
-                    Emergency Department
-                  </span>
-                </div>
+          <div className="px-2 mt-10">
+            <div className="  flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+              <ImCheckmark
+                style={{
+                  color: '#10217d',
+                  fontSize: '1.5em',
+                  marginRight: '4px',
+                }}
+              />
+              <div>
+                <span
+                  className="dark:text-dark_text"
+                  style={{ fontSize: '18px' }}
+                >
+                  Online Consultation
+                </span>
               </div>
             </div>
-            <div className="  flex justify-end">
-              <ul class="w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white text-center">
-                <li
-                  class="py-2 px-4 w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600 bg-primary"
-                  style={{
-                    color: 'white',
-                    fontSize: '1.5em',
-                  }}
+            <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+              <ImCheckmark
+                style={{
+                  color: '#10217d',
+                  fontSize: '1.5em',
+                  marginRight: '4px',
+                }}
+              />
+              <div>
+                <span
+                  className="dark:text-dark_text"
+                  style={{ fontSize: '18px' }}
                 >
-                  Time Table
-                </li>
-                <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-                  Sat 11am to 5 pm
-                </li>
-                <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-                  Sun 10am to 8 pm
-                </li>
-                <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-                  Mon 10am to 8 pm
-                </li>
-                <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-                  Tues 10am to 10 pm
-                </li>
-                <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-                  wed 10am to 10 pm
-                </li>
-                <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-                  thus 11am to 5 pm
-                </li>
-                <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-                  Fri 12am to 5 pm
-                </li>
-              </ul>
+                  Offline Consultation
+                </span>
+              </div>
+            </div>
+            <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+              <ImCheckmark
+                style={{
+                  color: '#10217d',
+                  fontSize: '1.5em',
+                  marginRight: '4px',
+                }}
+              />
+              <div>
+                <span
+                  className="dark:text-dark_text"
+                  style={{ fontSize: '18px' }}
+                >
+                  Online Appointment
+                </span>
+              </div>
+            </div>
+
+            <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+              <ImCheckmark
+                style={{
+                  color: '#10217d',
+                  fontSize: '1.5em',
+                  marginRight: '4px',
+                }}
+              />
+              <div>
+                <span
+                  className="dark:text-dark_text"
+                  style={{ fontSize: '18px' }}
+                >
+                  Lab Test
+                </span>
+              </div>
+            </div>
+
+            <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+              <ImCheckmark
+                style={{
+                  color: '#10217d',
+                  fontSize: '1.5em',
+                  marginRight: '4px',
+                }}
+              />
+              <div>
+                <span
+                  className="dark:text-dark_text"
+                  style={{ fontSize: '18px' }}
+                >
+                  Emergency Department
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center ">
-        <div className=" ">
-          <section class="text-gray-700">
-            <div class="container  pl-10 pr-0 md:pr-4 py-8 ">
-              <div class="text-center flex flex-col justify-center items-center">
-                <h3 class=" text-xl md:text-3xl font-bold text-center title-font pb-6 text-blue-700">
-                  Our Departments
-                </h3>
-              </div>
-              <div className=" flex  flex-col justify-center item-center pl-5 pr-1 md:full  w-full md:mt-0 sm:mt-14 mt-10">
-                {/* <!-- Digital Section --> */}
 
-                {datas.map((data) => (
-                  <div>
-                    <div>
-                      <div className=" flex justify-between items-center cursor-pointer bg-primary  p-4 my-1  rounded-lg">
-                        {active && data.id === active ? (
-                          <div className="flex justify-between items-center">
-                            <HiLightBulb
-                              className="  transition duration-700 ease-in-out text-[#ffff00]"
-                              size={30}
-                              onClick={() => setActive('')}
-                            />
-                            <h3 className=" w-11/12 inline font-semibold text-lg text-white">
-                              {data.title}
-                            </h3>
-                          </div>
-                        ) : (
-                          <div
-                            onClick={() => setActive(data?.id)}
-                            className="flex items-center"
-                          >
-                            <HiLightBulb
-                              className=" transition duration-700 ease-in-out text-white"
-                              size={30}
-                            />
-                            <h3 className="  w-11/12  font-semibold text-lg text-white">
-                              {data.title}
-                            </h3>
-                          </div>
-                        )}
-                      </div>
-                      <p
-                        className={
-                          'font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 ' +
-                          (data.id === active ? 'block' : 'hidden')
-                        }
-                      >
-                        {data?.description}
-                      </p>
-                    </div>
-                    <hr className="  bg-gray-200" />
-                  </div>
-                ))}
+        <div className=" lg:my-20">
+          <div className="text-center">
+            <h3>Our Time Table</h3>
+            <p className="lg:px-[300px]">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Exercitationem animi, qui voluptatibus omnis quod unde officia
+              delectus consequatur hic iure.
+            </p>
+          </div>
+          <div className="lg:flex lg:mx-[150px] justify-between">
+            <div className="px-2 mt-10">
+              <div className="  flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+                <ImCheckmark
+                  className="text-blue-700"
+                  style={{
+                    fontSize: '1.5em',
+                    marginRight: '4px',
+                  }}
+                />
+                <div>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Saturday 11am to 5 pm
+                  </span>
+                </div>
+              </div>
+              <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+                <ImCheckmark
+                  className="text-blue-700"
+                  style={{
+                    fontSize: '1.5em',
+                    marginRight: '4px',
+                  }}
+                />
+                <div>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Sunday 10am to 8 pm
+                  </span>
+                </div>
+              </div>
+              <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+                <ImCheckmark
+                  className="text-blue-700"
+                  style={{
+                    fontSize: '1.5em',
+                    marginRight: '4px',
+                  }}
+                />
+                <div>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Monday 10am to 8 pm
+                  </span>
+                </div>
+              </div>
+
+              <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+                <ImCheckmark
+                  className="text-blue-700"
+                  style={{
+                    fontSize: '1.5em',
+                    marginRight: '4px',
+                  }}
+                />
+                <div>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    Tuesday 10am to 8 pm
+                  </span>
+                </div>
+              </div>
+
+              <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+                <ImCheckmark
+                  className="text-blue-700"
+                  style={{
+                    fontSize: '1.5em',
+                    marginRight: '4px',
+                  }}
+                />
+                <div>
+                  <span
+                    className="dark:text-dark_text"
+                    style={{ fontSize: '18px' }}
+                  >
+                    wednesday 10am to 8 pm
+                  </span>
+                </div>
               </div>
             </div>
-          </section>
+            <img className="w-[500px]" src={TimeTable} alt="" />
+          </div>
+          <div className=""></div>
         </div>
-        <div className="pl-10 md:pl-0  ">
-          <p class="text-center  text-sm  font-bolder text-blue-700">
-            We are here to hear from you
-          </p>
-          <div className=" flex justify-center md:px-8 ">
-            <form
-              className=" space-y-6 mx-10 mt-10"
-              onSubmit={handleSubmit(sendEmail)}
-            >
-              <input
-                className=" w-full  bg-gray-100 px-5 outline-none border-2 py-5 focus:border-primary  rounded mb-0 md:mb-5 lg:mb-0"
-                {...register('name', { required: 'Name is Required' })}
-                value={name}
-              />
-              {errors.name && (
-                <small className="text-danger">{errors.name.message}</small>
-              )}
 
-              <input
-                className=" w-full mb-0 md:mb-5 lg:mb-0 outline-none border-2 bg-gray-100 focus:border-primary px-5 rounded py-5 "
-                type="email"
-                {...register('email', {
-                  required: 'Email is Required',
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: 'Invalid email address',
+        {/* end */}
+      </div>
+      <OurDoctors />
+      <div className=" items-center lg:mt-[100px] lg:mb-10">
+        <div className=" flex justify-center md:px-8 ">
+          <form class=" pl-10 md:0 w-full lg:mx-[200px]">
+            <h3 class="text-center pb-4 text-3xl font-bolder text-gray-600">
+              We are here to hear from you
+            </h3>
+            <div class="flex flex-wrap -mx-3 mb-2">
+              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  id="grid-first-name"
+                  type="text"
+                  placeholder="First Name"
+                />
+              </div>
+              <div class="w-full md:w-1/2 px-3">
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-last-name"
+                  type="text"
+                  placeholder="Last Name"
+                />
+              </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-2">
+              <div class="w-full px-3">
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="email"
+                  type="email"
+                  placeholder="Your Email"
+                />
+              </div>
+            </div>
+
+            <div class="w-full px-3">
+              <textarea
+                className=" w-full bg-gray-100 py-8 px-5 outline-none border-2 focus:border-primary"
+                {...register('message', {
+                  required: 'Message is Required',
+                  minLength: {
+                    value: 10,
+                    message: 'Minimum Required length is 10',
+                  },
+                  maxLength: {
+                    value: 50,
+                    message: 'Maximum allowed length is 50 ',
                   },
                 })}
-                value={email}
-              />
-              {errors.email && (
-                <small className="text-danger">{errors.email.message}</small>
+                placeholder="Write your message"
+              ></textarea>
+              {errors.message && (
+                <small className="text-danger">{errors.message.message}</small>
               )}
+            </div>
 
-              <div className="col-span-2">
-                <textarea
-                  className=" w-full bg-gray-100 py-8 px-5 outline-none border-2 focus:border-primary"
-                  {...register('message', {
-                    required: 'Message is Required',
-                    minLength: {
-                      value: 10,
-                      message: 'Minimum Required length is 10',
-                    },
-                    maxLength: {
-                      value: 50,
-                      message: 'Maximum allowed length is 50 ',
-                    },
-                  })}
-                  placeholder="Write your message"
-                ></textarea>
-                {errors.message && (
-                  <small className="text-danger">
-                    {errors.message.message}
-                  </small>
-                )}
-              </div>
-
-              <input
-                className="bg-primary  px-6 md:w-2/6   py-2 text-white mx-auto lg:ml-0 rounded-md"
-                type="submit"
-                value="Send"
-              />
-            </form>
-          </div>
+            <input
+              className="bg-primary  px-6 md:w-2/6   py-2 text-white mx-auto lg:ml-0 rounded-md"
+              type="submit"
+              value="Send"
+            />
+          </form>
         </div>
       </div>
     </div>
