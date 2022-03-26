@@ -15,13 +15,13 @@ const Review = ({ reviews }) => {
       </div>
       <div className="bg-white dark:dark-card-bg dark:border-secondary shadow-md border-4 rounded-lg text-center py-9  md:py-16 px-8  border-slate-50 w-full md:w-[420px] ">
         <div className="flex justify-center text-yellow-400 heading_sm md:heading_md">
-          <Rating rating={rating} />
+          <Rating rating={reviews?.rating} />
         </div>
 
         <p className="Neutral-500 md:heading_sm px-0 md:px-8">
-          {description && description.slice(0, 30)}.
+          {reviews?.description && reviews.description.slice(0, 30)}.
         </p>
-        <p className="text-primary">- {name}</p>
+        <p className="text-primary">- {reviews?.name}</p>
       </div>
     </div>
   );

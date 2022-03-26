@@ -1,11 +1,14 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { FaFacebook, FaTwitterSquare } from 'react-icons/fa';
 import { GrInstagram } from 'react-icons/gr';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 import { Link, useLocation } from 'react-router-dom';
+import swal from 'sweetalert';
 import logo from '../../../../assets/digital_village_logo.png';
 import AppleStore from '../../../../assets/footer/appstore.png';
 import playStore from '../../../../assets/footer/playstore.png';
+
 const Footer = () => {
   const location = useLocation();
   const isMatched =
@@ -15,30 +18,64 @@ const Footer = () => {
     location.pathname.indexOf('medical') !== -1 ||
     location.pathname.indexOf('teacher') !== -1 ||
     location.pathname.indexOf('student') !== -1;
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+  const onSubmit = (data) => {
+    const { email } = data;
+    if (email !== '') {
+      swal({
+        text: `Thanks for Subscribing`,
+        icon: 'success',
+        confirm: 'Go and Explore',
+        closeOnClickOutside: false,
+      }).then();
+    }
+  };
   return (
     !isMatched && (
       <footer className="pt-16 mt-10 bg-slate-900">
         <div className="text-center rounded-xl mx-auto text-white">
-          <div className="space-y-3 px-3 ">
+          <div className="space-y-3 px-3 flex justify-around ">
             {/* subscribe text */}
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className=" max-w-[500px] mx-auto flex flex-wrap md:flex-nowrap items-center justify-center space-y-3 md:space-y-0 "
+            >
+              {/* email */}
+              <div>
+                <input
+                  style={{ borderRadius: '0px 0px 0px 10px' }}
+                  className="text-black py-5 px-10 border border-primary outline-none  w-full md:w-[300px]  inline  "
+                  {...register('email', {
+                    pattern: {
+                      value:
+                        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                      // message: 'Please provide correct email address.',
+                    },
+                  })}
+                  placeholder="your Email"
+                  type="email"
+                />
 
-            <div className="flex flex-wrap md:flex-nowrap items-center justify-center space-y-3 md:space-y-0 ">
+                {errors.email && (
+                  <p className="text-danger">{errors.email.message}</p>
+                )}
+              </div>
+
+              {/* submit button */}
               <input
-                placeholder="Your Email"
-                type="email"
-                style={{ borderRadius: '0px 0px 0px 10px' }}
-                className="text-black py-5 px-10 border border-primary outline-none focus:border focus:border-secondary w-full md:w-[300px] "
-              />
-
-              {/* subscribe button */}
-              <button
                 style={{ borderRadius: '0px 10px 0px 0px', color: 'white' }}
-                className="hover:bg-[#1515aa] bg-[blue] px-20  py-5          dark:text-dark_text
-                dark:bg-secondary"
-              >
-                Send
-              </button>
-            </div>
+                className="bg-primary px-20  py-5 inline    dark:text-dark_text
+           dark:bg-secondary"
+                type="submit"
+                value="Send"
+              />
+            </form>
           </div>
         </div>
 

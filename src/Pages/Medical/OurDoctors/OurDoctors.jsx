@@ -13,7 +13,7 @@ const OurDoctors = () => {
           We have the best Doctors
         </h2>
         <h1 className="font-bold text-xl md:text-2xl lg:text-3xl font-heading text-gray-900">
-          Check our awesome Event Doctors.
+          Check our awesome Doctors.
         </h1>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -1,21 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiOutlineCloseCircle, AiOutlineComment } from 'react-icons/ai';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { GiSelfLove } from 'react-icons/gi';
 import { useSelector } from 'react-redux';
-import { BASE_URI } from '../../../../api/axios';
+import axios, { BASE_URI } from '../../../../api/axios';
+import Comments from '../../../Education/DetailVideo/Comments/Comments';
+import LikeDislikes from '../../../Education/DetailVideo/LikeDislikes/LikeDislikes';
 
 const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
+  const [commentLists, setCommentLists] = useState([]);
   const [openMenu, setOpenMenu] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
   const user = users.find((user) => user.email === feed.userEmail);
+  const uId = useSelector((state) => state.user.uId);
   const socialUser = useSelector((state) => state.social.user);
   const { register, handleSubmit, reset } = useForm();
   const handleEditPost = (data) => {
     updatePost(data, feed?._id, socialUser?.email);
     setOpenEdit(false);
   };
+
+  const updateComment = (newComment) => {
+    setCommentLists([...commentLists, newComment]);
+  };
+
+  useEffect(() => {
+    // get all comments
+    axios.get(`/comment/all/?id=${feed._id}`).then((response) => {
+      if (response.data.success) {
+        setCommentLists(response.data.comments);
+      }
+    });
+  }, [uId, feed._id]);
+
   return (
     <div className="px-6 py-5 shadow-xl rounded-lg space-y-2 dark:dark-card-bg">
       {/* post Heading */}
@@ -125,6 +143,21 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
           />
         )}
       </div>
+
+      {/* like, dislike and comment */}
+      <div className="flex items-center space-x-6 mr-20 dark:text-white">
+        <LikeDislikes socialPostId={feed._id} uId={uId} />
+      </div>
+
+      {/* comments */}
+      <div>
+        <Comments
+          postId={feed._id}
+          updateComment={updateComment}
+          commentLists={commentLists}
+        />
+      </div>
+
       {/* post Footer */}
       <div className="my-6 justify-between items-center hidden">
         {/* Avatars of liked People */}

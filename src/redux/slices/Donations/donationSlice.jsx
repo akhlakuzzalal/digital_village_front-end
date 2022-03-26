@@ -59,7 +59,16 @@ export const fetchAllRequest = createAsyncThunk(
   }
 );
 
-// add help apply
+export const fetchMyRequest = createAsyncThunk(
+  'cuases/fetchMyRequest',
+  async (email) => {
+    const response = axios
+      .get(`/donationRequest/requestapply/?email=${email}`)
+      .then((response) => response.data);
+    return response;
+  }
+);
+// add help request apply
 export const addAHelpRequest = createAsyncThunk(
   'cuases/addAHelpRequest',
   async (formData) => {
@@ -111,17 +120,7 @@ const donationSlice = createSlice({
       state.causes = [...AllCausesAfterRemovingThePrev, updatedCause];
     },
   },
-  // request apply update pay
-  // reducers: {
-  //   updateARequest: (state, { payload }) => {
-  //     // console.log('this is payload', payload);
-  //     const updatedrequest = payload;
-  //     const AllRequestAfterRemovingThePrev = state.applys.filter(
-  //       (apply) => apply._id !== payload._id
-  //     );
-  //     state.applys = [...AllRequestAfterRemovingThePrev, updatedrequest];
-  //   },
-  // },
+  
   extraReducers: (builder) => {
     builder.addCase(fetchAllCauses.fulfilled, (state, { payload }) => {
       state.causes = payload;
@@ -144,26 +143,36 @@ const donationSlice = createSlice({
       state.causes = state.causes.filter((cause) => cause._id !== payload);
     });
           // help request apply
-    // builder.addCase(fetchAllRequest.fulfilled, (state, { payload }) => {
-    //   state.applys = payload;
-    // });
+    builder.addCase(fetchAllRequest.fulfilled, (state, { payload }) => {
+      state.applys = payload;
+    });
     builder.addCase(addAHelpRequest.fulfilled, (state, { payload }) => {
       state.applys.push(payload);
     });
+    // get sigle request
     // builder.addCase(getRequestGive.fulfilled, (state, { payload }) => {
     //   console.log(payload);
     //   if (payload._id) {
-    //     const AllCausesAfterRemovingThePrev = state.applys.filter(
+    //     const AllApply = state.applys.filter(
     //       (apply) => apply._id !== payload._id
     //     );
-    //     state.applys = [...AllCausesAfterRemovingThePrev, payload];
+    //     state.applys = [...AllApply, payload];
     //   }
     // });
+    // get my development proposals
+    builder.addCase(
+      fetchMyRequest.fulfilled,
+      (state, { payload }) => {
+        if (payload && payload.length >= 1) {
+          state.applys = payload;
+        }
+      }
+    );
 
     // //delete
-    // builder.addCase(deleteARequest.fulfilled, (state, { payload }) => {
-    //   state.applys = state.applys.filter((apply) => apply._id !== payload);
-    // });
+    builder.addCase(deleteARequest.fulfilled, (state, { payload }) => {
+      state.applys = state.applys.filter((apply) => apply._id !== payload);
+    });
   },
 });
 

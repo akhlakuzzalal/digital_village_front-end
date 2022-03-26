@@ -13,6 +13,7 @@ const Feeds = () => {
   useEffect(() => {
     axios.get('/social/allPost').then((res) => setFeeds(res.data));
   }, [loading]);
+
   return (
     <div className="space-y-4">
       {/* users post */}

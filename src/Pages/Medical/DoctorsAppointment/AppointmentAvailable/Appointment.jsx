@@ -55,7 +55,7 @@ const Appointment = (props) => {
       <div
         class=" bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 hover:scale-110 transition-all duration-500 my-2 "
         style={{
-          borderBottom: '5px solid #10217d',
+          borderBottom: '5px solid #1d4ed8',
         }}
       >
         <div class="m-0 md:m-5 bg-sky-50 border-1 border-sky-400 dark:bg-dark_primary ">
@@ -67,7 +67,7 @@ const Appointment = (props) => {
             />
           </div>
           <Link to="#">
-            <h5 class="mb-2 md:text-xl text-lg font-bold tracking-tight hover:text-blue-600 text-gray-900 dark:text-white">
+            <h5 class="mb-2 md:text-xl text-lg font-bold tracking-tight hover:text-blue-700 text-gray-900 dark:text-white">
               {service}
             </h5>
           </Link>
@@ -79,9 +79,8 @@ const Appointment = (props) => {
           <p className=" text-sm md:text-lg ">Cost : {price} </p>
           <Link
             to="#"
-            class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-black rounded-lg my-2 "
+            class="inline-flex items-center p-2 text-sm font-medium text-center text-white bg-black rounded-lg my-2 bg-primary "
             style={{
-              backgroundColor: '#10217d',
               color: 'white',
             }}
           >

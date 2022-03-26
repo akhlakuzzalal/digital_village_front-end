@@ -71,7 +71,8 @@ const Navbar = ({ navigation }) => {
     location.pathname.indexOf('admin') !== -1 ||
     location.pathname.indexOf('userdashboard') !== -1 ||
     location.pathname.indexOf('teacher') !== -1 ||
-    location.pathname.indexOf('student') !== -1;
+    location.pathname.indexOf('student') !== -1 ||
+    location.pathname.indexOf('medical') !== -1;
 
   // log out
   const handleLogout = async () => {

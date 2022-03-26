@@ -1,5 +1,9 @@
+import emailjs from '@emailjs/browser';
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { ImCheckmark } from 'react-icons/im';
+import { useSelector } from 'react-redux';
+import swal from 'sweetalert';
 import OurDoctors from '../OurDoctors/OurDoctors';
 import TimeTable from './../../../assets/events/time table.jpg';
 import mediBanner from './../../../assets/medical/mediBanner.png';
@@ -45,7 +49,37 @@ const datas = [
 ];
 
 const Services = () => {
+  const user = useSelector((state) => state.user.user);
+  const email = user.email;
+  const name = user.name;
   const [active, setActive] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+  const sendEmail = (formData) => {
+    console.log(formData);
+
+    emailjs
+      .send(
+        'service_nbv08xi',
+        'template_qw32pvu',
+        formData,
+        'user_NT0NiFlR59zCf04Pr6LZF'
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    swal('Successfully!', 'Your message is sent successfully!', 'success');
+    reset();
+  };
   return (
     <div>
       <div className="">
@@ -167,8 +201,8 @@ const Services = () => {
             <div className="px-2 mt-10">
               <div className="  flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
                 <ImCheckmark
+                  className="text-blue-700"
                   style={{
-                    color: '#10217d',
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
@@ -184,8 +218,8 @@ const Services = () => {
               </div>
               <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
                 <ImCheckmark
+                  className="text-blue-700"
                   style={{
-                    color: '#10217d',
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
@@ -201,8 +235,8 @@ const Services = () => {
               </div>
               <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
                 <ImCheckmark
+                  className="text-blue-700"
                   style={{
-                    color: '#10217d',
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
@@ -219,8 +253,8 @@ const Services = () => {
 
               <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
                 <ImCheckmark
+                  className="text-blue-700"
                   style={{
-                    color: '#10217d',
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
@@ -237,8 +271,8 @@ const Services = () => {
 
               <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
                 <ImCheckmark
+                  className="text-blue-700"
                   style={{
-                    color: '#10217d',
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
@@ -295,27 +329,33 @@ const Services = () => {
                 />
               </div>
             </div>
-            <div class="flex flex-wrap -mx-3 mb-2">
-              <div class="w-full px-3">
-                <textarea
-                  class=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none"
-                  id="message"
-                  placeholder="Your Message"
-                ></textarea>
-              </div>
+
+            <div class="w-full px-3">
+              <textarea
+                className=" w-full bg-gray-100 py-8 px-5 outline-none border-2 focus:border-primary"
+                {...register('message', {
+                  required: 'Message is Required',
+                  minLength: {
+                    value: 10,
+                    message: 'Minimum Required length is 10',
+                  },
+                  maxLength: {
+                    value: 50,
+                    message: 'Maximum allowed length is 50 ',
+                  },
+                })}
+                placeholder="Write your message"
+              ></textarea>
+              {errors.message && (
+                <small className="text-danger">{errors.message.message}</small>
+              )}
             </div>
-            <div class="flex justify-center items-center">
-              <div class="md:w-1/3">
-                <button
-                  class="shadow focus:shadow-outline focus:outline-none  text-white font-bold py-3 px-5 md:px-3 rounded-lg text-md md:text-lg"
-                  type="button"
-                  style={{ backgroundColor: '#10217d' }}
-                >
-                  Send Message
-                </button>
-              </div>
-              <div class="md:w-2/3"></div>
-            </div>
+
+            <input
+              className="bg-primary  px-6 md:w-2/6   py-2 text-white mx-auto lg:ml-0 rounded-md"
+              type="submit"
+              value="Send"
+            />
           </form>
         </div>
       </div>
@@ -324,97 +364,3 @@ const Services = () => {
 };
 
 export default Services;
-
-{
-  /* <ul class="w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white text-center">
-                <h3
-                  class="py-2 px-4 w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600"
-                  style={{
-                    backgroundColor: '#10217d',
-                    color: 'white',
-                    fontSize: '1.5em',
-                  }}
-                >
-                  Time Table
-                </h3>
-                <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-                  Sat 11am to 5 pm
-                </li>
-                <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-                  Sun 10am to 8 pm
-                </li>
-                <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-                  Mon 10am to 8 pm
-                </li>
-                <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-                  Tues 10am to 10 pm
-                </li>
-                <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-                  wed 10am to 10 pm
-                </li>
-                <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-                  thus 11am to 5 pm
-                </li>
-                <li class="py-2 px-4 w-full border-b border-gray-200 dark:border-gray-600">
-                  Fri 12am to 5 pm
-                </li>
-              </ul> */
-}
-
-{
-  /* <div className=" ">
-<section class="text-gray-700">
-  <div class="container  pl-10 pr-0 md:pr-4 py-8 ">
-    <div class="text-center flex flex-col justify-center items-center">
-      <h3 class=" text-xl md:text-3xl font-bold text-center title-font pb-6 text-blue-900 "></h3>
-    </div>
-    <div className=" flex  flex-col justify-center item-center pl-5 pr-1 md:full  w-full md:mt-0 sm:mt-14 mt-10">
-      {/* <!-- Digital Section --> */
-}
-
-//       {datas.map((data) => (
-//         <div>
-//           <div>
-//             <div className=" flex justify-between items-center cursor-pointer bg-blue-900 p-4 my-1  rounded-lg">
-//               {active && data.id === active ? (
-//                 <div className="flex justify-between items-center">
-//                   <HiLightBulb
-//                     className="  transition duration-700 ease-in-out text-[#ffff00]"
-//                     size={30}
-//                     onClick={() => setActive('')}
-//                   />
-//                   <h3 className=" w-11/12 inline font-semibold text-lg text-white">
-//                     {data.title}
-//                   </h3>
-//                 </div>
-//               ) : (
-//                 <div
-//                   onClick={() => setActive(data?.id)}
-//                   className="flex items-center"
-//                 >
-//                   <HiLightBulb
-//                     className=" transition duration-700 ease-in-out text-white"
-//                     size={30}
-//                   />
-//                   <h3 className="  w-11/12  font-semibold text-lg text-white">
-//                     {data.title}
-//                   </h3>
-//                 </div>
-//               )}
-//             </div>
-//             <p
-//               className={
-//                 'font-normal text-base leading-6 text-gray-600 mt-4 w-11/12 ' +
-//                 (data.id === active ? 'block' : 'hidden')
-//               }
-//             >
-//               {data?.description}
-//             </p>
-//           </div>
-//           <hr className="  bg-gray-200" />
-//         </div>
-//       ))}
-//     </div>
-//   </div>
-// </section>
-// </div> */}

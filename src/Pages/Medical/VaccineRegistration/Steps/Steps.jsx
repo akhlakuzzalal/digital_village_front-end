@@ -5,7 +5,7 @@ const Steps = () => {
   return (
     <div className="p-0 md:p-10">
       <div className="p-0 md:p-5  md:ml-20 my-20 pl-16 md:pl-0  ">
-        <h3 className="border-l-8 border-indigo-700  text-indigo-700 ">
+        <h3 className="border-l-8 border-primary text-blue-700 ">
           Steps of vaccination
         </h3>
       </div>
@@ -18,7 +18,7 @@ const Steps = () => {
               marginBottom: '10px',
             }}
           />
-          <h6>Online Registration</h6>
+          <h6 className="text-blue-700 ">Online Registration</h6>
           <p className="text-justify ">
             One have to give your NID information and Contact no to register for
             vaccination. All the Information should be valid otherwise one
@@ -32,7 +32,7 @@ const Steps = () => {
               marginBottom: '10px',
             }}
           />
-          <h6>SMS Notification</h6>
+          <h6 className="text-blue-700 ">SMS Notification</h6>
           <p className="text-justify">
             After registration. one have to wait for the sms will be sent by
             authority including the date and place of the vaccination at the
@@ -46,7 +46,7 @@ const Steps = () => {
               marginBottom: '10px',
             }}
           />
-          <h6>Online Registration</h6>
+          <h6 className="text-blue-700 ">Online Registration</h6>
           <p className="text-justify">
             After getting SMS one have to download the information card and go
             to the given center at given date. Showing the Information card one

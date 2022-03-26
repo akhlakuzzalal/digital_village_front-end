@@ -18,27 +18,22 @@ const Schedule = ({ onChange }) => {
   };
   return (
     <div className="my-5  ">
-      <h3
-        className="text-center text-lg md:text-3xl pt-12 pl-8"
-        style={{
-          color: '#10217d',
-        }}
-      >
+      <h3 className="text-center text-sm md:text-3xl pt-12 pl-8 text-blue-700">
         {' '}
         Take a schedule for a consultation
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="flex  justify-items-end  md:justify-center items-center w-2/3 md:w-full  pl-20 ">
+        <div className="flex  justify-items-center md:justify-center items-center w-2/3  md:w-full  pl-10 ">
           {' '}
           <Calender onChange={onChange} />
         </div>
 
         <div className=" pointer-events-none  ">
-          <div className="ml-0 md:ml-5">
+          <div className=" p-4 ml-0 md:ml-5">
             <Lottie
               options={defaultOptions}
               isClickToPauseDisabled={true}
-              width={isDesktop ? 500 : isTablet ? 400 : 250}
+              width={isDesktop ? 500 : isTablet ? 400 : 200}
             />
           </div>
         </div>

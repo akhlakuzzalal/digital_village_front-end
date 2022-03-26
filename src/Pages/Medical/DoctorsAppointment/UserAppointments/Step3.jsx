@@ -21,9 +21,9 @@ const Step2 = () => {
         {/* banner description */}
         <div className=" flex flex-col  justify-start items-start   order-2 md:order-1 text-left  ">
           <h3 className="text-start text-lg md:text-2xl ">
-            Step <span className=" text-xl md:text-4xl text-blue-900">3</span>
+            Step <span className=" text-xl md:text-4xl text-blue-700">3</span>
           </h3>
-          <h6 className="text-left text-sm text-blue-900">Card Info</h6>
+          <h6 className="text-left text-sm text-blue-700">Card Info</h6>
           <p className="text-left text-sm w-2/3 md:w-full">
             Enter your card information on the form to pay for your appointmaent
           </p>

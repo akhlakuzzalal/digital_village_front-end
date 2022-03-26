@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { BASE_URI } from '../../../api/axios';
+import Swal from 'sweetalert2';
+import axios, { BASE_URI } from '../../../api/axios';
 import Pagination from '../../../Components/Pagination';
 import useAxiosInterceptor from '../../../hooks/useAxiosInterceptor';
 import {
@@ -17,6 +18,8 @@ const AllUsers = () => {
   const currPage = useSelector((state) => state.user.currPage);
   const [showModal, setShowModal] = useState(false);
   const size = 5;
+
+  const [currUser, setCurrUser] = useState({});
 
   const dispatch = useDispatch();
 
@@ -55,8 +58,34 @@ const AllUsers = () => {
     dispatch(getAllUsers({ currPage, size }));
   }, [pageCount, currPage, size]);
 
-  const handleChangeRoleOfUser = (data) => {
-    console.log(data);
+  const handleChangeRoleOfUser = async () => {
+    setShowModal(true);
+
+    const isAdmin = currUser?.roles?.Admin;
+    console.log(isAdmin);
+    if (isAdmin) {
+      Swal.fire({
+        icon: 'info',
+        title: 'This villager is allready an admin',
+        confirmButtonText: 'Okay',
+      });
+      return;
+    }
+    console.log(currUser);
+    const response = await axios.put(`/user/changeRole/?id=${currUser._id}`, {
+      ...currUser?.roles,
+      Admin: 5000,
+    });
+
+    if (response?.data?.email) {
+      setShowModal(false);
+      Swal.fire({
+        icon: 'success',
+        title: 'Successfully added this villager as an admin',
+        confirmButtonText: 'Okay',
+      });
+      dispatch(getAllUsers({ currPage, size }));
+    }
   };
 
   return (
@@ -88,7 +117,14 @@ const AllUsers = () => {
                 {/*footer*/}
                 <div className="flex items-center justify-end p-2 border-t border-solid border-blueGray-200 rounded-b">
                   <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="text-green-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 border-2 border-green-500"
+                    type="button"
+                    onClick={handleChangeRoleOfUser}
+                  >
+                    Make Admin
+                  </button>
+                  <button
+                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 border-2 border-red-500"
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
@@ -162,12 +198,32 @@ const AllUsers = () => {
                             </p>
                           </td>
                           <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              Roles
-                            </p>
+                            {user?.roles ? (
+                              <div>
+                                {Object.keys(user?.roles).map((u, i) => (
+                                  <p
+                                    key={i}
+                                    className="bg-info px-3 py-2 text-white rounded-full font-primary w-fit"
+                                  >
+                                    {u}
+                                  </p>
+                                ))}
+                              </div>
+                            ) : (
+                              <span className="bg-info p-2 text-white rounded-full font-primary">
+                                User
+                              </span>
+                            )}
                           </td>
                           <td className="px-5 py-5 border-b max-w-[100px]">
-                            <button className="p-4 bg-rose-600 text-white rounded-2xl">
+                            <button
+                              className="p-4 bg-rose-600 text-white rounded-2xl"
+                              onClick={() => {
+                                setShowModal(true);
+                                console.log(user, 'this is user');
+                                setCurrUser(user);
+                              }}
+                            >
                               Change
                             </button>
                           </td>

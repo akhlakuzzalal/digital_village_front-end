@@ -14,7 +14,7 @@ const VideoCard = ({ video, children }) => {
         onClick={() => navigate(`/detailvideo/${video?._id}`)}
       >
         <video
-          className="w-72 rounded-2xl"
+          className="w-full rounded-2xl"
           src={`${BASE_URI}/${video?.video?.path}`}
         ></video>
         <div className="flex justify-between px-3">
