@@ -6,7 +6,7 @@ import polio from './../../../../assets/medical/polio.jpg';
 
 const VaccineOptions = () => {
   return (
-    <div className="text-center min-h-screen my-10">
+    <div className="text-center min-h-screen my-10 pl-12 md:pl-5">
       <h3 className="text-blue-900  py-3 ">Vaccine Registration</h3>
       <div className="flex flex-wrap justify-center items-center m-2">
         <div

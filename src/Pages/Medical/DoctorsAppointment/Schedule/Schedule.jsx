@@ -18,12 +18,12 @@ const Schedule = ({ onChange }) => {
   };
   return (
     <div className="my-5  ">
-      <h3 className="text-center text-sm md:text-3xl pt-12 pl-8 text-blue-700">
+      <h3 className="text-center text-sm md:text-3xl pt-12 text-blue-700 my-5">
         {' '}
         Take a schedule for a consultation
       </h3>
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="flex  justify-items-center md:justify-center items-center w-2/3  md:w-full  pl-10 ">
+      <div className="flex flex-col justify-center items-center md:flex-row">
+        <div className="flex flex-col items-center mjustify-center md:flex-row ">
           {' '}
           <Calender onChange={onChange} />
         </div>
