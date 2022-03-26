@@ -42,11 +42,15 @@ const RegForm = () => {
   };
 
   return (
-    <div className="my-40 lg:flex  lg:mx-32 md:mx-32 mx-0 border rounded-2xl">
+    <div className="my-40 lg:flex  lg:mx-32 md:mx-32 mx-0 border rounded-2xl ">
       <div>
-        <h3 className="ml-10 mt-6 text-blue-900 ">Give Your Information</h3>
+        <h3 className="text-center md:pl-0  mt-6 text-sm md:text-xl text-blue-900 ">
+          Give Your Information
+        </h3>
         <form
-          className=" space-y-6 mx-10 mt-10"
+          className=" space-y-6 mx-0 md:mx-10 md:mx-10 mt-10 pl-16
+          
+           md:pl-10"
           onSubmit={handleSubmit(onSubmit)}
         >
           {/* email */}

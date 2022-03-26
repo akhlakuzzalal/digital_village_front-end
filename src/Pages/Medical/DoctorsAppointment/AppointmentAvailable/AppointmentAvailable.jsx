@@ -13,7 +13,7 @@ const AppointmentAvailable = ({ date }) => {
   }, []);
 
   return (
-    <div className="text-center pl-5 md:pl-0 ">
+    <div className="text-center p-10 md:pl-0 ">
       <h3 className="  mt-10 text-xl  md:text-2xl mb-10 text-blue-700">
         Available Appointment <br /> on {date.toDateString()}
       </h3>
