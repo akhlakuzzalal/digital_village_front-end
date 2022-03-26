@@ -30,21 +30,12 @@ This project is providing some services yo villagers:
 
 - **Donation**
   From this section Donor can donate in the specific category.There is also a help request option from where villagers can apply for donation. From the admin panel all functionalities can be managed.
+
 - **Events**
-  This is a section from where villagers can notified about events.There is a a list of all events. They are divided into two parts. One is upcoming events and the other is archive events. In the archive events users can give review and comments. Admin can manage all the functionalities from admin panel.
+  This is a section from where villagers can notified about events. User can book an event to join it later. Admin can manage all the functionalities from admin panel.
 
 - **Development**
-  Village people can propose the development of the village on this page. The authority will approved the proposal if it meets their criteria.
-
-## Features
-
-- Light/dark mode toggle
-- Drag and drop file upload
-- Payment System
-- Pdf Generator
-- Upvote,Downvote System
-- Like, Unlike System
-- Nested Comment
+  Village people can propose development ideas and other people can upvote and downvote on this page. The authority will approved the proposal if it meets their criteria.
 
 ## Tech Stack
 

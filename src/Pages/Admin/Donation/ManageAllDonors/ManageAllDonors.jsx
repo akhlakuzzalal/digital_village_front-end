@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { BASE_URI } from '../../../../api/axios';
 
-const ManageAllDonars = () => {
+const ManageAllDonors = () => {
   const [allInfo, setAllInfo] = useState([]);
 
   useEffect(() => {
@@ -237,4 +237,4 @@ const ManageAllDonars = () => {
   );
 };
 
-export default ManageAllDonars;
+export default ManageAllDonors;
