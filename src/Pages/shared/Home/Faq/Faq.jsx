@@ -45,7 +45,7 @@ const datas = [
   },
 ];
 
-const Faq1 = () => {
+const Faq = () => {
   const [active, setActive] = useState('');
   const isTablet = useMediaQuery('(min-width: 656px)');
   const isDesktop = useMediaQuery('(min-width: 900px)');
@@ -85,7 +85,7 @@ const Faq1 = () => {
           {/* <!-- Digital Section --> */}
 
           {datas.map((data) => (
-            <div>
+            <div key={data.id}>
               <div>
                 <div className=" cursor-pointer">
                   {active && data.id === active ? (
@@ -98,7 +98,6 @@ const Faq1 = () => {
                       </h3>
                       <AiOutlineMinusSquare
                         className=" transition duration-700 ease-in-out text-blue-900 dark:bg-dark_primary dark:text-dark_secondary hover:rotate-180"
-                        custome
                         size={35}
                       />
                     </div>
@@ -136,4 +135,4 @@ const Faq1 = () => {
   );
 };
 
-export default Faq1;
+export default Faq;
