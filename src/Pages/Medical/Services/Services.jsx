@@ -1,11 +1,12 @@
 import emailjs from '@emailjs/browser';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { FcOvertime } from 'react-icons/fc';
 import { ImCheckmark } from 'react-icons/im';
 import { useSelector } from 'react-redux';
 import swal from 'sweetalert';
+import medicalTimeTable from '../../../assets/medical/medical_time_table.png';
 import OurDoctors from '../OurDoctors/OurDoctors';
-import TimeTable from './../../../assets/events/time table.jpg';
 import mediBanner from './../../../assets/medical/mediBanner.png';
 
 const datas = [
@@ -48,6 +49,47 @@ const datas = [
   },
 ];
 
+const services = [
+  {
+    name: 'Online Consulatation',
+  },
+  {
+    name: 'Offline Consultation',
+  },
+  {
+    name: 'Online Appointment',
+  },
+  {
+    name: 'Lab Test',
+  },
+  {
+    name: 'Emergency Department',
+  },
+];
+
+const timeTableData = [
+  {
+    day: 'Sunday',
+    time: '10 am to 8 pm',
+  },
+  {
+    day: 'Monday',
+    time: '10 am to 8 pm',
+  },
+  {
+    day: 'Tuesday',
+    time: '10 am to 8 pm',
+  },
+  {
+    day: 'wednesday',
+    time: '10 am to 8 pm',
+  },
+  {
+    day: 'Thursday',
+    time: '12 am to 8 pm',
+  },
+];
+
 const Services = () => {
   const user = useSelector((state) => state.user.user);
   const email = user.email;
@@ -80,224 +122,76 @@ const Services = () => {
     swal('Successfully!', 'Your message is sent successfully!', 'success');
     reset();
   };
+
   return (
-    <div>
-      <div className="">
-        <div className="">
-          <h3 className=" text-center md:text-5xl text-blue-600 ">
+    <div className="px-4 space-y-6">
+      <div className="space-y-6">
+        {/* our services section */}
+        <div>
+          <h3 className=" text-center md:text-5xl text-blue-600">
             Our Services
           </h3>
-          <p className="my-5 lg:mx-[300px] text-center px-2 md:px-5  text-lg ">
-            Treatment here, truly human experience. You’re cared for as a person
+          <p className="my-5 lg:mx-[300px] text-justify md:text-center  text-lg ">
+            Treatment here, truly human experience. You're cared for as a person
             first.The more patients we treat each year prepares us to treat the
             one who matters most—you.Count on our experts to deliver an accurate
             diagnosis and the right plan for you the first time.
           </p>
         </div>
-        <div className="lg:flex lg:mx-[150px] justify-between">
-          <img src={mediBanner} alt="" />
 
-          <div className="px-2 mt-10">
-            <div className="  flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
-              <ImCheckmark
-                style={{
-                  color: '#10217d',
-                  fontSize: '1.5em',
-                  marginRight: '4px',
-                }}
-              />
-              <div>
-                <span
-                  className="dark:text-dark_text"
-                  style={{ fontSize: '18px' }}
-                >
-                  Online Consultation
-                </span>
-              </div>
-            </div>
-            <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
-              <ImCheckmark
-                style={{
-                  color: '#10217d',
-                  fontSize: '1.5em',
-                  marginRight: '4px',
-                }}
-              />
-              <div>
-                <span
-                  className="dark:text-dark_text"
-                  style={{ fontSize: '18px' }}
-                >
-                  Offline Consultation
-                </span>
-              </div>
-            </div>
-            <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
-              <ImCheckmark
-                style={{
-                  color: '#10217d',
-                  fontSize: '1.5em',
-                  marginRight: '4px',
-                }}
-              />
-              <div>
-                <span
-                  className="dark:text-dark_text"
-                  style={{ fontSize: '18px' }}
-                >
-                  Online Appointment
-                </span>
-              </div>
-            </div>
+        <div className="flex flex-wrap justify-evenly items-center gap-8">
+          <img src={mediBanner} alt="medibanner" />
 
-            <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
-              <ImCheckmark
-                style={{
-                  color: '#10217d',
-                  fontSize: '1.5em',
-                  marginRight: '4px',
-                }}
-              />
-              <div>
-                <span
-                  className="dark:text-dark_text"
-                  style={{ fontSize: '18px' }}
-                >
-                  Lab Test
-                </span>
+          <div className="space-y-4">
+            {services.map((service) => (
+              <div
+                key={service.name}
+                className="flex items-center bg-gray-100 space-x-4 p-2 lg:px-40 lg:py-10"
+              >
+                <ImCheckmark size={25} className="text-emerald-600" />
+                <div className="dark:text-dark_text text-xl">
+                  {service.name}
+                </div>
               </div>
-            </div>
-
-            <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
-              <ImCheckmark
-                style={{
-                  color: '#10217d',
-                  fontSize: '1.5em',
-                  marginRight: '4px',
-                }}
-              />
-              <div>
-                <span
-                  className="dark:text-dark_text"
-                  style={{ fontSize: '18px' }}
-                >
-                  Emergency Department
-                </span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
-        <div className=" lg:my-20">
-          <div className="text-center">
-            <h3>Our Time Table</h3>
-            <p className="lg:px-[300px]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Exercitationem animi, qui voluptatibus omnis quod unde officia
-              delectus consequatur hic iure.
-            </p>
-          </div>
-          <div className="lg:flex lg:mx-[150px] justify-between">
-            <div className="px-2 mt-10">
-              <div className="  flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
-                <ImCheckmark
-                  className="text-blue-700"
-                  style={{
-                    fontSize: '1.5em',
-                    marginRight: '4px',
-                  }}
-                />
-                <div>
-                  <span
-                    className="dark:text-dark_text"
-                    style={{ fontSize: '18px' }}
-                  >
-                    Saturday 11am to 5 pm
-                  </span>
-                </div>
-              </div>
-              <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
-                <ImCheckmark
-                  className="text-blue-700"
-                  style={{
-                    fontSize: '1.5em',
-                    marginRight: '4px',
-                  }}
-                />
-                <div>
-                  <span
-                    className="dark:text-dark_text"
-                    style={{ fontSize: '18px' }}
-                  >
-                    Sunday 10am to 8 pm
-                  </span>
-                </div>
-              </div>
-              <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
-                <ImCheckmark
-                  className="text-blue-700"
-                  style={{
-                    fontSize: '1.5em',
-                    marginRight: '4px',
-                  }}
-                />
-                <div>
-                  <span
-                    className="dark:text-dark_text"
-                    style={{ fontSize: '18px' }}
-                  >
-                    Monday 10am to 8 pm
-                  </span>
-                </div>
-              </div>
-
-              <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
-                <ImCheckmark
-                  className="text-blue-700"
-                  style={{
-                    fontSize: '1.5em',
-                    marginRight: '4px',
-                  }}
-                />
-                <div>
-                  <span
-                    className="dark:text-dark_text"
-                    style={{ fontSize: '18px' }}
-                  >
-                    Tuesday 10am to 8 pm
-                  </span>
-                </div>
-              </div>
-
-              <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
-                <ImCheckmark
-                  className="text-blue-700"
-                  style={{
-                    fontSize: '1.5em',
-                    marginRight: '4px',
-                  }}
-                />
-                <div>
-                  <span
-                    className="dark:text-dark_text"
-                    style={{ fontSize: '18px' }}
-                  >
-                    wednesday 10am to 8 pm
-                  </span>
-                </div>
-              </div>
-            </div>
-            <img className="w-[500px]" src={TimeTable} alt="" />
-          </div>
-          <div className=""></div>
+        {/* our Timetable section */}
+        <div>
+          <h3 className=" text-center md:text-5xl text-blue-600">
+            Our Time Table
+          </h3>
+          <p className="my-5 lg:mx-[300px] text-justify md:text-center px-2 md:px-5  text-lg ">
+            Digital Village Medical center will always be open at this times
+          </p>
         </div>
 
-        {/* end */}
+        <div className="flex flex-wrap justify-evenly items-center gap-8">
+          <div className="space-y-4">
+            {timeTableData.map((ttd) => (
+              <div
+                key={ttd.day}
+                className="flex items-center bg-gray-100 space-x-4 p-2 lg:px-40 lg:py-10"
+              >
+                <FcOvertime size={30} className="text-emerald-600" />
+                <div className="flex space-x-2">
+                  {ttd.day} {ttd.time}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <img src={medicalTimeTable} alt="medical time table" />
+        </div>
       </div>
+
       <OurDoctors />
-      <div className=" items-center lg:mt-[100px] lg:mb-10">
-        <div className=" flex justify-center md:px-8 ">
-          <form class=" pl-10 md:0 w-full lg:mx-[200px]">
+
+      {/* email send */}
+      <div>
+        <div className="flex justify-center md:px-8">
+          <form class="w-full lg:mx-[200px]" onSubmit={handleSubmit(sendEmail)}>
             <h3 class="text-center pb-4 text-3xl font-bolder text-gray-600">
               We are here to hear from you
             </h3>
@@ -330,9 +224,9 @@ const Services = () => {
               </div>
             </div>
 
-            <div class="w-full px-3">
+            <div class="w-full">
               <textarea
-                className=" w-full bg-gray-100 py-8 px-5 outline-none border-2 focus:border-primary"
+                className="w-full bg-gray-100 py-8 px-5 outline-none border-2 focus:border-primary"
                 {...register('message', {
                   required: 'Message is Required',
                   minLength: {
@@ -351,11 +245,12 @@ const Services = () => {
               )}
             </div>
 
-            <input
+            <button
               className="bg-primary  px-6 md:w-2/6   py-2 text-white mx-auto lg:ml-0 rounded-md"
               type="submit"
-              value="Send"
-            />
+            >
+              Send
+            </button>
           </form>
         </div>
       </div>

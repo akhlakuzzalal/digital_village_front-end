@@ -41,13 +41,11 @@ const Medical = () => {
     location.pathname === '/medical' || location.pathname === '/medical/';
 
   return (
-    <div className="flex">
+    <div>
       {/* Sidebar */}
       <NewSidebar links={links} />
 
-      {/* contents */}
-      <div className={`mt-[80px] flex-1`}>
-        {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
+      <div className="mt-[80px] w-[calc(100vw-55px)] ml-auto overflow-hidden">
         {isHome ? <MedicalHome /> : <Outlet />}
       </div>
     </div>
