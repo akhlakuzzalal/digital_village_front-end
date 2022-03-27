@@ -111,8 +111,6 @@ const AdminDashboard = () => {
 
   const isHomePage =
     location.pathname === '/admin' || location.pathname === '/admin/';
-  const alternateHomePage =
-    location.pathname === '/admin' || location.pathname === '/admin/';
 
   return (
     <div>
@@ -121,7 +119,6 @@ const AdminDashboard = () => {
         <NewSidebar links={links} />
         <div className="mt-[80px] w-[calc(100vw-50px)] ml-auto overflow-hidden">
           {isHomePage ? <AdminHome /> : <Outlet />}
-          {/* {alternateHomePage ? <AllUsers /> : <Outlet />} */}
         </div>
       </div>
     </div>
