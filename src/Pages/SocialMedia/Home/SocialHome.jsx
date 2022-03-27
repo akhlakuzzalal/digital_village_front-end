@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { CgMenuGridO } from 'react-icons/cg';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { io } from 'socket.io-client';
+import { BASE_URI } from '../../../api/axios';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { allSocialUser } from '../../../redux/slices/socialSlice/socialSlice';
 import Feeds from './Feeds/Feeds';
@@ -17,6 +19,11 @@ const SocialHome = () => {
     dispatch(allSocialUser(user?.email));
   }, [user]);
   const [menuopen, setMenuOpen] = useState(false);
+
+  var socket;
+  useEffect(() => {
+    socket = io(BASE_URI);
+  }, []);
   return (
     <div
       className="mt-[80px] mb-36 md:mb-24"
