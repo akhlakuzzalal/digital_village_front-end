@@ -4,12 +4,18 @@ import {
   TiSocialLinkedinCircular,
   TiSocialTwitterCircular,
 } from 'react-icons/ti';
+import doctor1 from '../../../assets/medical/doctor1.jpg';
+import doctor2 from '../../../assets/medical/doctor2.jpg';
+import doctor3 from '../../../assets/medical/doctor3.jpg';
+import doctor4 from '../../../assets/medical/doctor4.jpg';
+import doctor5 from '../../../assets/medical/doctor5.jpg';
+import doctor6 from '../../../assets/medical/doctor6.jpg';
 
 const OurDoctors = () => {
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 py-12 my-20 pl-16 md:pl:0">
       <div className="text-center pb-12">
-        <h2 className="text-base font-bold text-black dark:text-white">
+        <h2 className="text-base text-blue-700 font-bold  dark:text-white">
           We have the best Doctors
         </h2>
         <h1 className="font-bold text-xl md:text-2xl lg:text-3xl font-heading text-gray-900">
@@ -17,17 +23,17 @@ const OurDoctors = () => {
         </h1>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="w-full rounded-lg p-12 flex flex-col justify-center items-center bg-gradient-to-r bg-gray-300">
+        <div className="w-full p-2 flex flex-col justify-center items-center bg-gradient-to-r bg-slate-100 rounded-lg">
           <div className="mb-8">
             <img
-              className="object-center object-cover rounded h-36 w-36"
-              src="https://codexlayer.com/html/ayuda/images/resource/volunter-1.jpg"
-              alt="photo"
+              className="object-center object-cover rounded w-full"
+              src={doctor1}
+              alt="doctor "
             />
           </div>
           <div className="text-center">
-            <p className="text-xl text-white font-bold mb-2">
-              Dr.Williams Halimto
+            <p className="text-xl text-blue-600  font-bold mb-2">
+              Dr.Jannie Allan
             </p>
             <p className="text-base text-gray-400 font-normal">Doctor</p>
           </div>
@@ -64,16 +70,18 @@ const OurDoctors = () => {
             </li>
           </ul>
         </div>
-        <div className="w-full bg-gray-300 rounded-lg p-12 flex flex-col justify-center items-center ">
+        <div className="w-full bg-slate-50 rounded-lg p-2 flex flex-col justify-center items-center ">
           <div className="mb-8">
             <img
-              className="object-center object-cover rounded h-36 w-36"
-              src="https://codexlayer.com/html/ayuda/images/resource/volunter-2.jpg"
-              alt="photo"
+              className="object-center object-cover rounded w-full"
+              src={doctor2}
+              alt="doctor "
             />
           </div>
           <div className="text-center">
-            <p className="text-xl text-white font-bold mb-2">Dr.Jannie Allan</p>
+            <p className="text-xl text-blue-600  font-bold mb-2">
+              Dr.Williams Halimto
+            </p>
             <p className="text-base text-gray-400 font-normal">Doctor</p>
           </div>
           <ul className="flex flex-row mt-4 space-x-2">
@@ -109,16 +117,18 @@ const OurDoctors = () => {
             </li>
           </ul>
         </div>
-        <div className="w-full  rounded-lg p-12 flex flex-col justify-center items-center bg-gray-300">
+        <div className="w-full  rounded-lg p-2 flex flex-col justify-center items-center bg-slate-50">
           <div className="mb-8">
             <img
-              className="object-center object-cover rounded h-36 w-36"
-              src="https://codexlayer.com/html/ayuda/images/resource/volunter-4.jpg"
-              alt="photo"
+              className="object-center object-cover rounded w-full"
+              src={doctor3}
+              alt="doctor "
             />
           </div>
           <div className="text-center">
-            <p className="text-xl text-white font-bold mb-2">Dr. Dan Jones</p>
+            <p className="text-xl text-blue-600  font-bold mb-2">
+              Dr.Anna Allan
+            </p>
             <p className="text-base text-gray-400 font-normal">Doctor</p>
           </div>
           <ul className="flex flex-row mt-4 space-x-2">
@@ -154,16 +164,18 @@ const OurDoctors = () => {
             </li>
           </ul>
         </div>
-        <div className="w-full bg-gray-300 rounded-lg p-12 flex flex-col justify-center items-center ">
+        <div className="w-full bg-slate-50 rounded-lg p-2 flex flex-col justify-center items-center ">
           <div className="mb-8">
             <img
-              className="object-center object-cover rounded h-36 w-36"
-              src="https://www.nvfs.org/wp-content/uploads/2017/03/featured-individual-volunteer.jpg"
-              alt="photo"
+              className="object-center object-cover rounded w-full"
+              src={doctor4}
+              alt="doctor "
             />
           </div>
           <div className="text-center">
-            <p className="text-xl text-white font-bold mb-2">Dr. Dany Bailey</p>
+            <p className="text-xl text-blue-600  font-bold mb-2">
+              Dr. Dany Bailey
+            </p>
             <p className="text-base text-gray-400 font-normal">Doctor</p>
           </div>
           <ul className="flex flex-row mt-4 space-x-2">
@@ -199,62 +211,64 @@ const OurDoctors = () => {
             </li>
           </ul>
         </div>
-        <div className="w-full  rounded-lg p-12 flex flex-col justify-center items-center bg-gray-300">
+        <div className="w-full  rounded-lg p-2 flex flex-col justify-center items-center bg-slate-50">
           <div className="mb-8">
             <img
-              className="object-center object-cover rounded h-36 w-36"
-              src="https://c.neh.tw/thumb/f/720/a5391afa9c234d129fb2.jpg"
-              alt="photo"
+              className="object-center object-cover rounded w-full"
+              src={doctor5}
+              alt="doctor "
             />
           </div>
           <div className="text-center">
-            <p className="text-xl text-white font-bold mb-2">Dr. Lucy Carter</p>
-            <p className="text-base text-gray-400 font-normal">Doctor</p>
-          </div>
-          <ul className="flex flex-row mt-4 space-x-2">
-            <li className="uppercase p-3 flex items-center border border-blue-600 text-blue-600 max-w-max shadow-sm hover:shadow-lg rounded-full w-12 h-12 justify-center">
-              <a
-                target="_blank"
-                href="https://web.facebook.com/"
-                className=" block"
-                rel="noreferrer"
-              >
-                <BsFacebook className="h-10 w-10 text-center block" />
-              </a>
-            </li>
-            <li className="uppercase p-3 flex items-center border border-blue-900 text-blue-900 max-w-max shadow-sm hover:shadow-lg rounded-full w-12 h-12 justify-center">
-              <a
-                target="_blank"
-                href="https://www.linkedin.com/"
-                className=" block"
-                rel="noreferrer"
-              >
-                <TiSocialLinkedinCircular className="h-10 w-10 text-center block" />
-              </a>
-            </li>
-            <li className="uppercase p-3 flex items-center border border-blue-400 text-blue-400 max-w-max shadow-sm hover:shadow-lg rounded-full w-12 h-12 justify-center">
-              <a
-                target="_blank"
-                href="https://web.facebook.com/"
-                className=" block"
-                rel="noreferrer"
-              >
-                <TiSocialTwitterCircular className="h-10 w-10 text-center block" />
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="w-full  rounded-lg p-12 flex flex-col justify-center items-center bg-gray-300">
-          <div className="mb-8">
-            <img
-              className="object-center object-cover rounded h-36 w-36"
-              src="https://pikwizard.com/photos/3e3a84c092b4ec7dad7201ae11129727-m.jpg"
-              alt="photo"
-            />
-          </div>
-          <div className="text-center">
-            <p className="text-xl text-white font-bold mb-2">
+            <p className="text-xl text-blue-600  font-bold mb-2">
               Dr. Jade Bradley
+            </p>
+            <p className="text-base text-gray-400 font-normal">Doctor</p>
+          </div>
+          <ul className="flex flex-row mt-4 space-x-2">
+            <li className="uppercase p-3 flex items-center border border-blue-600 text-blue-600 max-w-max shadow-sm hover:shadow-lg rounded-full w-12 h-12 justify-center">
+              <a
+                target="_blank"
+                href="https://web.facebook.com/"
+                className=" block"
+                rel="noreferrer"
+              >
+                <BsFacebook className="h-10 w-10 text-center block" />
+              </a>
+            </li>
+            <li className="uppercase p-3 flex items-center border border-blue-900 text-blue-900 max-w-max shadow-sm hover:shadow-lg rounded-full w-12 h-12 justify-center">
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/"
+                className=" block"
+                rel="noreferrer"
+              >
+                <TiSocialLinkedinCircular className="h-10 w-10 text-center block" />
+              </a>
+            </li>
+            <li className="uppercase p-3 flex items-center border border-blue-400 text-blue-400 max-w-max shadow-sm hover:shadow-lg rounded-full w-12 h-12 justify-center">
+              <a
+                target="_blank"
+                href="https://web.facebook.com/"
+                className=" block"
+                rel="noreferrer"
+              >
+                <TiSocialTwitterCircular className="h-10 w-10 text-center block" />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="w-full  rounded-lg p-2 flex flex-col justify-center items-center bg-slate-50">
+          <div className="mb-8 ">
+            <img
+              className="object-center w-full  "
+              src={doctor6}
+              alt="doctor "
+            />
+          </div>
+          <div className="text-center">
+            <p className="text-xl text-blue-600 font-bold mb-2">
+              Dr. Lucy Carter
             </p>
             <p className="text-base text-gray-400 font-normal">Doctor</p>
           </div>

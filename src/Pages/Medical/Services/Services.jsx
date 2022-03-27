@@ -5,8 +5,8 @@ import { ImCheckmark } from 'react-icons/im';
 import { useSelector } from 'react-redux';
 import swal from 'sweetalert';
 import OurDoctors from '../OurDoctors/OurDoctors';
-import TimeTable from './../../../assets/events/time table.jpg';
 import mediBanner from './../../../assets/medical/mediBanner.png';
+import TimeTable from './../../../assets/medical/timetable.png';
 
 const datas = [
   {
@@ -81,106 +81,92 @@ const Services = () => {
     reset();
   };
   return (
-    <div>
+    <div className="my-20">
       <div className="">
-        <div className="">
-          <h3 className=" text-center md:text-5xl text-blue-600 ">
-            Our Services
-          </h3>
-          <p className="my-5 lg:mx-[300px] text-center px-2 md:px-5  text-lg ">
-            Treatment here, truly human experience. You’re cared for as a person
-            first.The more patients we treat each year prepares us to treat the
-            one who matters most—you.Count on our experts to deliver an accurate
-            diagnosis and the right plan for you the first time.
-          </p>
-        </div>
-        <div className="lg:flex lg:mx-[150px] justify-between">
-          <img src={mediBanner} alt="" />
+        <h3 className=" pl-10 text-center md:text-5xl text-blue-600 ">
+          Our Services
+        </h3>
+        <p className="my-5 lg:mx-[300px]  text-justify md:text-center pl-14 md:px-5  text-lg ">
+          Treatment here, truly human experience. You’re cared for as a person
+          first.The more patients we treat each year prepares us to treat the
+          one who matters most—you.Count on our experts to deliver an accurate
+          diagnosis and the right plan for you the first time.
+        </p>
 
-          <div className="px-2 mt-10">
-            <div className="  flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+        <div className="flex flex-col justify-center items-center md:flex-row">
+          <div className="w-1/2 md:w-full">
+            <img src={mediBanner} alt="" />
+          </div>
+
+          <div className="px-2 mt-10 w-1/2 md:w-full">
+            <div className=" w-full flex justify-center items-center my-1 bg-gray-100  py-2 ">
               <ImCheckmark
+                className="m-2"
                 style={{
                   color: '#10217d',
                   fontSize: '1.5em',
-                  marginRight: '4px',
                 }}
               />
-              <div>
-                <span
-                  className="dark:text-dark_text"
-                  style={{ fontSize: '18px' }}
-                >
+              <div className="w-11/12 p-5">
+                <span className="dark:text-dark_text text-sm md:text-lg">
                   Online Consultation
                 </span>
               </div>
             </div>
-            <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+            <div className="  flex justify-center items-center my-1 bg-gray-100  py-2">
               <ImCheckmark
+                className="m-2"
                 style={{
                   color: '#10217d',
                   fontSize: '1.5em',
-                  marginRight: '4px',
                 }}
               />
-              <div>
-                <span
-                  className="dark:text-dark_text"
-                  style={{ fontSize: '18px' }}
-                >
+              <div className="w-11/12 p-5">
+                <span className="dark:text-dark_text text-sm md:text-lg">
                   Offline Consultation
                 </span>
               </div>
             </div>
-            <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+            <div className=" flex justify-center items-center my-1 bg-gray-100 py-2">
               <ImCheckmark
+                className="m-2"
                 style={{
                   color: '#10217d',
                   fontSize: '1.5em',
-                  marginRight: '4px',
                 }}
               />
-              <div>
-                <span
-                  className="dark:text-dark_text"
-                  style={{ fontSize: '18px' }}
-                >
+              <div className="w-11/12 p-5">
+                <span className="dark:text-dark_text text-sm md:text-lg">
                   Online Appointment
                 </span>
               </div>
             </div>
 
-            <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+            <div className=" flex justify-center items-center my-1 bg-gray-100 py-2">
               <ImCheckmark
+                className="m-2"
                 style={{
                   color: '#10217d',
                   fontSize: '1.5em',
-                  marginRight: '4px',
                 }}
               />
-              <div>
-                <span
-                  className="dark:text-dark_text"
-                  style={{ fontSize: '18px' }}
-                >
+              <div className="w-11/12 p-5">
+                <span className="dark:text-dark_text text-sm md:text-lg">
                   Lab Test
                 </span>
               </div>
             </div>
 
-            <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+            <div className=" flex justify-center items-center my-1 bg-gray-100 py-2">
               <ImCheckmark
+                className="m-2"
                 style={{
                   color: '#10217d',
                   fontSize: '1.5em',
-                  marginRight: '4px',
                 }}
               />
-              <div>
-                <span
-                  className="dark:text-dark_text"
-                  style={{ fontSize: '18px' }}
-                >
+              <div className="w-11/12 p-5">
+                <span className="dark:text-dark_text text-sm md:text-lg">
                   Emergency Department
                 </span>
               </div>
@@ -188,26 +174,26 @@ const Services = () => {
           </div>
         </div>
 
-        <div className=" lg:my-20">
+        <div className=" lg:my-20 px-20">
           <div className="text-center">
-            <h3>Our Time Table</h3>
+            <h3 className="text-blue-700">Our Time Table</h3>
             <p className="lg:px-[300px]">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Exercitationem animi, qui voluptatibus omnis quod unde officia
               delectus consequatur hic iure.
             </p>
           </div>
-          <div className="lg:flex lg:mx-[150px] justify-between">
-            <div className="px-2 mt-10">
-              <div className="  flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+          <div className=" flex flex-col   justify-center items-center md:flex-row">
+            <div className=" w-full md:w-1/2 px-2 mt-10">
+              <div className=" w-full flex justify-start items-center my-1 bg-gray-100 py-5">
                 <ImCheckmark
-                  className="text-blue-700"
+                  className="text-blue-700 m-2"
                   style={{
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
                 />
-                <div>
+                <div className="w-11/12">
                   <span
                     className="dark:text-dark_text"
                     style={{ fontSize: '18px' }}
@@ -216,15 +202,15 @@ const Services = () => {
                   </span>
                 </div>
               </div>
-              <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+              <div className="w-full flex justify-start items-center my-1 bg-gray-100 py-5">
                 <ImCheckmark
-                  className="text-blue-700"
+                  className="text-blue-700 m-2"
                   style={{
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
                 />
-                <div>
+                <div className="w-11/12">
                   <span
                     className="dark:text-dark_text"
                     style={{ fontSize: '18px' }}
@@ -233,15 +219,15 @@ const Services = () => {
                   </span>
                 </div>
               </div>
-              <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+              <div className="w-full flex justify-start items-center my-1 bg-gray-100 py-5">
                 <ImCheckmark
-                  className="text-blue-700"
+                  className="text-blue-700 m-2"
                   style={{
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
                 />
-                <div>
+                <div className="w-11/12">
                   <span
                     className="dark:text-dark_text"
                     style={{ fontSize: '18px' }}
@@ -251,15 +237,15 @@ const Services = () => {
                 </div>
               </div>
 
-              <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+              <div className="w-full flex justify-start items-center my-1 bg-gray-100 py-5">
                 <ImCheckmark
-                  className="text-blue-700"
+                  className="text-blue-700 m-2"
                   style={{
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
                 />
-                <div>
+                <div className="w-11/12">
                   <span
                     className="dark:text-dark_text"
                     style={{ fontSize: '18px' }}
@@ -269,15 +255,15 @@ const Services = () => {
                 </div>
               </div>
 
-              <div className=" flex justify-start items-center my-3 bg-gray-100 px-40 py-10">
+              <div className="w-full flex justify-start items-center my-1 bg-gray-100  py-5">
                 <ImCheckmark
-                  className="text-blue-700"
+                  className="text-blue-700 m-2"
                   style={{
                     fontSize: '1.5em',
                     marginRight: '4px',
                   }}
                 />
-                <div>
+                <div className="w-11/12">
                   <span
                     className="dark:text-dark_text"
                     style={{ fontSize: '18px' }}
@@ -287,50 +273,50 @@ const Services = () => {
                 </div>
               </div>
             </div>
-            <img className="w-[500px]" src={TimeTable} alt="" />
+            <div className=" w-full md:w-1/2">
+              <img src={TimeTable} alt="" />
+            </div>
           </div>
-          <div className=""></div>
         </div>
 
         {/* end */}
       </div>
       <OurDoctors />
-      <div className=" items-center lg:mt-[100px] lg:mb-10">
+      <div className=" 2 items-center lg:mt-[100px] lg:mb-10">
+        <h6 className="text-gray-700 text-center text-lg">
+          We are here to hear from you
+        </h6>
         <div className=" flex justify-center md:px-8 ">
-          <form class=" pl-10 md:0 w-full lg:mx-[200px]">
-            <h3 class="text-center pb-4 text-3xl font-bolder text-gray-600">
-              We are here to hear from you
-            </h3>
-            <div class="flex flex-wrap -mx-3 mb-2">
-              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <input
-                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                  id="grid-first-name"
-                  type="text"
-                  placeholder="First Name"
-                />
-              </div>
-              <div class="w-full md:w-1/2 px-3">
-                <input
-                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  id="grid-last-name"
-                  type="text"
-                  placeholder="Last Name"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap -mx-3 mb-2">
-              <div class="w-full px-3">
-                <input
-                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                  id="email"
-                  type="email"
-                  placeholder="Your Email"
-                />
-              </div>
-            </div>
+          <form
+            className="w-3/5 space-y-4 mx-10 mt-10"
+            onSubmit={handleSubmit(sendEmail)}
+          >
+            <input
+              className=" w-full  bg-gray-100 px-5 outline-none border-2 py-5 focus:border-primary  rounded mb-0 md:mb-5 lg:mb-0"
+              {...register('name', { required: 'Name is Required' })}
+              value={name}
+            />
+            {errors.name && (
+              <small className="text-danger">{errors.name.message}</small>
+            )}
 
-            <div class="w-full px-3">
+            <input
+              className=" w-full mb-0 md:mb-5 lg:mb-0 outline-none border-2 bg-gray-100 focus:border-primary px-5 rounded py-5 "
+              type="email"
+              {...register('email', {
+                required: 'Email is Required',
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: 'Invalid email address',
+                },
+              })}
+              value={email}
+            />
+            {errors.email && (
+              <small className="text-danger">{errors.email.message}</small>
+            )}
+
+            <div className="col-span-2">
               <textarea
                 className=" w-full bg-gray-100 py-8 px-5 outline-none border-2 focus:border-primary"
                 {...register('message', {
@@ -352,7 +338,7 @@ const Services = () => {
             </div>
 
             <input
-              className="bg-primary  px-6 md:w-2/6   py-2 text-white mx-auto lg:ml-0 rounded-md"
+              className="bg-primary  px-6 md:w-2/6   py-2 text-white mx-auto lg:ml-0 rounded-md f"
               type="submit"
               value="Send"
             />
