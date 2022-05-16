@@ -3,6 +3,7 @@ import './App.css';
 import Chat from './Components/ChattingApp/Chat/Chat';
 import Join from './Components/ChattingApp/Join/Join';
 import ScrollToTop from './Components/ScrollToTop';
+import TestFileUpload from './Components/TestFileUpload';
 import UnAuthorized from './Components/UnAuthorized';
 import { AuthProvider } from './context/AuthProvider';
 import {
@@ -112,6 +113,7 @@ const App = () => (
       <Header />
       <ScrollToTop>
         <Routes>
+          <Route path="/testFileUpload" element={<TestFileUpload />} />
           {/* ALL PUBLIC ROUTES */}
           <Route path="/" element={<Home />} />
           <Route path="about" element={<About />} />
@@ -240,7 +242,6 @@ const App = () => (
           </Route>
 
           {/* Admin dashboard routes */}
-
           <Route element={<AdminRoute allowedRoles={[Roles.Admin]} />}>
             <Route path="admin" element={<AdminDashboard />}>
               <Route path="home" element={<AdminHome />} />
@@ -272,6 +273,7 @@ const App = () => (
 
           {/* unauthorized route */}
           <Route path="unauthorized" element={<UnAuthorized />} />
+
           {/* NOT FOUND ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

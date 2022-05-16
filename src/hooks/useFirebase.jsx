@@ -107,6 +107,7 @@ const useFirebase = () => {
 
   const registerToDB = async (newUser, location, navigate) => {
     const response = await axios.post('/auth/register', newUser);
+
     dispatch(setRoles([...roles, response?.data?.roles]));
     dispatch(setToken(response?.data?.accessToken));
     dispatch(setUId(response?.data?.uId));
