@@ -137,14 +137,17 @@ const Profile = () => {
             <p className="font-semibold mb-10 break-words">
               #id : villager{uId}
             </p>
+
             {/* <div className="my-6">
               <button className="btn bg-primary mb-2">Send Message</button>
               <button className="btn bg-secondary mb-2">Contact User</button>
               <button className="btn bg-secondary mb-2">Report User</button>
             </div> */}
+
             <h6 className="inline border-b-2 border-zinc-900">
               Profile details
             </h6>
+
             <div className="mt-6">
               <p className="flex items-center py-2">
                 <span className="mr-4">
@@ -192,7 +195,7 @@ const Profile = () => {
               </p>
               <p className="flex items-center py-2">
                 <span className="mr-4">
-                  <BsArrowReturnRight py-2 />
+                  <BsArrowReturnRight />
                 </span>
                 Gender: {user?.gender || 'unavailable'}
               </p>

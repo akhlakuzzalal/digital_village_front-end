@@ -1,14 +1,14 @@
+import axios from 'axios';
 import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
-import axios from '../../../../api/axios';
 import FileUpload from '../../../../Components/FileUpload';
 import RichTextEditor from '../../../../Components/RichTextEditor';
+import { uploadFile } from '../../../../utilities/uploadFile';
 
 const AddNews = () => {
   const [content, setContent] = useState('');
-
-  // const user = useSelector((state) => state.user.user);
+  const [file, setFile] = useState({});
 
   const {
     register,
@@ -21,24 +21,20 @@ const AddNews = () => {
     setContent(e.target.getContent());
   };
 
-  const [file, setFile] = useState({});
-
   const onDrop = useCallback((acceptedFiles) => {
     setFile(acceptedFiles[0]);
   }, []);
 
   const handlePublishNews = async (data) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append(
-      'news',
-      JSON.stringify({
-        ...data,
-        content,
-      })
-    );
+    const { url } = await uploadFile(file);
 
-    const response = await axios.post('/news/addNews', formData);
+    const newNews = {
+      ...data,
+      content,
+      bannerImg: url,
+    };
+
+    const response = await axios.post('/news/addNews', newNews);
 
     if (response.data.length) {
       swal('Added this News', 'Successfully added this News !', 'success');
