@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { BASE_URI } from '../../../../api/axios';
 // import { fetchAllCauses } from '../../../../redux/slices/Donations/donationSlice';
 import SingleCauseSideCard from './SingleCauseSideCard/causeCardSidebar';
 
@@ -47,8 +46,8 @@ const SingleCauseSidebar = () => {
             // eslint-disable-next-line jsx-a11y/img-redundant-alt
             <img
               class="hover:opacity-75"
-              src={`${BASE_URI}/${cause?.image?.path}`}
-              alt={cause?.image?.name}
+              src={cause?.image}
+              alt="Donation photo"
             />
           ))}
         </div>

@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Progress } from 'react-sweet-progress';
 import 'react-sweet-progress/lib/style.css';
-import { BASE_URI } from '../../../api/axios';
 import calculatePercentage from '../../../utilities/calculatePercentage';
 import DonarForm from './DonarForm/DonarForm';
 import SingleCauseBanner from './SingleCauseBanner/SingleCauseBanner';
@@ -35,7 +34,7 @@ const SingleCauseDetail = () => {
             <div className="overflow-hidden">
               <img
                 className="transform hover:scale-125 transition duration-700 object-cover h-full w-full"
-                src={`${BASE_URI}/${cause?.image?.path}`}
+                src={cause?.image}
                 alt={cause?.title}
               />
             </div>
@@ -52,7 +51,10 @@ const SingleCauseDetail = () => {
               >
                 {cause?.title}
               </a>
-              <p href="/" className="text-sm pb-3 text-gray-500 dark:text-gray-300">
+              <p
+                href="/"
+                className="text-sm pb-3 text-gray-500 dark:text-gray-300"
+              >
                 By{' '}
                 <a
                   href="/"
@@ -69,12 +71,16 @@ const SingleCauseDetail = () => {
               <div className="flex flex-col md:flex-row items-center justify-between pt-3 md:space-y-0 space-y-2">
                 <button className="w-100 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-r-indigo-500 border-l-indigo-500">
                   <FaHandsHelping className="text-2xl text-red-400" />
-                  <span className='dark:text-dark_text'> RAISED {cause?.raised}</span>
+                  <span className="dark:text-dark_text">
+                    {' '}
+                    RAISED {cause?.raised}
+                  </span>
                 </button>
                 <button className="w-100 flex items-center justify-center py-2  border border-transparent text-sm font-medium rounded-md text-gray-600 px-6 border-l-indigo-500 border-r-indigo-500">
                   <FaDonate className="text-2xl text-red-400"></FaDonate>{' '}
-                  <span className='dark:text-dark_text'>GOAL {cause?.goal}</span>
-                  
+                  <span className="dark:text-dark_text">
+                    GOAL {cause?.goal}
+                  </span>
                 </button>
               </div>
               <div className="flex flex-col space-y-1 my-3">

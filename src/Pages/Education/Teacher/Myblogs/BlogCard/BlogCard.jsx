@@ -3,7 +3,6 @@ import { FaEdit, FaPushed, FaTrashAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { BASE_URI } from '../../../../../api/axios';
 import { deleteABlog } from '../../../../../redux/slices/blog/blogSlice';
 
 const BlogCard = ({ blog }) => {
@@ -50,7 +49,7 @@ const BlogCard = ({ blog }) => {
       >
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-          src={`${BASE_URI}/${blog?.bannerImg?.path}`}
+          src={blog?.bannerImg}
           alt={blog?.title}
         />
       </div>
@@ -58,7 +57,9 @@ const BlogCard = ({ blog }) => {
       <div className="flex flex-col flex-grow">
         {/* title and description */}
         <div className="flex flex-col space-y-1 my-4">
-          <h2 className="text-gray-700 font-primary text-lg   dark:text-dark_text">{blog?.title}</h2>
+          <h2 className="text-gray-700 font-primary text-lg   dark:text-dark_text">
+            {blog?.title}
+          </h2>
           <p className="text-gray-500 text-sm">{blog?.about.slice(0, 50)}</p>
         </div>
       </div>

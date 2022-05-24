@@ -7,8 +7,8 @@ const Review = ({ reviews }) => {
       <div className="w-16 md:w-28 relative top-8 left-40 md:top-12 md:left-34 ">
         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
         <img
-          className="w-full rounded-full border-4 border-slate-200 dark:border-secondary"
-          src={reviews?.photo?.path}
+          className="w-28 h-28 rounded-full border-4 border-slate-200 dark:border-secondary"
+          src={reviews?.photo}
           alt={reviews?.photo?.name}
         />
       </div>

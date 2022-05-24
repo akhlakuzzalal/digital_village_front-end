@@ -5,6 +5,7 @@ import axios from '../../../../api/axios';
 import FileUpload from '../../../../Components/FileUpload';
 import RichTextEditor from '../../../../Components/RichTextEditor';
 import { giveAlert } from '../../../../utilities/alert';
+import { uploadFile } from '../../../../utilities/uploadFile';
 
 const PublishBlog = () => {
   const [content, setContent] = useState('Start writing');
@@ -30,21 +31,18 @@ const PublishBlog = () => {
   }, []);
 
   const handlePublishBlogs = async (data) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append(
-      'blog',
-      JSON.stringify({
-        ...data,
-        author: user?.name,
-        email: user?.email,
-        content,
-        publishDate: new Date().toLocaleDateString(),
-        tags: data?.tags.split(' '),
-      })
-    );
+    const { url } = await uploadFile(file);
+    const body = {
+      ...data,
+      author: user?.name,
+      email: user?.email,
+      bannerImg: url,
+      content,
+      publishDate: new Date().toLocaleDateString(),
+      tags: data?.tags.split(' '),
+    };
 
-    const response = await axios.post('/teacher/publishBlog', formData);
+    const response = await axios.post('/teacher/publishBlog', body);
     if (response.data && response.data.length >= 1) {
       giveAlert('Your blog published successfully', 'success');
       reset();
