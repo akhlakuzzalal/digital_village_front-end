@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { MdPermMedia } from 'react-icons/md';
 import { useSelector } from 'react-redux';
-import { BASE_URI } from '../../../../api/axios';
 import PublisheModal from './PublisheModal';
 
 const PublishFeed = () => {
@@ -12,19 +11,11 @@ const PublishFeed = () => {
       <div className="flex align-top border-b-2 border-slate-700">
         {/* avatar */}
         <div class="mr-2 w-12 h-12 relative flex justify-center items-center rounded-full bg-gray-500 text-xl text-white">
-          {socialUser?.photo?.path ? (
-            <img
-              src={`${BASE_URI}/${socialUser?.photo?.path}`}
-              className="rounded-full w-12 h-12"
-              alt=""
-            />
-          ) : (
-            <img
-              src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-              className="rounded-full w-12 h-12"
-              alt=""
-            />
-          )}
+          <img
+            src={socialUser?.photo}
+            className="rounded-full w-12 h-12"
+            alt=""
+          />
 
           <div className="absolute right-0 bottom-0 w-3 h-3 rounded-full bg-green-600"></div>
         </div>

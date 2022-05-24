@@ -3,7 +3,6 @@ import { FaRegSmile } from 'react-icons/fa';
 import { GiCancel } from 'react-icons/gi';
 import { MdDoneOutline, MdPersonAddAlt1 } from 'react-icons/md';
 import { useSelector } from 'react-redux';
-import { BASE_URI } from '../../../../api/axios';
 import useSocialMedia from '../../utilities/useSocialMedia';
 
 const SingleUser = ({ user, as }) => {
@@ -12,19 +11,11 @@ const SingleUser = ({ user, as }) => {
   return (
     <div className="group relative max-w- mx-5 md:mx-0  rounded-xl overflow-hidden shadow-md hover:scale-105 duration-500   dark:bg-dark_primary">
       <div className="w-full flex justify-center ">
-        {user?.photo?.path && user?.photo?.path !== '' ? (
-          <img
-            className="w-36 h-36 rounded-full"
-            src={`${BASE_URI}/${user.photo.path}`}
-            alt="user profile pic"
-          />
-        ) : (
-          <img
-            className="w-36 h-36 rounded-full"
-            src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-            alt="user profile pic"
-          />
-        )}
+        <img
+          className="w-36 h-36 rounded-full"
+          src={user.photo}
+          alt="user profile pic"
+        />
       </div>
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 text-center    dark:text-dark_text">

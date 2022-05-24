@@ -4,7 +4,7 @@ import { AiOutlineCloseCircle, AiOutlineComment } from 'react-icons/ai';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { GiSelfLove } from 'react-icons/gi';
 import { useSelector } from 'react-redux';
-import axios, { BASE_URI } from '../../../../api/axios';
+import axios from '../../../../api/axios';
 import Comments from '../../../Education/DetailVideo/Comments/Comments';
 import LikeDislikes from '../../../Education/DetailVideo/LikeDislikes/LikeDislikes';
 
@@ -41,20 +41,7 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
         <div className="flex items-center space-x-2">
           {/* avarar */}
           <div class="mr-2 w-12 h-12 relative flex justify-center items-center rounded-full bg-gray-500 text-xl text-white">
-            {user?.photo?.path ? (
-              <img
-                src={`${BASE_URI}/${user?.photo?.path}`}
-                className="rounded-full w-12 h-12"
-                alt=""
-              />
-            ) : (
-              <img
-                src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
-                className="rounded-full"
-                alt=""
-              />
-            )}
-
+            <img src={user?.photo} className="rounded-full w-12 h-12" alt="" />
             <div className="absolute right-0 bottom-0 w-3 h-3 rounded-full bg-green-600"></div>
           </div>
           {/* name and date */}
@@ -135,12 +122,8 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
           <p>{feed?.post}</p>
         )}
 
-        {feed?.photo?.path && (
-          <img
-            className="w-full h-44 md:h-64"
-            src={`${BASE_URI}/${feed?.photo?.path}`}
-            alt=""
-          />
+        {feed?.photo && (
+          <img className="w-full h-44 md:h-64" src={feed?.photo} alt="" />
         )}
       </div>
 
