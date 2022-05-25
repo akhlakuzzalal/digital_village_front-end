@@ -20,33 +20,34 @@ const RegForm = () => {
   const redirect_uri = '/medical/pdf';
 
   const onSubmit = (data) => {
-    console.log(data);
     axios.post('/vaccine/addInfo', data).then(() => {
-      console.log(data);
       swal({
-        title: 'Make sure all the information  valid.Want to proceed?',
-        // text: 'Once deleted, you will not be able to recover this imaginary file!',
+        title:
+          'Make sure all the information is valid. Do you want to procceed',
         icon: 'warning',
 
         buttons: true,
       }).then((willConfirm) => {
         if (willConfirm) {
-          console.log('ok');
           swal('Registration Done.', {
             icon: 'success',
           });
+          navigate(redirect_uri);
         }
       });
-      navigate(redirect_uri);
     });
   };
 
   return (
-    <div className="my-40 lg:flex  lg:mx-32 md:mx-32 mx-0 border rounded-2xl">
+    <div className="my-40 lg:flex  lg:mx-32 md:mx-32 mx-0 border rounded-2xl ">
       <div>
-        <h3 className="ml-10 mt-6 text-blue-900 ">Give Your Information</h3>
+        <h3 className="text-center md:pl-0  mt-6 text-sm md:text-xl text-blue-900 ">
+          Give Your Information
+        </h3>
         <form
-          className=" space-y-6 mx-10 mt-10"
+          className=" space-y-6 mx-0 md:mx-10 md:mx-10 mt-10 pl-16
+          
+           md:pl-10"
           onSubmit={handleSubmit(onSubmit)}
         >
           {/* email */}
@@ -120,7 +121,7 @@ const RegForm = () => {
             onKeyUp={() => {
               trigger('nid');
             }}
-            placeholder="NID"
+            placeholder="Village Id"
           />
           {errors.nid && (
             <small className="text-danger">{errors.nid.message}</small>
@@ -158,7 +159,11 @@ const RegForm = () => {
           {errors.address && (
             <small className="text-danger">{errors.address.message}</small>
           )}
-          <select {...register('center', { required: 'Name is Required' })}>
+
+          <select
+            className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl"
+            {...register('center', { required: 'Name is Required' })}
+          >
             <option>Choose your center</option>
             <option value="center1">center1</option>
             <option value="center2">center2</option>

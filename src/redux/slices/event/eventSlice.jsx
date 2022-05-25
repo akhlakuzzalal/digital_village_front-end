@@ -4,17 +4,12 @@ import axios from 'axios';
 // create the thunk
 export const fetchAllEvent = createAsyncThunk(
   'events/fetchAllEvents',
-  async (pagination) => {
+  async () => {
     const response = await axios
-      .get(
-        `/event/allEvent/?page=${pagination.pageCount}&size=${pagination.size}`
-      )
+      .get(`/event/allEvent`)
       .then((response) => response.data);
     console.log(response);
-    return {
-      count: response.count,
-      allEvents: response.allEvents,
-    };
+    return response;
   }
 );
 
@@ -28,6 +23,7 @@ export const addAnEvent = createAsyncThunk(
     return response;
   }
 );
+
 // delete event
 export const deleteAnEvent = createAsyncThunk(
   'events/deleteAnEvent',
@@ -35,6 +31,7 @@ export const deleteAnEvent = createAsyncThunk(
     const response = await axios
       .delete(`/event/deleteEvent/?id=${id}`)
       .then((response) => response.data);
+    console.log(response);
     return response;
   }
 );
@@ -72,8 +69,6 @@ const eventSlice = createSlice({
     allEvents: [],
     upcomingEvents: [],
     archivedEvents: [],
-    allEventsPageCount: 0,
-    allEventsCurrPage: 0,
   },
 
   reducers: {
@@ -84,17 +79,6 @@ const eventSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchAllEvent.fulfilled, (state, { payload }) => {
       state.allEvents = payload;
-      if (payload.allEvents && payload.allEvents.length >= 1) {
-        state.allEvents = payload.allEvents;
-      }
-
-      const count = payload.count;
-
-      const pageNumber = Math.ceil(count / payload.size);
-
-      if (pageNumber || pageNumber === 0) {
-        state.pageCount = pageNumber;
-      }
     });
     builder.addCase(fetchUpcomingEvents.fulfilled, (state, { payload }) => {
       state.upcomingEvents = payload;
@@ -107,7 +91,9 @@ const eventSlice = createSlice({
       state.allEvents.push(payload);
     });
     builder.addCase(deleteAnEvent.fulfilled, (state, { payload }) => {
-      state.allEvents.filter((event) => event._id !== payload);
+      state.allEvents = state.allEvents.filter(
+        (event) => event._id !== payload
+      );
     });
   },
 });

@@ -22,7 +22,7 @@ const services = [
     image: education,
     detail:
       'Digital Learning is a service provided by us to improve the literacy rate of our village. We offers full free and quality education.',
-    desc: 'Free and Quality education to here',
+    desc: 'Free and Quality education',
     controlData: 'education',
   },
   {
@@ -31,7 +31,7 @@ const services = [
     image: medical,
     detail:
       'Medical services means Medically Necessary services, including, as the context requires, Confinement, treatments, procedures, tests, examinations .',
-    desc: 'Making health care better together',
+    desc: 'Low cost Medical Services',
     controlData: 'medical',
   },
   {
@@ -40,7 +40,7 @@ const services = [
     image: event,
     detail:
       'Check out some amazing free events in village to take away all the fun experiences. There can be a lot that  might be offering but all the events  make it unique, distinctive and different from others.',
-    desc: 'Exclusive events, priceless learning',
+    desc: 'Exclusive events, Knowledge Sharing',
     controlData: 'events',
   },
   {
@@ -49,7 +49,7 @@ const services = [
     image: donate,
     detail:
       ' Donation is a gift for charity, humanitarian aid, or to benefit a cause. A donation may take various forms, including money, alms, services, or goods such as clothing, toys, food, or vehicles. ',
-    desc: 'Donate available Get Help Request',
+    desc: 'Donation for needy people',
     controlData: 'donation',
   },
   {
@@ -58,7 +58,7 @@ const services = [
     image: development,
     detail:
       'Our proud team working hard for the poor village people and improve their life style.we take somme village development work to develop various area ',
-    desc: 'Propose your thoughts here to go',
+    desc: 'Propose your development idea',
     controlData: 'development',
   },
   {

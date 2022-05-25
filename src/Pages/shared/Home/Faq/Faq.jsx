@@ -12,13 +12,6 @@ const datas = [
     description:
       'Digital Learning is "learning facilitated by technology that gives students some element of control over time, place, path and/or pace.',
   },
-
-  {
-    id: '2',
-    title: 'How can I register my self for vaccine?',
-    description:
-      'You need to go to vaccine registration page where you have to put your valid information. When your application is approved you will get date by sms. you can also check status in website.',
-  },
   {
     id: '3',
     title: 'How can we know about future events?',
@@ -45,7 +38,7 @@ const datas = [
   },
 ];
 
-const Faq1 = () => {
+const Faq = () => {
   const [active, setActive] = useState('');
   const isTablet = useMediaQuery('(min-width: 656px)');
   const isDesktop = useMediaQuery('(min-width: 900px)');
@@ -71,7 +64,7 @@ const Faq1 = () => {
       </div>
 
       <div className=" flex md:flex-row flex-col md:space-x-8 md:mt-16 mt-8">
-        <div className=" md:w-5/12 lg:w-4/12 w-full mb-4  ">
+        <div className="pointer-events-none md:w-5/12 lg:w-4/12 w-full mb-4  ">
           <div className="w-fit mx-auto">
             <Lottie
               options={defaultOptions}
@@ -85,7 +78,7 @@ const Faq1 = () => {
           {/* <!-- Digital Section --> */}
 
           {datas.map((data) => (
-            <div>
+            <div key={data.id}>
               <div>
                 <div className=" cursor-pointer">
                   {active && data.id === active ? (
@@ -97,8 +90,7 @@ const Faq1 = () => {
                         {data.title}
                       </h3>
                       <AiOutlineMinusSquare
-                        className=" transition duration-700 ease-in-out text-blue-900 dark:bg-dark_primary dark:text-dark_secondary hover:rotate-180"
-                        custome
+                        className="text-blue-900 dark:bg-dark_primary dark:text-dark_secondary"
                         size={35}
                       />
                     </div>
@@ -111,7 +103,7 @@ const Faq1 = () => {
                         {data.title}
                       </h3>
                       <BsPlusSquare
-                        className={`transition duration-700 ease-in-out text-blue-900 dark:bg-dark_primary dark:text-dark_secondary hover:rotate-180`}
+                        className={`text-blue-900 dark:bg-dark_primary dark:text-dark_secondary`}
                         custome
                         size={30}
                       />
@@ -127,7 +119,7 @@ const Faq1 = () => {
                   {data?.description}
                 </p>
               </div>
-              <hr className=" my-7 bg-gray-200" />
+              <hr className=" my-7 bg-gray-300 dark:bg-dark_bg" />
             </div>
           ))}
         </div>
@@ -136,4 +128,4 @@ const Faq1 = () => {
   );
 };
 
-export default Faq1;
+export default Faq;

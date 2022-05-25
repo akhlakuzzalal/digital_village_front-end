@@ -1,5 +1,9 @@
 import React from 'react';
-import { AiFillDelete, AiFillFileAdd } from 'react-icons/ai';
+import {
+  AiFillDelete,
+  AiFillFileAdd,
+  AiTwotoneMedicineBox,
+} from 'react-icons/ai';
 import { BiDonateHeart } from 'react-icons/bi';
 import { FaHandsHelping, FaShopify, FaUsers } from 'react-icons/fa';
 import { FcDonate, FcImport } from 'react-icons/fc';
@@ -10,9 +14,10 @@ import {
   MdOutlineManageAccounts,
   MdOutlineMedicalServices,
 } from 'react-icons/md';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../../Components/Navbar';
 import NewSidebar from '../../Components/Sidebar/NewSidebar';
+import AdminHome from './AdminHome/AdminHome';
 
 const x = 25;
 const links = [
@@ -77,6 +82,11 @@ const links = [
     path: '/admin/addAppointment',
   },
   {
+    name: 'Appointment Status',
+    icon: <AiTwotoneMedicineBox size={x} />,
+    path: '/admin/status',
+  },
+  {
     name: 'Add-News',
     icon: <IoLogoDesignernews size={x} />,
     path: '/admin/addNews',
@@ -97,13 +107,18 @@ const navigation = [
 ];
 
 const AdminDashboard = () => {
+  const location = useLocation();
+
+  const isHomePage =
+    location.pathname === '/admin' || location.pathname === '/admin/';
+
   return (
     <div>
       <Navbar navigation={navigation} />
       <div>
         <NewSidebar links={links} />
         <div className="mt-[80px] w-[calc(100vw-50px)] ml-auto overflow-hidden">
-          <Outlet />
+          {isHomePage ? <AdminHome /> : <Outlet />}
         </div>
       </div>
     </div>

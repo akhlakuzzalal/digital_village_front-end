@@ -69,7 +69,7 @@ const CheckoutForm = ({ returnPage, price, id, address }) => {
     }
 
     setIsLoading(true);
-    if (returnPage === 'e-market') {
+    if (returnPage === 'confirmpay') {
       setCart(id, address);
     }
 
@@ -98,7 +98,7 @@ const CheckoutForm = ({ returnPage, price, id, address }) => {
       >
         <span id="button-text">
           {isLoading ? (
-            <div className="w-fit mx-auto min-h-screen flex justify-center items-center">
+            <div className="w-fit mx-auto flex justify-center items-center">
               <p>Please wait..</p>
             </div>
           ) : (

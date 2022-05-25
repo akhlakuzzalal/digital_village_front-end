@@ -5,10 +5,9 @@ import Services from './Services/Services';
 
 const MedicalHome = () => {
   return (
-    <div className="md:m-0" style={{ minHeight: 'calc(100vh - 700px)' }}>
+    <div className="space-y-20 mb-4">
       <Banner />
       <Features />
-
       <Services />
     </div>
   );

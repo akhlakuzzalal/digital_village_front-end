@@ -41,10 +41,19 @@ const cartSlice = createSlice({
       );
       state.cart = decrease;
     },
+    clearCart: (state, { payload }) => {
+      console.log('Hitted on cartSlice');
+      state.cart = [];
+    },
   },
 });
 
-export const { setCart, removeFromCart, increaseQuantity, decreaseQuantity } =
-  cartSlice.actions;
+export const {
+  setCart,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+  clearCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

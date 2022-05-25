@@ -23,7 +23,12 @@ const Checkout = () => {
           <CustomerOrder></CustomerOrder>
         </div>
       </div>
-      <PayModal price={120} id={id} returnPage={'e-market'} address={address} />
+      <PayModal
+        price={120}
+        id={id}
+        returnPage={'confirmpay'}
+        address={address}
+      />
     </div>
   );
 };

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { BASE_URI } from '../../../api/axios';
+import Swal from 'sweetalert2';
+import axios, { BASE_URI } from '../../../api/axios';
 import Pagination from '../../../Components/Pagination';
 import useAxiosInterceptor from '../../../hooks/useAxiosInterceptor';
 import {
@@ -17,6 +18,8 @@ const AllUsers = () => {
   const currPage = useSelector((state) => state.user.currPage);
   const [showModal, setShowModal] = useState(false);
   const size = 5;
+
+  const [currUser, setCurrUser] = useState({});
 
   const dispatch = useDispatch();
 
@@ -55,8 +58,34 @@ const AllUsers = () => {
     dispatch(getAllUsers({ currPage, size }));
   }, [pageCount, currPage, size]);
 
-  const handleChangeRoleOfUser = (data) => {
-    console.log(data);
+  const handleChangeRoleOfUser = async () => {
+    setShowModal(true);
+
+    const isAdmin = currUser?.roles?.Admin;
+    console.log(isAdmin);
+    if (isAdmin) {
+      Swal.fire({
+        icon: 'info',
+        title: 'This villager is allready an admin',
+        confirmButtonText: 'Okay',
+      });
+      return;
+    }
+    console.log(currUser);
+    const response = await axios.put(`/user/changeRole/?id=${currUser._id}`, {
+      ...currUser?.roles,
+      Admin: 5000,
+    });
+
+    if (response?.data?.email) {
+      setShowModal(false);
+      Swal.fire({
+        icon: 'success',
+        title: 'Successfully added this villager as an admin',
+        confirmButtonText: 'Okay',
+      });
+      dispatch(getAllUsers({ currPage, size }));
+    }
   };
 
   return (
@@ -70,7 +99,7 @@ const AllUsers = () => {
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blue Gray-200 rounded-t">
                   <h3 className="text-2xl font-semibold ">
-                    Change this user role
+                    Make this user an admin
                   </h3>
                   <button
                     className="p-2 ml-auto bg-transparent border-0 text-pink-900 opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -81,14 +110,17 @@ const AllUsers = () => {
                     </span>
                   </button>
                 </div>
-                {/*body*/}
-                <div className="relative p-6 flex-auto">
-                  <p>this is modal</p>
-                </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-2 border-t border-solid border-blueGray-200 rounded-b">
                   <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="text-green-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 border-2 border-green-500"
+                    type="button"
+                    onClick={handleChangeRoleOfUser}
+                  >
+                    Make Admin
+                  </button>
+                  <button
+                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 border-2 border-red-500"
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
@@ -133,45 +165,66 @@ const AllUsers = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {allUsers.map((user) => (
-                      <tr key={user._id} className="hover:bg-cyan-50">
-                        <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                          <div className="flex items-center">
-                            <div className="flex-shrink-0 w-16 h-16">
-                              <img
-                                className="w-full h-full rounded-full"
-                                src={
-                                  user?.photo?.path
-                                    ? `${BASE_URI}/${user?.photo?.path}`
-                                    : 'https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg'
-                                }
-                                alt="user profile pic"
-                              />
+                    {allUsers &&
+                      allUsers.map((user) => (
+                        <tr key={user._id} className="hover:bg-cyan-50">
+                          <td className="px-5 py-5 border-b border-gray-200 text-sm">
+                            <div className="flex items-center">
+                              <div className="flex-shrink-0 w-16 h-16">
+                                <img
+                                  className="w-full h-full rounded-full"
+                                  src={
+                                    user?.photo?.path
+                                      ? `${BASE_URI}/${user?.photo?.path}`
+                                      : 'https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg'
+                                  }
+                                  alt="user profile pic"
+                                />
+                              </div>
+                              <div className="ml-3">
+                                <p className="text-gray-900 whitespace-no-wrap">
+                                  {user?.name}
+                                </p>
+                              </div>
                             </div>
-                            <div className="ml-3">
-                              <p className="text-gray-900 whitespace-no-wrap">
-                                {user?.name}
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {user?.email}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            Roles
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b max-w-[100px]">
-                          <button className="p-4 bg-rose-600 text-white rounded-2xl">
-                            Change
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
+                          </td>
+                          <td className="px-5 py-5 border-b border-gray-200 text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              {user?.email}
+                            </p>
+                          </td>
+                          <td className="px-5 py-5 border-b border-gray-200 text-sm">
+                            {user?.roles ? (
+                              <div className="space-y-2">
+                                {Object.keys(user?.roles).map((u, i) => (
+                                  <p
+                                    key={i}
+                                    className="bg-info px-4 py-2 text-white rounded-full font-primary w-24 text-center"
+                                  >
+                                    {u}
+                                  </p>
+                                ))}
+                              </div>
+                            ) : (
+                              <span className="bg-info p-2 text-white rounded-full font-primary">
+                                User
+                              </span>
+                            )}
+                          </td>
+                          <td className="px-5 py-5 border-b max-w-[100px]">
+                            <button
+                              className="p-4 bg-rose-600 text-white rounded-2xl"
+                              onClick={() => {
+                                setShowModal(true);
+                                console.log(user, 'this is user');
+                                setCurrUser(user);
+                              }}
+                            >
+                              Change
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
                 <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">

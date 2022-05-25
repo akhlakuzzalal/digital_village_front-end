@@ -8,7 +8,7 @@ import {
 import Swal from 'sweetalert2';
 import axios from '../../../../api/axios';
 
-const LikeDislikes = ({ videoId, blogId, commentId, uId }) => {
+const LikeDislikes = ({ videoId, blogId, commentId, uId, socialPostId }) => {
   const [Likes, setLikes] = useState(0);
   const [Dislikes, setDislikes] = useState(0);
   const [LikeAction, setLikeAction] = useState(null);
@@ -20,9 +20,12 @@ const LikeDislikes = ({ videoId, blogId, commentId, uId }) => {
       necessaryData = { videoId, uId };
     } else if (blogId) {
       necessaryData = { blogId, uId };
-    } else {
+    } else if (commentId) {
       necessaryData = { commentId, uId };
+    } else {
+      necessaryData = { socialPostId, uId };
     }
+
     axios.post('/like/all', necessaryData).then((response) => {
       if (response.data.success) {
         // number of likes for the video / blog / comment
@@ -55,7 +58,7 @@ const LikeDislikes = ({ videoId, blogId, commentId, uId }) => {
         console.log('Failed to get dislikes');
       }
     });
-  }, [uId, videoId, blogId, commentId]);
+  }, [uId, videoId, blogId, commentId, socialPostId]);
 
   let data = {};
 
@@ -63,8 +66,10 @@ const LikeDislikes = ({ videoId, blogId, commentId, uId }) => {
     data = { videoId, uId };
   } else if (blogId) {
     data = { blogId, uId };
-  } else {
+  } else if (commentId) {
     data = { commentId, uId };
+  } else {
+    data = { socialPostId, uId };
   }
 
   const onLike = () => {

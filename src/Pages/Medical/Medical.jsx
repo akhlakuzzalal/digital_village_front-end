@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AiOutlineMedicineBox } from 'react-icons/ai';
 import { FaClinicMedical } from 'react-icons/fa';
 import { GiLoveInjection, GiMedicines } from 'react-icons/gi';
@@ -36,21 +36,17 @@ const links = [
 ];
 
 const Medical = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   const location = useLocation();
-  const initial =
+  const isHome =
     location.pathname === '/medical' || location.pathname === '/medical/';
 
   return (
-    <div className="flex">
+    <div>
       {/* Sidebar */}
-      <NewSidebar setIsOpen={setIsOpen} links={links} />
+      <NewSidebar links={links} />
 
-      {/* contents */}
-      <div className={`mt-[80px] flex-1  `}>
-        {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
-        {initial ? <MedicalHome /> : <Outlet />}
+      <div className="mt-[80px] w-[calc(100vw-55px)] ml-auto overflow-hidden">
+        {isHome ? <MedicalHome /> : <Outlet />}
       </div>
     </div>
   );

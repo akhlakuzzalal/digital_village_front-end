@@ -3,79 +3,68 @@ import { useForm } from 'react-hook-form';
 import { AiFillEdit } from 'react-icons/ai';
 import { MdDoubleArrow } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import axios from '../../../api/axios';
-import { deleteAnEvent } from '../../../redux/slices/event/eventSlice';
+import {
+  deleteAnEvent,
+  fetchAllEvent,
+} from '../../../redux/slices/event/eventSlice';
 const ManageEventsCard = ({
-  event: {
-    _id,
-    title,
-    type,
-    image,
-    date,
-    time,
-    place,
-    description,
-    category,
-    eventType,
-  },
-  setDeleteEvent,
+  event: { _id, title, type, image, date, time, place, description, category },
+  showModal,
+  setShowModal,
 }) => {
   const dispatch = useDispatch();
 
-  const handleDelete = async () => {
-    const response = await dispatch(deleteAnEvent(_id));
-    setDeleteEvent(response?.payload?.deletedCount);
-  };
-
-  const handleAlert = () => {
-    swal({
-      title: 'Are you sure?',
-      text: 'Once deleted, you will not be able to recover this imaginary file!',
+  const handleDeleteEvent = () => {
+    Swal.fire({
+      title: 'Are you sure? you want to delete this event',
+      showDenyButton: true,
+      confirmButtonText: 'Delete',
+      denyButtonText: `Cancel`,
       icon: 'warning',
-
-      buttons: true,
-    }).then((willConfirm) => {
-      if (willConfirm) {
-        handleDelete(_id);
-        swal('Confirmed!', {
-          icon: 'success',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deleteAnEvent(_id)).then(() => {
+          dispatch(fetchAllEvent());
+          Swal.fire({
+            icon: 'success',
+            title: 'Successfully deleted',
+          });
         });
       }
     });
   };
 
   const user = useSelector((state) => state.user.user);
-  const [showModal, setShowModal] = React.useState(false);
+
+  const handleUpdateEvent = (data) => {
+    axios.put(`/event/updateEvent/${_id}`, data).then((response) => {
+      if (response?.data?.title) {
+        setShowModal(false);
+        Swal.fire({
+          icon: 'success',
+          title: `This event has been updated successfully`,
+          confirmButtonText: 'Okay',
+        });
+        dispatch(fetchAllEvent());
+      } else {
+        Swal.fire({
+          title: 'Something went wrong',
+          icon: 'error',
+          confirmButtonText: 'Okay',
+        });
+      }
+    });
+  };
+
   const {
     register,
     handleSubmit,
     trigger,
-    reset,
     formState: { errors },
   } = useForm();
 
-  const handleAlertevent = () => {
-    swal({
-      position: 'center',
-      icon: 'success',
-      title: 'Updated successfully',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  };
-  // const onSubmit = () => {
-  //   setShowModal(false);
-  //   handleAlertevent();
-  //   reset();
-  // };
-  const handleUpdateEvent = (data) => {
-    console.log(data);
-    axios.put(`/event/updateEvent/${_id}`, data);
-    setShowModal(false);
-    handleAlertevent();
-    reset();
-  };
   return (
     <>
       {showModal ? (
@@ -273,7 +262,7 @@ const ManageEventsCard = ({
           <div className="flex justify-between mx-5">
             <button
               className="  text-primary  flex"
-              onClick={() => handleAlert(_id)}
+              onClick={handleDeleteEvent}
             >
               Delete <MdDoubleArrow className="w-full mt-1" />
             </button>

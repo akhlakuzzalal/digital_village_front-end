@@ -4,44 +4,43 @@ import { BiBookAdd } from 'react-icons/bi';
 import { ImLab } from 'react-icons/im';
 import { MdOutlineMedicalServices } from 'react-icons/md';
 
+const features = [
+  {
+    icon: <MdOutlineMedicalServices size={40} />,
+    title: 'Qualified Doctors',
+    desc: 'preventive care and checkups, to immunizations and exams',
+  },
+  {
+    icon: <AiOutlineClockCircle size={40} />,
+    title: '24 Hours Service',
+    desc: 'preventive care and checkups, to immunizations and exams',
+  },
+  {
+    icon: <BiBookAdd size={40} />,
+    title: 'Emergency',
+    desc: 'preventive care and checkups, to immunizations and exams',
+  },
+  {
+    icon: <ImLab size={40} />,
+    title: 'Lab Test',
+    desc: 'preventive care and checkups, to immunizations and exams',
+  },
+];
+
 const Features = () => {
   return (
     <>
-      <div className="w-full flex justify-center items-center my-6 md:my-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 justify-center pl-14 md:pl-10 pr-4 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-4 place-items-center px-4 gap-6">
+        {features.map((feature) => (
           <div
-            class=" p-5 flex flex-col justify-center items-center mx-0 md:mx-4  shadow-lg border-2 rounded-md bg-white text-center md:text-justify text-white"
-            style={{ backgroundColor: '#10217d' }}
+            key={feature.title}
+            class=" p-5 flex flex-col justify-center items-center mx-0 md:mx-4  shadow-lg border-2 rounded-md bg-primary text-center md:text-justify text-white"
           >
-            <MdOutlineMedicalServices style={{ fontSize: '3em' }} />
-            <h5 className=" my-4 font-bold">Qualified Doctors</h5>
-            <p>preventive care and checkups, to immunizations and exams</p>
+            {feature.icon}
+            <h5 className=" my-4 font-bold">{feature.title}</h5>
+            <p>{feature.desc}</p>
           </div>
-          <div
-            className="p-5  flex flex-col justify-center items-center mx-0 md:mx-4 shadow-lg border-2 rounded-md bg-white text-center md:text-justify  text-white"
-            style={{ backgroundColor: '#10217d' }}
-          >
-            <AiOutlineClockCircle style={{ fontSize: '3em' }} />
-            <h5 className=" my-4 font-bold">24 Hours Service</h5>
-            <p>preventive care and checkups, to immunizations and exams</p>
-          </div>
-          <div
-            className="p-5 flex flex-col justify-center items-center mx-0 md:mx-4  shadow-lg border-2 rounded-md bg-white text-center md:text-justify  text-white"
-            style={{ backgroundColor: '#10217d' }}
-          >
-            <BiBookAdd style={{ fontSize: '3em' }} />
-            <h5 className=" my-4 font-bold">Emergency </h5>
-            <p>preventive care and checkups, to immunizations and exams</p>
-          </div>
-          <div
-            className="p-5  flex flex-col justify-center items-center mx-0 md:mx-4 shadow-lg border-2 rounded-md bg-white text-center md:text-justify  text-white"
-            style={{ backgroundColor: '#10217d' }}
-          >
-            <ImLab style={{ fontSize: '3em' }} />
-            <h5 className=" my-4 font-bold">Lab Test </h5>
-            <p>preventive care and checkups, to immunizations and exams</p>
-          </div>
-        </div>
+        ))}
       </div>
     </>
   );
