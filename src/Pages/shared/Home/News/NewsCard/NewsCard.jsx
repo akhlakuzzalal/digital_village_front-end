@@ -1,7 +1,6 @@
 import React from 'react';
 import { ImCalendar } from 'react-icons/im';
 import { Link, useNavigate } from 'react-router-dom';
-import { BASE_URI } from '../../../../../api/axios';
 const NewsCard = ({ n }) => {
   const navigate = useNavigate();
   return (
@@ -12,7 +11,7 @@ const NewsCard = ({ n }) => {
       >
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-          src={`${BASE_URI}/${n?.bannerImg?.path}`}
+          src={n.bannerImg}
           alt={n?.title}
         />
       </div>

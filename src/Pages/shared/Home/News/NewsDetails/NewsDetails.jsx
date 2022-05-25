@@ -6,7 +6,7 @@ import { Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import axios, { BASE_URI } from '../../../../../api/axios';
+import axios from '../../../../../api/axios';
 import Comments from '../../../../Education/DetailVideo/Comments/Comments';
 
 const NewsDetails = () => {
@@ -45,8 +45,10 @@ const NewsDetails = () => {
           <a href="/#">
             <img
               className="rounded-t-lg w-full mx-auto"
-              src={`${BASE_URI}/${result[0]?.bannerImg?.path}`}
-              alt={result[0]?.title}/>          </a>
+              src={result[0]?.bannerImg}
+              alt={result[0]?.title}
+            />{' '}
+          </a>
           <div className=" border-b-4 border-black pb-24">
             <p className=" mt-5">
               Publish Date:
@@ -76,9 +78,9 @@ const NewsDetails = () => {
                 PREVIOUS POST
               </h5>
               <Link to={`/newsDetails/${news[1]?._id}`}>
-              <h3 className="text-sm md:text-xl hover:opacity-70">
-                {news[1]?.title}
-              </h3>
+                <h3 className="text-sm md:text-xl hover:opacity-70">
+                  {news[1]?.title}
+                </h3>
               </Link>
             </div>
             <div>
@@ -86,9 +88,9 @@ const NewsDetails = () => {
                 NEXT POST
               </h5>
               <Link to={`/newsDetails/${news[2]?._id}`}>
-              <h3 className="text-sm md:text-xl hover:opacity-70">
-                {news[2]?.title}
-              </h3>
+                <h3 className="text-sm md:text-xl hover:opacity-70">
+                  {news[2]?.title}
+                </h3>
               </Link>
             </div>
           </div>
@@ -106,7 +108,7 @@ const NewsDetails = () => {
             <Link to={`/newsDetails/${data?._id}`}>
               <li className="text-sm md:text-base p-3 my-3 border rounded-lg flex list-non hover:text-blue-800 hover:bg-gray-100 hover:opacity-90 dark:text-white">
                 <SiGooglenews className="mr-2" />
-                {data?.title.slice(0,40)}..
+                {data?.title.slice(0, 40)}..
               </li>
             </Link>
           ))}
@@ -141,7 +143,8 @@ const NewsDetails = () => {
                           <div>
                             <img
                               className="w-full h-32"
-                              src={`${BASE_URI}/${n?.bannerImg?.path}`} alt={n?.title}
+                              src={n.bannerImg}
+                              alt={n?.title}
                             />
                           </div>
                         </div>
@@ -169,15 +172,18 @@ const NewsDetails = () => {
                 <h5 className="font-bolder text-xl md:text-2xl   hover:text-blue-600 py-5">
                   TOP News
                 </h5>
-                    
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   {news.map((data) => (
                     <div className="hover:overflow-hidden ">
-                      <Link to={`/newsDetails/${data._id}`}>
-                        <img
-                          className="w-full h-full  hover:scale-105 translate duration-700 ease-in-out  "
-                          src={`${BASE_URI}/${data?.bannerImg?.path}`} alt={data?.title}
-                        />
+                      <Link to={`/newsDetails/${data?._id}`}>
+                        {data && (
+                          <img
+                            className="w-full h-full  hover:scale-105 translate duration-700 ease-in-out  "
+                            src={data?.bannerImg}
+                            alt={data?.title}
+                          />
+                        )}
                       </Link>
                     </div>
                   ))}

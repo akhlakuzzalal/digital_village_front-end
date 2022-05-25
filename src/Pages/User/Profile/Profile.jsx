@@ -7,12 +7,11 @@ import {
 import { MdEmail } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import { BASE_URI } from '../../../api/axios';
 import {
   getSingleUserInfo,
   updateUser,
-  updateUserWithoutProfileImg,
 } from '../../../redux/slices/user/userSlice';
+import { uploadFile } from '../../../utilities/uploadFile';
 import EditProfile from './EditProfile';
 
 const Profile = () => {
@@ -39,38 +38,17 @@ const Profile = () => {
   );
 
   const handleUpdateUser = async (data) => {
-    const formData = new FormData();
-    formData.append('file', file);
+    console.log(data);
     // update without profile image
-    if (data.employmentStatus === 'choose one') delete data.employmentStatus;
-    if (data.maritalStatus === 'choose one') delete data.maritalStatus;
-    if (data.religion === 'choose one') delete data.religion;
-    if (data.gender === 'choose one') delete data.gender;
-
-    formData.append(
-      'user',
-      JSON.stringify({
-        ...data,
-      })
-    );
-
-    if (file?.path) {
-      dispatch(updateUser({ id: uId, formData })).then(() => {
-        dispatch(getSingleUserInfo(user.email));
-        Swal.fire({
-          title: 'updated successfully',
-          confirmButtonText: 'Okay',
-        });
+    const { url } = await uploadFile(file);
+    const info = { ...data, photo: url };
+    dispatch(updateUser({ id: uId, info })).then(() => {
+      dispatch(getSingleUserInfo(user.email));
+      Swal.fire({
+        title: 'updated successfully',
+        confirmButtonText: 'Okay',
       });
-    } else {
-      dispatch(updateUserWithoutProfileImg({ id: uId, data })).then(() => {
-        dispatch(getSingleUserInfo(user.email));
-        Swal.fire({
-          title: 'updated successfully',
-          confirmButtonText: 'Okay',
-        });
-      });
-    }
+    });
   };
 
   const image = previewFile.map((f) => (
@@ -85,7 +63,11 @@ const Profile = () => {
   useEffect(() => {
     previewFile.forEach((f) => URL.revokeObjectURL(f.preview));
     dispatch(getSingleUserInfo(user.email));
-  }, [previewFile, uId]);
+    if (updateProfile === false) {
+      setPreviewFile([]);
+      setFile({});
+    }
+  }, [previewFile, uId, updateProfile]);
 
   return (
     <div className="w-full">
@@ -93,19 +75,13 @@ const Profile = () => {
         <div>
           {/* profile preview image */}
           <div className="w-full flex flex-col items-center">
-            {previewFile.length >= 1 ? (
+            {updateProfile && previewFile[0]?.path ? (
               image
-            ) : user?.photo?.path ? (
-              <img
-                src={`${BASE_URI}/${user?.photo?.path}`}
-                className="w-64 rounded-full h-64"
-                alt={user?.profile?.name}
-              />
             ) : (
               <img
+                src={user?.photo}
                 className="w-64 rounded-full h-64"
-                src="https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg"
-                alt=""
+                alt={user?.profile?.name}
               />
             )}
             <button

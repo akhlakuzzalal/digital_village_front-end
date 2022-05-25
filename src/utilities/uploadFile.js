@@ -16,10 +16,10 @@ export const uploadFile = async (file) => {
   const formData = new FormData();
   formData.append('file', file);
 
-  formData.append('upload_preset', 'suxxgmcv');
-  formData.append('cloud_name', 'randomone');
+  formData.append('upload_preset', 'bgd6kbj4');
+  formData.append('cloud_name', 'dy6ihgqg9');
 
-  const res = await fetch('https://api.cloudinary.com/v1_1/randomone/upload', {
+  const res = await fetch('https://api.cloudinary.com/v1_1/dy6ihgqg9/upload', {
     method: 'POST',
     body: formData,
   });

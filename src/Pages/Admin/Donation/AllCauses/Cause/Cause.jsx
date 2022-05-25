@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { Progress } from 'react-sweet-progress';
 import 'react-sweet-progress/lib/style.css';
 import swal from 'sweetalert';
-import { BASE_URI } from '../../../../../api/axios';
 import { deleteACause } from '../../../../../redux/slices/Donations/donationSlice';
 import calculatePercentage from '../../../../../utilities/calculatePercentage';
 
@@ -51,7 +50,7 @@ const Cause = ({ _id, title, image, goal, raised, category }) => {
         </div>
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-          src={`${BASE_URI}/${image?.path}`}
+          src={image}
           alt={title}
         />
       </div>

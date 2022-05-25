@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 import img from '../../../assets/events/Add events.PNG';
+import FileUpload from '../../../Components/FileUpload';
 import { addAnEvent } from '../../../redux/slices/event/eventSlice';
+import { uploadFile } from '../../../utilities/uploadFile';
 const AddEvents = () => {
   const {
     register,
@@ -13,9 +15,16 @@ const AddEvents = () => {
     reset,
   } = useForm();
   const dispatch = useDispatch();
+  // file Upload
+  const [file, setFile] = useState({});
+  const onDrop = useCallback((acceptedFiles) => {
+    setFile(acceptedFiles[0]);
+  }, []);
 
-  const handleAddEvent = (data) => {
-    dispatch(addAnEvent(data)).then(() => {
+  const handleAddEvent = async (data) => {
+    const { url } = await uploadFile(file);
+    const body = { ...data, image: url };
+    dispatch(addAnEvent(body)).then(() => {
       Swal.fire({
         icon: 'success',
         title: 'added successfully',
@@ -85,14 +94,13 @@ const AddEvents = () => {
             {...register('date', { required: true })}
             placeholder="date"
           />
-          <input
-            className="px-7 py-2 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-lg"
-            {...register('image', { required: 'Image is Required' })}
-            onKeyUp={() => {
-              trigger('image');
-            }}
-            placeholder="Add a image Link"
-          />
+          <div className="w-full rounded-xl">
+            <FileUpload
+              onDrop={onDrop}
+              file={file}
+              message="Upload a Event Photo"
+            />
+          </div>
           {errors.image && (
             <small className="text-danger">{errors.image.message}</small>
           )}

@@ -27,9 +27,9 @@ export const getSingleUserInfo = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   'user/updateUser',
-  async ({ id, formData }) => {
+  async ({ id, info }) => {
     const response = await axios
-      .put(`/user/update/?id=${id}`, formData)
+      .put(`/user/update/?id=${id}`, info)
       .then((response) => response.data);
     return response;
   }

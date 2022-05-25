@@ -73,11 +73,7 @@ const UserMenu = () => {
         >
           <img
             className="w-8 h-8 rounded-full"
-            src={
-              user?.photo?.path
-                ? `${BASE_URI}/${user?.photo?.path}`
-                : 'https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg'
-            }
+            src={user?.photo}
             alt="User"
           />
           <div className="hidden md:flex items-center truncate">
@@ -90,11 +86,7 @@ const UserMenu = () => {
       ) : (
         <img
           className="w-8 h-8 rounded-full"
-          src={
-            user?.photo?.path
-              ? `${BASE_URI}/${user?.photo?.path}`
-              : 'https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg'
-          }
+          src={user?.photo}
           alt="User"
         />
       )}

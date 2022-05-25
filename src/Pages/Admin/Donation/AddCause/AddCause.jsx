@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 import FileUpload from '../../../../Components/FileUpload';
 import { addACuase } from '../../../../redux/slices/Donations/donationSlice';
+import { uploadFile } from '../../../../utilities/uploadFile';
 
 const AddCause = () => {
   const dispatch = useDispatch();
@@ -21,19 +22,16 @@ const AddCause = () => {
   }, []);
 
   const handleAddCause = async (data) => {
+    const { url } = await uploadFile(file);
     if (data.category === 'choose one') data.category = 'others';
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append(
-      'cause',
-      JSON.stringify({
-        ...data,
-        raised: 0,
-        date: new Date().toLocaleDateString(),
-      })
-    );
+    const body = {
+      ...data,
+      raised: 0,
+      date: new Date().toLocaleDateString(),
+      image: url,
+    };
 
-    dispatch(addACuase(formData)).then(() => {
+    dispatch(addACuase(body)).then(() => {
       Swal.fire({
         title: 'donation cause successfully added',
         confirmButtonText: 'Okay',

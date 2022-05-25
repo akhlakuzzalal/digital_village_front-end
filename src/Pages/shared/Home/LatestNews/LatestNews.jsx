@@ -6,7 +6,6 @@ import { Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { BASE_URI } from '../../../../api/axios';
 
 const LatestNews = () => {
   const [news, setNews] = useState([]);
@@ -57,7 +56,8 @@ const LatestNews = () => {
                     <img
                       className="rounded-t-lg w-100"
                       style={{ height: '280px' }}
-                      src={`${BASE_URI}/${n?.bannerImg?.path}`} alt={n?.title}
+                      src={n.bannerImg}
+                      alt={n?.title}
                     />
                     <div className="dark:dark-card-bg">
                       <div className="p-4">

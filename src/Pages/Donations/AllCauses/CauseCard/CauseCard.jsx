@@ -4,7 +4,6 @@ import { FcDonate } from 'react-icons/fc';
 import { useNavigate } from 'react-router-dom';
 import { Progress } from 'react-sweet-progress';
 import 'react-sweet-progress/lib/style.css';
-import { BASE_URI } from '../../../../api/axios';
 import calculatePercentage from '../../../../utilities/calculatePercentage';
 
 const CauseCard = ({ cause }) => {
@@ -24,7 +23,7 @@ const CauseCard = ({ cause }) => {
         </div>
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-          src={`${BASE_URI}/${cause?.image?.path}`}
+          src={cause?.image}
           alt={cause?.title}
         />
       </div>
@@ -57,8 +56,10 @@ const CauseCard = ({ cause }) => {
 
       {/* progress bar */}
       <div class="py-4">
-        <p class="text-gray-600 dark:text-dark_text">Raised {percent.toFixed(0)}% completed</p>
-        <Progress 
+        <p class="text-gray-600 dark:text-dark_text">
+          Raised {percent.toFixed(0)}% completed
+        </p>
+        <Progress
           percent={percent.toFixed(0)}
           theme={{
             error: {

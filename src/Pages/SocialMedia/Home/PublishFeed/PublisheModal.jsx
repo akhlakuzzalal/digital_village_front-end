@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import axios, { BASE_URI } from '../../../../api/axios';
+import axios from '../../../../api/axios';
 import FileUpload from '../../../../Components/FileUpload';
+import { uploadFile } from '../../../../utilities/uploadFile';
 
 const PublisheModal = ({ open, setOpen }) => {
   const {
@@ -19,40 +20,23 @@ const PublisheModal = ({ open, setOpen }) => {
   const onDrop = useCallback((acceptedFiles) => {
     setFile(acceptedFiles[0]);
   }, []);
-  const postSubmitHandler = (data) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append(
-      'post',
-      JSON.stringify({
-        ...data,
-        userEmail: socialUser.email,
-      })
-    );
-    const postData = { ...data, userEmail: socialUser?.email };
-    if (file?.path) {
-      axios.post('/social/addPostwithImage', formData).then((res) => {
-        if (res.data) {
-          Swal.fire({
-            title: 'Posted successfully',
-            confirmButtonText: 'Okay',
-          });
-          reset();
-          setOpen(false);
-        }
-      });
-    } else {
-      axios.post('/social/addPost', postData).then((res) => {
-        if (res.data) {
-          Swal.fire({
-            title: 'Posted successfully',
-            confirmButtonText: 'Okay',
-          });
-          setOpen(false);
-          reset();
-        }
-      });
-    }
+
+  // post handler
+  const postSubmitHandler = async (data) => {
+    const { url } = await uploadFile(file);
+
+    const postData = { ...data, userEmail: socialUser?.email, photo: url };
+    console.log('clickedd', postData);
+    axios.post('/social/addPost', postData).then((res) => {
+      if (res.data) {
+        Swal.fire({
+          title: 'Posted successfully',
+          confirmButtonText: 'Okay',
+        });
+        setOpen(false);
+        reset();
+      }
+    });
   };
   return (
     <>
@@ -71,7 +55,7 @@ const PublisheModal = ({ open, setOpen }) => {
                   <div className="flex items-center space-x-3">
                     <div class="mr-2 w-12 h-12 relative flex justify-center items-center rounded-full bg-gray-500 text-xl text-white">
                       <img
-                        src={`${BASE_URI}/${socialUser?.photo?.path}`}
+                        src={socialUser?.photo}
                         className="rounded-full w-12 h-12"
                         alt=""
                       />

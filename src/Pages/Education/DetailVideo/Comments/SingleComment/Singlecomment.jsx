@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import axios, { BASE_URI } from '../../../../../api/axios';
+import axios from '../../../../../api/axios';
 import LikeDislikes from '../../LikeDislikes/LikeDislikes';
 const SingleComment = ({ comment, updateComment, postId }) => {
   const uId = useSelector((state) => state.user.uId);
@@ -43,17 +43,13 @@ const SingleComment = ({ comment, updateComment, postId }) => {
       <div className="flex items-center space-x-4">
         <div>
           <img
-            className="h-16 rounded-2xl"
-            src={
-              comment?.commenter?.photo
-                ? `${BASE_URI}/${comment?.commenter?.photo?.path}`
-                : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNDgyaDCaoDZJx8N9BBE6eXm5uXuObd6FPeg&usqp=CAU'
-            }
+            className="h-10 w-10 rounded-2xl"
+            src={comment?.commenter?.photo}
             alt={comment?.commenter?.photo?.name || 'profile'}
           />
         </div>
         <div>
-          <p>{comment?.commenter.name}</p>
+          <p className="font-bold text-blue-600">{comment?.commenter.name}</p>
           <p>{comment?.comment}</p>
         </div>
       </div>

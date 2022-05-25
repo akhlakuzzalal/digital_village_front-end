@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import axios, { BASE_URI } from '../../../../../api/axios';
+import axios from '../../../../../api/axios';
 import Rating from '../../../../../Components/Rating';
 
 const BlogCard = ({ blog }) => {
@@ -56,7 +56,7 @@ const BlogCard = ({ blog }) => {
       >
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover "
-          src={`${BASE_URI}/${blog?.bannerImg?.path}`}
+          src={blog?.bannerImg}
           alt={blog?.title}
         />
       </div>

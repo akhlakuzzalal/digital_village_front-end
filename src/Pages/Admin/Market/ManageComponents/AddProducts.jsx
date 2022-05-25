@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
+import FileUpload from '../../../../Components/FileUpload';
+import { uploadFile } from '../../../../utilities/uploadFile';
 import useMarketAdminDashboard from '../utility/useMarketAdminDashboard';
 
 const AddProducts = ({ sidebar, setSidebar }) => {
@@ -12,8 +14,16 @@ const AddProducts = ({ sidebar, setSidebar }) => {
     trigger,
     formState: { errors },
   } = useForm();
-  const handleAddProduct = (data) => {
-    addANewProduct(data);
+
+  // image Upload
+  const [file, setFile] = useState({});
+  const onDrop = useCallback((acceptedFiles) => {
+    setFile(acceptedFiles[0]);
+  }, []);
+
+  const handleAddProduct = async (data) => {
+    const { url } = await uploadFile(file);
+    addANewProduct({ ...data, img: url });
     reset();
   };
   return (
@@ -69,12 +79,13 @@ const AddProducts = ({ sidebar, setSidebar }) => {
             placeholder="Description"
           />
           {/* img */}
-          <input
-            type="url"
-            className="px-7 py-3 bg-gray-100 outline-none border-2 focus:border-primary w-full transition-all duration-300 rounded-xl "
-            {...register('img', { required: true })}
-            placeholder="Image Link"
-          />
+          <div className="w-full">
+            <FileUpload
+              onDrop={onDrop}
+              file={file}
+              message="Upload your Product Image"
+            />
+          </div>
           {/* rating */}
           <input
             type="number"
