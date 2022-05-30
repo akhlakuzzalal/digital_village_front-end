@@ -11,7 +11,7 @@ const NewsCard = ({ n }) => {
       >
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-          src={n.bannerImg}
+          src={n.imageInfo.url}
           alt={n?.title}
         />
       </div>

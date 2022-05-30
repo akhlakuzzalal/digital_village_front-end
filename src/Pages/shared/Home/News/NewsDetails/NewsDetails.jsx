@@ -30,10 +30,13 @@ const NewsDetails = () => {
         alert('Failed to get blog Info');
       }
     });
-  }, [id]);
-  console.log(news);
+  }, []);
 
   const result = news.filter((data) => data?._id === id);
+
+  console.log(result);
+
+  const x = false;
 
   return (
     <div className="mt-[80px]" style={{ minHeight: 'calc(100vh - 700px)' }}>
@@ -42,41 +45,35 @@ const NewsDetails = () => {
           <hr />
           <br />
 
-          <a href="/#">
-            <img
-              className="rounded-t-lg w-full mx-auto"
-              src={result[0]?.bannerImg}
-              alt={result[0]?.title}
-            />{' '}
-          </a>
-          <div className=" border-b-4 border-black pb-24">
-            <p className=" mt-5">
+          <img
+            className="rounded-t-lg w-full mx-auto"
+            src={result[0]?.imageInfo.url}
+            alt={result[0]?.title}
+          />
+          <div className="border-b-4 border-black pb-24">
+            <p className="mt-5 px-10">
               Publish Date:
               <span className="text-red-600 mr-5 md:mr-5">
-                {' '}
                 {result[0]?.publishDate}
               </span>
               <span>
-                {' '}
                 Publish Time:
                 <span className="text-red-600"> {result[0]?.publishTime}</span>
               </span>
             </p>
 
-            <h3 className="text-base md:text-4xl text-justify md:text-center mt-3   md:mt-5">
+            <h3 className="text-base md:text-4xl text-justify md:text-center mt-3  md:mt-5">
               {result[0]?.title}...
             </h3>
 
-            <p className=" font-normal text-gray-700 dark:text-gray-400 text-justify md:pt-8 ">
-              {result[0]?.description}{' '}
+            <p className="font-normal text-gray-700 dark:text-gray-400 text-justify md:pt-8 px-10">
+              {result[0]?.description}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 mt-5 border-b-4 border-gray-400 pb-10 ">
+          <div className="grid md:grid-cols-2 mt-5 border-b-4 border-gray-400 pb-10 px-10">
             <div className="border-r-2 border-gray-400 md:mr-5">
-              <h5 className="my-3  text-gray-400 hover:text-blue-600">
-                PREVIOUS POST
-              </h5>
+              <h5 className="my-3  text-gray-400">PREVIOUS POST</h5>
               <Link to={`/newsDetails/${news[1]?._id}`}>
                 <h3 className="text-sm md:text-xl hover:opacity-70">
                   {news[1]?.title}
@@ -84,9 +81,7 @@ const NewsDetails = () => {
               </Link>
             </div>
             <div>
-              <h5 className="my-3 text-gray-400 hover:text-blue-600">
-                NEXT POST
-              </h5>
+              <h5 className="my-3 text-gray-400">NEXT POST</h5>
               <Link to={`/newsDetails/${news[2]?._id}`}>
                 <h3 className="text-sm md:text-xl hover:opacity-70">
                   {news[2]?.title}
@@ -103,10 +98,10 @@ const NewsDetails = () => {
         </div>
 
         <div className="px-5  md:border-l-4 md:pl-8 pt-5">
-          <p className="text-gray-400 hover:text-blue-600">LATEST ARTICLES</p>
+          <p className="text-gray-400">LATEST ARTICLES</p>
           {news.map((data) => (
             <Link to={`/newsDetails/${data?._id}`}>
-              <li className="text-sm md:text-base p-3 my-3 border rounded-lg flex list-non hover:text-blue-800 hover:bg-gray-100 hover:opacity-90 dark:text-white">
+              <li className="text-sm md:text-base p-3 my-3 border rounded-lg flex list-non hover:bg-gray-100 hover:opacity-90 dark:text-white hover:dark:text-black">
                 <SiGooglenews className="mr-2" />
                 {data?.title.slice(0, 40)}..
               </li>
@@ -114,12 +109,9 @@ const NewsDetails = () => {
           ))}
 
           <div className="grid grid-cols-1 my-10">
-            <h5 className="text-gray-400 my-5 border-t-4 hover:text-blue-600 pt-5">
-              RECOMMENDED
-            </h5>
+            <h5 className="text-gray-400 my-5 border-t-4 pt-5">RECOMMENDED</h5>
             <div className=" ">
               <Swiper
-                // slidesPerView={2}
                 slidesPerGroup={1}
                 autoplay={{
                   delay: 2500,
@@ -143,7 +135,7 @@ const NewsDetails = () => {
                           <div>
                             <img
                               className="w-full h-32"
-                              src={n.bannerImg}
+                              src={n?.imageInfo.url}
                               alt={n?.title}
                             />
                           </div>
@@ -157,7 +149,7 @@ const NewsDetails = () => {
 
                         <p>{n.description.slice(0, 20)} ...</p>
                         <Link to={`/newsDetails/${n._id}`}>
-                          <button className="text-primary text-lg hover:text-black transition-all duration-500 border-b-2 border-b-primary">
+                          <button className="text-primary text-lg hover:text-black hover:dark:text-white transition-all duration-500 border-b-2 border-b-primary">
                             Read More
                           </button>
                         </Link>
@@ -169,8 +161,8 @@ const NewsDetails = () => {
             </div>
             <div className="border-t-4 my-5 pt-5">
               <div className="mx-auto ">
-                <h5 className="font-bolder text-xl md:text-2xl   hover:text-blue-600 py-5">
-                  TOP News
+                <h5 className="font-bolder text-xl md:text-2xl dark:text-white py-5">
+                  TOP NEWS
                 </h5>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -180,7 +172,7 @@ const NewsDetails = () => {
                         {data && (
                           <img
                             className="w-full h-full  hover:scale-105 translate duration-700 ease-in-out  "
-                            src={data?.bannerImg}
+                            src={data?.imageInfo.url}
                             alt={data?.title}
                           />
                         )}

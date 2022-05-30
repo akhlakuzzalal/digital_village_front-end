@@ -26,12 +26,12 @@ const AddNews = () => {
   }, []);
 
   const handlePublishNews = async (data) => {
-    const { url } = await uploadFile(file);
+    const imageInfo = await uploadFile(file);
 
     const newNews = {
       ...data,
       content,
-      bannerImg: url,
+      imageInfo,
     };
 
     const response = await axios.post('/news/addNews', newNews);

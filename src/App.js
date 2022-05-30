@@ -20,6 +20,7 @@ import ManageAllDonors from './Pages/Admin/Donation/ManageAllDonors/ManageAllDon
 import UpdateCause from './Pages/Admin/Donation/updateCause/UpdateCause';
 import MarketManagement from './Pages/Admin/Market/MarketManagement';
 import AddNews from './Pages/Admin/News/AddNews/AddNews';
+import EditNews from './Pages/Admin/News/EditNews/EditNews';
 import ManageNews from './Pages/Admin/News/ManageNews/ManageNews';
 import SendNotification from './Pages/Admin/SendNotification/SendNotification';
 import AllNews from './Pages/AllNews/AllNews';
@@ -81,7 +82,6 @@ import Contact from './Pages/shared/Contact/Contact';
 import Footer from './Pages/shared/Home/Footer/Footer';
 import Header from './Pages/shared/Home/Header/Header';
 import Home from './Pages/shared/Home/Home';
-import EditNews from './Pages/shared/Home/News/EditNews/EditNews';
 import NewsDetails from './Pages/shared/Home/News/NewsDetails/NewsDetails';
 import NotFound from './Pages/shared/NotFound/NotFound';
 import AddFriend from './Pages/SocialMedia/Connections/BoardComponent/AddFriend.jsx';

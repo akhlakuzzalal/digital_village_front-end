@@ -1,5 +1,3 @@
-import React from 'react';
-
 const NewsSidebar = () => {
   return (
     <div>
@@ -8,7 +6,7 @@ const NewsSidebar = () => {
           <ul className="space-y-2">
             <li>
               <a
-                href="#"
+                href="/#"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -27,7 +25,7 @@ const NewsSidebar = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/#"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -53,7 +51,7 @@ const NewsSidebar = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/#"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -79,7 +77,7 @@ const NewsSidebar = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/#"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -105,7 +103,7 @@ const NewsSidebar = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/#"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -130,10 +128,11 @@ const NewsSidebar = () => {
               </a>
             </li>
           </ul>
+
           <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
             <li>
               <a
-                href="#"
+                href="/#"
                 className="flex items-center p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
               >
                 <svg
@@ -158,7 +157,7 @@ const NewsSidebar = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/#"
                 className="flex items-center p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
               >
                 <svg
@@ -179,7 +178,7 @@ const NewsSidebar = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/#"
                 className="flex items-center p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
               >
                 <svg
@@ -195,7 +194,7 @@ const NewsSidebar = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/#"
                 className="flex items-center p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
               >
                 <svg
@@ -213,10 +212,9 @@ const NewsSidebar = () => {
                 <span className="ml-3">Events News</span>
               </a>
             </li>
-
             <li>
               <a
-                href="#"
+                href="/#"
                 className="flex items-center p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
               >
                 <svg

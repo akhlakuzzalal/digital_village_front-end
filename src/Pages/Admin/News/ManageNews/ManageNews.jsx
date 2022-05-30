@@ -5,7 +5,6 @@ import axios from '../../../../api/axios';
 
 const ManageNews = () => {
   const [news, setNews] = useState([]);
-  const [confirm, setConfirm] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -49,7 +48,7 @@ const ManageNews = () => {
           <div className="overflow-hidden rounded-xl h-52 cursor-pointer">
             <img
               className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-              src={n?.bannerImg}
+              src={n?.imageInfo.url}
               alt={n?.title}
             />
           </div>

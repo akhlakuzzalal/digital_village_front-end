@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Autoplay } from 'swiper';
 // Import Swiper styles
 import 'swiper/css';
@@ -11,7 +11,6 @@ import NewsSideCard from './NewsSideCard/NewsSideCard';
 
 const News = () => {
   const [news, setNews] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get('/news/allNews').then((response) => setNews(response.data));
