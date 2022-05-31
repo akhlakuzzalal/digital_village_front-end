@@ -13,7 +13,7 @@ const FavouriteBlogCard = ({ blog, handleRemoveFromFavourite }) => {
       >
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover "
-          src={blog?.bannerImg}
+          src={blog?.imageInfo?.url}
           alt={blog?.title}
         />
       </div>

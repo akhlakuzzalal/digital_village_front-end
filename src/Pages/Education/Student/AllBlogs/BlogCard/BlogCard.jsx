@@ -49,14 +49,14 @@ const BlogCard = ({ blog }) => {
 
   return (
     <div className="bg-white dark:dark-card-bg rounded-xl p-4 box-border overflow-hidden relative flex flex-col justify-between max-w-[400px] h-[400px]">
-      {/* image  */}
+      {/* image */}
       <div
         className="overflow-hidden rounded-xl h-52 cursor-pointer"
         onClick={() => navigate(`/blogDetails/${blog._id}`)}
       >
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover "
-          src={blog?.bannerImg}
+          src={blog?.imageInfo?.url}
           alt={blog?.title}
         />
       </div>

@@ -7,6 +7,7 @@ import FileUpload from '../../../../Components/FileUpload';
 import useMediaQuery from '../../../../hooks/useMediaQuery';
 import animationData from '../../../../lotties/video.json';
 import { giveAlert } from '../../../../utilities/alert';
+import { uploadFile } from '../../../../utilities/uploadFile';
 const PublishVideo = () => {
   const [file, setFile] = useState({});
   const user = useSelector((state) => state.user.user);
@@ -23,20 +24,20 @@ const PublishVideo = () => {
   }, []);
 
   const handlePublishVideo = async (data) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append(
-      'video',
-      JSON.stringify({
-        ...data,
-        author: user?.name,
-        email: user?.email,
-        publishDate: new Date().toLocaleDateString(),
-        tags: data?.tags.split(' '),
-      })
-    );
+    const videoInfo = await uploadFile(file);
 
-    const response = await axios.post('/teacher/publishVideo', formData);
+    console.log(videoInfo);
+
+    const video = {
+      ...data,
+      author: user?.name,
+      email: user?.email,
+      videoInfo,
+      publishDate: new Date().toLocaleDateString(),
+      tags: data?.tags.split(' '),
+    };
+
+    const response = await axios.post('/teacher/publishVideo', video);
     console.log(response.data[0]);
     if (response.data[0]?.title) {
       giveAlert('Your video published successfully', 'success');
@@ -46,6 +47,7 @@ const PublishVideo = () => {
       giveAlert('Failed to publish', 'error');
     }
   };
+
   // lottie
   const isTablet = useMediaQuery('(min-width: 656px)');
   const isDesktop = useMediaQuery('(min-width: 900px)');
