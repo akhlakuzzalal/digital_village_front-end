@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import axios from '../../../../../api/axios';
 import FileUpload from '../../../../../Components/FileUpload';
 import RichTextEditor from '../../../../../Components/RichTextEditor';
+import { uploadFile } from '../../../../../utilities/uploadFile';
 
 const EditBlog = () => {
   const { id } = useParams();
@@ -28,18 +29,24 @@ const EditBlog = () => {
   }, []);
 
   const handleEditBlog = async (data) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append(
-      'blog',
-      JSON.stringify({
+    let updatedBlog = {
+      ...data,
+      content,
+    };
+
+    if (file?.path) {
+      const imageInfo = await uploadFile(file);
+      updatedBlog = {
         ...data,
         content,
-        tags: data?.tags.split(' '),
-      })
-    );
+        imageInfo,
+      };
+    }
 
-    const response = await axios.put(`/teacher/editABlog/?id=${id}`, formData);
+    const response = await axios.put(
+      `/teacher/editABlog/?id=${id}&public_id=${singleBlog?.imageInfo?.public_id}`,
+      updatedBlog
+    );
     console.log(response.data);
     if (response?.data?.success) {
       Swal.fire({
@@ -51,14 +58,15 @@ const EditBlog = () => {
 
   useEffect(() => {
     axios.get(`/teacher/getSingleBlog?id=${id}`).then((response) => {
-      setSingleBlog(response?.data); // fetch the previous blog
-      setFile(response?.data?.bannerImg);
+      setSingleBlog(response?.data);
     });
   }, [id]);
 
   return (
     <div className="flex flex-col py-12 md:py-36 pl-14 md:pl- pr-4 md:pr-8 justify-center items-center min-h-full space-y-6">
-      <h1 className='text-2xl md:text-6xl text-center md:text-left'>Edit your blog now</h1>
+      <h1 className="text-2xl md:text-6xl text-center md:text-left">
+        Edit your blog now
+      </h1>
       {singleBlog?.title && (
         <form
           onSubmit={handleSubmit(handleEditBlog)}

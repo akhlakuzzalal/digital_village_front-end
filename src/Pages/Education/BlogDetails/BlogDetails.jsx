@@ -36,7 +36,7 @@ const BlogDetails = () => {
       <div className="col-span-5 lg:w-4/5 space-y-6 lg:px-12 my-20 px-3">
         <div>
           <img
-            src={blog?.bannerImg}
+            src={blog?.imageInfo?.url}
             alt={blog?.title}
             className="w-full lg:w-full lg:h-[70vh] h-[200px]"
           />

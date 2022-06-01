@@ -1,6 +1,4 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BASE_URI } from '../../../../../api/axios';
 
 const SideVideoCard = ({ video }) => {
   const navigate = useNavigate();
@@ -12,7 +10,7 @@ const SideVideoCard = ({ video }) => {
       <div className="w-[40%] overflow-hidden">
         <video
           className="w-fit group-hover:scale-150 transition-all duration-500"
-          src={`${BASE_URI}/${video?.video?.path}`}
+          src={video?.videoInfo?.url}
         ></video>
       </div>
       <div>

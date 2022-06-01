@@ -31,12 +31,12 @@ const PublishBlog = () => {
   }, []);
 
   const handlePublishBlogs = async (data) => {
-    const { url } = await uploadFile(file);
+    const imageInfo = await uploadFile(file);
     const body = {
       ...data,
       author: user?.name,
       email: user?.email,
-      bannerImg: url,
+      imageInfo,
       content,
       publishDate: new Date().toLocaleDateString(),
       tags: data?.tags.split(' '),

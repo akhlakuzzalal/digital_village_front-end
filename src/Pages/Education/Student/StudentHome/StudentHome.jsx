@@ -25,15 +25,16 @@ const StudentHome = () => {
     dispatch(fetchBlogs({}));
     dispatch(fetchVideos({}));
   }, []);
+
   return (
     <div className="w-full space-y-10 mb-10">
       <Banner />
-     
+
       {/* top categories */}
       <div className="md:pl-14 space-y-10">
         <div>
           <h3 className="py-6  md:text-left text-xl lg:text-4xl ">
-            Top Categories <hr className='mt-5' />
+            Top Categories <hr className="mt-5" />
           </h3>
 
           <Categories />
@@ -61,12 +62,8 @@ const StudentHome = () => {
             ))}
           </div>
         </div>
-            
-            
-            <StudentFooter />
 
-            
-      
+        <StudentFooter />
       </div>
     </div>
   );

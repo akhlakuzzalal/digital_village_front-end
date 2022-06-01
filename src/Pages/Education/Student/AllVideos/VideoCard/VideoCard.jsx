@@ -1,7 +1,6 @@
 import React from 'react';
 import { BsFillPlayCircleFill } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
-import { BASE_URI } from '../../../../../api/axios';
 import Rating from '../../../../../Components/Rating';
 
 const VideoCard = ({ video, children }) => {
@@ -15,13 +14,13 @@ const VideoCard = ({ video, children }) => {
       >
         <video
           className="w-full rounded-2xl"
-          src={`${BASE_URI}/${video?.video?.path}`}
+          src={video?.videoInfo?.url}
         ></video>
         <div className="flex justify-between px-3">
           <div className="space-y-2">
             <h3 className="text-xl dark:text-dark_text">{video?.title}</h3>
             <div className="flex text-yellow-400">
-              <Rating rating={video?.rating} />
+              <Rating ratin g={video?.rating} />
             </div>
           </div>
 

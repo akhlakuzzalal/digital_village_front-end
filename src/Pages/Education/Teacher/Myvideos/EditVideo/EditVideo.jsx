@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import axios, { BASE_URI } from '../../../../../api/axios';
+import axios from '../../../../../api/axios';
 
 const EditVideo = () => {
   const { id } = useParams();
@@ -35,10 +35,10 @@ const EditVideo = () => {
     <div className="grid grid-cols-12 place-content-evenly gap-4">
       {/* video */}
       <div className="col-span-4">
-        {singleVideo?.video?.path && (
+        {singleVideo?.videoInfo?.url && (
           <video
             className="w-full"
-            src={`${BASE_URI}/${singleVideo?.video?.path}`}
+            src={singleVideo?.videoInfo?.url}
             controls
           />
         )}

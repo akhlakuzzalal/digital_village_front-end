@@ -2,14 +2,15 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import axios from '../../../../../api/axios';
-import FileUpload from '../../../../../Components/FileUpload';
-import RichTextEditor from '../../../../../Components/RichTextEditor';
+import axios from '../../../../api/axios';
+import FileUpload from '../../../../Components/FileUpload';
+import RichTextEditor from '../../../../Components/RichTextEditor';
+import { uploadFile } from '../../../../utilities/uploadFile';
 
 const EditNews = () => {
   const { id } = useParams();
   const [singleNews, setSingleNews] = useState({});
-  const [file, setFile] = useState({});  
+  const [file, setFile] = useState({});
   const [content, setContent] = useState('Start writing');
 
   const {
@@ -24,55 +25,52 @@ const EditNews = () => {
     setContent(e.target.getContent());
   };
 
-  
-
   const onDrop = useCallback((acceptedFiles) => {
     setFile(acceptedFiles[0]);
   }, []);
 
   const handleEditNews = async (data) => {
-    console.log(file)
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append(
-      'news',
-      JSON.stringify({
+    let updatedNews = {
+      ...data,
+      content,
+    };
+
+    if (file?.path) {
+      const imageInfo = await uploadFile(file);
+      updatedNews = {
         ...data,
         content,
-       
-      })
+        imageInfo,
+      };
+    }
+
+    const response = await axios.put(
+      `/news/editNews/?id=${id}&public_id=${singleNews?.imageInfo?.public_id}`,
+      updatedNews
     );
 
-    const response = await axios.put(`/news/editNews/?id=${id}`, formData);
-    console.log(response.data);
     if (response?.data?.success) {
-      
       Swal.fire({
         title: 'updated successfully',
         confirmButtonText: 'Okay',
-      
       });
-      reset()
-      
+      reset();
     }
-    
   };
-
-  
 
   useEffect(() => {
     axios.get(`/news/getSingleNews?id=${id}`).then((response) => {
       setSingleNews(response?.data);
-      console.log(response?.data);
-      setFile(response?.data?.bannerImg);
-    
     });
-  }, [id]);
-  
+  }, []);
+
+  console.log(singleNews);
 
   return (
     <div className="flex flex-col py-12 md:py-36 pl-6 pr-4 md:pr-8 justify-center items-center min-h-full space-y-6">
-      <h1 className='text-base md:text-6xl text-center md:text-left'>Edit your News Now</h1>
+      <h1 className="text-base md:text-6xl text-center md:text-left">
+        Edit your News Now
+      </h1>
       {singleNews?.title && (
         <form
           onSubmit={handleSubmit(handleEditNews)}
@@ -86,7 +84,6 @@ const EditNews = () => {
                 <input
                   className="w-full px-7 py-6 bg-gray-100 outline-none border-2 focus:border-primary  transition-all duration-300 rounded-xl"
                   {...register('title', {
-                    required:true,
                     required: 'Title is Required',
                     value: singleNews?.title,
                   })}
@@ -120,14 +117,15 @@ const EditNews = () => {
                       value: 50,
                       message: 'Minimum Required length is 50 ',
                     },
-                   
                   })}
                   onKeyUp={() => {
                     trigger('description');
                   }}
                 ></textarea>
                 {errors.description && (
-                  <small className="text-danger">{errors.description.message}</small>
+                  <small className="text-danger">
+                    {errors.description.message}
+                  </small>
                 )}
               </div>
 
@@ -164,7 +162,9 @@ const EditNews = () => {
                   }}
                 />
                 {errors.tags && (
-                  <small className="text-danger">{errors.publishTime.message}</small>
+                  <small className="text-danger">
+                    {errors.publishTime.message}
+                  </small>
                 )}
               </div>
             </div>

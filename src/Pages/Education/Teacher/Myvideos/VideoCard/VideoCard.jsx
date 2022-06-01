@@ -4,7 +4,6 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
-import { BASE_URI } from '../../../../../api/axios';
 import Rating from '../../../../../Components/Rating';
 import { deleteAVideo } from '../../../../../redux/slices/video/videoSlice';
 
@@ -36,7 +35,7 @@ const VideoCard = ({ video }) => {
       >
         <video
           className="h-56 w-full rounded-2xl"
-          src={`${BASE_URI}/${video?.video?.path}`}
+          src={video?.videoInfo?.url}
         ></video>
         <div className="flex justify-between px-3">
           <div className="space-y-2">
