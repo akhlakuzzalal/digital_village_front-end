@@ -16,7 +16,7 @@ const ManageNews = () => {
     });
   }, [isLoading]);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id, public_id) => {
     swal({
       title: 'Are you sure?',
       text: 'Once deleted, you will not be able to recover this imaginary file!',
@@ -25,16 +25,18 @@ const ManageNews = () => {
       dangerMode: true,
     }).then(() => {
       setIsLoading(true);
-      axios.delete(`/news/deleteNews/${id}`).then((response) => {
-        if (response?.data?.deletedCount) {
-          swal('Delete! Your News Fille has been deleted!', {
-            icon: 'success',
-          });
-          setIsLoading(false);
-        } else {
-          swal('Your News  file is safe!');
-        }
-      });
+      axios
+        .delete(`/news/deleteNews/?id=${id}&public_id=${public_id}`)
+        .then((response) => {
+          if (response?.data?.deletedCount) {
+            swal('Delete! Your News Fille has been deleted!', {
+              icon: 'success',
+            });
+            setIsLoading(false);
+          } else {
+            swal('Your News  file is safe!');
+          }
+        });
     });
   };
 
@@ -81,7 +83,7 @@ const ManageNews = () => {
             </button>
 
             <button
-              onClick={() => handleDelete(n._id)}
+              onClick={() => handleDelete(n._id, n?.imageInfo?.public_id)}
               className="w-100 flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Delete

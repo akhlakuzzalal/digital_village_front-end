@@ -18,7 +18,9 @@ const BlogCard = ({ blog }) => {
       icon: 'warning',
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(deleteABlog(blog?._id));
+        dispatch(
+          deleteABlog({ id: blog?._id, public_id: blog?.imageInfo?.public_id })
+        );
         Swal.fire({
           title: 'deleted Successfully.',
           icon: 'success',
