@@ -23,10 +23,10 @@ const PublisheModal = ({ open, setOpen }) => {
 
   // post handler
   const postSubmitHandler = async (data) => {
-    const { url } = await uploadFile(file);
+    const imageInfo = await uploadFile(file);
 
-    const postData = { ...data, userEmail: socialUser?.email, photo: url };
-    console.log('clickedd', postData);
+    const postData = { ...data, userEmail: socialUser?.email, imageInfo };
+
     axios.post('/social/addPost', postData).then((res) => {
       if (res.data) {
         Swal.fire({
@@ -55,7 +55,7 @@ const PublisheModal = ({ open, setOpen }) => {
                   <div className="flex items-center space-x-3">
                     <div class="mr-2 w-12 h-12 relative flex justify-center items-center rounded-full bg-gray-500 text-xl text-white">
                       <img
-                        src={socialUser?.photo}
+                        src={socialUser?.imageInfo?.url}
                         className="rounded-full w-12 h-12"
                         alt=""
                       />

@@ -27,9 +27,9 @@ export const getSingleUserInfo = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   'user/updateUser',
-  async ({ id, info }) => {
+  async ({ id, info, public_id }) => {
     const response = await axios
-      .put(`/user/update/?id=${id}`, info)
+      .put(`/user/update/?id=${id}&public_id=${public_id}`, info)
       .then((response) => response.data);
     return response;
   }

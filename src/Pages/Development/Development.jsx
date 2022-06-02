@@ -15,6 +15,8 @@ const Development = () => {
     dispatch(fetchAllDevelopmentProposals());
   }, []);
 
+  console.log(developmentProposals);
+
   return (
     <div className="mt-[80px] h-full">
       <DevelopmentBanner />

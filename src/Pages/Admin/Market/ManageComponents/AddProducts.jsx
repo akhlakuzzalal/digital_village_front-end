@@ -22,10 +22,11 @@ const AddProducts = ({ sidebar, setSidebar }) => {
   }, []);
 
   const handleAddProduct = async (data) => {
-    const { url } = await uploadFile(file);
-    addANewProduct({ ...data, img: url });
+    const imageInfo = await uploadFile(file);
+    addANewProduct({ ...data, imageInfo });
     reset();
   };
+
   return (
     <div
       className={`absolute w-3/4 md:w-2/4 top-[90px] rounded-xl bg-slate-400 right-1 dark:bg-dark_primary

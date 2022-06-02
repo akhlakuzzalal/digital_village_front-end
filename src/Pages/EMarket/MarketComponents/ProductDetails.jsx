@@ -19,7 +19,7 @@ const ProductDetails = () => {
     products = medicines;
   }
   const product = products.find((p) => p._id === id);
-  const { name, price, brand, img, description, rating } = product;
+  const { name, price, brand, imageInfo, description, rating } = product;
 
   const [commentLists, setCommentLists] = useState([]);
 
@@ -42,7 +42,7 @@ const ProductDetails = () => {
       <div className="w-10/12 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* image of the product */}
-          <img src={img} alt="" />
+          <img src={imageInfo?.url} alt="" />
           {/* Product description */}
           <div className="flex flex-col justify-around">
             <div>
@@ -52,7 +52,7 @@ const ProductDetails = () => {
             <h3 className="text-green-600">$ {price}</h3>
             <p className="text-gray-600">{description}</p>
             <button
-              onClick={() => handleAddCart(id, name, img, price)}
+              onClick={() => handleAddCart(id, name, imageInfo?.url, price)}
               className="btn bg-primary px-4 py-2 my-2"
             >
               <span className="text-white font-bolder "> Add to cart</span>

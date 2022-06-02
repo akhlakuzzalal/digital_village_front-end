@@ -38,11 +38,19 @@ const Profile = () => {
   );
 
   const handleUpdateUser = async (data) => {
-    console.log(data);
-    // update without profile image
-    const { url } = await uploadFile(file);
-    const info = { ...data, photo: url };
-    dispatch(updateUser({ id: uId, info })).then(() => {
+    let info = { ...data };
+
+    if (file?.path) {
+      const imageInfo = await uploadFile(file);
+      info = {
+        ...info,
+        imageInfo,
+      };
+    }
+
+    dispatch(
+      updateUser({ id: uId, info, public_id: user?.imageInfo?.public_id })
+    ).then(() => {
       dispatch(getSingleUserInfo(user.email));
       Swal.fire({
         title: 'updated successfully',
@@ -79,7 +87,7 @@ const Profile = () => {
               image
             ) : (
               <img
-                src={user?.photo}
+                src={user?.imageInfo?.url}
                 className="w-64 rounded-full h-64"
                 alt={user?.profile?.name}
               />

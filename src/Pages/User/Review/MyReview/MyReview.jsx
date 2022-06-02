@@ -59,7 +59,7 @@ const MyReview = ({ review, setReview }) => {
               <div class="flex flex-col items-center pb-10 pt-4">
                 <img
                   class="mb-3 w-24 h-24 rounded-full shadow-lg"
-                  src={user?.photo}
+                  src={user?.imageInfo?.url}
                   alt=""
                 />
                 <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">

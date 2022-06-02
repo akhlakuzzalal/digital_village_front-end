@@ -50,10 +50,13 @@ export const addProduct = createAsyncThunk('addProduct', async (data) => {
 });
 
 // delete a product
-export const deleteAProduct = createAsyncThunk('deleteProduct', async (id) => {
-  await axios.delete(`/emarket/delete/${id}`);
-  return id;
-});
+export const deleteAProduct = createAsyncThunk(
+  'deleteProduct',
+  async ({ id, public_id }) => {
+    await axios.delete(`/emarket/delete/?id=${id}&public_id=${public_id}`);
+    return id;
+  }
+);
 
 // Update a Product
 export const updateAProduct = createAsyncThunk(

@@ -5,9 +5,11 @@ import axios from '../../../api/axios';
 export const fetchAllDevelopmentProposals = createAsyncThunk(
   'developmentProposals/fetchAllDevelopmentProposals',
   async () => {
-    const response = axios
+    const response = await axios
       .get('/developmentProposal/all')
       .then((response) => response.data);
+
+    console.log('this is response', response);
     return response;
   }
 );
@@ -15,7 +17,7 @@ export const fetchAllDevelopmentProposals = createAsyncThunk(
 export const fetchMyDevelopmentProposals = createAsyncThunk(
   'developmentProposals/fetchMyDevelopmentProposals',
   async (email) => {
-    const response = axios
+    const response = await axios
       .get(`/developmentProposal/all/?email=${email}`)
       .then((response) => response.data);
     return response;

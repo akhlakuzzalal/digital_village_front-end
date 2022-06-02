@@ -88,7 +88,8 @@ const useSocialMedia = () => {
   };
 
   // delete Post
-  const deletePost = (id, email) => {
+  const deletePost = ({ id, public_id }, email) => {
+    console.log('public_id', public_id);
     setLoading(true);
     swal({
       title: 'Are you sure?',
@@ -99,7 +100,9 @@ const useSocialMedia = () => {
     }).then((willConfirm) => {
       if (willConfirm) {
         axios
-          .delete(`/social/deletePost?id=${id}&email=${email}`)
+          .delete(
+            `/social/deletePost?id=${id}&email=${email}&public_id=${public_id}`
+          )
           .then((res) => {
             if (res?.data?.deletedCount === 1) {
               swal('Confirmed!', {
@@ -131,6 +134,7 @@ const useSocialMedia = () => {
         }
       });
   };
+
   return {
     addFriend,
     acceptFriend,

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import axios, { BASE_URI } from '../../../api/axios';
+import axios from '../../../api/axios';
 import Pagination from '../../../Components/Pagination';
 import useAxiosInterceptor from '../../../hooks/useAxiosInterceptor';
 import {
@@ -173,11 +173,7 @@ const AllUsers = () => {
                               <div className="flex-shrink-0 w-16 h-16">
                                 <img
                                   className="w-full h-full rounded-full"
-                                  src={
-                                    user?.photo?.path
-                                      ? `${BASE_URI}/${user?.photo?.path}`
-                                      : 'https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg'
-                                  }
+                                  src={user?.imageInfo?.url}
                                   alt="user profile pic"
                                 />
                               </div>
