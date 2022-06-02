@@ -42,10 +42,15 @@ export const fetchMyBlogs = createAsyncThunk(
   }
 );
 
-export const deleteABlog = createAsyncThunk('blogs/deleteABlog', async (id) => {
-  const response = await axios.delete(`/teacher/deleteABlog/?id=${id}`);
-  return response?.data?._id;
-});
+export const deleteABlog = createAsyncThunk(
+  'blogs/deleteABlog',
+  async ({ id, public_id }) => {
+    const response = await axios.delete(
+      `/teacher/deleteABlog/?id=${id}&public_id=${public_id}`
+    );
+    return response?.data?._id;
+  }
+);
 
 const blogSlice = createSlice({
   name: 'blogs',

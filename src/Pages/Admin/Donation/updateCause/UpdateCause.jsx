@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import axios from '../../../../api/axios';
 import FileUpload from '../../../../Components/FileUpload';
 import { updateACause } from '../../../../redux/slices/Donations/donationSlice';
+import { uploadFile } from '../../../../utilities/uploadFile';
 const UpdateCause = () => {
   const { id } = useParams();
   const causes = useSelector((state) => state.donation.causes);
@@ -26,20 +27,23 @@ const UpdateCause = () => {
   }, []);
 
   const handleUpdateCause = async (data) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append(
-      'cause',
-      JSON.stringify({
+    let updatedCause = {
+      ...data,
+    };
+
+    if (file?.path) {
+      const imageInfo = await uploadFile(file);
+      updatedCause = {
         ...data,
-      })
-    );
+        imageInfo,
+      };
+    }
 
     const response = await axios.put(
-      `/donationCause/update/?id=${id}`,
-      formData
+      `/donationCause/update/?id=${id}&public_id=${cause?.imageInfo?.public_id}`,
+      updatedCause
     );
-    console.log(response.data);
+
     if (response?.data?._id) {
       dispatch(updateACause(response.data));
       Swal.fire({
@@ -48,11 +52,6 @@ const UpdateCause = () => {
       });
     }
   };
-
-  useEffect(() => {
-    console.log(cause?.image);
-    setFile(cause?.image);
-  }, [cause?.image]);
 
   // title image description category goal date author
   return (

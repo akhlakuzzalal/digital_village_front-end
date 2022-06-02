@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const SingleCauseSideCard = ({ _id, title, image, category }) => {
+const SingleCauseSideCard = ({ _id, title, imageInfo, category }) => {
   const navigate = useNavigate();
 
   // handing donetion
@@ -18,7 +18,7 @@ const SingleCauseSideCard = ({ _id, title, image, category }) => {
       <div class="relative flex items-center space-x-4">
         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
         <img
-          src={image}
+          src={imageInfo?.url}
           alt="donation Image"
           class="w-16 h-16 mx-auto rounded-full ring-2 ring-green-400 sm:mx-0 sm:flex-shrink-0"
         />

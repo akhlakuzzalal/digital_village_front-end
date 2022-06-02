@@ -34,7 +34,7 @@ const SingleCauseDetail = () => {
             <div className="overflow-hidden">
               <img
                 className="transform hover:scale-125 transition duration-700 object-cover h-full w-full"
-                src={cause?.image}
+                src={cause?.imageInfo?.url}
                 alt={cause?.title}
               />
             </div>
@@ -121,7 +121,7 @@ const SingleCauseDetail = () => {
           <div className="bg-white flex flex-col justify-center items-center w-full shadow my-4 p-6  dark:bg-dark_primary">
             <div className="py-3">
               <p>
-                If you would like to contribute money, click on the{' '}
+                If you would like to contribute money, click on the
                 <b>{'Donation Payment'}</b> button.
               </p>
             </div>

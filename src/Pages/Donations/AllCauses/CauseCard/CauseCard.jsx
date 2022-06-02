@@ -23,7 +23,7 @@ const CauseCard = ({ cause }) => {
         </div>
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-          src={cause?.image}
+          src={cause?.imageInfo?.url}
           alt={cause?.title}
         />
       </div>

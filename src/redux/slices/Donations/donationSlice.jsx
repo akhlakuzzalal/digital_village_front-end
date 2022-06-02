@@ -15,9 +15,9 @@ export const fetchAllCauses = createAsyncThunk(
 // add cuase
 export const addACuase = createAsyncThunk(
   'cuases/addACuase',
-  async (formData) => {
+  async (donationCause) => {
     const response = await axios
-      .post('/donationCause/add', formData)
+      .post('/donationCause/add', donationCause)
       .then((response) => response.data);
     return response;
   }
@@ -42,12 +42,14 @@ export const giveDonation = createAsyncThunk(
 // delete cuase
 export const deleteACause = createAsyncThunk(
   'cuases/deleteACause',
-  async (id) => {
-    await axios.delete(`/donationCause/delete/?id=${id}`);
+  async ({ id, public_id }) => {
+    await axios.delete(
+      `/donationCause/delete/?id=${id}&public_id=${public_id}`
+    );
     return id;
   }
 );
-              // help requester Apply get donation 
+// help requester Apply get donation
 // fetch all causes
 export const fetchAllRequest = createAsyncThunk(
   'cuases/fetchAllRequest',
@@ -65,7 +67,7 @@ export const fetchMyRequest = createAsyncThunk(
     const response = axios
       .get(`/donationRequest/requestapply`)
       .then((response) => response.data);
-    return response ;
+    return response;
   }
 );
 // add help request apply
@@ -102,7 +104,7 @@ export const deleteARequest = createAsyncThunk(
     return id;
   }
 );
-// donation slice 
+// donation slice
 const donationSlice = createSlice({
   name: 'causes',
   initialState: {
@@ -120,7 +122,7 @@ const donationSlice = createSlice({
       state.causes = [...AllCausesAfterRemovingThePrev, updatedCause];
     },
   },
-  
+
   extraReducers: (builder) => {
     builder.addCase(fetchAllCauses.fulfilled, (state, { payload }) => {
       state.causes = payload;
@@ -142,7 +144,7 @@ const donationSlice = createSlice({
     builder.addCase(deleteACause.fulfilled, (state, { payload }) => {
       state.causes = state.causes.filter((cause) => cause._id !== payload);
     });
-          // help request apply
+    // help request apply
     builder.addCase(fetchAllRequest.fulfilled, (state, { payload }) => {
       state.applys = payload;
     });
@@ -161,8 +163,8 @@ const donationSlice = createSlice({
     // });
     // get my development proposals
     builder.addCase(fetchMyRequest.fulfilled, (state, { payload }) => {
-        state.applys = payload;
-      });
+      state.applys = payload;
+    });
 
     // //delete
     builder.addCase(deleteARequest.fulfilled, (state, { payload }) => {
@@ -171,6 +173,6 @@ const donationSlice = createSlice({
   },
 });
 
-export const { updateACause , updateARequest} = donationSlice.actions;
+export const { updateACause, updateARequest } = donationSlice.actions;
 
 export default donationSlice.reducer;
