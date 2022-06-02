@@ -1,8 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import hepatitis from './../../../../assets//medical/hepatitis.jpg';
-import covax from './../../../../assets/medical/COVAX.jpg';
-import polio from './../../../../assets/medical/polio.jpg';
 
 const VaccineOptions = () => {
   return (
@@ -16,7 +13,11 @@ const VaccineOptions = () => {
           }}
         >
           <Link to="#">
-            <img className="rounded-t-lg" src={covax} alt="" />
+            <img
+              className="rounded-t-lg"
+              src="https://res.cloudinary.com/randomone/image/upload/v1654202108/digitalVillage/COVAX_zgxv6e.jpg"
+              alt=""
+            />
           </Link>
           <div className="p-5">
             <Link to="#">
@@ -57,7 +58,11 @@ const VaccineOptions = () => {
           }}
         >
           <Link to="#">
-            <img className="rounded-t-lg " src={hepatitis} alt="" />
+            <img
+              className="rounded-t-lg "
+              src="https://res.cloudinary.com/randomone/image/upload/v1654202041/digitalVillage/hepatitis_itcakd.jpg"
+              alt=""
+            />
           </Link>
           <div className="p-5">
             <Link to="#">
@@ -98,7 +103,11 @@ const VaccineOptions = () => {
           }}
         >
           <Link to="#">
-            <img className="rounded-t-lg" src={polio} alt="" />
+            <img
+              className="rounded-t-lg"
+              src="https://res.cloudinary.com/randomone/image/upload/v1654200483/digitalVillage/polio_zh8oij.jpg"
+              alt=""
+            />
           </Link>
           <div className="p-5">
             <Link to="#">

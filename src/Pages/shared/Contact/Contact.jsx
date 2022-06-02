@@ -2,7 +2,6 @@ import emailjs from '@emailjs/browser';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
-import img from '../../../assets/events/contact.jpg';
 const Contact = () => {
   const {
     register,
@@ -170,7 +169,11 @@ const Contact = () => {
 
       <div className="lg:flex lg:px-20 py-20 g-4 bg-white dark:bg-dark_primary">
         <div>
-          <img className="h-[500px]" src={img} alt="" />
+          <img
+            className="h-[500px]"
+            src="https://res.cloudinary.com/randomone/image/upload/v1654199499/digitalVillage/contact_e1vdyc.jpg"
+            alt=""
+          />
         </div>
         <form
           className=" md:grid grid-cols-1 md:grid-cols-2 gap-5 md:mt-16 mx-10 lg:mx-0"
@@ -181,7 +184,6 @@ const Contact = () => {
             {...register('name', { required: 'Name is Required' })}
             placeholder="Name"
           />
-         
 
           <input
             className=" w-full mb-5 lg:mb-0 py-5 lg:py-0 outline-none border-2 focus:border-primary bg-gray-100 px-20 rounded"
@@ -196,7 +198,7 @@ const Contact = () => {
             })}
             placeholder="Phone Number"
           />
-          
+
           <input
             className=" w-full mb-5 lg:mb-0 outline-none border-2 bg-gray-100 focus:border-primary px-20 rounded py-5 "
             type="email"
@@ -209,7 +211,6 @@ const Contact = () => {
             })}
             placeholder="Enter Your Email"
           />
-
 
           <input
             className=" w-full mb-5 lg:mb-0 outline-none border-2 bg-gray-100 px-20 focus:border-primary rounded py-5 lg:py-0"
@@ -234,7 +235,6 @@ const Contact = () => {
               })}
               placeholder="Write your message"
             ></textarea>
-         
           </div>
 
           <input

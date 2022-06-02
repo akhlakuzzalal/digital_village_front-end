@@ -1,5 +1,4 @@
 import React from 'react';
-import banner from '../../../../assets/donation/donate.jpg';
 const SingleCauseBanner = () => {
   return (
     <div
@@ -7,7 +6,7 @@ const SingleCauseBanner = () => {
       style={{
         backgroundBlendMode: 'multiply',
         backgroundPosition: 'center center',
-        backgroundImage: `url(${banner})`,
+        backgroundImage: `url(https://res.cloudinary.com/randomone/image/upload/v1654199172/digitalVillage/donate_skaeew.jpg)`,
       }}
     >
       <div className="p-10  py-20  flex  flex-col  flex-wrap  justify-center  content-center">

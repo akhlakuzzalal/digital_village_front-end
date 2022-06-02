@@ -1,10 +1,4 @@
 import React from 'react';
-import img1 from '../../../assets/events/e-g-1.jpg';
-import img2 from '../../../assets/events/e-g-2.webp';
-import img3 from '../../../assets/events/e-g-3.jpg';
-import img4 from '../../../assets/events/e-g-4.png';
-import img5 from '../../../assets/events/e-g-5.jpg';
-import img from '../../../assets/events/e-g.png';
 const EventPhotoGallary = () => {
   return (
     <div className="mt-32">
@@ -25,21 +19,21 @@ const EventPhotoGallary = () => {
                 <img
                   alt="gallery"
                   class="block object-cover object-center w-full h-full rounded-lg"
-                  src={img}
+                  src="https://res.cloudinary.com/randomone/image/upload/v1654199600/digitalVillage/conference_temhhy.png"
                 />
               </div>
               <div class="w-1/2 p-1 md:p-2">
                 <img
                   alt="gallery"
                   class="block object-cover object-center w-full h-full rounded-lg"
-                  src={img5}
+                  src="https://res.cloudinary.com/randomone/image/upload/v1654199897/digitalVillage/img5_jzrcht.jpg"
                 />
               </div>
               <div class="w-full p-1 md:p-2">
                 <img
                   alt="gallery"
                   class="block object-cover object-center w-full h-full rounded-lg"
-                  src={img1}
+                  src="https://res.cloudinary.com/randomone/image/upload/v1654199673/digitalVillage/img1_jfscsx.jpg"
                 />
               </div>
             </div>
@@ -48,21 +42,21 @@ const EventPhotoGallary = () => {
                 <img
                   alt="gallery"
                   class="block object-cover object-center w-full h-full rounded-lg"
-                  src={img2}
+                  src="https://res.cloudinary.com/randomone/image/upload/v1654199704/digitalVillage/img2_vz3twd.webp"
                 />
               </div>
               <div class="w-1/2 p-1 md:p-2">
                 <img
                   alt="gallery"
                   class="block object-cover object-center w-full h-full rounded-lg"
-                  src={img3}
+                  src="https://res.cloudinary.com/randomone/image/upload/v1654199798/digitalVillage/img3_ksxdms.jpg"
                 />
               </div>
               <div class="w-1/2 p-1 md:p-2">
                 <img
                   alt="gallery"
                   class="block object-cover object-center w-full h-full rounded-lg"
-                  src={img4}
+                  src="https://res.cloudinary.com/randomone/image/upload/v1654199850/digitalVillage/img4_e3flcy.png"
                 />
               </div>
             </div>

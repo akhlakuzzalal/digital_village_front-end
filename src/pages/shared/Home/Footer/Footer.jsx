@@ -3,9 +3,6 @@ import { FaFacebook, FaTwitterSquare } from 'react-icons/fa';
 import { GrInstagram } from 'react-icons/gr';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 import { Link, useLocation } from 'react-router-dom';
-import logo from '../../../../assets/digital_village_logo.png';
-import AppleStore from '../../../../assets/footer/appstore.png';
-import playStore from '../../../../assets/footer/playstore.png';
 
 const Footer = () => {
   const location = useLocation();
@@ -28,7 +25,7 @@ const Footer = () => {
                 <Link to="/">
                   <img
                     style={{ height: '60px', width: '60px' }}
-                    src={logo}
+                    src="https://res.cloudinary.com/randomone/image/upload/v1654199047/digitalVillage/digital_village_logo_zx6t4r.png"
                     alt=""
                   />
                 </Link>
@@ -92,8 +89,14 @@ const Footer = () => {
         <hr className="mt-3" />
         <div className="lg:flex items-center lg:mx-28 pt-10 space-y-6 lg:space-y-0">
           <div className="flex flex-wrap gap-3">
-            <img src={playStore} alt="playstore" />
-            <img src={AppleStore} alt="applestore" />
+            <img
+              src="https://res.cloudinary.com/randomone/image/upload/v1654200378/digitalVillage/playstore_trb5eh.png"
+              alt="playstore"
+            />
+            <img
+              src="https://res.cloudinary.com/randomone/image/upload/v1654200361/digitalVillage/appstore_tazbsv.png"
+              alt="applestore"
+            />
           </div>
           <div className="ml-auto">
             <h3 className="text-sm flex items-center">

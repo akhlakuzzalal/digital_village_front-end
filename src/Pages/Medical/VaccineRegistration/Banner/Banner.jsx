@@ -6,13 +6,12 @@ import { FaUserCheck } from 'react-icons/fa';
 import { GrContactInfo, GrStatusUnknown } from 'react-icons/gr';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-import bg from './../../../../assets/medical/bg.jpg';
 const Banner = () => {
   return (
     <div
       className="py-20 px-0 md:px-5 min-h-screen flex justify-center items-center "
       style={{
-        backgroundImage: `url(${bg})`,
+        backgroundImage: `url(https://res.cloudinary.com/randomone/image/upload/v1654200443/digitalVillage/medical_bg_haimjq.jpg)`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
       }}

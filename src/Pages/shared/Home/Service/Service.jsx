@@ -7,11 +7,6 @@ import {
   FcShop,
 } from 'react-icons/fc';
 import { MdLocalHospital } from 'react-icons/md';
-import development from './../../../../assets/services/development.png';
-import donate from './../../../../assets/services/donate.png';
-import education from './../../../../assets/services/education.png';
-import event from './../../../../assets/services/event.png';
-import medical from './../../../../assets/services/medical.png';
 import ServiceBoard from './ServiceBoard/ServiceBoard';
 import ServiceExplore from './ServiceExplore/ServiceExplore';
 
@@ -19,7 +14,8 @@ const services = [
   {
     icon: <FcGraduationCap className="text-center" size={70} />,
     name: 'Digital Learning',
-    image: education,
+    image:
+      'https://res.cloudinary.com/randomone/image/upload/v1654200742/digitalVillage/education_c772wf.png',
     detail:
       'Digital Learning is a service provided by us to improve the literacy rate of our village. We offers full free and quality education.',
     desc: 'Free and Quality education',
@@ -28,7 +24,8 @@ const services = [
   {
     icon: <MdLocalHospital className="text-center" size={70} />,
     name: 'Medical',
-    image: medical,
+    image:
+      'https://res.cloudinary.com/randomone/image/upload/v1654200789/digitalVillage/medical_fr4tfg.png',
     detail:
       'Medical services means Medically Necessary services, including, as the context requires, Confinement, treatments, procedures, tests, examinations .',
     desc: 'Low cost Medical Services',
@@ -37,7 +34,8 @@ const services = [
   {
     icon: <FcCalendar className="text-center" size={70} />,
     name: 'Events',
-    image: event,
+    image:
+      'https://res.cloudinary.com/randomone/image/upload/v1654200767/digitalVillage/event_nw6pez.png',
     detail:
       'Check out some amazing free events in village to take away all the fun experiences. There can be a lot that  might be offering but all the events  make it unique, distinctive and different from others.',
     desc: 'Exclusive events, Knowledge Sharing',
@@ -46,7 +44,8 @@ const services = [
   {
     icon: <FcDonate className="text-center" size={70} />,
     name: 'Donations',
-    image: donate,
+    image:
+      'https://res.cloudinary.com/randomone/image/upload/v1654200692/digitalVillage/donate_duhq3r.png',
     detail:
       ' Donation is a gift for charity, humanitarian aid, or to benefit a cause. A donation may take various forms, including money, alms, services, or goods such as clothing, toys, food, or vehicles. ',
     desc: 'Donation for needy people',
@@ -55,7 +54,8 @@ const services = [
   {
     icon: <FcHome className="text-center" size={70} />,
     name: 'Development',
-    image: development,
+    image:
+      'https://res.cloudinary.com/randomone/image/upload/v1654200714/digitalVillage/development_hb81k2.png',
     detail:
       'Our proud team working hard for the poor village people and improve their life style.we take somme village development work to develop various area ',
     desc: 'Propose your development idea',

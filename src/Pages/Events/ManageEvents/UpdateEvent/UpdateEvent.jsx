@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import img from '../../../../assets/events/events.png';
 const UpdateEvent = () => {
   const {
     register,
@@ -21,7 +20,7 @@ const UpdateEvent = () => {
         <div>
           <img
             className="lg:h-[780px] md:h-[580px] lg:w-[400px] md:w-[1000px] w-full h-[300px]"
-            src={img}
+            src="https://res.cloudinary.com/randomone/image/upload/v1654199938/digitalVillage/events_abwmej.png"
             alt=""
           />
         </div>

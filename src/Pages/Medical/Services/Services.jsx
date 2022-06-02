@@ -5,9 +5,7 @@ import { FcOvertime } from 'react-icons/fc';
 import { ImCheckmark } from 'react-icons/im';
 import { useSelector } from 'react-redux';
 import swal from 'sweetalert';
-import medicalTimeTable from '../../../assets/medical/medical_time_table.png';
 import OurDoctors from '../OurDoctors/OurDoctors';
-import mediBanner from './../../../assets/medical/mediBanner.png';
 
 const datas = [
   {
@@ -140,7 +138,10 @@ const Services = () => {
         </div>
 
         <div className="flex flex-wrap justify-evenly items-center gap-8">
-          <img src={mediBanner} alt="medibanner" />
+          <img
+            src="https://res.cloudinary.com/randomone/image/upload/v1654201961/digitalVillage/mediBanner_ksrebf.png"
+            alt="medibanner"
+          />
 
           <div className="space-y-4">
             {services.map((service) => (
@@ -182,7 +183,10 @@ const Services = () => {
             ))}
           </div>
 
-          <img src={medicalTimeTable} alt="medical time table" />
+          <img
+            src="https://res.cloudinary.com/randomone/image/upload/v1654199982/digitalVillage/time_table_wtfpl8.jpg"
+            alt="medical time table"
+          />
         </div>
       </div>
 

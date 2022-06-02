@@ -1,5 +1,4 @@
 import React from 'react';
-import studentBanner from '../../../../../assets/education/StudentFooter.png'
 
 // will modify it later
 const Footer = () => {
@@ -9,7 +8,7 @@ const Footer = () => {
         <div className="mx-auto w-96">
           <img
             className="rounded-lg"
-            src={studentBanner}
+            src="https://res.cloudinary.com/randomone/image/upload/v1654199269/digitalVillage/StudentFooter_kigqh5.png"
             alt=""
           />
         </div>
@@ -62,7 +61,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div> 
+      </div>
 
       {/* <div className="bg-gray-200 px-10 py-5 mb-10 opacity-75 rounded-lg ">
         <div className="grid grid-cols-1 md:grid-cols-2">

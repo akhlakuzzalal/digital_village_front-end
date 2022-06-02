@@ -10,7 +10,6 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
-import logo from '../assets/digital_village_logo.png';
 import useAuth from '../hooks/useAuth';
 import { setMood } from '../redux/slices/mood/MoodSlice';
 import {
@@ -92,7 +91,13 @@ const Navbar = ({ navigation }) => {
           className="flex w-14 h-14 items-center justify-start order-1"
           onClick={() => navigate('/')}
         >
-          <img className="w-full cursor-pointer" src={logo} alt="logo" />
+          <img
+            className="w-full cursor-pointer"
+            src={
+              'https://res.cloudinary.com/randomone/image/upload/v1654199047/digitalVillage/digital_village_logo_zx6t4r.png'
+            }
+            alt="logo"
+          />
         </div>
 
         {/* Nav links */}

@@ -1,33 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import development from '../../../../assets/features/development.png';
-import education from '../../../../assets/features/education.png';
-import market from '../../../../assets/features/market.png';
-import medical from '../../../../assets/features/medical.png';
 import FeatureCard from './FeatureCard/FeatureCard';
 
 const features = [
   {
     _id: 1,
     name: 'Quality Education',
-    img: education,
+    img: 'https://res.cloudinary.com/randomone/image/upload/v1654200217/digitalVillage/education_rfdxm0.png',
     currentActive: 0,
   },
   {
     _id: 2,
     name: 'Sustainable Development',
-    img: development,
+    img: 'https://res.cloudinary.com/randomone/image/upload/v1654200164/digitalVillage/development_ujdnun.png',
     currentActive: 1,
   },
   {
     _id: 3,
     name: 'Necessary Commodities',
-    img: market,
+    img: 'https://res.cloudinary.com/randomone/image/upload/v1654201030/digitalVillage/market_qlvye5.png',
     currentActive: 2,
   },
   {
     _id: 4,
     name: 'Medical Facilities',
-    img: medical,
+    img: 'https://res.cloudinary.com/randomone/image/upload/v1654200317/digitalVillage/medical_bno14h.png',
     currentActive: 3,
   },
 ];

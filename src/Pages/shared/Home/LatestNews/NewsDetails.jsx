@@ -8,7 +8,10 @@ const NewsDetails = () => {
         {/* left side */}
         <div className="lg:col-span-2">
           <div>
-            <img src={img} alt="" />
+            <img
+              src="https://res.cloudinary.com/randomone/image/upload/v1654199938/digitalVillage/events_abwmej.png"
+              alt=""
+            />
             <h1 className="mt-20">Music Talent Show</h1>
           </div>
           <div className="mt-20">
