@@ -10,7 +10,7 @@ import swal from 'sweetalert';
 import { deleteACause } from '../../../../../redux/slices/Donations/donationSlice';
 import calculatePercentage from '../../../../../utilities/calculatePercentage';
 
-const Cause = ({ _id, title, image, goal, raised, category }) => {
+const Cause = ({ _id, title, goal, raised, category, imageInfo }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const Cause = ({ _id, title, image, goal, raised, category }) => {
       buttons: true,
     }).then((willConfirm) => {
       if (willConfirm) {
-        dispatch(deleteACause(_id));
+        dispatch(deleteACause({ id: _id, public_id: imageInfo?.public_id }));
         swal('Confirmed!', {
           icon: 'success',
         });
@@ -50,7 +50,7 @@ const Cause = ({ _id, title, image, goal, raised, category }) => {
         </div>
         <img
           className="transform hover:scale-125 transition duration-700 w-full h-full object-cover"
-          src={image}
+          src={imageInfo?.url}
           alt={title}
         />
       </div>

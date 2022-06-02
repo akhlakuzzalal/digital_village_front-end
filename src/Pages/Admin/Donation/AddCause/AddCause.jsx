@@ -22,16 +22,18 @@ const AddCause = () => {
   }, []);
 
   const handleAddCause = async (data) => {
-    const { url } = await uploadFile(file);
+    const imageInfo = await uploadFile(file);
+
     if (data.category === 'choose one') data.category = 'others';
-    const body = {
+
+    const donationCause = {
       ...data,
       raised: 0,
       date: new Date().toLocaleDateString(),
-      image: url,
+      imageInfo,
     };
 
-    dispatch(addACuase(body)).then(() => {
+    dispatch(addACuase(donationCause)).then(() => {
       Swal.fire({
         title: 'donation cause successfully added',
         confirmButtonText: 'Okay',
@@ -40,6 +42,7 @@ const AddCause = () => {
       setFile({});
     });
   };
+
   // title image description category goal date author
   return (
     <div className="justify-center items-center min-h-full space-y-10 dark:bg-dark_primary">

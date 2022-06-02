@@ -46,7 +46,7 @@ const SingleCauseSidebar = () => {
             // eslint-disable-next-line jsx-a11y/img-redundant-alt
             <img
               class="hover:opacity-75"
-              src={cause?.image}
+              src={cause?.imageInfo?.url}
               alt="Donation photo"
             />
           ))}
