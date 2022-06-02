@@ -45,7 +45,8 @@ export const fetchMyVideos = createAsyncThunk(
 export const deleteAVideo = createAsyncThunk(
   'videos/deleteAVideo',
   async ({ id, public_id }) => {
-    console.log(id, public_id);
+    console.log('video slice', id, public_id);
+
     const response = await axios.delete(
       `/teacher/deleteAVideo/?id=${id}&public_id=${public_id}`
     );

@@ -12,7 +12,7 @@ const PublishFeed = () => {
         {/* avatar */}
         <div class="mr-2 w-12 h-12 relative flex justify-center items-center rounded-full bg-gray-500 text-xl text-white">
           <img
-            src={socialUser?.photo}
+            src={socialUser?.imageInfo?.url}
             className="rounded-full w-12 h-12"
             alt=""
           />

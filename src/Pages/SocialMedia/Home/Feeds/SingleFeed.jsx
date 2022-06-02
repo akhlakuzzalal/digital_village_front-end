@@ -16,6 +16,7 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
   const uId = useSelector((state) => state.user.uId);
   const socialUser = useSelector((state) => state.social.user);
   const { register, handleSubmit, reset } = useForm();
+
   const handleEditPost = (data) => {
     updatePost(data, feed?._id, socialUser?.email);
     setOpenEdit(false);
@@ -34,6 +35,8 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
     });
   }, [uId, feed._id]);
 
+  console.log(feed?.imageInfo?.public_id);
+
   return (
     <div className="px-6 py-5 shadow-xl rounded-lg space-y-2 dark:dark-card-bg">
       {/* post Heading */}
@@ -41,7 +44,11 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
         <div className="flex items-center space-x-2">
           {/* avarar */}
           <div class="mr-2 w-12 h-12 relative flex justify-center items-center rounded-full bg-gray-500 text-xl text-white">
-            <img src={user?.photo} className="rounded-full w-12 h-12" alt="" />
+            <img
+              src={user?.imageInfo?.url}
+              className="rounded-full w-12 h-12"
+              alt=""
+            />
             <div className="absolute right-0 bottom-0 w-3 h-3 rounded-full bg-green-600"></div>
           </div>
           {/* name and date */}
@@ -82,7 +89,12 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
                 Edit post
               </p>
               <p
-                onClick={() => deletePost(feed?._id, socialUser.email)}
+                onClick={() =>
+                  deletePost(
+                    { id: feed?._id, public_id: feed?.imageInfo?.public_id },
+                    socialUser.email
+                  )
+                }
                 className="cursor-pointer font-semibold hover:bg-primary hover:text-white"
               >
                 Delete Post
@@ -122,8 +134,12 @@ const SingleFeed = ({ feed, users, deletePost, updatePost }) => {
           <p>{feed?.post}</p>
         )}
 
-        {feed?.photo && (
-          <img className="w-full h-44 md:h-64" src={feed?.photo} alt="" />
+        {feed?.imageInfo?.url && (
+          <img
+            className="w-full h-44 md:h-64"
+            src={feed?.imageInfo?.url}
+            alt=""
+          />
         )}
       </div>
 

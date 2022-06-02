@@ -9,7 +9,7 @@ import {
 const useMarketAdminDashboard = () => {
   const dispatch = useDispatch();
   // delete Product
-  const deleteProduct = (id) => {
+  const deleteProduct = ({ id, public_id }) => {
     swal({
       title: 'Are you sure?',
       text: 'Once deleted, you will not be able to recover this imaginary file!',
@@ -18,7 +18,7 @@ const useMarketAdminDashboard = () => {
       buttons: true,
     }).then((willConfirm) => {
       if (willConfirm) {
-        dispatch(deleteAProduct(id));
+        dispatch(deleteAProduct({ id, public_id }));
         swal('Confirmed!', {
           icon: 'success',
           showConfirmButton: false,

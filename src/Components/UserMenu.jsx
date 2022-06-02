@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { BiChevronDown } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { BASE_URI } from '../api/axios';
 import useAuth from '../hooks/useAuth';
 import useMediaQuery from '../hooks/useMediaQuery';
 import { clearTheNotificationSlice } from '../redux/slices/notification/notificationSlice';
@@ -73,7 +72,7 @@ const UserMenu = () => {
         >
           <img
             className="w-8 h-8 rounded-full"
-            src={user?.photo}
+            src={user?.imageInfo?.url}
             alt="User"
           />
           <div className="hidden md:flex items-center truncate">
@@ -86,7 +85,7 @@ const UserMenu = () => {
       ) : (
         <img
           className="w-8 h-8 rounded-full"
-          src={user?.photo}
+          src={user?.imageInfo?.url}
           alt="User"
         />
       )}

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import axios from '../../../../api/axios';
 import FileUpload from '../../../../Components/FileUpload';
+import { uploadFile } from '../../../../utilities/uploadFile';
 
 const AddDevelopmentProposal = () => {
   const user = useSelector((state) => state.user.user);
@@ -22,16 +23,17 @@ const AddDevelopmentProposal = () => {
   }, []);
 
   const handleAddDevelopment = async (data) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append(
-      'developmentProposal',
-      JSON.stringify({
-        ...data,
-      })
-    );
+    const imageInfo = await uploadFile(file);
 
-    const response = await axios.post('/developmentProposal/add', formData);
+    const developmentProposal = {
+      ...data,
+      imageInfo,
+    };
+
+    const response = await axios.post(
+      '/developmentProposal/add',
+      developmentProposal
+    );
     if (response.data.title) {
       Swal.fire({
         title: 'successfully added your development proposal',

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import img from '../../../../assets/events/blue_celeste_search3.png';
 import Pagination from '../../../../Components/Pagination';
 import {
   fetchVideos,
@@ -38,7 +37,11 @@ const Allvideos = () => {
 
   return (
     <div className="space-y-6">
-      <img className="w-full h-[300px]" src={img} alt="search" />
+      <img
+        className="w-full h-[300px]"
+        src="https://res.cloudinary.com/randomone/image/upload/v1654199428/digitalVillage/blue_search_fh0eqi.png"
+        alt="search"
+      />
       <Search className="mt-20 " handleSearch={handleSearch} />
       <h3 className="py-6 text-center">Available Videos</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">

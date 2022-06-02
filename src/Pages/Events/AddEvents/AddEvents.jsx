@@ -2,7 +2,6 @@ import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
-import img from '../../../assets/events/Add events.PNG';
 import FileUpload from '../../../Components/FileUpload';
 import { addAnEvent } from '../../../redux/slices/event/eventSlice';
 import { uploadFile } from '../../../utilities/uploadFile';
@@ -39,7 +38,7 @@ const AddEvents = () => {
       <div>
         <img
           className="lg:h-[780px] md:h-[580px] lg:w-[400px] md:w-[1000px] w-full h-[300px]"
-          src={img}
+          src="https://res.cloudinary.com/randomone/image/upload/v1654199363/digitalVillage/Add_events_qejt89.png"
           alt=""
         />
       </div>

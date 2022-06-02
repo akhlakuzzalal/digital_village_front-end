@@ -19,7 +19,7 @@ const Review = () => {
   const handleAddReview = (data) => {
     data.name = user?.name;
     data.email = user?.email;
-    data.photo = user?.photo;
+    data.photo = user?.imageInfo?.url;
 
     axios.post('/userReview/addReview', data).then((response) => {
       if (response.data.message) {

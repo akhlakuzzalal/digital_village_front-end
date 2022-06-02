@@ -3,7 +3,6 @@ import { FaChalkboardTeacher } from 'react-icons/fa';
 import { GiTeacher } from 'react-icons/gi';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import study from '../../../assets/education/study.png';
 import DecidingCard from './DecidingCard/DecidingCard';
 
 const TeacherOrStudent = () => {
@@ -34,7 +33,10 @@ const TeacherOrStudent = () => {
           </Link>
         </div>
         <div className="flex justify-center items-center md:w-2/3 order-first md:order-last">
-          <img src={study} alt="study" />
+          <img
+            src="https://res.cloudinary.com/randomone/image/upload/v1654199299/digitalVillage/study_pvpnon.png"
+            alt="study"
+          />
         </div>
       </div>
     </div>

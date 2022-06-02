@@ -3,7 +3,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import axios, { BASE_URI } from '../../../../api/axios';
+import axios from '../../../../api/axios';
 import { fetchMyDevelopmentProposals } from '../../../../redux/slices/DevelopmetProposal/DevelopmentProposalSlice';
 
 const MyDevelopmentProposals = () => {
@@ -25,7 +25,7 @@ const MyDevelopmentProposals = () => {
     setShowModal(true);
   };
 
-  const handleDeleteDevelopmentProposal = (id) => {
+  const handleDeleteDevelopmentProposal = (id, public_id) => {
     Swal.fire({
       title: 'Are you sure? you want to delete this development Proposal',
       showDenyButton: true,
@@ -35,7 +35,9 @@ const MyDevelopmentProposals = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`/developmentProposal/remove/?id=${id}`)
+          .delete(
+            `/developmentProposal/remove/?id=${id}&public_id=${public_id}`
+          )
           .then((response) => {
             if (response?.data?.deletedCount) {
               Swal.fire({
@@ -170,8 +172,8 @@ const MyDevelopmentProposals = () => {
                               <img
                                 className="w-full h-full rounded-full"
                                 src={
-                                  proposal?.image?.path
-                                    ? `${BASE_URI}/${proposal?.image?.path}`
+                                  proposal?.imageInfo?.url
+                                    ? proposal?.imageInfo?.url
                                     : 'https://png.pngtree.com/png-vector/20200706/ourlarge/pngtree-businessman-user-character-vector-illustration-png-image_2298565.jpg'
                                 }
                                 alt={proposal?.title}
@@ -238,7 +240,10 @@ const MyDevelopmentProposals = () => {
                               size={30}
                               className="text-red-600 cursor-pointer"
                               onClick={() =>
-                                handleDeleteDevelopmentProposal(proposal._id)
+                                handleDeleteDevelopmentProposal(
+                                  proposal._id,
+                                  proposal?.imageInfo?.public_id
+                                )
                               }
                             />
                           </td>

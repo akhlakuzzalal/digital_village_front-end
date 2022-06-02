@@ -13,7 +13,7 @@ const SingleUser = ({ user, as }) => {
       <div className="w-full flex justify-center ">
         <img
           className="w-36 h-36 rounded-full"
-          src={user.photo}
+          src={user?.imageInfo?.url}
           alt="user profile pic"
         />
       </div>

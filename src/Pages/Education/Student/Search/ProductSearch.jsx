@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import img from '../../../../assets/events/vegi-banner.PNG';
 const ProductSearch = ({ handleSearch }) => {
   const {
     register,
@@ -10,7 +9,11 @@ const ProductSearch = ({ handleSearch }) => {
   } = useForm();
   return (
     <div className=" lg:mx-[100px] ">
-      <img className="w-full h-[200px]" src={img} alt="" />
+      <img
+        className="w-full h-[200px]"
+        src="https://res.cloudinary.com/randomone/image/upload/v1654200061/digitalVillage/vegi-banner_nnklro.png"
+        alt=""
+      />
       <form
         onSubmit={handleSubmit(handleSearch)}
         className="flex items-center border-2 p-1 border-indigo-200 bg-white sm:w-3/4 mx-2 mt-3 sm:mx-auto rounded lg:w-[600px] lg:h-[50px] relative bottom-[140px] "

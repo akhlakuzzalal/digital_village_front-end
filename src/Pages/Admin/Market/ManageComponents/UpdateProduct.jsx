@@ -10,6 +10,7 @@ const UpdateProduct = ({ product }) => {
   const { name, brand, _id, price, categorie } = product;
   const dispatch = useDispatch();
   const modal = useSelector((state) => state.market.modal.showModal);
+
   const {
     register,
     handleSubmit,
@@ -23,6 +24,7 @@ const UpdateProduct = ({ product }) => {
     updateProduct(data);
     dispatch(setShowModal(false));
   };
+
   return (
     <>
       {modal ? (

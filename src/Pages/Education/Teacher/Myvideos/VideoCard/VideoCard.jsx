@@ -11,9 +11,7 @@ const VideoCard = ({ video }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log(video);
-
-  const handleDeleteVideo = () => {
+  const handleDeleteVideo = (id, public_id) => {
     swal({
       title: 'Are you sure? You want to delete this.',
       icon: 'warning',
@@ -22,8 +20,8 @@ const VideoCard = ({ video }) => {
       if (willConfirm) {
         dispatch(
           deleteAVideo({
-            id: video._id,
-            public_id: video?.videoInfo?.public_id,
+            id,
+            public_id,
           })
         );
         swal('Confirmed!', {
@@ -69,7 +67,9 @@ const VideoCard = ({ video }) => {
         </button>
         <button
           className="w-100 flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          onClick={() => handleDeleteVideo()}
+          onClick={() =>
+            handleDeleteVideo(video._id, video?.videoInfo?.public_id)
+          }
         >
           <FaTrashAlt />
         </button>

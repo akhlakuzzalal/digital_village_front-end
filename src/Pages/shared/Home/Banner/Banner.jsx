@@ -1,7 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie';
 import { NavHashLink } from 'react-router-hash-link';
-import homeBg from '../../../../assets/home_bg.png';
 import useMediaQuery from '../../../../hooks/useMediaQuery';
 import animationData from '../../../../lotties/village.json';
 import Features from '../Features/Features';
@@ -28,7 +27,11 @@ const Banner = () => {
     >
       <div
         className="grid grid-cols-1 lg:grid-cols-2 items-center lg:space-y-0 bg-no-repeat bg-left-top"
-        style={{ backgroundImage: isDesktop ? `url(${homeBg})` : 'none' }}
+        style={{
+          backgroundImage: isDesktop
+            ? `url(https://res.cloudinary.com/randomone/image/upload/v1654198956/digitalVillage/home_bg_suggga.png)`
+            : 'none',
+        }}
       >
         {/* banner description */}
         <div className="w-full mx-auto lg:mx-0 place-self-center mt-6 lg:mt-24 order-1 text-center lg:text-left lg:ml-80">

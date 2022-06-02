@@ -4,12 +4,6 @@ import {
   TiSocialLinkedinCircular,
   TiSocialTwitterCircular,
 } from 'react-icons/ti';
-import doctor1 from '../../../assets/medical/doctor1.jpg';
-import doctor2 from '../../../assets/medical/doctor2.jpg';
-import doctor3 from '../../../assets/medical/doctor3.jpg';
-import doctor4 from '../../../assets/medical/doctor4.jpg';
-import doctor5 from '../../../assets/medical/doctor5.jpg';
-import doctor6 from '../../../assets/medical/doctor6.jpg';
 
 const OurDoctors = () => {
   return (
@@ -27,7 +21,7 @@ const OurDoctors = () => {
           <div className="mb-8">
             <img
               className="object-center object-cover rounded w-full"
-              src={doctor1}
+              src="https://res.cloudinary.com/randomone/image/upload/v1654201549/digitalVillage/doctor1_e0nyzl.jpg"
               alt="doctor "
             />
           </div>
@@ -74,7 +68,7 @@ const OurDoctors = () => {
           <div className="mb-8">
             <img
               className="object-center object-cover rounded w-full"
-              src={doctor2}
+              src="https://res.cloudinary.com/randomone/image/upload/v1654201631/digitalVillage/doctor2_z4dhbp.jpg"
               alt="doctor "
             />
           </div>
@@ -121,7 +115,7 @@ const OurDoctors = () => {
           <div className="mb-8">
             <img
               className="object-center object-cover rounded w-full"
-              src={doctor3}
+              src="https://res.cloudinary.com/randomone/image/upload/v1654201685/digitalVillage/doctor3_d8yle2.jpg"
               alt="doctor "
             />
           </div>
@@ -168,7 +162,7 @@ const OurDoctors = () => {
           <div className="mb-8">
             <img
               className="object-center object-cover rounded w-full"
-              src={doctor4}
+              src="https://res.cloudinary.com/randomone/image/upload/v1654201742/digitalVillage/doctor4_fb0lgb.jpg"
               alt="doctor "
             />
           </div>
@@ -215,7 +209,7 @@ const OurDoctors = () => {
           <div className="mb-8">
             <img
               className="object-center object-cover rounded w-full"
-              src={doctor5}
+              src="https://res.cloudinary.com/randomone/image/upload/v1654201843/digitalVillage/doctor5_hyzf4e.jpg"
               alt="doctor "
             />
           </div>
@@ -262,8 +256,8 @@ const OurDoctors = () => {
           <div className="mb-8 ">
             <img
               className="object-center w-full  "
-              src={doctor6}
-              alt="doctor "
+              src="https://res.cloudinary.com/randomone/image/upload/v1654201892/digitalVillage/doctor6_pmqw15.jpg"
+              alt="doctor"
             />
           </div>
           <div className="text-center">

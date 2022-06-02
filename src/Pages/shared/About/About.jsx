@@ -4,7 +4,6 @@ import { GiHumanPyramid, GiTeacher } from 'react-icons/gi';
 import { IoMdArrowDropdownCircle, IoMdMedical } from 'react-icons/io';
 import { MdOutlineDoubleArrow } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import img from '../../../assets/events/who we are.jpg';
 const About = () => {
   return (
     <div>
@@ -248,7 +247,7 @@ const About = () => {
         <div className="lg:w-1/2 lg:ml-20">
           <img
             className="lg:w-[600px] w-[100%] lg:h-[700px]"
-            src={img}
+            src="https://res.cloudinary.com/randomone/image/upload/v1654200106/digitalVillage/vehicle_nr3wow.jpg"
             alt=""
           />
         </div>

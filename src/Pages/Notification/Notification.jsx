@@ -5,7 +5,6 @@ import {
   fetchUserSpecificNotification,
   setNotificationCurrPage,
 } from '../../redux/slices/notification/notificationSlice';
-import note from './../../assets/notification/notification.png';
 import DetailNotification from './DetailNotification/DetailNotification';
 import SingleNotification from './SingleNotification/SingleNotification';
 
@@ -65,7 +64,7 @@ const Notification = () => {
             <div>
               <img
                 className="w-full"
-                src={note}
+                src="https://res.cloudinary.com/randomone/image/upload/v1654200542/digitalVillage/notification_lamkow.png"
                 alt="notification not selected"
               />
             </div>

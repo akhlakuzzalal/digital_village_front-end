@@ -1,14 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Lottie from 'react-lottie';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import axios from '../../../api/axios';
-import banner from '../../../assets/donation/donatebanner.jpg';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import animationData from '../../../lotties/donate.json';
-import { addAHelpRequest } from '../../../redux/slices/Donations/donationSlice';
 const DonationBanner = () => {
   const isTablet = useMediaQuery('(min-width: 655px)');
   const isDesktop = useMediaQuery('(min-width: 900px)');
@@ -33,15 +31,18 @@ const DonationBanner = () => {
 
   const helpRequestApply = async (data) => {
     console.log(data);
-    const requestData=  {
-          ...data,
-          requesterName: user?.name,
-          requesterEmail: user?.email,
-          date: new Date().toLocaleDateString(),
-          pay: false,
-        };
-    const response = await axios.post('/donationRequest/helprequest', requestData);
-console.log(response?.data, "data ");
+    const requestData = {
+      ...data,
+      requesterName: user?.name,
+      requesterEmail: user?.email,
+      date: new Date().toLocaleDateString(),
+      pay: false,
+    };
+    const response = await axios.post(
+      '/donationRequest/helprequest',
+      requestData
+    );
+    console.log(response?.data, 'data ');
     if (response?.data && response?.data[0].requesterEmail) {
       swal({
         text: `You request sumbit successfully`,
@@ -124,7 +125,9 @@ console.log(response?.data, "data ");
                         }}
                       />
                       {errors.description && (
-                        <p className="text-danger">{errors.description.message}</p>
+                        <p className="text-danger">
+                          {errors.description.message}
+                        </p>
                       )}
                       {/* <input
                         className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
@@ -134,22 +137,29 @@ console.log(response?.data, "data ");
                       /> */}
                       {/* category */}
                       <select
-                      className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
-                      {...register('category', {
-                      required: 'this is required',
-                      })}
+                        className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-pink-500 focus:z-10 sm:text-sm"
+                        {...register('category', {
+                          required: 'this is required',
+                        })}
                       >
-                      <option className="bg-green-500 text-pink-500" defaultValue="choose one">choose one</option>
-                      <option value="Education">Education</option>
-                      <option value="Health">Health</option>
-                      <option value="Water">Water</option>
-                      <option value="Agriculture">Agriculture</option>
-                      <option value="Food">Food</option>
-                      <option value="Development">Development</option>
-                      <option value="Others">others</option>
+                        <option
+                          className="bg-green-500 text-pink-500"
+                          defaultValue="choose one"
+                        >
+                          choose one
+                        </option>
+                        <option value="Education">Education</option>
+                        <option value="Health">Health</option>
+                        <option value="Water">Water</option>
+                        <option value="Agriculture">Agriculture</option>
+                        <option value="Food">Food</option>
+                        <option value="Development">Development</option>
+                        <option value="Others">others</option>
                       </select>
                       {errors.category && (
-                      <small className="text-danger">{errors.category.message}</small>
+                        <small className="text-danger">
+                          {errors.category.message}
+                        </small>
                       )}
                       <input
                         type="number"
@@ -199,24 +209,23 @@ console.log(response?.data, "data ");
                       )}
                     </div>
                     {/*footer*/}
-                <div className="flex items-center justify-end p-2 border-t border-solid border-blueGray-200 rounded-b">
-                  <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Cancel
-                  </button>
-                  <button 
-                    className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="submit"
-                  >
-                    Request Doante
-                  </button>
-                </div>
+                    <div className="flex items-center justify-end p-2 border-t border-solid border-blueGray-200 rounded-b">
+                      <button
+                        className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="button"
+                        onClick={() => setShowModal(false)}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="submit"
+                      >
+                        Request Doante
+                      </button>
+                    </div>
                   </form>
                 </div>
-                
               </div>
             </div>
           </div>
@@ -231,7 +240,7 @@ console.log(response?.data, "data ");
           backgroundSize: 'cover',
           height: 'calc(105vh - 64px)',
           position: 'relative',
-          backgroundImage: `url(${banner})`,
+          backgroundImage: `url(https://res.cloudinary.com/randomone/image/upload/v1654199221/digitalVillage/donatebanner_tyurud.jpg)`,
         }}
       >
         <div className="flex flex-wrap md:space-y-0">

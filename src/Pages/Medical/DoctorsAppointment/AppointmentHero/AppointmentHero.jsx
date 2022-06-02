@@ -1,5 +1,4 @@
 import React from 'react';
-import doctor from './../../../../../../../assets/medical/doctor.png';
 
 const AppointmentHero = () => {
   return (
@@ -17,7 +16,10 @@ const AppointmentHero = () => {
       </div>
 
       <div className="w-full md:w-1/2 flex justify-center items-center my-5">
-        <img src={doctor} alt="" />
+        <img
+          src="https://res.cloudinary.com/randomone/image/upload/v1654199538/digitalVillage/doctor_ob4wqn.png"
+          alt=""
+        />
       </div>
     </div>
   );
