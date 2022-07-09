@@ -13,9 +13,13 @@ const Procedure = () => {
       >
         4 easy steps to payment
       </h3>
-      <div className="flex flex-col justify-center items-center md:flex-row pl-14  md:px-10">
+      <div className="flex flex-col justify-center items-center md:flex-row pl-14 bg-gray md:px-10">
         <Step1 />
         <Step2 />
+        {/* <Step3 />
+        <Step4 /> */}
+      </div>
+      <div className="flex flex-col justify-center items-center md:flex-row pl-14 bg-gray md:px-10">
         <Step3 />
         <Step4 />
       </div>
